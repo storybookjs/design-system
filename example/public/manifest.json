@@ -1,0 +1,8 @@
+{
+  "short_name": "@storybooks/design-system",
+  "name": "@storybooks/design-system",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
