@@ -8,6 +8,8 @@ node_modules
 build
 dist
 .rpt2_cache
+storybook-static
+.cache
 
 # misc
 .DS_Store
