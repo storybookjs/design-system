@@ -1,5 +1,6 @@
 import React from 'react';
 import { load, addDecorator } from '@storybook/react';
+import 'storybook-chromatic';
 
 import { GlobalStyle } from '../src/components/basics/shared/global';
 addDecorator(story => (
