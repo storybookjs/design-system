@@ -47,7 +47,13 @@
     }
   },
   "dependencies": {
-    "styled-components": "^4.1.2"
+    "global": "^4.3.2",
+    "mobx-react-form": "^2.0.2",
+    "polished": "^3.3.0",
+    "react-helmet": "^5.2.1",
+    "react-lazyload": "^2.5.0",
+    "styled-components": "^4.1.2",
+    "validatorjs": "^3.15.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
