@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Avatar from './Avatar';
 
 storiesOf('basics/Avatar', module)
+  .addParameters({ component: Avatar })
   .add('large', () => (
     <div>
       <Avatar loading size="large" />

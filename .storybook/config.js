@@ -1,6 +1,18 @@
 import React from 'react';
-import { load, addDecorator } from '@storybook/react';
+import { load, addDecorator, addParameters } from '@storybook/react';
+import { getPropDefs } from '@storybook/addon-docs/react';
+import { DocsPage } from '@storybook/addon-docs/blocks';
 import 'storybook-chromatic';
+
+addParameters({
+  options: {
+    docs: {
+      inlineStories: true,
+      getPropDefs,
+    },
+  },
+  docs: DocsPage,
+});
 
 import { GlobalStyle } from '../src/components/basics/shared/global';
 addDecorator(story => (
