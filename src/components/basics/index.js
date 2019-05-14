@@ -15,7 +15,6 @@ export * from './ProgressDots';
 
 export * from './Checkbox';
 export * from './Input';
-export * from './FormState';
 
 export * from './SocialGraph';
 export * from './Video';

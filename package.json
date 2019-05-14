@@ -50,7 +50,6 @@
   },
   "dependencies": {
     "global": "^4.3.2",
-    "mobx-react-form": "^2.0.2",
     "polished": "^3.3.0",
     "react-helmet": "^5.2.1",
     "react-lazyload": "^2.5.0",
