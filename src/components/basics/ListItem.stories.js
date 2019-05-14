@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListItem from './ListItem';
 
-import Icon from './Icon';
+import { ListItem } from './ListItem';
+import { Icon } from './Icon';
 
 storiesOf('basics/ListItem', module)
   .add('all', () => (

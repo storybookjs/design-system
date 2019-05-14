@@ -1,3 +1,7 @@
+// const error = 2;
+// const warn = 1;
+const ignore = 0;
+
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -15,6 +19,7 @@ module.exports = {
         jsxBracketSameLine: false,
       },
     ],
+    'import/prefer-default-export': ignore,
     'react/jsx-filename-extension': [
       1,
       {

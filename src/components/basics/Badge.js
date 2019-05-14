@@ -48,8 +48,6 @@ const BadgeWrapper = styled.div`
     `};
 `;
 
-function Badge({ ...props }) {
+export function Badge({ ...props }) {
   return <BadgeWrapper {...props} />;
 }
-
-export default Badge;

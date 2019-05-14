@@ -5,19 +5,19 @@ import * as icons from './shared/icons';
 
 export { styles, global, animation, icons };
 
-export { default as Avatar } from './Avatar';
-export { default as Badge } from './Badge';
-export { default as Button } from './Button';
-export { default as Icon } from './Icon';
-export { default as LazyLoad } from './LazyLoad';
-export { default as Subheading } from './Subheading';
-export { default as ProgressDots } from './ProgressDots';
+export * from './Avatar';
+export * from './Badge';
+export * from './Button';
+export * from './Icon';
+export * from './LazyLoad';
+export * from './Subheading';
+export * from './ProgressDots';
 
-export { default as Checkbox } from './Checkbox';
-export { default as Input } from './Input';
-export { default as FormState } from './FormState';
+export * from './Checkbox';
+export * from './Input';
+export * from './FormState';
 
-export { default as SocialGraph } from './SocialGraph';
-export { default as Video } from './Video';
+export * from './SocialGraph';
+export * from './Video';
 
 // export { default as Modal } from './modal/Modal';

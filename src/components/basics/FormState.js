@@ -27,7 +27,7 @@ function defaultBindings({ field, props, $try }) {
   return bindings;
 }
 
-export default class FormData extends MobxReactForm {
+export class FormData extends MobxReactForm {
   constructor(fields, { plugins = { dvr: validatorjs }, hooks, options }) {
     super(fields, { plugins, hooks, options });
   }

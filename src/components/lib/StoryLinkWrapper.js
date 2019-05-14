@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 
 const onLinkClick = action('onLinkClick');
 
-export default function StoryLinkWrapper({ href, passHref, children }) {
+export function StoryLinkWrapper({ href, passHref, children }) {
   const child = Children.only(children);
 
   return React.cloneElement(child, {

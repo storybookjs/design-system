@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 import { glow } from './shared/animation';
-import Icon from './Icon';
+import { Icon } from './Icon';
 
 export const sizes = {
   large: 40,
@@ -91,7 +91,7 @@ const Initial = styled.div`
   `}
 `;
 
-function Avatar({ loading, username, src, size, ...props }) {
+export function Avatar({ loading, username, src, size, ...props }) {
   let avatarFigure = <Icon icon="useralt" />;
 
   if (!loading) {
@@ -122,5 +122,3 @@ Avatar.defaultProps = {
   src: null,
   size: 'medium',
 };
-
-export default Avatar;

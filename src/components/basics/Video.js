@@ -8,7 +8,7 @@ const StyledVideo = styled.video`
   height: auto;
 `;
 
-const Video = ({ src, shouldChangeSize, alt, ...props }) => {
+export const Video = ({ src, shouldChangeSize, alt, ...props }) => {
   const videoSize = shouldChangeSize && window.innerWidth < 600 ? 'sm' : 'lg';
   const videoSrc = videoSize === 'sm' ? src.replace('lg', 'sm') : src;
 
@@ -28,5 +28,3 @@ Video.propTypes = {
 Video.defaultProps = {
   shouldChangeSize: false,
 };
-
-export default Video;

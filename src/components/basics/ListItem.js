@@ -112,7 +112,7 @@ const Item = styled.a`
     `};
 `;
 
-export default function ListItem({
+export function ListItem({
   loading,
   left,
   title,

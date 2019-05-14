@@ -306,7 +306,7 @@ const ButtonWrapper = styled.button`
 
 const ButtonLink = ButtonWrapper.withComponent('a');
 
-function Button({ loading, loadingText, isLink, children, ...props }) {
+export function Button({ loading, loadingText, isLink, children, ...props }) {
   if (isLink) {
     return (
       <ButtonLink loading={loading} {...props}>
@@ -335,5 +335,3 @@ Button.defaultProps = {
   loadingText: null,
   isLink: false,
 };
-
-export default Button;

@@ -43,7 +43,7 @@ const Dot = styled.div`
     `};
 `;
 
-function ProgressDots({ loading, steps, progress, className, size }) {
+export function ProgressDots({ loading, steps, progress, className, size }) {
   const dots = [];
   for (let i = 0; i < steps; i += 1) {
     dots.push(<Dot loading={loading} active={i === progress - 1} key={i} size={size} />);
@@ -70,5 +70,3 @@ ProgressDots.defaultProps = {
   className: null,
   size: 'small',
 };
-
-export default ProgressDots;

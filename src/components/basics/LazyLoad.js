@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactLazyLoad from 'react-lazyload';
 
-function LazyLoad({ children, ...props }) {
+export function LazyLoad({ children, ...props }) {
   if (LazyLoad.disabled) {
     return children;
   }
@@ -17,5 +17,3 @@ LazyLoad.propTypes = {
 };
 
 LazyLoad.disabled = false;
-
-export default LazyLoad;

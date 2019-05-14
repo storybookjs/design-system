@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 import { jiggle } from './shared/animation';
-import Icon from './Icon';
+import { Icon } from './Icon';
 
 // prettier-ignore
 const Label = styled.span`
@@ -223,7 +223,7 @@ const InputContainer = styled.div`
   `}
 `;
 
-function Input({
+export function Input({
   value,
   label,
   orientation,
@@ -285,5 +285,3 @@ Input.defaultProps = {
   focused: false,
   lastErrorValue: null,
 };
-
-export default Input;

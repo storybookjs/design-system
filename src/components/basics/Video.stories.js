@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 
-import Video from './Video';
+import { Video } from './Video';
 
 const VideoWrapper = styled('div')`
   width: 45%

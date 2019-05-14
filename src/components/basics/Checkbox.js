@@ -74,7 +74,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
-function Checkbox({ label, error, ...props }) {
+export function Checkbox({ label, error, ...props }) {
   return (
     <Label>
       <Input {...props} type="checkbox" />
@@ -95,5 +95,3 @@ Checkbox.defaultProps = {
   label: null,
   error: null,
 };
-
-export default Checkbox;

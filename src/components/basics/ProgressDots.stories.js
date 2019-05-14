@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import ProgressDots from './ProgressDots';
+import { ProgressDots } from './ProgressDots';
 
 storiesOf('basics/ProgressDots', module)
   .add('loading', () => <ProgressDots loading />)

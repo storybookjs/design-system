@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Input from './Input';
+import { Input } from './Input';
 
 const onChange = action('change');
 storiesOf('basics/Input', module)

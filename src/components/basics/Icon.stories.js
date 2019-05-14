@@ -2,8 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { storiesOf } from '@storybook/react';
 
-import Icon from './Icon';
-import icons from './shared/icons';
+import { Icon } from './Icon';
+import { icons } from './shared/icons';
 
 const Meta = styled.div`
   color: #999;
