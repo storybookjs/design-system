@@ -1,3 +1,16 @@
+# v0.0.5 (Tue May 14 2019)
+
+#### ⚠️  Pushed to master
+
+- Build before releasing  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Remove mobx dependency  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 1
+
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
 # v0.0.4 (Tue May 14 2019)
 
 
