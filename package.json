@@ -22,6 +22,7 @@
     "lint": "eslint .",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
+    "release": "./scripts/release.sh",
     "storybook": "start-storybook -p 6006",
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom"
@@ -71,6 +72,7 @@
     "@storybook/addon-storysource": "^5.2.0-alpha.5",
     "@storybook/addons": "^5.2.0-alpha.5",
     "@storybook/react": "^5.2.0-alpha.5",
+    "auto": "^4.14.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.0",
     "babel-plugin-require-context-hook": "^1.0.0",
@@ -103,6 +105,12 @@
   "engines": {
     "node": ">=8",
     "npm": ">=5"
+  },
+  "auto": {
+    "plugins": [
+      "npm",
+      "released"
+    ]
   },
   "collective": {
     "type": "opencollective",
