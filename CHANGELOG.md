@@ -1,3 +1,15 @@
+# v0.0.7 (Tue May 14 2019)
+
+#### ⚠️  Pushed to master
+
+- Change dir structure and add new components  ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- [@domyen](https://github.com/domyen)
+
+---
+
 # v0.0.6 (Tue May 14 2019)
 
 #### ⚠️  Pushed to master
