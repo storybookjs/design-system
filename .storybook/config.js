@@ -14,7 +14,7 @@ addParameters({
   docs: DocsPage,
 });
 
-import { GlobalStyle } from '../src/components/basics/shared/global';
+import { GlobalStyle } from '../src/components/shared/global';
 addDecorator(story => (
   <>
     <GlobalStyle />
