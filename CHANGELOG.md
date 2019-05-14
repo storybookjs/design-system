@@ -1,3 +1,9 @@
+# v0.0.4 (Tue May 14 2019)
+
+
+
+---
+
 # v0.0.2 (Tue May 14 2019)
 
 #### ⚠️  Pushed to master
