@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Button } from './Button';
 import { Icon } from './Icon';
 
-storiesOf('basics/Button', module).add('all buttons', () => (
+storiesOf('Design System|Button', module).add('all buttons', () => (
   <div>
     <Button primary>Primary</Button>
     <Button secondary>Secondary</Button>

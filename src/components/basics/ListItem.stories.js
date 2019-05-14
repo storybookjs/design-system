@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { ListItem } from './ListItem';
 import { Icon } from './Icon';
 
-storiesOf('basics/ListItem', module)
+storiesOf('Design System|ListItem', module)
   .add('all', () => (
     <div>
       <ListItem loading />

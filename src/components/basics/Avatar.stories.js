@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { Avatar } from './Avatar';
 
-storiesOf('basics/Avatar', module)
+storiesOf('Design System|Avatar', module)
   .addParameters({ component: Avatar })
   .add('large', () => (
     <div>

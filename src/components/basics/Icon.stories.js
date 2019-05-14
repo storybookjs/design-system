@@ -48,7 +48,7 @@ const List = styled.div`
   flex-flow: row wrap;
 `;
 
-storiesOf('basics/Icon', module)
+storiesOf('Design System|Icon', module)
   .add('labels', () => (
     <List>
       {Object.keys(icons).map(key => (

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Badge } from './Badge';
 
-storiesOf('basics/Badge', module)
+storiesOf('Design System|Badge', module)
   .add('all badges', () => (
     <div>
       <Badge status="positive">Positive</Badge>
