@@ -1,5 +1,21 @@
 # v0.0.2 (Tue May 14 2019)
 
+#### ⚠️  Pushed to master
+
+- Add index, convert default to named exports  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Force public access for scoped packages  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- 0.0.2  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Add release script  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Fix changelog  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 1
+
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
+# v0.0.2 (Tue May 14 2019)
+
 #### ⚠️ Pushed to master
 
 - Fix yarn.lock ([@shilman](https://github.com/shilman))
