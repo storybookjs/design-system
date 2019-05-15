@@ -91,6 +91,9 @@ const Initial = styled.div`
   `}
 `;
 
+/**
+ * The `Avatar` component is where all your avatars come to play.
+ */
 export function Avatar({ loading, username, src, size, ...props }) {
   let avatarFigure = <Icon icon="useralt" />;
 
