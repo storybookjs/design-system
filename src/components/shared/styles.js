@@ -33,11 +33,12 @@ export const color = {
   darker: '#444444',
   darkest: '#333333',
 
-  border: 'rgba(0,0,0,.05)',
+  border: 'rgba(0,0,0,.1)',
 
   // Status
   positive: '#66BF3C',
   negative: '#FF4400',
+  warning: '#E69D00',
 };
 
 export const spacing = {
