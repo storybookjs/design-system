@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import WithTooltip from './WithTooltip';
 
-import TooltipMessage from './TooltipMessage';
+import { TooltipMessage } from './TooltipMessage';
 
 storiesOf('Design System|tooltip/TooltipMessage', module)
   .addDecorator(storyFn => (

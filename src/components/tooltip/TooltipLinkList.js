@@ -7,7 +7,7 @@ const List = styled.div`
   min-width: 180px;
 `;
 
-function TooltipLinkList({ links, LinkWrapper }) {
+export function TooltipLinkList({ links, LinkWrapper }) {
   return (
     <List>
       {links.map(({ title, href, onClick, active, isGatsby, ...props }, index) => (
@@ -41,5 +41,3 @@ TooltipLinkList.propTypes = {
 TooltipLinkList.defaultProps = {
   LinkWrapper: ListItem.defaultProps.LinkWrapper,
 };
-
-export default TooltipLinkList;

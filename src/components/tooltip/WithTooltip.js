@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
 import { withState } from 'recompose';
 
-import Tooltip from './Tooltip';
+import { Tooltip } from './Tooltip';
 
 // A target that doesn't speak popper
-// prettier-ignore
 const TargetContainer = styled.div`
   display: inline-block;
-  cursor: ${props => props.mode === 'hover' ? 'default' : 'pointer'};
+  cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
 `;
 
 const TargetSvgContainer = styled.g`

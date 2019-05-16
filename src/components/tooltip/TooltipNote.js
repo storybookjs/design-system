@@ -19,7 +19,7 @@ const Note = styled.div`
   margin: 6px;
 `;
 
-export default function TooltipNote({ note }) {
+export function TooltipNote({ note }) {
   return <Note>{note}</Note>;
 }
 

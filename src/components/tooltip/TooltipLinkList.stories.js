@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import WithTooltip from './WithTooltip';
 
-import TooltipLinkList from './TooltipLinkList';
+import { TooltipLinkList } from './TooltipLinkList';
 // import StoryLinkWrapper from '../../lib/StoryLinkWrapper';
 
 export const links = [

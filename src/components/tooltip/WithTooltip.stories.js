@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 
-import TooltipMessage from './TooltipMessage';
+import { TooltipMessage } from './TooltipMessage';
 import WithTooltip from './WithTooltip';
 
 const ViewPort = styled.div`

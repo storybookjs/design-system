@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { color, typography } from '../shared/styles';
-import Link from '../Link';
+import { Link } from '../Link';
 
 const Title = styled.div`
   font-weight: ${typography.weight.black};
@@ -32,7 +32,7 @@ const MessageWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-function TooltipMessage({ title, desc, links }) {
+export function TooltipMessage({ title, desc, links }) {
   return (
     <MessageWrapper>
       <Message>
@@ -67,5 +67,3 @@ TooltipMessage.defaultProps = {
   desc: null,
   links: null,
 };
-
-export default TooltipMessage;

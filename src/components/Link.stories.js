@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Icon } from './Icon';
-import Link from './Link';
+import { Link } from './Link';
 
 const onLinkClick = action('onLinkClick');
 storiesOf('Design System|Link', module).add('all', () => (

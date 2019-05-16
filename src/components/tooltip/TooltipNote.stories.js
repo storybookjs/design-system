@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import WithTooltip from './WithTooltip';
 
-import TooltipNote from './TooltipNote';
+import { TooltipNote } from './TooltipNote';
 
 storiesOf('Design System|tooltip/TooltipNote', module)
   .addDecorator(storyFn => (

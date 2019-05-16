@@ -45,7 +45,7 @@ const CenteredWrapper = styled.div`
   left: 0;
 `;
 
-export default function Modal({ isOpen, onClose, children }) {
+export function Modal({ isOpen, onClose, children }) {
   const actions = {
     onClose,
   };

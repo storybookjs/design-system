@@ -69,7 +69,7 @@ const TooltipWrapper = styled.div`
     `};
 `;
 
-export default function Tooltip({
+export function Tooltip({
   placement,
   hasChrome,
   children,

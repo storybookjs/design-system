@@ -2,7 +2,7 @@ import React, { Fragment, Children } from 'react';
 import { PropTypes } from 'prop-types';
 import { compose, withState, withHandlers } from 'recompose';
 
-import Modal from './Modal';
+import { Modal } from './Modal';
 
 function WithModal({ isOpen, onOpen, onClose, modal, children }) {
   return (

@@ -175,7 +175,7 @@ const LinkButton = styled.button`
   ${linkStyles};
 `;
 
-export default function Link({ isGatsby, isButton, withArrow, containsIcon, children, ...props }) {
+export function Link({ isGatsby, isButton, withArrow, containsIcon, children, ...props }) {
   const content = (
     <Fragment>
       <LinkInner withArrow={withArrow} containsIcon={containsIcon}>

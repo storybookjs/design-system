@@ -6,6 +6,7 @@ import * as icons from './shared/icons';
 export { styles, global, animation, icons };
 
 export * from './Avatar';
+export * from './AvatarList';
 export * from './Badge';
 export * from './Button';
 export * from './Icon';
@@ -15,10 +16,10 @@ export * from './ProgressDots';
 export * from './Checkbox';
 export * from './Input';
 
+export * from './tooltip/TooltipMessage';
+export * from './tooltip/TooltipNote';
+export * from './tooltip/TooltipLinkList';
 export { default as WithTooltip } from './tooltip/WithTooltip';
-export { default as TooltipMessage } from './tooltip/TooltipMessage';
-export { default as TooltipNote } from './tooltip/TooltipNote';
-export { default as TooltipLinkList } from './tooltip/TooltipLinkList';
 
-export { default as Modal } from './modal/Modal';
+export * from './modal/Modal';
 export { default as WithModal } from './modal/WithModal';
