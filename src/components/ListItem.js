@@ -171,6 +171,6 @@ ListItem.defaultProps = {
   active: false,
   disabled: false,
   href: null,
-  LinkWrapper: null,
-  onClick: null,
+  LinkWrapper: undefined,
+  onClick: undefined,
 };

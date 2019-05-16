@@ -9,35 +9,35 @@ import { StoryLinkWrapper } from './StoryLinkWrapper';
 const onLinkClick = action('onLinkClick');
 storiesOf('Design System|Link', module).add('all', () => (
   <div>
-    <Link href="http://google.com">Default</Link>
+    <Link href="https://learnstorybook.com">Default</Link>
     <br />
-    <Link secondary href="http://google.com">
+    <Link secondary href="https://learnstorybook.com">
       Secondary
     </Link>
     <br />
-    <Link tertiary href="http://google.com">
+    <Link tertiary href="https://learnstorybook.com">
       tertiary
     </Link>
     <br />
-    <Link nochrome href="http://google.com">
+    <Link nochrome href="https://learnstorybook.com">
       nochrome
     </Link>
     <br />
-    <Link href="http://google.com">
+    <Link href="https://learnstorybook.com">
       <Icon icon="discord" />
       With icon in front
     </Link>
     <br />
-    <Link containsIcon isGatsby to="http://google.com">
+    <Link containsIcon to="https://learnstorybook.com">
       <Icon icon="sidebar" />
     </Link>
     <br />
-    <Link containsIcon withArrow href="http://google.com">
+    <Link containsIcon withArrow href="https://learnstorybook.com">
       With arrow behind
     </Link>
     <br />
     <span style={{ background: '#333' }}>
-      <Link inverse href="http://google.com">
+      <Link inverse href="https://learnstorybook.com">
         Inverted colors
       </Link>
     </span>
@@ -48,7 +48,8 @@ storiesOf('Design System|Link', module).add('all', () => (
       is actually a button
     </Link>
     <br />
-    {/* eslint-disable-next-line */}
-    <Link LinkWrapper={StoryLinkWrapper}>has a LinkWrapper like GatsbyLink or NextLink</Link>
+    <Link LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
+      has a LinkWrapper like GatsbyLink or NextLink
+    </Link>
   </div>
 ));

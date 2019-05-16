@@ -8,13 +8,14 @@ import WithTooltip from './WithTooltip';
 
 const ViewPort = styled.div`
   height: 300px;
+  background: purple;
+  overflow-y: scroll;
 `;
 
 const BackgroundBox = styled.div`
   width: 500px;
   height: 500px;
-  overflow-y: scroll;
-  background: #eee;
+  background: pink;
   position: relative;
 `;
 

@@ -7,8 +7,8 @@ import { TooltipLinkList } from './TooltipLinkList';
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export const links = [
-  { title: 'Link', href: 'http://google.com' },
-  { title: 'Link', href: 'http://google.com' },
+  { title: 'Link', href: 'https://learnstorybook.com' },
+  { title: 'Link', href: 'https://learnstorybook.com' },
   { title: 'callback', onClick: action('onClick') },
 ];
 

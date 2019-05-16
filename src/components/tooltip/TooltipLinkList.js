@@ -10,7 +10,7 @@ const List = styled.div`
 export function TooltipLinkList({ links, LinkWrapper }) {
   return (
     <List>
-      {links.map(({ title, href, onClick, active, isGatsby, ...props }, index) => (
+      {links.map(({ title, href, onClick, active, ...props }, index) => (
         <ListItem
           /* eslint-disable react/no-array-index-key */
           key={index}
@@ -18,7 +18,7 @@ export function TooltipLinkList({ links, LinkWrapper }) {
           onClick={onClick}
           active={active}
           href={href}
-          LinkWrapper={isGatsby ? LinkWrapper : null}
+          LinkWrapper={LinkWrapper || null}
           {...props}
         />
       ))}
@@ -35,7 +35,7 @@ TooltipLinkList.propTypes = {
       active: PropTypes.bool,
     }).isRequired
   ).isRequired,
-  LinkWrapper: PropTypes.shape(),
+  LinkWrapper: PropTypes.func,
 };
 
 TooltipLinkList.defaultProps = {
