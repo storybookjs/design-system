@@ -13,25 +13,16 @@ const linkStyles = css`
   text-decoration: none;
 
   color: ${color.secondary};
-  svg path {
-    fill: ${color.secondary};
-  }
 
   &:hover,
   &:focus {
     cursor: pointer;
     transform: translate3d(0, -1px, 0);
     color: ${darken(0.07, color.secondary)};
-    svg path {
-      fill: ${darken(0.07, color.secondary)};
-    }
   }
   &:active {
     transform: translate3d(0, 0, 0);
     color: ${darken(0.1, color.secondary)};
-    svg path {
-      fill: ${darken(0.1, color.secondary)};
-    }
   }
 
   svg {
@@ -48,22 +39,13 @@ const linkStyles = css`
     props.secondary &&
     css`
       color: ${color.mediumdark};
-      svg path {
-        fill: ${color.mediumdark};
-      }
 
       &:hover {
         color: ${color.dark};
-        svg path {
-          fill: ${color.dark};
-        }
       }
 
       &:active {
         color: ${color.darker};
-        svg path {
-          fill: ${color.darker};
-        }
       }
     `};
 
@@ -71,22 +53,13 @@ const linkStyles = css`
     props.tertiary &&
     css`
       color: ${color.dark};
-      svg path {
-        fill: ${color.dark};
-      }
 
       &:hover {
         color: ${color.darkest};
-        svg path {
-          fill: ${color.darkest};
-        }
       }
 
       &:active {
         color: ${color.mediumdark};
-        svg path {
-          fill: ${color.mediumdark};
-        }
       }
     `};
 
@@ -106,22 +79,13 @@ const linkStyles = css`
     props.inverse &&
     css`
       color: ${color.lightest};
-      svg path {
-        fill: ${color.lightest};
-      }
 
       &:hover {
         color: ${color.lighter};
-        svg path {
-          fill: ${color.lighter};
-        }
       }
 
       &:active {
         color: ${color.light};
-        svg path {
-          fill: ${color.light};
-        }
       }
     `};
 
