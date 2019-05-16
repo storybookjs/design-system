@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
-// import { Link as GatsbyLink } from 'gatsby';
 
 import { Icon } from './Icon';
 import { color } from './shared/styles';
@@ -128,18 +127,15 @@ const LinkInner = styled.span`
     `};
 `;
 
-const LinkWrapper = styled.a`
+const LinkA = styled.a`
   ${linkStyles};
 `;
 
-// const LinkGatsby = styled(GatsbyLink)`
-//   ${linkStyles};
-// `;
 const LinkButton = styled.button`
   ${linkStyles};
 `;
 
-export function Link({ isGatsby, isButton, withArrow, containsIcon, children, ...props }) {
+export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children, ...props }) {
   const content = (
     <Fragment>
       <LinkInner withArrow={withArrow} containsIcon={containsIcon}>
@@ -149,27 +145,27 @@ export function Link({ isGatsby, isButton, withArrow, containsIcon, children, ..
     </Fragment>
   );
 
-  // if (isGatsby) {
-  //   return <LinkGatsby {...props}>{content}</LinkGatsby>;
-  // }
+  if (LinkWrapper) {
+    return <LinkWrapper {...props}>{content}</LinkWrapper>;
+  }
   if (isButton) {
     return <LinkButton {...props}>{content}</LinkButton>;
   }
-  return <LinkWrapper {...props}>{content}</LinkWrapper>;
+  return <LinkA {...props}>{content}</LinkA>;
 }
 
 Link.propTypes = {
   isButton: PropTypes.bool,
-  isGatsby: PropTypes.bool,
   children: PropTypes.node,
   withArrow: PropTypes.bool,
   containsIcon: PropTypes.bool,
+  LinkWrapper: PropTypes.func,
 };
 
 Link.defaultProps = {
   isButton: false,
-  isGatsby: false,
   children: null,
   withArrow: false,
   containsIcon: false,
+  LinkWrapper: undefined,
 };

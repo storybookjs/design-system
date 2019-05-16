@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import WithTooltip from './WithTooltip';
 
 import { TooltipLinkList } from './TooltipLinkList';
-// import StoryLinkWrapper from '../../lib/StoryLinkWrapper';
+import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export const links = [
   { title: 'Link', href: 'http://google.com' },
@@ -21,4 +21,6 @@ storiesOf('Design System|tooltip/TooltipLinkList', module)
     </div>
   ))
   .add('links', () => <TooltipLinkList links={links.slice(0, 2)} LinkWrapper={null} />)
-  .add('links and callback', () => <TooltipLinkList links={links} LinkWrapper={null} />);
+  .add('links and callback', () => (
+    <TooltipLinkList links={links} LinkWrapper={StoryLinkWrapper} />
+  ));

@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Icon } from './Icon';
 import { Link } from './Link';
+import { StoryLinkWrapper } from './StoryLinkWrapper';
 
 const onLinkClick = action('onLinkClick');
 storiesOf('Design System|Link', module).add('all', () => (
@@ -47,8 +48,7 @@ storiesOf('Design System|Link', module).add('all', () => (
       is actually a button
     </Link>
     <br />
-    <Link primary={1} isGatsby to="/gatsby">
-      is a GatsbyLink
-    </Link>
+    {/* eslint-disable-next-line */}
+    <Link LinkWrapper={StoryLinkWrapper}>has a LinkWrapper like GatsbyLink or NextLink</Link>
   </div>
 ));
