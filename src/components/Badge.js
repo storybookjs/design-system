@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { background, color } from './shared/styles';
+import { background, color, typography } from './shared/styles';
 
 const BadgeWrapper = styled.div`
   display: inline-block;
@@ -10,6 +10,7 @@ const BadgeWrapper = styled.div`
   line-height: 12px;
   padding: 4px 12px;
   border-radius: 3em;
+  font-weight: ${typography.weight.bold};
 
   svg {
     height: 12px;
@@ -23,9 +24,6 @@ const BadgeWrapper = styled.div`
     css`
       color: ${color.positive};
       background: ${background.positive};
-      svg path {
-        fill: ${color.positive};
-      }
     `};
 
   ${props =>
@@ -33,9 +31,20 @@ const BadgeWrapper = styled.div`
     css`
       color: ${color.negative};
       background: ${background.negative};
-      svg path {
-        fill: ${color.negative};
-      }
+    `};
+
+  ${props =>
+    props.status === 'warning' &&
+    css`
+      color: ${color.warning};
+      background: ${background.warning};
+    `};
+
+  ${props =>
+    props.status === 'error' &&
+    css`
+      color: ${color.lightest};
+      background: ${color.negative};
     `};
 
   ${props =>
@@ -43,9 +52,6 @@ const BadgeWrapper = styled.div`
     css`
       color: ${color.dark};
       background: ${color.mediumlight};
-      svg path {
-        fill: ${color.dark};
-      }
     `};
 `;
 
@@ -56,7 +62,7 @@ export function Badge({ ...props }) {
   return <BadgeWrapper {...props} />;
 }
 Badge.propTypes = {
-  status: PropTypes.oneOf(['positive', 'negative', 'neutral']),
+  status: PropTypes.oneOf(['positive', 'negative', 'neutral', 'error', 'warning']),
 };
 
 Badge.defaultProps = {
