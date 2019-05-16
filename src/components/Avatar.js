@@ -12,9 +12,8 @@ export const sizes = {
   tiny: 16,
 };
 
-// prettier-ignore
 const Image = styled.div`
-  background: ${props => !props.loading ? "transparent" : color.light };
+  background: ${props => (!props.loading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
   vertical-align: top;
@@ -25,27 +24,35 @@ const Image = styled.div`
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
 
-  ${props => props.size === "tiny" && css`
-    height: ${sizes.tiny}px;
-    width: ${sizes.tiny}px;
-    line-height: ${sizes.tiny}px;
-	`}
+  ${props =>
+    props.size === 'tiny' &&
+    css`
+      height: ${sizes.tiny}px;
+      width: ${sizes.tiny}px;
+      line-height: ${sizes.tiny}px;
+    `}
 
-  ${props => props.size === "small" && css`
-    height: ${sizes.small}px;
-    width: ${sizes.small}px;
-    line-height: ${sizes.small}px;
-	`}
+  ${props =>
+    props.size === 'small' &&
+    css`
+      height: ${sizes.small}px;
+      width: ${sizes.small}px;
+      line-height: ${sizes.small}px;
+    `}
 
-  ${props => props.size === "large" && css`
-    height: ${sizes.large}px;
-    width: ${sizes.large}px;
-    line-height: ${sizes.large}px;
-	`}
+  ${props =>
+    props.size === 'large' &&
+    css`
+      height: ${sizes.large}px;
+      width: ${sizes.large}px;
+      line-height: ${sizes.large}px;
+    `}
 
-  ${props => !props.src && css`
-    background: ${!props.loading && "#37D5D3" };
-  `}
+  ${props =>
+    !props.src &&
+    css`
+      background: ${!props.loading && '#37D5D3'};
+    `}
 
   img {
     width: 100%;

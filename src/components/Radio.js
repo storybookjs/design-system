@@ -9,6 +9,7 @@ const Label = styled.label`
   font-weight: ${typography.weight.bold};
   min-height: 1em;
   position: relative;
+  display: block;
 `;
 
 const Error = styled.span`
@@ -17,19 +18,27 @@ const Error = styled.span`
   margin-left: 6px;
 `;
 
-const LabelText = styled.span``;
+const LabelText = styled.div``;
+const SublabelText = styled.div`
+  font-size: ${typography.size.s1}px;
+  font-weight: ${typography.weight.regular};
+  margin-top: 4px;
+  color: ${color.mediumdark};
+`;
 
-const Input = styled.input.attrs({ type: 'checkbox' })`
+const Input = styled.input.attrs({ type: 'radio' })`
+  float: left;
   margin: 0 0.6em 0 0;
   visibility: hidden;
 
   & + ${LabelText} {
-    display: inline-block;
-    vertical-align: text-top;
-    line-height: 1.2;
+    display: block;
+    line-height: 1;
+    overflow: hidden;
 
     &:before,
     &:after {
+      transition: all 150ms ease-out;
       position: absolute;
       top: 0;
       left: 0;
@@ -37,14 +46,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
       width: 14px;
       content: '';
       display: block;
-    }
-
-    &:before {
-      border-radius: 4px;
-    }
-
-    &:after {
-      border-radius: 3px;
+      border-radius: 3em;
     }
   }
 
@@ -57,7 +59,6 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 
   & + ${LabelText}:after {
-    transition: all 150ms ease-out;
     transform: scale3d(0, 0, 1);
 
     height: 10px;
@@ -75,24 +76,32 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
-export function Checkbox({ label, error, ...props }) {
+export function Radio({ value, label, sublabel, error, className, ...props }) {
   return (
-    <Label>
-      <Input {...props} type="checkbox" />
+    <Label className={className}>
+      <Input value={value} {...props} type="radio" />
+
       <LabelText>
         {label}
         {error && <Error>{error}</Error>}
+        {sublabel && <SublabelText>{sublabel}</SublabelText>}
       </LabelText>
     </Label>
   );
 }
 
-Checkbox.propTypes = {
+Radio.propTypes = {
+  value: PropTypes.string,
   label: PropTypes.string,
+  sublabel: PropTypes.string,
   error: PropTypes.string,
+  className: PropTypes.string,
 };
 
-Checkbox.defaultProps = {
+Radio.defaultProps = {
+  value: '',
   label: null,
+  sublabel: null,
   error: null,
+  className: null,
 };

@@ -13,8 +13,11 @@ export * from './Icon';
 export * from './Subheading';
 export * from './ProgressDots';
 
-export * from './Checkbox';
 export * from './Input';
+export * from './Textarea';
+export * from './Checkbox';
+export * from './Radio';
+export * from './Select';
 
 export * from './tooltip/TooltipMessage';
 export * from './tooltip/TooltipNote';

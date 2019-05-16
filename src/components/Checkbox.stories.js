@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { Checkbox } from './Checkbox';
 
 const onChange = action('change');
-storiesOf('Design System|Checkbox', module)
+storiesOf('Design System|forms/Checkbox', module)
   .add('all checkboxes', () => (
     <form>
       <Checkbox onChange={onChange} />

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Avatar, sizes } from './Avatar';
 import WithTooltip from './tooltip/WithTooltip';
-import TooltipNote from './tooltip/TooltipNote';
+import { TooltipNote } from './tooltip/TooltipNote';
 import { color, typography } from './shared/styles';
 
 const User = styled(Avatar)`

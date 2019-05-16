@@ -27,9 +27,9 @@ export const users = [
 ];
 
 storiesOf('Design System|AvatarList', module)
-  .add('loading', () => <AvatarList loading />)
-  .add('empty', () => <AvatarList users={[]} />)
   .add('short', () => <AvatarList users={users.slice(0, 2)} />)
   .add('ellipsized', () => <AvatarList users={users} />)
   .add('big userCount', () => <AvatarList users={users} userCount={100} />)
-  .add('small size', () => <AvatarList users={users} userCount={100} size="small" />);
+  .add('small size', () => <AvatarList users={users} userCount={100} size="small" />)
+  .add('loading', () => <AvatarList loading />)
+  .add('empty', () => <AvatarList users={[]} />);
