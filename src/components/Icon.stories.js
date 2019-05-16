@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled, { css } from 'styled-components';
 import { storiesOf } from '@storybook/react';
 
@@ -50,14 +50,17 @@ const List = styled.div`
 
 storiesOf('Design System|Icon', module)
   .add('labels', () => (
-    <List>
-      {Object.keys(icons).map(key => (
-        <Item key={key}>
-          <Icon icon={key} />
-          <Meta>{key}</Meta>
-        </Item>
-      ))}
-    </List>
+    <Fragment>
+      There are {Object.keys(icons).length} icons
+      <List>
+        {Object.keys(icons).map(key => (
+          <Item key={key}>
+            <Icon icon={key} />
+            <Meta>{key}</Meta>
+          </Item>
+        ))}
+      </List>
+    </Fragment>
   ))
   .add('no labels', () => (
     <List>
@@ -67,4 +70,14 @@ storiesOf('Design System|Icon', module)
         </Item>
       ))}
     </List>
+  ))
+  .add('inline', () => (
+    <Fragment>
+      this is an inline <Icon icon="facehappy" /> icon (default)
+    </Fragment>
+  ))
+  .add('block', () => (
+    <Fragment>
+      this is a block <Icon icon="facehappy" block /> icon
+    </Fragment>
   ));
