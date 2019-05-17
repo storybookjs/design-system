@@ -1,3 +1,32 @@
+# v0.0.8 (Fri May 17 2019)
+
+#### ⚠️  Pushed to master
+
+- Upgrade addon-docs to 5.2.0-alpha.9  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Clean and Qa  ([@domyen](https://github.com/domyen))
+- Minor tweak  ([@domyen](https://github.com/domyen))
+- Add more form components && spinner && allow prettier to work its magic  ([@domyen](https://github.com/domyen))
+- Add StoryLinkWrapper for Storybook testing purposes  ([@domyen](https://github.com/domyen))
+- Remove explicit SVG fills because they're not necessary with currentColor  ([@domyen](https://github.com/domyen))
+- Prefer named exports  ([@domyen](https://github.com/domyen))
+- Add AvatarList  ([@domyen](https://github.com/domyen))
+- Update Badge with more states  ([@domyen](https://github.com/domyen))
+- Refactor Icon  ([@domyen](https://github.com/domyen))
+- New icon  ([@domyen](https://github.com/domyen))
+- Update DS colors  ([@domyen](https://github.com/domyen))
+- Use the correct font-weight globally  ([@domyen](https://github.com/domyen))
+- Improve tooltip shadows  ([@domyen](https://github.com/domyen))
+- Upgrade storybook docs  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Improve avatar & badge docs slightly  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Upgrade addon-docs to alpha.7  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 2
+
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+- [@domyen](https://github.com/domyen)
+
+---
+
 # v0.0.7 (Tue May 14 2019)
 
 #### ⚠️  Pushed to master
