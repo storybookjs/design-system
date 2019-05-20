@@ -2,9 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { ListItem } from './ListItem';
-import { Icon } from './Icon';
+import { Icon } from '../Icon';
 
-storiesOf('Design System|ListItem', module)
+storiesOf('Design System|tooltip/ListItem', module)
   .add('all', () => (
     <div>
       <ListItem loading />

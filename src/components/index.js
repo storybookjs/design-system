@@ -10,6 +10,7 @@ export * from './AvatarList';
 export * from './Badge';
 export * from './Button';
 export * from './Icon';
+export * from './Link';
 export * from './Subheading';
 export * from './ProgressDots';
 
