@@ -5,6 +5,7 @@ import WithTooltip from './WithTooltip';
 import { TooltipMessage } from './TooltipMessage';
 
 storiesOf('Design System|tooltip/TooltipMessage', module)
+  .addParameters({ component: TooltipMessage })
   .addDecorator(storyFn => (
     <div style={{ height: '300px' }}>
       <WithTooltip placement="top" trigger="click" startOpen tooltip={storyFn()}>

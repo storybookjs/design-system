@@ -21,13 +21,14 @@ const ModalContents = ({ onClose }) => (
     sit amet lacus sit amet, cursus porttitor sapien. Donec a massa et felis dictum eleifend. Etiam
     in dui at magna imperdiet gravida. Nam id tortor in leo facilisis elementum sit amet accumsan
     nunc. Maecenas lacus metus, dapibus aliquam mauris ac, luctus gravida ex.{' '}
-    <Button primary onClick={onClose} role="button" tabIndex="0">
+    <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
       Close
     </Button>
   </div>
 );
 
 storiesOf('Design System|modal/WithModal', module)
+  .addParameters({ component: WithModal })
   .addDecorator(storyFn => (
     <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
       This is an example background {storyFn()}

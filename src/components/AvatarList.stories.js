@@ -27,6 +27,7 @@ export const users = [
 ];
 
 storiesOf('Design System|AvatarList', module)
+  .addParameters({ component: AvatarList })
   .add('short', () => <AvatarList users={users.slice(0, 2)} />)
   .add('ellipsized', () => <AvatarList users={users} />)
   .add('big userCount', () => <AvatarList users={users} userCount={100} />)

@@ -6,6 +6,7 @@ import { Checkbox } from './Checkbox';
 
 const onChange = action('change');
 storiesOf('Design System|forms/Checkbox', module)
+  .addParameters({ component: Checkbox })
   .add('all checkboxes', () => (
     <form>
       <Checkbox onChange={onChange} />

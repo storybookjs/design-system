@@ -5,6 +5,7 @@ import { ListItem } from './ListItem';
 import { Icon } from '../Icon';
 
 storiesOf('Design System|tooltip/ListItem', module)
+  .addParameters({ component: ListItem })
   .add('all', () => (
     <div>
       <ListItem loading />

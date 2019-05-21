@@ -6,6 +6,7 @@ import { Radio } from './Radio';
 
 const onChange = action('change');
 storiesOf('Design System|forms/Radio', module)
+  .addParameters({ component: Radio })
   .add('all radios', () => (
     <form>
       <Radio label="Mice" value="mice" checked onChange={onChange} />

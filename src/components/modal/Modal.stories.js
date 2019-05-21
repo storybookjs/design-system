@@ -10,6 +10,7 @@ export const actions = {
 };
 
 storiesOf('Design System|modal/Modal', module)
+  .addParameters({ component: Modal })
   .addDecorator(storyFn => (
     <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
       This is an example background {storyFn()}

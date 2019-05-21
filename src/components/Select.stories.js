@@ -6,6 +6,7 @@ import { Select } from './Select';
 
 const onChange = action('change');
 storiesOf('Design System|forms/Select', module)
+  .addParameters({ component: Select })
   .add('All selects', () => (
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
       <Select

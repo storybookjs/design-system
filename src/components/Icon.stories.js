@@ -49,6 +49,7 @@ const List = styled.div`
 `;
 
 storiesOf('Design System|Icon', module)
+  .addParameters({ component: Icon })
   .add('labels', () => (
     <Fragment>
       There are {Object.keys(icons).length} icons

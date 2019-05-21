@@ -5,6 +5,7 @@ import WithTooltip from './WithTooltip';
 import { TooltipNote } from './TooltipNote';
 
 storiesOf('Design System|tooltip/TooltipNote', module)
+  .addParameters({ component: TooltipNote })
   .addDecorator(storyFn => (
     <div style={{ height: '300px' }}>
       <WithTooltip hasChrome={false} placement="top" trigger="click" startOpen tooltip={storyFn()}>

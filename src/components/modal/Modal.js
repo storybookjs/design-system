@@ -83,7 +83,7 @@ export function Modal({ isOpen, onClose, children }) {
         <CenteredItem>{Children.only(children(actions))}</CenteredItem>
       </CenteredWrapper>
       <Action>
-        <Button containsIcon outline onClick={onClose}>
+        <Button containsIcon appearance="outline" onClick={onClose}>
           <Icon icon="cross" />
         </Button>
       </Action>

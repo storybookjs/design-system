@@ -6,6 +6,7 @@ import { Textarea } from './Textarea';
 
 const onChange = action('change');
 storiesOf('Design System|forms/Textarea', module)
+  .addParameters({ component: Textarea })
   .add('all Textareas', () => (
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
       <Textarea value="Default" onChange={onChange} />

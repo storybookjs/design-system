@@ -6,6 +6,7 @@ import { Input } from './Input';
 
 const onChange = action('change');
 storiesOf('Design System|forms/Input', module)
+  .addParameters({ component: Input })
   .add('all inputs', () => (
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
       <Input value="Default" icon="email" onChange={onChange} />
