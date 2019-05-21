@@ -121,8 +121,14 @@ export function Avatar({ loading, username, src, size, ...props }) {
 
 Avatar.propTypes = {
   loading: PropTypes.bool,
+  /**
+   The name of the user (not the nicename)
+  */
   username: PropTypes.string,
   src: PropTypes.string,
+  /**
+   Specify size
+  */
   size: PropTypes.oneOf(Object.keys(sizes)),
 };
 

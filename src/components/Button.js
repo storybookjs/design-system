@@ -422,12 +422,24 @@ export function Button({
 
 Button.propTypes = {
   loading: PropTypes.bool,
+  /**
+   When a button is in the loading state you can supply custom text
+  */
   loadingText: PropTypes.node,
+  /**
+   Buttons that have hrefs should use <a> instead of <button>
+  */
   isLink: PropTypes.bool,
   children: PropTypes.node.isRequired,
   appearance: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'outline']),
   disabled: PropTypes.bool,
+  /**
+   Prevents users from clicking on a button multiple times (for things like payment forms)
+  */
   unclickable: PropTypes.bool,
+  /**
+   Buttons with icons by themselves have a circular shape
+  */
   containsIcon: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium']), // this is enum incase we need to add more sizes
 };
