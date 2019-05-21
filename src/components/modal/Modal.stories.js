@@ -34,7 +34,7 @@ storiesOf('Design System|modal/Modal', module)
           sapien. Donec a massa et felis dictum eleifend. Etiam in dui at magna imperdiet gravida.
           Nam id tortor in leo facilisis elementum sit amet accumsan nunc. Maecenas lacus metus,
           dapibus aliquam mauris ac, luctus gravida ex.{' '}
-          <Button primary onClick={onClose} role="button" tabIndex="0">
+          <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
             Close
           </Button>
         </div>
@@ -59,7 +59,7 @@ storiesOf('Design System|modal/Modal', module)
           sapien. Donec a massa et felis dictum eleifend. Etiam in dui at magna imperdiet gravida.
           Nam id tortor in leo facilisis elementum sit amet accumsan nunc. Maecenas lacus metus,
           dapibus aliquam mauris ac, luctus gravida ex.{' '}
-          <Button primary onClick={onClose} role="button" tabIndex="0">
+          <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
             Close
           </Button>
         </div>
@@ -70,7 +70,7 @@ storiesOf('Design System|modal/Modal', module)
     <Modal isOpen={false} {...actions}>
       {({ onClose }) => (
         <div>
-          <Button primary onClick={onClose} role="button" tabIndex="0">
+          <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
             Close
           </Button>
         </div>

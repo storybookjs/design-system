@@ -38,7 +38,7 @@ storiesOf('Design System|modal/WithModal', module)
     <WithModal modal={ModalContents}>
       {({ onOpen }) => (
         <div>
-          <Button primary onClick={onOpen} role="button" tabIndex="0">
+          <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
             Open Modal
           </Button>
         </div>
@@ -49,7 +49,7 @@ storiesOf('Design System|modal/WithModal', module)
     <WithModal startOpen modal={ModalContents}>
       {({ onOpen }) => (
         <div>
-          <Button primary onClick={onOpen} role="button" tabIndex="0">
+          <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
             Open Modal
           </Button>
         </div>

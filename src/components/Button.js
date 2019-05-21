@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken, rgba } from 'polished';
@@ -24,7 +24,7 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: ${props => (props.small ? '8px 16px' : '13px 20px')};
+  padding: ${props => (props.size === 'small' ? '8px 16px' : '13px 20px')};
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -38,7 +38,7 @@ const ButtonWrapper = styled.button`
   background: transparent;
 
 
-  font-size: ${props => (props.small ? typography.size.s1 : typography.size.s2)}px;
+  font-size: ${props => (props.size === 'small' ? typography.size.s1 : typography.size.s2)}px;
   font-weight: ${typography.weight.bold};
   line-height: 1;
 
@@ -74,12 +74,12 @@ const ButtonWrapper = styled.button`
   }
 
   svg {
-    height: ${props => (props.small ? '14' : '16')}px;
-    width: ${props => (props.small ? '14' : '16')}px;
+    height: ${props => (props.size === 'small' ? '14' : '16')}px;
+    width: ${props => (props.size === 'small' ? '14' : '16')}px;
     vertical-align: top;
-    margin-right: ${props => (props.small ? '4' : '6')}px;
-    margin-top: ${props => (props.small ? '-1' : '-2')}px;
-    margin-bottom: ${props => (props.small ? '-1' : '-2')}px;
+    margin-right: ${props => (props.size === 'small' ? '4' : '6')}px;
+    margin-top: ${props => (props.size === 'small' ? '-1' : '-2')}px;
+    margin-bottom: ${props => (props.size === 'small' ? '-1' : '-2')}px;
 
     /* Necessary for js mouse events to not glitch out when hovering on svgs */
     pointer-events: none;
@@ -134,19 +134,13 @@ const ButtonWrapper = styled.button`
         display: block;
         margin: 0;
       }
-      ${props.small &&
-        css`
-          padding: 7px;
-        `}
-
-      ${!props.small &&
-        css`
-          padding: 12px;
-        `}
+      padding: ${props.size === 'small' ? '7' : '12'}px;
     `}
 
+
+
   ${props =>
-    props.primary &&
+    props.appearance === 'primary' &&
     css`
       background: ${color.primary};
       color: ${color.lightest};
@@ -169,7 +163,7 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.primary &&
+    props.appearance === 'primary' &&
     props.active &&
     css`
       background: transparent;
@@ -196,7 +190,7 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.secondary &&
+    props.appearance === 'secondary' &&
     css`
       background: ${color.secondary};
       color: ${color.lightest};
@@ -219,7 +213,7 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.secondary &&
+    props.appearance === 'secondary' &&
     props.active &&
     css`
       background: transparent;
@@ -248,7 +242,7 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.tertiary &&
+    props.appearance === 'tertiary' &&
     css`
       background: ${color.tertiary};
       color: ${color.darkest};
@@ -271,7 +265,7 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.tertiary &&
+    props.appearance === 'tertiary' &&
     props.active &&
     css`
       background: transparent;
@@ -294,7 +288,7 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.outline &&
+    props.appearance === 'outline' &&
     css`
       box-shadow: ${color.medium} 0 0 0 1px inset;
       color: ${color.dark};
@@ -318,58 +312,60 @@ const ButtonWrapper = styled.button`
             box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
           }
         `};
+    `};
 
-      ${props.primary &&
-        css`
+    ${props =>
+      props.appearance === 'outline primary' &&
+      css`
+        box-shadow: ${color.primary} 0 0 0 1px inset;
+        color: ${color.primary};
+
+        &:hover {
           box-shadow: ${color.primary} 0 0 0 1px inset;
-          color: ${color.primary};
+          background: transparent;
+        }
 
-          &:hover {
-            box-shadow: ${color.primary} 0 0 0 1px inset;
-            background: transparent;
-          }
+        &:active {
+          background: ${color.primary};
+          box-shadow: ${color.primary} 0 0 0 1px inset;
+          color: ${color.lightest};
+        }
+        &:focus {
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+        }
+        &:focus:hover {
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+        }
+      `};
 
-          &:active {
-            background: ${color.primary};
-            box-shadow: ${color.primary} 0 0 0 1px inset;
-            color: ${color.lightest};
-          }
-          &:focus {
-            box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
-          }
-          &:focus:hover {
-            box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
-          }
-        `};
+    ${props =>
+      props.appearance === 'outline secondary' &&
+      css`
+        box-shadow: ${color.secondary} 0 0 0 1px inset;
+        color: ${color.secondary};
 
-      ${props.secondary &&
-        css`
+        &:hover {
           box-shadow: ${color.secondary} 0 0 0 1px inset;
-          color: ${color.secondary};
+          background: transparent;
+        }
 
-          &:hover {
-            box-shadow: ${color.secondary} 0 0 0 1px inset;
-            background: transparent;
-          }
-
-          &:active {
-            background: ${color.secondary};
-            box-shadow: ${color.secondary} 0 0 0 1px inset;
-            color: ${color.lightest};
-          }
-          &:focus {
-            box-shadow: ${color.secondary} 0 0 0 1px inset,
-              ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
-          }
-          &:focus:hover {
-            box-shadow: ${color.secondary} 0 0 0 1px inset,
-              ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
-          }
-        `};
-    `}
+        &:active {
+          background: ${color.secondary};
+          box-shadow: ${color.secondary} 0 0 0 1px inset;
+          color: ${color.lightest};
+        }
+        &:focus {
+          box-shadow: ${color.secondary} 0 0 0 1px inset,
+            ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+        }
+        &:focus:hover {
+          box-shadow: ${color.secondary} 0 0 0 1px inset,
+            ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+        }
+      `};
 
   ${props =>
-    props.outline &&
+    props.appearance === 'outline' &&
     props.active &&
     css`
       background: ${color.medium};
@@ -382,19 +378,44 @@ const ButtonWrapper = styled.button`
 
 const ButtonLink = ButtonWrapper.withComponent('a');
 
-export function Button({ loading, loadingText, isLink, children, ...props }) {
+export function Button({
+  loading,
+  loadingText,
+  isLink,
+  appearance,
+  size,
+  containsIcon,
+  children,
+  ...props
+}) {
+  const buttonInner = (
+    <Fragment>
+      <Text>{children}</Text>
+      {loading && <Loading>{loadingText || 'Loading...'}</Loading>}
+    </Fragment>
+  );
   if (isLink) {
     return (
-      <ButtonLink loading={loading} {...props}>
-        <Text>{children}</Text>
-        {loading && <Loading>{loadingText || 'Loading...'}</Loading>}
+      <ButtonLink
+        loading={loading}
+        appearance={appearance}
+        size={size}
+        containsIcon={containsIcon}
+        {...props}
+      >
+        {buttonInner}
       </ButtonLink>
     );
   }
   return (
-    <ButtonWrapper loading={loading} {...props}>
-      <Text>{children}</Text>
-      {loading && <Loading>{loadingText || 'Loading...'}</Loading>}
+    <ButtonWrapper
+      loading={loading}
+      appearance={appearance}
+      size={size}
+      containsIcon={containsIcon}
+      {...props}
+    >
+      {buttonInner}
     </ButtonWrapper>
   );
 }
@@ -404,10 +425,20 @@ Button.propTypes = {
   loadingText: PropTypes.node,
   isLink: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  appearance: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'outline']),
+  disabled: PropTypes.bool,
+  unclickable: PropTypes.bool,
+  containsIcon: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium']), // this is enum incase we need to add more sizes
 };
 
 Button.defaultProps = {
   loading: false,
   loadingText: null,
   isLink: false,
+  appearance: 'tertiary',
+  disabled: false,
+  unclickable: false,
+  containsIcon: false,
+  size: 'medium',
 };
