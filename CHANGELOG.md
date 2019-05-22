@@ -1,3 +1,21 @@
+# v0.0.10 (Wed May 22 2019)
+
+#### ⚠️  Pushed to master
+
+- Add props descriptions via docgen comments  ([@domyen](https://github.com/domyen))
+- Refactor Button props to better document the proptypes  ([@domyen](https://github.com/domyen))
+- Get PropsTable working for all components  ([@domyen](https://github.com/domyen))
+- Upgrade addon-docs  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Merge branch 'master' of github.com:storybooks/design-system  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Upgrade addon-docs  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 2
+
+- [@domyen](https://github.com/domyen)
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
 # v0.0.9 (Fri May 17 2019)
 
 #### ⚠️  Pushed to master
