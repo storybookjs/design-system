@@ -431,7 +431,7 @@ Button.propTypes = {
   */
   isLink: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  appearance: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'outline']),
+  appearance: PropTypes.string,
   disabled: PropTypes.bool,
   /**
    Prevents users from clicking on a button multiple times (for things like payment forms)
