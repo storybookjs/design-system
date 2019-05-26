@@ -5,12 +5,6 @@ import { DocsPage } from '@storybook/addon-docs/blocks';
 import 'storybook-chromatic';
 
 addParameters({
-  options: {
-    docs: {
-      inlineStories: true,
-      getPropDefs,
-    },
-  },
   docs: DocsPage,
 });
 
