@@ -1,3 +1,25 @@
+# v0.0.11 (Mon Jun 03 2019)
+
+#### 🐛  Bug Fix
+
+- Update org name to storybookjs from storybooks [#4](https://github.com/storybookjs/design-system/pull/4) ([@kylesuss](https://github.com/kylesuss))
+- Bump version to: 0.0.12 [#3](https://github.com/storybookjs/design-system/pull/3) ([@kylesuss](https://github.com/kylesuss))
+- Solidify button appearance combos, document active state [#2](https://github.com/storybookjs/design-system/pull/2) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Upgrade addon-docs to alpha.21  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- storybook 5.2.0-alpha.16  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Upgrade addon-docs  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Storybook 5.2.0-alpha.13 && build-docs on publish  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
 # v0.0.10 (Wed May 22 2019)
 
 #### ⚠️  Pushed to master
