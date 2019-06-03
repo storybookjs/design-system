@@ -4,7 +4,7 @@
   "description": "Storybook design system",
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybooks/design-system.git"
+    "url": "https://github.com/storybookjs/design-system.git"
   },
   "license": "MIT",
   "author": {
