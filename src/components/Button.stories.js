@@ -11,25 +11,25 @@ storiesOf('Design System|Button', module)
       <Button appearance="secondary">Secondary</Button>
       <Button appearance="tertiary">Tertiary</Button>
       <Button appearance="outline">Outline</Button>
-      <Button appearance="outline primary">Outline primary</Button>
-      <Button appearance="outline secondary">Outline primary</Button>
-      <Button appearance="primary" disabled>
+      <Button appearance="primaryOutline">Outline primary</Button>
+      <Button appearance="secondaryOutline">Outline secondary</Button>
+      <Button appearance="primary" isDisabled>
         Disabled
       </Button>
       <br />
-      <Button appearance="primary" loading>
+      <Button appearance="primary" isLoading>
         Primary
       </Button>
-      <Button appearance="secondary" loading>
+      <Button appearance="secondary" isLoading>
         Secondary
       </Button>
-      <Button appearance="tertiary" loading>
+      <Button appearance="tertiary" isLoading>
         Tertiary
       </Button>
-      <Button appearance="outline" loading>
+      <Button appearance="outline" isLoading>
         Outline
       </Button>
-      <Button appearance="outline" loading loadingText="Custom...">
+      <Button appearance="outline" isLoading loadingText="Custom...">
         Outline
       </Button>
       <br />
@@ -45,7 +45,7 @@ storiesOf('Design System|Button', module)
       <Button appearance="outline" size="small">
         Outline
       </Button>
-      <Button appearance="primary" disabled size="small">
+      <Button appearance="primary" isDisabled size="small">
         Disabled
       </Button>
       <Button appearance="outline" size="small" containsIcon>

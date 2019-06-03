@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { darken, rgba } from 'polished';
 import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
@@ -18,13 +18,27 @@ const Loading = styled.span`
   opacity: 0;
 `;
 
+const APPEARANCES = {
+  PRIMARY: 'primary',
+  PRIMARY_OUTLINE: 'primaryOutline',
+  SECONDARY: 'secondary',
+  SECONDARY_OUTLINE: 'secondaryOutline',
+  TERTIARY: 'tertiary',
+  OUTLINE: 'outline',
+};
+
+const SIZES = {
+  SMALL: 'small',
+  MEDIUM: 'medium',
+};
+
 const ButtonWrapper = styled.button`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: ${props => (props.size === 'small' ? '8px 16px' : '13px 20px')};
+  padding: ${props => (props.size === SIZES.SMALL ? '8px 16px' : '13px 20px')};
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -38,13 +52,13 @@ const ButtonWrapper = styled.button`
   background: transparent;
 
 
-  font-size: ${props => (props.size === 'small' ? typography.size.s1 : typography.size.s2)}px;
+  font-size: ${props => (props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2)}px;
   font-weight: ${typography.weight.bold};
   line-height: 1;
 
   ${props =>
-    !props.loading &&
-    css`
+    !props.isLoading &&
+    `
       &:hover {
         transform: translate3d(0, -2px, 0);
         box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
@@ -74,12 +88,12 @@ const ButtonWrapper = styled.button`
   }
 
   svg {
-    height: ${props => (props.size === 'small' ? '14' : '16')}px;
-    width: ${props => (props.size === 'small' ? '14' : '16')}px;
+    height: ${props => (props.size === SIZES.SMALL ? '14' : '16')}px;
+    width: ${props => (props.size === SIZES.SMALL ? '14' : '16')}px;
     vertical-align: top;
-    margin-right: ${props => (props.size === 'small' ? '4' : '6')}px;
-    margin-top: ${props => (props.size === 'small' ? '-1' : '-2')}px;
-    margin-bottom: ${props => (props.size === 'small' ? '-1' : '-2')}px;
+    margin-right: ${props => (props.size === SIZES.SMALL ? '4' : '6')}px;
+    margin-top: ${props => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
+    margin-bottom: ${props => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
 
     /* Necessary for js mouse events to not glitch out when hovering on svgs */
     pointer-events: none;
@@ -87,7 +101,7 @@ const ButtonWrapper = styled.button`
 
   ${props =>
     props.disabled &&
-    css`
+    `
       cursor: not-allowed !important;
       opacity: 0.5;
       &:hover {
@@ -96,8 +110,8 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.unclickable &&
-    css`
+    props.isUnclickable &&
+    `
       cursor: default !important;
       pointer-events: none;
       &:hover {
@@ -106,8 +120,8 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.loading &&
-    css`
+    props.isLoading &&
+    `
       cursor: progress !important;
       opacity: 0.7;
 
@@ -129,24 +143,22 @@ const ButtonWrapper = styled.button`
 
   ${props =>
     props.containsIcon &&
-    css`
+    `
       svg {
         display: block;
         margin: 0;
       }
-      padding: ${props.size === 'small' ? '7' : '12'}px;
+      padding: ${props.size === SIZES.SMALL ? '7' : '12'}px;
     `}
 
-
-
   ${props =>
-    props.appearance === 'primary' &&
-    css`
+    props.appearance === APPEARANCES.PRIMARY &&
+    `
       background: ${color.primary};
       color: ${color.lightest};
 
-      ${!props.loading &&
-        css`
+      ${!props.isLoading &&
+        `
           &:hover {
             background: ${darken(0.05, color.primary)};
           }
@@ -163,40 +175,13 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.appearance === 'primary' &&
-    props.active &&
-    css`
-      background: transparent;
-      box-shadow: ${color.primary} 0 0 0 1px inset;
-      color: ${color.primary};
-
-      ${!props.loading &&
-        css`
-          &:hover {
-            background: transparent;
-            box-shadow: ${color.primary} 0 0 0 1px inset;
-          }
-          &:active {
-            box-shadow: ${color.primary} 0 0 0 3em inset;
-            color: ${color.lightest};
-          }
-          &:focus {
-            box-shadow: ${color.primary} 0 0 0 3em inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
-          }
-          &:focus:hover {
-            box-shadow: ${color.primary} 0 0 0 3em inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
-          }
-        `}
-    `}
-
-  ${props =>
-    props.appearance === 'secondary' &&
-    css`
+    props.appearance === APPEARANCES.SECONDARY &&
+    `
       background: ${color.secondary};
       color: ${color.lightest};
 
-      ${!props.loading &&
-        css`
+      ${!props.isLoading &&
+        `
           &:hover {
             background: ${darken(0.05, color.secondary)};
           }
@@ -213,42 +198,13 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.appearance === 'secondary' &&
-    props.active &&
-    css`
-      background: transparent;
-      box-shadow: ${color.secondary} 0 0 0 1px inset;
-      color: ${color.secondary};
-
-      ${!props.loading &&
-        css`
-          &:hover {
-            background: transparent;
-            box-shadow: ${color.secondary} 0 0 0 1px inset;
-          }
-          &:active {
-            box-shadow: ${color.secondary} 0 0 0 3em inset;
-            color: ${color.lightest};
-          }
-          &:focus {
-            box-shadow: ${color.secondary} 0 0 0 3em inset,
-              ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
-          }
-          &:focus:hover {
-            box-shadow: ${color.secondary} 0 0 0 3em inset,
-              ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
-          }
-        `}
-    `}
-
-  ${props =>
-    props.appearance === 'tertiary' &&
-    css`
+    props.appearance === APPEARANCES.TERTIARY &&
+    `
       background: ${color.tertiary};
       color: ${color.darkest};
 
-      ${!props.loading &&
-        css`
+      ${!props.isLoading &&
+        `
           &:hover {
             background: ${darken(0.05, color.secondary)};
           }
@@ -265,37 +221,14 @@ const ButtonWrapper = styled.button`
     `}
 
   ${props =>
-    props.appearance === 'tertiary' &&
-    props.active &&
-    css`
-      background: transparent;
-      box-shadow: ${color.medium} 0 0 0 1px inset;
-      color: ${color.darkest};
-
-      ${!props.loading &&
-        css`
-          &:hover {
-            background: transparent;
-            box-shadow: ${color.medium} 0 0 0 1px inset;
-          }
-          &:focus {
-            box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.tertiary, 0.4)} 0 1px 9px 2px;
-          }
-          &:focus:hover {
-            box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
-          }
-        `}
-    `}
-
-  ${props =>
-    props.appearance === 'outline' &&
-    css`
+    props.appearance === APPEARANCES.OUTLINE &&
+    `
       box-shadow: ${color.medium} 0 0 0 1px inset;
       color: ${color.dark};
       background: transparent;
 
-      ${!props.loading &&
-        css`
+      ${!props.isLoading &&
+        `
           &:hover {
             box-shadow: ${color.mediumdark} 0 0 0 1px inset;
           }
@@ -315,8 +248,8 @@ const ButtonWrapper = styled.button`
     `};
 
     ${props =>
-      props.appearance === 'outline primary' &&
-      css`
+      props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
+      `
         box-shadow: ${color.primary} 0 0 0 1px inset;
         color: ${color.primary};
 
@@ -339,8 +272,8 @@ const ButtonWrapper = styled.button`
       `};
 
     ${props =>
-      props.appearance === 'outline secondary' &&
-      css`
+      props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
+      `
         box-shadow: ${color.secondary} 0 0 0 1px inset;
         color: ${color.secondary};
 
@@ -364,64 +297,34 @@ const ButtonWrapper = styled.button`
         }
       `};
 
-  ${props =>
-    props.appearance === 'outline' &&
-    props.active &&
-    css`
-      background: ${color.medium};
-      box-shadow: ${color.medium} 0 0 0 1px inset;
-      color: ${color.darkest};
-    `}
-
-
 `;
 
 const ButtonLink = ButtonWrapper.withComponent('a');
 
-export function Button({
-  loading,
-  loadingText,
-  isLink,
-  appearance,
-  size,
-  containsIcon,
-  children,
-  ...props
-}) {
+export function Button({ isDisabled, isLoading, loadingText, isLink, children, ...props }) {
   const buttonInner = (
     <Fragment>
       <Text>{children}</Text>
-      {loading && <Loading>{loadingText || 'Loading...'}</Loading>}
+      {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
     </Fragment>
   );
+
   if (isLink) {
     return (
-      <ButtonLink
-        loading={loading}
-        appearance={appearance}
-        size={size}
-        containsIcon={containsIcon}
-        {...props}
-      >
+      <ButtonLink isLoading={isLoading} disabled={isDisabled} {...props}>
         {buttonInner}
       </ButtonLink>
     );
   }
   return (
-    <ButtonWrapper
-      loading={loading}
-      appearance={appearance}
-      size={size}
-      containsIcon={containsIcon}
-      {...props}
-    >
+    <ButtonWrapper isLoading={isLoading} disabled={isDisabled} {...props}>
       {buttonInner}
     </ButtonWrapper>
   );
 }
 
 Button.propTypes = {
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   /**
    When a button is in the loading state you can supply custom text
   */
@@ -431,26 +334,26 @@ Button.propTypes = {
   */
   isLink: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  appearance: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'outline']),
-  disabled: PropTypes.bool,
+  appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
+  isDisabled: PropTypes.bool,
   /**
    Prevents users from clicking on a button multiple times (for things like payment forms)
   */
-  unclickable: PropTypes.bool,
+  isUnclickable: PropTypes.bool,
   /**
    Buttons with icons by themselves have a circular shape
   */
   containsIcon: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium']), // this is enum incase we need to add more sizes
+  size: PropTypes.oneOf(Object.values(SIZES)),
 };
 
 Button.defaultProps = {
-  loading: false,
+  isLoading: false,
   loadingText: null,
   isLink: false,
-  appearance: 'tertiary',
-  disabled: false,
-  unclickable: false,
+  appearance: APPEARANCES.TERTIARY,
+  isDisabled: false,
+  isUnclickable: false,
   containsIcon: false,
-  size: 'medium',
+  size: SIZES.MEDIUM,
 };
