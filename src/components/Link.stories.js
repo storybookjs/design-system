@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { Button } from './Button';
 import { Icon } from './Icon';
 import { Link } from './Link';
 import { StoryLinkWrapper } from './StoryLinkWrapper';
@@ -52,6 +53,10 @@ storiesOf('Design System|Link', module)
       <br />
       <Link LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
         has a LinkWrapper like GatsbyLink or NextLink
+      </Link>
+      <br />
+      <Link LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
+        <Button>has a LinkWrapper like GatsbyLink or NextLink and a Button child</Button>
       </Link>
     </div>
   ));
