@@ -160,7 +160,7 @@ Link.propTypes = {
   children: PropTypes.node,
   withArrow: PropTypes.bool,
   containsIcon: PropTypes.bool,
-  LinkWrapper: PropTypes.func,
+  LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 Link.defaultProps = {
