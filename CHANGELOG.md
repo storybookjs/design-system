@@ -1,6 +1,13 @@
-# v0.0.14 (Mon Jun 03 2019)
+# v0.0.16 (Mon Jun 04 2019)
 
+#### 🐛  Bug Fix
 
+- Apply link styles to LinkWrapper [#6](https://github.com/storybookjs/design-system/pull/6) ([@kylesuss](https://github.com/kylesuss))
+- Document yarn release, add .yarnrc & .eslintignore [#5](https://github.com/storybookjs/design-system/pull/5) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
 
 ---
 
