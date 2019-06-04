@@ -1,29 +1,32 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // This is allows us to test whether the link works via the actions addon
-import React, { Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
 
-const onLinkClick = action('onLinkClick');
+const fireClickAction = action('onLinkClick');
 
-export function StoryLinkWrapper({ href, passHref, children }) {
-  const child = Children.only(children);
+export function StoryLinkWrapper({ children, href, onClick, ...rest }) {
+  const modifiedOnClick = event => {
+    event.preventDefault();
+    onClick();
+    fireClickAction(href);
+  };
 
-  return React.cloneElement(child, {
-    href: passHref && href,
-    onClick: e => {
-      e.preventDefault();
-      onLinkClick(href);
-    },
-  });
+  return (
+    <a href={href} {...rest} onClick={modifiedOnClick}>
+      {children}
+    </a>
+  );
 }
 
 StoryLinkWrapper.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.any.isRequired,
   href: PropTypes.string.isRequired,
-  passHref: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 };
 
 StoryLinkWrapper.defaultProps = {
-  passHref: false,
+  onClick: () => {},
 };

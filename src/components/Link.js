@@ -146,7 +146,8 @@ export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children,
   );
 
   if (LinkWrapper) {
-    return <LinkWrapper {...props}>{content}</LinkWrapper>;
+    const StyledLinkWrapper = LinkA.withComponent(LinkWrapper);
+    return <StyledLinkWrapper {...props}>{content}</StyledLinkWrapper>;
   }
   if (isButton) {
     return <LinkButton {...props}>{content}</LinkButton>;
