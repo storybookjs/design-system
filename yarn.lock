@@ -7472,6 +7472,13 @@ pretty-hrtime@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
 
+prismjs@1.13.0:
+  version "1.13.0"
+  resolved "https://registry.npmjs.org/prismjs/-/prismjs-1.13.0.tgz#edcc14a90bbd72a03e5ffd2bab81a04c79a607a6"
+  integrity sha512-0/1Fiyg3MCzepo6t6Wzx2Ef4nftGKeQIv+Z6LO38RcYJN5QV2ePHh8W41ZkFn57B++6BnglF6fCiJ9b80YlzkQ==
+  optionalDependencies:
+    clipboard "^2.0.0"
+
 prismjs@^1.8.4, prismjs@~1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.16.0.tgz#406eb2c8aacb0f5f0f1167930cb83835d10a4308"
