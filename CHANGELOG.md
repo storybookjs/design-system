@@ -1,3 +1,15 @@
+# v0.0.20 (Thu Jun 06 2019)
+
+#### 🐛  Bug Fix
+
+- Export Highlight for consumption [#9](https://github.com/storybookjs/design-system/pull/9) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.19 (Thu Jun 06 2019)
 
 #### 🐛  Bug Fix
