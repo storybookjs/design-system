@@ -8,7 +8,7 @@ import { color } from './shared/styles';
 
 const linkStyles = css`
   display: inline-block;
-  transition: all 150ms ease-out;
+  transition: transform 150ms ease-out, color 150ms ease-out;
   text-decoration: none;
 
   color: ${color.secondary};
@@ -16,11 +16,11 @@ const linkStyles = css`
   &:hover,
   &:focus {
     cursor: pointer;
-    transform: translate3d(0, -1px, 0);
+    transform: translateY(-1px);
     color: ${darken(0.07, color.secondary)};
   }
   &:active {
-    transform: translate3d(0, 0, 0);
+    transform: translateY(0);
     color: ${darken(0.1, color.secondary)};
   }
 
