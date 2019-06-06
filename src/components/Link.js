@@ -160,7 +160,11 @@ Link.propTypes = {
   children: PropTypes.node,
   withArrow: PropTypes.bool,
   containsIcon: PropTypes.bool,
-  LinkWrapper: PropTypes.func,
+  LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  inverse: PropTypes.bool,
+  nochrome: PropTypes.bool,
+  secondary: PropTypes.bool,
+  tertiary: PropTypes.bool,
 };
 
 Link.defaultProps = {
@@ -169,4 +173,8 @@ Link.defaultProps = {
   withArrow: false,
   containsIcon: false,
   LinkWrapper: undefined,
+  inverse: false,
+  nochrome: false,
+  secondary: false,
+  tertiary: false,
 };
