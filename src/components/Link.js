@@ -135,7 +135,7 @@ const LinkButton = styled.button`
   ${linkStyles};
 `;
 
-export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children, ...props }) {
+export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children, ...rest }) {
   const content = (
     <Fragment>
       <LinkInner withArrow={withArrow} containsIcon={containsIcon}>
@@ -147,12 +147,19 @@ export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children,
 
   if (LinkWrapper) {
     const StyledLinkWrapper = LinkA.withComponent(LinkWrapper);
-    return <StyledLinkWrapper {...props}>{content}</StyledLinkWrapper>;
+    const linkWrapperProps = { ...rest };
+    delete linkWrapperProps.inverse;
+    delete linkWrapperProps.nochrome;
+    delete linkWrapperProps.secondary;
+    delete linkWrapperProps.tertiary;
+    return <StyledLinkWrapper {...linkWrapperProps}>{content}</StyledLinkWrapper>;
   }
+
   if (isButton) {
-    return <LinkButton {...props}>{content}</LinkButton>;
+    return <LinkButton {...rest}>{content}</LinkButton>;
   }
-  return <LinkA {...props}>{content}</LinkA>;
+
+  return <LinkA {...rest}>{content}</LinkA>;
 }
 
 Link.propTypes = {
