@@ -1,3 +1,15 @@
+# v0.0.18 (Thu Jun 06 2019)
+
+#### 🐛  Bug Fix
+
+- Add Highlight component w/ bash, JS, TS, CSS, JSON support [#7](https://github.com/storybookjs/design-system/pull/7) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.17 (Tue Jun 04 2019)
 
 
