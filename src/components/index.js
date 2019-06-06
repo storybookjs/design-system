@@ -9,6 +9,7 @@ export * from './Avatar';
 export * from './AvatarList';
 export * from './Badge';
 export * from './Button';
+export { default as Highlight } from './Highlight';
 export * from './Icon';
 export * from './Link';
 export * from './Subheading';
