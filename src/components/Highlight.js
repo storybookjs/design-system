@@ -49,9 +49,10 @@ class Highlight extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, ...rest } = this.props;
+
     return (
-      <HighlightBlock>
+      <HighlightBlock {...rest}>
         <div dangerouslySetInnerHTML={{ __html: children }} />
       </HighlightBlock>
     );
