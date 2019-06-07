@@ -34,7 +34,7 @@ const HighlightBlock = styled.div`
   }
 `;
 
-class Highlight extends React.Component {
+export class Highlight extends React.Component {
   componentDidMount() {
     this.highlightCode();
   }
@@ -62,5 +62,3 @@ class Highlight extends React.Component {
 Highlight.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Highlight;
