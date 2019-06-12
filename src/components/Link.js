@@ -146,10 +146,15 @@ export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children,
   );
 
   if (LinkWrapper) {
-    const StyledLinkWrapper = LinkA.withComponent(LinkWrapper);
-    const { inverse, nochrome, secondary, tertiary, ...linkWrapperProps } = rest;
+    const StyledLinkWrapper = styled(
+      ({ inverse, nochrome, secondary, tertiary, ...linkWrapperRest }) => (
+        <LinkWrapper {...linkWrapperRest} />
+      )
+    )`
+      ${linkStyles};
+    `;
 
-    return <StyledLinkWrapper {...linkWrapperProps}>{content}</StyledLinkWrapper>;
+    return <StyledLinkWrapper {...rest}>{content}</StyledLinkWrapper>;
   }
 
   if (isButton) {
