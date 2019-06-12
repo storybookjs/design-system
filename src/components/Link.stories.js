@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
@@ -6,6 +7,12 @@ import { Button } from './Button';
 import { Icon } from './Icon';
 import { Link } from './Link';
 import { StoryLinkWrapper } from './StoryLinkWrapper';
+
+const CustomLink = styled(Link)`
+  && {
+    color: red;
+  }
+`;
 
 const onLinkClick = action('onLinkClick');
 storiesOf('Design System|Link', module)
@@ -51,9 +58,13 @@ storiesOf('Design System|Link', module)
         is actually a button
       </Link>
       <br />
-      <Link LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
+      <Link tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
         has a LinkWrapper like GatsbyLink or NextLink
       </Link>
+      <br />
+      <CustomLink tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
+        has a LinkWrapper like GatsbyLink or NextLink with custom styling
+      </CustomLink>
       <br />
       <Link LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
         <Button>has a LinkWrapper like GatsbyLink or NextLink and a Button child</Button>
