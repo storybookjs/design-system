@@ -1,3 +1,20 @@
+# v0.0.21 (Wed Jun 12 2019)
+
+#### 🐛  Bug Fix
+
+- Fix LinkWrapper props to avoid collisions w React, Gatsby, etc links [#10](https://github.com/storybookjs/design-system/pull/10) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Upgrade to addon-docs 5.2.0-alpha.23  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
 # v0.0.20 (Thu Jun 06 2019)
 
 #### 🐛  Bug Fix
