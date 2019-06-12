@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Highlight from './Highlight';
+import { Highlight } from './Highlight';
 
 const bash = `
 <pre class="language-bash"><code class="language-bash"><span class="token comment"># Highlight bash:</span>
