@@ -1,3 +1,15 @@
+# v0.0.22 (Wed Jun 12 2019)
+
+#### 🐛  Bug Fix
+
+- Destructure LinkWrapper props to avoid passing them down [#11](https://github.com/storybookjs/design-system/pull/11) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.21 (Wed Jun 12 2019)
 
 #### 🐛  Bug Fix
