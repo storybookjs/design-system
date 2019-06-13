@@ -103,17 +103,24 @@ const Initial = styled.div`
  */
 export function Avatar({ loading, username, src, size, ...props }) {
   let avatarFigure = <Icon icon="useralt" />;
+  const a11yProps = {};
 
-  if (!loading) {
-    if (!src) {
-      avatarFigure = <Initial size={size}>{username.substring(0, 1)}</Initial>;
-    } else {
-      avatarFigure = <img src={src} alt={username} />;
-    }
+  if (loading) {
+    a11yProps['aria-busy'] = true;
+    a11yProps['aria-label'] = 'Loading avatar ...';
+  } else if (src) {
+    avatarFigure = <img src={src} alt={username} />;
+  } else {
+    a11yProps['aria-label'] = username;
+    avatarFigure = (
+      <Initial size={size} aria-hidden="true">
+        {username.substring(0, 1)}
+      </Initial>
+    );
   }
 
   return (
-    <Image size={size} loading={loading} src={src} {...props}>
+    <Image size={size} loading={loading} src={src} {...a11yProps} {...props}>
       {avatarFigure}
     </Image>
   );
