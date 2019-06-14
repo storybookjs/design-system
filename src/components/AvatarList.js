@@ -7,12 +7,12 @@ import WithTooltip from './tooltip/WithTooltip';
 import { TooltipNote } from './tooltip/TooltipNote';
 import { color, typography } from './shared/styles';
 
-const User = styled(Avatar)`
+const UserAvatar = styled(Avatar)`
   box-shadow: ${color.lightest} 0 0 0 2px;
   display: block;
 `;
 
-const UserWrapper = styled(WithTooltip)``;
+const UserTooltipWrapper = styled(WithTooltip)``;
 
 const UserEllipses = styled.div`
   font-size: ${typography.size.s1}px;
@@ -21,15 +21,22 @@ const UserEllipses = styled.div`
   white-space: nowrap;
 `;
 
-const Users = styled.div`
+const User = styled.li`
+  display: inline-flex;
+`;
+
+const Users = styled.ul`
   display: inline-flex;
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   vertical-align: top;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-  ${UserWrapper} {
+  ${User} {
     position: relative;
 
     &:not(:first-child) {
@@ -51,19 +58,22 @@ const Users = styled.div`
 export function AvatarList({ loading, users, userCount, size, ...props }) {
   const count = userCount || users.length;
   return (
-    <Users {...props}>
+    <Users aria-label="users" {...props}>
       {users.slice(0, 3).map(({ id, name, avatarUrl }) => (
-        <UserWrapper
-          key={id}
-          hasChrome={false}
-          placement="bottom"
-          mode="hover"
-          tooltip={<TooltipNote note={name} />}
-        >
-          <User size={size} username={name} src={avatarUrl} loading={loading} />
-        </UserWrapper>
+        <User key={id}>
+          <UserTooltipWrapper
+            hasChrome={false}
+            placement="bottom"
+            mode="hover"
+            tooltip={<TooltipNote note={name} />}
+          >
+            <UserAvatar size={size} username={name} src={avatarUrl} loading={loading} />
+          </UserTooltipWrapper>
+        </User>
       ))}
-      {count > 3 && <UserEllipses> &#43; {count - 3} </UserEllipses>}
+      {count > 3 && (
+        <UserEllipses aria-label={`${count - 3} more user(s)`}> &#43; {count - 3} </UserEllipses>
+      )}
     </Users>
   );
 }
