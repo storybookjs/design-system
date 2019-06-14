@@ -21,7 +21,9 @@ const UserEllipses = styled.div`
   white-space: nowrap;
 `;
 
-const User = styled.li``;
+const User = styled.li`
+  display: inline-flex;
+`;
 
 const Users = styled.ul`
   display: inline-flex;
