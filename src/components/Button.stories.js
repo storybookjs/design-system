@@ -49,7 +49,7 @@ storiesOf('Design System|Button', module)
         Disabled
       </Button>
       <Button appearance="outline" size="small" containsIcon>
-        <Icon icon="link" />
+        <Icon icon="link" aria-label="Link" />
       </Button>
       <Button appearance="outline" size="small">
         <Icon icon="link" />
