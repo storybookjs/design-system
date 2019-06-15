@@ -14,7 +14,8 @@ const UserAvatar = styled(Avatar)`
 
 const UserTooltipWrapper = styled(WithTooltip)``;
 
-const UserEllipses = styled.div`
+const UserEllipses = styled.li`
+  display: inline-flex;
   font-size: ${typography.size.s1}px;
   color: ${color.mediumdark};
   margin-left: 6px;
