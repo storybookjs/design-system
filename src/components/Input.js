@@ -6,7 +6,7 @@ import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 
 // prettier-ignore
-const Label = styled.span`
+const Label = styled.label`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.extrabold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
   font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
@@ -37,6 +37,11 @@ const InputText = styled.input.attrs({ type: 'text' })`
   }
 
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
+`;
+
+const Error = styled.div`
+  position: absolute;
+  right: 0;
 `;
 
 // prettier-ignore
@@ -94,7 +99,7 @@ const InputWrapper = styled.div`
     `}
   }
 
-  &:before {
+  ${Error} {
     position: absolute;
     top: 50%;
     right: 1px;
@@ -103,12 +108,10 @@ const InputWrapper = styled.div`
     transition: all 200ms ease-out;
     font-family: ${props => props.appearance === 'code' ? typography.type.code : typography.type.primary } ;
     font-size: ${typography.size.s1}px;
-    content: attr(data-error);
     line-height: 1em;
     opacity: 0;
     padding: .25em 1.25em .25em .5em;
     pointer-events: none;
-    z-index: 1;
 
     background: ${props =>
       props.appearance !== 'tertiary' &&
@@ -159,29 +162,31 @@ const InputWrapper = styled.div`
   `}
 
   ${props => props.error && css`
-    &:before {
+    ${Error} {
       color: ${color.negative};
       transform: translate3d(0%, -50%, 0);
       opacity: 1;
     }
 
-    &:hover:before {
+    ${InputText}:hover + ${Error},
+    ${InputText}:focus + ${Error} {
       opacity: 0;
       transform: translate3d(100%, -50%, 0);
     }
 
     ${props.focused && css`
-      &:before {
+      ${Error} {
         opacity: 0;
         transform: translate3d(100%, -50%, 0);
       }
     `}
 
     ${props.appearance === 'code' && css`
-      &:before {
+      ${Error} {
         opacity: 0;
       }
-      &:hover:before {
+      ${InputText}:hover + ${Error},
+      ${InputText}:focus + ${Error} {
         transform: translate3d(0%, -100%, 0);
         opacity: 1;
       }
@@ -206,11 +211,11 @@ const InputContainer = styled.div`
   ${props => props.orientation === 'horizontal' && css`
     display: table-row;
 
-    ${LabelWrapper}, ${InputWrapper} {
+    ${Label}, ${InputWrapper} {
       display: table-cell;
     }
 
-    ${LabelWrapper} {
+    ${Label} {
       width: 1px;
       padding-right: 20px;
       vertical-align: middle;
@@ -224,6 +229,7 @@ const InputContainer = styled.div`
 `;
 
 export function Input({
+  id,
   value,
   label,
   orientation,
@@ -245,7 +251,9 @@ export function Input({
     <InputContainer orientation={orientation} className={className}>
       {label && (
         <LabelWrapper>
-          <Label appearance={appearance}>{label}</Label>
+          <Label htmlFor={id} appearance={appearance}>
+            {label}
+          </Label>
         </LabelWrapper>
       )}
       <InputWrapper
@@ -255,14 +263,16 @@ export function Input({
         appearance={appearance}
         focused={focused}
       >
-        <InputText value={value} {...props} />
-        {icon && <Icon icon={icon} />}
+        {icon && <Icon icon={icon} aria-hidden />}
+        <InputText id={id} value={value} aria-describedby={`${id}-error`} {...props} />
+        <Error id={`${id}-error`}>{error}</Error>
       </InputWrapper>
     </InputContainer>
   );
 }
 
 Input.propTypes = {
+  id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
   label: PropTypes.string,
