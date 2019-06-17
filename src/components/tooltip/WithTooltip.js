@@ -25,7 +25,6 @@ function WithTooltip({
   tooltip,
   children,
   startOpen,
-  onVisibilityChange,
   ...props
 }) {
   const Container = svg ? TargetSvgContainer : TargetContainer;
@@ -63,7 +62,7 @@ function WithTooltip({
           {...getTooltipProps()}
         >
           {typeof tooltip === 'function'
-            ? tooltip({ onHide: () => onVisibilityChange(false) })
+            ? tooltip({ onHide: () => setTooltipShown(false) })
             : tooltip}
         </Tooltip>
       )}
@@ -87,7 +86,6 @@ WithTooltip.propTypes = {
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   children: PropTypes.node.isRequired,
   startOpen: PropTypes.bool,
-  onVisibilityChange: PropTypes.func.isRequired,
 };
 
 WithTooltip.defaultProps = {
