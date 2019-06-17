@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
-import { withState } from 'recompose';
 
 import { Tooltip } from './Tooltip';
 
@@ -25,17 +24,27 @@ function WithTooltip({
   hasChrome,
   tooltip,
   children,
-  tooltipShown,
+  startOpen,
   onVisibilityChange,
   ...props
 }) {
   const Container = svg ? TargetSvgContainer : TargetContainer;
+  const [isTooltipShown, setTooltipShown] = useState(startOpen);
+  const toggleTooltipShown = () => setTooltipShown(!isTooltipShown);
+  const closeTooltipOnClick = () => {
+    if (!closeOnClick) {
+      return;
+    }
+
+    setTooltipShown(false);
+  };
+
   return (
     <TooltipTrigger
       placement={placement}
       trigger={trigger}
-      tooltipShown={tooltipShown}
-      onVisibilityChange={onVisibilityChange}
+      tooltipShown={isTooltipShown}
+      onVisibilityChange={toggleTooltipShown}
       modifiers={modifiers}
       tooltip={({
         getTooltipProps,
@@ -50,6 +59,7 @@ function WithTooltip({
           tooltipRef={tooltipRef}
           arrowRef={arrowRef}
           arrowProps={getArrowProps()}
+          onClick={closeTooltipOnClick}
           {...getTooltipProps()}
         >
           {typeof tooltip === 'function'
@@ -59,7 +69,7 @@ function WithTooltip({
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
-        <Container ref={triggerRef} {...getTriggerProps()} {...props}>
+        <Container ref={triggerRef} {...getTriggerProps()} {...props} onClick={toggleTooltipShown}>
           {children}
         </Container>
       )}
@@ -76,7 +86,7 @@ WithTooltip.propTypes = {
   hasChrome: PropTypes.bool,
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   children: PropTypes.node.isRequired,
-  tooltipShown: PropTypes.bool,
+  startOpen: PropTypes.bool,
   onVisibilityChange: PropTypes.func.isRequired,
 };
 
@@ -87,9 +97,7 @@ WithTooltip.defaultProps = {
   placement: 'top',
   modifiers: {},
   hasChrome: true,
-  tooltipShown: false,
+  startOpen: false,
 };
 
-export default withState('tooltipShown', 'onVisibilityChange', ({ startOpen }) => startOpen)(
-  WithTooltip
-);
+export default WithTooltip;
