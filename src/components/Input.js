@@ -211,11 +211,11 @@ const InputContainer = styled.div`
   ${props => props.orientation === 'horizontal' && css`
     display: table-row;
 
-    ${Label}, ${InputWrapper} {
+    ${LabelWrapper}, ${InputWrapper} {
       display: table-cell;
     }
 
-    ${Label} {
+    ${LabelWrapper} {
       width: 1px;
       padding-right: 20px;
       vertical-align: middle;
