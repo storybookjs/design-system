@@ -176,6 +176,7 @@ const InputWrapper = styled.div`
   ${props => props.error && css`
     ${Error} {
       color: ${color.negative};
+      background: none;
       transform: translate3d(0%, -50%, 0);
       opacity: 1;
       padding: .25em 1.25em .25em .5em;

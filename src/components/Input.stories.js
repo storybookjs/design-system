@@ -80,7 +80,13 @@ storiesOf('Design System|forms/Input', module)
         placeholder="Placeholder"
         onChange={onChange}
       />
-      <Input id="With-value" value="With value" aria-label="Input with value" onChange={onChange} />
+      <Input
+        id="With-value"
+        value="With value"
+        label="Input with value"
+        hideLabel
+        onChange={onChange}
+      />
       <Input
         id="Disabled"
         value="Disabled"
@@ -238,7 +244,7 @@ storiesOf('Design System|forms/Input', module)
         appearance="code"
         onChange={onChange}
       />
-      <Input id="Code" value="Code" aria-label="Code" appearance="code" onChange={onChange} />
+      <Input id="Code" value="Code" label="Code" hideLabel appearance="code" onChange={onChange} />
       <Input
         id="Code-with-error"
         placeholder="Code"
