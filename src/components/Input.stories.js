@@ -9,11 +9,19 @@ storiesOf('Design System|forms/Input', module)
   .addParameters({ component: Input })
   .add('all inputs', () => (
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
-      <Input id="Default" value="Default" aria-label="Email" icon="email" onChange={onChange} />
+      <Input
+        id="Default"
+        value="Default"
+        label="Email"
+        hideLabel
+        icon="email"
+        onChange={onChange}
+      />
       <Input
         id="Secondary"
         value="Secondary"
-        aria-label="Email"
+        label="Email"
+        hideLabel
         icon="email"
         appearance="secondary"
         onChange={onChange}
@@ -29,7 +37,8 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Tertiary"
         value="Tertiary"
-        aria-label="Email"
+        label="Email"
+        hideLabel
         icon="email"
         appearance="tertiary"
         onChange={onChange}
@@ -37,12 +46,13 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Pill"
         value="Pill"
-        aria-label="Search"
+        label="Search"
+        hideLabel
         icon="search"
         appearance="pill"
         onChange={onChange}
       />
-      <Input id="Code" value="Code" aria-label="Code" appearance="code" onChange={onChange} />
+      <Input id="Code" value="Code" label="Code" hideLabel appearance="code" onChange={onChange} />
       <Input
         id="Code-horizontal"
         value="Code"
@@ -65,7 +75,8 @@ storiesOf('Design System|forms/Input', module)
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
       <Input
         id="Placeholder"
-        aria-label="Input with placeholder"
+        label="Input with placeholder"
+        hideLabel
         placeholder="Placeholder"
         onChange={onChange}
       />
@@ -73,21 +84,31 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Disabled"
         value="Disabled"
-        aria-label="Disabled input"
+        label="Disabled input"
+        hideLabel
         disabled
         onChange={onChange}
       />
-      <Input id="Icon" value="Icon" aria-label="Input with icon" icon="email" onChange={onChange} />
+      <Input
+        id="Icon"
+        value="Icon"
+        label="Input with icon"
+        hideLabel
+        icon="email"
+        onChange={onChange}
+      />
       <Input
         id="Error"
-        aria-label="Input with error"
+        label="Input with error"
+        hideLabel
         placeholder="Error"
         error="There's a snake in my boots"
         onChange={onChange}
       />
       <Input
         id="Error with icon"
-        aria-label="Input with error and icon"
+        label="Input with error and icon"
+        hideLabel
         placeholder="Error with icon"
         icon="email"
         error="There's a snake in my boots"
@@ -99,7 +120,8 @@ storiesOf('Design System|forms/Input', module)
     <form style={{ background: '#fff', padding: '3em' }}>
       <Input
         id="Placeholder"
-        aria-label="Input with placeholder"
+        label="Input with placeholder"
+        hideLabel
         placeholder="Placeholder"
         appearance="secondary"
         onChange={onChange}
@@ -107,14 +129,16 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="With-value"
         value="With value"
-        aria-label="Input with value"
+        label="Input with value"
+        hideLabel
         appearance="secondary"
         onChange={onChange}
       />
       <Input
         id="Disabled"
         value="Disabled"
-        aria-label="Disabled input"
+        label="Disabled input"
+        hideLabel
         disabled
         appearance="secondary"
         onChange={onChange}
@@ -122,14 +146,16 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Icon"
         value="Icon"
-        aria-label="Input with icon"
+        label="Input with icon"
+        hideLabel
         icon="email"
         appearance="secondary"
         onChange={onChange}
       />
       <Input
         id="Error"
-        aria-label="Input with error"
+        label="Input with error"
+        hideLabel
         placeholder="Error"
         error="There's a snake in my boots"
         appearance="secondary"
@@ -148,7 +174,8 @@ storiesOf('Design System|forms/Input', module)
     <form style={{ background: '#EEEEEE', padding: '3em' }}>
       <Input
         id="Placeholder"
-        aria-label="Input with placeholder"
+        label="Input with placeholder"
+        hideLabel
         placeholder="Placeholder"
         appearance="tertiary"
         onChange={onChange}
@@ -156,14 +183,16 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="With-value"
         value="With value"
-        aria-label="Input with value"
+        label="Input with value"
+        hideLabel
         appearance="tertiary"
         onChange={onChange}
       />
       <Input
         id="Disabled"
         value="Disabled"
-        aria-label="Disabled input"
+        label="Disabled input"
+        hideLabel
         disabled
         appearance="tertiary"
         onChange={onChange}
@@ -171,14 +200,16 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Icon"
         value="Icon"
-        aria-label="Input with icon"
+        label="Input with icon"
+        hideLabel
         icon="email"
         appearance="tertiary"
         onChange={onChange}
       />
       <Input
         id="Error"
-        aria-label="Input with error"
+        label="Input with error"
+        hideLabel
         placeholder="Error"
         error="There's a snake in my boots"
         appearance="tertiary"
@@ -190,7 +221,8 @@ storiesOf('Design System|forms/Input', module)
     <Input
       id="Pill"
       value="Pill"
-      aria-label="Search"
+      label="Search"
+      hideLabel
       icon="search"
       appearance="pill"
       onChange={onChange}
@@ -201,7 +233,8 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Code-placeholder"
         placeholder="Code placeholder"
-        aria-label="Code placeholder"
+        label="Code placeholder"
+        hideLabel
         appearance="code"
         onChange={onChange}
       />
@@ -209,7 +242,8 @@ storiesOf('Design System|forms/Input', module)
       <Input
         id="Code-with-error"
         placeholder="Code"
-        aria-label="Code"
+        label="Code"
+        hideLabel
         appearance="code"
         error="Does not compute lorem ipsum dolor sit amet consecatur "
         onChange={onChange}

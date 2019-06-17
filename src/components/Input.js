@@ -15,6 +15,19 @@ const Label = styled.label`
 // prettier-ignore
 const LabelWrapper = styled.div`
   margin-bottom: 0.33em;
+  
+  ${props => props.hideLabel && css`
+    border: 0px !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(100%) !important;
+    clip-path: inset(100%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0px !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+  `}
 `;
 
 // prettier-ignore
@@ -205,7 +218,6 @@ const InputWrapper = styled.div`
       animation: ${jiggle} 700ms ease-out;
       path { fill: ${color.negative}; }
     }
-
   `}
 `;
 // prettier-ignore
@@ -234,6 +246,7 @@ export function Input({
   id,
   value,
   label,
+  hideLabel,
   orientation,
   icon,
   error,
@@ -243,21 +256,22 @@ export function Input({
   lastErrorValue,
   ...props
 }) {
+  const errorId = `${id}-error`;
   let errorMessage = error;
   if (lastErrorValue) {
     if (value !== lastErrorValue) {
       errorMessage = null;
     }
   }
+
   return (
     <InputContainer orientation={orientation} className={className}>
-      {label && (
-        <LabelWrapper>
-          <Label htmlFor={id} appearance={appearance}>
-            {label}
-          </Label>
-        </LabelWrapper>
-      )}
+      <LabelWrapper hideLabel={hideLabel}>
+        <Label htmlFor={id} appearance={appearance}>
+          {label}
+        </Label>
+      </LabelWrapper>
+
       <InputWrapper
         error={errorMessage}
         data-error={error}
@@ -266,8 +280,8 @@ export function Input({
         focused={focused}
       >
         {icon && <Icon icon={icon} aria-hidden />}
-        <InputText id={id} value={value} aria-describedby={`${id}-error`} {...props} />
-        <Error id={`${id}-error`}>{error}</Error>
+        <InputText id={id} value={value} aria-describedby={errorId} {...props} />
+        <Error id={errorId}>{error}</Error>
       </InputWrapper>
     </InputContainer>
   );
@@ -277,7 +291,8 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   icon: PropTypes.string,
   error: PropTypes.string,
@@ -289,7 +304,7 @@ Input.propTypes = {
 Input.defaultProps = {
   value: '',
   appearance: 'default',
-  label: null,
+  hideLabel: false,
   orientation: 'vertical',
   icon: null,
   error: null,
