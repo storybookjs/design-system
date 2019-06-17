@@ -110,7 +110,6 @@ const InputWrapper = styled.div`
     font-size: ${typography.size.s1}px;
     line-height: 1em;
     opacity: 0;
-    padding: .25em 1.25em .25em .5em;
     pointer-events: none;
 
     background: ${props =>
@@ -166,6 +165,7 @@ const InputWrapper = styled.div`
       color: ${color.negative};
       transform: translate3d(0%, -50%, 0);
       opacity: 1;
+      padding: .25em 1.25em .25em .5em;
     }
 
     ${InputText}:hover + ${Error},
@@ -190,6 +190,7 @@ const InputWrapper = styled.div`
       ${InputText}:focus + ${Error} {
         transform: translate3d(0%, -100%, 0);
         opacity: 1;
+        padding: .25em 1.25em .25em .5em;
       }
     `}
 
