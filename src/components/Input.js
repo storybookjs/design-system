@@ -172,6 +172,7 @@ const InputWrapper = styled.div`
     ${InputText}:focus + ${Error} {
       opacity: 0;
       transform: translate3d(100%, -50%, 0);
+      padding: 0;
     }
 
     ${props.focused && css`
