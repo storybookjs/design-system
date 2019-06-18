@@ -281,7 +281,13 @@ export function Input({
         focused={focused}
       >
         {icon && <Icon icon={icon} aria-hidden />}
-        <InputText id={id} value={value} aria-describedby={errorId} {...props} />
+        <InputText
+          id={id}
+          value={value}
+          aria-describedby={errorId}
+          aria-invalid={!!error}
+          {...props}
+        />
         <Error id={errorId}>{error}</Error>
       </InputWrapper>
     </InputContainer>
