@@ -7,12 +7,13 @@ import { Icon } from '../Icon';
 storiesOf('Design System|tooltip/ListItem', module)
   .addParameters({ component: ListItem })
   .addDecorator(storyFn => (
-    <div style={{ width: 200, background: 'white', border: '#ddd' }}>{storyFn()}</div>
+    <div style={{ width: 200, border: '1px solid #ddd', margin: '3rem' }}>{storyFn()}</div>
   ))
   .add('all', () => (
     <div>
       <ListItem loading />
       <ListItem title="Default" />
+      <ListItem title="lorem ipsum dolor sit amet consectatur" />
       <ListItem title="Default icon" right={<Icon icon="eye" />} />
       <ListItem left="left" title="title" center="center" right="right" />
       <ListItem active left="left" title="active" center="center" right="right" />
@@ -35,13 +36,14 @@ storiesOf('Design System|tooltip/ListItem', module)
   ))
   .add('loading', () => <ListItem loading />)
   .add('default', () => <ListItem title="Default" />)
+  .add('long title', () => <ListItem title="lorem ipsum dolor sit amet consectatur" />)
   .add('default icon', () => <ListItem title="Default icon" right={<Icon icon="eye" />} />)
   .add('active icon', () => <ListItem active title="active icon" right={<Icon icon="eye" />} />)
   .add('w/positions', () => <ListItem left="left" title="title" center="center" right="right" />)
   .add('w/positions active', () => (
     <ListItem active left="left" title="active" center="center" right="right" />
   ))
-  .add('w/positions active long text', () => (
+  .add('w/positions active long title', () => (
     <ListItem
       active
       left="✅"
