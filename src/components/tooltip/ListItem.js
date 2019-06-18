@@ -144,7 +144,7 @@ export function ListItem({
   const linkInner = (
     <ItemInner onClick={onClick} role="presentation">
       {left && <Left>{left}</Left>}
-      {title && <Title title={title}>{title}</Title>}
+      {title && <Title>{title}</Title>}
       {center && <Center>{center}</Center>}
       {right && <Right>{right}</Right>}
     </ItemInner>
