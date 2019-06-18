@@ -113,7 +113,7 @@ const Item = styled.a`
     css`
       ${Title} {
         ${inlineGlow};
-        flex: 0;
+        flex: 0 1 auto;
         display: inline-block;
       }
     `};
