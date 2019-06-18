@@ -23,9 +23,6 @@ const Label = styled.label`
 const ErrorMessage = styled.span`
   color: ${color.negative};
   font-weight: ${typography.weight.regular};
-  &:not(:only-child) {
-    margin-left: 0.5em;
-  }
 `;
 
 const LabelWrapper = styled.div`
@@ -40,6 +37,14 @@ const LabelWrapper = styled.div`
     css`
       height: 0;
       margin: 0;
+    `}
+
+  ${props =>
+    !props.hideLabel &&
+    css`
+      ${ErrorMessage} {
+        margin-left: 0.5em;
+      }
     `}
 `;
 
