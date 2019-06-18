@@ -3,14 +3,26 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 
-const Label = styled.span``;
+const Label = styled.label`
+  ${props =>
+    props.hideLabel &&
+    css`
+      border: 0px !important;
+      clip: rect(0 0 0 0) !important;
+      -webkit-clip-path: inset(100%) !important;
+      clip-path: inset(100%) !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      padding: 0px !important;
+      position: absolute !important;
+      white-space: nowrap !important;
+      width: 1px !important;
+    `}
+`;
 
 const ErrorMessage = styled.span`
   color: ${color.negative};
   font-weight: ${typography.weight.regular};
-  &:not(:only-child) {
-    margin-left: 0.5em;
-  }
 `;
 
 const LabelWrapper = styled.div`
@@ -18,6 +30,22 @@ const LabelWrapper = styled.div`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.extrabold};
   font-family: ${props => props.appearance === 'code' && typography.type.code};
   font-size: ${props => (props.appearance === 'code' ? typography.size.s1 : typography.size.s2)}px;
+
+  ${props =>
+    props.hideLabel &&
+    !props.error &&
+    css`
+      height: 0;
+      margin: 0;
+    `}
+
+  ${props =>
+    !props.hideLabel &&
+    css`
+      ${ErrorMessage} {
+        margin-left: 0.5em;
+      }
+    `}
 `;
 
 const Subtext = styled.div``;
@@ -134,8 +162,10 @@ const TextareaContainer = styled.div`
 `;
 
 export function Textarea({
+  id,
   value,
   label,
+  hideLabel,
   error,
   subtext,
   subtextSentiment,
@@ -144,26 +174,48 @@ export function Textarea({
   className,
   ...other
 }) {
+  const errorId = `${id}-error`;
+  const subtextId = `${id}-subtext`;
+
+  const ariaDescribedBy = `${error ? errorId : ''} ${subtext ? subtextId : ''}`;
+
   return (
     <TextareaContainer orientation={orientation} className={className}>
-      {(label || error) && (
-        <LabelWrapper appearance={appearance}>
-          {label && <Label>{label}</Label>}
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-        </LabelWrapper>
-      )}
+      <LabelWrapper appearance={appearance} hideLabel={hideLabel} error={error}>
+        <Label htmlFor={id} hideLabel={hideLabel}>
+          {label}
+        </Label>
+        {error && (
+          <ErrorMessage id={errorId} aria-hidden>
+            {error}
+          </ErrorMessage>
+        )}
+      </LabelWrapper>
       <TextareaWrapper error={error} appearance={appearance}>
-        <TextareaText value={value} rows="7" {...other} />
-        {subtext && <Subtext sentiment={subtextSentiment}>{subtext}</Subtext>}
+        <TextareaText
+          id={id}
+          value={value}
+          rows="7"
+          aria-invalid={!!error}
+          aria-describedby={ariaDescribedBy}
+          {...other}
+        />
+        {subtext && (
+          <Subtext id={subtextId} sentiment={subtextSentiment}>
+            {subtext}
+          </Subtext>
+        )}
       </TextareaWrapper>
     </TextareaContainer>
   );
 }
 
 Textarea.propTypes = {
+  id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'code']),
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   error: PropTypes.string,
   subtext: PropTypes.string,
@@ -173,7 +225,7 @@ Textarea.propTypes = {
 
 Textarea.defaultProps = {
   appearance: 'default',
-  label: null,
+  hideLabel: false,
   orientation: 'vertical',
   error: null,
   subtext: null,
