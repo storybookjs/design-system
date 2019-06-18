@@ -177,7 +177,9 @@ export function Textarea({
         <Label htmlFor={id} hideLabel={hideLabel}>
           {label}
         </Label>
-        <ErrorMessage id={errorId}>{error}</ErrorMessage>
+        <ErrorMessage id={errorId} aria-hidden>
+          {error}
+        </ErrorMessage>
       </LabelWrapper>
       <TextareaWrapper error={error} appearance={appearance}>
         <TextareaText
