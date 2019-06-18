@@ -6,6 +6,9 @@ import { Icon } from '../Icon';
 
 storiesOf('Design System|tooltip/ListItem', module)
   .addParameters({ component: ListItem })
+  .addDecorator(storyFn => (
+    <div style={{ width: 200, background: 'white', border: '#ddd' }}>{storyFn()}</div>
+  ))
   .add('all', () => (
     <div>
       <ListItem loading />
@@ -20,6 +23,13 @@ storiesOf('Design System|tooltip/ListItem', module)
         center="center"
         right={<Icon icon="eye" />}
       />
+      <ListItem
+        active
+        left="✅"
+        title="lorem ipsum dolor sit amet consectatur"
+        center="center"
+        right={<Icon icon="eye" />}
+      />
       <ListItem disabled left="left" title="disabled" center="center" right="right" />
     </div>
   ))
@@ -30,6 +40,15 @@ storiesOf('Design System|tooltip/ListItem', module)
   .add('w/positions', () => <ListItem left="left" title="title" center="center" right="right" />)
   .add('w/positions active', () => (
     <ListItem active left="left" title="active" center="center" right="right" />
+  ))
+  .add('w/positions active long text', () => (
+    <ListItem
+      active
+      left="✅"
+      title="lorem ipsum dolor sit amet consectatur"
+      center="center"
+      right={<Icon icon="eye" />}
+    />
   ))
   .add('disabled', () => (
     <ListItem disabled left="left" title="disabled" center="center" right="right" />

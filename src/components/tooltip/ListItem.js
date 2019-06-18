@@ -7,6 +7,9 @@ import { inlineGlow } from '../shared/animation';
 const Left = styled.span``;
 const Title = styled.span`
   font-weight: ${typography.weight.bold};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const Center = styled.span``;
 const Right = styled.span``;
@@ -17,13 +20,25 @@ const ItemInner = styled.span`
   padding: 7px 15px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  ${Left}, ${Title}, ${Center}, ${Right} {
+  ${Title} {
+    display: block;
+  }
+
+  ${Left}, ${Center}, ${Right} {
     display: inline-flex;
   }
 
-  ${Title}, ${Center} {
-    flex: 1;
+  ${Title}{
+    flex: 0 1 auto;
+    margin-right: auto;
+  }
+
+  ${Center} {
+    flex: 0 1 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   ${Left}, ${Right} {
@@ -31,8 +46,9 @@ const ItemInner = styled.span`
   }
 
   ${Right} {
+    flex: none;
     text-align: right;
-    margin-left: 20px;
+    margin-left: 10px;
   }
 `;
 
