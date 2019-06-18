@@ -83,6 +83,14 @@ storiesOf('Design System|forms/Textarea', module)
         error="There's a snake in my boots"
         onChange={onChange}
       />
+      <Textarea
+        id="Subtext"
+        value="Subtext"
+        label="Textarea with subtext"
+        hideLabel
+        subtext="140 chars left"
+        onChange={onChange}
+      />
     </form>
   ))
   .add('secondary', () => (
@@ -131,6 +139,15 @@ storiesOf('Design System|forms/Textarea', module)
         appearance="secondary"
         onChange={onChange}
       />
+      <Textarea
+        id="Subtext"
+        value="Subtext"
+        label="Textarea with subtext"
+        hideLabel
+        subtext="140 chars left"
+        appearance="secondary"
+        onChange={onChange}
+      />
     </form>
   ))
   .add('tertiary', () => (
@@ -176,6 +193,15 @@ storiesOf('Design System|forms/Textarea', module)
         value="Label and error"
         label="Cats"
         error="There's a snake in my boots"
+        appearance="tertiary"
+        onChange={onChange}
+      />
+      <Textarea
+        id="Subtext"
+        value="Subtext"
+        label="Textarea with subtext"
+        hideLabel
+        subtext="140 chars left"
         appearance="tertiary"
         onChange={onChange}
       />
@@ -234,6 +260,15 @@ storiesOf('Design System|forms/Textarea', module)
         error="There's a snake in my boots"
         appearance="code"
         orientation="horizontal"
+        onChange={onChange}
+      />
+      <Textarea
+        id="Subtext"
+        value="Subtext"
+        label="Textarea with subtext"
+        hideLabel
+        subtext="140 chars left"
+        appearance="code"
         onChange={onChange}
       />
     </form>

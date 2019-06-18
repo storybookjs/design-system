@@ -170,6 +170,9 @@ export function Textarea({
   ...other
 }) {
   const errorId = `${id}-error`;
+  const subtextId = `${id}-subtext`;
+
+  const ariaDescribedBy = `${error ? errorId : ''} ${subtext ? subtextId : ''}`;
 
   return (
     <TextareaContainer orientation={orientation} className={className}>
@@ -177,9 +180,11 @@ export function Textarea({
         <Label htmlFor={id} hideLabel={hideLabel}>
           {label}
         </Label>
-        <ErrorMessage id={errorId} aria-hidden>
-          {error}
-        </ErrorMessage>
+        {error && (
+          <ErrorMessage id={errorId} aria-hidden>
+            {error}
+          </ErrorMessage>
+        )}
       </LabelWrapper>
       <TextareaWrapper error={error} appearance={appearance}>
         <TextareaText
@@ -187,10 +192,14 @@ export function Textarea({
           value={value}
           rows="7"
           aria-invalid={!!error}
-          aria-describedby={errorId}
+          aria-describedby={ariaDescribedBy}
           {...other}
         />
-        {subtext && <Subtext sentiment={subtextSentiment}>{subtext}</Subtext>}
+        {subtext && (
+          <Subtext id={subtextId} sentiment={subtextSentiment}>
+            {subtext}
+          </Subtext>
+        )}
       </TextareaWrapper>
     </TextareaContainer>
   );
