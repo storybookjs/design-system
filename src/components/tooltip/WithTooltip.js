@@ -15,6 +15,20 @@ const TargetSvgContainer = styled.g`
   cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
 `;
 
+const isDescendantOfAction = element => {
+  const { parentElement } = element;
+
+  if (parentElement.tagName === 'BODY') {
+    return false;
+  }
+
+  if (parentElement.tagName === 'A' || parentElement.tagName === 'BUTTON') {
+    return true;
+  }
+
+  return isDescendantOfAction(parentElement);
+};
+
 function WithTooltip({
   svg,
   trigger,
@@ -30,8 +44,8 @@ function WithTooltip({
   const Container = svg ? TargetSvgContainer : TargetContainer;
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
   const toggleTooltipShown = () => setTooltipShown(!isTooltipShown);
-  const closeTooltipOnClick = () => {
-    if (!closeOnClick) {
+  const closeTooltipOnClick = event => {
+    if (!closeOnClick || !isDescendantOfAction(event.target)) {
       return;
     }
 
