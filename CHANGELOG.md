@@ -1,3 +1,30 @@
+# v0.0.23 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- Add support for closeOnClick to WithTooltip [#19](https://github.com/storybookjs/design-system/pull/19) ([@kylesuss](https://github.com/kylesuss))
+- fix: input accessibility [#18](https://github.com/storybookjs/design-system/pull/18) ([@jsomsanith](https://github.com/jsomsanith))
+- Enable a11y addon [#15](https://github.com/storybookjs/design-system/pull/15) ([@oorestisime](https://github.com/oorestisime))
+- chore: button icon only demo text alternative [#17](https://github.com/storybookjs/design-system/pull/17) ([@jsomsanith](https://github.com/jsomsanith))
+- fix: AvatarList ellipsis in an li [#16](https://github.com/storybookjs/design-system/pull/16) ([@jsomsanith](https://github.com/jsomsanith))
+- fix: avatar list accessibility [#14](https://github.com/storybookjs/design-system/pull/14) ([@jsomsanith](https://github.com/jsomsanith))
+- fix: Avatar accessibility [#12](https://github.com/storybookjs/design-system/pull/12) ([@jsomsanith](https://github.com/jsomsanith))
+
+#### ⚠️  Pushed to master
+
+- Talk about the scope/goals of the design system  ([@domyen](https://github.com/domyen))
+- Upgrade addon-docs to 5.2.0-alpha.27  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 5
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+- Orestis Ioannou ([@oorestisime](https://github.com/oorestisime))
+- [@domyen](https://github.com/domyen)
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
 # v0.0.22 (Wed Jun 12 2019)
 
 #### 🐛  Bug Fix
