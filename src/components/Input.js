@@ -6,7 +6,7 @@ import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 
 // prettier-ignore
-const Label = styled.span`
+const Label = styled.label`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.extrabold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
   font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
@@ -15,6 +15,19 @@ const Label = styled.span`
 // prettier-ignore
 const LabelWrapper = styled.div`
   margin-bottom: 0.33em;
+  
+  ${props => props.hideLabel && css`
+    border: 0px !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(100%) !important;
+    clip-path: inset(100%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0px !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+  `}
 `;
 
 // prettier-ignore
@@ -37,6 +50,11 @@ const InputText = styled.input.attrs({ type: 'text' })`
   }
 
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
+`;
+
+const Error = styled.div`
+  position: absolute;
+  right: 0;
 `;
 
 // prettier-ignore
@@ -94,7 +112,7 @@ const InputWrapper = styled.div`
     `}
   }
 
-  &:before {
+  ${Error} {
     position: absolute;
     top: 50%;
     right: 1px;
@@ -103,12 +121,9 @@ const InputWrapper = styled.div`
     transition: all 200ms ease-out;
     font-family: ${props => props.appearance === 'code' ? typography.type.code : typography.type.primary } ;
     font-size: ${typography.size.s1}px;
-    content: attr(data-error);
     line-height: 1em;
     opacity: 0;
-    padding: .25em 1.25em .25em .5em;
     pointer-events: none;
-    z-index: 1;
 
     background: ${props =>
       props.appearance !== 'tertiary' &&
@@ -159,31 +174,37 @@ const InputWrapper = styled.div`
   `}
 
   ${props => props.error && css`
-    &:before {
+    ${Error} {
       color: ${color.negative};
+      background: none;
       transform: translate3d(0%, -50%, 0);
       opacity: 1;
+      padding: .25em 1.25em .25em .5em;
     }
 
-    &:hover:before {
+    ${InputText}:hover + ${Error},
+    ${InputText}:focus + ${Error} {
       opacity: 0;
       transform: translate3d(100%, -50%, 0);
+      padding: 0;
     }
 
     ${props.focused && css`
-      &:before {
+      ${Error} {
         opacity: 0;
         transform: translate3d(100%, -50%, 0);
       }
     `}
 
     ${props.appearance === 'code' && css`
-      &:before {
+      ${Error} {
         opacity: 0;
       }
-      &:hover:before {
+      ${InputText}:hover + ${Error},
+      ${InputText}:focus + ${Error} {
         transform: translate3d(0%, -100%, 0);
         opacity: 1;
+        padding: .25em 1.25em .25em .5em;
       }
     `}
 
@@ -198,7 +219,6 @@ const InputWrapper = styled.div`
       animation: ${jiggle} 700ms ease-out;
       path { fill: ${color.negative}; }
     }
-
   `}
 `;
 // prettier-ignore
@@ -224,8 +244,10 @@ const InputContainer = styled.div`
 `;
 
 export function Input({
+  id,
   value,
   label,
+  hideLabel,
   orientation,
   icon,
   error,
@@ -235,19 +257,22 @@ export function Input({
   lastErrorValue,
   ...props
 }) {
+  const errorId = `${id}-error`;
   let errorMessage = error;
   if (lastErrorValue) {
     if (value !== lastErrorValue) {
       errorMessage = null;
     }
   }
+
   return (
     <InputContainer orientation={orientation} className={className}>
-      {label && (
-        <LabelWrapper>
-          <Label appearance={appearance}>{label}</Label>
-        </LabelWrapper>
-      )}
+      <LabelWrapper hideLabel={hideLabel}>
+        <Label htmlFor={id} appearance={appearance}>
+          {label}
+        </Label>
+      </LabelWrapper>
+
       <InputWrapper
         error={errorMessage}
         data-error={error}
@@ -255,17 +280,20 @@ export function Input({
         appearance={appearance}
         focused={focused}
       >
-        <InputText value={value} {...props} />
-        {icon && <Icon icon={icon} />}
+        {icon && <Icon icon={icon} aria-hidden />}
+        <InputText id={id} value={value} aria-describedby={errorId} {...props} />
+        <Error id={errorId}>{error}</Error>
       </InputWrapper>
     </InputContainer>
   );
 }
 
 Input.propTypes = {
+  id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   icon: PropTypes.string,
   error: PropTypes.string,
@@ -277,7 +305,7 @@ Input.propTypes = {
 Input.defaultProps = {
   value: '',
   appearance: 'default',
-  label: null,
+  hideLabel: false,
   orientation: 'vertical',
   icon: null,
   error: null,
