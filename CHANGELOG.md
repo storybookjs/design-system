@@ -1,3 +1,16 @@
+# v0.0.24 (Wed Jun 19 2019)
+
+#### 🐛  Bug Fix
+
+- fix: Textarea accessibility [#22](https://github.com/storybookjs/design-system/pull/22) ([@jsomsanith](https://github.com/jsomsanith))
+- fix: invalid input with aria-invalid attribute [#20](https://github.com/storybookjs/design-system/pull/20) ([@jsomsanith](https://github.com/jsomsanith))
+
+#### Authors: 1
+
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+
+---
+
 # v0.0.23 (Tue Jun 18 2019)
 
 #### 🐛  Bug Fix
