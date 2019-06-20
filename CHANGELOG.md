@@ -1,3 +1,15 @@
+# v0.0.25 (Thu Jun 20 2019)
+
+#### 🐛  Bug Fix
+
+- Only pass appropriate link props to Tooltip ListItem [#24](https://github.com/storybookjs/design-system/pull/24) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.24 (Wed Jun 19 2019)
 
 #### 🐛  Bug Fix
