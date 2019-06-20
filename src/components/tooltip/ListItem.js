@@ -52,7 +52,8 @@ const ItemInner = styled.span`
   }
 `;
 
-const Item = styled.a`
+// eslint-disable-next-line jsx-a11y/anchor-has-content
+const Item = styled(({ active, loading, ...rest }) => <a {...rest} />)`
   font-size: ${typography.size.s1}px;
   transition: all 150ms ease-out;
   color: ${color.mediumdark};

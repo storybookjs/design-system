@@ -6,15 +6,15 @@ import { action } from '@storybook/addon-actions';
 
 const fireClickAction = action('onLinkClick');
 
-export function StoryLinkWrapper({ children, href, onClick, ...rest }) {
+export function StoryLinkWrapper({ children, className, href, onClick, to }) {
   const modifiedOnClick = event => {
     event.preventDefault();
     onClick();
-    fireClickAction(href);
+    fireClickAction(href || to);
   };
 
   return (
-    <a href={href} {...rest} onClick={modifiedOnClick}>
+    <a className={className} href={href || to} onClick={modifiedOnClick}>
       {children}
     </a>
   );
@@ -23,10 +23,15 @@ export function StoryLinkWrapper({ children, href, onClick, ...rest }) {
 StoryLinkWrapper.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.any.isRequired,
-  href: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  href: PropTypes.string,
   onClick: PropTypes.func,
+  to: PropTypes.string,
 };
 
 StoryLinkWrapper.defaultProps = {
+  className: '',
+  href: null,
   onClick: () => {},
+  to: null,
 };
