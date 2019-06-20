@@ -48,6 +48,7 @@ const LabelText = styled.span``;
 const Input = styled.input.attrs({ type: 'checkbox' })`
   margin: 0 0.6em 0 0;
   opacity: 0;
+  vertical-align: text-top;
 
   & + ${LabelText} {
     display: inline-block;
