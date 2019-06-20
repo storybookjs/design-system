@@ -13,22 +13,7 @@ const Label = styled.label`
   position: relative;
 `;
 
-const Error = styled.span`
-  font-weight: ${typography.weight.regular};
-  font-size: ${typography.size.s2}px;
-  color: ${color.negative};
-  margin-left: 6px;
-  vertical-align: text-top;
-  min-height: 1em;
-
-  ${props =>
-    !props.error &&
-    css`
-      margin: 0;
-    `}
-`;
-
-const LabelText = styled.span`
+const OptionalText = styled.span`
   ${props =>
     props.hideLabel &&
     css`
@@ -44,6 +29,23 @@ const LabelText = styled.span`
       width: 1px !important;
     `}
 `;
+
+const Error = styled.span`
+  font-weight: ${typography.weight.regular};
+  font-size: ${typography.size.s2}px;
+  color: ${color.negative};
+  margin-left: 6px;
+  vertical-align: text-top;
+  min-height: 1em;
+
+  ${props =>
+    !props.error &&
+    css`
+      margin: 0;
+    `}
+`;
+
+const LabelText = styled.span``;
 
 const Input = styled.input.attrs({ type: 'checkbox' })`
   margin: 0 0.6em 0 0;
@@ -113,7 +115,9 @@ export function Checkbox({ id, label, error, hideLabel, ...props }) {
           aria-invalid={!!error}
           type="checkbox"
         />
-        <LabelText hideLabel={hideLabel}>{label}</LabelText>
+        <LabelText>
+          <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
+        </LabelText>
       </Label>
       <Error id={errorId} error={error}>
         {error}
