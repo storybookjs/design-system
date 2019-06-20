@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 
-const CheckboxWrapper = styled.div``;
-
 const Label = styled.label`
   cursor: pointer;
   font-size: ${typography.size.s2}px;
@@ -106,7 +104,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 export function Checkbox({ id, label, error, hideLabel, ...props }) {
   const errorId = `${id}-error`;
   return (
-    <CheckboxWrapper>
+    <React.Fragment>
       <Label>
         <Input
           {...props}
@@ -122,7 +120,7 @@ export function Checkbox({ id, label, error, hideLabel, ...props }) {
       <Error id={errorId} error={error}>
         {error}
       </Error>
-    </CheckboxWrapper>
+    </React.Fragment>
   );
 }
 

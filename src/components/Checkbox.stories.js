@@ -11,13 +11,13 @@ storiesOf('Design System|forms/Checkbox', module)
     <form>
       <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
       <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
-      <Checkbox id="With-label" label="Cats" onChange={onChange} />
       <Checkbox
         id="With-label-and-error"
         label="Cats"
         onChange={onChange}
         error="There's a snake in my boots"
       />
+      <Checkbox id="With-label" label="Cats" onChange={onChange} />
     </form>
   ))
   .add('unchecked', () => <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />)
