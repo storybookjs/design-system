@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 
 const Label = styled.label`
@@ -11,17 +11,44 @@ const Label = styled.label`
   position: relative;
 `;
 
+const OptionalText = styled.span`
+  ${props =>
+    props.hideLabel &&
+    css`
+      border: 0px !important;
+      clip: rect(0 0 0 0) !important;
+      -webkit-clip-path: inset(100%) !important;
+      clip-path: inset(100%) !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      padding: 0px !important;
+      position: absolute !important;
+      white-space: nowrap !important;
+      width: 1px !important;
+    `}
+`;
+
 const Error = styled.span`
   font-weight: ${typography.weight.regular};
+  font-size: ${typography.size.s2}px;
   color: ${color.negative};
   margin-left: 6px;
+  vertical-align: text-top;
+  min-height: 1em;
+
+  ${props =>
+    !props.error &&
+    css`
+      margin: 0;
+    `}
 `;
 
 const LabelText = styled.span``;
 
 const Input = styled.input.attrs({ type: 'checkbox' })`
   margin: 0 0.6em 0 0;
-  visibility: hidden;
+  opacity: 0;
+  vertical-align: text-top;
 
   & + ${LabelText} {
     display: inline-block;
@@ -52,6 +79,10 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
     box-shadow: ${color.mediumdark} 0 0 0 1px inset;
   }
 
+  &:focus + ${LabelText}:before {
+    box-shadow: ${color.primary} 0 0 0 1px inset;
+  }
+
   &:checked + ${LabelText}:before {
     box-shadow: ${color.primary} 0 0 0 1px inset;
   }
@@ -75,24 +106,37 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
-export function Checkbox({ label, error, ...props }) {
+export function Checkbox({ id, label, error, hideLabel, ...props }) {
+  const errorId = `${id}-error`;
   return (
-    <Label>
-      <Input {...props} type="checkbox" />
-      <LabelText>
-        {label}
-        {error && <Error>{error}</Error>}
-      </LabelText>
-    </Label>
+    <React.Fragment>
+      <Label>
+        <Input
+          {...props}
+          id={id}
+          aria-describedby={errorId}
+          aria-invalid={!!error}
+          type="checkbox"
+        />
+        <LabelText>
+          <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
+        </LabelText>
+      </Label>
+      <Error id={errorId} error={error}>
+        {error}
+      </Error>
+    </React.Fragment>
   );
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
   error: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
-  label: null,
+  hideLabel: false,
   error: null,
 };
