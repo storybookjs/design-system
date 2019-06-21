@@ -79,6 +79,10 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
     box-shadow: ${color.mediumdark} 0 0 0 1px inset;
   }
 
+  &:focus + ${LabelText}:before {
+    box-shadow: ${color.primary} 0 0 0 1px inset;
+  }
+
   &:checked + ${LabelText}:before {
     box-shadow: ${color.primary} 0 0 0 1px inset;
   }
