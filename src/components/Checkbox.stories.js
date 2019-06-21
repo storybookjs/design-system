@@ -9,15 +9,23 @@ storiesOf('Design System|forms/Checkbox', module)
   .addParameters({ component: Checkbox })
   .add('all checkboxes', () => (
     <form>
-      <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
-      <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
-      <Checkbox
-        id="With-label-and-error"
-        label="Cats"
-        onChange={onChange}
-        error="There's a snake in my boots"
-      />
-      <Checkbox id="With-label" label="Cats" onChange={onChange} />
+      <div>
+        <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
+      </div>
+      <div>
+        <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
+      </div>
+      <div>
+        <Checkbox
+          id="With-label-and-error"
+          label="Cats"
+          onChange={onChange}
+          error="There's a snake in my boots"
+        />
+      </div>
+      <div>
+        <Checkbox id="With-label" label="Cats" onChange={onChange} />
+      </div>
     </form>
   ))
   .add('unchecked', () => <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />)

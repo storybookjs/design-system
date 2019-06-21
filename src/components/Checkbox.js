@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
 
 const Label = styled.label`
@@ -85,6 +86,10 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 
   &:checked + ${LabelText}:before {
     box-shadow: ${color.primary} 0 0 0 1px inset;
+  }
+
+  &:checked:focus + ${LabelText}:before {
+    box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
