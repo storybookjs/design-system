@@ -9,23 +9,10 @@ storiesOf('Design System|forms/Radio', module)
   .addParameters({ component: Radio })
   .add('all radios', () => (
     <form>
-      <Radio id="Mice" name="animal" label="Mice" value="mice" checked onChange={onChange} />
-      <Radio id="Dogs" name="animal" label="Dogs" value="dogs" onChange={onChange} />
-      <Radio
-        id="Cats"
-        name="animal"
-        label="Cats"
-        onChange={onChange}
-        error="There's a snake in my boots"
-      />
-      <Radio
-        id="Dogs"
-        name="animal"
-        label="Dogs"
-        subLabel="15 canines"
-        value="dogs"
-        onChange={onChange}
-      />
+      <Radio id="Mice" label="Mice" value="mice" checked onChange={onChange} />
+      <Radio id="Dogs" label="Dogs" value="dogs" onChange={onChange} />
+      <Radio id="Cats" label="Cats" onChange={onChange} error="There's a snake in my boots" />
+      <Radio id="Dogs" label="Dogs" subLabel="15 canines" value="dogs" onChange={onChange} />
     </form>
   ))
   .add('unchecked', () => (
