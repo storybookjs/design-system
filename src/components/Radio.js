@@ -4,18 +4,23 @@ import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
 
+const RadioWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
 const Label = styled.label`
   cursor: pointer;
   font-size: ${typography.size.s2}px;
   font-weight: ${typography.weight.bold};
   position: relative;
-  display: inline-block;
   height: 1em;
+  display: flex;
+  align-items: center;
 `;
 
 const OptionalText = styled.span`
-  display: inline-block;
-  line-height: 1em;
   ${props =>
     props.hideLabel &&
     css`
@@ -37,15 +42,9 @@ const Error = styled.span`
   font-size: ${typography.size.s2}px;
   color: ${color.negative};
   margin-left: 6px;
-  vertical-align: text-top;
   height: 1em;
-  display: inline-block;
-
-  ${props =>
-    !props.error &&
-    css`
-      margin: 0;
-    `}
+  display: flex;
+  align-items: center;
 `;
 
 const LabelText = styled.span``;
@@ -54,26 +53,23 @@ const SubLabelText = styled.div`
   font-size: ${typography.size.s1}px;
   font-weight: ${typography.weight.regular};
   color: ${color.mediumdark};
+  margin-top: 4px;
+  width: 100%;
 `;
 
 const Input = styled.input.attrs({ type: 'radio' })`
   margin: 0 0.6em 0 0;
   opacity: 0;
-  vertical-align: text-top;
 
   & + ${LabelText} {
-    display: inline-block;
-    vertical-align: text-top;
-    line-height: 1.2;
-
     &:before,
     &:after {
       transition: all 150ms ease-out;
       position: absolute;
       top: 0;
       left: 0;
-      height: 14px;
-      width: 14px;
+      height: 1em;
+      width: 1em;
       content: '';
       display: block;
       border-radius: 3em;
@@ -115,15 +111,26 @@ const Input = styled.input.attrs({ type: 'radio' })`
 `;
 
 export function Radio({ id, label, subLabel, error, hideLabel, value, className, ...props }) {
-  const errorId = `${id}-error`;
-  const subLabelId = `${id}-subLabel`;
+  let errorId;
+  let subLabelId;
+  let ariaDescribedBy;
+
+  if (error) {
+    errorId = `${id}-error`;
+    ariaDescribedBy = errorId;
+  }
+  if (subLabel) {
+    subLabelId = `${id}-subLabel`;
+    ariaDescribedBy = `${ariaDescribedBy} ${subLabelId}`;
+  }
+
   return (
-    <div>
+    <RadioWrapper>
       <Label className={className}>
         <Input
           {...props}
           id={id}
-          aria-describedby={errorId}
+          aria-describedby={ariaDescribedBy}
           aria-invalid={!!error}
           type="radio"
           value={value}
@@ -132,11 +139,9 @@ export function Radio({ id, label, subLabel, error, hideLabel, value, className,
           <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
         </LabelText>
       </Label>
-      <Error id={errorId} error={error}>
-        {error}
-      </Error>
-      <SubLabelText id={subLabelId}>{subLabel}</SubLabelText>
-    </div>
+      {error && <Error id={errorId}>{error}</Error>}
+      {subLabel && <SubLabelText id={subLabelId}>{subLabel}</SubLabelText>}
+    </RadioWrapper>
   );
 }
 
