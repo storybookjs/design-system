@@ -49,7 +49,7 @@ const Error = styled.span`
 
 const LabelText = styled.span``;
 
-const SubLabelText = styled.div`
+const Description = styled.div`
   font-size: ${typography.size.s1}px;
   font-weight: ${typography.weight.regular};
   color: ${color.mediumdark};
@@ -110,18 +110,18 @@ const Input = styled.input.attrs({ type: 'radio' })`
   }
 `;
 
-export function Radio({ id, label, subLabel, error, hideLabel, value, className, ...props }) {
+export function Radio({ id, label, description, error, hideLabel, value, className, ...props }) {
   let errorId;
-  let subLabelId;
+  let descriptionId;
   let ariaDescribedBy;
 
   if (error) {
     errorId = `${id}-error`;
     ariaDescribedBy = errorId;
   }
-  if (subLabel) {
-    subLabelId = `${id}-subLabel`;
-    ariaDescribedBy = `${ariaDescribedBy} ${subLabelId}`;
+  if (description) {
+    descriptionId = `${id}-description`;
+    ariaDescribedBy = `${ariaDescribedBy} ${descriptionId}`;
   }
 
   return (
@@ -140,7 +140,7 @@ export function Radio({ id, label, subLabel, error, hideLabel, value, className,
         </LabelText>
       </Label>
       {error && <Error id={errorId}>{error}</Error>}
-      {subLabel && <SubLabelText id={subLabelId}>{subLabel}</SubLabelText>}
+      {description && <Description id={descriptionId}>{description}</Description>}
     </RadioWrapper>
   );
 }
@@ -150,7 +150,7 @@ Radio.propTypes = {
   value: PropTypes.string,
   label: PropTypes.string,
   hideLabel: PropTypes.bool,
-  subLabel: PropTypes.string,
+  description: PropTypes.string,
   error: PropTypes.string,
   className: PropTypes.string,
 };
@@ -159,7 +159,7 @@ Radio.defaultProps = {
   value: '',
   label: null,
   hideLabel: false,
-  subLabel: null,
+  description: null,
   error: null,
   className: null,
 };
