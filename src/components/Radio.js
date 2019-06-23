@@ -53,7 +53,6 @@ const LabelText = styled.span``;
 const SubLabelText = styled.div`
   font-size: ${typography.size.s1}px;
   font-weight: ${typography.weight.regular};
-  margin-top: 4px;
   color: ${color.mediumdark};
 `;
 
