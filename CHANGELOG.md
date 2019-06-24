@@ -1,3 +1,24 @@
+# v0.0.26 (Mon Jun 24 2019)
+
+#### 🐛  Bug Fix
+
+- Update Checkbox styling to mirror Radio [#26](https://github.com/storybookjs/design-system/pull/26) ([@domyen](https://github.com/domyen))
+- fix: radio accessiblity [#25](https://github.com/storybookjs/design-system/pull/25) ([@jsomsanith-tlnd](https://github.com/jsomsanith-tlnd) [@jsomsanith](https://github.com/jsomsanith) [@domyen](https://github.com/domyen))
+- fix: checkbox accessibility [#23](https://github.com/storybookjs/design-system/pull/23) ([@jsomsanith-tlnd](https://github.com/jsomsanith-tlnd) [@domyen](https://github.com/domyen))
+
+#### ⚠️  Pushed to master
+
+- Add closeAlt icon from Storybook's UI  ([@domyen](https://github.com/domyen))
+- Add :checked:focus state on the checkboxes && updated stories  ([@domyen](https://github.com/domyen))
+
+#### Authors: 3
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Jimmy Somsanith ([@jsomsanith-tlnd](https://github.com/jsomsanith-tlnd))
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+
+---
+
 # v0.0.25 (Thu Jun 20 2019)
 
 #### 🐛  Bug Fix
