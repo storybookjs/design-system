@@ -4,12 +4,6 @@ import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
 
-const RadioWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
 const Label = styled.label`
   cursor: pointer;
   font-size: ${typography.size.s2}px;
@@ -54,17 +48,18 @@ const Description = styled.div`
   font-weight: ${typography.weight.regular};
   color: ${color.mediumdark};
   margin-top: 4px;
+  margin-left: calc(${typography.size.s2}px + 0.4em);
   width: 100%;
 `;
 
 const Input = styled.input.attrs({ type: 'radio' })`
-  margin: 0 0.6em 0 0;
+  margin: 0 0.4em 0 0;
+  font-size: initial;
   opacity: 0;
 
   & + ${LabelText} {
     &:before,
     &:after {
-      transition: all 150ms ease-out;
       position: absolute;
       top: 0;
       left: 0;
@@ -93,6 +88,7 @@ const Input = styled.input.attrs({ type: 'radio' })`
   }
 
   & + ${LabelText}:after {
+    transition: all 150ms ease-out;
     transform: scale3d(0, 0, 1);
 
     height: 10px;
@@ -108,6 +104,12 @@ const Input = styled.input.attrs({ type: 'radio' })`
     background: ${color.primary};
     opacity: 1;
   }
+`;
+
+const RadioWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 export function Radio({ id, label, description, error, hideLabel, value, className, ...props }) {
