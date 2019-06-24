@@ -8,8 +8,10 @@ const Label = styled.label`
   cursor: pointer;
   font-size: ${typography.size.s2}px;
   font-weight: ${typography.weight.bold};
-  min-height: 1em;
   position: relative;
+  height: 1em;
+  display: flex;
+  align-items: center;
 `;
 
 const OptionalText = styled.span`
@@ -34,35 +36,27 @@ const Error = styled.span`
   font-size: ${typography.size.s2}px;
   color: ${color.negative};
   margin-left: 6px;
-  vertical-align: text-top;
-  min-height: 1em;
-
-  ${props =>
-    !props.error &&
-    css`
-      margin: 0;
-    `}
+  height: 1em;
+  display: flex;
+  align-items: center;
 `;
 
 const LabelText = styled.span``;
 
 const Input = styled.input.attrs({ type: 'checkbox' })`
-  margin: 0 0.6em 0 0;
+  margin: 0 0.4em 0 0;
+  font-size: initial;
   opacity: 0;
   vertical-align: text-top;
 
   & + ${LabelText} {
-    display: inline-block;
-    vertical-align: text-top;
-    line-height: 1.2;
-
     &:before,
     &:after {
       position: absolute;
       top: 0;
       left: 0;
-      height: 14px;
-      width: 14px;
+      height: 1em;
+      width: 1em;
       content: '';
       display: block;
     }
@@ -111,10 +105,16 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
+const CheckboxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
 export function Checkbox({ id, label, error, hideLabel, ...props }) {
   const errorId = `${id}-error`;
   return (
-    <React.Fragment>
+    <CheckboxWrapper>
       <Label>
         <Input
           {...props}
@@ -130,7 +130,7 @@ export function Checkbox({ id, label, error, hideLabel, ...props }) {
       <Error id={errorId} error={error}>
         {error}
       </Error>
-    </React.Fragment>
+    </CheckboxWrapper>
   );
 }
 
