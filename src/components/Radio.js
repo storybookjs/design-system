@@ -1,49 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
 
 const Label = styled.label`
   cursor: pointer;
   font-size: ${typography.size.s2}px;
   font-weight: ${typography.weight.bold};
-  min-height: 1em;
   position: relative;
-  display: block;
+  height: 1em;
+  display: flex;
+  align-items: center;
+`;
+
+const OptionalText = styled.span`
+  ${props =>
+    props.hideLabel &&
+    css`
+      border: 0px !important;
+      clip: rect(0 0 0 0) !important;
+      -webkit-clip-path: inset(100%) !important;
+      clip-path: inset(100%) !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      padding: 0px !important;
+      position: absolute !important;
+      white-space: nowrap !important;
+      width: 1px !important;
+    `}
 `;
 
 const Error = styled.span`
   font-weight: ${typography.weight.regular};
+  font-size: ${typography.size.s2}px;
   color: ${color.negative};
   margin-left: 6px;
+  height: 1em;
+  display: flex;
+  align-items: center;
 `;
 
-const LabelText = styled.div``;
-const SublabelText = styled.div`
+const LabelText = styled.span``;
+
+const Description = styled.div`
   font-size: ${typography.size.s1}px;
   font-weight: ${typography.weight.regular};
-  margin-top: 4px;
   color: ${color.mediumdark};
+  margin-top: 4px;
+  margin-left: calc(${typography.size.s2}px + 0.4em);
+  width: 100%;
 `;
 
 const Input = styled.input.attrs({ type: 'radio' })`
-  float: left;
-  margin: 0 0.6em 0 0;
-  visibility: hidden;
+  margin: 0 0.4em 0 0;
+  font-size: initial;
+  opacity: 0;
 
   & + ${LabelText} {
-    display: block;
-    line-height: 1;
-    overflow: hidden;
-
     &:before,
     &:after {
-      transition: all 150ms ease-out;
       position: absolute;
       top: 0;
       left: 0;
-      height: 14px;
-      width: 14px;
+      height: 1em;
+      width: 1em;
       content: '';
       display: block;
       border-radius: 3em;
@@ -54,11 +75,20 @@ const Input = styled.input.attrs({ type: 'radio' })`
     box-shadow: ${color.mediumdark} 0 0 0 1px inset;
   }
 
+  &:focus + ${LabelText}:before {
+    box-shadow: ${color.primary} 0 0 0 1px inset;
+  }
+
   &:checked + ${LabelText}:before {
     box-shadow: ${color.primary} 0 0 0 1px inset;
   }
 
+  &:checked:focus + ${LabelText}:before {
+    box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.3)} 0 0 5px 2px;
+  }
+
   & + ${LabelText}:after {
+    transition: all 150ms ease-out;
     transform: scale3d(0, 0, 1);
 
     height: 10px;
@@ -76,24 +106,53 @@ const Input = styled.input.attrs({ type: 'radio' })`
   }
 `;
 
-export function Radio({ value, label, sublabel, error, className, ...props }) {
-  return (
-    <Label className={className}>
-      <Input value={value} {...props} type="radio" />
+const RadioWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
 
-      <LabelText>
-        {label}
-        {error && <Error>{error}</Error>}
-        {sublabel && <SublabelText>{sublabel}</SublabelText>}
-      </LabelText>
-    </Label>
+export function Radio({ id, label, description, error, hideLabel, value, className, ...props }) {
+  let errorId;
+  let descriptionId;
+  let ariaDescribedBy;
+
+  if (error) {
+    errorId = `${id}-error`;
+    ariaDescribedBy = errorId;
+  }
+  if (description) {
+    descriptionId = `${id}-description`;
+    ariaDescribedBy = `${ariaDescribedBy} ${descriptionId}`;
+  }
+
+  return (
+    <RadioWrapper>
+      <Label className={className}>
+        <Input
+          {...props}
+          id={id}
+          aria-describedby={ariaDescribedBy}
+          aria-invalid={!!error}
+          type="radio"
+          value={value}
+        />
+        <LabelText>
+          <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
+        </LabelText>
+      </Label>
+      {error && <Error id={errorId}>{error}</Error>}
+      {description && <Description id={descriptionId}>{description}</Description>}
+    </RadioWrapper>
   );
 }
 
 Radio.propTypes = {
+  id: PropTypes.string.isRequired,
   value: PropTypes.string,
   label: PropTypes.string,
-  sublabel: PropTypes.string,
+  hideLabel: PropTypes.bool,
+  description: PropTypes.string,
   error: PropTypes.string,
   className: PropTypes.string,
 };
@@ -101,7 +160,8 @@ Radio.propTypes = {
 Radio.defaultProps = {
   value: '',
   label: null,
-  sublabel: null,
+  hideLabel: false,
+  description: null,
   error: null,
   className: null,
 };
