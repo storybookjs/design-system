@@ -6,13 +6,28 @@ import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 import { Spinner } from './Spinner';
 
-const Label = styled.span`
+const Label = styled.label`
   font-weight: ${typography.weight.extrabold};
   font-size: ${typography.size.s2}px;
 `;
 
 const LabelWrapper = styled.div`
   margin-bottom: 0.5em;
+
+  ${props =>
+    props.hideLabel &&
+    css`
+      border: 0px !important;
+      clip: rect(0 0 0 0) !important;
+      -webkit-clip-path: inset(100%) !important;
+      clip-path: inset(100%) !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      padding: 0px !important;
+      position: absolute !important;
+      white-space: nowrap !important;
+      width: 1px !important;
+    `}
 `;
 
 const Selector = styled.select`
@@ -49,6 +64,20 @@ const SelectSpinner = styled(Spinner)`
   right: 16px;
   left: auto;
   z-index: 1;
+`;
+
+const SelectError = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0
+
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.335, 1.05);
+  font-size: ${typography.size.s1}px;
+  font-family: ${typography.type.primary};
+
+  color: ${color.negative};
+  line-height: 38px;
+  padding-right: 2.75em;
 `;
 
 const SelectWrapper = styled.span`
@@ -177,20 +206,6 @@ const SelectWrapper = styled.span`
       animation: ${jiggle} 700ms ease-out;
       path { fill: ${color.negative}; }
     }
-
-    &:before {
-      transition: all 300ms cubic-bezier(0.175, 0.885, 0.335, 1.05);
-			font-size: ${typography.size.s1}px;
-      font-family: ${typography.type.primary};
-
-      color: ${color.negative};
-      content: attr(data-error);
-      line-height: 38px;
-      padding-right: 2.75em;
-
-      width: auto;
-      min-width: 2em;
-    }
   `}
 `;
 
@@ -204,10 +219,12 @@ Option.propTypes = {
 };
 
 export function Select({
+  id,
   options,
   value,
   appearance,
   label,
+  hideLabel,
   error,
   icon,
   className,
@@ -215,13 +232,23 @@ export function Select({
   disabled,
   ...other
 }) {
+  let spinnerId;
+  let errorId;
+  let ariaDescribedBy;
+  if (inProgress) {
+    spinnerId = `${id}-in-progress`;
+    ariaDescribedBy = spinnerId;
+  }
+  if (error) {
+    errorId = `${id}-error`;
+    ariaDescribedBy = `${ariaDescribedBy || ''} ${errorId}`;
+  }
+
   return (
     <div className={className}>
-      {label && (
-        <LabelWrapper>
-          <Label>{label}</Label>
-        </LabelWrapper>
-      )}
+      <LabelWrapper hideLabel={hideLabel}>
+        <Label htmlFor={id}>{label}</Label>
+      </LabelWrapper>
       <SelectWrapper
         appearance={appearance}
         icon={icon}
@@ -231,27 +258,34 @@ export function Select({
       >
         {!inProgress && <Arrow />}
         <Selector
+          id={id}
           value={value}
           {...other}
           disabled={disabled || inProgress}
           inProgress={inProgress}
+          aria-describedby={ariaDescribedBy}
+          aria-invalid={!!error}
+          aria-busy={inProgress}
         >
           {options.map(option => (
             <Option {...option} key={option.value} />
           ))}
         </Selector>
-        {icon && <SelectIcon icon={icon} />}
-        {inProgress && <SelectSpinner inForm />}
+        {icon && <SelectIcon icon={icon} aria-hidden />}
+        {error && <SelectError id={errorId}>{error}</SelectError>}
+        {inProgress && <SelectSpinner id={spinnerId} aria-label="Loading" inForm />}
       </SelectWrapper>
     </div>
   );
 }
 
 Select.propTypes = {
+  id: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape(Option.propTypes)),
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary']),
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
   error: PropTypes.string,
   icon: PropTypes.string,
   className: PropTypes.string,
@@ -263,7 +297,7 @@ Select.defaultProps = {
   value: 'loading',
   options: [{ title: 'Loading', value: 'loading' }],
   appearance: 'default',
-  label: null,
+  hideLabel: false,
   error: null,
   icon: null,
   className: null,
