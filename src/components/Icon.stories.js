@@ -6,11 +6,11 @@ import { Icon } from './Icon';
 import { icons } from './shared/icons';
 
 const Meta = styled.div`
-  color: #999;
+  color: #666;
   font-size: 12px;
 `;
 
-const Item = styled.div`
+const Item = styled.li`
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -43,9 +43,10 @@ const Item = styled.div`
     `};
 `;
 
-const List = styled.div`
+const List = styled.ul`
   display: flex;
   flex-flow: row wrap;
+  list-style: none;
 `;
 
 storiesOf('Design System|Icon', module)
@@ -56,7 +57,7 @@ storiesOf('Design System|Icon', module)
       <List>
         {Object.keys(icons).map(key => (
           <Item key={key}>
-            <Icon icon={key} />
+            <Icon icon={key} aria-hidden />
             <Meta>{key}</Meta>
           </Item>
         ))}
@@ -67,18 +68,18 @@ storiesOf('Design System|Icon', module)
     <List>
       {Object.keys(icons).map(key => (
         <Item minimal key={key}>
-          <Icon icon={key} />
+          <Icon icon={key} aria-label={key} />
         </Item>
       ))}
     </List>
   ))
   .add('inline', () => (
     <Fragment>
-      this is an inline <Icon icon="facehappy" /> icon (default)
+      this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
     </Fragment>
   ))
   .add('block', () => (
     <Fragment>
-      this is a block <Icon icon="facehappy" block /> icon
+      this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
     </Fragment>
   ));
