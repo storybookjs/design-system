@@ -13,6 +13,15 @@ storiesOf('Design System|forms/Radio', module)
       <Radio id="Dogs" label="Dogs" value="dogs" onChange={onChange} />
       <Radio id="Cats" label="Cats" onChange={onChange} error="There's a snake in my boots" />
       <Radio id="Dogs" label="Dogs" description="15 canines" value="dogs" onChange={onChange} />
+      <Radio
+        id="Mice"
+        label="Mice"
+        value="mice"
+        onChange={onChange}
+        checked
+        appearance="secondary"
+      />
+      <Radio id="Dogs" label="Dogs" value="dogs" onChange={onChange} appearance="secondary" />
     </form>
   ))
   .add('unchecked', () => (

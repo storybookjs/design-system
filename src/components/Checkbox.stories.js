@@ -18,6 +18,14 @@ storiesOf('Design System|forms/Checkbox', module)
         error="There's a snake in my boots"
       />
       <Checkbox id="With-label" label="Cats" onChange={onChange} />
+      <Checkbox
+        appearance="secondary"
+        id="With-label"
+        label="Secondary"
+        checked
+        onChange={onChange}
+      />
+      <Checkbox appearance="secondary" id="With-label" label="Secondary" onChange={onChange} />
     </form>
   ))
   .add('unchecked', () => <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />)

@@ -75,15 +75,16 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 
   &:focus + ${LabelText}:before {
-    box-shadow: ${color.primary} 0 0 0 1px inset;
+    box-shadow: ${props => props.checkboxColor} 0 0 0 1px inset;
   }
 
   &:checked + ${LabelText}:before {
-    box-shadow: ${color.primary} 0 0 0 1px inset;
+    box-shadow: ${props => props.checkboxColor} 0 0 0 1px inset;
   }
 
   &:checked:focus + ${LabelText}:before {
-    box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.3)} 0 0 5px 2px;
+    box-shadow: ${props => props.checkboxColor} 0 0 0 1px inset,
+      ${props => rgba(props.checkboxColor, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
@@ -100,7 +101,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 
   &:checked + ${LabelText}:after {
     transform: scale3d(1, 1, 1);
-    background: ${color.primary};
+    background: ${props => props.checkboxColor};
     opacity: 1;
   }
 `;
@@ -111,8 +112,9 @@ const CheckboxWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export function Checkbox({ id, label, error, hideLabel, ...props }) {
+export function Checkbox({ appearance, id, label, error, hideLabel, ...props }) {
   const errorId = `${id}-error`;
+  const checkboxColor = color[appearance];
   return (
     <CheckboxWrapper>
       <Label>
@@ -121,6 +123,7 @@ export function Checkbox({ id, label, error, hideLabel, ...props }) {
           id={id}
           aria-describedby={errorId}
           aria-invalid={!!error}
+          checkboxColor={checkboxColor}
           type="checkbox"
         />
         <LabelText>
@@ -135,6 +138,7 @@ export function Checkbox({ id, label, error, hideLabel, ...props }) {
 }
 
 Checkbox.propTypes = {
+  appearance: PropTypes.oneOf(['primary', 'secondary']),
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
@@ -142,6 +146,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
+  appearance: 'primary',
   hideLabel: false,
   error: null,
 };
