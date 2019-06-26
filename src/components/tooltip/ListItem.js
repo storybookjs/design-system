@@ -95,7 +95,7 @@ const Item = styled(({ active, loading, ...rest }) => <a {...rest} />)`
     props.active &&
     css`
       ${Title} {
-        font-weight: ${typography.weight.extrabold};
+        font-weight: ${typography.weight.bold};
       }
       ${Title}, ${Center} {
         color: ${color.primary};
