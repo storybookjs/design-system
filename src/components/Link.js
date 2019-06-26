@@ -135,6 +135,9 @@ const LinkButton = styled.button`
   ${linkStyles};
 `;
 
+/**
+ * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
+ */
 export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children, ...rest }) {
   const content = (
     <Fragment>

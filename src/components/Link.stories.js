@@ -34,12 +34,12 @@ storiesOf('Design System|Link', module)
       </Link>
       <br />
       <Link href="https://learnstorybook.com">
-        <Icon icon="discord" />
+        <Icon icon="discord" aria-hidden />
         With icon in front
       </Link>
       <br />
-      <Link containsIcon to="https://learnstorybook.com">
-        <Icon icon="sidebar" />
+      <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
+        <Icon icon="sidebar" aria-hidden />
       </Link>
       <br />
       <Link containsIcon withArrow href="https://learnstorybook.com">
