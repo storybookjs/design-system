@@ -1,3 +1,19 @@
+# v0.0.27 (Wed Jun 26 2019)
+
+#### 🐛  Bug Fix
+
+- Update outline button appearance shadow to secondary color [#31](https://github.com/storybookjs/design-system/pull/31) ([@kylesuss](https://github.com/kylesuss))
+- Refactor Highlight CSS loading to avoid css-loader expectation [#29](https://github.com/storybookjs/design-system/pull/29) ([@kylesuss](https://github.com/kylesuss))
+- fix: icon story accessibility [#28](https://github.com/storybookjs/design-system/pull/28) ([@jsomsanith](https://github.com/jsomsanith))
+- fix: select accessibility [#27](https://github.com/storybookjs/design-system/pull/27) ([@jsomsanith](https://github.com/jsomsanith))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+
+---
+
 # v0.0.26 (Mon Jun 24 2019)
 
 #### 🐛  Bug Fix
