@@ -1,3 +1,16 @@
+# v0.0.28 (Wed Jun 26 2019)
+
+#### 🐛  Bug Fix
+
+- Update form components to support secondary styling [#32](https://github.com/storybookjs/design-system/pull/32) ([@kylesuss](https://github.com/kylesuss))
+- Update Icon comments for formatting in docs mode [#30](https://github.com/storybookjs/design-system/pull/30) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.27 (Wed Jun 26 2019)
 
 #### 🐛  Bug Fix
