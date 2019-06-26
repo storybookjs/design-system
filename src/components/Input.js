@@ -7,7 +7,7 @@ import { Icon } from './Icon';
 
 // prettier-ignore
 const Label = styled.label`
-  font-weight: ${props => props.appearance !== 'code' && typography.weight.extrabold};
+  font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
   font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
 `;

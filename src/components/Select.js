@@ -7,7 +7,7 @@ import { Icon } from './Icon';
 import { Spinner } from './Spinner';
 
 const Label = styled.label`
-  font-weight: ${typography.weight.extrabold};
+  font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s2}px;
 `;
 
