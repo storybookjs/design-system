@@ -1,3 +1,20 @@
+# v0.0.29 (Wed Jun 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Input, TextArea label font weight [#33](https://github.com/storybookjs/design-system/pull/33) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Upgrade addon-docs to 5.2.0-alpha.30  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+
+---
+
 # v0.0.28 (Wed Jun 26 2019)
 
 #### 🐛  Bug Fix
