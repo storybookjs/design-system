@@ -27,7 +27,7 @@ const ErrorMessage = styled.span`
 
 const LabelWrapper = styled.div`
   margin-bottom: ${props => (props.appearance === 'code' ? 0.5 : 0.33)}em;
-  font-weight: ${props => props.appearance !== 'code' && typography.weight.extrabold};
+  font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code};
   font-size: ${props => (props.appearance === 'code' ? typography.size.s1 : typography.size.s2)}px;
 
