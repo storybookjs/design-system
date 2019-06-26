@@ -76,15 +76,16 @@ const Input = styled.input.attrs({ type: 'radio' })`
   }
 
   &:focus + ${LabelText}:before {
-    box-shadow: ${color.primary} 0 0 0 1px inset;
+    box-shadow: ${props => props.radioColor} 0 0 0 1px inset;
   }
 
   &:checked + ${LabelText}:before {
-    box-shadow: ${color.primary} 0 0 0 1px inset;
+    box-shadow: ${props => props.radioColor} 0 0 0 1px inset;
   }
 
   &:checked:focus + ${LabelText}:before {
-    box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.3)} 0 0 5px 2px;
+    box-shadow: ${props => props.radioColor} 0 0 0 1px inset,
+      ${props => rgba(props.radioColor, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
@@ -101,7 +102,7 @@ const Input = styled.input.attrs({ type: 'radio' })`
 
   &:checked + ${LabelText}:after {
     transform: scale3d(1, 1, 1);
-    background: ${color.primary};
+    background: ${props => props.radioColor};
     opacity: 1;
   }
 `;
@@ -112,7 +113,18 @@ const RadioWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export function Radio({ id, label, description, error, hideLabel, value, className, ...props }) {
+export function Radio({
+  appearance,
+  id,
+  label,
+  description,
+  error,
+  hideLabel,
+  value,
+  className,
+  ...props
+}) {
+  const radioColor = color[appearance];
   let errorId;
   let descriptionId;
   let ariaDescribedBy;
@@ -134,6 +146,7 @@ export function Radio({ id, label, description, error, hideLabel, value, classNa
           id={id}
           aria-describedby={ariaDescribedBy}
           aria-invalid={!!error}
+          radioColor={radioColor}
           type="radio"
           value={value}
         />
@@ -148,6 +161,7 @@ export function Radio({ id, label, description, error, hideLabel, value, classNa
 }
 
 Radio.propTypes = {
+  appearance: PropTypes.oneOf(['primary', 'secondary']),
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   label: PropTypes.string,
@@ -158,6 +172,7 @@ Radio.propTypes = {
 };
 
 Radio.defaultProps = {
+  appearance: 'primary',
   value: '',
   label: null,
   hideLabel: false,

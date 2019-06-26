@@ -145,6 +145,9 @@ const SelectWrapper = styled.span`
       ${Selector} {
         box-shadow: ${color.mediumlight} 0 0 0 1px inset;
       }
+      ${Selector}:focus {
+        box-shadow: ${color.secondary} 0 0 0 1px inset;
+      }
     `}
 
   ${props =>

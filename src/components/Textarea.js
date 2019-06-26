@@ -95,7 +95,7 @@ const TextareaWrapper = styled.div`
         box-shadow: ${color.mediumlight} 0 0 0 1px inset;
 
         &:focus {
-          box-shadow: ${color.primary} 0 0 0 1px inset;
+          box-shadow: ${color.secondary} 0 0 0 1px inset;
         }
       `}
 
