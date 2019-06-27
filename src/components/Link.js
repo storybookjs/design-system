@@ -35,6 +35,19 @@ const linkStyles = css`
   }
 
   ${props =>
+    props.containsIcon &&
+    css`
+      svg {
+        height: 1em;
+        width: 1em;
+        vertical-align: middle;
+        position: relative;
+        bottom: 0;
+        margin-right: 0;
+      }
+    `};
+
+  ${props =>
     props.secondary &&
     css`
       color: ${color.mediumdark};
@@ -112,19 +125,6 @@ const LinkInner = styled.span`
         vertical-align: inherit;
       }
     `};
-
-  ${props =>
-    props.containsIcon &&
-    css`
-      svg {
-        height: 1em;
-        width: 1em;
-        vertical-align: middle;
-        position: relative;
-        bottom: 0;
-        margin-right: 0;
-      }
-    `};
 `;
 
 const LinkA = styled.a`
@@ -147,10 +147,10 @@ const LinkButton = styled.button`
 /**
  * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
  */
-export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children, ...rest }) {
+export function Link({ isButton, withArrow, LinkWrapper, children, ...rest }) {
   const content = (
     <Fragment>
-      <LinkInner withArrow={withArrow} containsIcon={containsIcon}>
+      <LinkInner withArrow={withArrow}>
         {children}
         {withArrow && <Icon icon="arrowright" />}
       </LinkInner>
@@ -159,7 +159,7 @@ export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children,
 
   if (LinkWrapper) {
     const StyledLinkWrapper = styled(
-      ({ inverse, nochrome, secondary, tertiary, ...linkWrapperRest }) => (
+      ({ containsIcon, inverse, nochrome, secondary, tertiary, ...linkWrapperRest }) => (
         <LinkWrapper {...linkWrapperRest} />
       )
     )`
