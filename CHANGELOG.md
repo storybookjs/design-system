@@ -1,3 +1,19 @@
+# v0.0.31 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Link containsIcon specificity [#38](https://github.com/storybookjs/design-system/pull/38) ([@kylesuss](https://github.com/kylesuss))
+- Fix tertiary hover styles. Use tertiary color [#37](https://github.com/storybookjs/design-system/pull/37) ([@kylesuss](https://github.com/kylesuss))
+- fix: link stories accessibility [#34](https://github.com/storybookjs/design-system/pull/34) ([@jsomsanith](https://github.com/jsomsanith) [@domyen](https://github.com/domyen))
+
+#### Authors: 3
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v0.0.30 (Thu Jun 27 2019)
 
 #### 🐛  Bug Fix
