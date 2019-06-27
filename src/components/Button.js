@@ -32,7 +32,7 @@ const SIZES = {
   MEDIUM: 'medium',
 };
 
-const ButtonWrapper = styled.button`
+const StyledButton = styled.button`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -305,9 +305,17 @@ const ButtonWrapper = styled.button`
 
 `;
 
-const ButtonLink = ButtonWrapper.withComponent('a');
+const ButtonLink = StyledButton.withComponent('a');
 
-export function Button({ isDisabled, isLoading, loadingText, isLink, children, ...props }) {
+export function Button({
+  isDisabled,
+  isLoading,
+  loadingText,
+  isLink,
+  children,
+  ButtonWrapper,
+  ...props
+}) {
   const buttonInner = (
     <Fragment>
       <Text>{children}</Text>
@@ -315,17 +323,18 @@ export function Button({ isDisabled, isLoading, loadingText, isLink, children, .
     </Fragment>
   );
 
-  if (isLink) {
-    return (
-      <ButtonLink isLoading={isLoading} disabled={isDisabled} {...props}>
-        {buttonInner}
-      </ButtonLink>
-    );
+  let SelectedButton = StyledButton;
+  if (ButtonWrapper) {
+    const StyledButtonWrapper = StyledButton.withComponent(ButtonWrapper);
+    SelectedButton = StyledButtonWrapper;
+  } else if (isLink) {
+    SelectedButton = ButtonLink;
   }
+
   return (
-    <ButtonWrapper isLoading={isLoading} disabled={isDisabled} {...props}>
+    <SelectedButton isLoading={isLoading} disabled={isDisabled} {...props}>
       {buttonInner}
-    </ButtonWrapper>
+    </SelectedButton>
   );
 }
 
@@ -351,6 +360,7 @@ Button.propTypes = {
   */
   containsIcon: PropTypes.bool,
   size: PropTypes.oneOf(Object.values(SIZES)),
+  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 Button.defaultProps = {
@@ -362,4 +372,5 @@ Button.defaultProps = {
   isUnclickable: false,
   containsIcon: false,
   size: SIZES.MEDIUM,
+  ButtonWrapper: undefined,
 };
