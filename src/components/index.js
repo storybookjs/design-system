@@ -14,6 +14,7 @@ export * from './Icon';
 export * from './Link';
 export * from './Subheading';
 export * from './ProgressDots';
+export * from './Spinner';
 
 export * from './Input';
 export * from './Textarea';
