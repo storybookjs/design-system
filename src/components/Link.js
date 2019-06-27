@@ -132,9 +132,21 @@ const LinkA = styled.a`
 `;
 
 const LinkButton = styled.button`
+  /* reset button styles */
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
   ${linkStyles};
 `;
 
+/**
+ * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
+ */
 export function Link({ isButton, withArrow, containsIcon, LinkWrapper, children, ...rest }) {
   const content = (
     <Fragment>
