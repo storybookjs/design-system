@@ -22,6 +22,7 @@ export * from './Checkbox';
 export * from './Radio';
 export * from './Select';
 
+export * from './tooltip/ListItem';
 export * from './tooltip/TooltipMessage';
 export * from './tooltip/TooltipNote';
 export * from './tooltip/TooltipLinkList';
