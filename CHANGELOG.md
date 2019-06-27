@@ -1,3 +1,16 @@
+# v0.0.32 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Export tooltip ListItem for consumption [#40](https://github.com/storybookjs/design-system/pull/40) ([@kylesuss](https://github.com/kylesuss))
+- Export spinner so it can be consumed [#39](https://github.com/storybookjs/design-system/pull/39) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.31 (Thu Jun 27 2019)
 
 #### 🐛  Bug Fix
