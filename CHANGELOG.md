@@ -1,3 +1,15 @@
+# v0.0.30 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Add lightningoff icon [#35](https://github.com/storybookjs/design-system/pull/35) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.29 (Wed Jun 26 2019)
 
 #### 🐛  Bug Fix
