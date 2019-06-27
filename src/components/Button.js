@@ -206,16 +206,16 @@ const ButtonWrapper = styled.button`
       ${!props.isLoading &&
         `
           &:hover {
-            background: ${darken(0.05, color.secondary)};
+            background: ${darken(0.05, color.tertiary)};
           }
           &:active {
             box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
           }
           &:focus {
-            box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+            box-shadow: ${rgba(color.tertiary, 0.4)} 0 1px 9px 2px;
           }
           &:focus:hover {
-            box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+            box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
           }
         `}
     `}
