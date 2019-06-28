@@ -308,10 +308,6 @@ const StyledButton = styled.button`
 const ButtonLink = StyledButton.withComponent('a');
 
 const applyStyle = ButtonWrapper => {
-  if (!ButtonWrapper) {
-    return null;
-  }
-
   return (
     ButtonWrapper &&
     StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
