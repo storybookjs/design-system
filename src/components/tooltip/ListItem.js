@@ -52,8 +52,7 @@ const ItemInner = styled.span`
   }
 `;
 
-// eslint-disable-next-line jsx-a11y/anchor-has-content
-const Item = styled(({ active, loading, ...rest }) => <a {...rest} />)`
+const linkStyles = css`
   font-size: ${typography.size.s1}px;
   transition: all 150ms ease-out;
   color: ${color.mediumdark};
@@ -129,19 +128,12 @@ const Item = styled(({ active, loading, ...rest }) => <a {...rest} />)`
     `};
 `;
 
-export function ListItem({
-  loading,
-  left,
-  title,
-  center,
-  right,
-  active,
-  disabled,
-  href,
-  onClick,
-  LinkWrapper,
-  ...props
-}) {
+// eslint-disable-next-line jsx-a11y/anchor-has-content
+const Item = styled(({ active, loading, ...rest }) => <a {...rest} />)`
+  ${linkStyles}
+`;
+
+export function ListItem({ left, title, center, right, onClick, LinkWrapper, ...rest }) {
   const linkInner = (
     <ItemInner onClick={onClick} role="presentation">
       {left && <Left>{left}</Left>}
@@ -151,19 +143,17 @@ export function ListItem({
     </ItemInner>
   );
 
-  return (
-    <Item
-      as={LinkWrapper && href ? LinkWrapper : null}
-      href={!LinkWrapper ? href : undefined}
-      to={LinkWrapper ? href : undefined}
-      active={active}
-      loading={loading}
-      disabled={disabled}
-      {...props}
-    >
-      {linkInner}
-    </Item>
-  );
+  if (LinkWrapper) {
+    const StyledLinkWrapper = styled(({ active, loading, ...linkWrapperRest }) => (
+      <LinkWrapper {...linkWrapperRest} />
+    ))`
+      ${linkStyles};
+    `;
+
+    return <StyledLinkWrapper {...rest}>{linkInner}</StyledLinkWrapper>;
+  }
+
+  return <Item {...rest}>{linkInner}</Item>;
 }
 
 ListItem.propTypes = {
@@ -174,7 +164,6 @@ ListItem.propTypes = {
   right: PropTypes.node,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  href: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   LinkWrapper: PropTypes.func,
   onClick: PropTypes.func,
 };
@@ -187,7 +176,6 @@ ListItem.defaultProps = {
   right: null,
   active: false,
   disabled: false,
-  href: null,
   LinkWrapper: undefined,
   onClick: undefined,
 };
