@@ -49,7 +49,13 @@ export function ProgressDots({ loading, steps, progress, className, size }) {
     dots.push(<Dot loading={loading} active={i === progress - 1} key={i} size={size} />);
   }
   return (
-    <ProgressWrapper className={className} size={size}>
+    <ProgressWrapper
+      className={className}
+      size={size}
+      role="status"
+      aria-live="polite"
+      aria-label="Content is loading ..."
+    >
       {dots}
     </ProgressWrapper>
   );
