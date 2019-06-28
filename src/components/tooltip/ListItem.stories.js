@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { ListItem } from './ListItem';
 import { Icon } from '../Icon';
+import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 storiesOf('Design System|tooltip/ListItem', module)
   .addParameters({ component: ListItem })
@@ -54,4 +55,21 @@ storiesOf('Design System|tooltip/ListItem', module)
   ))
   .add('disabled', () => (
     <ListItem disabled left="left" title="disabled" center="center" right="right" />
+  ))
+  .add('with LinkWrapper', () => (
+    <>
+      <ListItem LinkWrapper={StoryLinkWrapper} loading href="http://www.google.com" />
+      <ListItem LinkWrapper={StoryLinkWrapper} title="Default" href="http://www.google.com" />
+      <ListItem
+        LinkWrapper={StoryLinkWrapper}
+        title="lorem ipsum dolor sit amet consectatur"
+        to="http://www.google.com"
+      />
+      <ListItem
+        LinkWrapper={StoryLinkWrapper}
+        title="Default icon"
+        right={<Icon icon="eye" />}
+        to="http://www.google.com"
+      />
+    </>
   ));
