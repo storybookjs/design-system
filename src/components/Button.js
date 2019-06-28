@@ -307,6 +307,19 @@ const StyledButton = styled.button`
 
 const ButtonLink = StyledButton.withComponent('a');
 
+const applyStyle = ButtonWrapper => {
+  if (!ButtonWrapper) {
+    return null;
+  }
+
+  return (
+    ButtonWrapper &&
+    StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
+      <ButtonWrapper {...rest} />
+    ))
+  );
+};
+
 export function Button({
   isDisabled,
   isLoading,
@@ -323,9 +336,10 @@ export function Button({
     </Fragment>
   );
 
+  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
+
   let SelectedButton = StyledButton;
   if (ButtonWrapper) {
-    const StyledButtonWrapper = StyledButton.withComponent(ButtonWrapper);
     SelectedButton = StyledButtonWrapper;
   } else if (isLink) {
     SelectedButton = ButtonLink;

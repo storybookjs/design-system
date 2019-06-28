@@ -11,8 +11,8 @@ const CustomButton = styled.button`
   border: 1px solid green;
   background: lightgreen;
   color: rebeccapurple;
-  padding: 1.5em;
-  font-size: 1.5em;
+  padding: 1em;
+  font-size: 1.2em;
 `;
 
 function ButtonWrapper(props) {
@@ -142,6 +142,8 @@ storiesOf('Design System|Button', module)
 
   .add('anchor wrapper', () => (
     <div>
+      <StoryLinkWrapper to="http://storybook.js.org">Original Link Wrapper</StoryLinkWrapper>
+      <br />
       <Button ButtonWrapper={StoryLinkWrapper} appearance="primary" href="http://storybook.js.org">
         Primary
       </Button>
