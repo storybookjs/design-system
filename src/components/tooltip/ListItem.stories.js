@@ -19,6 +19,14 @@ storiesOf('Design System|tooltip/ListItem', module)
       <ListItem left="left" title="title" center="center" right="right" />
       <ListItem active left="left" title="active" center="center" right="right" />
       <ListItem
+        appearance="secondary"
+        active
+        left="left"
+        title="secondary active"
+        center="center"
+        right={<Icon icon="eye" />}
+      />
+      <ListItem
         active
         left="left"
         title="active icon"

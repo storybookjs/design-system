@@ -97,13 +97,13 @@ const linkStyles = css`
         font-weight: ${typography.weight.bold};
       }
       ${Title}, ${Center} {
-        color: ${color.primary};
+        color: ${props.activeColor};
       }
 
       ${Right} svg {
         opacity: 1;
         path {
-          fill: ${color.primary};
+          fill: ${props.activeColor};
         }
       }
     `};
@@ -129,11 +129,21 @@ const linkStyles = css`
 `;
 
 // eslint-disable-next-line jsx-a11y/anchor-has-content
-const Item = styled(({ active, loading, ...rest }) => <a {...rest} />)`
+const Item = styled(({ active, activeColor, loading, ...rest }) => <a {...rest} />)`
   ${linkStyles}
 `;
 
-export function ListItem({ left, title, center, right, onClick, LinkWrapper, ...rest }) {
+export function ListItem({
+  appearance,
+  left,
+  title,
+  center,
+  right,
+  onClick,
+  LinkWrapper,
+  ...rest
+}) {
+  const listItemActiveColor = color[appearance];
   const linkInner = (
     <ItemInner onClick={onClick} role="presentation">
       {left && <Left>{left}</Left>}
@@ -144,19 +154,28 @@ export function ListItem({ left, title, center, right, onClick, LinkWrapper, ...
   );
 
   if (LinkWrapper) {
-    const StyledLinkWrapper = styled(({ active, loading, ...linkWrapperRest }) => (
+    const StyledLinkWrapper = styled(({ active, loading, activeColor, ...linkWrapperRest }) => (
       <LinkWrapper {...linkWrapperRest} />
     ))`
       ${linkStyles};
     `;
 
-    return <StyledLinkWrapper {...rest}>{linkInner}</StyledLinkWrapper>;
+    return (
+      <StyledLinkWrapper activeColor={listItemActiveColor} {...rest}>
+        {linkInner}
+      </StyledLinkWrapper>
+    );
   }
 
-  return <Item {...rest}>{linkInner}</Item>;
+  return (
+    <Item activeColor={listItemActiveColor} {...rest}>
+      {linkInner}
+    </Item>
+  );
 }
 
 ListItem.propTypes = {
+  appearance: PropTypes.oneOf(['primary', 'secondary']),
   loading: PropTypes.bool,
   left: PropTypes.node,
   title: PropTypes.node,
@@ -169,6 +188,7 @@ ListItem.propTypes = {
 };
 
 ListItem.defaultProps = {
+  appearance: 'primary',
   loading: false,
   left: null,
   title: <span>Loading</span>,
