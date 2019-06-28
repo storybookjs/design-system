@@ -5,6 +5,8 @@ import { ListItem } from './ListItem';
 
 const List = styled.div`
   min-width: 180px;
+  border-radius: 4px;
+  overflow: hidden;
 `;
 
 export function TooltipLinkList({ links, LinkWrapper }) {
