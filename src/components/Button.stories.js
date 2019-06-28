@@ -5,19 +5,13 @@ import { action } from '@storybook/addon-actions';
 
 import { Button } from './Button';
 import { Icon } from './Icon';
+import { StoryLinkWrapper } from './StoryLinkWrapper';
 
 const CustomButton = styled.button`
   border: 1px solid green;
   background: lightgreen;
   color: rebeccapurple;
   padding: 1.5em;
-  font-size: 1.5em;
-`;
-
-const CustomAnchor = styled.a`
-  border: 1px solid green;
-  background: lightgreen;
-  color: rebeccapurple;
   font-size: 1.5em;
 `;
 
@@ -148,36 +142,38 @@ storiesOf('Design System|Button', module)
 
   .add('anchor wrapper', () => (
     <div>
-      <CustomAnchor href="http://storybook.js.org">Original Anchor Wrapper</CustomAnchor>
-      <br />
-      <Button ButtonWrapper={CustomAnchor} appearance="primary" href="http://storybook.js.org">
+      <Button ButtonWrapper={StoryLinkWrapper} appearance="primary" href="http://storybook.js.org">
         Primary
       </Button>
-      <Button ButtonWrapper={CustomAnchor} appearance="secondary" href="http://storybook.js.org">
+      <Button
+        ButtonWrapper={StoryLinkWrapper}
+        appearance="secondary"
+        href="http://storybook.js.org"
+      >
         Secondary
       </Button>
-      <Button ButtonWrapper={CustomAnchor} appearance="tertiary" href="http://storybook.js.org">
+      <Button ButtonWrapper={StoryLinkWrapper} appearance="tertiary" href="http://storybook.js.org">
         Tertiary
       </Button>
-      <Button ButtonWrapper={CustomAnchor} appearance="outline" href="http://storybook.js.org">
+      <Button ButtonWrapper={StoryLinkWrapper} appearance="outline" href="http://storybook.js.org">
         Outline
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="primaryOutline"
         href="http://storybook.js.org"
       >
         Outline primary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="secondaryOutline"
         href="http://storybook.js.org"
       >
         Outline secondary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="primary"
         isDisabled
         href="http://storybook.js.org"
@@ -186,7 +182,7 @@ storiesOf('Design System|Button', module)
       </Button>
       <br />
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="primary"
         isLoading
         href="http://storybook.js.org"
@@ -194,7 +190,7 @@ storiesOf('Design System|Button', module)
         Primary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="secondary"
         isLoading
         href="http://storybook.js.org"
@@ -202,7 +198,7 @@ storiesOf('Design System|Button', module)
         Secondary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="tertiary"
         isLoading
         href="http://storybook.js.org"
@@ -210,7 +206,7 @@ storiesOf('Design System|Button', module)
         Tertiary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="outline"
         isLoading
         href="http://storybook.js.org"
@@ -218,7 +214,7 @@ storiesOf('Design System|Button', module)
         Outline
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="outline"
         isLoading
         loadingText="Custom..."
@@ -228,7 +224,7 @@ storiesOf('Design System|Button', module)
       </Button>
       <br />
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="primary"
         size="small"
         href="http://storybook.js.org"
@@ -236,7 +232,7 @@ storiesOf('Design System|Button', module)
         Primary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="secondary"
         size="small"
         href="http://storybook.js.org"
@@ -244,7 +240,7 @@ storiesOf('Design System|Button', module)
         Secondary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="tertiary"
         size="small"
         href="http://storybook.js.org"
@@ -252,7 +248,7 @@ storiesOf('Design System|Button', module)
         Tertiary
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="outline"
         size="small"
         href="http://storybook.js.org"
@@ -260,7 +256,7 @@ storiesOf('Design System|Button', module)
         Outline
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="primary"
         isDisabled
         size="small"
@@ -269,7 +265,7 @@ storiesOf('Design System|Button', module)
         Disabled
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="outline"
         size="small"
         containsIcon
@@ -278,7 +274,7 @@ storiesOf('Design System|Button', module)
         <Icon icon="link" aria-label="Link" />
       </Button>
       <Button
-        ButtonWrapper={CustomAnchor}
+        ButtonWrapper={StoryLinkWrapper}
         appearance="outline"
         size="small"
         href="http://storybook.js.org"
