@@ -1,3 +1,18 @@
+# v0.0.34 (Fri Jun 28 2019)
+
+#### 🐛  Bug Fix
+
+- fix: ProgressDot accessibility [#45](https://github.com/storybookjs/design-system/pull/45) ([@jsomsanith](https://github.com/jsomsanith))
+- Add extrabold vars for styling [#46](https://github.com/storybookjs/design-system/pull/46) ([@kylesuss](https://github.com/kylesuss))
+- Add appearance to ListItem [#43](https://github.com/storybookjs/design-system/pull/43) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 2
+
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.33 (Fri Jun 28 2019)
 
 #### 🐛  Bug Fix
