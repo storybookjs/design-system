@@ -1,3 +1,15 @@
+# v0.0.33 (Fri Jun 28 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor tooltip ListItem for flexibility in to/href prop names [#42](https://github.com/storybookjs/design-system/pull/42) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.32 (Thu Jun 27 2019)
 
 #### 🐛  Bug Fix
