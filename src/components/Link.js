@@ -144,6 +144,17 @@ const LinkButton = styled.button`
   ${linkStyles};
 `;
 
+const applyStyle = LinkWrapper => {
+  return (
+    LinkWrapper &&
+    styled(({ containsIcon, inverse, nochrome, secondary, tertiary, ...linkWrapperRest }) => (
+      <LinkWrapper {...linkWrapperRest} />
+    ))`
+      ${linkStyles};
+    `
+  );
+};
+
 /**
  * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
  */
@@ -157,23 +168,16 @@ export function Link({ isButton, withArrow, LinkWrapper, children, ...rest }) {
     </Fragment>
   );
 
+  const StyledLinkWrapper = applyStyle(LinkWrapper);
+
+  let SelectedLink = LinkA;
   if (LinkWrapper) {
-    const StyledLinkWrapper = styled(
-      ({ containsIcon, inverse, nochrome, secondary, tertiary, ...linkWrapperRest }) => (
-        <LinkWrapper {...linkWrapperRest} />
-      )
-    )`
-      ${linkStyles};
-    `;
-
-    return <StyledLinkWrapper {...rest}>{content}</StyledLinkWrapper>;
+    SelectedLink = StyledLinkWrapper;
+  } else if (isButton) {
+    SelectedLink = LinkButton;
   }
 
-  if (isButton) {
-    return <LinkButton {...rest}>{content}</LinkButton>;
-  }
-
-  return <LinkA {...rest}>{content}</LinkA>;
+  return <SelectedLink {...rest}>{content}</SelectedLink>;
 }
 
 Link.propTypes = {
