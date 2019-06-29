@@ -32,7 +32,7 @@ const SIZES = {
   MEDIUM: 'medium',
 };
 
-const ButtonWrapper = styled.button`
+const StyledButton = styled.button`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -305,9 +305,26 @@ const ButtonWrapper = styled.button`
 
 `;
 
-const ButtonLink = ButtonWrapper.withComponent('a');
+const ButtonLink = StyledButton.withComponent('a');
 
-export function Button({ isDisabled, isLoading, loadingText, isLink, children, ...props }) {
+const applyStyle = ButtonWrapper => {
+  return (
+    ButtonWrapper &&
+    StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
+      <ButtonWrapper {...rest} />
+    ))
+  );
+};
+
+export function Button({
+  isDisabled,
+  isLoading,
+  loadingText,
+  isLink,
+  children,
+  ButtonWrapper,
+  ...props
+}) {
   const buttonInner = (
     <Fragment>
       <Text>{children}</Text>
@@ -315,17 +332,19 @@ export function Button({ isDisabled, isLoading, loadingText, isLink, children, .
     </Fragment>
   );
 
-  if (isLink) {
-    return (
-      <ButtonLink isLoading={isLoading} disabled={isDisabled} {...props}>
-        {buttonInner}
-      </ButtonLink>
-    );
+  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
+
+  let SelectedButton = StyledButton;
+  if (ButtonWrapper) {
+    SelectedButton = StyledButtonWrapper;
+  } else if (isLink) {
+    SelectedButton = ButtonLink;
   }
+
   return (
-    <ButtonWrapper isLoading={isLoading} disabled={isDisabled} {...props}>
+    <SelectedButton isLoading={isLoading} disabled={isDisabled} {...props}>
       {buttonInner}
-    </ButtonWrapper>
+    </SelectedButton>
   );
 }
 
@@ -351,6 +370,7 @@ Button.propTypes = {
   */
   containsIcon: PropTypes.bool,
   size: PropTypes.oneOf(Object.values(SIZES)),
+  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 Button.defaultProps = {
@@ -362,4 +382,5 @@ Button.defaultProps = {
   isUnclickable: false,
   containsIcon: false,
   size: SIZES.MEDIUM,
+  ButtonWrapper: undefined,
 };
