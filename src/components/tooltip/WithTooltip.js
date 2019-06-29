@@ -44,6 +44,7 @@ function WithTooltip({
   const Container = svg ? TargetSvgContainer : TargetContainer;
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
   const toggleTooltipShown = () => setTooltipShown(!isTooltipShown);
+  const closeTooltip = () => setTooltipShown(false);
   const closeTooltipOnClick = event => {
     if (!closeOnClick || !isDescendantOfAction(event.target)) {
       return;
@@ -75,9 +76,7 @@ function WithTooltip({
           onClick={closeTooltipOnClick}
           {...getTooltipProps()}
         >
-          {typeof tooltip === 'function'
-            ? tooltip({ onHide: () => setTooltipShown(false) })
-            : tooltip}
+          {typeof tooltip === 'function' ? tooltip({ onHide: closeTooltip }) : tooltip}
         </Tooltip>
       )}
     >
