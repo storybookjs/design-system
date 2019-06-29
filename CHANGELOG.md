@@ -1,3 +1,22 @@
+# v0.0.35 (Sat Jun 29 2019)
+
+#### 🐛  Bug Fix
+
+- fix: Link - LinkWrapper optimisation [#44](https://github.com/storybookjs/design-system/pull/44) ([@jsomsanith](https://github.com/jsomsanith))
+- feat: ButtonWrapper prop in Button to customise rendering [#41](https://github.com/storybookjs/design-system/pull/41) ([@jsomsanith](https://github.com/jsomsanith) [@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Avoid recreating onHide function prop in WithTooltip  ([@susskyle@gmail.com](https://github.com/susskyle@gmail.com))
+
+#### Authors: 3
+
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- [@susskyle@gmail.com](https://github.com/susskyle@gmail.com)
+
+---
+
 # v0.0.34 (Fri Jun 28 2019)
 
 #### 🐛  Bug Fix
