@@ -52,6 +52,7 @@ storiesOf('Design System|tooltip/WithTooltip', module)
     <ViewPort>
       <BackgroundBox>
         <Spacer />
+        lol
         {storyFn()}
       </BackgroundBox>
     </ViewPort>

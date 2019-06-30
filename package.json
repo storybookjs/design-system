@@ -59,6 +59,7 @@
     "react-popper-tooltip": "^2.8.2",
     "recompose": "^0.30.0",
     "styled-components": "^4.1.2",
+    "uuid": "^3.3.2",
     "validatorjs": "^3.15.1"
   },
   "devDependencies": {

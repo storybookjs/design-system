@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
+import uuid from 'uuid';
 
 import { Tooltip } from './Tooltip';
 
 // A target that doesn't speak popper
-const TargetContainer = styled.div`
+const ButtonContainer = styled.button`
+  background: transparent;
+  border: 0;
+  cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
   display: inline-block;
-  cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
-`;
-
-const TargetSvgContainer = styled.g`
-  cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  text-decoration: none;
 `;
 
 const isDescendantOfAction = element => {
@@ -30,7 +35,6 @@ const isDescendantOfAction = element => {
 };
 
 function WithTooltip({
-  svg,
   trigger,
   closeOnClick,
   placement,
@@ -41,7 +45,7 @@ function WithTooltip({
   startOpen,
   ...props
 }) {
-  const Container = svg ? TargetSvgContainer : TargetContainer;
+  const id = React.useMemo(() => uuid.v4(), []);
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
   const toggleTooltipShown = () => setTooltipShown(!isTooltipShown);
   const closeTooltip = () => setTooltipShown(false);
@@ -75,22 +79,31 @@ function WithTooltip({
           arrowProps={getArrowProps()}
           onClick={closeTooltipOnClick}
           {...getTooltipProps()}
+          id={id}
+          role="tooltip"
         >
           {typeof tooltip === 'function' ? tooltip({ onHide: closeTooltip }) : tooltip}
         </Tooltip>
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
-        <Container ref={triggerRef} {...getTriggerProps()} {...props} onClick={toggleTooltipShown}>
+        <ButtonContainer
+          ref={triggerRef}
+          {...getTriggerProps()}
+          {...props}
+          onClick={toggleTooltipShown}
+          role="button"
+          aria-controls={id}
+          aria-describedby={isTooltipShown ? id : undefined}
+        >
           {children}
-        </Container>
+        </ButtonContainer>
       )}
     </TooltipTrigger>
   );
 }
 
 WithTooltip.propTypes = {
-  svg: PropTypes.bool,
   trigger: PropTypes.string,
   closeOnClick: PropTypes.bool,
   placement: PropTypes.string,
@@ -102,7 +115,6 @@ WithTooltip.propTypes = {
 };
 
 WithTooltip.defaultProps = {
-  svg: false,
   trigger: 'hover',
   closeOnClick: false,
   placement: 'top',
