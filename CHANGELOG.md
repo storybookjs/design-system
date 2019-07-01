@@ -1,3 +1,15 @@
+# v0.0.37 (Mon Jul 01 2019)
+
+#### 🐛  Bug Fix
+
+- Make button text bolder to increase readability [#49](https://github.com/storybookjs/design-system/pull/49) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v0.0.36 (Mon Jul 01 2019)
 
 #### 🐛  Bug Fix
