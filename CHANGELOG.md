@@ -1,3 +1,15 @@
+# v0.0.36 (Mon Jul 01 2019)
+
+#### 🐛  Bug Fix
+
+- Memoize LinkWrapper in tooltip/ListItem for perf [#48](https://github.com/storybookjs/design-system/pull/48) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.35 (Sat Jun 29 2019)
 
 #### 🐛  Bug Fix
