@@ -14,6 +14,14 @@ const Title = styled.span`
 const Center = styled.span``;
 const Right = styled.span``;
 
+const ItemWrapper = styled.li`
+  list-style: none;
+
+  &:not(:first-child) {
+    border-top: 1px solid ${color.mediumlight};
+  }
+`;
+
 const ItemInner = styled.span`
   /* Layout */
   line-height: 18px;
@@ -58,10 +66,6 @@ const linkStyles = css`
   color: ${color.mediumdark};
   text-decoration: none;
   display: block;
-
-  &:not(:first-child) {
-    border-top: 1px solid ${color.mediumlight};
-  }
 
   /* Styling */
   ${Title} {
@@ -163,16 +167,20 @@ export function ListItem({
     const StyledLinkWrapper = useMemo(() => buildStyledLinkWrapper(LinkWrapper), [LinkWrapper]);
 
     return (
-      <StyledLinkWrapper activeColor={listItemActiveColor} {...rest}>
-        {linkInner}
-      </StyledLinkWrapper>
+      <ItemWrapper>
+        <StyledLinkWrapper activeColor={listItemActiveColor} {...rest}>
+          {linkInner}
+        </StyledLinkWrapper>
+      </ItemWrapper>
     );
   }
 
   return (
-    <Item activeColor={listItemActiveColor} {...rest}>
-      {linkInner}
-    </Item>
+    <ItemWrapper>
+      <Item activeColor={listItemActiveColor} {...rest}>
+        {linkInner}
+      </Item>
+    </ItemWrapper>
   );
 }
 
