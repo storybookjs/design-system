@@ -30,6 +30,10 @@ const Trigger = styled.div`
   color: white;
 `;
 
+const Rect = styled.rect`
+  fill: rgb(255, 255, 0);
+`;
+
 const Tooltip = ({ onHide }) => (
   <TooltipMessage
     title="Lorem ipsum dolor sit"
@@ -52,7 +56,6 @@ storiesOf('Design System|tooltip/WithTooltip', module)
     <ViewPort>
       <BackgroundBox>
         <Spacer />
-        lol
         {storyFn()}
       </BackgroundBox>
     </ViewPort>
@@ -60,6 +63,15 @@ storiesOf('Design System|tooltip/WithTooltip', module)
   .add('simple hover', () => (
     <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />}>
       <Trigger>Hover me!</Trigger>
+    </WithTooltip>
+  ))
+  .add('simple hover, svg', () => (
+    <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />}>
+      <svg aria-label="Empty box to hover for tooltip">
+        <g>
+          <Rect x={0} y={0} width={200} height={200} />
+        </g>
+      </svg>
     </WithTooltip>
   ))
   .add('simple hover, functional', () => (
