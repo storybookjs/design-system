@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography } from '../shared/styles';
@@ -133,6 +133,12 @@ const Item = styled(({ active, activeColor, loading, ...rest }) => <a {...rest} 
   ${linkStyles}
 `;
 
+const buildStyledLinkWrapper = LinkWrapper => styled(
+  ({ active, loading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
+)`
+  ${linkStyles}
+`;
+
 export function ListItem({
   appearance,
   left,
@@ -154,11 +160,7 @@ export function ListItem({
   );
 
   if (LinkWrapper) {
-    const StyledLinkWrapper = styled(({ active, loading, activeColor, ...linkWrapperRest }) => (
-      <LinkWrapper {...linkWrapperRest} />
-    ))`
-      ${linkStyles};
-    `;
+    const StyledLinkWrapper = useMemo(() => buildStyledLinkWrapper(LinkWrapper), [LinkWrapper]);
 
     return (
       <StyledLinkWrapper activeColor={listItemActiveColor} {...rest}>
