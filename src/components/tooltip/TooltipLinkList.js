@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ListItem } from './ListItem';
 
-const List = styled.div`
+const List = styled.ul`
   min-width: 180px;
   border-radius: 4px;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 `;
 
 export function TooltipLinkList({ links, LinkWrapper }) {
