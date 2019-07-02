@@ -81,7 +81,7 @@ function WithTooltip({
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
-        <Container ref={triggerRef} {...getTriggerProps()} {...props} onClick={toggleTooltipShown}>
+        <Container ref={triggerRef} {...getTriggerProps()} {...props}>
           {children}
         </Container>
       )}
