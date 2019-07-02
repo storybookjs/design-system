@@ -1,3 +1,15 @@
+# v0.0.39 (Tue Jul 02 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Tooltip onClick duplication [#52](https://github.com/storybookjs/design-system/pull/52) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.38 (Tue Jul 02 2019)
 
 #### 🐛  Bug Fix
