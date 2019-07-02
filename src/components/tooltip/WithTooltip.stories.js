@@ -66,8 +66,14 @@ storiesOf('Design System|tooltip/WithTooltip', module)
     </WithTooltip>
   ))
   .add('simple hover, as svg', () => (
-    <svg aria-label="Empty box to hover for tooltip">
-      <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />} as="g">
+    <svg>
+      <WithTooltip
+        placement="top"
+        trigger="hover"
+        tooltip={<Tooltip />}
+        as="g"
+        aria-label="Empty box to hover for tooltip"
+      >
         <Circle cx="150" cy="50" r="50" />
       </WithTooltip>
     </svg>
@@ -84,8 +90,14 @@ storiesOf('Design System|tooltip/WithTooltip', module)
   ))
 
   .add('simple click, as svg', () => (
-    <svg aria-label="Empty box to hover for tooltip">
-      <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />} as="g">
+    <svg>
+      <WithTooltip
+        placement="top"
+        trigger="click"
+        tooltip={<Tooltip />}
+        as="g"
+        aria-label="Empty box to click for tooltip"
+      >
         <Circle cx="150" cy="50" r="50" />
       </WithTooltip>
     </svg>
