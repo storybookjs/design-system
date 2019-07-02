@@ -1,3 +1,15 @@
+# v0.0.41 (Tue Jul 02 2019)
+
+#### ⚠️  Pushed to master
+
+- Fix WithTooltip 'as' prop collision w/ styled-components  ([@susskyle@gmail.com](https://github.com/susskyle@gmail.com))
+
+#### Authors: 1
+
+- [@susskyle@gmail.com](https://github.com/susskyle@gmail.com)
+
+---
+
 # v0.0.40 (Tue Jul 02 2019)
 
 #### 🐛  Bug Fix
