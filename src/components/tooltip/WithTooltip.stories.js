@@ -30,6 +30,10 @@ const Trigger = styled.div`
   color: white;
 `;
 
+const Circle = styled.circle`
+  fill: fill: rgb(255, 0, 255);
+`;
+
 const Tooltip = ({ onHide }) => (
   <TooltipMessage
     title="Lorem ipsum dolor sit"
@@ -61,6 +65,19 @@ storiesOf('Design System|tooltip/WithTooltip', module)
       <Trigger>Hover me!</Trigger>
     </WithTooltip>
   ))
+  .add('simple hover, as svg', () => (
+    <svg>
+      <WithTooltip
+        placement="top"
+        trigger="hover"
+        tooltip={<Tooltip />}
+        as="g"
+        aria-label="Empty box to hover for tooltip"
+      >
+        <Circle cx="150" cy="50" r="50" />
+      </WithTooltip>
+    </svg>
+  ))
   .add('simple hover, functional', () => (
     <WithTooltip placement="top" trigger="hover" tooltip={Tooltip}>
       <Trigger>Hover me!</Trigger>
@@ -70,6 +87,20 @@ storiesOf('Design System|tooltip/WithTooltip', module)
     <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />}>
       <Trigger>Click me!</Trigger>
     </WithTooltip>
+  ))
+
+  .add('simple click, as svg', () => (
+    <svg>
+      <WithTooltip
+        placement="top"
+        trigger="click"
+        tooltip={<Tooltip />}
+        as="g"
+        aria-label="Empty box to click for tooltip"
+      >
+        <Circle cx="150" cy="50" r="50" />
+      </WithTooltip>
+    </svg>
   ))
   .add('simple click start open', () => (
     <WithTooltip placement="top" trigger="click" startOpen tooltip={<Tooltip />}>
