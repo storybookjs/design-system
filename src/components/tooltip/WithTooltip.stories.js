@@ -30,8 +30,8 @@ const Trigger = styled.div`
   color: white;
 `;
 
-const Rect = styled.rect`
-  fill: rgb(255, 255, 0);
+const Circle = styled.circle`
+  fill: fill: rgb(255, 0, 255);
 `;
 
 const Tooltip = ({ onHide }) => (
@@ -65,14 +65,12 @@ storiesOf('Design System|tooltip/WithTooltip', module)
       <Trigger>Hover me!</Trigger>
     </WithTooltip>
   ))
-  .add('simple hover, svg', () => (
-    <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />}>
-      <svg aria-label="Empty box to hover for tooltip">
-        <g>
-          <Rect x={0} y={0} width={200} height={200} />
-        </g>
-      </svg>
-    </WithTooltip>
+  .add('simple hover, as svg', () => (
+    <svg aria-label="Empty box to hover for tooltip">
+      <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />} as="g">
+        <Circle cx="150" cy="50" r="50" />
+      </WithTooltip>
+    </svg>
   ))
   .add('simple hover, functional', () => (
     <WithTooltip placement="top" trigger="hover" tooltip={Tooltip}>
@@ -83,6 +81,14 @@ storiesOf('Design System|tooltip/WithTooltip', module)
     <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />}>
       <Trigger>Click me!</Trigger>
     </WithTooltip>
+  ))
+
+  .add('simple click, as svg', () => (
+    <svg aria-label="Empty box to hover for tooltip">
+      <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />} as="g">
+        <Circle cx="150" cy="50" r="50" />
+      </WithTooltip>
+    </svg>
   ))
   .add('simple click start open', () => (
     <WithTooltip placement="top" trigger="click" startOpen tooltip={<Tooltip />}>

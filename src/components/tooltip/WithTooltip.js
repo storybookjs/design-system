@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
 import uuid from 'uuid';
+import keyCode from 'keycode';
 
 import { Tooltip } from './Tooltip';
 
@@ -34,7 +35,56 @@ const isDescendantOfAction = element => {
   return isDescendantOfAction(parentElement);
 };
 
+const AsComponent = React.forwardRef(
+  ({ as, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
+    const Component = as || ButtonContainer;
+    const asProps = {
+      ref,
+      onClick,
+      onMouseEnter,
+      onMouseLeave,
+      onFocus: onMouseEnter,
+      onBlur: onMouseLeave,
+      role: 'button',
+      ...props,
+    };
+
+    const onKeyDown = useMemo(
+      () => event => {
+        if (!onClick) {
+          return;
+        }
+        if (event.keyCode === keyCode('enter') || event.keyCode === keyCode('space')) {
+          event.preventDefault();
+          onClick(event);
+        }
+      },
+      [onClick]
+    );
+
+    // for non button component, we need to simulate the same behavior as a button
+    if (as) {
+      asProps.tabIndex = 0;
+      asProps.onKeyDown = onKeyDown;
+    }
+    return <Component {...asProps} />;
+  }
+);
+AsComponent.propTypes = {
+  as: PropTypes.string,
+  onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+};
+AsComponent.defaultProps = {
+  as: undefined,
+  onClick: undefined,
+  onMouseEnter: undefined,
+  onMouseLeave: undefined,
+};
+
 function WithTooltip({
+  as,
   trigger,
   closeOnClick,
   placement,
@@ -47,22 +97,23 @@ function WithTooltip({
 }) {
   const id = React.useMemo(() => uuid.v4(), []);
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
-  const toggleTooltipShown = () => setTooltipShown(!isTooltipShown);
-  const closeTooltip = () => setTooltipShown(false);
-  const closeTooltipOnClick = event => {
-    if (!closeOnClick || !isDescendantOfAction(event.target)) {
-      return;
-    }
-
-    setTooltipShown(false);
-  };
+  const closeTooltip = useMemo(() => () => setTooltipShown(false), [setTooltipShown]);
+  const closeTooltipOnClick = useMemo(
+    () => event => {
+      if (!closeOnClick || !isDescendantOfAction(event.target)) {
+        return;
+      }
+      setTooltipShown(false);
+    },
+    [closeOnClick, setTooltipShown]
+  );
 
   return (
     <TooltipTrigger
       placement={placement}
       trigger={trigger}
       tooltipShown={isTooltipShown}
-      onVisibilityChange={toggleTooltipShown}
+      onVisibilityChange={setTooltipShown}
       modifiers={modifiers}
       tooltip={({
         getTooltipProps,
@@ -87,23 +138,23 @@ function WithTooltip({
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
-        <ButtonContainer
+        <AsComponent
+          as={as}
           ref={triggerRef}
           {...getTriggerProps()}
           {...props}
-          onClick={toggleTooltipShown}
-          role="button"
           aria-controls={id}
           aria-describedby={isTooltipShown ? id : undefined}
         >
           {children}
-        </ButtonContainer>
+        </AsComponent>
       )}
     </TooltipTrigger>
   );
 }
 
 WithTooltip.propTypes = {
+  as: PropTypes.string,
   trigger: PropTypes.string,
   closeOnClick: PropTypes.bool,
   placement: PropTypes.string,
@@ -115,6 +166,7 @@ WithTooltip.propTypes = {
 };
 
 WithTooltip.defaultProps = {
+  as: undefined,
   trigger: 'hover',
   closeOnClick: false,
   placement: 'top',

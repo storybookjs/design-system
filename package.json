@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "global": "^4.3.2",
+    "keycode": "^2.2.0",
     "polished": "^3.3.0",
     "prismjs": "1.13.0",
     "react-helmet": "^5.2.1",
