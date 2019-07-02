@@ -103,9 +103,9 @@ function WithTooltip({
       if (!closeOnClick || !isDescendantOfAction(event.target)) {
         return;
       }
-      setTooltipShown(false);
+      closeTooltip();
     },
-    [closeOnClick, setTooltipShown]
+    [closeOnClick, closeTooltip]
   );
 
   return (

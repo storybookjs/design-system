@@ -1,3 +1,51 @@
+# v0.0.39 (Tue Jul 02 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Tooltip onClick duplication [#52](https://github.com/storybookjs/design-system/pull/52) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v0.0.38 (Tue Jul 02 2019)
+
+#### 🐛  Bug Fix
+
+- fix: ListItem accessibility [#50](https://github.com/storybookjs/design-system/pull/50) ([@jsomsanith](https://github.com/jsomsanith))
+
+#### Authors: 1
+
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+
+---
+
+# v0.0.37 (Mon Jul 01 2019)
+
+#### 🐛  Bug Fix
+
+- Make button text bolder to increase readability [#49](https://github.com/storybookjs/design-system/pull/49) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
+# v0.0.36 (Mon Jul 01 2019)
+
+#### 🐛  Bug Fix
+
+- Memoize LinkWrapper in tooltip/ListItem for perf [#48](https://github.com/storybookjs/design-system/pull/48) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v0.0.35 (Sat Jun 29 2019)
 
 #### 🐛  Bug Fix
