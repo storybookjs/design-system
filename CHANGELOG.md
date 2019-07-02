@@ -1,3 +1,15 @@
+# v0.0.38 (Tue Jul 02 2019)
+
+#### 🐛  Bug Fix
+
+- fix: ListItem accessibility [#50](https://github.com/storybookjs/design-system/pull/50) ([@jsomsanith](https://github.com/jsomsanith))
+
+#### Authors: 1
+
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+
+---
+
 # v0.0.37 (Mon Jul 01 2019)
 
 #### 🐛  Bug Fix
