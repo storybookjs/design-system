@@ -71,7 +71,7 @@ storiesOf('Design System|tooltip/WithTooltip', module)
         placement="top"
         trigger="hover"
         tooltip={<Tooltip />}
-        as="g"
+        tagName="g"
         aria-label="Empty box to hover for tooltip"
       >
         <Circle cx="150" cy="50" r="50" />
@@ -95,7 +95,7 @@ storiesOf('Design System|tooltip/WithTooltip', module)
         placement="top"
         trigger="click"
         tooltip={<Tooltip />}
-        as="g"
+        tagName="g"
         aria-label="Empty box to click for tooltip"
       >
         <Circle cx="150" cy="50" r="50" />

@@ -36,8 +36,8 @@ const isDescendantOfAction = element => {
 };
 
 const AsComponent = React.forwardRef(
-  ({ as, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
-    const Component = as || ButtonContainer;
+  ({ tagName, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
+    const Component = tagName || ButtonContainer;
     const asProps = {
       ref,
       onClick,
@@ -63,28 +63,30 @@ const AsComponent = React.forwardRef(
     );
 
     // for non button component, we need to simulate the same behavior as a button
-    if (as) {
+    if (tagName) {
       asProps.tabIndex = 0;
       asProps.onKeyDown = onKeyDown;
     }
     return <Component {...asProps} />;
   }
 );
+
 AsComponent.propTypes = {
-  as: PropTypes.string,
+  tagName: PropTypes.string,
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
 };
+
 AsComponent.defaultProps = {
-  as: undefined,
+  tagName: undefined,
   onClick: undefined,
   onMouseEnter: undefined,
   onMouseLeave: undefined,
 };
 
 function WithTooltip({
-  as,
+  tagName,
   trigger,
   closeOnClick,
   placement,
@@ -139,7 +141,7 @@ function WithTooltip({
     >
       {({ getTriggerProps, triggerRef }) => (
         <AsComponent
-          as={as}
+          tagName={tagName}
           ref={triggerRef}
           {...getTriggerProps()}
           {...props}
@@ -154,7 +156,7 @@ function WithTooltip({
 }
 
 WithTooltip.propTypes = {
-  as: PropTypes.string,
+  tagName: PropTypes.string,
   trigger: PropTypes.string,
   closeOnClick: PropTypes.bool,
   placement: PropTypes.string,
@@ -166,7 +168,7 @@ WithTooltip.propTypes = {
 };
 
 WithTooltip.defaultProps = {
-  as: undefined,
+  tagName: undefined,
   trigger: 'hover',
   closeOnClick: false,
   placement: 'top',
