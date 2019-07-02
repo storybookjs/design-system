@@ -1,3 +1,17 @@
+# v0.0.40 (Tue Jul 02 2019)
+
+#### 🐛  Bug Fix
+
+- fix: withTooltip accessibility [#47](https://github.com/storybookjs/design-system/pull/47) ([@jsomsanith](https://github.com/jsomsanith))
+- Change Input appearance="pill" focus color to blue [#53](https://github.com/storybookjs/design-system/pull/53) ([@domyen](https://github.com/domyen))
+
+#### Authors: 2
+
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v0.0.39 (Tue Jul 02 2019)
 
 #### 🐛  Bug Fix
