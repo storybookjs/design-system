@@ -1,0 +1,196 @@
+import { Story, Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="forms/Checkbox" />
+
+# Checkbox
+
+<Story id="design-system-forms-checkbox--all-checkboxes" />
+
+## Description
+
+Form checkbox component.  
+(This is an example to show the template. It can contain silly instructions :D )
+
+## Component API
+
+(TODO: how to generate that automatically like the default generated template)
+
+<table class="css-1gqcsgy">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="css-in3yi3">appearance</span>
+      </td>
+      <td>
+        <div />
+        <div class="css-1v653p">
+          <span>'primary' | 'secondary'</span>
+        </div>
+      </td>
+      <td>
+        <span>"'primary'"</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="css-in3yi3">hideLabel</span>
+      </td>
+      <td>
+        <div />
+        <div class="css-1v653p">
+          <span>bool</span>
+        </div>
+      </td>
+      <td>
+        <span>"false"</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="css-in3yi3">error</span>
+      </td>
+      <td>
+        <div />
+        <div class="css-1v653p">
+          <span>string</span>
+        </div>
+      </td>
+      <td>
+        <span>"null"</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="css-in3yi3">id</span>
+        <span title="Required" class="css-8t4o2x">
+          *
+        </span>
+      </td>
+      <td>
+        <div />
+        <div class="css-1v653p">
+          <span>string</span>
+        </div>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="css-in3yi3">label</span>
+        <span title="Required" class="css-8t4o2x">
+          *
+        </span>
+      </td>
+      <td>
+        <div />
+        <div class="css-1v653p">
+          <span>string</span>
+        </div>
+      </td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+## States
+
+### Unchecked
+
+<Story id="design-system-forms-checkbox--unchecked" />
+
+### Checked
+
+<Story id="design-system-forms-checkbox--checked" />
+
+### Label
+
+<Story id="design-system-forms-checkbox--with-error" />
+
+### Error
+
+<Story id="design-system-forms-checkbox--with-label" />
+
+### Secondary appearance
+
+There is a second level of checkbox, rendered via `appearance="secondary"` prop.
+
+<Story id="design-system-forms-checkbox--secondary" />
+
+## Accessibility
+
+### Form
+
+Checkboxes must be used within a form element.
+
+```javascript
+<form>
+  <Checkbox id="Primary-checked" label="Accept conditions" onChange={onChange} />
+</form>
+```
+
+### Label
+
+A label must be associated to the Checkbox.
+
+If you don't want to display it, use the `hideLabel` prop, that will hide it properly, making it available for screen readers.  
+Ensure that without displayed label, the context allows the user to understand easily the purpose of this Checkbox.
+
+```diff
+<form>
+  <Checkbox
+    id="Primary-checked"
+    label="Accept conditions"
+    onChange={onChange}
++   hideLabel
+  />
+</form>
+```
+
+## DO / Don't
+
+### When to use Checkbox, when to use Radio
+
+Don't use this component to give a choice between multiple elements, handling a unique checked state programmatically. Use Radio instead
+
+```javascript
+// DON'T 🤢
+<form>
+  <Checkbox id="Mice" label="Mice" onChange={uncheckedOthers} />
+  <Checkbox id="Dogs" label="Dogs" onChange={uncheckedOthers} checked />
+  <Checkbox id="Cats" label="Cats" onChange={uncheckedOthers} />
+</form>
+
+// DO 😍
+<form>
+  <fieldset>
+    <Radio id="Mice" label="Mice" value="mice" name="animal" />
+    <Radio id="Dogs" label="Dogs" value="dogs" name="animal" checked />
+    <Radio id="Cats" label="Cats" value="cats" name="animal" />
+  </fieldset>
+</form>
+```
+
+### When to use Primary and Secondary appearance
+
+Use secondary appearance only for non important stuff
+
+```javascript
+// DON'T 🤢
+<form>
+  <legend>My important stuff</legend>
+  <Checkbox id="accept" label="Accept condition" appearance="secondary" />
+</form>
+
+// DO 😍
+<form>
+  <legend>My important stuff</legend>
+  <Checkbox id="accept" label="Accept condition" />
+</form>
+```
