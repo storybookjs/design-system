@@ -91,5 +91,12 @@ const SpinnerWrapper = styled.div`
 `;
 
 export function Spinner({ ...props }) {
-  return <SpinnerWrapper {...props} />;
+  return (
+    <SpinnerWrapper
+      aria-label="Content is loading ..."
+      aria-live="polite"
+      role="status"
+      {...props}
+    />
+  );
 }
