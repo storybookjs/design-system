@@ -1,3 +1,17 @@
+# v0.0.42 (Thu Jul 11 2019)
+
+#### 🐛  Bug Fix
+
+- Input: Change the "code" style focus color to blue [#56](https://github.com/storybookjs/design-system/pull/56) ([@domyen](https://github.com/domyen))
+- fix: Spinner accessibility [#55](https://github.com/storybookjs/design-system/pull/55) ([@jsomsanith](https://github.com/jsomsanith))
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Jimmy Somsanith ([@jsomsanith](https://github.com/jsomsanith))
+
+---
+
 # v0.0.41 (Tue Jul 02 2019)
 
 #### ⚠️  Pushed to master
