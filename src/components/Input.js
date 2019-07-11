@@ -109,6 +109,8 @@ const InputWrapper = styled.div`
       border-radius: 2px;
       background: rgba(0,0,0,.05);
       padding: 3px 6px;
+
+      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
     `}
   }
 
