@@ -1,6 +1,6 @@
-# Storybook design system
+# Storybook Design System
 
-> Storybook design system
+<img src="src/design-system.png" width="100%" />
 
 [![NPM](https://img.shields.io/npm/v/@storybook/design-system.svg)](https://www.npmjs.com/package/@storybook/design-system) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
