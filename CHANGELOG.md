@@ -1,3 +1,17 @@
+# v0.0.43 (Tue Jul 23 2019)
+
+#### ⚠️  Pushed to master
+
+- Upgrade SB Docs  ([@michael@lab80.co](https://github.com/michael@lab80.co))
+- Add design system image and show in readme  ([@domyen](https://github.com/domyen))
+
+#### Authors: 2
+
+- [@michael@lab80.co](https://github.com/michael@lab80.co)
+- [@domyen](https://github.com/domyen)
+
+---
+
 # v0.0.42 (Thu Jul 11 2019)
 
 #### 🐛  Bug Fix
