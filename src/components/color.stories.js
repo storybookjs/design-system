@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { storiesOf } from '@storybook/react';
 
 import { color, typography } from './shared/styles';
 
@@ -65,7 +64,11 @@ const monochromeColors = [
   color.lightest,
 ];
 
-storiesOf('Design System|color', module).add('all', () => (
+export default {
+  title: 'Design System|color',
+};
+
+export const all = () => (
   <Page>
     <ColorWrapper>
       <Swatches>
@@ -91,4 +94,4 @@ storiesOf('Design System|color', module).add('all', () => (
       </Swatches>
     </ColorWrapper>
   </Page>
-));
+);

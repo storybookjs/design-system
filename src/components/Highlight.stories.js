@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { Highlight } from './Highlight';
 
 const bash = `
@@ -58,14 +57,21 @@ const json = `
 </code></pre>
 `;
 
-storiesOf('Design System|Highlight', module)
-  .addParameters({ component: Highlight })
-  .add('all languages', () => (
-    <div>
-      <Highlight>{bash}</Highlight>
-      <Highlight>{javascript}</Highlight>
-      <Highlight>{typescript}</Highlight>
-      <Highlight>{css}</Highlight>
-      <Highlight>{json}</Highlight>
-    </div>
-  ));
+export default {
+  title: 'Design System|Highlight',
+  component: Highlight,
+};
+
+export const allLanguages = () => (
+  <div>
+    <Highlight>{bash}</Highlight>
+    <Highlight>{javascript}</Highlight>
+    <Highlight>{typescript}</Highlight>
+    <Highlight>{css}</Highlight>
+    <Highlight>{json}</Highlight>
+  </div>
+);
+
+allLanguages.story = {
+  name: 'all languages',
+};

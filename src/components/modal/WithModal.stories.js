@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { Button } from '../Button';
 
@@ -27,32 +26,50 @@ const ModalContents = ({ onClose }) => (
   </div>
 );
 
-storiesOf('Design System|modal/WithModal', module)
-  .addParameters({ component: WithModal })
-  .addDecorator(storyFn => (
-    <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
-      This is an example background {storyFn()}
-    </div>
-  ))
-  .add('starts closed', () => (
-    <WithModal modal={ModalContents}>
-      {({ onOpen }) => (
-        <div>
-          <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
-            Open Modal
-          </Button>
-        </div>
-      )}
-    </WithModal>
-  ))
-  .add('starts open', () => (
-    <WithModal startOpen modal={ModalContents}>
-      {({ onOpen }) => (
-        <div>
-          <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
-            Open Modal
-          </Button>
-        </div>
-      )}
-    </WithModal>
-  ));
+export default {
+  title: 'Design System|modal/WithModal',
+
+  decorators: [
+    storyFn => (
+      <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
+        This is an example background {storyFn()}
+      </div>
+    ),
+  ],
+
+  parameters: {
+    component: WithModal,
+  },
+};
+
+export const startsClosed = () => (
+  <WithModal modal={ModalContents}>
+    {({ onOpen }) => (
+      <div>
+        <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
+          Open Modal
+        </Button>
+      </div>
+    )}
+  </WithModal>
+);
+
+startsClosed.story = {
+  name: 'starts closed',
+};
+
+export const startsOpen = () => (
+  <WithModal startOpen modal={ModalContents}>
+    {({ onOpen }) => (
+      <div>
+        <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
+          Open Modal
+        </Button>
+      </div>
+    )}
+  </WithModal>
+);
+
+startsOpen.story = {
+  name: 'starts open',
+};

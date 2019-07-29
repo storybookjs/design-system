@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { storiesOf } from '@storybook/react';
 
 import { typography } from './shared/styles';
 
@@ -71,7 +70,11 @@ const Page = styled.div`
   padding: 3rem;
 `;
 
-storiesOf('Design System|typography', module).add('all', () => (
+export default {
+  title: 'Design System|typography',
+};
+
+export const all = () => (
   <Page>
     <Info>
       <div>
@@ -100,4 +103,4 @@ storiesOf('Design System|typography', module).add('all', () => (
       </TypeWrapper>
     </Wrapper>
   </Page>
-));
+);

@@ -1,7 +1,9 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { Subheading } from './Subheading';
 
-storiesOf('Design System|Subheading', module)
-  .addParameters({ component: Subheading })
-  .add('subheading', () => <Subheading>Subheading</Subheading>);
+export default {
+  title: 'Design System|Subheading',
+  component: Subheading,
+};
+
+export const subheading = () => <Subheading>Subheading</Subheading>;
