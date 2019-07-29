@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import styled, { css } from 'styled-components';
-import { storiesOf } from '@storybook/react';
 
 import { Icon } from './Icon';
 import { icons } from './shared/icons';
@@ -49,37 +48,47 @@ const List = styled.ul`
   list-style: none;
 `;
 
-storiesOf('Design System|Icon', module)
-  .addParameters({ component: Icon })
-  .add('labels', () => (
-    <Fragment>
-      There are {Object.keys(icons).length} icons
-      <List>
-        {Object.keys(icons).map(key => (
-          <Item key={key}>
-            <Icon icon={key} aria-hidden />
-            <Meta>{key}</Meta>
-          </Item>
-        ))}
-      </List>
-    </Fragment>
-  ))
-  .add('no labels', () => (
+export default {
+  title: 'Design System|Icon',
+  component: Icon,
+};
+
+export const labels = () => (
+  <Fragment>
+    There are {Object.keys(icons).length} icons
     <List>
       {Object.keys(icons).map(key => (
-        <Item minimal key={key}>
-          <Icon icon={key} aria-label={key} />
+        <Item key={key}>
+          <Icon icon={key} aria-hidden />
+          <Meta>{key}</Meta>
         </Item>
       ))}
     </List>
-  ))
-  .add('inline', () => (
-    <Fragment>
-      this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
-    </Fragment>
-  ))
-  .add('block', () => (
-    <Fragment>
-      this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
-    </Fragment>
-  ));
+  </Fragment>
+);
+
+export const noLabels = () => (
+  <List>
+    {Object.keys(icons).map(key => (
+      <Item minimal key={key}>
+        <Icon icon={key} aria-label={key} />
+      </Item>
+    ))}
+  </List>
+);
+
+noLabels.story = {
+  name: 'no labels',
+};
+
+export const inline = () => (
+  <Fragment>
+    this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
+  </Fragment>
+);
+
+export const block = () => (
+  <Fragment>
+    this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
+  </Fragment>
+);

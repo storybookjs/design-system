@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 
 import { TooltipMessage } from './TooltipMessage';
@@ -50,70 +49,117 @@ Tooltip.defaultProps = {
   onHide: null,
 };
 
-storiesOf('Design System|tooltip/WithTooltip', module)
-  .addParameters({ component: WithTooltip })
-  .addDecorator(storyFn => (
-    <ViewPort>
-      <BackgroundBox>
-        <Spacer />
-        {storyFn()}
-      </BackgroundBox>
-    </ViewPort>
-  ))
-  .add('simple hover', () => (
-    <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />}>
-      <Trigger>Hover me!</Trigger>
-    </WithTooltip>
-  ))
-  .add('simple hover, as svg', () => (
-    <svg>
-      <WithTooltip
-        placement="top"
-        trigger="hover"
-        tooltip={<Tooltip />}
-        tagName="g"
-        aria-label="Empty box to hover for tooltip"
-      >
-        <Circle cx="150" cy="50" r="50" />
-      </WithTooltip>
-    </svg>
-  ))
-  .add('simple hover, functional', () => (
-    <WithTooltip placement="top" trigger="hover" tooltip={Tooltip}>
-      <Trigger>Hover me!</Trigger>
-    </WithTooltip>
-  ))
-  .add('simple click', () => (
-    <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />}>
-      <Trigger>Click me!</Trigger>
-    </WithTooltip>
-  ))
+export default {
+  title: 'Design System|tooltip/WithTooltip',
 
-  .add('simple click, as svg', () => (
-    <svg>
-      <WithTooltip
-        placement="top"
-        trigger="click"
-        tooltip={<Tooltip />}
-        tagName="g"
-        aria-label="Empty box to click for tooltip"
-      >
-        <Circle cx="150" cy="50" r="50" />
-      </WithTooltip>
-    </svg>
-  ))
-  .add('simple click start open', () => (
-    <WithTooltip placement="top" trigger="click" startOpen tooltip={<Tooltip />}>
-      <Trigger>Click me!</Trigger>
+  decorators: [
+    storyFn => (
+      <ViewPort>
+        <BackgroundBox>
+          <Spacer />
+          {storyFn()}
+        </BackgroundBox>
+      </ViewPort>
+    ),
+  ],
+
+  parameters: {
+    component: WithTooltip,
+  },
+};
+
+export const simpleHover = () => (
+  <WithTooltip placement="top" trigger="hover" tooltip={<Tooltip />}>
+    <Trigger>Hover me!</Trigger>
+  </WithTooltip>
+);
+
+simpleHover.story = {
+  name: 'simple hover',
+};
+
+export const simpleHoverAsSvg = () => (
+  <svg>
+    <WithTooltip
+      placement="top"
+      trigger="hover"
+      tooltip={<Tooltip />}
+      tagName="g"
+      aria-label="Empty box to hover for tooltip"
+    >
+      <Circle cx="150" cy="50" r="50" />
     </WithTooltip>
-  ))
-  .add('simple click closeOnClick', () => (
-    <WithTooltip placement="top" trigger="click" closeOnClick tooltip={<Tooltip />}>
-      <Trigger>Click me!</Trigger>
+  </svg>
+);
+
+simpleHoverAsSvg.story = {
+  name: 'simple hover, as svg',
+};
+
+export const simpleHoverFunctional = () => (
+  <WithTooltip placement="top" trigger="hover" tooltip={Tooltip}>
+    <Trigger>Hover me!</Trigger>
+  </WithTooltip>
+);
+
+simpleHoverFunctional.story = {
+  name: 'simple hover, functional',
+};
+
+export const simpleClick = () => (
+  <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />}>
+    <Trigger>Click me!</Trigger>
+  </WithTooltip>
+);
+
+simpleClick.story = {
+  name: 'simple click',
+};
+
+export const simpleClickAsSvg = () => (
+  <svg>
+    <WithTooltip
+      placement="top"
+      trigger="click"
+      tooltip={<Tooltip />}
+      tagName="g"
+      aria-label="Empty box to click for tooltip"
+    >
+      <Circle cx="150" cy="50" r="50" />
     </WithTooltip>
-  ))
-  .add('no chrome', () => (
-    <WithTooltip placement="top" trigger="click" hasChrome={false} tooltip={<Tooltip />}>
-      <Trigger>Click me!</Trigger>
-    </WithTooltip>
-  ));
+  </svg>
+);
+
+simpleClickAsSvg.story = {
+  name: 'simple click, as svg',
+};
+
+export const simpleClickStartOpen = () => (
+  <WithTooltip placement="top" trigger="click" startOpen tooltip={<Tooltip />}>
+    <Trigger>Click me!</Trigger>
+  </WithTooltip>
+);
+
+simpleClickStartOpen.story = {
+  name: 'simple click start open',
+};
+
+export const simpleClickCloseOnClick = () => (
+  <WithTooltip placement="top" trigger="click" closeOnClick tooltip={<Tooltip />}>
+    <Trigger>Click me!</Trigger>
+  </WithTooltip>
+);
+
+simpleClickCloseOnClick.story = {
+  name: 'simple click closeOnClick',
+};
+
+export const noChrome = () => (
+  <WithTooltip placement="top" trigger="click" hasChrome={false} tooltip={<Tooltip />}>
+    <Trigger>Click me!</Trigger>
+  </WithTooltip>
+);
+
+noChrome.story = {
+  name: 'no chrome',
+};
