@@ -1,17 +1,11 @@
 import React from 'react';
-import { load, addDecorator, addParameters } from '@storybook/react';
-import { getPropDefs } from '@storybook/addon-docs/react';
-import { DocsPage } from '@storybook/addon-docs/blocks';
+import { configure, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import 'storybook-chromatic';
 
-addParameters({
-  docs: DocsPage,
-});
+import { GlobalStyle } from '../src/components/shared/global';
 
 addDecorator(withA11y);
-
-import { GlobalStyle } from '../src/components/shared/global';
 addDecorator(story => (
   <>
     <GlobalStyle />
@@ -20,5 +14,4 @@ addDecorator(story => (
 ));
 
 // automatically import all files ending in *.stories.js
-load(require.context('../src', true, /\.stories\.js$/), module);
-load(require.context('../src', true, /\.stories\.mdx$/), module);
+configure(require.context('../src', true, /\.stories\.(js|mdx)$/), module);
