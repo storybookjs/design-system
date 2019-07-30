@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { AvatarList } from './AvatarList';
 
@@ -26,11 +25,25 @@ export const users = [
   },
 ];
 
-storiesOf('Design System|AvatarList', module)
-  .addParameters({ component: AvatarList })
-  .add('short', () => <AvatarList users={users.slice(0, 2)} />)
-  .add('ellipsized', () => <AvatarList users={users} />)
-  .add('big userCount', () => <AvatarList users={users} userCount={100} />)
-  .add('small size', () => <AvatarList users={users} userCount={100} size="small" />)
-  .add('loading', () => <AvatarList loading />)
-  .add('empty', () => <AvatarList users={[]} />);
+export default {
+  title: 'Design System|AvatarList',
+  component: AvatarList,
+  excludeStories: ['users'],
+};
+
+export const short = () => <AvatarList users={users.slice(0, 2)} />;
+export const ellipsized = () => <AvatarList users={users} />;
+export const bigUserCount = () => <AvatarList users={users} userCount={100} />;
+
+bigUserCount.story = {
+  name: 'big userCount',
+};
+
+export const smallSize = () => <AvatarList users={users} userCount={100} size="small" />;
+
+smallSize.story = {
+  name: 'small size',
+};
+
+export const loading = () => <AvatarList loading />;
+export const empty = () => <AvatarList users={[]} />;
