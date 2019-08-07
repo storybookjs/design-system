@@ -113,7 +113,7 @@ export default {
     /*
      * Snapshot test for bundle size
      */
-    sizeSnapshot({ matchSnapshot: true }),
+    sizeSnapshot(),
 
     // Production-only uglification and minification
     ...insertIf(

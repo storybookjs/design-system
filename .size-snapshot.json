@@ -1,13 +1,13 @@
 {
   "dist/index.development.cjs.js": {
-    "bundled": 523894,
-    "minified": 351752,
-    "gzipped": 102397
+    "bundled": 523871,
+    "minified": 351732,
+    "gzipped": 102390
   },
   "dist/index.development.esm.js": {
-    "bundled": 520533,
-    "minified": 348495,
-    "gzipped": 102181,
+    "bundled": 520526,
+    "minified": 348489,
+    "gzipped": 102176,
     "treeshaked": {
       "rollup": {
         "code": 317767,
@@ -19,14 +19,14 @@
     }
   },
   "dist/index.production.cjs.js": {
-    "bundled": 509755,
-    "minified": 341872,
-    "gzipped": 99867
+    "bundled": 509732,
+    "minified": 341852,
+    "gzipped": 99860
   },
   "dist/index.production.esm.js": {
-    "bundled": 506394,
-    "minified": 338615,
-    "gzipped": 99662,
+    "bundled": 506387,
+    "minified": 338609,
+    "gzipped": 99658,
     "treeshaked": {
       "rollup": {
         "code": 308050,

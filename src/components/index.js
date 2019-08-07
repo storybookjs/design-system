@@ -5,28 +5,28 @@ import * as icons from './shared/icons';
 
 export { styles, global, animation, icons };
 
-export * from './Avatar';
-export * from './AvatarList';
-export * from './Badge';
-export * from './Button';
-export * from './Highlight';
-export * from './Icon';
-export * from './Link';
-export * from './Subheading';
-export * from './ProgressDots';
-export * from './Spinner';
+export { Avatar } from './Avatar';
+export { AvatarList } from './AvatarList';
+export { Badge } from './Badge';
+export { Button } from './Button';
+export { Highlight } from './Highlight';
+export { Icon } from './Icon';
+export { Link } from './Link';
+export { Subheading } from './Subheading';
+export { ProgressDots } from './ProgressDots';
+export { Spinner } from './Spinner';
 
-export * from './Input';
-export * from './Textarea';
-export * from './Checkbox';
-export * from './Radio';
-export * from './Select';
+export { Input } from './Input';
+export { Textarea } from './Textarea';
+export { Checkbox } from './Checkbox';
+export { Radio } from './Radio';
+export { Select } from './Select';
 
-export * from './tooltip/ListItem';
-export * from './tooltip/TooltipMessage';
-export * from './tooltip/TooltipNote';
-export * from './tooltip/TooltipLinkList';
+export { ListItem } from './tooltip/ListItem';
+export { TooltipMessage } from './tooltip/TooltipMessage';
+export { TooltipNote } from './tooltip/TooltipNote';
+export { TooltipLinkList } from './tooltip/TooltipLinkList';
 export { default as WithTooltip } from './tooltip/WithTooltip';
 
-export * from './modal/Modal';
+export { Modal } from './modal/Modal';
 export { default as WithModal } from './modal/WithModal';
