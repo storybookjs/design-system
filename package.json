@@ -16,7 +16,7 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "babel src -d dist --ignore **/*.stories.js",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
     "chromatic": "CHROMATIC_APP_CODE=9ofhn0iql7n chromatic test",
