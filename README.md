@@ -24,7 +24,8 @@ Maintaining the system
 
 - 📦 [NPM](https://www.npmjs.com/) for [packaging and distribution](https://blog.hichroma.com/how-packaging-makes-it-dead-simple-to-share-ui-components-29912593539d)
 - ✅ [Chromatic](https://www.chromaticqa.com/) to prevent UI bugs in components (by Storybook maintainers)
-- 🚥 [CircleCI](https://circleci.com/) Continuous integration
+- 🗞️ [Rollup](https://rollupjs.org/) for bundling our library
+- 🚥 [CircleCI](https://circleci.com/) for continuous integration
 
 ## Why
 
