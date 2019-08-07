@@ -32,6 +32,6 @@ module.exports = {
         arrow: false,
       },
     ],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js', './rollup.config.js'] }],
   },
 };
