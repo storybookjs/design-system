@@ -14,16 +14,20 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "main": "dist/index.production.cjs.js",
+  "module": "dist/index.production.esm.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "yarn build:dev && yarn build:prod",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
+    "build:dev": "yarn rollup -c --environment BUILD:development",
+    "build:prod": "yarn rollup -c --environment BUILD:production",
     "chromatic": "CHROMATIC_APP_CODE=9ofhn0iql7n chromatic test",
     "lint": "eslint .",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
-    "release": "npm run build && ./scripts/release.sh",
+    "prepublish": "yarn build:dev && yarn test && yarn build:prod",
+    "release": "yarn prepublish && ./scripts/release.sh",
     "storybook": "start-storybook -p 6006",
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom"
