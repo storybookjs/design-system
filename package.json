@@ -28,9 +28,7 @@
     "lint:package": "sort-package-json",
     "prepublish": "yarn build:dev && yarn test && yarn build:prod",
     "release": "yarn prepublish && ./scripts/release.sh",
-    "storybook": "start-storybook -p 6006",
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom"
+    "storybook": "start-storybook -p 6006"
   },
   "husky": {
     "hooks": {
