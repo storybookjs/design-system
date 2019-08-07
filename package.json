@@ -28,7 +28,8 @@
     "lint:package": "sort-package-json",
     "prepublish": "yarn build:dev && yarn test && yarn build:prod",
     "release": "yarn prepublish && ./scripts/release.sh",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "test": "echo 'No tests exist yet'"
   },
   "husky": {
     "hooks": {
