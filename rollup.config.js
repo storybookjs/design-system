@@ -76,10 +76,7 @@ export default {
      * Convert CJS module dependencies to ES6 modules.
      */
     commonjs({
-      // non-CommonJS modules will be ignored, but you can also
-      include: 'node_modules/**',
-      // exclude: [ 'node_modules/foo/**', 'node_modules/bar/**' ],  // Default: undefined
-      // these values can also be regular expressions
+      include: '**/node_modules/**',
       extensions,
     }),
 

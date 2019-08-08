@@ -84,6 +84,7 @@
     "auto": "^4.14.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.0",
+    "babel-plugin-prismjs": "^1.1.1",
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-styled-components": "^1.9.4",
     "cross-env": "^5.1.4",

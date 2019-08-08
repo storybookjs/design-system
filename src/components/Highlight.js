@@ -3,11 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Prism from 'prismjs';
-import loadLanguages from 'prismjs/components/index';
 import PropTypes from 'prop-types';
 import { color, typography } from './shared/styles';
-
-loadLanguages(['bash', 'typescript', 'json']);
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
 // cannot be imported easily and any app which pulls in the design system will

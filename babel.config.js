@@ -3,7 +3,15 @@ module.exports = api => {
 
   return {
     presets: ['@babel/env', '@babel/react'],
-    plugins: ['@babel/plugin-proposal-object-rest-spread'],
+    plugins: [
+      '@babel/plugin-proposal-object-rest-spread',
+      [
+        'prismjs',
+        {
+          languages: ['bash', 'typescript', 'json'],
+        },
+      ],
+    ],
     env: {
       test: {
         plugins: ['require-context-hook'],
