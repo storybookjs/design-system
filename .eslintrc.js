@@ -6,7 +6,7 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier', 'prettier/react'],
-  plugins: ['prettier', 'import', 'jest', 'jsx-a11y', 'react', 'json', 'html'],
+  plugins: ['prettier', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks', 'json', 'html'],
   rules: {
     'prettier/prettier': [
       'warn',
@@ -33,5 +33,7 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js'] }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
 };
