@@ -2,10 +2,63 @@ import designSystem from './design-system.png';
 
 <Meta title="Design System|Intro" />
 
-<center>
-  <img src={designSystem} width="100%" />
-</center>
+<left>
+  <img src={designSystem} height="200px" />
+</left>
 
-# Storybook Design System
+# Get started
 
-Storybok Design System is a reusable component library that helps contributors build UIs faster. The goal is to make working on Storybook’s UI more productive and satisfying.
+Storybook Design System is a reusable component library that helps Storybook contributors build UIs faster. The goal is to make building durable UIs more productive and satisfying.
+
+## Install
+SDS components are written in React, and its stories are written in [Component Story Format](https://medium.com/storybookjs/component-story-format-66f4c32366df). It requires Storybook version 5.2-beta and up.
+
+Add SDS to your project. 
+
+`npm install --save @storybook/design-system`
+
+
+### **Use**
+
+Import components you want into your UI
+
+`import { Button, Badge } from ‘@storybook/design-system’;`
+
+and use them like so
+
+```
+  const example = () => (
+    <div>
+      <Button appearance="primary" onClick={() => 0}>Do something</Button>
+      <Badge onClick={this.clear}>Cool</Badge>
+    </div>
+  )
+```
+
+### **Browse SDS components in your own Storybook**
+Once you add the package, update your .storybook/config.js to import all files ending in .stories.js.
+
+```
+  import { configure } from '@storybook/react';
+  configure(require.context('../src', true, /.stories.js$/), module);
+```
+
+### **Run and develop SDS locally**
+Clone the [SDS GitHub project](https://github.com/storybookjs/design-system) then start Storybook.
+
+`yarn && yarn run storybook`
+
+
+
+## Used by
+
+- [Storybook homepage](https://storybook.js.org/)
+- [LearnStorybook.com](https://www.learnstorybook.com/)
+- [ChromaticQA.com](https://www.chromaticqa.com/)
+
+Note: this package is not used in Storybook's UI, but the visual design is identical.
+
+### **Resources**
+
+- [Introducing Storybook Design System](https://medium.com/storybookjs/introducing-storybook-design-system-23fd9b1ac3c0)
+- [GitHub repository](https://github.com/storybookjs/design-system)
