@@ -1,3 +1,26 @@
+# v0.0.44 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- fix regression and clean up other icons  ([@domyen](https://github.com/domyen))
+- Clean up other icons while I'm here  ([@domyen](https://github.com/domyen))
+- Merge branch 'master' into add-icons  ([@domyen](https://github.com/domyen))
+- Remove noise from other icons  ([@domyen](https://github.com/domyen))
+- Add unfold and sharealt icons  ([@domyen](https://github.com/domyen))
+- Revert "Ignore stories in compiled output." [#68](https://github.com/storybookjs/design-system/pull/68) ([@domyen](https://github.com/domyen))
+- Remove unused dependencies [#65](https://github.com/storybookjs/design-system/pull/65) ([@kylemh](https://github.com/kylemh))
+- Ignore stories in compiled output. [#62](https://github.com/storybookjs/design-system/pull/62) (dom@hichroma.com)
+- Zero-config docs [#57](https://github.com/storybookjs/design-system/pull/57) ([@shilman](https://github.com/shilman))
+
+#### Authors: 4
+
+- [@domyen](https://github.com/domyen)
+- Kyle Holmberg ([@kylemh](https://github.com/kylemh))
+- dom@hichroma.com
+- Michael Shilman ([@shilman](https://github.com/shilman))
+
+---
+
 # v0.0.43 (Tue Jul 23 2019)
 
 #### ⚠️  Pushed to master
