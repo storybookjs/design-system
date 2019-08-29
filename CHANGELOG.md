@@ -1,3 +1,15 @@
+# v0.0.45 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- Add icons for unfold and alternative share [#72](https://github.com/storybookjs/design-system/pull/72) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v0.0.43 (Tue Jul 23 2019)
 
 #### ⚠️  Pushed to master
