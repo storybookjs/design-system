@@ -24,9 +24,7 @@
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
     "release": "npm run build && ./scripts/release.sh",
-    "storybook": "start-storybook -p 6006",
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom"
+    "storybook": "start-storybook -p 6006"
   },
   "husky": {
     "hooks": {
