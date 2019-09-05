@@ -20,46 +20,54 @@ export default {
 };
 
 export const all = () => (
-  <div>
-    <Link href="https://learnstorybook.com">Default</Link>
-    <br />
+  <>
+    <Link href="https://learnstorybook.com">default</Link>{' '}
     <Link secondary href="https://learnstorybook.com">
-      Secondary
-    </Link>
-    <br />
+      secondary
+    </Link>{' '}
     <Link tertiary href="https://learnstorybook.com">
       tertiary
-    </Link>
-    <br />
+    </Link>{' '}
     <Link nochrome href="https://learnstorybook.com">
       nochrome
-    </Link>
-    <br />
-    <Link href="https://learnstorybook.com">
-      <Icon icon="discord" aria-hidden />
-      With icon in front
-    </Link>
-    <br />
-    <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
-      <Icon icon="sidebar" aria-hidden />
-    </Link>
-    <br />
-    <Link containsIcon withArrow href="https://learnstorybook.com">
-      With arrow behind
-    </Link>
-    <br />
+    </Link>{' '}
     <span style={{ background: '#333' }}>
       <Link inverse href="https://learnstorybook.com">
-        Inverted colors
+        inverse
       </Link>
     </span>
-    <br />
+  </>
+);
+
+export const withArrow = () => (
+  <Link containsIcon withArrow href="https://learnstorybook.com">
+    withArrow shows an arrow behind the link
+  </Link>
+);
+
+export const containsIcon = () => (
+  <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
+    <Icon icon="sidebar" aria-hidden />
+  </Link>
+);
+
+export const icon = () => (
+  <Link href="https://learnstorybook.com">
+    <Icon icon="discord" aria-hidden />
+    Link with an icon in front
+  </Link>
+);
+
+export const isButton = () => (
+  /* eslint-disable-next-line */
+  <Link isButton onClick={onLinkClick}>
+    is actually a button
+  </Link>
+);
+
+export const hasLinkWrapper = () => (
+  <>
     {/* gatsby and styled-components don't work nicely together  */}
-    {/* eslint-disable-next-line */}
-    <Link isButton onClick={onLinkClick}>
-      is actually a button
-    </Link>
-    <br />
     <Link tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
       has a LinkWrapper like GatsbyLink or NextLink
     </Link>
@@ -67,5 +75,5 @@ export const all = () => (
     <CustomLink tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
       has a LinkWrapper like GatsbyLink or NextLink with custom styling
     </CustomLink>
-  </div>
+  </>
 );
