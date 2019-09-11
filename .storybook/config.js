@@ -1,7 +1,7 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
-import { fontHref } from '../src/components/shared/global';
+import { fontUrl } from '../src/components/shared/global';
 import 'storybook-chromatic';
 
 import { GlobalStyle } from '../src/components/shared/global';
@@ -30,7 +30,7 @@ if (!document.getElementById(fontLinkId)) {
   const fontLink = document.createElement('link');
 
   fontLink.id = fontLinkId;
-  fontLink.href = fontHref;
+  fontLink.href = fontUrl;
   fontLink.rel = 'stylesheet';
 
   document.head.appendChild(fontLink);
