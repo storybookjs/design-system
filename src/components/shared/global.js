@@ -115,12 +115,8 @@ export const bodyStyles = css`
   }
 `;
 
-// Rather than @import the font in the GlobalStyle below, the font URL is
-// exported  with the intention of using it in a <link> tag as the href.
-// Different frameworks and environments handle component re-renders in their
-// own way (a re-render would case the font to be re-fetched), so this approach
-//  allows the design system consumers to choose the font loading method
-// that is most appropriate for their environment.
+// Allow design system consumers to access font settings but control how and
+// where they load the font.
 export const fontUrl =
   'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap';
 

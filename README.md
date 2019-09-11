@@ -58,6 +58,42 @@ class Example extends Component {
 }
 ```
 
+## Font Loading
+
+Rather than `@import` fonts in the `GlobalStyle` component, the design system's font URL is exported with the intention of using it in a `<link>` tag as the href. Different frameworks and environments handle component re-renders in their own way (a re-render would cause the font to be re-fetched), so this approach allows the design system consumers to choose the font loading method that is most appropriate for their environment.
+
+#### Option 1: Build the link tag manually
+
+```javascript
+import { global } from '@storybook/design-system';
+
+const fontLink = document.createElement('link');
+
+fontLink.href = global.fontUrl;
+fontLink.rel = 'stylesheet';
+
+document.head.appendChild(fontLink);
+```
+
+#### Option 2: Render the link tag in a component
+
+```jsx
+import React from 'react';
+import { global } from '@storybook/design-system';
+
+const Layout = ({ children }) => (
+  <html>
+    <head>
+      <link href={global.fontUrl} rel="stylesheet" />
+    </head>
+
+    <body>{children}</body>
+  </html>
+);
+
+export default Layout;
+```
+
 ## Development Scripts
 
 #### `yarn release`
