@@ -6,6 +6,10 @@ export const bodyStyles = css`
   font-size: ${typography.size.s3}px;
   color: ${color.darkest};
 
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -116,9 +120,5 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     ${bodyStyles}
-
-    margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
   }
 `;
