@@ -1,6 +1,7 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
+import { fontHref } from '../src/components/shared/global';
 import 'storybook-chromatic';
 
 import { GlobalStyle } from '../src/components/shared/global';
@@ -21,3 +22,16 @@ configure(
   ],
   module
 );
+
+// Load the font and avoid re-loading it when components change
+const fontLinkId = 'font-link';
+
+if (!document.getElementById(fontLinkId)) {
+  const fontLink = document.createElement('link');
+
+  fontLink.id = fontLinkId;
+  fontLink.href = fontHref;
+  fontLink.rel = 'stylesheet';
+
+  document.head.appendChild(fontLink);
+}
