@@ -1,15 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Highlight } from './Highlight';
 
-const bash = `
-<pre class="language-bash"><code class="language-bash"><span class="token comment"># Highlight bash:</span>
+const bashCode = `# Highlight bash:
 npx install some-package-name
-<span class="token function">cd</span> some-package-name
-</code></pre>
-`;
+cd some-package-name`;
 
-const javascript = `
-<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// Highlight JavaScript:</span>
+const bashCodeWithWrappers = `<pre class="language-bash"><code class="language-bash">${bashCode}</code></pre>`;
+
+const javascriptCode = `// Highlight JavaScript:
 import React from 'react'
 
 const MyComponent = () => (
@@ -17,11 +16,11 @@ const MyComponent = () => (
 )
 
 export default MyComponent
-</code></pre>
 `;
 
-const typescript = `
-<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// Highlight Typescript:</span>
+const javascriptCodeWithWrappers = `<pre class="language-javascript"><code class="language-javascript">${javascriptCode}</code></pre>`;
+
+const typescriptCode = `// Highlight Typescript:
 import React from 'react'
 
 interface InterfaceMyComponentProps {
@@ -33,19 +32,19 @@ const MyComponent: React.SFC&#x3C;InterfaceMyComponentProps> = ({ isCool }) => (
 )
 
 export default MyComponent
-</code></pre>
 `;
 
-const css = `
-<pre class="language-css"><code class="language-css"><span class="token comment">/* Highlight CSS: */</span>
+const typescriptCodeWithWrappers = `<pre class="language-typescript"><code class="language-typescript">${typescriptCode}</code></pre>`;
+
+const cssCode = `/* Highlight CSS: */
 .someClass {
   position: relative;
 }
-</code></pre>
 `;
 
-const json = `
-<pre class="language-json"><code class="language-json">{
+const cssCodeWithWrappers = `<pre class="language-css"><code class="language-css">${cssCode}</code></pre>`;
+
+const jsonCode = `{
   "name": "@yourorg/package",
   "version": "0.0.1",
   "description": "A sweet package",
@@ -53,9 +52,9 @@ const json = `
     "type": "git",
     "url": "https://github.com/yourorg/package.git"
   }
-}
-</code></pre>
-`;
+}`;
+
+const jsonCodeWithWrappers = `<pre class="language-json"><code class="language-json">${jsonCode}</code></pre>`;
 
 export default {
   title: 'Design System|Highlight',
@@ -63,15 +62,71 @@ export default {
 };
 
 export const allLanguages = () => (
-  <div>
-    <Highlight>{bash}</Highlight>
-    <Highlight>{javascript}</Highlight>
-    <Highlight>{typescript}</Highlight>
-    <Highlight>{css}</Highlight>
-    <Highlight>{json}</Highlight>
-  </div>
+  <Highlight>
+    {[
+      bashCodeWithWrappers,
+      javascriptCodeWithWrappers,
+      typescriptCodeWithWrappers,
+      cssCodeWithWrappers,
+      jsonCodeWithWrappers,
+    ].join('')}
+  </Highlight>
 );
 
 allLanguages.story = {
   name: 'all languages',
 };
+
+export const bash = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="bash">{bashCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{bashCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const javascript = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="javascript">{javascriptCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{javascriptCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const typescript = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="typescript">{typescriptCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{typescriptCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const css = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="css">{cssCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{cssCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const json = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="json">{jsonCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{jsonCodeWithWrappers}</Highlight>
+  </>
+);
+
+const StyledHighlight = styled(Highlight)`
+  code,
+  pre {
+    font-size: 16px;
+  }
+`;
+
+export const customStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;
