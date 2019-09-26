@@ -1,3 +1,36 @@
+# v1.0.0 (Wed Sep 11 2019)
+
+#### 💥  Breaking Change
+
+- Remove font import from GlobalStyle, export fontUrl [#77](https://github.com/storybookjs/design-system/pull/77) ([@kylesuss](https://github.com/kylesuss))
+
+#### 🐛  Bug Fix
+
+- Move remaining body styles to `bodyStyles` [#76](https://github.com/storybookjs/design-system/pull/76) ([@tmeasday](https://github.com/tmeasday))
+- Improve stories so they look nicer in SB Docs [#75](https://github.com/storybookjs/design-system/pull/75) ([@domyen](https://github.com/domyen))
+- Remove unused test scripts [#74](https://github.com/storybookjs/design-system/pull/74) ([@kylesuss](https://github.com/kylesuss))
+- Add icons for unfold and alternative share [#72](https://github.com/storybookjs/design-system/pull/72) ([@domyen](https://github.com/domyen))
+
+#### Authors: 3
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Tom Coleman ([@tmeasday](https://github.com/tmeasday))
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
+# v0.0.45 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- Add icons for unfold and alternative share [#72](https://github.com/storybookjs/design-system/pull/72) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v0.0.43 (Tue Jul 23 2019)
 
 #### ⚠️  Pushed to master

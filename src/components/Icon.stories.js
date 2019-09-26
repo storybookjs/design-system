@@ -77,10 +77,6 @@ export const noLabels = () => (
   </List>
 );
 
-noLabels.story = {
-  name: 'no labels',
-};
-
 export const inline = () => (
   <Fragment>
     this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)

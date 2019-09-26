@@ -26,3 +26,4 @@ export {
   WithModal,
   WithTooltip,
 } from './components';
+export { loadFontsForStorybook } from './utils';
