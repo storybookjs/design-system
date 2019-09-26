@@ -30,7 +30,7 @@ const Trigger = styled.div`
 `;
 
 const Circle = styled.circle`
-  fill: fill: rgb(255, 0, 255);
+  fill: rgb(255, 0, 255);
 `;
 
 const Tooltip = ({ onHide }) => (
