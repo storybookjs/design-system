@@ -50,7 +50,7 @@ Components within the design system assume that a set of global styles have been
 
 #### Option 1: Render the `GlobalStyle` component
 
-Useful when you don't need any custom `body` styling in the application.
+Useful when you don't need any custom `body` styling in the application, typically this would be placed in a layout component that wraps all pages, or a top-level `App` component.
 
 ```javascript
 import { global } from '@storybook/design-system';
