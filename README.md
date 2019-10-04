@@ -44,18 +44,44 @@ The Storybook design system codifies existing UI components into a central, well
 npm install --save @storybook/design-system
 ```
 
-## Usage
+## Global Styles
 
-```jsx
-import React, { Component } from 'react';
+Components within the design system assume that a set of global styles have been configured. Depending upon the needs of the application, this can be done several ways:
 
-import MyComponent from '@storybook/design-system';
+#### Option 1: Render the `GlobalStyle` component
 
-class Example extends Component {
-  render() {
-    return <MyComponent />;
+Useful when you don't need any custom `body` styling in the application, typically this would be placed in a layout component that wraps all pages, or a top-level `App` component.
+
+```javascript
+import { global } from '@storybook/design-system';
+const { GlobalStyle } = global;
+```
+
+```javascript
+/* Render the global styles once per page */
+<GlobalStyle />
+```
+
+#### Option 2: Use the `bodyStyles` to apply styling
+
+Useful when you want build upon the shared global styling.
+
+```javascript
+import { createGlobalStyle } from 'styled-components';
+import { global } from '@storybook/design-system';
+const { bodyStyles } = global;
+
+const CustomGlobalStyle = createGlobalStyle`
+  body {
+    ${bodyStyles}
+    // Custom body styling for the app
   }
-}
+`;
+```
+
+```javascript
+/* Render the global styles once per page */
+<CustomGlobalStyle />
 ```
 
 ## Font Loading
