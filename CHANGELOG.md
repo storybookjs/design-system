@@ -1,3 +1,9 @@
+# v1.1.1 (Mon Oct 07 2019)
+
+
+
+---
+
 # v1.1.0 (Mon Oct 07 2019)
 
 #### 🚀  Enhancement
