@@ -95,6 +95,7 @@ function WithTooltip({
   tooltip,
   children,
   startOpen,
+  delayHide,
   ...props
 }) {
   const id = React.useMemo(() => uuid.v4(), []);
@@ -112,6 +113,7 @@ function WithTooltip({
 
   return (
     <TooltipTrigger
+      delayHide={delayHide}
       placement={placement}
       trigger={trigger}
       tooltipShown={isTooltipShown}
@@ -165,6 +167,7 @@ WithTooltip.propTypes = {
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   children: PropTypes.node.isRequired,
   startOpen: PropTypes.bool,
+  delayHide: PropTypes.number,
 };
 
 WithTooltip.defaultProps = {
@@ -175,6 +178,7 @@ WithTooltip.defaultProps = {
   modifiers: {},
   hasChrome: true,
   startOpen: false,
+  delayHide: 100,
 };
 
 export default WithTooltip;
