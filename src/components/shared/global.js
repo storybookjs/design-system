@@ -64,34 +64,6 @@ export const bodyStyles = css`
     margin-bottom: 1.25rem;
   }
 
-  code,
-  pre {
-    font-family: ${typography.type.code};
-    font-size: ${typography.size.s2 - 1}px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  code {
-    display: inline-block;
-    padding-left: 2px;
-    padding-right: 2px;
-    vertical-align: baseline;
-
-    color: ${color.secondary};
-  }
-
-  pre {
-    line-height: 18px;
-    padding: 11px 1rem;
-    white-space: pre-wrap;
-
-    background: rgba(0, 0, 0, 0.05);
-    color: ${color.darkest};
-    border-radius: 3px;
-    margin: 1rem 0;
-  }
-
   &.ReactModal__Body--open {
     overflow: hidden;
     &.hide-intercom #intercom-container {

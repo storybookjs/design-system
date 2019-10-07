@@ -1,3 +1,35 @@
+# v1.1.1 (Mon Oct 07 2019)
+
+
+
+---
+
+# v1.1.1 (Mon Oct 07 2019)
+
+
+
+---
+
+# v1.1.0 (Mon Oct 07 2019)
+
+#### 🚀  Enhancement
+
+- Build out Highlight component to auto format, consolidate global code styling [#80](https://github.com/storybookjs/design-system/pull/80) ([@kylesuss](https://github.com/kylesuss))
+
+#### 🐛  Bug Fix
+
+- Fix Highlight PropType error for CSS langauge [#86](https://github.com/storybookjs/design-system/pull/86) ([@kylesuss](https://github.com/kylesuss))
+- Add delayHide prop to tooltip for better hover behavior [#85](https://github.com/storybookjs/design-system/pull/85) ([@kylesuss](https://github.com/kylesuss))
+- Add global styling setup to README [#79](https://github.com/storybookjs/design-system/pull/79) ([@kylesuss](https://github.com/kylesuss))
+- Fix hook usage [#66](https://github.com/storybookjs/design-system/pull/66) ([@kylemh](https://github.com/kylemh))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Kyle Holmberg ([@kylemh](https://github.com/kylemh))
+
+---
+
 # v1.0.0 (Wed Sep 11 2019)
 
 #### 💥  Breaking Change
