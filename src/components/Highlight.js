@@ -27,10 +27,15 @@ const HighlightBlock = styled.div`
     color: ${color.darkest};
   }
 
+  code {
+    white-space: pre;
+  }
+
   pre {
     padding: 11px 1rem;
     margin: 1rem 0;
     background: ${color.lighter};
+    overflow: auto;
   }
 
   .language-bash .token.operator,

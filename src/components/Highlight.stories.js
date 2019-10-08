@@ -122,6 +122,16 @@ export const json = () => (
   </>
 );
 
+const SmallContainer = styled.div`
+  max-width: 300px;
+`;
+
+export const wrapping = () => (
+  <SmallContainer>
+    <Highlight language="javascript">{javascriptCode}</Highlight>
+  </SmallContainer>
+);
+
 const StyledHighlight = styled(Highlight)`
   code,
   pre {
