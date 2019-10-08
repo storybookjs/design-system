@@ -1,3 +1,15 @@
+# v1.1.5 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Add left, right padding back to Highlight component [#89](https://github.com/storybookjs/design-system/pull/89) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v1.1.4 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
