@@ -1,3 +1,15 @@
+# v1.1.6 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Fix wrapping, overflow on Highlight component [#90](https://github.com/storybookjs/design-system/pull/90) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v1.1.5 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
