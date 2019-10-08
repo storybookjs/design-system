@@ -1,3 +1,15 @@
+# v1.1.4 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Remove default styling for Highlight code, pre selectors, conflict with globals [#88](https://github.com/storybookjs/design-system/pull/88) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v1.1.3 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
