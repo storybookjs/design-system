@@ -1,3 +1,15 @@
+# v1.1.3 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Add back global styles for code, pre elements [#87](https://github.com/storybookjs/design-system/pull/87) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v1.1.1 (Mon Oct 07 2019)
 
 
