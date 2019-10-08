@@ -27,10 +27,6 @@ const HighlightBlock = styled.div`
     color: ${color.darkest};
   }
 
-  code {
-    padding: 0;
-  }
-
   pre {
     padding: 11px 1rem;
     margin: 1rem 0;
