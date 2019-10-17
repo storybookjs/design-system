@@ -46,7 +46,16 @@ export const all = () => (
   </div>
 );
 
+all.story = {
+  name: 'all',
+};
+
 export const loading = () => <ListItem loading />;
+
+loading.story = {
+  name: 'loading',
+};
+
 export const defaultStory = () => <ListItem title="Default" />;
 
 defaultStory.story = {
@@ -104,6 +113,10 @@ wPositionsActiveLongTitle.story = {
 export const disabled = () => (
   <ListItem disabled left="left" title="disabled" center="center" right="right" />
 );
+
+disabled.story = {
+  name: 'disabled',
+};
 
 export const withLinkWrapper = () => (
   <>

@@ -22,6 +22,10 @@ export const large = () => (
   </div>
 );
 
+large.story = {
+  name: 'large',
+};
+
 export const medium = () => (
   <div>
     <Avatar loading />
@@ -29,6 +33,10 @@ export const medium = () => (
     <Avatar username="Tom Coleman" src="https://avatars2.githubusercontent.com/u/132554" />
   </div>
 );
+
+medium.story = {
+  name: 'medium',
+};
 
 export const small = () => (
   <div>
@@ -42,6 +50,10 @@ export const small = () => (
   </div>
 );
 
+small.story = {
+  name: 'small',
+};
+
 export const tiny = () => (
   <div>
     <Avatar loading size="tiny" />
@@ -53,3 +65,7 @@ export const tiny = () => (
     />
   </div>
 );
+
+tiny.story = {
+  name: 'tiny',
+};

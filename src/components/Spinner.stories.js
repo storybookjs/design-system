@@ -32,8 +32,16 @@ export const inForm = () => (
   </div>
 );
 
+inForm.story = {
+  name: 'inForm',
+};
+
 export const inline = () => (
   <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
     <Spinner inline />
   </div>
 );
+
+inline.story = {
+  name: 'inline',
+};

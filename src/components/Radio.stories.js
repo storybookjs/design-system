@@ -29,6 +29,14 @@ export const unchecked = () => (
   <Radio id="Mice" label="Mice" hideLabel value="mice" onChange={onChange} />
 );
 
+unchecked.story = {
+  name: 'unchecked',
+};
+
 export const checked = () => (
   <Radio id="Dogs" label="Dogs" hideLabel value="dogs" checked onChange={onChange} />
 );
+
+checked.story = {
+  name: 'checked',
+};

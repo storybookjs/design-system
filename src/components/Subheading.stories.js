@@ -7,3 +7,7 @@ export default {
 };
 
 export const subheading = () => <Subheading>Subheading</Subheading>;
+
+subheading.story = {
+  name: 'subheading',
+};

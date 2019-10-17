@@ -67,6 +67,10 @@ export const labels = () => (
   </Fragment>
 );
 
+labels.story = {
+  name: 'labels',
+};
+
 export const noLabels = () => (
   <List>
     {Object.keys(icons).map(key => (
@@ -77,14 +81,26 @@ export const noLabels = () => (
   </List>
 );
 
+noLabels.story = {
+  name: 'noLabels',
+};
+
 export const inline = () => (
   <Fragment>
     this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
   </Fragment>
 );
 
+inline.story = {
+  name: 'inline',
+};
+
 export const block = () => (
   <Fragment>
     this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
   </Fragment>
 );
+
+block.story = {
+  name: 'block',
+};

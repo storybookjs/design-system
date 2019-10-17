@@ -40,6 +40,14 @@ export const unchecked = () => (
   <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
 );
 
+unchecked.story = {
+  name: 'unchecked',
+};
+
 export const checked = () => (
   <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
 );
+
+checked.story = {
+  name: 'checked',
+};

@@ -34,6 +34,10 @@ export const buttons = () => (
   </>
 );
 
+buttons.story = {
+  name: 'buttons',
+};
+
 export const sizes = () => (
   <>
     <Button appearance="primary">Default</Button>
@@ -42,6 +46,10 @@ export const sizes = () => (
     </Button>
   </>
 );
+
+sizes.story = {
+  name: 'sizes',
+};
 
 export const loading = () => (
   <>
@@ -63,6 +71,10 @@ export const loading = () => (
   </>
 );
 
+loading.story = {
+  name: 'loading',
+};
+
 export const disabled = () => (
   <>
     <Button appearance="primary" isDisabled>
@@ -80,6 +92,10 @@ export const disabled = () => (
   </>
 );
 
+disabled.story = {
+  name: 'disabled',
+};
+
 export const containsIcon = () => (
   <>
     <Button appearance="outline" containsIcon>
@@ -90,6 +106,10 @@ export const containsIcon = () => (
     </Button>
   </>
 );
+
+containsIcon.story = {
+  name: 'containsIcon',
+};
 
 export const buttonWrapper = () => (
   <div>

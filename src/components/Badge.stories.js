@@ -17,6 +17,10 @@ export const all = () => (
   </div>
 );
 
+all.story = {
+  name: 'all',
+};
+
 export const withIcon = () => (
   <Badge status="warning">
     <Icon icon="check" inline />

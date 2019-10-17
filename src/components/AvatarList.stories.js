@@ -32,7 +32,17 @@ export default {
 };
 
 export const short = () => <AvatarList users={users.slice(0, 2)} />;
+
+short.story = {
+  name: 'short',
+};
+
 export const ellipsized = () => <AvatarList users={users} />;
+
+ellipsized.story = {
+  name: 'ellipsized',
+};
+
 export const bigUserCount = () => <AvatarList users={users} userCount={100} />;
 
 bigUserCount.story = {
@@ -46,4 +56,13 @@ smallSize.story = {
 };
 
 export const loading = () => <AvatarList loading />;
+
+loading.story = {
+  name: 'loading',
+};
+
 export const empty = () => <AvatarList users={[]} />;
+
+empty.story = {
+  name: 'empty',
+};

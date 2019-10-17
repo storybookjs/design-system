@@ -39,17 +39,29 @@ export const all = () => (
   </>
 );
 
+all.story = {
+  name: 'all',
+};
+
 export const withArrow = () => (
   <Link containsIcon withArrow href="https://learnstorybook.com">
     withArrow shows an arrow behind the link
   </Link>
 );
 
+withArrow.story = {
+  name: 'withArrow',
+};
+
 export const containsIcon = () => (
   <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
     <Icon icon="sidebar" aria-hidden />
   </Link>
 );
+
+containsIcon.story = {
+  name: 'containsIcon',
+};
 
 export const icon = () => (
   <Link href="https://learnstorybook.com">
@@ -58,12 +70,20 @@ export const icon = () => (
   </Link>
 );
 
+icon.story = {
+  name: 'icon',
+};
+
 export const isButton = () => (
   /* eslint-disable-next-line */
   <Link isButton onClick={onLinkClick}>
     is actually a button
   </Link>
 );
+
+isButton.story = {
+  name: 'isButton',
+};
 
 export const hasLinkWrapper = () => (
   <>
@@ -77,3 +97,7 @@ export const hasLinkWrapper = () => (
     </CustomLink>
   </>
 );
+
+hasLinkWrapper.story = {
+  name: 'hasLinkWrapper',
+};

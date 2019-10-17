@@ -183,6 +183,10 @@ export const secondary = () => (
   </form>
 );
 
+secondary.story = {
+  name: 'secondary',
+};
+
 export const tertiary = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Input
@@ -231,6 +235,10 @@ export const tertiary = () => (
   </form>
 );
 
+tertiary.story = {
+  name: 'tertiary',
+};
+
 export const pill = () => (
   <Input
     id="Pill"
@@ -242,6 +250,10 @@ export const pill = () => (
     onChange={onChange}
   />
 );
+
+pill.story = {
+  name: 'pill',
+};
 
 export const code = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
@@ -274,3 +286,7 @@ export const code = () => (
     />
   </form>
 );
+
+code.story = {
+  name: 'code',
+};

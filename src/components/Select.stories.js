@@ -193,6 +193,10 @@ export const secondary = () => (
   </form>
 );
 
+secondary.story = {
+  name: 'secondary',
+};
+
 export const tertiary = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Select
@@ -216,3 +220,7 @@ export const tertiary = () => (
     />
   </form>
 );
+
+tertiary.story = {
+  name: 'tertiary',
+};

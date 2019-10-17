@@ -86,6 +86,10 @@ export const bash = () => (
   </>
 );
 
+bash.story = {
+  name: 'bash',
+};
+
 export const javascript = () => (
   <>
     <strong>Autoformat</strong>
@@ -94,6 +98,10 @@ export const javascript = () => (
     <Highlight>{javascriptCodeWithWrappers}</Highlight>
   </>
 );
+
+javascript.story = {
+  name: 'javascript',
+};
 
 export const typescript = () => (
   <>
@@ -104,6 +112,10 @@ export const typescript = () => (
   </>
 );
 
+typescript.story = {
+  name: 'typescript',
+};
+
 export const css = () => (
   <>
     <strong>Autoformat</strong>
@@ -113,6 +125,10 @@ export const css = () => (
   </>
 );
 
+css.story = {
+  name: 'css',
+};
+
 export const json = () => (
   <>
     <strong>Autoformat</strong>
@@ -121,6 +137,10 @@ export const json = () => (
     <Highlight>{jsonCodeWithWrappers}</Highlight>
   </>
 );
+
+json.story = {
+  name: 'json',
+};
 
 const SmallContainer = styled.div`
   max-width: 300px;
@@ -132,6 +152,10 @@ export const wrapping = () => (
   </SmallContainer>
 );
 
+wrapping.story = {
+  name: 'wrapping',
+};
+
 const StyledHighlight = styled(Highlight)`
   code,
   pre {
@@ -140,3 +164,7 @@ const StyledHighlight = styled(Highlight)`
 `;
 
 export const customStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;
+
+customStyling.story = {
+  name: 'customStyling',
+};

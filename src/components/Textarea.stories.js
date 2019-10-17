@@ -158,6 +158,10 @@ export const secondary = () => (
   </form>
 );
 
+secondary.story = {
+  name: 'secondary',
+};
+
 export const tertiary = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Textarea
@@ -215,6 +219,10 @@ export const tertiary = () => (
     />
   </form>
 );
+
+tertiary.story = {
+  name: 'tertiary',
+};
 
 export const code = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
@@ -282,3 +290,7 @@ export const code = () => (
     />
   </form>
 );
+
+code.story = {
+  name: 'code',
+};
