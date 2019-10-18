@@ -1,27 +1,40 @@
 version: 2
+
 jobs:
-  build:
+  lint:
     docker:
       - image: circleci/node:10
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-
       - run: yarn install
-
+      - run: yarn lint
+  build:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # - run: yarn lint
-
+      - run: yarn build
       - run: yarn build-storybook
-      - run: yarn chromatic --storybook-build-dir storybook-static --exit-zero-on-changes
+
+workflows:
+  version: 2
+  lint-build:
+    jobs:
+      - build
+      - lint
