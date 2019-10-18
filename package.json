@@ -70,7 +70,7 @@
     "@storybook/addons": "^5.2.4",
     "@storybook/react": "^5.2.4",
     "@storybook/source-loader": "^5.2.4",
-    "auto": "^4.14.0",
+    "auto": "^7.11.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-require-context-hook": "^1.0.0",
