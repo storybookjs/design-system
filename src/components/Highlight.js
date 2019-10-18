@@ -46,7 +46,8 @@ const HighlightBlock = styled.div`
   }
 
   .language-bash .token.operator,
-  .language-bash .token.function {
+  .language-bash .token.function,
+  .language-bash .token.builtin {
     color: ${color.darkest};
     background: none;
   }
