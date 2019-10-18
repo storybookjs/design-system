@@ -1,3 +1,68 @@
+# v1.1.7 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Add yaml syntax highlighting to Highlight component [#97](https://github.com/storybookjs/design-system/pull/97) ([@kylesuss](https://github.com/kylesuss))
+
+#### 📝  Documentation
+
+- Replace custom colors/typography stories with DocBlocks. [#95](https://github.com/storybookjs/design-system/pull/95) ([@leerob](https://github.com/leerob))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Lee Robinson ([@leerob](https://github.com/leerob))
+
+---
+
+# v1.1.6 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Fix wrapping, overflow on Highlight component [#90](https://github.com/storybookjs/design-system/pull/90) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v1.1.5 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Add left, right padding back to Highlight component [#89](https://github.com/storybookjs/design-system/pull/89) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v1.1.4 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Remove default styling for Highlight code, pre selectors, conflict with globals [#88](https://github.com/storybookjs/design-system/pull/88) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v1.1.3 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- Add back global styles for code, pre elements [#87](https://github.com/storybookjs/design-system/pull/87) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v1.1.1 (Mon Oct 07 2019)
 
 

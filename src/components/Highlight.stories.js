@@ -56,6 +56,20 @@ const jsonCode = `{
 
 const jsonCodeWithWrappers = `<pre class="language-json"><code class="language-json">${jsonCode}</code></pre>`;
 
+const yamlCode = `version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.10.0
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+`;
+
+const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-yaml">${yamlCode}</code></pre>`;
+
 export default {
   title: 'Design System|Highlight',
   component: Highlight,
@@ -69,6 +83,7 @@ export const allLanguages = () => (
       typescriptCodeWithWrappers,
       cssCodeWithWrappers,
       jsonCodeWithWrappers,
+      yamlCodeWithWrappers,
     ].join('')}
   </Highlight>
 );
@@ -120,6 +135,25 @@ export const json = () => (
     <strong>Pre-formatted</strong>
     <Highlight>{jsonCodeWithWrappers}</Highlight>
   </>
+);
+
+export const yaml = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="yaml">{yamlCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{yamlCodeWithWrappers}</Highlight>
+  </>
+);
+
+const SmallContainer = styled.div`
+  max-width: 300px;
+`;
+
+export const wrapping = () => (
+  <SmallContainer>
+    <Highlight language="javascript">{javascriptCode}</Highlight>
+  </SmallContainer>
 );
 
 const StyledHighlight = styled(Highlight)`
