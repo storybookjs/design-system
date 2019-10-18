@@ -19,7 +19,6 @@
     "build": "babel src -d dist",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
-    "chromatic": "CHROMATIC_APP_CODE=9ofhn0iql7n chromatic test",
     "lint": "eslint .",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
