@@ -1,3 +1,20 @@
+# v1.1.7 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Add yaml syntax highlighting to Highlight component [#97](https://github.com/storybookjs/design-system/pull/97) ([@kylesuss](https://github.com/kylesuss))
+
+#### 📝  Documentation
+
+- Replace custom colors/typography stories with DocBlocks. [#95](https://github.com/storybookjs/design-system/pull/95) ([@leerob](https://github.com/leerob))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Lee Robinson ([@leerob](https://github.com/leerob))
+
+---
+
 # v1.1.6 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
