@@ -7,7 +7,7 @@ import loadLanguages from 'prismjs/components/index';
 import PropTypes from 'prop-types';
 import { color } from './shared/styles';
 
-const languages = ['bash', 'javascript', 'typescript', 'json', 'css'];
+const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml'];
 loadLanguages(languages);
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
