@@ -76,7 +76,7 @@
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "^6.0.3",
-    "eslint": "^5.0.1",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-html": "^6.0.0",
