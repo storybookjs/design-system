@@ -6,8 +6,16 @@ import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import { color } from './shared/styles';
 
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-yaml';
+
+global.Prism = Prism;
+
 const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml'];
-loadLanguages(languages);
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
 // cannot be imported easily and any app which pulls in the design system will
@@ -38,7 +46,8 @@ const HighlightBlock = styled.div`
   }
 
   .language-bash .token.operator,
-  .language-bash .token.function {
+  .language-bash .token.function,
+  .language-bash .token.builtin {
     color: ${color.darkest};
     background: none;
   }
