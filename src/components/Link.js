@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
@@ -160,12 +160,12 @@ const applyStyle = LinkWrapper => {
  */
 export function Link({ isButton, withArrow, LinkWrapper, children, ...rest }) {
   const content = (
-    <Fragment>
+    <>
       <LinkInner withArrow={withArrow}>
         {children}
         {withArrow && <Icon icon="arrowright" />}
       </LinkInner>
-    </Fragment>
+    </>
   );
 
   const StyledLinkWrapper = applyStyle(LinkWrapper);

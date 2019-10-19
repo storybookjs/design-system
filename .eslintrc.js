@@ -26,6 +26,7 @@ module.exports = {
         extensions: ['.js'],
       },
     ],
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-wrap-multilines': [
       'error',
       {
@@ -33,7 +34,7 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js'] }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };
