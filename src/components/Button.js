@@ -332,14 +332,7 @@ export function Button({
     </>
   );
 
-  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
-
-  let SelectedButton = StyledButton;
-  if (ButtonWrapper) {
-    SelectedButton = StyledButtonWrapper;
-  } else if (isLink) {
-    SelectedButton = ButtonLink;
-  }
+  const SelectedButton = ButtonWrapper ? applyStyle(ButtonWrapper) : ButtonLink;
 
   return (
     <SelectedButton isLoading={isLoading} disabled={isDisabled} {...props}>

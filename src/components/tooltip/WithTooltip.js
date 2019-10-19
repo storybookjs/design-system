@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
@@ -49,18 +49,15 @@ const AsComponent = React.forwardRef(
       ...props,
     };
 
-    const onKeyDown = useMemo(
-      () => event => {
-        if (!onClick) {
-          return;
-        }
-        if (event.keyCode === keyCode('enter') || event.keyCode === keyCode('space')) {
-          event.preventDefault();
-          onClick(event);
-        }
-      },
-      [onClick]
-    );
+    const onKeyDown = event => {
+      if (!onClick) {
+        return;
+      }
+      if (event.keyCode === keyCode('enter') || event.keyCode === keyCode('space')) {
+        event.preventDefault();
+        onClick(event);
+      }
+    };
 
     // for non button component, we need to simulate the same behavior as a button
     if (tagName) {
@@ -98,18 +95,15 @@ function WithTooltip({
   delayHide,
   ...props
 }) {
-  const id = React.useMemo(() => uuid.v4(), []);
+  const id = uuid.v4();
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
-  const closeTooltip = useMemo(() => () => setTooltipShown(false), [setTooltipShown]);
-  const closeTooltipOnClick = useMemo(
-    () => event => {
-      if (!closeOnClick || !isDescendantOfAction(event.target)) {
-        return;
-      }
-      closeTooltip();
-    },
-    [closeOnClick, closeTooltip]
-  );
+  const closeTooltip = setTooltipShown(false);
+  const closeTooltipOnClick = event => {
+    if (!closeOnClick || !isDescendantOfAction(event.target)) {
+      return;
+    }
+    closeTooltip();
+  };
 
   return (
     <TooltipTrigger
