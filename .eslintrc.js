@@ -26,14 +26,18 @@ module.exports = {
         extensions: ['.js'],
       },
     ],
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-wrap-multilines': [
       'error',
       {
         arrow: false,
       },
     ],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js', './rollup.config.js'] }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*.stories.js', './rollup.config.js'] },
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { darken, rgba } from 'polished';
@@ -326,10 +326,10 @@ export function Button({
   ...props
 }) {
   const buttonInner = (
-    <Fragment>
+    <>
       <Text>{children}</Text>
       {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
-    </Fragment>
+    </>
   );
 
   const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
