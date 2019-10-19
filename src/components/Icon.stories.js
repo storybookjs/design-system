@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Icon } from './Icon';
@@ -54,7 +54,7 @@ export default {
 };
 
 export const labels = () => (
-  <Fragment>
+  <>
     There are {Object.keys(icons).length} icons
     <List>
       {Object.keys(icons).map(key => (
@@ -64,7 +64,7 @@ export const labels = () => (
         </Item>
       ))}
     </List>
-  </Fragment>
+  </>
 );
 
 export const noLabels = () => (
@@ -78,13 +78,13 @@ export const noLabels = () => (
 );
 
 export const inline = () => (
-  <Fragment>
+  <>
     this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
-  </Fragment>
+  </>
 );
 
 export const block = () => (
-  <Fragment>
+  <>
     this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
-  </Fragment>
+  </>
 );
