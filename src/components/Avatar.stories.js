@@ -3,7 +3,7 @@ import React from 'react';
 import { Avatar } from './Avatar';
 
 export default {
-  title: 'Design System|Avatar',
+  title: 'Design System/Avatar',
 
   parameters: {
     component: Avatar,
