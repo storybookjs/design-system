@@ -56,6 +56,9 @@ const Users = styled.ul`
 `;
 
 // Either pass the full list of users, or a userCount if known
+/**
+ * A list of user avatars, possibly with a summary of "+N" non-displayed users.
+ */
 export function AvatarList({ loading, users, userCount, size, ...props }) {
   const count = userCount || users.length;
   return (
@@ -81,6 +84,9 @@ export function AvatarList({ loading, users, userCount, size, ...props }) {
 
 AvatarList.propTypes = {
   loading: PropTypes.bool,
+  /**
+   * Array of users to show avatars for.
+   */
   users: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -88,6 +94,9 @@ AvatarList.propTypes = {
       avatarUrl: PropTypes.string,
     })
   ),
+  /**
+   * Total number of users in the list.
+   */
   userCount: PropTypes.number,
   size: PropTypes.oneOf(Object.keys(sizes)),
 };
