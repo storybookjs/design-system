@@ -113,7 +113,7 @@ const linkStyles = css`
     `};
 
   ${props =>
-    props.loading &&
+    props.isLoading &&
     css`
       ${Title} {
         ${inlineGlow};
@@ -133,12 +133,12 @@ const linkStyles = css`
 `;
 
 // eslint-disable-next-line jsx-a11y/anchor-has-content
-const Item = styled(({ active, activeColor, loading, ...rest }) => <a {...rest} />)`
+const Item = styled(({ active, activeColor, isLoading, ...rest }) => <a {...rest} />)`
   ${linkStyles}
 `;
 
 const buildStyledLinkWrapper = LinkWrapper => styled(
-  ({ active, loading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
+  ({ active, isLoading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
 )`
   ${linkStyles}
 `;
@@ -186,7 +186,7 @@ export function ListItem({
 
 ListItem.propTypes = {
   appearance: PropTypes.oneOf(['primary', 'secondary']),
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   left: PropTypes.node,
   title: PropTypes.node,
   center: PropTypes.node,
@@ -199,7 +199,7 @@ ListItem.propTypes = {
 
 ListItem.defaultProps = {
   appearance: 'primary',
-  loading: false,
+  isLoading: false,
   left: null,
   title: <span>Loading</span>,
   center: null,
