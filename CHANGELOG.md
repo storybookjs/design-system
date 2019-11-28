@@ -1,3 +1,19 @@
+# v2.0.1 (Thu Nov 28 2019)
+
+#### 🐛  Bug Fix
+
+- Load languages after setting global Prism. [#124](https://github.com/storybookjs/design-system/pull/124) ([@ghengeveld](https://github.com/ghengeveld))
+
+#### ⚠️  Pushed to master
+
+- Update changelog  ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v2.0.0 (Thu Nov 28 2019)
 
 #### 💥 Breaking Change
