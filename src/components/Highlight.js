@@ -1,4 +1,4 @@
-/* eslint-disable react/no-danger */
+/* eslint-disable react/no-danger, global-require */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -6,14 +6,15 @@ import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import { color } from './shared/styles';
 
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-yaml';
-
-global.Prism = Prism;
+if (typeof document !== 'undefined') {
+  global.Prism = Prism;
+  require('prismjs/components/prism-bash');
+  require('prismjs/components/prism-javascript');
+  require('prismjs/components/prism-typescript');
+  require('prismjs/components/prism-json');
+  require('prismjs/components/prism-css');
+  require('prismjs/components/prism-yaml');
+}
 
 const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml'];
 
