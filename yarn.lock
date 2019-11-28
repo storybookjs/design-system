@@ -7,10 +7,10 @@
   resolved "https://registry.npmjs.org/@atomist/slack-messages/-/slack-messages-1.1.1.tgz#9de42932e89065fb4fe4842978ca2d1ed3424cea"
   integrity sha512-m2OzlTDbhvzK4hgswH9Lx0cdpq1AntXu53Klz5RGkFfuoDvKsnlU7tmtVfNWtUiP0zZbGtrb/BZYH7aB6TRnMA==
 
-"@auto-it/core@^7.11.0":
-  version "7.11.0"
-  resolved "https://registry.npmjs.org/@auto-it/core/-/core-7.11.0.tgz#c281c9f4d94679879acf751ddfea9117f5aeeaf0"
-  integrity sha512-NcehLqJI1LI3wZ7muYXHMxP0PZe5JTXlmdwBRBklNZCxt/Kb0TxDw056OEV8Kpv0PruwgQIWWF6VyxBifGAyKw==
+"@auto-it/core@^7.12.0":
+  version "7.12.0"
+  resolved "https://registry.npmjs.org/@auto-it/core/-/core-7.12.0.tgz#5ccd3597ee86c5334f58c77de6f3b67db3547474"
+  integrity sha512-rXJbfdJjleYgSgHvsAn2CWloetAbCBDNcZQvIHBy12QA2VfyVm4USuRZAVf+uE+3NXidvmJDpumx/WEwK6QrWA==
   dependencies:
     "@atomist/slack-messages" "~1.1.0"
     "@octokit/graphql" "^4.0.0"
@@ -38,12 +38,12 @@
     typescript-memoize "^1.0.0-alpha.3"
     url-join "^4.0.0"
 
-"@auto-it/npm@^7.11.0":
-  version "7.11.0"
-  resolved "https://registry.npmjs.org/@auto-it/npm/-/npm-7.11.0.tgz#1de909e4ce16fdd276635ba9c17dab1f864c5f6f"
-  integrity sha512-KSHKGndoE0GgqE3fzzh2pEP40+N9nwnV5wpCWfCC3HVyBuYemHtCVwAsd70TrssqGEHKIKxCdaRdqlz3IHSBnQ==
+"@auto-it/npm@^7.12.0":
+  version "7.12.0"
+  resolved "https://registry.npmjs.org/@auto-it/npm/-/npm-7.12.0.tgz#37b42b39a51bcfbd5c6ebc652628e949dbb1d4d2"
+  integrity sha512-vdNGFZC8L95Msv7Q//U4XCifeZKG93G1xEnwuCKF6kDcD6iz1l7a2HZO103ajwDWQr7y7dFZSAFp1Tnfy99GAg==
   dependencies:
-    "@auto-it/core" "^7.11.0"
+    "@auto-it/core" "^7.12.0"
     env-ci "^4.1.1"
     get-monorepo-packages "^1.1.0"
     parse-author "^2.0.0"
@@ -55,12 +55,12 @@
     url-join "^4.0.0"
     user-home "^2.0.0"
 
-"@auto-it/released@^7.11.0":
-  version "7.11.0"
-  resolved "https://registry.npmjs.org/@auto-it/released/-/released-7.11.0.tgz#6d446dfa53fc34eebcc7fd226c5d0291db9264bf"
-  integrity sha512-9aP1B/3RPyaWC/dOCSGt8Xuv4fK3vVsAuj8wpt6QH+EMgcI1tB1keom41gBlVu8tSKlg0IGUqx8AWP8IDW8h3g==
+"@auto-it/released@^7.12.0":
+  version "7.12.0"
+  resolved "https://registry.npmjs.org/@auto-it/released/-/released-7.12.0.tgz#25eef789c8c018416eb21bd6e03d54360a5b2395"
+  integrity sha512-ByRkJ05YoE4pdzNSbEpYHswEwFjWo9OJCWcUhs8B6LhBMeHbah7c1u/YaKMlGIXDtP6M92BPJCqaWkWHw3SFLQ==
   dependencies:
-    "@auto-it/core" "^7.11.0"
+    "@auto-it/core" "^7.12.0"
     deepmerge "^4.0.0"
     tslib "1.10.0"
 
@@ -2793,13 +2793,13 @@ author-regex@^1.0.0:
   integrity sha1-0IiFvmubv5Q5/gh8dihyRfCoFFA=
 
 auto@^7.11.0:
-  version "7.11.0"
-  resolved "https://registry.npmjs.org/auto/-/auto-7.11.0.tgz#442216f8de8df940b4f6f1e509a1054e4b139d79"
-  integrity sha512-j4FT3rQOhThkLhSIUS267f2MQ8mscCuwGWE2SVDlA7+z9csvmId2H25ScFwyUt6gNXzwZgOcrjdiS7A6VkASRw==
+  version "7.12.0"
+  resolved "https://registry.npmjs.org/auto/-/auto-7.12.0.tgz#318875584597065123535c4f6c5c2674cd7cbd94"
+  integrity sha512-9wDE3ZTKxVk1zow24QZkgqgwwLgzoi9K1gHdZcSz5Q1Mm6p76wmwYdpWpatQ6nfNbSZDeaMZKsYBYXRgss1ukA==
   dependencies:
-    "@auto-it/core" "^7.11.0"
-    "@auto-it/npm" "^7.11.0"
-    "@auto-it/released" "^7.11.0"
+    "@auto-it/core" "^7.12.0"
+    "@auto-it/npm" "^7.12.0"
+    "@auto-it/released" "^7.12.0"
     chalk "^2.4.2"
     command-line-application "^0.9.3"
     dedent "^0.7.0"
