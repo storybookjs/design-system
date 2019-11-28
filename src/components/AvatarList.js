@@ -56,7 +56,7 @@ const Users = styled.ul`
 `;
 
 // Either pass the full list of users, or a userCount if known
-export function AvatarList({ loading, users, userCount, size, ...props }) {
+export function AvatarList({ isLoading, users, userCount, size, ...props }) {
   const count = userCount || users.length;
   return (
     <Users aria-label="users" {...props}>
@@ -68,7 +68,7 @@ export function AvatarList({ loading, users, userCount, size, ...props }) {
             mode="hover"
             tooltip={<TooltipNote note={name} />}
           >
-            <UserAvatar size={size} username={name} src={avatarUrl} loading={loading} />
+            <UserAvatar size={size} username={name} src={avatarUrl} isLoading={isLoading} />
           </UserTooltipWrapper>
         </User>
       ))}
@@ -80,7 +80,7 @@ export function AvatarList({ loading, users, userCount, size, ...props }) {
 }
 
 AvatarList.propTypes = {
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   users: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -93,7 +93,7 @@ AvatarList.propTypes = {
 };
 
 AvatarList.defaultProps = {
-  loading: false,
+  isLoading: false,
   users: [
     { id: 'loading', avatarUrl: null, name: 'loading' },
     { id: 'loading2', avatarUrl: null, name: 'loading' },

@@ -25,7 +25,7 @@ const Dot = styled.div`
     `};
 
   ${props =>
-    props.loading &&
+    props.isLoading &&
     css`
       animation: ${glow} 1.5s ease-in-out infinite;
       &:nth-child(1) {
@@ -43,10 +43,10 @@ const Dot = styled.div`
     `};
 `;
 
-export function ProgressDots({ loading, steps, progress, className, size }) {
+export function ProgressDots({ isLoading, steps, progress, className, size }) {
   const dots = [];
   for (let i = 0; i < steps; i += 1) {
-    dots.push(<Dot loading={loading} active={i === progress - 1} key={i} size={size} />);
+    dots.push(<Dot isLoading={isLoading} active={i === progress - 1} key={i} size={size} />);
   }
   return (
     <ProgressWrapper
@@ -62,7 +62,7 @@ export function ProgressDots({ loading, steps, progress, className, size }) {
 }
 
 ProgressDots.propTypes = {
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   steps: PropTypes.number,
   progress: PropTypes.number,
   className: PropTypes.string,
@@ -70,7 +70,7 @@ ProgressDots.propTypes = {
 };
 
 ProgressDots.defaultProps = {
-  loading: false,
+  isLoading: false,
   steps: 4,
   progress: 0,
   className: null,

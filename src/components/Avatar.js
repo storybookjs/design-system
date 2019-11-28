@@ -13,7 +13,7 @@ export const sizes = {
 };
 
 const Image = styled.div`
-  background: ${props => (!props.loading ? 'transparent' : color.light)};
+  background: ${props => (!props.isLoading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
   vertical-align: top;
@@ -51,7 +51,7 @@ const Image = styled.div`
   ${props =>
     !props.src &&
     css`
-      background: ${!props.loading && '#37D5D3'};
+      background: ${!props.isLoading && '#37D5D3'};
     `}
 
   img {
@@ -101,11 +101,11 @@ const Initial = styled.div`
 /**
  * The `Avatar` component is where all your avatars come to play.
  */
-export function Avatar({ loading, username, src, size, ...props }) {
+export function Avatar({ isLoading, username, src, size, ...props }) {
   let avatarFigure = <Icon icon="useralt" />;
   const a11yProps = {};
 
-  if (loading) {
+  if (isLoading) {
     a11yProps['aria-busy'] = true;
     a11yProps['aria-label'] = 'Loading avatar ...';
   } else if (src) {
@@ -120,14 +120,14 @@ export function Avatar({ loading, username, src, size, ...props }) {
   }
 
   return (
-    <Image size={size} loading={loading} src={src} {...a11yProps} {...props}>
+    <Image size={size} isLoading={isLoading} src={src} {...a11yProps} {...props}>
       {avatarFigure}
     </Image>
   );
 }
 
 Avatar.propTypes = {
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   /**
    The name of the user (not the nicename)
   */
@@ -140,7 +140,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  loading: false,
+  isLoading: false,
   username: 'loading',
   src: null,
   size: 'medium',
