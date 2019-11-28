@@ -1,3 +1,18 @@
+# v2.0.0 (Thu Nov 28 2019)
+
+#### 💥 Breaking Change
+
+- Rename 'loading' prop to 'isLoading' to avoid unknown attribute warnings [#122](https://github.com/storybookjs/design-system/pull/122) ([@ghengeveld](https://github.com/ghengeveld))
+
+#### 🧹 Chores
+
+- Tech/use action [#99](https://github.com/storybookjs/design-system/pull/99) ([@ndelangen](https://github.com/ndelangen))
+
+#### Authors: 2
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
 # v1.1.7 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
