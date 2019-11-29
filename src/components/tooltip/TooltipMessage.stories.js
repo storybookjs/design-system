@@ -4,7 +4,7 @@ import WithTooltip from './WithTooltip';
 import { TooltipMessage } from './TooltipMessage';
 
 export default {
-  title: 'Design System|tooltip/TooltipMessage',
+  title: 'Design System/tooltip/TooltipMessage',
 
   decorators: [
     storyFn => (
@@ -48,7 +48,10 @@ export const withLinks = () => (
   <TooltipMessage
     title="Lorem ipsum dolor sit"
     desc="Amet consectatur vestibulum concet durum politu coret weirom"
-    links={[{ title: 'Get more tips', href: 'test' }, { title: 'Done', href: 'test' }]}
+    links={[
+      { title: 'Get more tips', href: 'test' },
+      { title: 'Done', href: 'test' },
+    ]}
   />
 );
 

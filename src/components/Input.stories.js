@@ -6,7 +6,7 @@ import { Input } from './Input';
 const onChange = action('change');
 
 export default {
-  title: 'Design System|forms/Input',
+  title: 'Design System/forms/Input',
   component: Input,
 };
 
