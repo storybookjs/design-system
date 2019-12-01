@@ -1489,16 +1489,16 @@
     any-observable "^0.3.0"
 
 "@storybook/addon-a11y@^5.2.4":
-  version "5.2.4"
-  resolved "https://registry.npmjs.org/@storybook/addon-a11y/-/addon-a11y-5.2.4.tgz#01a641bf37e2fbeb5ac23ec60824847356cb8dfc"
-  integrity sha512-m7D78LiREpUzw7U+jiJXQXSsYoYZ+IkewBIxX5K15lh58AqTi0hD8DWHssgbi76GQwdaXKmMPIwI842dgPYobQ==
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/addon-a11y/-/addon-a11y-5.2.7.tgz#0e35a9bc745e07b86cb70d8075ede5de76711ad6"
+  integrity sha512-DC9edBEt0zA92ZaoUpROvfZFk9gVrMefhEvyDrGvVpmbyI0VTgAL+iCyA0t+YelghkidqNoIIQhA0U9op/HJQw==
   dependencies:
-    "@storybook/addons" "5.2.4"
-    "@storybook/api" "5.2.4"
-    "@storybook/client-logger" "5.2.4"
-    "@storybook/components" "5.2.4"
-    "@storybook/core-events" "5.2.4"
-    "@storybook/theming" "5.2.4"
+    "@storybook/addons" "5.2.7"
+    "@storybook/api" "5.2.7"
+    "@storybook/client-logger" "5.2.7"
+    "@storybook/components" "5.2.7"
+    "@storybook/core-events" "5.2.7"
+    "@storybook/theming" "5.2.7"
     axe-core "^3.3.2"
     common-tags "^1.8.0"
     core-js "^3.0.1"
@@ -1597,7 +1597,7 @@
     regenerator-runtime "^0.12.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@5.2.4", "@storybook/addons@^5.2.4":
+"@storybook/addons@5.2.4":
   version "5.2.4"
   resolved "https://registry.npmjs.org/@storybook/addons/-/addons-5.2.4.tgz#5c4f031e403c90a517cd6d208ec51d7e2455683a"
   integrity sha512-Q+bnVlBA308qnELxnh18hBDRSUgltR9KbV537285dUL/okv/NC6n51mxJwIaG+ksBW2wU+5e6tqSayaKF3uHLw==
@@ -1606,6 +1606,19 @@
     "@storybook/channels" "5.2.4"
     "@storybook/client-logger" "5.2.4"
     "@storybook/core-events" "5.2.4"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    util-deprecate "^1.0.2"
+
+"@storybook/addons@5.2.7", "@storybook/addons@^5.2.4":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/addons/-/addons-5.2.7.tgz#a868ca0a209aefa8a17718b58327dd3ff37f2d76"
+  integrity sha512-eWRSvs5/28KhU28iWjClfOryRN1IuycFcWEJrRtMOXyf44TTyzEC5PbH35eGh33MpWVJYM+8CUJQqNOxxDVjBw==
+  dependencies:
+    "@storybook/api" "5.2.7"
+    "@storybook/channels" "5.2.7"
+    "@storybook/client-logger" "5.2.7"
+    "@storybook/core-events" "5.2.7"
     core-js "^3.0.1"
     global "^4.3.2"
     util-deprecate "^1.0.2"
@@ -1633,6 +1646,29 @@
     telejson "^3.0.2"
     util-deprecate "^1.0.2"
 
+"@storybook/api@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/api/-/api-5.2.7.tgz#f0c04c975b2c7359ce67a581a178cf1c52ffc1cd"
+  integrity sha512-d0tu8GZTCBQqEr2P75mRrDw6t2LMPVcLETo7Pc02LkOjV5mZ9Q6rObAuUAM/flBQMbv24ioNa9HPk2ilspf/iQ==
+  dependencies:
+    "@storybook/channels" "5.2.7"
+    "@storybook/client-logger" "5.2.7"
+    "@storybook/core-events" "5.2.7"
+    "@storybook/router" "5.2.7"
+    "@storybook/theming" "5.2.7"
+    core-js "^3.0.1"
+    fast-deep-equal "^2.0.1"
+    global "^4.3.2"
+    lodash "^4.17.15"
+    memoizerific "^1.11.3"
+    prop-types "^15.6.2"
+    react "^16.8.3"
+    semver "^6.0.0"
+    shallow-equal "^1.1.0"
+    store2 "^2.7.1"
+    telejson "^3.0.2"
+    util-deprecate "^1.0.2"
+
 "@storybook/channel-postmessage@5.2.4":
   version "5.2.4"
   resolved "https://registry.npmjs.org/@storybook/channel-postmessage/-/channel-postmessage-5.2.4.tgz#e3735bdce42156e54bf462083aebaf23245ab5c3"
@@ -1648,6 +1684,13 @@
   version "5.2.4"
   resolved "https://registry.npmjs.org/@storybook/channels/-/channels-5.2.4.tgz#7ab5c9478517ddb9e8ac0c4188b408b9d7e6b7e4"
   integrity sha512-/r39yEZ5QiGdiq95DhXBypdBo7urkD3Sp1WDyK48uGkZ0gdHWSPy3BBy8OJhEhfNz7nVisTiVIBr4gIrubKDjw==
+  dependencies:
+    core-js "^3.0.1"
+
+"@storybook/channels@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/channels/-/channels-5.2.7.tgz#7cd55f1a25c68588795ddc6cbe5bb53ee8f8bb69"
+  integrity sha512-q3+fxc6aBU60XaihVJ2P2xrVOiCgimTTEzt1KkRr5ZzD27m4LnF0iDaVnJSlEJv7PpaqqewUb6lHhsQLjfWKMg==
   dependencies:
     core-js "^3.0.1"
 
@@ -1679,6 +1722,13 @@
   dependencies:
     core-js "^3.0.1"
 
+"@storybook/client-logger@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-5.2.7.tgz#aa8bdcfc0a981d8505e60ec1548436eabd28e64e"
+  integrity sha512-gomUNoc5bBl+YEJhrHMr5anmu4k8/AYmF5omp5OaWaF74HfH/a33L8p4L7yHdFWK7zpqlfi6SrBl3gptzvnljA==
+  dependencies:
+    core-js "^3.0.1"
+
 "@storybook/components@5.2.4":
   version "5.2.4"
   resolved "https://registry.npmjs.org/@storybook/components/-/components-5.2.4.tgz#9ecd080416eac4e8453030dd601cbeaa32ce4126"
@@ -1703,10 +1753,42 @@
     react-textarea-autosize "^7.1.0"
     simplebar-react "^1.0.0-alpha.6"
 
+"@storybook/components@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/components/-/components-5.2.7.tgz#810327a517dc839293ef1d684f960a548e257689"
+  integrity sha512-BRmfSMXqiDDWwgYKTyq0XseCYhETvlBzljAqIeI+xuSPh4FzRY1uoXrD3yJJo/jtEfP+vtEV98/6g3pmZf3pBw==
+  dependencies:
+    "@storybook/client-logger" "5.2.7"
+    "@storybook/theming" "5.2.7"
+    "@types/react-syntax-highlighter" "10.1.0"
+    "@types/react-textarea-autosize" "^4.3.3"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    markdown-to-jsx "^6.9.1"
+    memoizerific "^1.11.3"
+    polished "^3.3.1"
+    popper.js "^1.14.7"
+    prop-types "^15.7.2"
+    react "^16.8.3"
+    react-dom "^16.8.3"
+    react-focus-lock "^1.18.3"
+    react-helmet-async "^1.0.2"
+    react-popper-tooltip "^2.8.3"
+    react-syntax-highlighter "^8.0.1"
+    react-textarea-autosize "^7.1.0"
+    simplebar-react "^1.0.0-alpha.6"
+
 "@storybook/core-events@5.2.4":
   version "5.2.4"
   resolved "https://registry.npmjs.org/@storybook/core-events/-/core-events-5.2.4.tgz#210c968e96e2fc031cad1d3a09b06fa69ae433fc"
   integrity sha512-nQknCmaz2S2HW6PSGcuFzve7Y1Js2Cb268vUG0ZMNtJZwFawqYc+KSQHqmOY0pVm8dyROTcWCudPA0k+hk6N5Q==
+  dependencies:
+    core-js "^3.0.1"
+
+"@storybook/core-events@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/core-events/-/core-events-5.2.7.tgz#624a4ea04f62e7002871b4d13892970955859401"
+  integrity sha512-DZG/CdLhINmnSysBEFTMyUPiXGuhtsxZA+v2yO3X09IHai/LWXW6Diyiz+h81m4z2w/SYQeoD96wZ9wNbyaYwA==
   dependencies:
     core-js "^3.0.1"
 
@@ -1836,6 +1918,19 @@
     memoizerific "^1.11.3"
     qs "^6.6.0"
 
+"@storybook/router@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/router/-/router-5.2.7.tgz#4c9e48667a1e23a86a9fdd5810722e73b12f35f5"
+  integrity sha512-6xXAjc+4OtLXEGFacFKHpUDooZlRODwLSGYL0UDuPMpFwBDPZvuIaNtG18m3yhAgjWqoH7kS/bwKwtosno9/xg==
+  dependencies:
+    "@reach/router" "^1.2.1"
+    "@types/reach__router" "^1.2.3"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    lodash "^4.17.15"
+    memoizerific "^1.11.3"
+    qs "^6.6.0"
+
 "@storybook/source-loader@5.2.4", "@storybook/source-loader@^5.2.4":
   version "5.2.4"
   resolved "https://registry.npmjs.org/@storybook/source-loader/-/source-loader-5.2.4.tgz#3ccfbc6a93a3d09f0af630f3ecd5449bbc2897e7"
@@ -1859,6 +1954,24 @@
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     "@storybook/client-logger" "5.2.4"
+    common-tags "^1.8.0"
+    core-js "^3.0.1"
+    deep-object-diff "^1.1.0"
+    emotion-theming "^10.0.14"
+    global "^4.3.2"
+    memoizerific "^1.11.3"
+    polished "^3.3.1"
+    prop-types "^15.7.2"
+    resolve-from "^5.0.0"
+
+"@storybook/theming@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@storybook/theming/-/theming-5.2.7.tgz#8db0f7e1b2c4c17befbf4bcd7c60f75ff4369105"
+  integrity sha512-MroOG2lUB8dPZu8ZKwAuP8NV4ozG/8FpkWHZ/1HtBAAtGCvVNrXuSKIvI/pabfJaJvms+1uh95K7riY8t7CUWw==
+  dependencies:
+    "@emotion/core" "^10.0.14"
+    "@emotion/styled" "^10.0.14"
+    "@storybook/client-logger" "5.2.7"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     deep-object-diff "^1.1.0"
@@ -2152,6 +2265,13 @@
   version "10.1.0"
   resolved "https://registry.npmjs.org/@types/react-syntax-highlighter/-/react-syntax-highlighter-10.1.0.tgz#9c534e29bbe05dba9beae1234f3ae944836685d4"
   integrity sha512-dF49hC4FZp1dIKyzacOrHvqMUe8U2IXyQCQXOcT1e6n64gLBp+xM6qGtPsThIT9XjiIHSg2W5Jc2V5IqekBfnA==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-textarea-autosize@^4.3.3":
+  version "4.3.5"
+  resolved "https://registry.npmjs.org/@types/react-textarea-autosize/-/react-textarea-autosize-4.3.5.tgz#6c4d2753fa1864c98c0b2b517f67bb1f6e4c46de"
+  integrity sha512-PiDL83kPMTolyZAWW3lyzO6ktooTb9tFTntVy7CA83/qFLWKLJ5bLeRboy6J6j3b1e8h2Eec6gBTEOOJRjV14A==
   dependencies:
     "@types/react" "*"
 
