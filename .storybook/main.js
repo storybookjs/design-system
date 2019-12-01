@@ -1,8 +1,11 @@
-const DependenciesPlugin = require('storybook-dep-webpack-plugin');
-const path = require('path');
 
 module.exports = {
-  presets: ['@storybook/addon-docs/preset'],
+  presets: ['@storybook/addon-docs/preset', {
+    name: 'storybook-addon-deps/preset',
+    options: {
+      exclude: /^@babel/
+    }
+  }],
   stories: [
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.js',
@@ -13,13 +16,4 @@ module.exports = {
     '@storybook/addon-storysource/register',
     '@storybook/addon-a11y/register',
   ],
-  webpack: async (config) => ({
-    ...config,
-    plugins: [
-      ...config.plugins,
-      new DependenciesPlugin({
-        exclude: /^@babel/
-      })
-    ]
-  }),
 };

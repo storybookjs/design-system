@@ -94,9 +94,8 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "sort-package-json": "^1.21.0",
-    "storybook-addon-deps": "^1.0.3",
-    "storybook-chromatic": "^3.0.3",
-    "storybook-dep-webpack-plugin": "^1.0.1"
+    "storybook-addon-deps": "^1.0.4",
+    "storybook-chromatic": "^3.0.3"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
