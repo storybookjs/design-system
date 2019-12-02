@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { AvatarList } from './AvatarList';
+import { Avatar } from './Avatar';
 
 export const users = [
   {
@@ -26,8 +27,11 @@ export const users = [
 ];
 
 export default {
-  title: 'Design System|AvatarList',
+  title: 'Design System/AvatarList',
   component: AvatarList,
+  parameters: {
+    subcomponents: { Avatar },
+  },
   excludeStories: ['users'],
 };
 

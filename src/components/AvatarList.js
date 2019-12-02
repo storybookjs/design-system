@@ -88,6 +88,9 @@ AvatarList.propTypes = {
       avatarUrl: PropTypes.string,
     })
   ),
+  /**
+   * Total number of users in the list.
+   */
   userCount: PropTypes.number,
   size: PropTypes.oneOf(Object.keys(sizes)),
 };
