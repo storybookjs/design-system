@@ -49,5 +49,5 @@ smallSize.story = {
   name: 'small size',
 };
 
-export const loading = () => <AvatarList loading />;
+export const loading = () => <AvatarList isLoading />;
 export const empty = () => <AvatarList users={[]} />;
