@@ -19,6 +19,8 @@
     "build": "babel src -d dist",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
+    "chromatic": "chromatic --appCode=\"9ofhn0iql7n\"",
+    "chromatic-static": "chromatic -d=\"./storybook-static\" --appCode=\"9ofhn0iql7n\" --debug",
     "lint": "eslint .",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
@@ -94,7 +96,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "sort-package-json": "^1.21.0",
-    "storybook-chromatic": "^3.0.3"
+    "storybook-chromatic": "^3.1.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
