@@ -3,7 +3,7 @@ import React from 'react';
 import { Avatar } from './Avatar';
 
 export default {
-  title: 'Design System|Avatar',
+  title: 'Design System/Avatar',
 
   parameters: {
     component: Avatar,
@@ -12,7 +12,7 @@ export default {
 
 export const large = () => (
   <div>
-    <Avatar loading size="large" />
+    <Avatar isLoading size="large" />
     <Avatar size="large" username="Tom Coleman" />
     <Avatar
       size="large"
@@ -24,7 +24,7 @@ export const large = () => (
 
 export const medium = () => (
   <div>
-    <Avatar loading />
+    <Avatar isLoading />
     <Avatar username="Tom Coleman" />
     <Avatar username="Tom Coleman" src="https://avatars2.githubusercontent.com/u/132554" />
   </div>
@@ -32,7 +32,7 @@ export const medium = () => (
 
 export const small = () => (
   <div>
-    <Avatar loading size="small" />
+    <Avatar isLoading size="small" />
     <Avatar size="small" username="Dominic Nguyen" />
     <Avatar
       size="small"
@@ -44,7 +44,7 @@ export const small = () => (
 
 export const tiny = () => (
   <div>
-    <Avatar loading size="tiny" />
+    <Avatar isLoading size="tiny" />
     <Avatar size="tiny" username="Dominic Nguyen" />
     <Avatar
       size="tiny"

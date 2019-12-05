@@ -5,7 +5,7 @@ import { Icon } from '../Icon';
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
-  title: 'Design System|tooltip/ListItem',
+  title: 'Design System/tooltip/ListItem',
 
   decorators: [
     storyFn => (
@@ -20,7 +20,7 @@ export default {
 
 export const all = () => (
   <div>
-    <ListItem loading />
+    <ListItem isLoading />
     <ListItem title="Default" />
     <ListItem title="lorem ipsum dolor sit amet consectatur" />
     <ListItem title="Default icon" right={<Icon icon="eye" />} />
@@ -46,7 +46,7 @@ export const all = () => (
   </div>
 );
 
-export const loading = () => <ListItem loading />;
+export const loading = () => <ListItem isLoading />;
 export const defaultStory = () => <ListItem title="Default" />;
 
 defaultStory.story = {
@@ -107,7 +107,7 @@ export const disabled = () => (
 
 export const withLinkWrapper = () => (
   <>
-    <ListItem LinkWrapper={StoryLinkWrapper} loading href="http://www.google.com" />
+    <ListItem LinkWrapper={StoryLinkWrapper} isLoading href="http://www.google.com" />
     <ListItem LinkWrapper={StoryLinkWrapper} title="Default" href="http://www.google.com" />
     <ListItem
       LinkWrapper={StoryLinkWrapper}

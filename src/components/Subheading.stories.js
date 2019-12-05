@@ -2,7 +2,7 @@ import React from 'react';
 import { Subheading } from './Subheading';
 
 export default {
-  title: 'Design System|Subheading',
+  title: 'Design System/Subheading',
   component: Subheading,
 };
 

@@ -15,7 +15,7 @@ const Content = styled.div`
 `;
 
 export default {
-  title: 'Design System|tooltip/Tooltip',
+  title: 'Design System/tooltip/Tooltip',
 
   parameters: {
     component: Tooltip,

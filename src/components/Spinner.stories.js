@@ -2,7 +2,7 @@ import React from 'react';
 import { Spinner } from './Spinner';
 
 export default {
-  title: 'Design System|Spinner',
+  title: 'Design System/Spinner',
   component: Spinner,
 };
 
