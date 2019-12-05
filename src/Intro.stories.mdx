@@ -24,22 +24,23 @@ Import components you want into your UI
 
 and use them like so
 
-```
-  const example = () => (
-    <div>
-      <Button appearance="primary" onClick={() => 0}>Do something</Button>
-      <Badge onClick={this.clear}>Cool</Badge>
-    </div>
-  )
+```js
+const example = () => (
+  <div>
+    <Button appearance="primary" onClick={() => 0}>Do something</Button>
+    <Badge onClick={this.clear}>Cool</Badge>
+  </div>
+)
 ```
 
 ### **Browse SDS components in your own Storybook**
 
-Once you add the package, update your .storybook/config.js to import all files ending in .stories.js.
+Once you add the package, update your .storybook/main.js to import all files ending in .stories.js.
 
-```
-  import { configure } from '@storybook/react';
-  configure(require.context('../src', true, /.stories.js$/), module);
+```js
+module.exports = {
+  stories: ['../src/**/*.stories.(js)'],
+};
 ```
 
 ### **Run and develop SDS locally**
