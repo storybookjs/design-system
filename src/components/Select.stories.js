@@ -64,7 +64,10 @@ export const defaultStory = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       onChange={onChange}
     />
     <Select
@@ -72,7 +75,10 @@ export const defaultStory = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       disabled
       onChange={onChange}
     />
@@ -81,7 +87,10 @@ export const defaultStory = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       onChange={onChange}
     />
@@ -90,7 +99,10 @@ export const defaultStory = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       onChange={onChange}
       inProgress
@@ -100,7 +112,10 @@ export const defaultStory = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       error="There's a snake in my boots"
       onChange={onChange}
     />
@@ -109,7 +124,10 @@ export const defaultStory = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       error="There's a snake in my boots"
       onChange={onChange}
@@ -117,7 +135,10 @@ export const defaultStory = () => (
     <Select
       id="Primary-with-label"
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       label="Label"
       onChange={onChange}
@@ -136,7 +157,10 @@ export const secondary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       appearance="secondary"
       onChange={onChange}
     />
@@ -145,7 +169,10 @@ export const secondary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       disabled
       appearance="secondary"
       onChange={onChange}
@@ -155,7 +182,10 @@ export const secondary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       appearance="secondary"
       onChange={onChange}
@@ -165,7 +195,10 @@ export const secondary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       error="There's a snake in my boots"
       appearance="secondary"
       onChange={onChange}
@@ -175,7 +208,10 @@ export const secondary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       error="There's a snake in my boots"
       appearance="secondary"
@@ -184,7 +220,10 @@ export const secondary = () => (
     <Select
       id="Secondary-with-label"
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       icon="chroma"
       label="Label"
       appearance="secondary"
@@ -200,7 +239,10 @@ export const tertiary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       appearance="tertiary"
       onChange={onChange}
     />
@@ -209,7 +251,10 @@ export const tertiary = () => (
       label="Animal"
       hideLabel
       value="value1"
-      options={[{ label: 'Default', value: 'value1' }, { label: 'Dog', value: 'value2' }]}
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
       disabled
       appearance="tertiary"
       onChange={onChange}
