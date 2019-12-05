@@ -32,6 +32,7 @@ StoryLinkWrapper.propTypes = {
 StoryLinkWrapper.defaultProps = {
   className: '',
   href: null,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onClick: () => {},
   to: null,
 };
