@@ -12,7 +12,7 @@ export const links = [
 ];
 
 export default {
-  title: 'Design System/tooltip/TooltipLinkList',
+  title: 'Design System/Tooltip/TooltipLinkList',
   component: TooltipLinkList,
   decorators: [
     storyFn => (
