@@ -6,43 +6,35 @@ const bashCode = `# Highlight bash:
 npx install some-package-name
 cd some-package-name`;
 
-const bashCodeWithWrappers = `<pre class="language-bash"><code class="language-bash">${bashCode}</code></pre>`;
-
 const javascriptCode = `// Highlight JavaScript:
-import React from 'react'
+import React from 'react';
 
 const MyComponent = () => (
-  &#x3C;div>My component renders all the things&#x3C;/div>
-)
+  <div>My component renders all the things</div>
+);
 
-export default MyComponent
+export default MyComponent;
 `;
 
-const javascriptCodeWithWrappers = `<pre class="language-javascript"><code class="language-javascript">${javascriptCode}</code></pre>`;
-
 const typescriptCode = `// Highlight Typescript:
-import React from 'react'
+import React from 'react';
 
 interface InterfaceMyComponentProps {
   isCool: boolean;
 }
 
-const MyComponent: React.SFC&#x3C;InterfaceMyComponentProps> = ({ isCool }) => (
-  &#x3C;div>My component isCool: {isCool}&#x3C;/div>
-)
+const MyComponent: React.SFC<InterfaceMyComponentProps> = ({ isCool }) => (
+  <div>My component isCool: {isCool}</div>
+);
 
-export default MyComponent
+export default MyComponent;
 `;
-
-const typescriptCodeWithWrappers = `<pre class="language-typescript"><code class="language-typescript">${typescriptCode}</code></pre>`;
 
 const cssCode = `/* Highlight CSS: */
 .someClass {
   position: relative;
 }
 `;
-
-const cssCodeWithWrappers = `<pre class="language-css"><code class="language-css">${cssCode}</code></pre>`;
 
 const jsonCode = `{
   "name": "@yourorg/package",
@@ -53,8 +45,6 @@ const jsonCode = `{
     "url": "https://github.com/yourorg/package.git"
   }
 }`;
-
-const jsonCodeWithWrappers = `<pre class="language-json"><code class="language-json">${jsonCode}</code></pre>`;
 
 const yamlCode = `version: 2
 jobs:
@@ -68,82 +58,40 @@ jobs:
       - checkout
 `;
 
-const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-yaml">${yamlCode}</code></pre>`;
-
 export default {
   title: 'Design System/Highlight',
   component: Highlight,
 };
 
-export const allLanguages = () => (
-  <Highlight>
-    {[
-      bashCodeWithWrappers,
-      javascriptCodeWithWrappers,
-      typescriptCodeWithWrappers,
-      cssCodeWithWrappers,
-      jsonCodeWithWrappers,
-      yamlCodeWithWrappers,
-    ].join('')}
+export const bash = () => (
+  <Highlight format={false} language="bash">
+    {bashCode}
   </Highlight>
 );
-
-allLanguages.story = {
-  name: 'all languages',
-};
-
-export const bash = () => (
-  <>
-    <strong>Autoformat</strong>
-    <Highlight language="bash">{bashCode}</Highlight>
-    <strong>Pre-formatted</strong>
-    <Highlight>{bashCodeWithWrappers}</Highlight>
-  </>
-);
-
 export const javascript = () => (
-  <>
-    <strong>Autoformat</strong>
-    <Highlight language="javascript">{javascriptCode}</Highlight>
-    <strong>Pre-formatted</strong>
-    <Highlight>{javascriptCodeWithWrappers}</Highlight>
-  </>
+  <Highlight format={false} language="javascript">
+    {javascriptCode}
+  </Highlight>
 );
-
 export const typescript = () => (
-  <>
-    <strong>Autoformat</strong>
-    <Highlight language="typescript">{typescriptCode}</Highlight>
-    <strong>Pre-formatted</strong>
-    <Highlight>{typescriptCodeWithWrappers}</Highlight>
-  </>
+  <Highlight format={false} language="typescript">
+    {typescriptCode}
+  </Highlight>
 );
-
 export const css = () => (
-  <>
-    <strong>Autoformat</strong>
-    <Highlight language="css">{cssCode}</Highlight>
-    <strong>Pre-formatted</strong>
-    <Highlight>{cssCodeWithWrappers}</Highlight>
-  </>
+  <Highlight format={false} language="css">
+    {cssCode}
+  </Highlight>
 );
-
 export const json = () => (
-  <>
-    <strong>Autoformat</strong>
-    <Highlight language="json">{jsonCode}</Highlight>
-    <strong>Pre-formatted</strong>
-    <Highlight>{jsonCodeWithWrappers}</Highlight>
-  </>
+  <Highlight format={false} language="json">
+    {jsonCode}
+  </Highlight>
 );
-
 export const yaml = () => (
-  <>
-    <strong>Autoformat</strong>
-    <Highlight language="yaml">{yamlCode}</Highlight>
-    <strong>Pre-formatted</strong>
-    <Highlight>{yamlCodeWithWrappers}</Highlight>
-  </>
+  <Highlight format={false} language="yaml">
+    {yamlCode}
+  </Highlight>
 );
 
 const SmallContainer = styled.div`
@@ -152,7 +100,9 @@ const SmallContainer = styled.div`
 
 export const wrapping = () => (
   <SmallContainer>
-    <Highlight language="javascript">{javascriptCode}</Highlight>
+    <Highlight format={false} language="javascript">
+      {javascriptCode}
+    </Highlight>
   </SmallContainer>
 );
 
@@ -163,4 +113,8 @@ const StyledHighlight = styled(Highlight)`
   }
 `;
 
-export const customStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;
+export const customStyling = () => (
+  <StyledHighlight format={false} language="json">
+    {jsonCode}
+  </StyledHighlight>
+);
