@@ -27,7 +27,7 @@ const ModalContents = ({ onClose }) => (
 );
 
 export default {
-  title: 'Design System/modal/WithModal',
+  title: 'Design System/Modal/WithModal',
 
   decorators: [
     storyFn => (
