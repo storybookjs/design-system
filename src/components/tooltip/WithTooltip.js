@@ -11,7 +11,7 @@ import { Tooltip } from './Tooltip';
 const ButtonContainer = styled.button`
   background: transparent;
   border: 0;
-  cursor: ${props => (props.mode === 'hover' ? 'default' : 'pointer')};
+  cursor: ${props => (props.trigger === 'hover' ? 'default' : 'pointer')};
   display: inline-block;
   font-size: inherit;
   font-weight: inherit;
@@ -144,6 +144,7 @@ function WithTooltip({
       {({ getTriggerProps, triggerRef }) => (
         <AsComponent
           tagName={tagName}
+          trigger={trigger}
           ref={triggerRef}
           {...getTriggerProps()}
           {...props}
