@@ -65,7 +65,7 @@ export function AvatarList({ isLoading, users, userCount, size, ...props }) {
           <UserTooltipWrapper
             hasChrome={false}
             placement="bottom"
-            mode="hover"
+            trigger="hover"
             tooltip={<TooltipNote note={name} />}
           >
             <UserAvatar size={size} username={name} src={avatarUrl} isLoading={isLoading} />
