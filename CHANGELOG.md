@@ -28,6 +28,21 @@
 
 ---
 
+# v2.0.2 (Thu Dec 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix usage of mode prop in WithTooltip [#140](https://github.com/storybookjs/design-system/pull/140) ([@kylesuss](https://github.com/kylesuss))
+- Upgrade to 5.3-beta and simplified path separators [#118](https://github.com/storybookjs/design-system/pull/118) ([@kylesuss](https://github.com/kylesuss))
+- Load languages after setting global Prism. [#124](https://github.com/storybookjs/design-system/pull/124) ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 2
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v2.0.1 (Thu Nov 28 2019)
 
 #### 🐛  Bug Fix
