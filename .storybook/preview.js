@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, addDecorator, addParameters } from '@storybook/react';
+import { addDecorator, addParameters } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { loadFontsForStorybook } from '../src/utils/index';
 import 'storybook-chromatic';
@@ -19,14 +19,5 @@ addDecorator(story => (
     {story()}
   </>
 ));
-
-// automatically import all files ending in *.stories.js
-configure(
-  [
-    require.context('../src', true, /\.stories\.mdx$/),
-    require.context('../src', true, /\.stories\.js$/),
-  ],
-  module
-);
 
 loadFontsForStorybook();
