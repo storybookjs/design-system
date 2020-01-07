@@ -19,8 +19,8 @@ const Note = styled.div`
   margin: 6px;
 `;
 
-export function TooltipNote({ note }) {
-  return <Note>{note}</Note>;
+export function TooltipNote({ note, ...rest }) {
+  return <Note {...rest}>{note}</Note>;
 }
 
 TooltipNote.propTypes = {
