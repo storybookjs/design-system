@@ -1,3 +1,15 @@
+# v2.0.5 (Tue Jan 07 2020)
+
+#### 🐛  Bug Fix
+
+- Pass props down to Tooltip components [#147](https://github.com/storybookjs/design-system/pull/147) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v2.0.2 (Thu Dec 26 2019)
 
 #### 🐛  Bug Fix
