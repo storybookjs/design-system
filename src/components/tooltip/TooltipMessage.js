@@ -32,9 +32,9 @@ const MessageWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-export function TooltipMessage({ title, desc, links }) {
+export function TooltipMessage({ title, desc, links, ...rest }) {
   return (
-    <MessageWrapper>
+    <MessageWrapper {...rest}>
       <Message>
         {title && <Title>{title}</Title>}
         {desc && <Desc>{desc}</Desc>}
