@@ -12,10 +12,10 @@ const List = styled.ul`
   list-style: none;
 `;
 
-export function TooltipLinkList({ links, LinkWrapper }) {
+export function TooltipLinkList({ links, LinkWrapper, ...rest }) {
   return (
-    <List>
-      {links.map(({ title, onClick, active, ...rest }, index) => (
+    <List {...rest}>
+      {links.map(({ title, onClick, active, ...linkRest }, index) => (
         <ListItem
           /* eslint-disable react/no-array-index-key */
           key={index}
@@ -23,7 +23,7 @@ export function TooltipLinkList({ links, LinkWrapper }) {
           onClick={onClick}
           active={active}
           LinkWrapper={LinkWrapper || null}
-          {...rest}
+          {...linkRest}
         />
       ))}
     </List>
