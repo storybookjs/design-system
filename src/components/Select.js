@@ -69,7 +69,7 @@ const SelectSpinner = styled(Spinner)`
 const SelectError = styled.div`
   position: absolute;
   right: 0;
-  top: 0
+  top: 0;
 
   transition: all 300ms cubic-bezier(0.175, 0.885, 0.335, 1.05);
   font-size: ${typography.size.s1}px;

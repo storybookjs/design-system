@@ -1,3 +1,43 @@
+# v3.0.0 (Sun Jan 19 2020)
+
+#### 💥  Breaking Change
+
+- Upgrade styled-components dep to 5.0.0 [#148](https://github.com/storybookjs/design-system/pull/148) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Change onlyPublishWithReleaseLabel setting  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v3.0.0 (Sun Jan 19 2020)
+
+#### 💥  Breaking Change
+
+- Upgrade styled-components dep to 5.0.0 [#148](https://github.com/storybookjs/design-system/pull/148) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v2.0.5 (Tue Jan 07 2020)
+
+#### 🐛  Bug Fix
+
+- Pass props down to Tooltip components [#147](https://github.com/storybookjs/design-system/pull/147) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v2.0.2 (Thu Dec 26 2019)
 
 #### 🐛  Bug Fix
