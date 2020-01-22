@@ -1,22 +1,15 @@
 import React from 'react';
 import { addDecorator, addParameters } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
-import { loadFontsForStorybook } from '../src/utils/index';
-import 'storybook-chromatic';
 import { DocsPage } from 'storybook-addon-deps/blocks';
+import { loadFontsForStorybook } from '../src/utils/index';
 
 import { GlobalStyle } from '../src/components/shared/global';
 
-addDecorator(withA11y);
-addDecorator(story => (
-  <>
-    <GlobalStyle />
-    {story()}
-  </>
-));
-
 addParameters({
-  options: { showRoots: false },
+  options: {
+    showRoots: true,
+  },
   docs: { page: DocsPage },
   dependencies: { 
     //display only dependencies/dependents that have a story in storybook
@@ -29,5 +22,12 @@ addParameters({
   }
 });
 
-loadFontsForStorybook();
+addDecorator(withA11y);
+addDecorator(story => (
+  <>
+    <GlobalStyle />
+    {story()}
+  </>
+));
 
+loadFontsForStorybook();
