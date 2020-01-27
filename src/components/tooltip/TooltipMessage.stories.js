@@ -48,7 +48,10 @@ export const withLinks = () => (
   <TooltipMessage
     title="Lorem ipsum dolor sit"
     desc="Amet consectatur vestibulum concet durum politu coret weirom"
-    links={[{ title: 'Get more tips', href: 'test' }, { title: 'Done', href: 'test' }]}
+    links={[
+      { title: 'Get more tips', href: 'test' },
+      { title: 'Done', href: 'test' },
+    ]}
   />
 );
 
