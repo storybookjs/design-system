@@ -1,5 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean, number } from '@storybook/addon-knobs';
 import { ProgressBar } from './ProgressBar';
 
 const onHoverIndex = action('hoverIndex');
@@ -13,7 +14,7 @@ export default {
       'https://cl.ly/8fd39de9cb72/download/Screen%252520Shot%2525202020-02-10%252520at%2525203.29.29%252520PM.png',
     ],
   },
-  decorators: [storyFn => <div style={{ margin: '3rem' }}>{storyFn()}</div>],
+  decorators: [withKnobs, storyFn => <div style={{ margin: '3rem' }}>{storyFn()}</div>],
 };
 
 export const Inprogress25 = () => (
@@ -126,4 +127,28 @@ export const Loading = () => <ProgressBar isLoading />;
 
 Loading.story = {
   name: 'loading',
+};
+
+export const InprogressKnobs = () => {
+  const label = 'Progress';
+  const defaultValue = 73;
+  const options = {
+    range: true,
+    min: 0,
+    max: 100,
+    step: 1,
+  };
+  return (
+    <ProgressBar
+      numerator={[
+        { bar: 'Testing', numeral: number(label, defaultValue, options), status: 'testing' },
+      ]}
+      denominator={100}
+      short={boolean('Size', false)}
+    />
+  );
+};
+
+InprogressKnobs.story = {
+  name: 'Interactive',
 };
