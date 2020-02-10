@@ -1,10 +1,12 @@
 module.exports = {
-  presets: [{
-    name: 'storybook-addon-deps/preset',
-    options: {
-      exclude: /^@babel/
-    }
-  }],
+  presets: [
+    {
+      name: 'storybook-addon-deps/preset',
+      options: {
+        exclude: /^@babel/,
+      },
+    },
+  ],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.js'],
   addons: [
     '@storybook/addon-essentials',
@@ -12,5 +14,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-storysource',
     '@storybook/addon-a11y',
+    '@storybook/addon-knobs',
+    '@storybook/addon-design-assets/register',
   ],
 };

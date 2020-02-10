@@ -45,6 +45,7 @@
     ]
   },
   "dependencies": {
+    "@storybook/addon-design-assets": "^5.3.12",
     "keycode": "^2.2.0",
     "polished": "^3.4.1",
     "prismjs": "1.17.1",
@@ -66,6 +67,7 @@
     "@storybook/addon-actions": "^5.3.8",
     "@storybook/addon-docs": "^5.3.8",
     "@storybook/addon-essentials": "^5.3.8",
+    "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addon-storysource": "^5.3.8",
     "@storybook/react": "^5.3.8",
     "auto": "^7.11.0",
