@@ -1,5 +1,9 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { ProgressBar } from './ProgressBar';
+
+const onHoverIndex = action('hoverIndex');
+const onClickIndex = action('clickIndex');
 
 export default {
   title: 'New component/ProgressBar',
@@ -34,4 +38,58 @@ export const Inprogress75 = () => (
 
 Inprogress75.story = {
   name: 'inprogress 75',
+};
+
+export const MultipleWarning = () => (
+  <ProgressBar
+    selectable
+    onHoverIndex={onHoverIndex}
+    onClickIndex={onClickIndex}
+    numerator={[
+      { bar: 'Accepted', numeral: 0, status: 'positive' },
+      { bar: 'Denied', numeral: 0, status: 'negative' },
+      { bar: 'Unreviewed', numeral: 90, status: 'warning' },
+    ]}
+    denominator={90}
+  />
+);
+
+MultipleWarning.story = {
+  name: 'multiple warning',
+};
+
+export const MultiplePartial = () => (
+  <ProgressBar
+    selectable
+    onHoverIndex={onHoverIndex}
+    onClickIndex={onClickIndex}
+    numerator={[
+      { bar: 'Accepted', numeral: 50, status: 'positive' },
+      { bar: 'Denied', numeral: 30, status: 'negative' },
+      { bar: 'Unreviewed', numeral: 10, status: 'warning' },
+    ]}
+    denominator={90}
+  />
+);
+
+MultiplePartial.story = {
+  name: 'multiple partial',
+};
+
+export const MultiplePositive = () => (
+  <ProgressBar
+    selectable
+    onHoverIndex={onHoverIndex}
+    onClickIndex={onClickIndex}
+    numerator={[
+      { bar: 'Accepted', numeral: 37, status: 'positive' },
+      { bar: 'Denied', numeral: 0, status: 'negative' },
+      { bar: 'Unreviewed', numeral: 0, status: 'warning' },
+    ]}
+    denominator={37}
+  />
+);
+
+MultiplePositive.story = {
+  name: 'multiple positive',
 };
