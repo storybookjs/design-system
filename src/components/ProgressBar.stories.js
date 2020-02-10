@@ -93,3 +93,31 @@ export const MultiplePositive = () => (
 MultiplePositive.story = {
   name: 'multiple positive',
 };
+
+export const Short = () => (
+  <>
+    <ProgressBar short />
+    <br />
+    <ProgressBar
+      short
+      numerator={[{ bar: 'Testing', numeral: 25, status: 'testing' }]}
+      denominator={100}
+    />
+    <br />
+    <ProgressBar
+      short
+      numerator={[{ bar: 'Testing', numeral: 50, status: 'testing' }]}
+      denominator={100}
+    />
+    <br />
+    <ProgressBar
+      short
+      numerator={[{ bar: 'Testing', numeral: 75, status: 'testing' }]}
+      denominator={100}
+    />
+  </>
+);
+
+Short.story = {
+  name: 'short',
+};
