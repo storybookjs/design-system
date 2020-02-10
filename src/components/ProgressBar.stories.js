@@ -121,3 +121,9 @@ export const Short = () => (
 Short.story = {
   name: 'short',
 };
+
+export const Loading = () => <ProgressBar isLoading />;
+
+Loading.story = {
+  name: 'loading',
+};
