@@ -111,6 +111,10 @@ function WithTooltip({
     [closeOnClick, closeTooltip]
   );
 
+  /* eslint-env browser */
+  const portalContainer =
+    typeof window !== 'undefined' ? document.getElementById('root') || document.body : undefined;
+
   return (
     <TooltipTrigger
       delayHide={delayHide}
@@ -119,6 +123,7 @@ function WithTooltip({
       tooltipShown={isTooltipShown}
       onVisibilityChange={setTooltipShown}
       modifiers={modifiers}
+      portalContainer={portalContainer}
       tooltip={({
         getTooltipProps,
         getArrowProps,
