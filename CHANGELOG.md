@@ -1,3 +1,35 @@
+# v4.0.0 (Thu Feb 27 2020)
+
+#### 💥  Breaking Change
+
+- Upgrade auto, node [#151](https://github.com/storybookjs/design-system/pull/151) ([@kylesuss](https://github.com/kylesuss))
+
+#### 🐛  Bug Fix
+
+- Render tooltip portal in #root if it exists [#155](https://github.com/storybookjs/design-system/pull/155) ([@ghengeveld](https://github.com/ghengeveld))
+- upgraded to 5.3beta and added dependencies plugin [#125](https://github.com/storybookjs/design-system/pull/125) ([@atanasster](https://github.com/atanasster) [@ndelangen](https://github.com/ndelangen))
+- Upgrade to addon-essentials and main.js config [#141](https://github.com/storybookjs/design-system/pull/141) ([@shilman](https://github.com/shilman) [@domyen](https://github.com/domyen) [@kylesuss](https://github.com/kylesuss))
+
+#### 🏠  Internal
+
+- Remove package-lock.json [#153](https://github.com/storybookjs/design-system/pull/153) ([@shilman](https://github.com/shilman))
+- Config in package.json takes precedence + false is the default for thhttps://github.com/storybookjs/design-system [#152](https://github.com/storybookjs/design-system/pull/152) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### ⚠️  Pushed to master
+
+- change chromatic workflow to 'push'  ([@ndelangen](https://github.com/ndelangen))
+- add app-code in public  ([@ndelangen](https://github.com/ndelangen))
+
+#### Authors: 5
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- Atanas Stoyanov ([@atanasster](https://github.com/atanasster))
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
+---
+
 # v3.0.0 (Sun Jan 19 2020)
 
 #### 💥  Breaking Change
