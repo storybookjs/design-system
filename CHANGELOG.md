@@ -1,3 +1,15 @@
+# v5.0.0 (Sun Mar 01 2020)
+
+#### 💥  Breaking Change
+
+- Downgrade Styled Components back to v4 [#156](https://github.com/storybookjs/design-system/pull/156) ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v4.0.0 (Thu Feb 27 2020)
 
 #### 💥  Breaking Change
