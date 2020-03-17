@@ -1,3 +1,15 @@
+# v5.0.2 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Add new button styles inspired by LearnStorybook.com [#158](https://github.com/storybookjs/design-system/pull/158) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.0.1 (Mon Mar 16 2020)
 
 #### 🐛  Bug Fix
