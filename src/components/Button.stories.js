@@ -31,6 +31,15 @@ export const buttons = () => (
     <Button appearance="outline">Outline</Button>
     <Button appearance="primaryOutline">Outline primary</Button>
     <Button appearance="secondaryOutline">Outline secondary</Button>
+    <div style={{ background: 'grey', display: 'inline-block' }}>
+      <Button appearance="inversePrimary">Primary inverse</Button>
+    </div>
+    <div style={{ background: 'grey', display: 'inline-block' }}>
+      <Button appearance="inverseSecondary">Secondary inverse</Button>
+    </div>
+    <div style={{ background: 'grey', display: 'inline-block' }}>
+      <Button appearance="inverseOutline">Outline inverse</Button>
+    </div>
   </>
 );
 

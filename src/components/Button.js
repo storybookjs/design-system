@@ -25,6 +25,9 @@ const APPEARANCES = {
   SECONDARY_OUTLINE: 'secondaryOutline',
   TERTIARY: 'tertiary',
   OUTLINE: 'outline',
+  INVERSE_PRIMARY: 'inversePrimary',
+  INVERSE_SECONDARY: 'inverseSecondary',
+  INVERSE_OUTLINE: 'inverseOutline',
 };
 
 const SIZES = {
@@ -301,6 +304,78 @@ const StyledButton = styled.button`
           box-shadow: ${color.secondary} 0 0 0 1px inset,
             ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
         }
+      `};
+
+      ${props =>
+        props.appearance === APPEARANCES.INVERSE_PRIMARY &&
+        `
+          background: ${color.lightest};
+          color: ${color.primary};
+
+          ${!props.isLoading &&
+            `
+              &:hover {
+                background: ${color.lightest};
+              }
+              &:active {
+                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+              }
+              &:focus {
+                box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+              }
+              &:focus:hover {
+                box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+              }
+          `}
+      `}
+
+      ${props =>
+        props.appearance === APPEARANCES.INVERSE_SECONDARY &&
+        `
+          background: ${color.lightest};
+          color: ${color.secondary};
+
+          ${!props.isLoading &&
+            `
+              &:hover {
+                background: ${color.lightest};
+              }
+              &:active {
+                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+              }
+              &:focus {
+                box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+              }
+              &:focus:hover {
+                box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+              }
+          `}
+      `}
+
+      ${props =>
+        props.appearance === APPEARANCES.INVERSE_OUTLINE &&
+        `
+          box-shadow: ${color.lightest} 0 0 0 1px inset;
+          color: ${color.lightest};
+
+          &:hover {
+            box-shadow: ${color.lightest} 0 0 0 1px inset;
+            background: transparent;
+          }
+
+          &:active {
+            background: ${color.lightest};
+            box-shadow: ${color.lightest} 0 0 0 1px inset;
+            color: ${color.lightest};
+          }
+          &:focus {
+            box-shadow: ${color.lightest} 0 0 0 1px inset,
+              ${rgba(color.lightest, 0.4)} 0 1px 9px 2px;
+          }
+          &:focus:hover {
+            box-shadow: ${color.lightest} 0 0 0 1px inset,
+              ${rgba(color.lightest, 0.2)} 0 8px 18px 0px;
+          }
       `};
 
 `;
