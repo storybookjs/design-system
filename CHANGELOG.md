@@ -1,3 +1,15 @@
+# v5.0.3 (Thu Mar 19 2020)
+
+#### ⚠️  Pushed to master
+
+- Export Tooltip  (susskyle@gmail.com)
+
+#### Authors: 1
+
+- Kyle Suss (susskyle@gmail.com)
+
+---
+
 # v5.0.2 (Tue Mar 17 2020)
 
 #### 🐛  Bug Fix
