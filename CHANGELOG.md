@@ -1,3 +1,15 @@
+# v5.0.4 (Sat Mar 21 2020)
+
+#### 🐛  Bug Fix
+
+- Refine outline and inverse button styling for :hover and :focus states [#160](https://github.com/storybookjs/design-system/pull/160) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.0.3 (Thu Mar 19 2020)
 
 #### ⚠️  Pushed to master
