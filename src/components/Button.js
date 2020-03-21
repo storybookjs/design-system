@@ -215,10 +215,10 @@ const StyledButton = styled.button`
             box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
           }
           &:focus {
-            box-shadow: ${rgba(color.tertiary, 0.4)} 0 1px 9px 2px;
+            box-shadow: ${rgba(color.darkest, 0.15)} 0 1px 9px 2px;
           }
           &:focus:hover {
-            box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
+            box-shadow: ${rgba(color.darkest, 0.05)} 0 8px 18px 0px;
           }
         `}
     `}
@@ -245,20 +245,16 @@ const StyledButton = styled.button`
           &:active:focus:hover {
             ${/* This prevents the semi-transparent border from appearing atop the background */ ''}
             background: ${opacify(0.05, color.border)};
-            box-shadow:  ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+            box-shadow:  ${rgba(color.darkest, 0.15)} 0 1px 9px 2px;
           }
 
           &:focus {
-            box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset, ${rgba(
-          color.secondary,
-          0.4
-        )} 0 1px 9px 2px;
+            box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset, 
+            ${rgba(color.darkest, 0.15)} 0 1px 9px 2px;
           }
           &:focus:hover {
-            box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset, ${rgba(
-          color.secondary,
-          0.2
-        )} 0 8px 18px 0px;
+            box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset, 
+            ${rgba(color.darkest, 0.05)} 0 8px 18px 0px;
           }
         `};
     `};
@@ -373,7 +369,7 @@ const StyledButton = styled.button`
           &:active {
             background: ${color.lightest};
             box-shadow: ${color.lightest} 0 0 0 1px inset;
-            color: ${color.secondary};
+            color: ${color.darkest};
           }
           &:focus {
             box-shadow: ${color.lightest} 0 0 0 1px inset,
