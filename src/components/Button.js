@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { darken, rgba } from 'polished';
+import { darken, rgba, opacify } from 'polished';
 import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
 
@@ -226,29 +226,36 @@ const StyledButton = styled.button`
   ${props =>
     props.appearance === APPEARANCES.OUTLINE &&
     `
-      box-shadow: ${color.medium} 0 0 0 1px inset;
+      box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset;
       color: ${color.dark};
       background: transparent;
 
       ${!props.isLoading &&
         `
           &:hover {
-            box-shadow: ${color.mediumdark} 0 0 0 1px inset;
+            box-shadow: ${opacify(0.3, color.border)} 0 0 0 1px inset;
           }
 
           &:active {
-            background: ${color.medium};
-            box-shadow: ${color.medium} 0 0 0 1px inset;
+            background: ${opacify(0.05, color.border)};
+            box-shadow: transparent 0 0 0 1px inset;
             color: ${color.darkest};
           }
+
+          &:active:focus:hover {
+            ${/* This prevents the semi-transparent border from appearing atop the background */ ''}
+            background: ${opacify(0.05, color.border)};
+            box-shadow:  ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+          }
+
           &:focus {
-            box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(
+            box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset, ${rgba(
           color.secondary,
           0.4
         )} 0 1px 9px 2px;
           }
           &:focus:hover {
-            box-shadow: ${color.medium} 0 0 0 1px inset, ${rgba(
+            box-shadow: ${opacify(0.05, color.border)} 0 0 0 1px inset, ${rgba(
           color.secondary,
           0.2
         )} 0 8px 18px 0px;
@@ -321,10 +328,10 @@ const StyledButton = styled.button`
                 box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
               }
               &:focus {
-                box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+                box-shadow: ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
               }
               &:focus:hover {
-                box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+                box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
               }
           `}
       `}
@@ -366,15 +373,15 @@ const StyledButton = styled.button`
           &:active {
             background: ${color.lightest};
             box-shadow: ${color.lightest} 0 0 0 1px inset;
-            color: ${color.lightest};
+            color: ${color.secondary};
           }
           &:focus {
             box-shadow: ${color.lightest} 0 0 0 1px inset,
-              ${rgba(color.lightest, 0.4)} 0 1px 9px 2px;
+              ${rgba(color.darkest, 0.4)} 0 1px 9px 2px;
           }
           &:focus:hover {
             box-shadow: ${color.lightest} 0 0 0 1px inset,
-              ${rgba(color.lightest, 0.2)} 0 8px 18px 0px;
+              ${rgba(color.darkest, 0.2)} 0 8px 18px 0px;
           }
       `};
 
