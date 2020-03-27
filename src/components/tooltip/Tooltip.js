@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { typography } from '../shared/styles';
+import { typography, spacing } from '../shared/styles';
 
 const ifPlacementEquals = (placement, value, fallback = 0) => props =>
   props['data-placement'].split('-')[0] === placement ? value : fallback;
@@ -64,7 +64,7 @@ const TooltipWrapper = styled.div`
         rgba(255, 255, 255, 0.97) 100%
       );
       filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.05)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
-      border-radius: 4px;
+      border-radius: ${spacing.borderRadius.small}px;
       font-size: ${typography.size.s1}px;
     `};
 `;

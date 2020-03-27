@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { color, typography } from '../shared/styles';
+import { color, typography, spacing } from '../shared/styles';
 
 const Note = styled.div`
   padding: 2px 6px;
@@ -11,7 +11,7 @@ const Note = styled.div`
   font-weight: ${typography.weight.bold};
   color: ${color.lightest};
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: ${spacing.borderRadius.small}px;
   white-space: nowrap;
   pointer-events: none;
   z-index: -1;
