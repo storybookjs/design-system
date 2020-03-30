@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { color, typography } from './shared/styles';
+import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 import { Spinner } from './Spinner';
@@ -110,7 +110,7 @@ const SelectWrapper = styled.span`
 		position: absolute;
 		z-index: 1;
 		pointer-events: none;
-    border-radius: 4px;
+    border-radius: ${spacing.borderRadius.small}px;
 	}
 
   ${Arrow} {

@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ListItem } from './ListItem';
+import { spacing } from '../shared/styles';
 
 const List = styled.ul`
   min-width: 180px;
-  border-radius: 4px;
+  border-radius: ${spacing.borderRadius.small}px;
   overflow: hidden;
   margin: 0;
   padding: 0;
