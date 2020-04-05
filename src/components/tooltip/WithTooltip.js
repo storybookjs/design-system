@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
 import uuid from 'uuid';
-import keyCode from 'keycode';
 
 import { Tooltip } from './Tooltip';
 
@@ -54,7 +53,7 @@ const AsComponent = React.forwardRef(
         if (!onClick) {
           return;
         }
-        if (event.keyCode === keyCode('enter') || event.keyCode === keyCode('space')) {
+        if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           onClick(event);
         }
