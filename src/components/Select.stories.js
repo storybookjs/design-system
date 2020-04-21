@@ -10,7 +10,19 @@ export default {
   component: Select,
 };
 
-export const allSelects = () => (
+export const Basic = args => <Select {...args} />;
+Basic.story = {
+  args: {
+    value: 'value1',
+    options: [
+      { label: 'Default', value: 'value1' },
+      { label: 'Dog', value: 'value2' },
+      { label: 'Mouse', value: 'value3' },
+    ],
+  },
+};
+
+export const All = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Select
       id="Primary"
@@ -53,11 +65,7 @@ export const allSelects = () => (
   </form>
 );
 
-allSelects.story = {
-  name: 'All selects',
-};
-
-export const defaultStory = () => (
+export const Default = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Select
       id="Primary"
@@ -125,11 +133,7 @@ export const defaultStory = () => (
   </form>
 );
 
-defaultStory.story = {
-  name: 'default',
-};
-
-export const secondary = () => (
+export const Secondary = () => (
   <form style={{ background: '#FFFFFF', padding: '3em' }}>
     <Select
       id="Secondary"
@@ -193,7 +197,7 @@ export const secondary = () => (
   </form>
 );
 
-export const tertiary = () => (
+export const Tertiary = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Select
       id="Tertiary"

@@ -10,7 +10,10 @@ export default {
   component: Checkbox,
 };
 
-export const allCheckboxes = () => (
+export const Basic = args => <Checkbox {...args} />;
+Basic.story = { args: { label: 'Basic', hideLabel: false } };
+
+export const All = () => (
   <form>
     <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
     <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
@@ -32,14 +35,10 @@ export const allCheckboxes = () => (
   </form>
 );
 
-allCheckboxes.story = {
-  name: 'all checkboxes',
-};
-
-export const unchecked = () => (
+export const Unchecked = () => (
   <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
 );
 
-export const checked = () => (
+export const Checked = () => (
   <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
 );

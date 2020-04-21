@@ -18,7 +18,9 @@ export default {
   },
 };
 
-export const all = () => (
+export const Basic = args => <ListItem {...args} />;
+
+export const All = () => (
   <div>
     <ListItem isLoading />
     <ListItem title="Default" />
@@ -46,48 +48,25 @@ export const all = () => (
   </div>
 );
 
-export const loading = () => <ListItem isLoading />;
-export const defaultStory = () => <ListItem title="Default" />;
+export const Loading = () => <ListItem isLoading />;
 
-defaultStory.story = {
-  name: 'default',
-};
+export const Default = () => <ListItem title="Default" />;
 
-export const longTitle = () => <ListItem title="lorem ipsum dolor sit amet consectatur" />;
+export const LongTitle = () => <ListItem title="lorem ipsum dolor sit amet consectatur" />;
 
-longTitle.story = {
-  name: 'long title',
-};
+export const DefaultIcon = () => <ListItem title="Default icon" right={<Icon icon="eye" />} />;
 
-export const defaultIcon = () => <ListItem title="Default icon" right={<Icon icon="eye" />} />;
+export const ActiveIcon = () => <ListItem active title="active icon" right={<Icon icon="eye" />} />;
 
-defaultIcon.story = {
-  name: 'default icon',
-};
-
-export const activeIcon = () => <ListItem active title="active icon" right={<Icon icon="eye" />} />;
-
-activeIcon.story = {
-  name: 'active icon',
-};
-
-export const wPositions = () => (
+export const WithPositions = () => (
   <ListItem left="left" title="title" center="center" right="right" />
 );
 
-wPositions.story = {
-  name: 'w/positions',
-};
-
-export const wPositionsActive = () => (
+export const WithPositionsActive = () => (
   <ListItem active left="left" title="active" center="center" right="right" />
 );
 
-wPositionsActive.story = {
-  name: 'w/positions active',
-};
-
-export const wPositionsActiveLongTitle = () => (
+export const WithPositionsActiveLongTitle = () => (
   <ListItem
     active
     left="✅"
@@ -97,15 +76,11 @@ export const wPositionsActiveLongTitle = () => (
   />
 );
 
-wPositionsActiveLongTitle.story = {
-  name: 'w/positions active long title',
-};
-
-export const disabled = () => (
+export const Disabled = () => (
   <ListItem disabled left="left" title="disabled" center="center" right="right" />
 );
 
-export const withLinkWrapper = () => (
+export const WithLinkWrapper = () => (
   <>
     <ListItem LinkWrapper={StoryLinkWrapper} isLoading href="http://www.google.com" />
     <ListItem LinkWrapper={StoryLinkWrapper} title="Default" href="http://www.google.com" />
@@ -122,7 +97,3 @@ export const withLinkWrapper = () => (
     />
   </>
 );
-
-withLinkWrapper.story = {
-  name: 'with LinkWrapper',
-};

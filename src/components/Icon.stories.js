@@ -53,7 +53,10 @@ export default {
   component: Icon,
 };
 
-export const labels = () => (
+export const Basic = args => <Icon {...args} />;
+Basic.story = { args: { icon: 'watch' } };
+
+export const Labels = () => (
   <>
     There are {Object.keys(icons).length} icons
     <List>
@@ -67,7 +70,7 @@ export const labels = () => (
   </>
 );
 
-export const noLabels = () => (
+export const NoLabels = () => (
   <List>
     {Object.keys(icons).map(key => (
       <Item minimal key={key}>
@@ -77,13 +80,13 @@ export const noLabels = () => (
   </List>
 );
 
-export const inline = () => (
+export const Inline = () => (
   <>
     this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
   </>
 );
 
-export const block = () => (
+export const Block = () => (
   <>
     this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
   </>

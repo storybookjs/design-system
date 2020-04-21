@@ -6,33 +6,25 @@ export default {
   component: Spinner,
 };
 
-export const defaultStory = () => (
+export const Default = () => (
   <div style={{ background: 'white', padding: '1.5em', position: 'relative' }}>
     <Spinner />
   </div>
 );
 
-defaultStory.story = {
-  name: 'default',
-};
-
-export const inverse = () => (
+export const Inverse = () => (
   <div style={{ background: 'black', padding: '1.5em', position: 'relative' }}>
     <Spinner inverse />
   </div>
 );
 
-inverse.story = {
-  name: 'Inverse',
-};
-
-export const inForm = () => (
+export const InForm = () => (
   <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
     <Spinner inForm />
   </div>
 );
 
-export const inline = () => (
+export const Inline = () => (
   <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
     <Spinner inline />
   </div>

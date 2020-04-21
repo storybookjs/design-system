@@ -19,7 +19,10 @@ export default {
   component: Link,
 };
 
-export const all = () => (
+export const Basic = args => <Link {...args} />;
+Basic.story = { args: { children: 'link text', inverse: false } };
+
+export const All = () => (
   <>
     <Link href="https://learnstorybook.com">default</Link>{' '}
     <Link secondary href="https://learnstorybook.com">
@@ -39,33 +42,33 @@ export const all = () => (
   </>
 );
 
-export const withArrow = () => (
+export const WithArrow = () => (
   <Link containsIcon withArrow href="https://learnstorybook.com">
     withArrow shows an arrow behind the link
   </Link>
 );
 
-export const containsIcon = () => (
+export const ContainsIcon = () => (
   <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
     <Icon icon="sidebar" aria-hidden />
   </Link>
 );
 
-export const icon = () => (
+export const WithIcon = () => (
   <Link href="https://learnstorybook.com">
     <Icon icon="discord" aria-hidden />
     Link with an icon in front
   </Link>
 );
 
-export const isButton = () => (
+export const IsButton = () => (
   /* eslint-disable-next-line */
   <Link isButton onClick={onLinkClick}>
     is actually a button
   </Link>
 );
 
-export const hasLinkWrapper = () => (
+export const HasLinkWrapper = () => (
   <>
     {/* gatsby and styled-components don't work nicely together  */}
     <Link tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">

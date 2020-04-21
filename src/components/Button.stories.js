@@ -23,7 +23,10 @@ export default {
   component: Button,
 };
 
-export const buttons = () => (
+export const Basic = args => <Button {...args} />;
+Basic.story = { args: { children: 'Label' } };
+
+export const All = () => (
   <>
     <Button appearance="primary">Primary</Button>
     <Button appearance="secondary">Secondary</Button>
@@ -43,7 +46,7 @@ export const buttons = () => (
   </>
 );
 
-export const sizes = () => (
+export const Sizes = () => (
   <>
     <Button appearance="primary">Default</Button>
     <Button appearance="primary" size="small">
@@ -52,7 +55,7 @@ export const sizes = () => (
   </>
 );
 
-export const loading = () => (
+export const Loading = () => (
   <>
     <Button appearance="primary" isLoading>
       Primary
@@ -72,7 +75,7 @@ export const loading = () => (
   </>
 );
 
-export const disabled = () => (
+export const Disabled = () => (
   <>
     <Button appearance="primary" isDisabled>
       Primary
@@ -89,7 +92,7 @@ export const disabled = () => (
   </>
 );
 
-export const containsIcon = () => (
+export const ContainsIcon = () => (
   <>
     <Button appearance="outline" containsIcon>
       <Icon icon="link" aria-label="Link" />
@@ -100,7 +103,7 @@ export const containsIcon = () => (
   </>
 );
 
-export const buttonWrapper = () => (
+export const BasicWrapper = () => (
   <div>
     <ButtonWrapper>Original Button Wrapper</ButtonWrapper>
     <br />
@@ -110,11 +113,7 @@ export const buttonWrapper = () => (
   </div>
 );
 
-buttonWrapper.story = {
-  name: 'button wrapper',
-};
-
-export const anchorWrapper = () => (
+export const AnchorWrapper = () => (
   <div>
     <StoryLinkWrapper to="http://storybook.js.org">Original Link Wrapper</StoryLinkWrapper>
     <br />
@@ -123,7 +122,3 @@ export const anchorWrapper = () => (
     </Button>
   </div>
 );
-
-anchorWrapper.story = {
-  name: 'anchor wrapper',
-};

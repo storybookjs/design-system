@@ -35,19 +35,13 @@ export default {
   excludeStories: ['users'],
 };
 
-export const short = () => <AvatarList users={users.slice(0, 2)} />;
-export const ellipsized = () => <AvatarList users={users} />;
-export const bigUserCount = () => <AvatarList users={users} userCount={100} />;
-
-bigUserCount.story = {
-  name: 'big userCount',
+export const Basic = args => <AvatarList {...args} />;
+Basic.story = {
+  args: { users },
 };
-
-export const smallSize = () => <AvatarList users={users} userCount={100} size="small" />;
-
-smallSize.story = {
-  name: 'small size',
-};
-
-export const loading = () => <AvatarList isLoading />;
-export const empty = () => <AvatarList users={[]} />;
+export const Short = () => <AvatarList users={users.slice(0, 2)} />;
+export const Ellipsized = () => <AvatarList users={users} />;
+export const BigUserCount = () => <AvatarList users={users} userCount={100} />;
+export const SmallSize = () => <AvatarList users={users} userCount={100} size="small" />;
+export const Loading = () => <AvatarList isLoading />;
+export const Empty = () => <AvatarList users={[]} />;

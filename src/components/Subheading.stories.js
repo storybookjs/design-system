@@ -6,4 +6,4 @@ export default {
   component: Subheading,
 };
 
-export const subheading = () => <Subheading>Subheading</Subheading>;
+export const Basic = () => <Subheading>Subheading</Subheading>;
