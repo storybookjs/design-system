@@ -1,4 +1,5 @@
 import React from 'react';
+import { argsStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Select } from './Select';
@@ -10,17 +11,14 @@ export default {
   component: Select,
 };
 
-export const Basic = args => <Select {...args} />;
-Basic.story = {
-  args: {
-    value: 'value1',
-    options: [
-      { label: 'Default', value: 'value1' },
-      { label: 'Dog', value: 'value2' },
-      { label: 'Mouse', value: 'value3' },
-    ],
-  },
-};
+export const Basic = argsStory({
+  value: 'value1',
+  options: [
+    { label: 'Default', value: 'value1' },
+    { label: 'Dog', value: 'value2' },
+    { label: 'Mouse', value: 'value3' },
+  ],
+});
 
 export const All = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>

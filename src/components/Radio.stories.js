@@ -1,4 +1,5 @@
 import React from 'react';
+import { argsStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Radio } from './Radio';
@@ -10,8 +11,7 @@ export default {
   component: Radio,
 };
 
-export const Basic = args => <Radio {...args} />;
-Basic.story = { args: { label: 'label', hideLabel: false } };
+export const Basic = argsStory({ label: 'label', hideLabel: false });
 
 export const All = () => (
   <form>
@@ -24,10 +24,11 @@ export const All = () => (
   </form>
 );
 
-export const Unchecked = () => (
-  <Radio id="Mice" label="Mice" hideLabel value="mice" onChange={onChange} />
-);
-
-export const Checked = () => (
-  <Radio id="Dogs" label="Dogs" hideLabel value="dogs" checked onChange={onChange} />
-);
+export const Unchecked = argsStory({ id: 'Mice', label: 'Mice', hideLabel: true, value: 'mice' });
+export const Checked = argsStory({
+  id: 'Dogs',
+  label: 'Dogs',
+  hideLabel: true,
+  value: 'dogs',
+  checked: true,
+});

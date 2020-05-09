@@ -1,4 +1,5 @@
 import React from 'react';
+import { argsStory } from '@storybook/react';
 import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 
@@ -23,8 +24,7 @@ export default {
   component: Button,
 };
 
-export const Basic = args => <Button {...args} />;
-Basic.story = { args: { children: 'Label' } };
+export const Basic = argsStory({ children: 'Label' });
 
 export const All = () => (
   <>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { argsStory } from '@storybook/react';
 
 import { ListItem } from './ListItem';
 import { Icon } from '../Icon';
@@ -18,7 +19,7 @@ export default {
   },
 };
 
-export const Basic = args => <ListItem {...args} />;
+export const Basic = argsStory({});
 
 export const All = () => (
   <div>
@@ -48,37 +49,50 @@ export const All = () => (
   </div>
 );
 
-export const Loading = () => <ListItem isLoading />;
+export const Loading = argsStory({ isLoading: true });
 
-export const Default = () => <ListItem title="Default" />;
+export const Default = argsStory({ title: 'Default' });
 
-export const LongTitle = () => <ListItem title="lorem ipsum dolor sit amet consectatur" />;
+export const LongTitle = argsStory({ title: 'lorem ipsum dolor sit amet consectatur' });
 
-export const DefaultIcon = () => <ListItem title="Default icon" right={<Icon icon="eye" />} />;
+export const DefaultIcon = argsStory({ title: 'Default icon', right: <Icon icon="eye" /> });
 
-export const ActiveIcon = () => <ListItem active title="active icon" right={<Icon icon="eye" />} />;
+export const ActiveIcon = argsStory({
+  active: true,
+  title: 'active icon',
+  right: <Icon icon="eye" />,
+});
 
-export const WithPositions = () => (
-  <ListItem left="left" title="title" center="center" right="right" />
-);
+export const WithPositions = argsStory({
+  left: 'left',
+  title: 'title',
+  center: 'center',
+  right: 'right',
+});
 
-export const WithPositionsActive = () => (
-  <ListItem active left="left" title="active" center="center" right="right" />
-);
+export const WithPositionsActive = argsStory({
+  active: true,
+  left: 'left',
+  title: 'active',
+  center: 'center',
+  right: 'right',
+});
 
-export const WithPositionsActiveLongTitle = () => (
-  <ListItem
-    active
-    left="✅"
-    title="lorem ipsum dolor sit amet consectatur"
-    center="center"
-    right={<Icon icon="eye" />}
-  />
-);
+export const WithPositionsActiveLongTitle = argsStory({
+  active: true,
+  left: '✅',
+  title: 'lorem ipsum dolor sit amet consectatur',
+  center: 'center',
+  right: <Icon icon="eye" />,
+});
 
-export const Disabled = () => (
-  <ListItem disabled left="left" title="disabled" center="center" right="right" />
-);
+export const Disabled = argsStory({
+  disabled: true,
+  left: 'left',
+  title: 'disabled',
+  center: 'center',
+  right: 'right',
+});
 
 export const WithLinkWrapper = () => (
   <>

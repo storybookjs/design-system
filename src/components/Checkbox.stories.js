@@ -1,4 +1,5 @@
 import React from 'react';
+import { argsStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Checkbox } from './Checkbox';
@@ -10,8 +11,7 @@ export default {
   component: Checkbox,
 };
 
-export const Basic = args => <Checkbox {...args} />;
-Basic.story = { args: { label: 'Basic', hideLabel: false } };
+export const Basic = argsStory({ label: 'Basic', hideLabel: false });
 
 export const All = () => (
   <form>
@@ -35,10 +35,5 @@ export const All = () => (
   </form>
 );
 
-export const Unchecked = () => (
-  <Checkbox id="Unchecked" label="Cats" hideLabel onChange={onChange} />
-);
-
-export const Checked = () => (
-  <Checkbox id="Checked" label="Cats" hideLabel checked onChange={onChange} />
-);
+export const Unchecked = argsStory({ id: 'Unchecked', label: 'Cats', hideLabel: true });
+export const Checked = argsStory({ id: 'Checked', label: 'Cats', hideLabel: true, checked: true });

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { argsStory } from '@storybook/react';
 import { Highlight } from './Highlight';
 
 const bashCode = `# Highlight bash:
@@ -75,7 +76,7 @@ export default {
   component: Highlight,
 };
 
-export const Basic = args => <Highlight {...args} />;
+export const Basic = argsStory({});
 
 export const Bash = () => (
   <>

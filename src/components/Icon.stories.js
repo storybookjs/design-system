@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { argsStory } from '@storybook/react';
 
 import { Icon } from './Icon';
 import { icons } from './shared/icons';
@@ -53,8 +54,7 @@ export default {
   component: Icon,
 };
 
-export const Basic = args => <Icon {...args} />;
-Basic.story = { args: { icon: 'watch' } };
+export const Basic = argsStory({ icon: 'watch' });
 
 export const Labels = () => (
   <>

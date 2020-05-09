@@ -1,4 +1,5 @@
 import React from 'react';
+import { argsStory } from '@storybook/react';
 
 import { Avatar } from './Avatar';
 
@@ -9,7 +10,7 @@ export default {
   },
 };
 
-export const Basic = args => <Avatar {...args} />;
+export const Basic = argsStory({});
 
 export const large = () => (
   <div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { argsStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Icon } from './Icon';
@@ -19,8 +20,7 @@ export default {
   component: Link,
 };
 
-export const Basic = args => <Link {...args} />;
-Basic.story = { args: { children: 'link text', inverse: false } };
+export const Basic = argsStory({ children: 'link text', inverse: false });
 
 export const All = () => (
   <>
