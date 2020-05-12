@@ -68,6 +68,7 @@
     "@storybook/linter-config": "^2.5.0",
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "6.0.0-beta.4",
+    "@types/styled-components": "^5.1.0",
     "auto": "^7.11.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",

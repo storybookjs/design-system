@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { icons } from './shared/icons';
 
-const Svg = styled.svg`
+const Svg = styled.svg<Partial<Props>>`
   display: ${(props) => (props.block ? 'block' : 'inline-block')};
   vertical-align: middle;
 
@@ -22,19 +22,15 @@ const Path = styled.path`
  * - *decorative only*: for example, it illustrates a label next to it. We must ensure that it is ignored by screen readers, by setting `aria-hidden` attribute (ex: `<Icon icon="check" aria-hidden />`)
  * - *non-decorative*: it means that it delivers information. For example, an icon as only child in a button. The meaning can be obvious visually, but it must have a proper text alternative via `aria-label` for screen readers. (ex: `<Icon icon="print" aria-label="Print this document" />`)
  */
-export function Icon({ icon, block, ...props }) {
+export const Icon: FunctionComponent<Props> = ({ icon, block = false, ...props }) => {
   return (
     <Svg viewBox="0 0 1024 1024" width="20px" height="20px" block={block} {...props}>
       <Path d={icons[icon]} />
     </Svg>
   );
+};
+
+interface Props {
+  icon: string;
+  block?: boolean;
 }
-
-Icon.propTypes = {
-  icon: PropTypes.string.isRequired,
-  block: PropTypes.bool,
-};
-
-Icon.defaultProps = {
-  block: false,
-};

@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import React, { FunctionComponent } from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 import { glow } from './shared/animation';
@@ -12,7 +12,7 @@ export const sizes = {
   tiny: 16,
 };
 
-const Image = styled.div`
+const Image = styled.div<Partial<Props>>`
   background: ${(props) => (!props.isLoading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
@@ -75,7 +75,7 @@ const Image = styled.div`
 `;
 
 // prettier-ignore
-const Initial = styled.div`
+const Initial = styled.div<Partial<Props>>`
   color: ${color.lightest};
   text-align: center;
 
@@ -101,7 +101,13 @@ const Initial = styled.div`
 /**
  * The `Avatar` component is where all your avatars come to play.
  */
-export function Avatar({ isLoading, username, src, size, ...props }) {
+export const Avatar: FunctionComponent<Props> = ({
+  isLoading = false,
+  username = 'loading',
+  src = null,
+  size = 'medium',
+  ...props
+}) => {
   let avatarFigure = <Icon icon="useralt" />;
   const a11yProps = {};
 
@@ -124,24 +130,17 @@ export function Avatar({ isLoading, username, src, size, ...props }) {
       {avatarFigure}
     </Image>
   );
-}
+};
 
-Avatar.propTypes = {
-  isLoading: PropTypes.bool,
+interface Props {
+  isLoading: boolean;
   /**
    The name of the user (not the nicename)
   */
-  username: PropTypes.string,
-  src: PropTypes.string,
+  username: string;
+  src: string;
   /**
    Specify size
   */
-  size: PropTypes.oneOf(Object.keys(sizes)),
-};
-
-Avatar.defaultProps = {
-  isLoading: false,
-  username: 'loading',
-  src: null,
-  size: 'medium',
-};
+  size: keyof typeof sizes;
+}
