@@ -6,25 +6,25 @@ import { glow } from './shared/animation';
 
 const ProgressWrapper = styled.div`
   display: inline-block;
-  height: ${props => (props.size === 'small' ? 4 : 5)}px;
+  height: ${(props) => (props.size === 'small' ? 4 : 5)}px;
 `;
 
 const Dot = styled.div`
   background: ${color.medium};
   display: inline-block;
   vertical-align: top;
-  width: ${props => (props.size === 'small' ? 4 : 5)}px;
-  height: ${props => (props.size === 'small' ? 4 : 5)}px;
+  width: ${(props) => (props.size === 'small' ? 4 : 5)}px;
+  height: ${(props) => (props.size === 'small' ? 4 : 5)}px;
   border-radius: 3em;
-  margin: 0 ${props => (props.size === 'small' ? 2 : 3)}px;
+  margin: 0 ${(props) => (props.size === 'small' ? 2 : 3)}px;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       background: ${color.mediumdark};
     `};
 
-  ${props =>
+  ${(props) =>
     props.isLoading &&
     css`
       animation: ${glow} 1.5s ease-in-out infinite;

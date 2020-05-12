@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { icons } from './shared/icons';
 
 const Svg = styled.svg`
-  display: ${props => (props.block ? 'block' : 'inline-block')};
+  display: ${(props) => (props.block ? 'block' : 'inline-block')};
   vertical-align: middle;
 
   shape-rendering: inherit;

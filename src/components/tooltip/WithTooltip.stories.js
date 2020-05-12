@@ -53,7 +53,7 @@ export default {
   title: 'Design System/tooltip/WithTooltip',
 
   decorators: [
-    storyFn => (
+    (storyFn) => (
       <ViewPort>
         <BackgroundBox>
           <Spacer />

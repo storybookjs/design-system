@@ -15,7 +15,7 @@ const Label = styled.label`
 `;
 
 const OptionalText = styled.span`
-  ${props =>
+  ${(props) =>
     props.hideLabel &&
     css`
       border: 0px !important;
@@ -76,16 +76,16 @@ const Input = styled.input.attrs({ type: 'radio' })`
   }
 
   &:focus + ${LabelText}:before {
-    box-shadow: ${props => props.radioColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset;
   }
 
   &:checked + ${LabelText}:before {
-    box-shadow: ${props => props.radioColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset;
   }
 
   &:checked:focus + ${LabelText}:before {
-    box-shadow: ${props => props.radioColor} 0 0 0 1px inset,
-      ${props => rgba(props.radioColor, 0.3)} 0 0 5px 2px;
+    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset,
+      ${(props) => rgba(props.radioColor, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
@@ -102,7 +102,7 @@ const Input = styled.input.attrs({ type: 'radio' })`
 
   &:checked + ${LabelText}:after {
     transform: scale3d(1, 1, 1);
-    background: ${props => props.radioColor};
+    background: ${(props) => props.radioColor};
     opacity: 1;
   }
 `;

@@ -10,7 +10,7 @@ import { Tooltip } from './Tooltip';
 const ButtonContainer = styled.button`
   background: transparent;
   border: 0;
-  cursor: ${props => (props.trigger === 'hover' ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.trigger === 'hover' ? 'default' : 'pointer')};
   display: inline-block;
   font-size: inherit;
   font-weight: inherit;
@@ -20,7 +20,7 @@ const ButtonContainer = styled.button`
   text-decoration: none;
 `;
 
-const isDescendantOfAction = element => {
+const isDescendantOfAction = (element) => {
   const { parentElement } = element;
 
   if (parentElement.tagName === 'BODY') {
@@ -49,7 +49,7 @@ const AsComponent = React.forwardRef(
     };
 
     const onKeyDown = useMemo(
-      () => event => {
+      () => (event) => {
         if (!onClick) {
           return;
         }
@@ -101,7 +101,7 @@ function WithTooltip({
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
   const closeTooltip = useMemo(() => () => setTooltipShown(false), [setTooltipShown]);
   const closeTooltipOnClick = useMemo(
-    () => event => {
+    () => (event) => {
       if (!closeOnClick || !isDescendantOfAction(event.target)) {
         return;
       }

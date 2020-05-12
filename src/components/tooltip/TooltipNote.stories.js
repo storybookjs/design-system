@@ -7,7 +7,7 @@ export default {
   title: 'Design System/tooltip/TooltipNote',
 
   decorators: [
-    storyFn => (
+    (storyFn) => (
       <div style={{ height: '300px' }}>
         <WithTooltip
           hasChrome={false}

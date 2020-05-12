@@ -30,7 +30,7 @@ export default {
   title: 'Design System/modal/WithModal',
 
   decorators: [
-    storyFn => (
+    (storyFn) => (
       <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
         This is an example background {storyFn()}
       </div>

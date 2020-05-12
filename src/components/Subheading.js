@@ -9,4 +9,4 @@ const Heading = styled.span`
   font-size: ${typography.size.s2 - 1}px;
 `;
 
-export const Subheading = props => <Heading {...props} />;
+export const Subheading = (props) => <Heading {...props} />;

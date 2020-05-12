@@ -15,7 +15,7 @@ const Label = styled.label`
 `;
 
 const OptionalText = styled.span`
-  ${props =>
+  ${(props) =>
     props.hideLabel &&
     css`
       border: 0px !important;
@@ -75,16 +75,16 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 
   &:focus + ${LabelText}:before {
-    box-shadow: ${props => props.checkboxColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset;
   }
 
   &:checked + ${LabelText}:before {
-    box-shadow: ${props => props.checkboxColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset;
   }
 
   &:checked:focus + ${LabelText}:before {
-    box-shadow: ${props => props.checkboxColor} 0 0 0 1px inset,
-      ${props => rgba(props.checkboxColor, 0.3)} 0 0 5px 2px;
+    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset,
+      ${(props) => rgba(props.checkboxColor, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
@@ -101,7 +101,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 
   &:checked + ${LabelText}:after {
     transform: scale3d(1, 1, 1);
-    background: ${props => props.checkboxColor};
+    background: ${(props) => props.checkboxColor};
     opacity: 1;
   }
 `;

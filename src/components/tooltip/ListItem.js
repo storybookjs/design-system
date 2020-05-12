@@ -94,7 +94,7 @@ const linkStyles = css`
     }
   }
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       ${Title} {
@@ -112,7 +112,7 @@ const linkStyles = css`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.isLoading &&
     css`
       ${Title} {
@@ -122,7 +122,7 @@ const linkStyles = css`
       }
     `};
 
-  ${props =>
+  ${(props) =>
     props.disabled &&
     css`
       cursor: not-allowed !important;
@@ -137,9 +137,11 @@ const Item = styled(({ active, activeColor, isLoading, ...rest }) => <a {...rest
   ${linkStyles}
 `;
 
-const buildStyledLinkWrapper = LinkWrapper => styled(
-  ({ active, isLoading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
-)`
+const buildStyledLinkWrapper = (
+  LinkWrapper
+) => styled(({ active, isLoading, activeColor, ...linkWrapperRest }) => (
+  <LinkWrapper {...linkWrapperRest} />
+))`
   ${linkStyles}
 `;
 

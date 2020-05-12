@@ -13,7 +13,7 @@ export const sizes = {
 };
 
 const Image = styled.div`
-  background: ${props => (!props.isLoading ? 'transparent' : color.light)};
+  background: ${(props) => (!props.isLoading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
   vertical-align: top;
@@ -24,7 +24,7 @@ const Image = styled.div`
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
 
-  ${props =>
+  ${(props) =>
     props.size === 'tiny' &&
     css`
       height: ${sizes.tiny}px;
@@ -32,7 +32,7 @@ const Image = styled.div`
       line-height: ${sizes.tiny}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'small' &&
     css`
       height: ${sizes.small}px;
@@ -40,7 +40,7 @@ const Image = styled.div`
       line-height: ${sizes.small}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'large' &&
     css`
       height: ${sizes.large}px;
@@ -48,7 +48,7 @@ const Image = styled.div`
       line-height: ${sizes.large}px;
     `}
 
-  ${props =>
+  ${(props) =>
     !props.src &&
     css`
       background: ${!props.isLoading && '#37D5D3'};
