@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ComponentProps } from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 import { glow } from './shared/animation';
@@ -107,9 +107,9 @@ export const Avatar: FunctionComponent<Props> = ({
   src = null,
   size = 'medium',
   ...props
-}) => {
+}: Props) => {
   let avatarFigure = <Icon icon="useralt" />;
-  const a11yProps = {};
+  const a11yProps: ComponentProps<typeof Image> = {};
 
   if (isLoading) {
     a11yProps['aria-busy'] = true;
@@ -134,13 +134,9 @@ export const Avatar: FunctionComponent<Props> = ({
 
 interface Props {
   isLoading: boolean;
-  /**
-   The name of the user (not the nicename)
-  */
+  /** The name of the user (not the nice name) */
   username: string;
   src: string;
-  /**
-   Specify size
-  */
+  /** Specify size */
   size: keyof typeof sizes;
 }
