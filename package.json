@@ -51,6 +51,7 @@
     "react-popper-tooltip": "^2.11.1",
     "recompose": "^0.30.0",
     "styled-components": "^4.4.1",
+    "typescript": "^3.8.3",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
