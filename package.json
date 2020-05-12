@@ -81,6 +81,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
+    "prop-types": "^15.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sort-package-json": "^1.42.2",
@@ -88,7 +89,6 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
   },
@@ -105,5 +105,9 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/storybook"
+  },
+  "storybook": {
+    "title": "Storybook Design System",
+    "url": "https://deploy-preview-166--storybook-design-system.netlify.app"
   }
 }
