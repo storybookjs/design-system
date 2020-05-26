@@ -1,5 +1,4 @@
-import { argsStory } from '@storybook/react';
-
+import React from 'react';
 import { AvatarList } from './AvatarList';
 import { Avatar } from './Avatar';
 
@@ -35,10 +34,23 @@ export default {
   excludeStories: ['users'],
 };
 
-export const Basic = argsStory({ users });
-export const Short = argsStory({ users: users.slice(0, 2) });
-export const Ellipsized = argsStory({ users });
-export const BigUserCount = argsStory({ users, userCount: 100 });
-export const SmallSize = argsStory({ users, userCount: 100, size: 'small' });
-export const Loading = argsStory({ users: [], isLoading: true });
-export const Empty = argsStory({ users: [] });
+export const Basic = args => <AvatarList {...args} />;
+Basic.args = { users };
+
+export const Short = Basic.bind();
+Short.args = { users: users.slice(0, 2) };
+
+export const Ellipsized = Basic.bind();
+Ellipsized.args = { users };
+
+export const BigUserCount = Basic.bind();
+BigUserCount.args = { users, userCount: 100 };
+
+export const SmallSize = Basic.bind();
+SmallSize.args = { users, userCount: 100, size: 'small' };
+
+export const Loading = Basic.bind();
+Loading.args = { users: [], isLoading: true };
+
+export const Empty = Basic.bind();
+Empty.args = { users: [] };

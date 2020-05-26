@@ -28,14 +28,10 @@ export default {
 
 export const story0 = () => <TooltipLinkList links={links.slice(0, 2)} LinkWrapper={null} />;
 
-story0.story = {
-  name: 'links',
-};
+story0.storyName = 'links';
 
 export const linksAndCallback = () => (
   <TooltipLinkList links={links} LinkWrapper={StoryLinkWrapper} />
 );
 
-linksAndCallback.story = {
-  name: 'links and callback',
-};
+linksAndCallback.storyName = 'links and callback';

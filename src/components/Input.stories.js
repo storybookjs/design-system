@@ -1,5 +1,4 @@
 import React from 'react';
-import { argsStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Input } from './Input';
@@ -11,13 +10,14 @@ export default {
   component: Input,
 };
 
-export const Basic = argsStory({
+export const Basic = args => <Input {...args} />;
+Basic.args = {
   label: 'label',
   value: 'value',
   appearance: 'pill',
   orientation: 'horizontal',
   hideLabel: false,
-});
+};
 
 export const All = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>

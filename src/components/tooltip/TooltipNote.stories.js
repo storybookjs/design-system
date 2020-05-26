@@ -21,14 +21,9 @@ export default {
       </div>
     ),
   ],
-
-  parameters: {
-    component: TooltipNote,
-  },
+  component: TooltipNote,
 };
 
 export const defaultStory = () => <TooltipNote note="Lorem ipsum dolor" />;
 
-defaultStory.story = {
-  name: 'default',
-};
+defaultStory.storyName = 'default';
