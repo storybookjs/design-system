@@ -74,7 +74,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "chromatic": "^4.0.3",
+    "chromatic": "^5.0.0-alpha.4",
     "cross-env": "^7.0.2",
     "eslint": "^7.1.0",
     "fork-ts-checker-webpack-plugin": "^4.1.6",
