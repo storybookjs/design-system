@@ -11,10 +11,10 @@
     "name": "Michael Shilman",
     "email": "michael@lab80.co"
   },
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\"",
     "build-docs": "build-storybook --docs",
@@ -44,6 +44,7 @@
   "dependencies": {
     "polished": "^3.6.4",
     "prismjs": "1.20.0",
+    "prop-types": "^15.5.4",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
     "recompose": "^0.30.0",
@@ -81,7 +82,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
-    "prop-types": "^15.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sort-package-json": "^1.44.0",
