@@ -56,8 +56,7 @@ DefaultIcon.args = { title: 'Default icon', right: <Icon icon="eye" /> };
 export const ActiveIcon = Default.bind();
 ActiveIcon.args = {
   active: true,
-  title: 'active icon',
-  right: <Icon icon="eye" />,
+  ...DefaultIcon.args,
 };
 
 export const WithPositions = Default.bind();
