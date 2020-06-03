@@ -15,10 +15,7 @@ export default {
       </div>
     ),
   ],
-
-  parameters: {
-    component: TooltipMessage,
-  },
+  component: TooltipMessage,
 };
 
 export const defaultStory = () => (
@@ -28,9 +25,7 @@ export const defaultStory = () => (
   />
 );
 
-defaultStory.story = {
-  name: 'default',
-};
+defaultStory.storyName = 'default';
 
 export const withLink = () => (
   <TooltipMessage
@@ -40,9 +35,7 @@ export const withLink = () => (
   />
 );
 
-withLink.story = {
-  name: 'with link',
-};
+withLink.storyName = 'with link';
 
 export const withLinks = () => (
   <TooltipMessage
@@ -55,14 +48,10 @@ export const withLinks = () => (
   />
 );
 
-withLinks.story = {
-  name: 'with links',
-};
+withLinks.storyName = 'with links';
 
 export const minimalMessage = () => (
   <TooltipMessage desc="Amet consectatur vestibulum concet durum politu coret weirom" />
 );
 
-minimalMessage.story = {
-  name: 'minimal message',
-};
+minimalMessage.storyName = 'minimal message';

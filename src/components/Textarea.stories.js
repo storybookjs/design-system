@@ -40,9 +40,7 @@ export const allTextareas = () => (
   </form>
 );
 
-allTextareas.story = {
-  name: 'all Textareas',
-};
+allTextareas.storyName = 'all Textareas';
 
 export const defaultStory = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
@@ -96,9 +94,7 @@ export const defaultStory = () => (
   </form>
 );
 
-defaultStory.story = {
-  name: 'default',
-};
+defaultStory.storyName = 'default';
 
 export const secondary = () => (
   <form style={{ background: '#fff', padding: '3em' }}>

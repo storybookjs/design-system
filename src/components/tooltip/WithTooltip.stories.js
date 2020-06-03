@@ -51,7 +51,6 @@ Tooltip.defaultProps = {
 
 export default {
   title: 'Design System/tooltip/WithTooltip',
-
   decorators: [
     (storyFn) => (
       <ViewPort>
@@ -62,10 +61,7 @@ export default {
       </ViewPort>
     ),
   ],
-
-  parameters: {
-    component: WithTooltip,
-  },
+  component: WithTooltip,
 };
 
 export const simpleHover = () => (
@@ -74,9 +70,7 @@ export const simpleHover = () => (
   </WithTooltip>
 );
 
-simpleHover.story = {
-  name: 'simple hover',
-};
+simpleHover.storyName = 'simple hover';
 
 export const simpleHoverAsSvg = () => (
   <svg>
@@ -92,9 +86,7 @@ export const simpleHoverAsSvg = () => (
   </svg>
 );
 
-simpleHoverAsSvg.story = {
-  name: 'simple hover, as svg',
-};
+simpleHoverAsSvg.storyName = 'simple hover, as svg';
 
 export const simpleHoverFunctional = () => (
   <WithTooltip placement="top" trigger="hover" tooltip={Tooltip}>
@@ -102,9 +94,7 @@ export const simpleHoverFunctional = () => (
   </WithTooltip>
 );
 
-simpleHoverFunctional.story = {
-  name: 'simple hover, functional',
-};
+simpleHoverFunctional.storyName = 'simple hover, functional';
 
 export const simpleClick = () => (
   <WithTooltip placement="top" trigger="click" tooltip={<Tooltip />}>
@@ -112,9 +102,7 @@ export const simpleClick = () => (
   </WithTooltip>
 );
 
-simpleClick.story = {
-  name: 'simple click',
-};
+simpleClick.storyName = 'simple click';
 
 export const simpleClickAsSvg = () => (
   <svg>
@@ -130,9 +118,7 @@ export const simpleClickAsSvg = () => (
   </svg>
 );
 
-simpleClickAsSvg.story = {
-  name: 'simple click, as svg',
-};
+simpleClickAsSvg.storyName = 'simple click, as svg';
 
 export const simpleClickStartOpen = () => (
   <WithTooltip placement="top" trigger="click" startOpen tooltip={<Tooltip />}>
@@ -140,9 +126,7 @@ export const simpleClickStartOpen = () => (
   </WithTooltip>
 );
 
-simpleClickStartOpen.story = {
-  name: 'simple click start open',
-};
+simpleClickStartOpen.storyName = 'simple click start open';
 
 export const simpleClickCloseOnClick = () => (
   <WithTooltip placement="top" trigger="click" closeOnClick tooltip={<Tooltip />}>
@@ -150,9 +134,7 @@ export const simpleClickCloseOnClick = () => (
   </WithTooltip>
 );
 
-simpleClickCloseOnClick.story = {
-  name: 'simple click closeOnClick',
-};
+simpleClickCloseOnClick.storyName = 'simple click closeOnClick';
 
 export const noChrome = () => (
   <WithTooltip placement="top" trigger="click" hasChrome={false} tooltip={<Tooltip />}>
@@ -160,6 +142,4 @@ export const noChrome = () => (
   </WithTooltip>
 );
 
-noChrome.story = {
-  name: 'no chrome',
-};
+noChrome.storyName = 'no chrome';

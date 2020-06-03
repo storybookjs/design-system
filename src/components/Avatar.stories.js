@@ -1,16 +1,13 @@
 import React from 'react';
-import { argsStory } from '@storybook/react';
 
 import { Avatar } from './Avatar';
 
 export default {
   title: 'Design System/Avatar',
-  parameters: {
-    component: Avatar,
-  },
+  component: Avatar,
 };
 
-export const Basic = argsStory({});
+export const Basic = args => <Avatar {...args} />;
 
 export const large = () => (
   <div>

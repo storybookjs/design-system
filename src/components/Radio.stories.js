@@ -1,5 +1,4 @@
 import React from 'react';
-import { argsStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Radio } from './Radio';
@@ -11,7 +10,8 @@ export default {
   component: Radio,
 };
 
-export const Basic = argsStory({ label: 'label', hideLabel: false });
+export const Basic = args => <Radio {...args} />;
+Basic.args = { label: 'label', hideLabel: false };
 
 export const All = () => (
   <form>
@@ -24,11 +24,14 @@ export const All = () => (
   </form>
 );
 
-export const Unchecked = argsStory({ id: 'Mice', label: 'Mice', hideLabel: true, value: 'mice' });
-export const Checked = argsStory({
+export const Unchecked = Basic.bind();
+Unchecked.args = { id: 'Mice', label: 'Mice', hideLabel: true, value: 'mice' };
+
+export const Checked = Basic.bind();
+Checked.args = {
   id: 'Dogs',
   label: 'Dogs',
   hideLabel: true,
   value: 'dogs',
   checked: true,
-});
+};

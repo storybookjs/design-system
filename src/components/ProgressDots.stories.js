@@ -1,5 +1,4 @@
-import { argsStory } from '@storybook/react';
-
+import React from 'react';
 import { ProgressDots } from './ProgressDots';
 
 export default {
@@ -8,9 +7,19 @@ export default {
   argTypes: { steps: { control: { type: 'range', max: 10 } } },
 };
 
-export const Basic = argsStory({});
-export const Loading = argsStory({ isLoading: true });
-export const Starting = argsStory({ steps: 4, progress: 1 });
-export const Halfway = argsStory({ steps: 4, progress: 2 });
-export const Complete = argsStory({ steps: 4, progress: 4 });
-export const LargeComplete = argsStory({ steps: 4, progress: 4, size: 'large' });
+export const Basic = args => <ProgressDots {...args} />;
+
+export const Loading = Basic.bind();
+Loading.args = { isLoading: true };
+
+export const Starting = Basic.bind();
+Starting.args = { steps: 4, progress: 1 };
+
+export const Halfway = Basic.bind();
+Halfway.args = { steps: 4, progress: 2 };
+
+export const Complete = Basic.bind();
+Complete.args = { steps: 4, progress: 4 };
+
+export const LargeComplete = Basic.bind();
+LargeComplete.args = { steps: 4, progress: 4, size: 'large' };

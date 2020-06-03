@@ -21,7 +21,7 @@ export default {
   excludeStories: ['actions'],
 };
 
-export const visibleShort = () => (
+export const VisibleShort = () => (
   <Modal isOpen {...actions}>
     {({ onClose }) => (
       <div style={{ background: 'papayawhip', fontSize: '12px' }}>
@@ -47,11 +47,7 @@ export const visibleShort = () => (
   </Modal>
 );
 
-visibleShort.story = {
-  name: 'visible short',
-};
-
-export const visibleTall = () => (
+export const VisibleTall = () => (
   <Modal isOpen {...actions}>
     {({ onClose }) => (
       <div style={{ background: 'papayawhip', fontSize: '36px' }}>
@@ -77,11 +73,7 @@ export const visibleTall = () => (
   </Modal>
 );
 
-visibleTall.story = {
-  name: 'visible tall',
-};
-
-export const notVisible = () => (
+export const NotVisible = () => (
   <Modal isOpen={false} {...actions}>
     {({ onClose }) => (
       <div>
@@ -92,7 +84,3 @@ export const notVisible = () => (
     )}
   </Modal>
 );
-
-notVisible.story = {
-  name: 'not visible',
-};

@@ -16,10 +16,7 @@ const Content = styled.div`
 
 export default {
   title: 'Design System/tooltip/Tooltip',
-
-  parameters: {
-    component: Tooltip,
-  },
+  component: Tooltip,
 };
 
 export const basicDefault = () => (
@@ -28,9 +25,7 @@ export const basicDefault = () => (
   </Tooltip>
 );
 
-basicDefault.story = {
-  name: 'basic, default',
-};
+basicDefault.storyName = 'basic, default';
 
 export const basicDefaultBottom = () => (
   <Tooltip hasChrome placement="bottom" {...mockPopperProps}>
@@ -38,9 +33,7 @@ export const basicDefaultBottom = () => (
   </Tooltip>
 );
 
-basicDefaultBottom.story = {
-  name: 'basic, default, bottom',
-};
+basicDefaultBottom.storyName = 'basic, default, bottom';
 
 export const basicDefaultLeft = () => (
   <Tooltip hasChrome placement="left" {...mockPopperProps}>
@@ -48,9 +41,7 @@ export const basicDefaultLeft = () => (
   </Tooltip>
 );
 
-basicDefaultLeft.story = {
-  name: 'basic, default, left',
-};
+basicDefaultLeft.storyName = 'basic, default, left';
 
 export const basicDefaultRight = () => (
   <Tooltip placement="right" {...mockPopperProps}>
@@ -58,9 +49,7 @@ export const basicDefaultRight = () => (
   </Tooltip>
 );
 
-basicDefaultRight.story = {
-  name: 'basic, default, right',
-};
+basicDefaultRight.storyName = 'basic, default, right';
 
 export const noChrome = () => (
   <Tooltip {...mockPopperProps}>
@@ -68,6 +57,4 @@ export const noChrome = () => (
   </Tooltip>
 );
 
-noChrome.story = {
-  name: 'no chrome',
-};
+noChrome.storyName = 'no chrome';
