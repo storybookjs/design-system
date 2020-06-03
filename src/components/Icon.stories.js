@@ -54,7 +54,7 @@ export default {
 };
 
 export const Basic = args => <Icon {...args} />;
-Icon.args = { icon: 'watch' };
+Basic.args = { icon: 'watch' };
 
 export const Labels = () => (
   <>
