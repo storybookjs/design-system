@@ -31,7 +31,6 @@ The Storybook design system codifies existing UI components into a central, well
 - Dogfood upcoming Storybook features 
 - Welcome contributors of all levels and backgrounds
 
-
 #### What we're not doing
 - Rewrite all new components from scratch
 - Overhaul the visual design of components
