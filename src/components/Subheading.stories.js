@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Subheading } from './Subheading';
 
 export default {
@@ -6,4 +7,4 @@ export default {
   component: Subheading,
 };
 
-export const subheading = () => <Subheading>Subheading</Subheading>;
+export const Basic = () => <Subheading>Subheading</Subheading>;

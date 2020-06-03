@@ -1,24 +1,22 @@
 import React from 'react';
-
 import { ListItem } from './ListItem';
 import { Icon } from '../Icon';
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
   title: 'Design System/tooltip/ListItem',
-
   decorators: [
     storyFn => (
       <div style={{ width: 200, border: '1px solid #ddd', margin: '3rem' }}>{storyFn()}</div>
     ),
   ],
-
-  parameters: {
-    component: ListItem,
-  },
+  component: ListItem,
 };
 
-export const all = () => (
+export const Default = args => <ListItem {...args} />;
+Default.args = { title: 'Default' };
+
+export const All = () => (
   <div>
     <ListItem isLoading />
     <ListItem title="Default" />
@@ -46,66 +44,57 @@ export const all = () => (
   </div>
 );
 
-export const loading = () => <ListItem isLoading />;
-export const defaultStory = () => <ListItem title="Default" />;
+export const Loading = Default.bind();
+Loading.args = { isLoading: true };
 
-defaultStory.story = {
-  name: 'default',
+export const LongTitle = Default.bind();
+LongTitle.args = { title: 'lorem ipsum dolor sit amet consectatur' };
+
+export const DefaultIcon = Default.bind();
+DefaultIcon.args = { title: 'Default icon', right: <Icon icon="eye" /> };
+
+export const ActiveIcon = Default.bind();
+ActiveIcon.args = {
+  active: true,
+  ...DefaultIcon.args,
 };
 
-export const longTitle = () => <ListItem title="lorem ipsum dolor sit amet consectatur" />;
-
-longTitle.story = {
-  name: 'long title',
+export const WithPositions = Default.bind();
+WithPositions.args = {
+  left: 'left',
+  title: 'title',
+  center: 'center',
+  right: 'right',
 };
 
-export const defaultIcon = () => <ListItem title="Default icon" right={<Icon icon="eye" />} />;
-
-defaultIcon.story = {
-  name: 'default icon',
+export const WithPositionsActive = Default.bind();
+WithPositionsActive.args = {
+  active: true,
+  left: 'left',
+  title: 'active',
+  center: 'center',
+  right: 'right',
 };
 
-export const activeIcon = () => <ListItem active title="active icon" right={<Icon icon="eye" />} />;
-
-activeIcon.story = {
-  name: 'active icon',
+export const WithPositionsActiveLongTitle = Default.bind();
+WithPositionsActiveLongTitle.args = {
+  active: true,
+  left: '✅',
+  title: 'lorem ipsum dolor sit amet consectatur',
+  center: 'center',
+  right: <Icon icon="eye" />,
 };
 
-export const wPositions = () => (
-  <ListItem left="left" title="title" center="center" right="right" />
-);
-
-wPositions.story = {
-  name: 'w/positions',
+export const Disabled = Default.bind();
+Disabled.args = {
+  disabled: true,
+  left: 'left',
+  title: 'disabled',
+  center: 'center',
+  right: 'right',
 };
 
-export const wPositionsActive = () => (
-  <ListItem active left="left" title="active" center="center" right="right" />
-);
-
-wPositionsActive.story = {
-  name: 'w/positions active',
-};
-
-export const wPositionsActiveLongTitle = () => (
-  <ListItem
-    active
-    left="✅"
-    title="lorem ipsum dolor sit amet consectatur"
-    center="center"
-    right={<Icon icon="eye" />}
-  />
-);
-
-wPositionsActiveLongTitle.story = {
-  name: 'w/positions active long title',
-};
-
-export const disabled = () => (
-  <ListItem disabled left="left" title="disabled" center="center" right="right" />
-);
-
-export const withLinkWrapper = () => (
+export const WithLinkWrapper = () => (
   <>
     <ListItem LinkWrapper={StoryLinkWrapper} isLoading href="http://www.google.com" />
     <ListItem LinkWrapper={StoryLinkWrapper} title="Default" href="http://www.google.com" />
@@ -122,7 +111,3 @@ export const withLinkWrapper = () => (
     />
   </>
 );
-
-withLinkWrapper.story = {
-  name: 'with LinkWrapper',
-};

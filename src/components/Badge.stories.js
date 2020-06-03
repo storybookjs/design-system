@@ -7,7 +7,9 @@ export default {
   component: Badge,
 };
 
-export const all = () => (
+export const Basic = args => <Badge {...args}>Badge</Badge>;
+
+export const All = () => (
   <div>
     <Badge status="positive">Positive</Badge>
     <Badge status="negative">Negative</Badge>
@@ -17,13 +19,9 @@ export const all = () => (
   </div>
 );
 
-export const withIcon = () => (
+export const WithIcon = () => (
   <Badge status="warning">
     <Icon icon="check" inline />
     with icon
   </Badge>
 );
-
-withIcon.story = {
-  name: 'with icon',
-};

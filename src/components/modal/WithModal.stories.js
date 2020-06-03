@@ -28,7 +28,6 @@ const ModalContents = ({ onClose }) => (
 
 export default {
   title: 'Design System/modal/WithModal',
-
   decorators: [
     storyFn => (
       <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>
@@ -36,13 +35,10 @@ export default {
       </div>
     ),
   ],
-
-  parameters: {
-    component: WithModal,
-  },
+  component: WithModal,
 };
 
-export const startsClosed = () => (
+export const StartsClosed = () => (
   <WithModal modal={ModalContents}>
     {({ onOpen }) => (
       <div>
@@ -54,11 +50,7 @@ export const startsClosed = () => (
   </WithModal>
 );
 
-startsClosed.story = {
-  name: 'starts closed',
-};
-
-export const startsOpen = () => (
+export const StartsOpen = () => (
   <WithModal startOpen modal={ModalContents}>
     {({ onOpen }) => (
       <div>
@@ -69,7 +61,3 @@ export const startsOpen = () => (
     )}
   </WithModal>
 );
-
-startsOpen.story = {
-  name: 'starts open',
-};

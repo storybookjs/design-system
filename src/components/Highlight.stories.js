@@ -75,24 +75,10 @@ export default {
   component: Highlight,
 };
 
-export const allLanguages = () => (
-  <Highlight>
-    {[
-      bashCodeWithWrappers,
-      javascriptCodeWithWrappers,
-      typescriptCodeWithWrappers,
-      cssCodeWithWrappers,
-      jsonCodeWithWrappers,
-      yamlCodeWithWrappers,
-    ].join('')}
-  </Highlight>
-);
+export const Basic = args => <Highlight {...args} />;
+Basic.args = {};
 
-allLanguages.story = {
-  name: 'all languages',
-};
-
-export const bash = () => (
+export const Bash = () => (
   <>
     <strong>Autoformat</strong>
     <Highlight language="bash">{bashCode}</Highlight>
@@ -101,7 +87,7 @@ export const bash = () => (
   </>
 );
 
-export const javascript = () => (
+export const Javascript = () => (
   <>
     <strong>Autoformat</strong>
     <Highlight language="javascript">{javascriptCode}</Highlight>
@@ -110,7 +96,7 @@ export const javascript = () => (
   </>
 );
 
-export const typescript = () => (
+export const Typescript = () => (
   <>
     <strong>Autoformat</strong>
     <Highlight language="typescript">{typescriptCode}</Highlight>
@@ -119,7 +105,7 @@ export const typescript = () => (
   </>
 );
 
-export const css = () => (
+export const CSS = () => (
   <>
     <strong>Autoformat</strong>
     <Highlight language="css">{cssCode}</Highlight>
@@ -128,7 +114,7 @@ export const css = () => (
   </>
 );
 
-export const json = () => (
+export const JSON = () => (
   <>
     <strong>Autoformat</strong>
     <Highlight language="json">{jsonCode}</Highlight>
@@ -137,7 +123,7 @@ export const json = () => (
   </>
 );
 
-export const yaml = () => (
+export const YAML = () => (
   <>
     <strong>Autoformat</strong>
     <Highlight language="yaml">{yamlCode}</Highlight>
@@ -150,7 +136,7 @@ const SmallContainer = styled.div`
   max-width: 300px;
 `;
 
-export const wrapping = () => (
+export const Wrapping = () => (
   <SmallContainer>
     <Highlight language="javascript">{javascriptCode}</Highlight>
   </SmallContainer>
@@ -163,4 +149,4 @@ const StyledHighlight = styled(Highlight)`
   }
 `;
 
-export const customStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;
+export const CustomStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;

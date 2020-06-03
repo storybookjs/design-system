@@ -4,11 +4,10 @@ import { Avatar } from './Avatar';
 
 export default {
   title: 'Design System/Avatar',
-
-  parameters: {
-    component: Avatar,
-  },
+  component: Avatar,
 };
+
+export const Basic = args => <Avatar {...args} />;
 
 export const large = () => (
   <div>

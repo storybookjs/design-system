@@ -10,7 +10,16 @@ export default {
   component: Input,
 };
 
-export const allInputs = () => (
+export const Basic = args => <Input {...args} />;
+Basic.args = {
+  label: 'label',
+  value: 'value',
+  appearance: 'pill',
+  orientation: 'horizontal',
+  hideLabel: false,
+};
+
+export const All = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Input id="Default" value="Default" label="Email" hideLabel icon="email" onChange={onChange} />
     <Input
@@ -68,11 +77,7 @@ export const allInputs = () => (
   </form>
 );
 
-allInputs.story = {
-  name: 'all inputs',
-};
-
-export const defaultStory = () => (
+export const Default = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Input
       id="Placeholder"
@@ -124,11 +129,7 @@ export const defaultStory = () => (
   </form>
 );
 
-defaultStory.story = {
-  name: 'default',
-};
-
-export const secondary = () => (
+export const Secondary = () => (
   <form style={{ background: '#fff', padding: '3em' }}>
     <Input
       id="Placeholder"
@@ -183,7 +184,7 @@ export const secondary = () => (
   </form>
 );
 
-export const tertiary = () => (
+export const Tertiary = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Input
       id="Placeholder"
@@ -231,7 +232,7 @@ export const tertiary = () => (
   </form>
 );
 
-export const pill = () => (
+export const Pill = () => (
   <Input
     id="Pill"
     value="Pill"
@@ -243,7 +244,7 @@ export const pill = () => (
   />
 );
 
-export const code = () => (
+export const Code = () => (
   <form style={{ background: '#EEEEEE', padding: '3em' }}>
     <Input
       id="Code-placeholder"

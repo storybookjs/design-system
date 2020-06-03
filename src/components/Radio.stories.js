@@ -10,7 +10,10 @@ export default {
   component: Radio,
 };
 
-export const allRadios = () => (
+export const Basic = args => <Radio {...args} />;
+Basic.args = { label: 'label', hideLabel: false };
+
+export const All = () => (
   <form>
     <Radio id="Mice" label="Mice" value="mice" checked onChange={onChange} />
     <Radio id="Dogs" label="Dogs" value="dogs" onChange={onChange} />
@@ -21,14 +24,14 @@ export const allRadios = () => (
   </form>
 );
 
-allRadios.story = {
-  name: 'all radios',
+export const Unchecked = Basic.bind();
+Unchecked.args = { id: 'Mice', label: 'Mice', hideLabel: true, value: 'mice' };
+
+export const Checked = Basic.bind();
+Checked.args = {
+  id: 'Dogs',
+  label: 'Dogs',
+  hideLabel: true,
+  value: 'dogs',
+  checked: true,
 };
-
-export const unchecked = () => (
-  <Radio id="Mice" label="Mice" hideLabel value="mice" onChange={onChange} />
-);
-
-export const checked = () => (
-  <Radio id="Dogs" label="Dogs" hideLabel value="dogs" checked onChange={onChange} />
-);

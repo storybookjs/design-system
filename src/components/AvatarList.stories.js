@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { AvatarList } from './AvatarList';
 import { Avatar } from './Avatar';
 
@@ -35,19 +34,23 @@ export default {
   excludeStories: ['users'],
 };
 
-export const short = () => <AvatarList users={users.slice(0, 2)} />;
-export const ellipsized = () => <AvatarList users={users} />;
-export const bigUserCount = () => <AvatarList users={users} userCount={100} />;
+export const Basic = args => <AvatarList {...args} />;
+Basic.args = { users };
 
-bigUserCount.story = {
-  name: 'big userCount',
-};
+export const Short = Basic.bind();
+Short.args = { users: users.slice(0, 2) };
 
-export const smallSize = () => <AvatarList users={users} userCount={100} size="small" />;
+export const Ellipsized = Basic.bind();
+Ellipsized.args = { users };
 
-smallSize.story = {
-  name: 'small size',
-};
+export const BigUserCount = Basic.bind();
+BigUserCount.args = { users, userCount: 100 };
 
-export const loading = () => <AvatarList isLoading />;
-export const empty = () => <AvatarList users={[]} />;
+export const SmallSize = Basic.bind();
+SmallSize.args = { users, userCount: 100, size: 'small' };
+
+export const Loading = Basic.bind();
+Loading.args = { users: [], isLoading: true };
+
+export const Empty = Basic.bind();
+Empty.args = { users: [] };
