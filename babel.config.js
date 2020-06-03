@@ -1,8 +1,8 @@
-module.exports = api => {
+module.exports = (api) => {
   api.cache(true);
 
   return {
-    presets: ['@babel/env', '@babel/react'],
+    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
     plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
     env: {
       test: {

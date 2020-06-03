@@ -7,7 +7,7 @@ export default {
   component: Badge,
 };
 
-export const Basic = args => <Badge {...args}>Badge</Badge>;
+export const Basic = (args) => <Badge {...args}>Badge</Badge>;
 
 export const All = () => (
   <div>

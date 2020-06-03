@@ -6,7 +6,7 @@ import { StoryLinkWrapper } from '../StoryLinkWrapper';
 export default {
   title: 'Design System/tooltip/ListItem',
   decorators: [
-    storyFn => (
+    (storyFn) => (
       <div style={{ width: 200, border: '1px solid #ddd', margin: '3rem' }}>{storyFn()}</div>
     ),
   ],

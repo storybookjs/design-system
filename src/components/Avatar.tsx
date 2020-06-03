@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import React, { FunctionComponent, ComponentProps } from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 import { glow } from './shared/animation';
@@ -12,8 +12,8 @@ export const sizes = {
   tiny: 16,
 };
 
-const Image = styled.div`
-  background: ${props => (!props.isLoading ? 'transparent' : color.light)};
+const Image = styled.div<Partial<Props>>`
+  background: ${(props) => (!props.isLoading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
   vertical-align: top;
@@ -24,7 +24,7 @@ const Image = styled.div`
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
 
-  ${props =>
+  ${(props) =>
     props.size === 'tiny' &&
     css`
       height: ${sizes.tiny}px;
@@ -32,7 +32,7 @@ const Image = styled.div`
       line-height: ${sizes.tiny}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'small' &&
     css`
       height: ${sizes.small}px;
@@ -40,7 +40,7 @@ const Image = styled.div`
       line-height: ${sizes.small}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'large' &&
     css`
       height: ${sizes.large}px;
@@ -48,7 +48,7 @@ const Image = styled.div`
       line-height: ${sizes.large}px;
     `}
 
-  ${props =>
+  ${(props) =>
     !props.src &&
     css`
       background: ${!props.isLoading && '#37D5D3'};
@@ -75,7 +75,7 @@ const Image = styled.div`
 `;
 
 // prettier-ignore
-const Initial = styled.div`
+const Initial = styled.div<Partial<Props>>`
   color: ${color.lightest};
   text-align: center;
 
@@ -101,9 +101,15 @@ const Initial = styled.div`
 /**
  * The `Avatar` component is where all your avatars come to play.
  */
-export function Avatar({ isLoading, username, src, size, ...props }) {
+export const Avatar: FunctionComponent<Props> = ({
+  isLoading = false,
+  username = 'loading',
+  src = null,
+  size = 'medium',
+  ...props
+}: Props) => {
   let avatarFigure = <Icon icon="useralt" />;
-  const a11yProps = {};
+  const a11yProps: ComponentProps<typeof Image> = {};
 
   if (isLoading) {
     a11yProps['aria-busy'] = true;
@@ -124,24 +130,13 @@ export function Avatar({ isLoading, username, src, size, ...props }) {
       {avatarFigure}
     </Image>
   );
+};
+
+interface Props {
+  isLoading: boolean;
+  /** The name of the user (not the nice name) */
+  username: string;
+  src: string;
+  /** Specify size */
+  size: keyof typeof sizes;
 }
-
-Avatar.propTypes = {
-  isLoading: PropTypes.bool,
-  /**
-   The name of the user (not the nicename)
-  */
-  username: PropTypes.string,
-  src: PropTypes.string,
-  /**
-   Specify size
-  */
-  size: PropTypes.oneOf(Object.keys(sizes)),
-};
-
-Avatar.defaultProps = {
-  isLoading: false,
-  username: 'loading',
-  src: null,
-  size: 'medium',
-};

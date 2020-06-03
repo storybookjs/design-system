@@ -14,7 +14,7 @@ const Label = styled.label`
 const LabelWrapper = styled.div`
   margin-bottom: 0.5em;
 
-  ${props =>
+  ${(props) =>
     props.hideLabel &&
     css`
       border: 0px !important;
@@ -41,13 +41,13 @@ const Selector = styled.select`
   outline: none;
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.disabled &&
     css`
       cursor: not-allowed;
     `}
 
-  ${props =>
+  ${(props) =>
     props.inProgress &&
     css`
       cursor: progress;
@@ -127,7 +127,7 @@ const SelectWrapper = styled.span`
 
   ${Selector}:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
 
-  ${props =>
+  ${(props) =>
     props.disabled &&
     css`
       opacity: 0.5;
@@ -139,7 +139,7 @@ const SelectWrapper = styled.span`
     color: ${color.darkest};
   }
 
-  ${props =>
+  ${(props) =>
     props.appearance === 'secondary' &&
     css`
       ${Selector} {
@@ -150,7 +150,7 @@ const SelectWrapper = styled.span`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.appearance === 'tertiary' &&
     css`
       width: auto;
@@ -175,7 +175,7 @@ const SelectWrapper = styled.span`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.icon &&
     css`
     ${Selector} { padding-left: 2.5em; }
@@ -197,7 +197,7 @@ const SelectWrapper = styled.span`
 	  }
   `}
 
-  ${props =>
+  ${(props) =>
     props.error &&
     css`
     ${Selector} {
@@ -270,7 +270,7 @@ export function Select({
           aria-invalid={!!error}
           aria-busy={inProgress}
         >
-          {options.map(option => (
+          {options.map((option) => (
             <Option {...option} key={option.value} />
           ))}
         </Selector>

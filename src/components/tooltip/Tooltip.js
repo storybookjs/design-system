@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { typography, spacing } from '../shared/styles';
 
-const ifPlacementEquals = (placement, value, fallback = 0) => props =>
+const ifPlacementEquals = (placement, value, fallback = 0) => (props) =>
   props['data-placement'].split('-')[0] === placement ? value : fallback;
 
 const ArrowSpacing = 8;
@@ -36,10 +36,10 @@ const Arrow = styled.div`
 `;
 
 const TooltipWrapper = styled.div`
-  display: ${props => (props.hidden ? 'none' : 'inline-block')};
+  display: ${(props) => (props.hidden ? 'none' : 'inline-block')};
   z-index: 2147483647;
 
-  ${props =>
+  ${(props) =>
     !props.hasChrome &&
     css`
       margin-bottom: ${ifPlacementEquals('top', 8)}px;
@@ -50,7 +50,7 @@ const TooltipWrapper = styled.div`
       margin-right: ${ifPlacementEquals('left', 8)}px;
     `};
 
-  ${props =>
+  ${(props) =>
     props.hasChrome &&
     css`
       margin-bottom: ${ifPlacementEquals('top', ArrowSpacing + 2)}px;

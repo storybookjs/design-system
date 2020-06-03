@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 
 const Label = styled.label`
-  ${props =>
+  ${(props) =>
     props.hideLabel &&
     css`
       border: 0px !important;
@@ -26,12 +26,13 @@ const ErrorMessage = styled.span`
 `;
 
 const LabelWrapper = styled.div`
-  margin-bottom: ${props => (props.appearance === 'code' ? 0.5 : 0.33)}em;
-  font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
-  font-family: ${props => props.appearance === 'code' && typography.type.code};
-  font-size: ${props => (props.appearance === 'code' ? typography.size.s1 : typography.size.s2)}px;
+  margin-bottom: ${(props) => (props.appearance === 'code' ? 0.5 : 0.33)}em;
+  font-weight: ${(props) => props.appearance !== 'code' && typography.weight.bold};
+  font-family: ${(props) => props.appearance === 'code' && typography.type.code};
+  font-size: ${(props) =>
+    props.appearance === 'code' ? typography.size.s1 : typography.size.s2}px;
 
-  ${props =>
+  ${(props) =>
     props.hideLabel &&
     !props.error &&
     css`
@@ -39,7 +40,7 @@ const LabelWrapper = styled.div`
       margin: 0;
     `}
 
-  ${props =>
+  ${(props) =>
     !props.hideLabel &&
     css`
       ${ErrorMessage} {
@@ -72,8 +73,9 @@ const TextareaText = styled.textarea`
 
 const TextareaWrapper = styled.div`
   display: inline-block;
-  font-family: ${props => props.appearance === 'code' && typography.type.code};
-  font-size: ${props => (props.appearance === 'code' ? typography.size.s1 : typography.size.s2)}px;
+  font-family: ${(props) => props.appearance === 'code' && typography.type.code};
+  font-size: ${(props) =>
+    props.appearance === 'code' ? typography.size.s1 : typography.size.s2}px;
   overflow: hidden;
   position: relative;
   vertical-align: top;
@@ -89,7 +91,7 @@ const TextareaWrapper = styled.div`
 
     &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
 
-    ${props =>
+    ${(props) =>
       props.appearance === 'secondary' &&
       css`
         box-shadow: ${color.mediumlight} 0 0 0 1px inset;
@@ -99,7 +101,7 @@ const TextareaWrapper = styled.div`
         }
       `}
 
-    ${props =>
+    ${(props) =>
       props.appearance === 'tertiary' &&
       css`
         padding: 0;
@@ -112,7 +114,7 @@ const TextareaWrapper = styled.div`
         }
       `}
 
-    ${props =>
+    ${(props) =>
       props.appearance === 'code' &&
       css`
         font-size: ${typography.size.s1}px;
@@ -124,24 +126,24 @@ const TextareaWrapper = styled.div`
       `}
   }
 
-  ${props =>
+  ${(props) =>
     props.error &&
     css`
       ${props.appearance !== 'tertiary' &&
-        css`
-          ${TextareaText} {
-            box-shadow: ${color.negative} 0 0 0 1px inset;
-            &:focus {
-              box-shadow: ${color.negative} 0 0 0 1px inset !important;
-            }
+      css`
+        ${TextareaText} {
+          box-shadow: ${color.negative} 0 0 0 1px inset;
+          &:focus {
+            box-shadow: ${color.negative} 0 0 0 1px inset !important;
           }
-        `};
+        }
+      `};
     `}
 
 `;
 
 const TextareaContainer = styled.div`
-  ${props =>
+  ${(props) =>
     props.orientation === 'horizontal' &&
     css`
       display: table-row;
