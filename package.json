@@ -1,6 +1,6 @@
 {
   "name": "@storybook/design-system",
-  "version": "6.0.0",
+  "version": "6.0.0.beta.0",
   "description": "Storybook design system",
   "repository": {
     "type": "git",
@@ -19,10 +19,10 @@
     "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
-    "lint": "eslint .",
+    "lint": "yarn lint:js && yarn lint:package",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
-    "release": "npm run build && npx ts-node ./scripts/update-chromatic-url.ts && npx sort-package-json && ./scripts/release.sh",
+    "release": "dotenv yarn build && npx ts-node ./scripts/update-chromatic-url.ts && npx sort-package-json && ./scripts/release.sh",
     "storybook": "start-storybook -p 6006"
   },
   "husky": {
@@ -75,6 +75,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "chromatic": "^5.0.0-alpha.4",
     "cross-env": "^7.0.2",
+    "dotenv-cli": "^3.1.0",
     "eslint": "^7.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
