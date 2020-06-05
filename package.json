@@ -1,6 +1,6 @@
 {
   "name": "@storybook/design-system",
-  "version": "6.0.0-debug.0",
+  "version": "6.0.0",
   "description": "Storybook design system",
   "repository": {
     "type": "git",
@@ -16,13 +16,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\"",
+    "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
     "lint": "eslint .",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
-    "release": "npm run build && ./scripts/release.sh",
+    "release": "npm run build && npx ts-node ./scripts/update-chromatic-url.ts && npx sort-package-json && ./scripts/release.sh",
     "storybook": "start-storybook -p 6006"
   },
   "husky": {
@@ -72,19 +72,19 @@
     "auto": "^7.11.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
-    "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-styled-components": "^1.10.7",
     "chromatic": "^5.0.0-alpha.4",
     "cross-env": "^7.0.2",
     "eslint": "^7.1.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.7",
+    "lint-staged": "^10.2.9",
+    "node-fetch": "^2.6.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sort-package-json": "^1.44.0",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.5"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
@@ -106,6 +106,6 @@
   },
   "storybook": {
     "title": "Storybook Design System",
-    "url": "https://deploy-preview-166--storybook-design-system.netlify.app"
+    "url": "https://5ccbc373887ca40020446347-kfurrsajwz.chromatic.com/"
   }
 }
