@@ -1,6 +1,6 @@
 {
   "name": "@storybook/design-system",
-  "version": "6.0.0.beta.0",
+  "version": "5.0.4",
   "description": "Storybook design system",
   "repository": {
     "type": "git",
@@ -68,6 +68,7 @@
     "@storybook/eslint-config-storybook": "^2.4.0",
     "@storybook/linter-config": "^2.5.0",
     "@storybook/react": "6.0.0-beta.20",
+    "@types/fs-extra": "^9.0.1",
     "@types/styled-components": "^5.1.0",
     "auto": "^7.11.0",
     "babel-eslint": "^10.1.0",
@@ -107,6 +108,6 @@
   },
   "storybook": {
     "title": "Storybook Design System",
-    "url": "https://5ccbc373887ca40020446347-kfurrsajwz.chromatic.com/"
+    "url": "https://5ccbc373887ca40020446347-synmdrrwjj.chromatic.com/"
   }
 }
