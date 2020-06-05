@@ -22,7 +22,7 @@
     "lint": "eslint .",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
-    "release": "npm run build && ./scripts/release.sh",
+    "release": "npm run build && npx ts-node ./scripts/update-chromatic-url.ts && npx sort-package-json && ./scripts/release.sh",
     "storybook": "start-storybook -p 6006"
   },
   "husky": {
@@ -84,8 +84,10 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-hooks": "^2.1.2",
+    "fs-extra": "^9.0.1",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
+    "node-fetch": "^2.6.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
     "react": "^16.8.3",
@@ -111,5 +113,8 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/storybook"
+  },
+  "storybook": {
+    "url": "https://5ccbc373887ca40020446347-kfurrsajwz.chromatic.com/"
   }
 }
