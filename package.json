@@ -1,6 +1,6 @@
 {
   "name": "@storybook/design-system",
-  "version": "5.0.4",
+  "version": "6.0.0",
   "description": "Storybook design system",
   "repository": {
     "type": "git",
@@ -11,12 +11,12 @@
     "name": "Michael Shilman",
     "email": "michael@lab80.co"
   },
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\"",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
     "lint": "eslint .",
@@ -32,76 +32,67 @@
   },
   "lint-staged": {
     "*.html": [
-      "yarn lint:js --fix",
-      "git add"
+      "yarn lint:js --fix"
     ],
     "*.js": [
-      "yarn lint:js --fix",
-      "git add"
+      "yarn lint:js --fix"
     ],
     "package.json": [
-      "yarn lint:package",
-      "git add"
+      "yarn lint:package"
     ]
   },
   "dependencies": {
-    "polished": "^3.4.1",
-    "prismjs": "1.17.1",
-    "react-modal": "^3.10.1",
-    "react-popper-tooltip": "^2.9.1",
+    "polished": "^3.6.4",
+    "prismjs": "1.20.0",
+    "prop-types": "^15.5.4",
+    "react-modal": "^3.11.2",
+    "react-popper-tooltip": "^2.11.1",
     "recompose": "^0.30.0",
     "styled-components": "^4.4.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
     "@storybook/addon-a11y": "6.0.0-beta.20",
     "@storybook/addon-actions": "6.0.0-beta.20",
     "@storybook/addon-docs": "6.0.0-beta.20",
     "@storybook/addon-essentials": "6.0.0-beta.20",
     "@storybook/addon-storysource": "6.0.0-beta.20",
+    "@storybook/eslint-config-storybook": "^2.4.0",
+    "@storybook/linter-config": "^2.5.0",
     "@storybook/react": "6.0.0-beta.20",
+    "@types/styled-components": "^5.1.0",
     "auto": "^7.11.0",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-require-context-hook": "^1.0.0",
-    "babel-plugin-styled-components": "^1.10.6",
-    "cross-env": "^6.0.3",
-    "eslint": "^6.5.1",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.4.0",
-    "eslint-plugin-html": "^6.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jest": "^22.4.1",
-    "eslint-plugin-json": "^1.4.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-react-hooks": "^2.1.2",
-    "fs-extra": "^9.0.1",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
+    "babel-plugin-styled-components": "^1.10.7",
+    "chromatic": "^5.0.0-alpha.4",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
     "node-fetch": "^2.6.0",
-    "prettier": "^1.18.2",
-    "prettier-eslint": "^9.0.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "sort-package-json": "^1.21.0",
-    "storybook-chromatic": "^3.0.3"
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sort-package-json": "^1.44.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
   },
   "engines": {
-    "node": ">=8",
+    "node": ">=10",
     "npm": ">=5"
   },
   "auto": {
@@ -115,6 +106,7 @@
     "url": "https://opencollective.com/storybook"
   },
   "storybook": {
+    "title": "Storybook Design System",
     "url": "https://5ccbc373887ca40020446347-kfurrsajwz.chromatic.com/"
   }
 }

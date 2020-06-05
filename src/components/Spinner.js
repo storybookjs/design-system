@@ -27,13 +27,13 @@ const SpinnerWrapper = styled.div`
   border-color: rgba(0, 0, 0, 0.03);
   border-top-color: rgba(0, 0, 0, 0.15);
 
-  ${props =>
+  ${(props) =>
     props.inverse &&
     css`
       border-color: rgba(255, 255, 255, 0.2);
       border-top-color: rgba(255, 255, 255, 0.4);
     `};
-  ${props =>
+  ${(props) =>
     props.inForm &&
     css`
       margin-top: -6px;
@@ -43,7 +43,7 @@ const SpinnerWrapper = styled.div`
       border: 1px solid ${color.primary};
       border-bottom-color: transparent;
     `};
-  ${props =>
+  ${(props) =>
     props.inline &&
     css`
       position: relative;
@@ -61,32 +61,32 @@ const SpinnerWrapper = styled.div`
       border-bottom-color: transparent;
 
       ${props.positive &&
-        css`
-          border-top-color: ${color.positive};
-          border-left-color: ${color.positive};
-          border-right-color: ${color.positive};
-        `};
+      css`
+        border-top-color: ${color.positive};
+        border-left-color: ${color.positive};
+        border-right-color: ${color.positive};
+      `};
 
       ${props.negative &&
-        css`
-          border-top-color: ${color.negative};
-          border-left-color: ${color.negative};
-          border-right-color: ${color.negative};
-        `};
+      css`
+        border-top-color: ${color.negative};
+        border-left-color: ${color.negative};
+        border-right-color: ${color.negative};
+      `};
 
       ${props.neutral &&
-        css`
-          border-top-color: ${color.dark};
-          border-left-color: ${color.dark};
-          border-right-color: ${color.dark};
-        `};
+      css`
+        border-top-color: ${color.dark};
+        border-left-color: ${color.dark};
+        border-right-color: ${color.dark};
+      `};
 
       ${props.inverse &&
-        css`
-          border-top-color: ${color.lightest};
-          border-left-color: ${color.lightest};
-          border-right-color: ${color.lightest};
-        `};
+      css`
+        border-top-color: ${color.lightest};
+        border-left-color: ${color.lightest};
+        border-right-color: ${color.lightest};
+      `};
     `};
 `;
 

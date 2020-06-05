@@ -1,9 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import React, { ComponentProps, FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 import { Avatar, sizes } from './Avatar';
+// @ts-ignore
 import WithTooltip from './tooltip/WithTooltip';
+// @ts-ignore
 import { TooltipNote } from './tooltip/TooltipNote';
 import { color, typography } from './shared/styles';
 
@@ -55,9 +57,31 @@ const Users = styled.ul`
   }
 `;
 
+interface Props {
+  isLoading: boolean;
+  users: {
+    id: string;
+    name?: string;
+    avatarUrl?: string;
+  }[];
+  userCount?: number;
+  size: keyof typeof sizes;
+}
+
 // Either pass the full list of users, or a userCount if known
-export function AvatarList({ isLoading, users, userCount, size, ...props }) {
+export const AvatarList: FunctionComponent<Props & ComponentProps<typeof Users>> = ({
+  isLoading = false,
+  users = [
+    { id: 'loading', avatarUrl: null, name: 'loading' },
+    { id: 'loading2', avatarUrl: null, name: 'loading' },
+    { id: 'loading3', avatarUrl: null, name: 'loading' },
+  ],
+  userCount = null,
+  size = 'medium',
+  ...props
+}) => {
   const count = userCount || users.length;
+
   return (
     <Users aria-label="users" {...props}>
       {users.slice(0, 3).map(({ id, name, avatarUrl }) => (
@@ -77,31 +101,4 @@ export function AvatarList({ isLoading, users, userCount, size, ...props }) {
       )}
     </Users>
   );
-}
-
-AvatarList.propTypes = {
-  isLoading: PropTypes.bool,
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      avatarUrl: PropTypes.string,
-    })
-  ),
-  /**
-   * Total number of users in the list.
-   */
-  userCount: PropTypes.number,
-  size: PropTypes.oneOf(Object.keys(sizes)),
-};
-
-AvatarList.defaultProps = {
-  isLoading: false,
-  users: [
-    { id: 'loading', avatarUrl: null, name: 'loading' },
-    { id: 'loading2', avatarUrl: null, name: 'loading' },
-    { id: 'loading3', avatarUrl: null, name: 'loading' },
-  ],
-  userCount: null,
-  size: 'medium',
 };

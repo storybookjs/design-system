@@ -7,7 +7,7 @@ import { action } from '@storybook/addon-actions';
 const fireClickAction = action('onLinkClick');
 
 export function StoryLinkWrapper({ children, className, href, onClick, to, ...rest }) {
-  const modifiedOnClick = event => {
+  const modifiedOnClick = (event) => {
     event.preventDefault();
     onClick();
     fireClickAction(href || to);

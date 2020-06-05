@@ -65,21 +65,21 @@ export const typography = {
     black: '900',
   },
   size: {
-    s1: '12',
-    s2: '14',
-    s3: '16',
-    m1: '20',
-    m2: '24',
-    m3: '28',
-    l1: '32',
-    l2: '40',
-    l3: '48',
-    code: '90',
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    m1: 20,
+    m2: 24,
+    m3: 28,
+    l1: 32,
+    l2: 40,
+    l3: 48,
+    code: 90,
   },
-};
+} as const;
 
 export const breakpoint = 600;
-export const pageMargin = '5.55555';
+export const pageMargin = 5.55555;
 
 export const pageMargins = css`
   padding: 0 ${spacing.padding.medium}px;
