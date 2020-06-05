@@ -1,3 +1,33 @@
+# v5.1.0 (Fri Jun 05 2020)
+
+#### 🚀  Enhancement
+
+- Upgrade to 6.0 / Args [#164](https://github.com/storybookjs/design-system/pull/164) ([@shilman](https://github.com/shilman) [@ndelangen](https://github.com/ndelangen))
+
+#### 🐛  Bug Fix
+
+- Add/auto ref url [#169](https://github.com/storybookjs/design-system/pull/169) ([@ndelangen](https://github.com/ndelangen))
+- upgrades && typescript migration [#166](https://github.com/storybookjs/design-system/pull/166) ([@ndelangen](https://github.com/ndelangen))
+- [Security] Bump handlebars from 4.4.3 to 4.7.6 [#167](https://github.com/storybookjs/design-system/pull/167) ([@dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Remove keycode, reduce bundle size [#162](https://github.com/storybookjs/design-system/pull/162) ([@oliviertassinari](https://github.com/oliviertassinari))
+- Make border-radius more consistent [#161](https://github.com/storybookjs/design-system/pull/161) ([@domyen](https://github.com/domyen))
+
+#### ⚠️  Pushed to master
+
+- ADD types/fs-extra  ([@ndelangen](https://github.com/ndelangen))
+- ADD dotenv && CLEANUP  ([@ndelangen](https://github.com/ndelangen))
+- CHANGE to projectToken  ([@ndelangen](https://github.com/ndelangen))
+- CLEANUP  ([@ndelangen](https://github.com/ndelangen))
+- Update chromatic domain name  ([@domyen](https://github.com/domyen))
+
+#### Authors: 3
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Michael Shilman ([@shilman](https://github.com/shilman))
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
+---
+
 # v5.0.4 (Sat Mar 21 2020)
 
 #### 🐛  Bug Fix
