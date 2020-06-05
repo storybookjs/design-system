@@ -16,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\"",
+    "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
     "lint": "eslint .",
