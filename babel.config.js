@@ -4,10 +4,6 @@ module.exports = (api) => {
   return {
     presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
     plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
-    env: {
-      test: {
-        plugins: ['require-context-hook'],
-      },
-    },
+    ignore: ['**/*.test.js', '**/*.stories.js'],
   };
 };
