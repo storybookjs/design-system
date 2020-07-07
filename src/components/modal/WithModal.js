@@ -1,10 +1,9 @@
-import React, { Children } from 'react';
+import React, { Children, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { compose, withState, withHandlers } from 'recompose';
 
 import { Modal } from './Modal';
 
-function WithModal({ isOpen, onOpen, onClose, modal, children }) {
+function PureWithModal({ isOpen, onOpen, onClose, modal, children }) {
   return (
     <>
       {Children.only(children({ isOpen, onOpen, onClose }))}
@@ -15,7 +14,7 @@ function WithModal({ isOpen, onOpen, onClose, modal, children }) {
   );
 }
 
-WithModal.propTypes = {
+PureWithModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onOpen: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -23,15 +22,22 @@ WithModal.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
-export default compose(
-  withState('isOpen', 'onSetIsOpen', ({ startOpen }) => !!startOpen),
-  withHandlers({
-    onOpen: ({ onSetIsOpen }) => () => onSetIsOpen(true),
-    onClose: ({ onSetIsOpen, onClose }) => () => {
-      onSetIsOpen(false);
-      if (onClose) {
-        onClose();
-      }
-    },
-  })
-)(WithModal);
+export default function WithModal({ startOpen, ...rest }) {
+  const [isOpen, onSetIsOpen] = useState(startOpen);
+  const onOpen = () => onSetIsOpen(true);
+  const onClose = () => {
+    onSetIsOpen(false);
+    if (onClose) {
+      onClose();
+    }
+  };
+  return <PureWithModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} {...rest} />;
+}
+
+WithModal.propTypes = {
+  startOpen: PropTypes.bool,
+};
+
+WithModal.defaultProps = {
+  startOpen: false,
+};
