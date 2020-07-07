@@ -1,3 +1,16 @@
+# v5.1.1 (Tue Jul 07 2020)
+
+#### 🐛  Bug Fix
+
+- Remove recompose [#172](https://github.com/storybookjs/design-system/pull/172) ([@kylesuss](https://github.com/kylesuss))
+- Thank you Kyle! 🙇 [#171](https://github.com/storybookjs/design-system/pull/171) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.0 (Fri Jun 05 2020)
 
 #### 🚀  Enhancement
