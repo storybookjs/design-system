@@ -162,7 +162,13 @@ export function Link({
   const LinkComponent = isButton ? LinkButton : LinkWrapper || LinkA;
 
   return (
-    <LinkStyles inverse={inverse} nochrome={nochrome} tertiary={tertiary} secondary={secondary}>
+    <LinkStyles
+      containsIcon={containsIcon}
+      inverse={inverse}
+      nochrome={nochrome}
+      tertiary={tertiary}
+      secondary={secondary}
+    >
       <LinkComponent {...rest}>{content}</LinkComponent>
     </LinkStyles>
   );
