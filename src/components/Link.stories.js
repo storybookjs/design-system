@@ -19,7 +19,7 @@ export default {
   component: Link,
 };
 
-export const Basic = args => <Link {...args} />;
+export const Basic = (args) => <Link {...args} />;
 Basic.args = { children: 'link text', inverse: false };
 
 export const All = () => (

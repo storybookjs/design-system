@@ -10,7 +10,6 @@ const linkStyles = css`
   display: inline-block;
   transition: transform 150ms ease-out, color 150ms ease-out;
   text-decoration: none;
-
   color: ${color.secondary};
 
   &:hover,
@@ -100,16 +99,6 @@ const linkStyles = css`
         color: ${color.light};
       }
     `};
-
-  ${(props) =>
-    props.isButton &&
-    css`
-      border: 0;
-      border-radius: 0;
-      background: none;
-      padding: 0;
-      font-size: inherit;
-    `};
 `;
 
 const LinkInner = styled.span`
@@ -127,38 +116,40 @@ const LinkInner = styled.span`
     `};
 `;
 
-const LinkA = styled.a`
-  ${linkStyles};
+const LinkStyles = styled.span`
+  a,
+  button {
+    ${linkStyles};
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
 `;
 
-const LinkButton = styled.button`
-  /* reset button styles */
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+const LinkA = styled.a``;
 
-  ${linkStyles};
-`;
-
-const applyStyle = (LinkWrapper) => {
-  return (
-    LinkWrapper &&
-    styled(({ containsIcon, inverse, nochrome, secondary, tertiary, ...linkWrapperRest }) => (
-      <LinkWrapper {...linkWrapperRest} />
-    ))`
-      ${linkStyles};
-    `
-  );
-};
-
+const LinkButton = styled.button``;
 /**
  * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
  */
-export function Link({ isButton, withArrow, LinkWrapper, children, ...rest }) {
+export function Link({
+  containsIcon,
+  inverse,
+  nochrome,
+  tertiary,
+  secondary,
+  isButton,
+  withArrow,
+  LinkWrapper,
+  children,
+  ...rest
+}) {
   const content = (
     <>
       <LinkInner withArrow={withArrow}>
@@ -168,16 +159,13 @@ export function Link({ isButton, withArrow, LinkWrapper, children, ...rest }) {
     </>
   );
 
-  const StyledLinkWrapper = applyStyle(LinkWrapper);
+  const LinkComponent = isButton ? LinkButton : LinkWrapper || LinkA;
 
-  let SelectedLink = LinkA;
-  if (LinkWrapper) {
-    SelectedLink = StyledLinkWrapper;
-  } else if (isButton) {
-    SelectedLink = LinkButton;
-  }
-
-  return <SelectedLink {...rest}>{content}</SelectedLink>;
+  return (
+    <LinkStyles inverse={inverse} nochrome={nochrome} tertiary={tertiary} secondary={secondary}>
+      <LinkComponent {...rest}>{content}</LinkComponent>
+    </LinkStyles>
+  );
 }
 
 Link.propTypes = {
