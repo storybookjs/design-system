@@ -1,3 +1,15 @@
+# v5.1.3 (Thu Jul 23 2020)
+
+#### 🐛  Bug Fix
+
+- Do not dynamically generate styled button component in render [#177](https://github.com/storybookjs/design-system/pull/177) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.2 (Thu Jul 23 2020)
 
 #### 🐛  Bug Fix
