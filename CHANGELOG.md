@@ -5,6 +5,24 @@
 - Do not dynamically generate styled link component in render [#176](https://github.com/storybookjs/design-system/pull/176) ([@kylesuss](https://github.com/kylesuss))
 - Update styled-components dependency [#173](https://github.com/storybookjs/design-system/pull/173) ([@domyen](https://github.com/domyen))
 
+#### ⚠️  Pushed to master
+
+- Update version to 5.1.2  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.1.2 (Thu Jul 23 2020)
+
+#### 🐛  Bug Fix
+
+- Do not dynamically generate styled link component in render [#176](https://github.com/storybookjs/design-system/pull/176) ([@kylesuss](https://github.com/kylesuss))
+- Update styled-components dependency [#173](https://github.com/storybookjs/design-system/pull/173) ([@domyen](https://github.com/domyen))
+
 #### Authors: 2
 
 - Dominic Nguyen ([@domyen](https://github.com/domyen))
