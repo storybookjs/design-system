@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken, rgba, opacify } from 'polished';
 import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
@@ -35,7 +35,7 @@ const SIZES = {
   MEDIUM: 'medium',
 };
 
-const StyledButton = styled.button`
+const buttonStyles = css`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -395,46 +395,50 @@ const StyledButton = styled.button`
 
 `;
 
-const ButtonLink = StyledButton.withComponent('a');
+const ButtonStyles = styled.span`
+  a,
+  button {
+    ${buttonStyles}
+  }
+`;
 
-const applyStyle = (ButtonWrapper) => {
-  return (
-    ButtonWrapper &&
-    StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
-      <ButtonWrapper {...rest} />
-    ))
-  );
-};
+const ButtonLink = styled.a``;
+
+const StyledButton = styled.button``;
 
 export function Button({
+  appearance,
+  containsIcon,
   isDisabled,
   isLoading,
+  isUnclickable,
   loadingText,
   isLink,
   children,
   ButtonWrapper,
-  ...props
+  size,
+  ...rest
 }) {
-  const buttonInner = (
+  const content = (
     <>
       <Text>{children}</Text>
       {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
     </>
   );
 
-  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
-
-  let SelectedButton = StyledButton;
-  if (ButtonWrapper) {
-    SelectedButton = StyledButtonWrapper;
-  } else if (isLink) {
-    SelectedButton = ButtonLink;
-  }
+  const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || StyledButton;
 
   return (
-    <SelectedButton isLoading={isLoading} disabled={isDisabled} {...props}>
-      {buttonInner}
-    </SelectedButton>
+    <ButtonStyles
+      appearance={appearance}
+      containsIcon={containsIcon}
+      disabled={isDisabled}
+      isUnclickable={isUnclickable}
+      isLoading={isLoading}
+      size={size}
+    >
+      <ButtonComponent {...rest}>{content}</ButtonComponent>
+    </ButtonStyles>
   );
 }
 
