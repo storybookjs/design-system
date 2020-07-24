@@ -47,7 +47,7 @@
     "prop-types": "^15.5.4",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
-    "styled-components": "^5.1.1",
+    "styled-components": "^4.4.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
