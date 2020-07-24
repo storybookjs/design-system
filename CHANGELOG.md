@@ -1,3 +1,19 @@
+# v5.1.4 (Fri Jul 24 2020)
+
+#### 🐛  Bug Fix
+
+- Use 'as' prop to control button, link styles and avoid transient props [#178](https://github.com/storybookjs/design-system/pull/178) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Upgrade version to 5.1.4  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.3 (Thu Jul 23 2020)
 
 #### 🐛  Bug Fix
