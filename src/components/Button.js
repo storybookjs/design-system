@@ -397,8 +397,8 @@ const UnstyledButton = styled.button``;
 const ButtonLink = styled.a``;
 
 // The main purpose of this component is to strip certain props that get passed
-// down to the styled component, so that we don't end up passing them to an <a>
-// tag which causes warnings to show up in the console.
+// down to the styled component, so that we don't end up passing them to a
+// tag which would throw warnings for non-standard props.
 function ButtonComponentPicker({
   appearance,
   ButtonWrapper,
