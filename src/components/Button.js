@@ -35,7 +35,7 @@ const SIZES = {
   MEDIUM: 'medium',
 };
 
-const buttonStyles = css`
+const StyledButton = styled.button`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -53,7 +53,6 @@ const buttonStyles = css`
   opacity: 1;
   margin: 0;
   background: transparent;
-
 
   font-size: ${(props) => (props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2)}px;
   font-weight: ${typography.weight.extrabold};
@@ -267,158 +266,194 @@ const buttonStyles = css`
       };
     `};
 
-    ${(props) =>
-      props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
+    `
+      box-shadow: ${color.primary} 0 0 0 1px inset;
+      color: ${color.primary};
+
+      &:hover {
         box-shadow: ${color.primary} 0 0 0 1px inset;
+        background: transparent;
+      }
+
+      &:active {
+        background: ${color.primary};
+        box-shadow: ${color.primary} 0 0 0 1px inset;
+        color: ${color.lightest};
+      }
+      &:focus {
+        box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+      }
+      &:focus:hover {
+        box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+      }
+    `};
+
+  ${(props) =>
+    props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
+    `
+      box-shadow: ${color.secondary} 0 0 0 1px inset;
+      color: ${color.secondary};
+
+      &:hover {
+        box-shadow: ${color.secondary} 0 0 0 1px inset;
+        background: transparent;
+      }
+
+      &:active {
+        background: ${color.secondary};
+        box-shadow: ${color.secondary} 0 0 0 1px inset;
+        color: ${color.lightest};
+      }
+      &:focus {
+        box-shadow: ${color.secondary} 0 0 0 1px inset,
+          ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+      }
+      &:focus:hover {
+        box-shadow: ${color.secondary} 0 0 0 1px inset,
+          ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+      }
+    `};
+
+    ${(props) =>
+      props.appearance === APPEARANCES.INVERSE_PRIMARY &&
+      `
+        background: ${color.lightest};
         color: ${color.primary};
 
-        &:hover {
-          box-shadow: ${color.primary} 0 0 0 1px inset;
-          background: transparent;
+        ${
+          !props.isLoading &&
+          `
+            &:hover {
+              background: ${color.lightest};
+            }
+            &:active {
+              box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+            }
+            &:focus {
+              box-shadow: ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+            }
+            &:focus:hover {
+              box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+            }
+        `
         }
-
-        &:active {
-          background: ${color.primary};
-          box-shadow: ${color.primary} 0 0 0 1px inset;
-          color: ${color.lightest};
-        }
-        &:focus {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
-        }
-        &:focus:hover {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
-        }
-      `};
+    `}
 
     ${(props) =>
-      props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
+      props.appearance === APPEARANCES.INVERSE_SECONDARY &&
       `
-        box-shadow: ${color.secondary} 0 0 0 1px inset;
+        background: ${color.lightest};
         color: ${color.secondary};
 
+        ${
+          !props.isLoading &&
+          `
+            &:hover {
+              background: ${color.lightest};
+            }
+            &:active {
+              box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
+            }
+            &:focus {
+              box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+            }
+            &:focus:hover {
+              box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+            }
+        `
+        }
+    `}
+
+    ${(props) =>
+      props.appearance === APPEARANCES.INVERSE_OUTLINE &&
+      `
+        box-shadow: ${color.lightest} 0 0 0 1px inset;
+        color: ${color.lightest};
+
         &:hover {
-          box-shadow: ${color.secondary} 0 0 0 1px inset;
+          box-shadow: ${color.lightest} 0 0 0 1px inset;
           background: transparent;
         }
 
         &:active {
-          background: ${color.secondary};
-          box-shadow: ${color.secondary} 0 0 0 1px inset;
-          color: ${color.lightest};
+          background: ${color.lightest};
+          box-shadow: ${color.lightest} 0 0 0 1px inset;
+          color: ${color.darkest};
         }
         &:focus {
-          box-shadow: ${color.secondary} 0 0 0 1px inset,
-            ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
+          box-shadow: ${color.lightest} 0 0 0 1px inset,
+            ${rgba(color.darkest, 0.4)} 0 1px 9px 2px;
         }
         &:focus:hover {
-          box-shadow: ${color.secondary} 0 0 0 1px inset,
-            ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
+          box-shadow: ${color.lightest} 0 0 0 1px inset,
+            ${rgba(color.darkest, 0.2)} 0 8px 18px 0px;
         }
-      `};
-
-      ${(props) =>
-        props.appearance === APPEARANCES.INVERSE_PRIMARY &&
-        `
-          background: ${color.lightest};
-          color: ${color.primary};
-
-          ${
-            !props.isLoading &&
-            `
-              &:hover {
-                background: ${color.lightest};
-              }
-              &:active {
-                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
-              }
-              &:focus {
-                box-shadow: ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
-              }
-              &:focus:hover {
-                box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
-              }
-          `
-          }
-      `}
-
-      ${(props) =>
-        props.appearance === APPEARANCES.INVERSE_SECONDARY &&
-        `
-          background: ${color.lightest};
-          color: ${color.secondary};
-
-          ${
-            !props.isLoading &&
-            `
-              &:hover {
-                background: ${color.lightest};
-              }
-              &:active {
-                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;
-              }
-              &:focus {
-                box-shadow: ${rgba(color.secondary, 0.4)} 0 1px 9px 2px;
-              }
-              &:focus:hover {
-                box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
-              }
-          `
-          }
-      `}
-
-      ${(props) =>
-        props.appearance === APPEARANCES.INVERSE_OUTLINE &&
-        `
-          box-shadow: ${color.lightest} 0 0 0 1px inset;
-          color: ${color.lightest};
-
-          &:hover {
-            box-shadow: ${color.lightest} 0 0 0 1px inset;
-            background: transparent;
-          }
-
-          &:active {
-            background: ${color.lightest};
-            box-shadow: ${color.lightest} 0 0 0 1px inset;
-            color: ${color.darkest};
-          }
-          &:focus {
-            box-shadow: ${color.lightest} 0 0 0 1px inset,
-              ${rgba(color.darkest, 0.4)} 0 1px 9px 2px;
-          }
-          &:focus:hover {
-            box-shadow: ${color.lightest} 0 0 0 1px inset,
-              ${rgba(color.darkest, 0.2)} 0 8px 18px 0px;
-          }
-      `};
-
+    `};
 `;
 
-const ButtonStyles = styled.span`
-  a,
-  button {
-    ${buttonStyles}
-  }
-`;
-
+const UnstyledButton = styled.button``;
 const ButtonLink = styled.a``;
 
-const StyledButton = styled.button``;
-
-export function Button({
+// The main purpose of this component is to strip certain props that get passed
+// down to the styled component, so that we don't end up passing them to a
+// tag which would throw warnings for non-standard props.
+function ButtonComponentPicker({
   appearance,
+  ButtonWrapper,
   containsIcon,
-  isDisabled,
+  isLink,
   isLoading,
   isUnclickable,
-  loadingText,
-  isLink,
-  children,
-  ButtonWrapper,
   size,
   ...rest
 }) {
+  // Use the UnstyledButton here to avoid duplicating styles and creating
+  // specificity conflicts by first rendering the StyledLink higher up the chain
+  // and then re-rendering it through the 'as' prop.
+  const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || UnstyledButton;
+  return <ButtonComponent {...rest} />;
+}
+
+const buttonStyleProps = {
+  appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
+  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  /**
+   Buttons with icons by themselves have a circular shape
+  */
+  containsIcon: PropTypes.bool,
+  /**
+   Buttons that have hrefs should use <a> instead of <button>
+  */
+  isLink: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  /**
+   Prevents users from clicking on a button multiple times (for things like payment forms)
+  */
+  isUnclickable: PropTypes.bool,
+  size: PropTypes.oneOf(Object.values(SIZES)),
+};
+
+const buttonStyleDefaultProps = {
+  isLoading: false,
+  isLink: false,
+  appearance: APPEARANCES.TERTIARY,
+  isUnclickable: false,
+  containsIcon: false,
+  size: SIZES.MEDIUM,
+  ButtonWrapper: undefined,
+};
+
+ButtonComponentPicker.propTypes = {
+  ...buttonStyleProps,
+};
+
+ButtonComponentPicker.defaultProps = {
+  ...buttonStyleDefaultProps,
+};
+
+export function Button({ children, isDisabled, isLoading, loadingText, ...rest }) {
   const content = (
     <>
       <Text>{children}</Text>
@@ -426,55 +461,25 @@ export function Button({
     </>
   );
 
-  const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || StyledButton;
-
   return (
-    <ButtonStyles
-      appearance={appearance}
-      containsIcon={containsIcon}
-      disabled={isDisabled}
-      isUnclickable={isUnclickable}
-      isLoading={isLoading}
-      size={size}
-    >
-      <ButtonComponent {...rest}>{content}</ButtonComponent>
-    </ButtonStyles>
+    <StyledButton as={ButtonComponentPicker} disabled={isDisabled} isLoading={isLoading} {...rest}>
+      {content}
+    </StyledButton>
   );
 }
 
 Button.propTypes = {
-  isLoading: PropTypes.bool,
+  ...buttonStyleProps,
+  children: PropTypes.node.isRequired,
+  isDisabled: PropTypes.bool,
   /**
    When a button is in the loading state you can supply custom text
   */
   loadingText: PropTypes.node,
-  /**
-   Buttons that have hrefs should use <a> instead of <button>
-  */
-  isLink: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
-  isDisabled: PropTypes.bool,
-  /**
-   Prevents users from clicking on a button multiple times (for things like payment forms)
-  */
-  isUnclickable: PropTypes.bool,
-  /**
-   Buttons with icons by themselves have a circular shape
-  */
-  containsIcon: PropTypes.bool,
-  size: PropTypes.oneOf(Object.values(SIZES)),
-  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 Button.defaultProps = {
-  isLoading: false,
   loadingText: null,
-  isLink: false,
-  appearance: APPEARANCES.TERTIARY,
   isDisabled: false,
-  isUnclickable: false,
-  containsIcon: false,
-  size: SIZES.MEDIUM,
-  ButtonWrapper: undefined,
+  ...buttonStyleDefaultProps,
 };
