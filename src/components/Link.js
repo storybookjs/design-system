@@ -6,7 +6,22 @@ import { darken } from 'polished';
 import { Icon } from './Icon';
 import { color } from './shared/styles';
 
-const linkStyles = css`
+const LinkInner = styled.span`
+  ${(props) =>
+    props.withArrow &&
+    css`
+      > svg:last-of-type {
+        height: 0.7em;
+        width: 0.7em;
+        margin-right: 0;
+        margin-left: 0.25em;
+        bottom: auto;
+        vertical-align: inherit;
+      }
+    `};
+`;
+
+const StyledLink = styled.a`
   display: inline-block;
   transition: transform 150ms ease-out, color 150ms ease-out;
   text-decoration: none;
@@ -101,55 +116,69 @@ const linkStyles = css`
     `};
 `;
 
-const LinkInner = styled.span`
-  ${(props) =>
-    props.withArrow &&
-    css`
-      > svg:last-of-type {
-        height: 0.7em;
-        width: 0.7em;
-        margin-right: 0;
-        margin-left: 0.25em;
-        bottom: auto;
-        vertical-align: inherit;
-      }
-    `};
+const UnstyledLink = styled.a``;
+
+const LinkButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 `;
 
-const LinkStyles = styled.span`
-  a,
-  button {
-    ${linkStyles};
-  }
+// The main purpose of this component is to strip certain props that get passed
+// down to the styled component, so that we don't end up passing them to an <a>
+// tag which causes warnings to show up in the console.
+function LinkComponentPicker({
+  containsIcon,
+  inverse,
+  isButton,
+  LinkWrapper,
+  nochrome,
+  secondary,
+  tertiary,
+  ...rest
+}) {
+  // Use the UnstyledLink here to avoid duplicating styles and creating
+  // specificity conflicts by first rendering the StyledLink higher up the chain
+  // and then re-rendering it through the 'as' prop.
+  const LinkComponent = isButton ? LinkButton : LinkWrapper || UnstyledLink;
+  return <LinkComponent {...rest} />;
+}
 
-  button {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-  }
-`;
+const linkStyleProps = {
+  containsIcon: PropTypes.bool,
+  inverse: PropTypes.bool,
+  isButton: PropTypes.bool,
+  LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  nochrome: PropTypes.bool,
+  secondary: PropTypes.bool,
+  tertiary: PropTypes.bool,
+};
 
-const LinkA = styled.a``;
+const linkStyleDefaultProps = {
+  isButton: false,
+  containsIcon: false,
+  LinkWrapper: undefined,
+  inverse: false,
+  nochrome: false,
+  secondary: false,
+  tertiary: false,
+};
 
-const LinkButton = styled.button``;
+LinkComponentPicker.propTypes = {
+  ...linkStyleProps,
+};
+
+LinkComponentPicker.defaultProps = {
+  ...linkStyleDefaultProps,
+};
+
 /**
  * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
  */
-export function Link({
-  containsIcon,
-  inverse,
-  nochrome,
-  tertiary,
-  secondary,
-  isButton,
-  withArrow,
-  LinkWrapper,
-  children,
-  ...rest
-}) {
+export function Link({ children, withArrow, ...rest }) {
   const content = (
     <>
       <LinkInner withArrow={withArrow}>
@@ -159,41 +188,21 @@ export function Link({
     </>
   );
 
-  const LinkComponent = isButton ? LinkButton : LinkWrapper || LinkA;
-
   return (
-    <LinkStyles
-      containsIcon={containsIcon}
-      inverse={inverse}
-      nochrome={nochrome}
-      tertiary={tertiary}
-      secondary={secondary}
-    >
-      <LinkComponent {...rest}>{content}</LinkComponent>
-    </LinkStyles>
+    <StyledLink as={LinkComponentPicker} {...rest}>
+      {content}
+    </StyledLink>
   );
 }
 
 Link.propTypes = {
-  isButton: PropTypes.bool,
   children: PropTypes.node,
   withArrow: PropTypes.bool,
-  containsIcon: PropTypes.bool,
-  LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  inverse: PropTypes.bool,
-  nochrome: PropTypes.bool,
-  secondary: PropTypes.bool,
-  tertiary: PropTypes.bool,
+  ...linkStyleProps,
 };
 
 Link.defaultProps = {
-  isButton: false,
   children: null,
   withArrow: false,
-  containsIcon: false,
-  LinkWrapper: undefined,
-  inverse: false,
-  nochrome: false,
-  secondary: false,
-  tertiary: false,
+  ...linkStyleDefaultProps,
 };

@@ -23,7 +23,7 @@ export default {
   component: Button,
 };
 
-export const Basic = args => <Button {...args} />;
+export const Basic = (args) => <Button {...args} />;
 Basic.args = { children: 'Label' };
 
 export const All = () => (
