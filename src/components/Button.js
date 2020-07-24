@@ -403,7 +403,6 @@ function ButtonComponentPicker({
   appearance,
   ButtonWrapper,
   containsIcon,
-  isDisabled,
   isLink,
   isLoading,
   isUnclickable,
@@ -424,7 +423,6 @@ const buttonStyleProps = {
    Buttons with icons by themselves have a circular shape
   */
   containsIcon: PropTypes.bool,
-  isDisabled: PropTypes.bool,
   /**
    Buttons that have hrefs should use <a> instead of <button>
   */
@@ -441,7 +439,6 @@ const buttonStyleDefaultProps = {
   isLoading: false,
   isLink: false,
   appearance: APPEARANCES.TERTIARY,
-  isDisabled: false,
   isUnclickable: false,
   containsIcon: false,
   size: SIZES.MEDIUM,
@@ -456,7 +453,7 @@ ButtonComponentPicker.defaultProps = {
   ...buttonStyleDefaultProps,
 };
 
-export function Button({ children, isLoading, loadingText, ...rest }) {
+export function Button({ children, isDisabled, isLoading, loadingText, ...rest }) {
   const content = (
     <>
       <Text>{children}</Text>
@@ -465,7 +462,7 @@ export function Button({ children, isLoading, loadingText, ...rest }) {
   );
 
   return (
-    <StyledButton as={ButtonComponentPicker} isLoading={isLoading} {...rest}>
+    <StyledButton as={ButtonComponentPicker} disabled={isDisabled} isLoading={isLoading} {...rest}>
       {content}
     </StyledButton>
   );
@@ -474,6 +471,7 @@ export function Button({ children, isLoading, loadingText, ...rest }) {
 Button.propTypes = {
   ...buttonStyleProps,
   children: PropTypes.node.isRequired,
+  isDisabled: PropTypes.bool,
   /**
    When a button is in the loading state you can supply custom text
   */
@@ -482,5 +480,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   loadingText: null,
+  isDisabled: false,
   ...buttonStyleDefaultProps,
 };
