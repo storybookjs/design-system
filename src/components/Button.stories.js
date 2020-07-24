@@ -6,18 +6,6 @@ import { Button } from './Button';
 import { Icon } from './Icon';
 import { StoryLinkWrapper } from './StoryLinkWrapper';
 
-const CustomButton = styled.button`
-  border: 1px solid green;
-  background: lightgreen;
-  color: rebeccapurple;
-  padding: 1em;
-  font-size: 1.2em;
-`;
-
-function ButtonWrapper(props) {
-  return <CustomButton onClick={action('button action click')} {...props} />;
-}
-
 export default {
   title: 'Design System/Button',
   component: Button,
@@ -103,22 +91,21 @@ export const ContainsIcon = () => (
   </>
 );
 
+// eslint-disable-next-line react/button-has-type
+const ButtonWrapper = (props) => <button {...props} />;
+
 export const BasicWrapper = () => (
-  <div>
-    <ButtonWrapper>Original Button Wrapper</ButtonWrapper>
-    <br />
-    <Button ButtonWrapper={ButtonWrapper} appearance="primary">
-      Button that passes clicks through
-    </Button>
-  </div>
+  <Button
+    ButtonWrapper={ButtonWrapper}
+    appearance="primary"
+    onClick={action('button action click')}
+  >
+    Button that passes clicks through
+  </Button>
 );
 
 export const AnchorWrapper = () => (
-  <div>
-    <StoryLinkWrapper to="http://storybook.js.org">Original Link Wrapper</StoryLinkWrapper>
-    <br />
-    <Button ButtonWrapper={StoryLinkWrapper} appearance="primary" href="http://storybook.js.org">
-      Button that passes href through
-    </Button>
-  </div>
+  <Button ButtonWrapper={StoryLinkWrapper} appearance="primary" href="http://storybook.js.org">
+    Button that passes href through
+  </Button>
 );
