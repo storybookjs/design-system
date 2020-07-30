@@ -186,9 +186,15 @@ Menu.defaultProps = {
   isTopLevel: false,
 };
 
+const ItemLinkWrapper = styled.div`
+  &:last-of-type ${MenuLink} {
+    margin-bottom: 0;
+  }
+`;
+
 function ItemLink({ currentPath, item }) {
   return (
-    <div>
+    <ItemLinkWrapper>
       <MenuLink
         isActive={currentPath === item.path}
         href={item.path}
@@ -197,7 +203,7 @@ function ItemLink({ currentPath, item }) {
       >
         {item.title}
       </MenuLink>
-    </div>
+    </ItemLinkWrapper>
   );
 }
 
