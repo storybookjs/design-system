@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { TableOfContents } from './TableOfContents';
-import { StoryLinkWrapper } from './StoryLinkWrapper';
+import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
-  title: 'Design System/Table of Contents',
+  title: 'Design System/TableOfContents',
   component: TableOfContents,
 };
 
