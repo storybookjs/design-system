@@ -34,13 +34,6 @@ const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true }
   font-weight: ${typography.weight.bold};
 `;
 
-const MenuChild = styled.div`
-  padding-left: 22px;
-  padding-top: 12px;
-  display: flex;
-  flex-direction: column;
-`;
-
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
   && {
     width: 14px;
@@ -71,14 +64,12 @@ function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
         </MenuLink>
       )}
       {item.isOpen && (
-        <MenuChild>
-          <TableOfContentsItems
-            items={item.children}
-            isTopLevel={false}
-            setMenuOpenStateById={setMenuOpenStateById}
-            {...rest}
-          />
-        </MenuChild>
+        <TableOfContentsItems
+          items={item.children}
+          isTopLevel={false}
+          setMenuOpenStateById={setMenuOpenStateById}
+          {...rest}
+        />
       )}
     </li>
   );
@@ -103,6 +94,14 @@ const List = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  ${(props) =>
+    !props.isTopLevel &&
+    `
+    padding-left: 22px;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+  `}
 
   li {
     padding-top: 12px;
