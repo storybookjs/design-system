@@ -140,21 +140,15 @@ function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
   if (!item.children) return null;
   const arrow = <ArrowIcon isOpen={item.isOpen} isTopLevel={isTopLevel} />;
   const MenuToggle = isTopLevel ? TopLevelMenuToggle : MenuLink;
-  const openOnTab = (event) => {
-    if (event.key !== 'Tab') return;
-    setMenuOpenStateById({ id: item.id, isOpen: true });
-  };
   const toggleOpenState = () => setMenuOpenStateById({ id: item.id, isOpen: !item.isOpen });
 
   return (
     <div>
       {isTopLevel && arrow}
       {isTopLevel ? (
-        <TopLevelMenuToggle onClick={toggleOpenState} onKeyUp={openOnTab}>
-          {item.title}
-        </TopLevelMenuToggle>
+        <TopLevelMenuToggle onClick={toggleOpenState}>{item.title}</TopLevelMenuToggle>
       ) : (
-        <MenuLink isButton onClick={toggleOpenState} onKeyUp={openOnTab}>
+        <MenuLink isButton onClick={toggleOpenState}>
           {item.title}
         </MenuLink>
       )}
@@ -261,12 +255,11 @@ PureTableOfContents.defaultProps = {
 const toKebabcase = (string) => string.toLowerCase().split(' ').join('-');
 
 const hasActiveChildren = (args) => {
-  const { children, currentPath, lastFocusedId } = args;
+  const { children, currentPath } = args;
 
   return !!children.find(
     (child) =>
       child.path === currentPath ||
-      child.id === lastFocusedId ||
       (child.children && hasActiveChildren({ ...args, children: child.children }))
   );
 };
@@ -284,6 +277,7 @@ const getOpenState = ({
     currentPath,
     lastFocusedId,
   });
+
   // If there is no 'isOpen' field yet, set a default based on whether or not
   // any of the children are active.
   if (typeof item.isOpen !== 'boolean') return withActiveChildren;
@@ -298,6 +292,15 @@ const getOpenState = ({
   return item.isOpen;
 };
 
+const mapItemIds = (items, depth = 0) =>
+  items.map((item) => ({
+    ...item,
+    id: `${toKebabcase(item.title)}-${depth}`,
+    ...(item.children && {
+      children: mapItemIds(item.children, depth + 1),
+    }),
+  }));
+
 // Add UI state to the 'items' that are passed in as props
 const mapItemUIState = (args) => {
   const {
@@ -310,19 +313,7 @@ const mapItemUIState = (args) => {
     lastFocusedId,
   } = args;
 
-  return items.map((itemWithoutId) => {
-    const id = `${toKebabcase(itemWithoutId.title)}-${depth}`;
-    const item = {
-      ...itemWithoutId,
-      id,
-      // Recursively set the state of children to an infinite depth.
-      // getOpenState needs the children to have an id already to determine
-      // if there is a focused child, hence the placement of the recursive
-      // mapItemUIState call here before getOpenState is called.
-      ...(itemWithoutId.children && {
-        children: mapItemUIState({ ...args, items: itemWithoutId.children, depth: depth + 1 }),
-      }),
-    };
+  return items.map((item) => {
     const isMenuWithChildren = item.type === ITEM_TYPES.MENU && !!item.children;
 
     return {
@@ -338,45 +329,35 @@ const mapItemUIState = (args) => {
           didChangeCurrentPath,
         }),
       }),
+      // Recursively set the state of children to an infinite depth.
+      // getOpenState needs the children to have an id already to determine
+      // if there is a focused child, hence the placement of the recursive
+      // mapItemUIState call here before getOpenState is called.
+      ...(item.children && {
+        children: mapItemUIState({ ...args, items: item.children, depth: depth + 1 }),
+      }),
     };
   });
 };
 
 export function TableOfContents({ children, currentPath, items, ...rest }) {
-  const [lastFocusedId, setLastFocusedId] = useState(undefined);
-  const mapItemUIStateCommonArgs = { currentPath, lastFocusedId };
+  const [itemsWithIds] = useState(mapItemIds(items));
   const [itemsWithUIState, setItemsWithUIState] = useState(
-    mapItemUIState({ items, currentPath, lastFocusedId })
+    mapItemUIState({ currentPath, items: itemsWithIds })
   );
+  const uiStateCommonArgs = { currentPath, items: itemsWithUIState };
   const toggleAllOpenStates = (isOpen) =>
-    setItemsWithUIState(
-      mapItemUIState({
-        ...mapItemUIStateCommonArgs,
-        items: itemsWithUIState,
-        globalItemUpdate: { isOpen },
-      })
-    );
+    setItemsWithUIState(mapItemUIState({ ...uiStateCommonArgs, globalItemUpdate: { isOpen } }));
   const toggleAllOpen = () => toggleAllOpenStates(true);
   const toggleAllClosed = () => toggleAllOpenStates(false);
-  const setMenuOpenStateById = (args) =>
-    setItemsWithUIState(
-      mapItemUIState({
-        ...mapItemUIStateCommonArgs,
-        items: itemsWithUIState,
-        singleItemUpdate: args,
-      })
-    );
+  const setMenuOpenStateById = (args) => {
+    setItemsWithUIState(mapItemUIState({ ...uiStateCommonArgs, singleItemUpdate: args }));
+  };
 
   const didRunCurrentPathEffectOnMount = useRef(false);
   useEffect(() => {
     if (didRunCurrentPathEffectOnMount.current) {
-      setItemsWithUIState(
-        mapItemUIState({
-          ...mapItemUIStateCommonArgs,
-          didChangeCurrentPath: true,
-          items: itemsWithUIState,
-        })
-      );
+      setItemsWithUIState(mapItemUIState({ ...uiStateCommonArgs, didChangeCurrentPath: true }));
     } else {
       didRunCurrentPathEffectOnMount.current = true;
     }
@@ -387,7 +368,6 @@ export function TableOfContents({ children, currentPath, items, ...rest }) {
       currentPath={currentPath}
       items={itemsWithUIState}
       setMenuOpenStateById={setMenuOpenStateById}
-      setLastFocusedId={setLastFocusedId}
       {...rest}
     />
   );
