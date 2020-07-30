@@ -260,12 +260,14 @@ PureTableOfContents.defaultProps = {
 
 const toKebabcase = (string) => string.toLowerCase().split(' ').join('-');
 
-const hasActiveChildren = (children, currentPath, lastFocusedId) => {
+const hasActiveChildren = (args) => {
+  const { children, currentPath, lastFocusedId } = args;
+
   return !!children.find(
     (child) =>
       child.path === currentPath ||
       child.id === lastFocusedId ||
-      (child.children && hasActiveChildren(child.children, currentPath, lastFocusedId))
+      (child.children && hasActiveChildren({ ...args, children: child.children }))
   );
 };
 
@@ -277,7 +279,11 @@ const getOpenState = ({
   currentPath,
   didChangeCurrentPath,
 }) => {
-  const withActiveChildren = hasActiveChildren(item.children, currentPath, lastFocusedId);
+  const withActiveChildren = hasActiveChildren({
+    children: item.children,
+    currentPath,
+    lastFocusedId,
+  });
   // If there is no 'isOpen' field yet, set a default based on whether or not
   // any of the children are active.
   if (typeof item.isOpen !== 'boolean') return withActiveChildren;
@@ -285,15 +291,14 @@ const getOpenState = ({
   if (didChangeCurrentPath && withActiveChildren) return true;
 
   if (typeof globalItemUpdate.isOpen === 'boolean') return globalItemUpdate.isOpen;
-  if (item.id === 'customize-0') {
-    console.log({ item, singleItemUpdate });
-  }
+
   if (typeof singleItemUpdate.isOpen === 'boolean' && singleItemUpdate.id === item.id)
     return singleItemUpdate.isOpen;
 
   return item.isOpen;
 };
 
+// Add UI state to the 'items' that are passed in as props
 const mapItemUIState = (args) => {
   const {
     items,
@@ -310,7 +315,10 @@ const mapItemUIState = (args) => {
     const item = {
       ...itemWithoutId,
       id,
-      // Recursively set the state of children to an infinite depth
+      // Recursively set the state of children to an infinite depth.
+      // getOpenState needs the children to have an id already to determine
+      // if there is a focused child, hence the placement of the recursive
+      // mapItemUIState call here before getOpenState is called.
       ...(itemWithoutId.children && {
         children: mapItemUIState({ ...args, items: itemWithoutId.children, depth: depth + 1 }),
       }),
@@ -336,15 +344,15 @@ const mapItemUIState = (args) => {
 
 export function TableOfContents({ children, currentPath, items, ...rest }) {
   const [lastFocusedId, setLastFocusedId] = useState(undefined);
+  const mapItemUIStateCommonArgs = { currentPath, lastFocusedId };
   const [itemsWithUIState, setItemsWithUIState] = useState(
     mapItemUIState({ items, currentPath, lastFocusedId })
   );
   const toggleAllOpenStates = (isOpen) =>
     setItemsWithUIState(
       mapItemUIState({
+        ...mapItemUIStateCommonArgs,
         items: itemsWithUIState,
-        lastFocusedId,
-        currentPath,
         globalItemUpdate: { isOpen },
       })
     );
@@ -353,9 +361,8 @@ export function TableOfContents({ children, currentPath, items, ...rest }) {
   const setMenuOpenStateById = (args) =>
     setItemsWithUIState(
       mapItemUIState({
+        ...mapItemUIStateCommonArgs,
         items: itemsWithUIState,
-        lastFocusedId,
-        currentPath,
         singleItemUpdate: args,
       })
     );
@@ -365,10 +372,9 @@ export function TableOfContents({ children, currentPath, items, ...rest }) {
     if (didRunCurrentPathEffectOnMount.current) {
       setItemsWithUIState(
         mapItemUIState({
-          lastFocusedId,
+          ...mapItemUIStateCommonArgs,
           didChangeCurrentPath: true,
           items: itemsWithUIState,
-          currentPath,
         })
       );
     } else {
