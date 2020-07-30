@@ -66,23 +66,22 @@ const items = [
 const findPaths = (pathItems) => pathItems.flatMap((item) => item.path || findPaths(item.children));
 const paths = findPaths(items);
 
-export const Default = () => <TableOfContents currentPath={paths[0]} items={items} />;
+export const Basic = (args) => <TableOfContents {...args} />;
+Basic.args = { currentPath: paths[0], items };
 
-export const DeeplyNestedActivePath = () => (
-  <TableOfContents currentPath="/features-and-behavior" items={items} />
-);
+export const NestedActivePath = Basic.bind();
+NestedActivePath.args = { currentPath: '/features-and-behavior', items };
 
-export const LinkWrappers = () => {
-  const addLinkWrappers = (itemsToCompose) =>
-    itemsToCompose.map((item) => {
-      if (item.type === 'link' || item.type === 'bullet-link')
-        return { ...item, LinkWrapper: StoryLinkWrapper };
-      if (item.children) return { ...item, children: addLinkWrappers(item.children) };
-      return item;
-    });
-  const itemsWithLinkWrappers = addLinkWrappers(items);
-  return <TableOfContents currentPath={paths[0]} items={itemsWithLinkWrappers} />;
-};
+const addLinkWrappers = (itemsToCompose) =>
+  itemsToCompose.map((item) => {
+    if (item.type === 'link' || item.type === 'bullet-link')
+      return { ...item, LinkWrapper: StoryLinkWrapper };
+    if (item.children) return { ...item, children: addLinkWrappers(item.children) };
+    return item;
+  });
+const itemsWithLinkWrappers = addLinkWrappers(items);
+export const LinkWrappers = Basic.bind();
+LinkWrappers.args = { currentPath: paths[0], items: itemsWithLinkWrappers };
 
 export const WithOpenControls = () => (
   <TableOfContents currentPath={paths[0]} items={items}>
