@@ -129,30 +129,34 @@ const MenuChild = styled.div`
 `;
 
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
-  width: 14px;
-  width: 14px;
-  color: ${color.mediumdark};
-  transform: translateY(-1px) ${(props) => props.isOpen && `rotate(90deg)`};
-  ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
+  && {
+    width: 14px;
+    width: 14px;
+    color: ${color.mediumdark};
+    transform: translateY(1px) ${(props) => props.isOpen && `rotate(90deg)`};
+    ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
+  }
 `;
 
 function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
   if (!item.children) return null;
-  const arrow = <ArrowIcon isOpen={item.isOpen} isTopLevel={isTopLevel} />;
+  const arrow = <ArrowIcon isOpen={item.isOpen} isTopLevel={isTopLevel} aria-hidden />;
   const MenuToggle = isTopLevel ? TopLevelMenuToggle : MenuLink;
   const toggleOpenState = () => setMenuOpenStateById({ id: item.id, isOpen: !item.isOpen });
 
   return (
     <div>
-      {isTopLevel && arrow}
       {isTopLevel ? (
-        <TopLevelMenuToggle onClick={toggleOpenState}>{item.title}</TopLevelMenuToggle>
+        <TopLevelMenuToggle onClick={toggleOpenState}>
+          {arrow}
+          {item.title}
+        </TopLevelMenuToggle>
       ) : (
         <MenuLink isButton onClick={toggleOpenState}>
           {item.title}
+          {arrow}
         </MenuLink>
       )}
-      {!isTopLevel && arrow}
       {item.isOpen && (
         <MenuChild>
           <Items
