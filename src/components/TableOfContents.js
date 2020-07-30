@@ -49,7 +49,11 @@ const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
   }
 `;
 
-const BulletLinkWrapper = styled.div`
+const BulletLinkWrapper = styled.li`
+  && {
+    padding-top: 0;
+  }
+
   &:first-of-type ${StyledBulletLink} {
     margin-top: -6px;
 
@@ -112,20 +116,18 @@ BulletLink.propTypes = {
 
 const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true })`
   font-weight: ${typography.weight.bold};
-  margin-bottom: 12px;
 `;
 
 const MenuLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
   color: ${(props) => (props.isActive ? color.secondary : color.darkest)};
   font-weight: ${(props) => (props.isActive ? typography.weight.bold : typography.weight.regular)};
-  margin-bottom: 12px;
 `;
 
 const MenuChild = styled.div`
-  margin-left: 22px;
+  padding-left: 22px;
+  padding-top: 12px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
 `;
 
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
@@ -145,7 +147,7 @@ function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
   const toggleOpenState = () => setMenuOpenStateById({ id: item.id, isOpen: !item.isOpen });
 
   return (
-    <div>
+    <li>
       {isTopLevel ? (
         <TopLevelMenuToggle onClick={toggleOpenState}>
           {arrow}
@@ -167,7 +169,7 @@ function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
           />
         </MenuChild>
       )}
-    </div>
+    </li>
   );
 }
 
@@ -186,7 +188,7 @@ Menu.defaultProps = {
   isTopLevel: false,
 };
 
-const ItemLinkWrapper = styled.div`
+const ItemLinkWrapper = styled.li`
   &:last-of-type ${MenuLink} {
     margin-bottom: 0;
   }
@@ -216,19 +218,52 @@ ItemLink.propTypes = {
   }).isRequired,
 };
 
-function Items({ currentPath, items, ...rest }) {
+const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding-top: 12px;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  ${(props) =>
+    props.isTopLevel &&
+    `
+    > li {
+      padding-top: 20px;
+    }
+  `}
+`;
+
+function Items({ currentPath, isTopLevel, items, ...rest }) {
+  const isOrderedList = items.every((item) => item.type === ITEM_TYPES.BULLET_LINK);
+
   return (
-    <>
+    <List isTopLevel={isTopLevel} as={isOrderedList ? 'ol' : 'ul'}>
       {items.map((item) => {
         const ItemComponent = getItemComponent(item.type);
-        return <ItemComponent key={item.title} currentPath={currentPath} item={item} {...rest} />;
+        return (
+          <ItemComponent
+            key={item.title}
+            currentPath={currentPath}
+            item={item}
+            isTopLevel={isTopLevel}
+            {...rest}
+          />
+        );
       })}
-    </>
+    </List>
   );
 }
 
 Items.propTypes = {
   currentPath: PropTypes.string.isRequired,
+  isTopLevel: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf(Object.values(ITEM_TYPES)).isRequired,
