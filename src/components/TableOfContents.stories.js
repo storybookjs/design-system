@@ -22,6 +22,11 @@ const items = [
         title: 'Setup',
         type: 'bullet-link',
       },
+      {
+        path: '/write-a-story',
+        title: 'Write a story',
+        type: 'bullet-link',
+      },
     ],
   },
   {

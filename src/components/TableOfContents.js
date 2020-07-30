@@ -27,8 +27,7 @@ const getItemComponent = (itemType) => {
   }
 };
 
-const StyledBulletLink = styled(Link)`
-  margin-left: -22px;
+const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
   display: inline-block;
   padding: 6px 0;
   line-height: 1.5;
@@ -52,7 +51,7 @@ const StyledBulletLink = styled(Link)`
 
 const BulletLinkWrapper = styled.div`
   &:first-of-type ${StyledBulletLink} {
-    padding-top: 0;
+    margin-top: -6px;
 
     &::after {
       height: 50%;
@@ -61,7 +60,7 @@ const BulletLinkWrapper = styled.div`
   }
 
   &:last-of-type ${StyledBulletLink} {
-    padding-bottom: 0;
+    margin-bottom: -6px;
 
     &::after {
       height: 50%;
@@ -105,7 +104,7 @@ function BulletLink({ currentPath, item, ...rest }) {
 BulletLink.propTypes = {
   currentPath: PropTypes.string.isRequired,
   item: PropTypes.shape({
-    LinkWrapper: PropTypes.node,
+    LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
@@ -116,7 +115,7 @@ const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true }
   margin-bottom: 12px;
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
   color: ${(props) => (props.isActive ? color.secondary : color.darkest)};
   font-weight: ${(props) => (props.isActive ? typography.weight.bold : typography.weight.regular)};
   margin-bottom: 12px;
@@ -129,34 +128,33 @@ const MenuChild = styled.div`
   margin-bottom: 12px;
 `;
 
-const ArrowIcon = styled(Icon)`
+const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
   width: 14px;
   width: 14px;
   color: ${color.mediumdark};
   transform: translateY(-1px) ${(props) => props.isOpen && `rotate(90deg)`};
-  ${(props) =>
-    props.isTopLevel
-      ? `
-    margin-right: 8px;
-  `
-      : `
-    margin-left: 8px;
-  `}
+  ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
 `;
 
 function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
   if (!item.children) return null;
-  const arrow = <ArrowIcon icon="arrowright" isOpen={item.isOpen} isTopLevel={isTopLevel} />;
+  const arrow = <ArrowIcon isOpen={item.isOpen} isTopLevel={isTopLevel} />;
   const MenuToggle = isTopLevel ? TopLevelMenuToggle : MenuLink;
+  const openOnTab = (event) => {
+    if (event.key !== 'Tab') return;
+    setMenuOpenStateById({ id: item.id, isOpen: true });
+  };
   const toggleOpenState = () => setMenuOpenStateById({ id: item.id, isOpen: !item.isOpen });
 
   return (
     <div>
       {isTopLevel && arrow}
       {isTopLevel ? (
-        <TopLevelMenuToggle onClick={toggleOpenState}>{item.title}</TopLevelMenuToggle>
+        <TopLevelMenuToggle onClick={toggleOpenState} onKeyUp={openOnTab}>
+          {item.title}
+        </TopLevelMenuToggle>
       ) : (
-        <MenuLink isButton onClick={toggleOpenState}>
+        <MenuLink isButton onClick={toggleOpenState} onKeyUp={openOnTab}>
           {item.title}
         </MenuLink>
       )}
@@ -192,14 +190,16 @@ Menu.defaultProps = {
 
 function ItemLink({ currentPath, item }) {
   return (
-    <MenuLink
-      isActive={currentPath === item.path}
-      href={item.path}
-      LinkWrapper={item.LinkWrapper}
-      tertiary
-    >
-      {item.title}
-    </MenuLink>
+    <div>
+      <MenuLink
+        isActive={currentPath === item.path}
+        href={item.path}
+        LinkWrapper={item.LinkWrapper}
+        tertiary
+      >
+        {item.title}
+      </MenuLink>
+    </div>
   );
 }
 
@@ -207,7 +207,7 @@ ItemLink.propTypes = {
   currentPath: PropTypes.string.isRequired,
   item: PropTypes.shape({
     path: PropTypes.string.isRequired,
-    LinkWrapper: PropTypes.node,
+    LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     title: PropTypes.string.isRequired,
   }).isRequired,
 };
@@ -260,11 +260,12 @@ PureTableOfContents.defaultProps = {
 
 const toKebabcase = (string) => string.toLowerCase().split(' ').join('-');
 
-const hasActiveChildren = (children, currentPath) => {
+const hasActiveChildren = (children, currentPath, lastFocusedId) => {
   return !!children.find(
     (child) =>
       child.path === currentPath ||
-      (child.children && hasActiveChildren(child.children, currentPath))
+      child.id === lastFocusedId ||
+      (child.children && hasActiveChildren(child.children, currentPath, lastFocusedId))
   );
 };
 
@@ -272,10 +273,11 @@ const getOpenState = ({
   item,
   globalItemUpdate = {},
   singleItemUpdate = {},
+  lastFocusedId,
   currentPath,
   didChangeCurrentPath,
 }) => {
-  const withActiveChildren = hasActiveChildren(item.children, currentPath);
+  const withActiveChildren = hasActiveChildren(item.children, currentPath, lastFocusedId);
   // If there is no 'isOpen' field yet, set a default based on whether or not
   // any of the children are active.
   if (typeof item.isOpen !== 'boolean') return withActiveChildren;
@@ -283,7 +285,9 @@ const getOpenState = ({
   if (didChangeCurrentPath && withActiveChildren) return true;
 
   if (typeof globalItemUpdate.isOpen === 'boolean') return globalItemUpdate.isOpen;
-
+  if (item.id === 'customize-0') {
+    console.log({ item, singleItemUpdate });
+  }
   if (typeof singleItemUpdate.isOpen === 'boolean' && singleItemUpdate.id === item.id)
     return singleItemUpdate.isOpen;
 
@@ -298,11 +302,19 @@ const mapItemUIState = (args) => {
     depth = 0,
     globalItemUpdate,
     singleItemUpdate,
+    lastFocusedId,
   } = args;
 
   return items.map((itemWithoutId) => {
     const id = `${toKebabcase(itemWithoutId.title)}-${depth}`;
-    const item = { ...itemWithoutId, id };
+    const item = {
+      ...itemWithoutId,
+      id,
+      // Recursively set the state of children to an infinite depth
+      ...(itemWithoutId.children && {
+        children: mapItemUIState({ ...args, items: itemWithoutId.children, depth: depth + 1 }),
+      }),
+    };
     const isMenuWithChildren = item.type === ITEM_TYPES.MENU && !!item.children;
 
     return {
@@ -313,36 +325,51 @@ const mapItemUIState = (args) => {
           item,
           globalItemUpdate,
           singleItemUpdate,
+          lastFocusedId,
           currentPath,
           didChangeCurrentPath,
         }),
-      }),
-      // Recursively set the state of children to an infinite depth
-      ...(item.children && {
-        children: mapItemUIState({ ...args, items: item.children, depth: depth + 1 }),
       }),
     };
   });
 };
 
 export function TableOfContents({ children, currentPath, items, ...rest }) {
-  const [itemsWithUIState, setItemsWithUIState] = useState(mapItemUIState({ items, currentPath }));
+  const [lastFocusedId, setLastFocusedId] = useState(undefined);
+  const [itemsWithUIState, setItemsWithUIState] = useState(
+    mapItemUIState({ items, currentPath, lastFocusedId })
+  );
   const toggleAllOpenStates = (isOpen) =>
     setItemsWithUIState(
-      mapItemUIState({ items: itemsWithUIState, currentPath, globalItemUpdate: { isOpen } })
+      mapItemUIState({
+        items: itemsWithUIState,
+        lastFocusedId,
+        currentPath,
+        globalItemUpdate: { isOpen },
+      })
     );
   const toggleAllOpen = () => toggleAllOpenStates(true);
   const toggleAllClosed = () => toggleAllOpenStates(false);
   const setMenuOpenStateById = (args) =>
     setItemsWithUIState(
-      mapItemUIState({ items: itemsWithUIState, currentPath, singleItemUpdate: args })
+      mapItemUIState({
+        items: itemsWithUIState,
+        lastFocusedId,
+        currentPath,
+        singleItemUpdate: args,
+      })
     );
 
   const didRunCurrentPathEffectOnMount = useRef(false);
   useEffect(() => {
     if (didRunCurrentPathEffectOnMount.current) {
       setItemsWithUIState(
-        mapItemUIState({ didChangeCurrentPath: true, items: itemsWithUIState, currentPath })
+        mapItemUIState({
+          lastFocusedId,
+          didChangeCurrentPath: true,
+          items: itemsWithUIState,
+          currentPath,
+        })
       );
     } else {
       didRunCurrentPathEffectOnMount.current = true;
@@ -354,6 +381,7 @@ export function TableOfContents({ children, currentPath, items, ...rest }) {
       currentPath={currentPath}
       items={itemsWithUIState}
       setMenuOpenStateById={setMenuOpenStateById}
+      setLastFocusedId={setLastFocusedId}
       {...rest}
     />
   );
@@ -373,6 +401,6 @@ TableOfContents.propTypes = {
   ).isRequired,
 };
 
-TableOfContents.propTypes = {
+TableOfContents.defaultProps = {
   children: undefined,
 };
