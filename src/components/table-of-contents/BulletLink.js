@@ -5,6 +5,7 @@ import { color, typography } from '../shared/styles';
 import { Link } from '../Link';
 
 const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
+  outline: none;
   display: inline-block;
   padding: 6px 0;
   line-height: 1.5;
