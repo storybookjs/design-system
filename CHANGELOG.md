@@ -1,3 +1,15 @@
+# v5.1.6 (Fri Jul 31 2020)
+
+#### 🐛  Bug Fix
+
+- Table of Contents component [#180](https://github.com/storybookjs/design-system/pull/180) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.4 (Fri Jul 24 2020)
 
 #### 🐛  Bug Fix
