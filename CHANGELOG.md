@@ -1,3 +1,15 @@
+# v5.1.7 (Sat Aug 01 2020)
+
+#### 🐛  Bug Fix
+
+- Allow classname in TOC component [#182](https://github.com/storybookjs/design-system/pull/182) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.6 (Fri Jul 31 2020)
 
 #### 🐛  Bug Fix
