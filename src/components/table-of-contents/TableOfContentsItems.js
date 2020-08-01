@@ -120,11 +120,11 @@ const List = styled.ul`
   `}
 `;
 
-export function TableOfContentsItems({ currentPath, isTopLevel, items, ...rest }) {
+export function TableOfContentsItems({ className, currentPath, isTopLevel, items, ...rest }) {
   const isOrderedList = items.every((item) => item.type === ITEM_TYPES.BULLET_LINK);
 
   return (
-    <List isTopLevel={isTopLevel} as={isOrderedList ? 'ol' : 'ul'}>
+    <List className={className} isTopLevel={isTopLevel} as={isOrderedList ? 'ol' : 'ul'}>
       {items.map((item) => {
         const ItemComponent = getItemComponent(item.type);
         return (
@@ -142,6 +142,7 @@ export function TableOfContentsItems({ currentPath, isTopLevel, items, ...rest }
 }
 
 TableOfContentsItems.propTypes = {
+  className: PropTypes.string,
   currentPath: PropTypes.string.isRequired,
   isTopLevel: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(
@@ -149,4 +150,8 @@ TableOfContentsItems.propTypes = {
       type: PropTypes.oneOf(Object.values(ITEM_TYPES)).isRequired,
     }).isRequired
   ).isRequired,
+};
+
+TableOfContentsItems.defaultProps = {
+  className: '',
 };
