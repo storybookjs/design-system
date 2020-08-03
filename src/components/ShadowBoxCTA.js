@@ -56,7 +56,7 @@ const Action = styled.div`
   }
 `;
 
-const ShadowBoxCTA = ({ action, headingText, messageText, ...rest }) => (
+export const ShadowBoxCTA = ({ action, headingText, messageText, ...rest }) => (
   <ShadowBoxCTAWrapper {...rest}>
     <TextWrapper>
       <HeadingText>{headingText}</HeadingText>
@@ -72,5 +72,3 @@ ShadowBoxCTA.propTypes = {
   messageText: PropTypes.node.isRequired,
   action: PropTypes.node.isRequired,
 };
-
-export default ShadowBoxCTA;

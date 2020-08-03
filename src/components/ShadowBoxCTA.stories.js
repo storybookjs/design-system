@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from './Button';
-import ShadowBoxCTA from './ShadowBoxCTA';
+import { ShadowBoxCTA } from './ShadowBoxCTA';
 
 // The wrapper allows you to see the shadow in Chromatic
 const Wrapper = styled.div`
