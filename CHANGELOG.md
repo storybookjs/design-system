@@ -4,6 +4,22 @@
 
 - Pass top level menu state to consumers of the TOC component [#183](https://github.com/storybookjs/design-system/pull/183) ([@kylesuss](https://github.com/kylesuss))
 
+#### ⚠️  Pushed to master
+
+- Update version to 5.1.8  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.1.8 (Mon Aug 03 2020)
+
+#### 🐛  Bug Fix
+
+- Pass top level menu state to consumers of the TOC component [#183](https://github.com/storybookjs/design-system/pull/183) ([@kylesuss](https://github.com/kylesuss))
+
 #### Authors: 1
 
 - Kyle Suss ([@kylesuss](https://github.com/kylesuss))
