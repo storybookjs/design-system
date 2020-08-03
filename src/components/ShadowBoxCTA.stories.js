@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, styles } from '@storybook/design-system';
+import { Button } from './Button';
 import ShadowBoxCTA from './ShadowBoxCTA';
 
 // The wrapper allows you to see the shadow in Chromatic
 const Wrapper = styled.div`
-  padding: 40px;
+  padding: 20px;
 `;
 
 const ctaAction = <Button appearance="secondary">Continue</Button>;
@@ -13,7 +13,7 @@ const ctaAction = <Button appearance="secondary">Continue</Button>;
 export default {
   component: ShadowBoxCTA,
   decorators: [(story) => <Wrapper>{story()}</Wrapper>],
-  title: 'Composite/ShadowBoxCTA',
+  title: 'Design System/ShadowBoxCTA',
 };
 
 const Story = (args) => <ShadowBoxCTA {...args} />;
