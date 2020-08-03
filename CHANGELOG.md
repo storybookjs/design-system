@@ -1,3 +1,19 @@
+# v5.1.10 (Mon Aug 03 2020)
+
+#### 🐛  Bug Fix
+
+- Port over ShadowBoxCTA from learnstorybook.com [#185](https://github.com/storybookjs/design-system/pull/185) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️  Pushed to master
+
+- Export ShadowBoxCTA  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.9 (Mon Aug 03 2020)
 
 #### 🐛  Bug Fix
