@@ -4,6 +4,22 @@
 
 - Export styled button from ButtonComponent [#184](https://github.com/storybookjs/design-system/pull/184) ([@kylesuss](https://github.com/kylesuss))
 
+#### ⚠️  Pushed to master
+
+- Update version to 5.1.9  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.1.9 (Mon Aug 03 2020)
+
+#### 🐛  Bug Fix
+
+- Export styled button from ButtonComponent [#184](https://github.com/storybookjs/design-system/pull/184) ([@kylesuss](https://github.com/kylesuss))
+
 #### Authors: 1
 
 - Kyle Suss ([@kylesuss](https://github.com/kylesuss))
