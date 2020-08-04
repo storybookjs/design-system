@@ -69,8 +69,12 @@ export class Highlight extends React.Component {
   }
 
   render() {
-    const { children, language, ...rest } = this.props;
-    const codeBlock = <div dangerouslySetInnerHTML={{ __html: children }} />;
+    const { children, language, withHTMLChildren, ...rest } = this.props;
+    const codeBlock = withHTMLChildren ? (
+      <div dangerouslySetInnerHTML={{ __html: children }} />
+    ) : (
+      children
+    );
 
     return (
       <HighlightBlock {...rest}>
@@ -89,8 +93,10 @@ export class Highlight extends React.Component {
 Highlight.propTypes = {
   children: PropTypes.node.isRequired,
   language: PropTypes.oneOf(languages),
+  withHTMLChildren: PropTypes.bool,
 };
 
 Highlight.defaultProps = {
   language: null,
+  withHTMLChildren: true,
 };

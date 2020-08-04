@@ -75,7 +75,7 @@ export default {
   component: Highlight,
 };
 
-export const Basic = args => <Highlight {...args} />;
+export const Basic = (args) => <Highlight {...args} />;
 Basic.args = {};
 
 export const Bash = () => (
@@ -150,3 +150,15 @@ const StyledHighlight = styled(Highlight)`
 `;
 
 export const CustomStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;
+
+/* eslint-disable */
+function WrapperComponent({ children }) {
+  return <div dangerouslySetInnerHTML={{ __html: children }} />;
+}
+/* eslint-enable */
+
+export const WithComponentChildren = () => (
+  <Highlight withHTMLChildren={false}>
+    <WrapperComponent>{javascriptCodeWithWrappers}</WrapperComponent>
+  </Highlight>
+);
