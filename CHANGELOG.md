@@ -4,6 +4,22 @@
 
 - Support MDX in the Highlight component [#186](https://github.com/storybookjs/design-system/pull/186) ([@kylesuss](https://github.com/kylesuss))
 
+#### ⚠️  Pushed to master
+
+- Update version to 5.1.11  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.1.11 (Tue Aug 04 2020)
+
+#### 🐛  Bug Fix
+
+- Support MDX in the Highlight component [#186](https://github.com/storybookjs/design-system/pull/186) ([@kylesuss](https://github.com/kylesuss))
+
 #### Authors: 1
 
 - Kyle Suss ([@kylesuss](https://github.com/kylesuss))
