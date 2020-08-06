@@ -18,7 +18,7 @@ const MyComponent = () => (
 export default MyComponent
 `;
 
-const javascriptCodeWithWrappers = `<pre class="language-javascript"><code class="language-javascript">${javascriptCode}</code></pre>`;
+export const javascriptCodeWithWrappers = `<pre class="language-javascript"><code class="language-javascript">${javascriptCode}</code></pre>`;
 
 const typescriptCode = `// Highlight Typescript:
 import React from 'react'
@@ -34,7 +34,7 @@ const MyComponent: React.SFC&#x3C;InterfaceMyComponentProps> = ({ isCool }) => (
 export default MyComponent
 `;
 
-const typescriptCodeWithWrappers = `<pre class="language-typescript"><code class="language-typescript">${typescriptCode}</code></pre>`;
+export const typescriptCodeWithWrappers = `<pre class="language-typescript"><code class="language-typescript">${typescriptCode}</code></pre>`;
 
 const cssCode = `/* Highlight CSS: */
 .someClass {
@@ -73,6 +73,7 @@ const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-y
 export default {
   title: 'Design System/Highlight',
   component: Highlight,
+  exludeStories: ['javascriptCodeWithWrappers', 'typescriptCodeWithWrappers'],
 };
 
 export const Basic = (args) => <Highlight {...args} />;
