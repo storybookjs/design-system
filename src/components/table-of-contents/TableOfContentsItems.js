@@ -94,14 +94,6 @@ const List = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  ${(props) =>
-    !props.isTopLevel &&
-    `
-    padding-left: 22px;
-    padding-top: 12px;
-    display: flex;
-    flex-direction: column;
-  `}
 
   li {
     padding-top: 12px;
@@ -113,9 +105,28 @@ const List = styled.ul`
 
   ${(props) =>
     props.isTopLevel &&
-    `
+    `  
     > li {
       padding-top: 20px;
+
+      ul, ol {
+        padding-top: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      > ul { 
+        padding-left: 46px;
+
+        > li ul {
+          padding-left: 22px;
+        }
+      }
+
+      > ol {
+        padding-left: 22px;
+    
+      }
     }
   `}
 `;
@@ -145,6 +156,7 @@ TableOfContentsItems.propTypes = {
   className: PropTypes.string,
   currentPath: PropTypes.string.isRequired,
   isTopLevel: PropTypes.bool.isRequired,
+
   items: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf(Object.values(ITEM_TYPES)).isRequired,
