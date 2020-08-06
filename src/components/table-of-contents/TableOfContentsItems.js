@@ -32,6 +32,8 @@ const getItemComponent = (itemType) => {
 
 const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true })`
   font-weight: ${typography.weight.bold};
+  word-break: break-word;
+  text-align: left;
 `;
 
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
