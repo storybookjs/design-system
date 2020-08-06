@@ -11,7 +11,8 @@ const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
   line-height: 1.5;
   position: relative;
   z-index: 1;
-  ${(props) => props.isActive && `font-weight: ${typography.weight.bold};`}
+  ${(props) =>
+    props.isActive ? `font-weight: ${typography.weight.bold};` : `color: ${color.darker};`}
 
   &::after {
     position: absolute;

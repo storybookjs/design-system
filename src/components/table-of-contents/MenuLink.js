@@ -5,7 +5,7 @@ import { Link } from '../Link';
 
 export const MenuLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
   outline: none;
-  color: ${(props) => (props.isActive ? color.secondary : color.darkest)};
+  color: ${(props) => (props.isActive ? color.secondary : color.darker)};
   font-weight: ${(props) => (props.isActive ? typography.weight.bold : typography.weight.regular)};
   line-height: 24px;
 `;
