@@ -17,7 +17,7 @@ if (typeof document !== 'undefined') {
   require('prismjs/components/prism-markdown');
 }
 
-const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml', 'markdown'];
+const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml', 'markdown', 'md'];
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
 // cannot be imported easily and any app which pulls in the design system will
@@ -54,11 +54,13 @@ const HighlightBlock = styled.div`
     background: none;
   }
 
-  .language-markdown .token.title {
+  .language-markdown .token.title,
+  .language-md .token.title {
     color: #dd4a68;
   }
 
-  .language-markdown .token.table-header {
+  .language-markdown .token.table-header,
+  .language-md .token.table-header {
     color: #07a;
   }
 `;
