@@ -36,8 +36,8 @@ const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true }
 
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
   && {
-    width: 14px;
-    width: 14px;
+    width: 12px;
+    width: 12px;
     color: ${color.mediumdark};
     transform: translateY(1px) ${(props) => props.isOpen && `rotate(90deg)`};
     ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
