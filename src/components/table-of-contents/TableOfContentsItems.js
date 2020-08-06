@@ -116,15 +116,15 @@ const List = styled.ul`
       }
       
       > ul { 
-        padding-left: 46px;
+        padding-left: 44px;
 
         > li ul {
-          padding-left: 22px;
+          padding-left: 20px;
         }
       }
 
       > ol {
-        padding-left: 22px;
+        padding-left: 20px;
     
       }
     }
