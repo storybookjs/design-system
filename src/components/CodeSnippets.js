@@ -29,7 +29,7 @@ const StyledHighlight = styled(Highlight)`
   && pre[class*='language-'] {
     background-color: transparent;
     padding: 15px 1rem;
-    padding-right: 4rem;
+    padding-right: 5rem;
     margin: 0;
   }
 `;

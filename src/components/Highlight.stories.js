@@ -70,6 +70,29 @@ jobs:
 
 const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-yaml">${yamlCode}</code></pre>`;
 
+const markdownCode = `import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+&#x3C;Meta title="MDX/Checkbox" component={Checkbox} />
+
+# This is a level 1 heading
+
+## This is a level 2 heading
+
+### This is a level 3 heading
+
+#### This is a level 4 heading
+
+This is a paragraph
+
+| Table | Heading |
+|-------|---------|
+| row   | value   |
+
+export const test = () => &#x3C;Derp prop="test" />
+`;
+
+const markdownCodeWithWrappers = `<pre class="language-markdown"><code class="language-markdown">${markdownCode}</code></pre>`;
+
 export default {
   title: 'Design System/Highlight',
   component: Highlight,
@@ -130,6 +153,17 @@ export const YAML = () => (
     <Highlight language="yaml">{yamlCode}</Highlight>
     <strong>Pre-formatted</strong>
     <Highlight>{yamlCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const Markdown = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="markdown">{markdownCode}</Highlight>
+    <strong>Autoformat w/ MDX Language</strong>
+    <Highlight language="mdx">{markdownCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{markdownCodeWithWrappers}</Highlight>
   </>
 );
 

@@ -14,9 +14,10 @@ if (typeof document !== 'undefined') {
   require('prismjs/components/prism-json');
   require('prismjs/components/prism-css');
   require('prismjs/components/prism-yaml');
+  require('prismjs/components/prism-markdown');
 }
 
-const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml'];
+const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml', 'markdown'];
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
 // cannot be imported easily and any app which pulls in the design system will
@@ -52,7 +53,19 @@ const HighlightBlock = styled.div`
     color: ${color.darkest};
     background: none;
   }
+
+  .language-markdown .token.title {
+    color: #dd4a68;
+  }
+
+  .language-markdown .token.table-header {
+    color: #07a;
+  }
 `;
+
+const languageMap = {
+  mdx: 'markdown',
+};
 
 export class Highlight extends React.Component {
   componentDidMount() {
@@ -69,7 +82,8 @@ export class Highlight extends React.Component {
   }
 
   render() {
-    const { children, language, withHTMLChildren, ...rest } = this.props;
+    const { children, language: inputLanguage, withHTMLChildren, ...rest } = this.props;
+    const language = languageMap[inputLanguage] || inputLanguage;
     const codeBlock = withHTMLChildren ? (
       <div dangerouslySetInnerHTML={{ __html: children }} />
     ) : (
