@@ -73,7 +73,7 @@ const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-y
 export default {
   title: 'Design System/Highlight',
   component: Highlight,
-  exludeStories: ['javascriptCodeWithWrappers', 'typescriptCodeWithWrappers'],
+  excludeStories: ['javascriptCodeWithWrappers', 'typescriptCodeWithWrappers'],
 };
 
 export const Basic = (args) => <Highlight {...args} />;
