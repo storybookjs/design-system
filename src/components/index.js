@@ -34,3 +34,7 @@ export { default as WithModal } from './modal/WithModal';
 
 export * from './table-of-contents/TableOfContents';
 export * from './ShadowBoxCTA';
+
+export * from './Clipboard';
+export * from './LinkTabs';
+export * from './CodeSnippets';
