@@ -1,3 +1,15 @@
+# v5.1.13 (Thu Aug 06 2020)
+
+#### 🐛  Bug Fix
+
+- Add markdown, mdx support to Highlight [#188](https://github.com/storybookjs/design-system/pull/188) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.12 (Wed Aug 05 2020)
 
 #### 🐛  Bug Fix
