@@ -162,6 +162,8 @@ export const Markdown = () => (
     <Highlight language="markdown">{markdownCode}</Highlight>
     <strong>Autoformat w/ MDX Language</strong>
     <Highlight language="mdx">{markdownCode}</Highlight>
+    <strong>Autoformat w/ MD Language</strong>
+    <Highlight language="md">{markdownCode}</Highlight>
     <strong>Pre-formatted</strong>
     <Highlight>{markdownCodeWithWrappers}</Highlight>
   </>
