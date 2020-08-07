@@ -4,6 +4,23 @@
 
 - Add stories and refine styles more based on integration QA [#193](https://github.com/storybookjs/design-system/pull/193) ([@domyen](https://github.com/domyen))
 
+#### ⚠️  Pushed to master
+
+- Update version to 5.1.17  (susskyle@gmail.com)
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss (susskyle@gmail.com)
+
+---
+
+# v5.1.17 (Fri Aug 07 2020)
+
+#### 🐛  Bug Fix
+
+- Add stories and refine styles more based on integration QA [#193](https://github.com/storybookjs/design-system/pull/193) ([@domyen](https://github.com/domyen))
+
 #### Authors: 1
 
 - Dominic Nguyen ([@domyen](https://github.com/domyen))
