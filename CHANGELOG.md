@@ -4,6 +4,23 @@
 
 - Refine ToC and Sidebar styling [#190](https://github.com/storybookjs/design-system/pull/190) ([@domyen](https://github.com/domyen))
 
+#### ⚠️  Pushed to master
+
+- Upgrade version to 5.1.15  (susskyle@gmail.com)
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss (susskyle@gmail.com)
+
+---
+
+# v5.1.15 (Fri Aug 07 2020)
+
+#### 🐛  Bug Fix
+
+- Refine ToC and Sidebar styling [#190](https://github.com/storybookjs/design-system/pull/190) ([@domyen](https://github.com/domyen))
+
 #### Authors: 1
 
 - Dominic Nguyen ([@domyen](https://github.com/domyen))
