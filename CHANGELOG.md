@@ -4,6 +4,22 @@
 
 - Fix shadow box CTA required props [#191](https://github.com/storybookjs/design-system/pull/191) ([@kylesuss](https://github.com/kylesuss))
 
+#### ⚠️  Pushed to master
+
+- Upgrade version to 5.1.16  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.1.16 (Fri Aug 07 2020)
+
+#### 🐛  Bug Fix
+
+- Fix shadow box CTA required props [#191](https://github.com/storybookjs/design-system/pull/191) ([@kylesuss](https://github.com/kylesuss))
+
 #### Authors: 1
 
 - Kyle Suss ([@kylesuss](https://github.com/kylesuss))
