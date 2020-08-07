@@ -60,7 +60,7 @@ export const ShadowBoxCTA = ({ action, headingText, messageText, ...rest }) => (
   <ShadowBoxCTAWrapper {...rest}>
     <TextWrapper>
       <HeadingText>{headingText}</HeadingText>
-      <MessageText>{messageText}</MessageText>
+      {messageText && <MessageText>{messageText}</MessageText>}
     </TextWrapper>
 
     <Action>{action}</Action>
@@ -69,6 +69,10 @@ export const ShadowBoxCTA = ({ action, headingText, messageText, ...rest }) => (
 
 ShadowBoxCTA.propTypes = {
   headingText: PropTypes.node.isRequired,
-  messageText: PropTypes.node.isRequired,
+  messageText: PropTypes.node,
   action: PropTypes.node.isRequired,
+};
+
+ShadowBoxCTA.defaultProps = {
+  messageText: undefined,
 };
