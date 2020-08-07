@@ -34,15 +34,28 @@ const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true }
   font-weight: ${typography.weight.bold};
   word-break: break-word;
   text-align: left;
+
+  > span {
+    display: flex;
+
+    svg {
+      flex: none;
+    }
+
+    span {
+      flex: 1;
+    }
+  }
 `;
 
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
   && {
     width: 12px;
-    width: 12px;
+    height: 12px;
     color: ${color.mediumdark};
     transform: translateY(1px) ${(props) => props.isOpen && `rotate(90deg)`};
     ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
+    bottom: -0.2em;
   }
 `;
 
@@ -57,7 +70,7 @@ function Menu({ isTopLevel, item, setMenuOpenStateById, ...rest }) {
       {isTopLevel ? (
         <TopLevelMenuToggle onClick={toggleOpenState}>
           {arrow}
-          {item.title}
+          <span>{item.title}</span>
         </TopLevelMenuToggle>
       ) : (
         <MenuLink isButton onClick={toggleOpenState}>
@@ -109,7 +122,7 @@ const List = styled.ul`
     props.isTopLevel &&
     `  
     > li {
-      padding-top: 20px;
+      padding-top: 24px;
 
       ul, ol {
         padding-top: 12px;
@@ -118,10 +131,10 @@ const List = styled.ul`
       }
       
       > ul { 
-        padding-left: 44px;
+        padding-left: 35px;
 
         > li ul {
-          padding-left: 20px;
+          padding-left: 15px;
         }
       }
 
