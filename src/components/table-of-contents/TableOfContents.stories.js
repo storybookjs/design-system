@@ -5,6 +5,9 @@ import { StoryLinkWrapper } from '../StoryLinkWrapper';
 export default {
   title: 'Design System/TableOfContents',
   component: TableOfContents,
+  decorators: [
+    (storyFn) => <div style={{ width: 240, outline: '1px dotted grey' }}>{storyFn()}</div>,
+  ],
 };
 
 const items = [
@@ -39,7 +42,39 @@ const items = [
         children: [
           {
             path: '/features-and-behavior',
-            title: 'Features and behavior',
+            title: 'features and behavior dolor sit amet consectatur',
+            type: 'link',
+          },
+          {
+            path: '/theming',
+            title: 'Theming',
+            type: 'link',
+          },
+        ],
+      },
+      {
+        title: 'Head tags',
+        type: 'link',
+        path: '/head-tags',
+      },
+      {
+        title: 'Body tags',
+        type: 'link',
+        path: '/body-tags',
+      },
+    ],
+  },
+  {
+    title: 'Super long root heading that is very long',
+    type: 'menu',
+    children: [
+      {
+        title: 'Verbose menu link that is extremely lengthy',
+        type: 'menu',
+        children: [
+          {
+            path: '/lorem-ipsum',
+            title: 'Lorem ipsum dolor sit amet consectatur',
             type: 'link',
           },
           {
