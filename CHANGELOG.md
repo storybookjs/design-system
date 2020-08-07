@@ -1,3 +1,15 @@
+# v5.1.15 (Fri Aug 07 2020)
+
+#### 🐛  Bug Fix
+
+- Refine ToC and Sidebar styling [#190](https://github.com/storybookjs/design-system/pull/190) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.1.14 (Thu Aug 06 2020)
 
 #### 🐛  Bug Fix
