@@ -32,12 +32,14 @@ const getItemComponent = (itemType) => {
 
 const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true })`
   font-weight: ${typography.weight.bold};
+  word-break: break-word;
+  text-align: left;
 `;
 
 const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
   && {
-    width: 14px;
-    width: 14px;
+    width: 12px;
+    width: 12px;
     color: ${color.mediumdark};
     transform: translateY(1px) ${(props) => props.isOpen && `rotate(90deg)`};
     ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
@@ -94,14 +96,6 @@ const List = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  ${(props) =>
-    !props.isTopLevel &&
-    `
-    padding-left: 22px;
-    padding-top: 12px;
-    display: flex;
-    flex-direction: column;
-  `}
 
   li {
     padding-top: 12px;
@@ -113,9 +107,28 @@ const List = styled.ul`
 
   ${(props) =>
     props.isTopLevel &&
-    `
+    `  
     > li {
       padding-top: 20px;
+
+      ul, ol {
+        padding-top: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      > ul { 
+        padding-left: 44px;
+
+        > li ul {
+          padding-left: 20px;
+        }
+      }
+
+      > ol {
+        padding-left: 20px;
+    
+      }
     }
   `}
 `;
@@ -145,6 +158,7 @@ TableOfContentsItems.propTypes = {
   className: PropTypes.string,
   currentPath: PropTypes.string.isRequired,
   isTopLevel: PropTypes.bool.isRequired,
+
   items: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf(Object.values(ITEM_TYPES)).isRequired,
