@@ -23,3 +23,9 @@ Default.args = {
   headingText: 'Composite component',
   messageText: 'Assemble a composite component out of simpler components',
 };
+
+export const WithoutMessageText = Story.bind({});
+WithoutMessageText.args = {
+  action: ctaAction,
+  headingText: 'Composite component',
+};

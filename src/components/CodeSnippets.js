@@ -19,7 +19,7 @@ const Background = styled.div`
 
 const StyledHighlight = styled(Highlight)`
   position: relative;
-  border-bottom-right-radius: ${spacing.borderRadius.small}px;
+  border-radius: ${spacing.borderRadius.small}px;
   overflow: hidden;
 
   code {
