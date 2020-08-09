@@ -15,9 +15,20 @@ if (typeof document !== 'undefined') {
   require('prismjs/components/prism-css');
   require('prismjs/components/prism-yaml');
   require('prismjs/components/prism-markdown');
+  require('prismjs/components/prism-jsx');
 }
 
-const languages = ['bash', 'javascript', 'typescript', 'json', 'css', 'yaml', 'markdown', 'md'];
+const languages = [
+  'bash',
+  'javascript',
+  'typescript',
+  'json',
+  'css',
+  'yaml',
+  'markdown',
+  'md',
+  'jsx',
+];
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
 // cannot be imported easily and any app which pulls in the design system will
