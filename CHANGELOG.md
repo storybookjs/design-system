@@ -1,3 +1,15 @@
+# v5.1.18 (Sun Aug 09 2020)
+
+#### 🐛  Bug Fix
+
+- Support JSX in Highlight component [#194](https://github.com/storybookjs/design-system/pull/194) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.17 (Fri Aug 07 2020)
 
 #### 🐛  Bug Fix
