@@ -20,6 +20,10 @@ export default MyComponent
 
 export const javascriptCodeWithWrappers = `<pre class="language-javascript"><code class="language-javascript">${javascriptCode}</code></pre>`;
 
+const jsxCode = javascriptCode;
+
+const jsxCodeWithWrappers = `<pre class="language-jsx"><code class="language-jsx">${jsxCode}</code></pre>`;
+
 const typescriptCode = `// Highlight Typescript:
 import React from 'react'
 
@@ -117,6 +121,15 @@ export const Javascript = () => (
     <Highlight language="javascript">{javascriptCode}</Highlight>
     <strong>Pre-formatted</strong>
     <Highlight>{javascriptCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const JSX = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="jsx">{jsxCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{jsxCodeWithWrappers}</Highlight>
   </>
 );
 
