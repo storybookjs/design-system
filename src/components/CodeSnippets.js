@@ -54,12 +54,13 @@ const StyledClipboard = styled(Clipboard)`
 `;
 
 function Snippet({ snippet }) {
-  const { Snippet: SnippetComponent } = snippet;
+  const { PreSnippet: PreSnippetComponent, Snippet: SnippetComponent } = snippet;
   const snippetRef = useRef();
   const getCopyContent = () => snippetRef.current && snippetRef.current.textContent;
 
   return (
     <StyledHighlight withHTMLChildren={false}>
+      {PreSnippetComponent && <PreSnippetComponent />}
       <div ref={snippetRef}>
         <SnippetComponent />
       </div>
@@ -73,6 +74,7 @@ function Snippet({ snippet }) {
 Snippet.propTypes = {
   snippet: PropTypes.shape({
     Snippet: PropTypes.elementType.isRequired,
+    PreSnippet: PropTypes.elementType,
   }).isRequired,
 };
 
