@@ -138,7 +138,7 @@ export function CodeSnippets({ snippets, ...rest }) {
   const [activeSnippetIndex] = useState(0);
 
   return (
-    <Wrapper {...rest} className="codesnippet">
+    <Wrapper {...rest}>
       <Background>
         {snippets.length === 1 ? (
           <Snippet snippet={snippets[0]} />
