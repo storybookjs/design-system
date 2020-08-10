@@ -134,8 +134,6 @@ SnippetList.propTypes = {
 };
 
 export function CodeSnippets({ snippets, ...rest }) {
-  const [activeSnippetIndex] = useState(0);
-
   return (
     <Wrapper {...rest}>
       <Background>
