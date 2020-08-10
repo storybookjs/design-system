@@ -10,6 +10,10 @@ export default {
 
 export const Default = () => <Clipboard toCopy="linky">Click to copy</Clipboard>;
 
+export const Callback = () => (
+  <Clipboard getCopyContent={() => 'linky from callback'}>Click to copy</Clipboard>
+);
+
 export const Tooltips = () => (
   <Clipboard
     toCopy="linky"
