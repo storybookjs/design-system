@@ -4,6 +4,23 @@
 
 - Make single line codesnippets more handsome [#197](https://github.com/storybookjs/design-system/pull/197) ([@domyen](https://github.com/domyen))
 
+#### ⚠️  Pushed to master
+
+- Upgrade version to 5.1.20  (susskyle@gmail.com)
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss (susskyle@gmail.com)
+
+---
+
+# v5.1.20 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+- Make single line codesnippets more handsome [#197](https://github.com/storybookjs/design-system/pull/197) ([@domyen](https://github.com/domyen))
+
 #### Authors: 1
 
 - Dominic Nguyen ([@domyen](https://github.com/domyen))
