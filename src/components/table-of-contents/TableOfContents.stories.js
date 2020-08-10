@@ -33,7 +33,7 @@ const items = [
     ],
   },
   {
-    title: 'Customize',
+    title: '🛠 Customize',
     type: 'menu',
     children: [
       {
@@ -65,7 +65,7 @@ const items = [
     ],
   },
   {
-    title: 'Super long root heading that is very long',
+    title: '⚙️ Super long root heading that is very long',
     type: 'menu',
     children: [
       {
