@@ -1,3 +1,15 @@
+# v5.1.20 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+- Make single line codesnippets more handsome [#197](https://github.com/storybookjs/design-system/pull/197) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.1.19 (Mon Aug 10 2020)
 
 #### 🐛  Bug Fix
