@@ -33,7 +33,7 @@ const items = [
     ],
   },
   {
-    title: '🛠 Customize',
+    title: '😀 Customize',
     type: 'menu',
     children: [
       {
