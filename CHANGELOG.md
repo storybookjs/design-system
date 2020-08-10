@@ -1,3 +1,15 @@
+# v5.1.22 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+- Setup slot in the CodeSnippets for non-code things (like messages) [#199](https://github.com/storybookjs/design-system/pull/199) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.21 (Mon Aug 10 2020)
 
 #### 🐛  Bug Fix
