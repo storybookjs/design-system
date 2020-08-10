@@ -1,3 +1,15 @@
+# v5.1.21 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+- Add callback option for Clipboard component [#198](https://github.com/storybookjs/design-system/pull/198) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.20 (Mon Aug 10 2020)
 
 #### 🐛  Bug Fix
