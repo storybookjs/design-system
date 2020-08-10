@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { CodeSnippets } from './CodeSnippets';
 import { Highlight } from './Highlight';
 import { javascriptCodeWithWrappers, typescriptCodeWithWrappers } from './Highlight.stories';
+import { color } from './shared/styles';
 
 // The wrapper allows you to see the shadow in Chromatic
 const Wrapper = styled.div`
@@ -49,4 +50,18 @@ Single.args = {
 export const Multiple = Story.bind({});
 Multiple.args = {
   snippets,
+};
+
+const PreSnippetWrapper = styled.div`
+  padding: 10px;
+  border-bottom: 1px solid ${color.border};
+  background: #fdf5d3;
+`;
+
+export const PreSnippet = Story.bind({});
+PreSnippet.args = {
+  snippets: snippets.map((snippet) => ({
+    ...snippet,
+    PreSnippet: () => <PreSnippetWrapper>PreSnippet content</PreSnippetWrapper>,
+  })),
 };
