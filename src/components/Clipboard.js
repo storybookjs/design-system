@@ -13,6 +13,7 @@ const Tooltip = styled(WithTooltip)`
 export const Clipboard = ({
   children,
   toCopy,
+  getCopyContent,
   copyOptions,
   resetTimeout,
   renderCopiedTooltip,
@@ -35,7 +36,7 @@ export const Clipboard = ({
   }, [copied]);
 
   const copy = () => {
-    if (copyToClipboard(toCopy, copyOptions)) {
+    if (copyToClipboard(toCopy || getCopyContent(), copyOptions)) {
       setCopied(true);
     }
   };
@@ -54,7 +55,8 @@ export const Clipboard = ({
 
 Clipboard.propTypes = {
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
-  toCopy: PropTypes.string.isRequired,
+  toCopy: PropTypes.string,
+  getCopyContent: PropTypes.func,
   copyOptions: PropTypes.object, // eslint-disable-line
   renderCopiedTooltip: PropTypes.func,
   renderUncopiedTooltip: PropTypes.func,
@@ -66,4 +68,6 @@ Clipboard.defaultProps = {
   renderCopiedTooltip: () => null,
   renderUncopiedTooltip: () => null,
   resetTimeout: 3000,
+  toCopy: undefined,
+  getCopyContent: () => undefined,
 };

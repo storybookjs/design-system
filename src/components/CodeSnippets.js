@@ -55,21 +55,17 @@ const StyledClipboard = styled(Clipboard)`
 
 function Snippet({ snippet }) {
   const { Snippet: SnippetComponent } = snippet;
-  const [toCopy, setToCopy] = useState('');
   const snippetRef = useRef();
-
-  useEffect(() => {
-    if (snippetRef.current) {
-      setToCopy(snippetRef.current.textContent);
-    }
-  }, [snippetRef.current]);
+  const getCopyContent = () => snippetRef.current && snippetRef.current.textContent;
 
   return (
     <StyledHighlight withHTMLChildren={false}>
       <div ref={snippetRef}>
         <SnippetComponent />
       </div>
-      <StyledClipboard toCopy={toCopy}>{(copied) => (copied ? 'Copied' : 'Copy')}</StyledClipboard>
+      <StyledClipboard getCopyContent={getCopyContent}>
+        {(copied) => (copied ? 'Copied' : 'Copy')}
+      </StyledClipboard>
     </StyledHighlight>
   );
 }
