@@ -5,6 +5,24 @@
 -  [#195](https://github.com/storybookjs/design-system/pull/195) ([@domyen](https://github.com/domyen))
 - Remove unused state value in CodeSnippets [#196](https://github.com/storybookjs/design-system/pull/196) ([@kylesuss](https://github.com/kylesuss))
 
+#### ⚠️  Pushed to master
+
+- Upgrade version to 5.1.19  ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.1.19 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+-  [#195](https://github.com/storybookjs/design-system/pull/195) ([@domyen](https://github.com/domyen))
+- Remove unused state value in CodeSnippets [#196](https://github.com/storybookjs/design-system/pull/196) ([@kylesuss](https://github.com/kylesuss))
+
 #### Authors: 2
 
 - Dominic Nguyen ([@domyen](https://github.com/domyen))
