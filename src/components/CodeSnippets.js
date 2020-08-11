@@ -60,6 +60,7 @@ function Snippet({ snippet }) {
 
   return (
     <StyledHighlight withHTMLChildren={false}>
+      Test
       {PreSnippetComponent && <PreSnippetComponent />}
       <div ref={snippetRef}>
         <SnippetComponent />
