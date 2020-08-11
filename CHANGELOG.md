@@ -1,3 +1,15 @@
+# v5.1.23 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+- Styling for emojis in ToC [#200](https://github.com/storybookjs/design-system/pull/200) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.1.22 (Mon Aug 10 2020)
 
 #### 🐛  Bug Fix
