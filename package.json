@@ -22,7 +22,7 @@
     "lint": "yarn lint:js && yarn lint:package",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
-    "release": "dotenv yarn build && npx ts-node ./scripts/update-chromatic-url.ts && npx sort-package-json && ./scripts/release.sh",
+    "release": "dotenv yarn build && auto shipit",
     "storybook": "start-storybook -p 6006"
   },
   "husky": {
@@ -70,7 +70,7 @@
     "@storybook/react": "6.0.0-beta.20",
     "@types/fs-extra": "^9.0.1",
     "@types/styled-components": "^5.1.0",
-    "auto": "^7.11.0",
+    "auto": "^9.50.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
@@ -108,6 +108,6 @@
   },
   "storybook": {
     "title": "Storybook Design System",
-    "url": "https://5ccbc373887ca40020446347-synmdrrwjj.chromatic.com/"
+    "url": "https://master--5ccbc373887ca40020446347.chromatic.com"
   }
 }
