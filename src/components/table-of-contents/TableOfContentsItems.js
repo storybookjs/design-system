@@ -32,6 +32,7 @@ const getItemComponent = (itemType) => {
 
 const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true })`
   font-weight: ${typography.weight.bold};
+  line-height: 24px;
   word-break: break-word;
   text-align: left;
 
@@ -55,7 +56,7 @@ const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })`
     color: ${color.mediumdark};
     transform: translateY(1px) ${(props) => props.isOpen && `rotate(90deg)`};
     ${(props) => (props.isTopLevel ? `margin-right: 8px;` : `margin-left: 8px;`)}
-    bottom: -0.2em;
+    bottom: -0.25em;
   }
 `;
 
