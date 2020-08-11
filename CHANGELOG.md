@@ -4,6 +4,23 @@
 
 - Styling for emojis in ToC [#200](https://github.com/storybookjs/design-system/pull/200) ([@domyen](https://github.com/domyen))
 
+#### ⚠️  Pushed to master
+
+- Update version to 5.1.23  (susskyle@gmail.com)
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss (susskyle@gmail.com)
+
+---
+
+# v5.1.23 (Mon Aug 10 2020)
+
+#### 🐛  Bug Fix
+
+- Styling for emojis in ToC [#200](https://github.com/storybookjs/design-system/pull/200) ([@domyen](https://github.com/domyen))
+
 #### Authors: 1
 
 - Dominic Nguyen ([@domyen](https://github.com/domyen))
