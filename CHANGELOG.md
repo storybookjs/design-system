@@ -1,3 +1,15 @@
+# v5.1.24 (Tue Aug 11 2020)
+
+#### 🐛 Bug Fix
+
+- Simplify release process [#201](https://github.com/storybookjs/design-system/pull/201) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.23 (Mon Aug 10 2020)
 
 #### 🐛  Bug Fix
