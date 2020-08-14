@@ -40,6 +40,10 @@ export default MyComponent
 
 export const typescriptCodeWithWrappers = `<pre class="language-typescript"><code class="language-typescript">${typescriptCode}</code></pre>`;
 
+const tsxCode = typescriptCode;
+
+const tsxCodeWithWrappers = `<pre class="language-tsx"><code class="language-tsx">${tsxCode}</code></pre>`;
+
 const cssCode = `/* Highlight CSS: */
 .someClass {
   position: relative;
@@ -139,6 +143,15 @@ export const Typescript = () => (
     <Highlight language="typescript">{typescriptCode}</Highlight>
     <strong>Pre-formatted</strong>
     <Highlight>{typescriptCodeWithWrappers}</Highlight>
+  </>
+);
+
+export const TSX = () => (
+  <>
+    <strong>Autoformat</strong>
+    <Highlight language="tsx">{tsxCode}</Highlight>
+    <strong>Pre-formatted</strong>
+    <Highlight>{tsxCodeWithWrappers}</Highlight>
   </>
 );
 

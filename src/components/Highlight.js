@@ -16,6 +16,7 @@ if (typeof document !== 'undefined') {
   require('prismjs/components/prism-yaml');
   require('prismjs/components/prism-markdown');
   require('prismjs/components/prism-jsx');
+  require('prismjs/components/prism-tsx');
 }
 
 const languages = [
@@ -28,6 +29,7 @@ const languages = [
   'markdown',
   'md',
   'jsx',
+  'tsx',
 ];
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
