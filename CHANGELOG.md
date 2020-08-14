@@ -1,3 +1,15 @@
+# v5.1.25 (Fri Aug 14 2020)
+
+#### 🐛 Bug Fix
+
+- Add TSX support to Highlight component [#203](https://github.com/storybookjs/design-system/pull/203) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.24 (Tue Aug 11 2020)
 
 #### 🐛 Bug Fix
