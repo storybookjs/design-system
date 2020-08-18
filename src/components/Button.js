@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken, rgba, opacify } from 'polished';
@@ -453,20 +453,28 @@ ButtonComponentPicker.defaultProps = {
   ...buttonStyleDefaultProps,
 };
 
-export function Button({ children, isDisabled, isLoading, loadingText, ...rest }) {
-  const content = (
-    <>
-      <Text>{children}</Text>
-      {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
-    </>
-  );
+export const Button = forwardRef(
+  ({ children, isDisabled, isLoading, loadingText, ...rest }, ref) => {
+    const content = (
+      <>
+        <Text>{children}</Text>
+        {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+      </>
+    );
 
-  return (
-    <StyledButton as={ButtonComponentPicker} disabled={isDisabled} isLoading={isLoading} {...rest}>
-      {content}
-    </StyledButton>
-  );
-}
+    return (
+      <StyledButton
+        as={ButtonComponentPicker}
+        disabled={isDisabled}
+        isLoading={isLoading}
+        ref={ref}
+        {...rest}
+      >
+        {content}
+      </StyledButton>
+    );
+  }
+);
 
 Button.propTypes = {
   ...buttonStyleProps,
