@@ -130,22 +130,18 @@ const LinkButton = styled.button`
 // The main purpose of this component is to strip certain props that get passed
 // down to the styled component, so that we don't end up passing them to a
 // tag which would throw warnings for non-standard props.
-function LinkComponentPicker({
-  containsIcon,
-  inverse,
-  isButton,
-  LinkWrapper,
-  nochrome,
-  secondary,
-  tertiary,
-  ...rest
-}) {
-  // Use the UnstyledLink here to avoid duplicating styles and creating
-  // specificity conflicts by first rendering the StyledLink higher up the chain
-  // and then re-rendering it through the 'as' prop.
-  const LinkComponent = isButton ? LinkButton : LinkWrapper || UnstyledLink;
-  return <LinkComponent {...rest} />;
-}
+const LinkComponentPicker = forwardRef(
+  (
+    { containsIcon, inverse, isButton, LinkWrapper, nochrome, secondary, tertiary, ...rest },
+    ref
+  ) => {
+    // Use the UnstyledLink here to avoid duplicating styles and creating
+    // specificity conflicts by first rendering the StyledLink higher up the chain
+    // and then re-rendering it through the 'as' prop.
+    const LinkComponent = isButton ? LinkButton : LinkWrapper || UnstyledLink;
+    return <LinkComponent {...rest} />;
+  }
+);
 
 const linkStyleProps = {
   containsIcon: PropTypes.bool,
