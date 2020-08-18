@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
@@ -178,7 +178,7 @@ LinkComponentPicker.defaultProps = {
 /**
  * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
  */
-export function Link({ children, withArrow, ...rest }) {
+export const Link = forwardRef(({ children, withArrow, ...rest }, ref) => {
   const content = (
     <>
       <LinkInner withArrow={withArrow}>
@@ -189,11 +189,11 @@ export function Link({ children, withArrow, ...rest }) {
   );
 
   return (
-    <StyledLink as={LinkComponentPicker} {...rest}>
+    <StyledLink as={LinkComponentPicker} ref={ref} {...rest}>
       {content}
     </StyledLink>
   );
-}
+});
 
 Link.propTypes = {
   children: PropTypes.node,
