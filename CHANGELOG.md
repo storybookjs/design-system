@@ -1,3 +1,16 @@
+# v5.1.26 (Tue Aug 18 2020)
+
+#### 🐛 Bug Fix
+
+- Pass refs to componenent pickers for button, link [#205](https://github.com/storybookjs/design-system/pull/205) ([@kylesuss](https://github.com/kylesuss))
+- Forward ref for button, link components [#204](https://github.com/storybookjs/design-system/pull/204) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.1.25 (Fri Aug 14 2020)
 
 #### 🐛 Bug Fix
