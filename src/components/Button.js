@@ -399,22 +399,18 @@ const ButtonLink = styled.a``;
 // The main purpose of this component is to strip certain props that get passed
 // down to the styled component, so that we don't end up passing them to a
 // tag which would throw warnings for non-standard props.
-function ButtonComponentPicker({
-  appearance,
-  ButtonWrapper,
-  containsIcon,
-  isLink,
-  isLoading,
-  isUnclickable,
-  size,
-  ...rest
-}) {
-  // Use the UnstyledButton here to avoid duplicating styles and creating
-  // specificity conflicts by first rendering the StyledLink higher up the chain
-  // and then re-rendering it through the 'as' prop.
-  const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || UnstyledButton;
-  return <ButtonComponent {...rest} />;
-}
+const ButtonComponentPicker = forwardRef(
+  (
+    { appearance, ButtonWrapper, containsIcon, isLink, isLoading, isUnclickable, size, ...rest },
+    ref
+  ) => {
+    // Use the UnstyledButton here to avoid duplicating styles and creating
+    // specificity conflicts by first rendering the StyledLink higher up the chain
+    // and then re-rendering it through the 'as' prop.
+    const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || UnstyledButton;
+    return <ButtonComponent {...rest} />;
+  }
+);
 
 const buttonStyleProps = {
   appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
