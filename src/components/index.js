@@ -38,3 +38,7 @@ export * from './ShadowBoxCTA';
 export * from './Clipboard';
 export * from './LinkTabs';
 export * from './CodeSnippets';
+
+export * from './header/Header';
+export * from './header/NavLink';
+export { NavItem } from './header/NavItem';

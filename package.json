@@ -46,6 +46,7 @@
     "polished": "^3.6.4",
     "prismjs": "1.20.0",
     "prop-types": "^15.5.4",
+    "react-github-button": "^0.1.11",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
     "styled-components": "^4.4.1",
