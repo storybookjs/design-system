@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 import WithTooltip from './WithTooltip';
-
 import { TooltipMessage } from './TooltipMessage';
 
 export default {
@@ -55,3 +55,15 @@ export const minimalMessage = () => (
 );
 
 minimalMessage.storyName = 'minimal message';
+
+export const withCustomClass = () => {
+  const CustomWrapper = styled(TooltipMessage)`
+    background: black;
+    & * {
+      color: white;
+    }
+  `;
+  return <CustomWrapper desc="Amet consectatur vestibulum concet durum politu coret weirom" />;
+};
+
+withCustomClass.storyName = 'with custom className';
