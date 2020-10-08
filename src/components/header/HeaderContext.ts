@@ -7,7 +7,7 @@ interface HeaderContextInterface {
 }
 
 export const defaultHeaderContext = {
-  navBreakpoint: breakpoint * 1.25,
+  navBreakpoint: breakpoint,
   inverse: false,
 }
 
