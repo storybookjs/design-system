@@ -32,9 +32,9 @@ const MessageWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-export function TooltipMessage({ title, desc, links, className, ...rest }) {
+export function TooltipMessage({ title, desc, links, ...rest }) {
   return (
-    <MessageWrapper className={className} {...rest}>
+    <MessageWrapper {...rest}>
       <Message>
         {title && <Title>{title}</Title>}
         {desc && <Desc>{desc}</Desc>}
@@ -60,12 +60,10 @@ TooltipMessage.propTypes = {
       title: PropTypes.string.isRequired,
     })
   ),
-  className: PropTypes.string,
 };
 
 TooltipMessage.defaultProps = {
   title: null,
   desc: null,
   links: null,
-  className: '',
 };
