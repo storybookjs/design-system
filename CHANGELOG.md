@@ -1,3 +1,22 @@
+# v5.1.27 (Tue Oct 13 2020)
+
+#### 🐛 Bug Fix
+
+- includes className prop on tooltip/TooltipMessage component [#211](https://github.com/storybookjs/design-system/pull/211) ([@D3Portillo](https://github.com/D3Portillo))
+- Port over the Header component used across all sites [#210](https://github.com/storybookjs/design-system/pull/210) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### 🔩 Dependency Updates
+
+- Bump storybook to 6.0 [#207](https://github.com/storybookjs/design-system/pull/207) ([@shilman](https://github.com/shilman))
+
+#### Authors: 3
+
+- Denny Portillo ([@D3Portillo](https://github.com/D3Portillo))
+- Michael Shilman ([@shilman](https://github.com/shilman))
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.1.26 (Tue Aug 18 2020)
 
 #### 🐛 Bug Fix
