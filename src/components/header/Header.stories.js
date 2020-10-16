@@ -147,7 +147,7 @@ export const WithGithubButton = () => (
     logo={<Logo />}
     links={links}
     mobileMenu={mobileMenu}
-    github={<GitHubButton type="stargazers" namespace="storybookjs" repo="design-system" />}
+    github={<GitHubButton type="stargazers" namespace="storybookjs" repo="storybook" />}
   />
 );
 
