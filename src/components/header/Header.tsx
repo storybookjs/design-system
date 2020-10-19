@@ -13,6 +13,9 @@ import { HeaderContext, defaultHeaderContext } from './HeaderContext';
 
 const GitHubWrapper = styled.div`
   transform: scale(0.84);
+  margin-left: -10px;
+  margin-right: -10px;
+
   ${'' /* Overrides to make a medium sized button */};
   .github-btn {
     font: bold 14px/14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
