@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 
 import { Icon } from './Icon';
-import { Link } from './Link';
+import { Link, LinkProps } from './Link';
+// @ts-ignore
 import { StoryLinkWrapper } from './StoryLinkWrapper';
 
 const CustomLink = styled(Link)`
@@ -19,7 +20,7 @@ export default {
   component: Link,
 };
 
-export const Basic = (args) => <Link {...args} />;
+export const Basic = (args: LinkProps) => <Link {...args} />;
 Basic.args = { children: 'link text', inverse: false };
 
 export const All = () => (
