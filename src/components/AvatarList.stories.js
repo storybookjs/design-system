@@ -50,7 +50,7 @@ export const SmallSize = Basic.bind();
 SmallSize.args = { users, userCount: 100, size: 'small' };
 
 export const Loading = Basic.bind();
-Loading.args = { users, userCount: 100, isLoading: true };
+Loading.args = { users: undefined, isLoading: true };
 
 export const Empty = Basic.bind();
 Empty.args = { users: [] };
