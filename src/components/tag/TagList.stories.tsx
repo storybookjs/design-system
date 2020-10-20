@@ -1,43 +1,13 @@
 import React from 'react';
 import { TagList } from './TagList';
 import { TagItem } from './TagItem';
+import { TagLink } from './TagLink';
 
 export default {
   component: TagList,
   excludeStories: /.*Data$/,
   title: 'Design System/Tag/TagList',
 };
-
-export const Default = () => (
-  <TagList
-    tags={mockTagsData.slice(0, 4).map((tag) => (
-      <TagItem key={tag.link} href={tag.link}>
-        {tag.name}
-      </TagItem>
-    ))}
-  />
-);
-
-export const WithMoreTags = () => (
-  <TagList
-    tags={mockTagsData.map((tag) => (
-      <TagItem key={tag.link} href={tag.link}>
-        {tag.name}
-      </TagItem>
-    ))}
-  />
-);
-
-export const WithCustomLimit = () => (
-  <TagList
-    tags={mockTagsData.map((tag) => (
-      <TagItem key={tag.link} href={tag.link}>
-        {tag.name}
-      </TagItem>
-    ))}
-    limit={6}
-  />
-);
 
 export const mockTagsData = [
   {
@@ -125,3 +95,35 @@ export const mockTagsData = [
     name: '📽 Animation',
   },
 ];
+
+const Template = (args: { tags: any[]; limit: number; isLoading }) => (
+  <TagList
+    isLoading={args.isLoading}
+    limit={args.limit}
+    tags={args.tags.map((tag: any) => (
+      <TagItem key={tag.link}>{tag.name}</TagItem>
+    ))}
+  />
+);
+
+export const Default = Template.bind({});
+Default.args = { tags: mockTagsData.slice(0, 4) };
+
+export const WithMoreTags = Template.bind({});
+WithMoreTags.args = { tags: mockTagsData };
+
+export const WithCustomLimit = Template.bind({});
+WithCustomLimit.args = { tags: mockTagsData, limit: 6 };
+
+export const Loading = Template.bind({});
+Loading.args = { tags: [], isLoading: true };
+
+export const AsLinks = () => (
+  <TagList
+    tags={mockTagsData.map((tag: any) => (
+      <TagLink key={tag.link} href={tag.link}>
+        {tag.name}
+      </TagLink>
+    ))}
+  />
+);
