@@ -20,8 +20,11 @@ export default {
   component: Link,
 };
 
-export const Basic = (args: LinkProps) => <Link {...args} />;
-Basic.args = { children: 'link text', inverse: false };
+export const Basic: React.FunctionComponent<LinkProps> = () => (
+  <Link href="http://chromatic.com/" inverse={false}>
+    link text
+  </Link>
+);
 
 export const All = () => (
   <>

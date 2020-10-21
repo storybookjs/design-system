@@ -138,13 +138,11 @@ const LinkButton = styled.button`
 /**
  * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
  */
-export type LinkProps = React.ComponentPropsWithoutRef<'a'> &
-  React.ComponentPropsWithoutRef<'button'> &
-  StyledLinkProps & {
-    withArrow?: boolean;
-    isButton?: boolean;
-    LinkWrapper?: React.ComponentType<any>;
-  };
+export type LinkProps = React.ComponentProps<typeof StyledLink> & {
+  withArrow?: boolean;
+  isButton?: boolean;
+  LinkWrapper?: React.ComponentType<any>;
+};
 
 export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
   ({ children, withArrow, isButton, LinkWrapper, ...rest }, ref) => {
