@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
+import { Link } from './Link';
+import WithTooltip from './tooltip/WithTooltip';
+import { TooltipMessage } from './tooltip/TooltipMessage';
 
 // prettier-ignore
 const Label = styled.label`
@@ -31,7 +34,7 @@ const LabelWrapper = styled.div`
 `;
 
 // prettier-ignore
-const InputText = styled.input.attrs({ type: 'text' })`
+const InputEl = styled.input`
   ::placeholder {
     color: ${color.mediumdark};
     font-weight: ${typography.weight.bold};
@@ -52,11 +55,6 @@ const InputText = styled.input.attrs({ type: 'text' })`
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
 `;
 
-const Error = styled.div`
-  position: absolute;
-  right: 0;
-`;
-
 // prettier-ignore
 const InputWrapper = styled.div`
   display: inline-block;
@@ -64,9 +62,9 @@ const InputWrapper = styled.div`
   vertical-align: top;
   width: 100%;
 
-  ${InputText} {
+  ${InputEl} {
     background: ${color.lightest};
-    border-radius: 0;
+    border-radius: 4px;
     color: ${color.darkest};
     font-family: ${props => props.appearance === 'code' && typography.type.code };
     font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
@@ -114,43 +112,21 @@ const InputWrapper = styled.div`
     `}
   }
 
-  ${Error} {
-    position: absolute;
-    top: 50%;
-    right: 1px;
-    margin-left: 1px;
-    transform: translate3d(100%, -50%, 0);
-    transition: all 200ms ease-out;
-    font-family: ${props => props.appearance === 'code' ? typography.type.code : typography.type.primary } ;
-    font-size: ${typography.size.s1}px;
-    line-height: 1em;
-    opacity: 0;
-    pointer-events: none;
-
-    background: ${props =>
-      props.appearance !== 'tertiary' &&
-       'rgba(255,255,255,.9)' };
-    color: ${color.negative};
-
-    ${props => props.appearance === 'tertiary' && css` right: 0; `}
-    ${props => props.appearance === 'code' && css`
-      top: -4px;
-      right: auto;
-      left: 0;
-      border-radius: ${spacing.borderRadius.small}px;
-      padding: 6px;
-    `}
-  }
+  ${props => props.startingType === 'password' && css`
+    ${InputEl} {
+      padding-right: 3.8em;
+    }
+  `}
 
   ${props => props.icon && css`
     > svg {
       transition: all 150ms ease-out;
       position: absolute;
       top: 50%;
-      height: 1em;
-      width: 1em;
+      height: 0.75em;
+      width: 0.75em;
   		font-size: ${props.appearance === 'pill' ? 0.75 : 1 }em;
-  		margin-top: -.5em;
+      margin-top: -.375em;
   		z-index: 1;
 
       background: transparent;
@@ -161,12 +137,12 @@ const InputWrapper = styled.div`
       }
     }
 
-    ${InputText}:focus + svg path {
+    ${InputEl}:focus + svg path {
       fill: ${color.darker};
     }
 
-    ${InputText} {
-      padding-left: 2.75em;
+    ${InputEl} {
+      padding-left: 2.45em;
 
       ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
       ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
@@ -176,42 +152,8 @@ const InputWrapper = styled.div`
   `}
 
   ${props => props.error && css`
-    ${Error} {
-      color: ${color.negative};
-      background: none;
-      transform: translate3d(0%, -50%, 0);
-      opacity: 1;
-      padding: .25em 1.25em .25em .5em;
-    }
-
-    ${InputText}:hover + ${Error},
-    ${InputText}:focus + ${Error} {
-      opacity: 0;
-      transform: translate3d(100%, -50%, 0);
-      padding: 0;
-    }
-
-    ${props.focused && css`
-      ${Error} {
-        opacity: 0;
-        transform: translate3d(100%, -50%, 0);
-      }
-    `}
-
-    ${props.appearance === 'code' && css`
-      ${Error} {
-        opacity: 0;
-      }
-      ${InputText}:hover + ${Error},
-      ${InputText}:focus + ${Error} {
-        transform: translate3d(0%, -100%, 0);
-        opacity: 1;
-        padding: .25em 1.25em .25em .5em;
-      }
-    `}
-
     ${props.appearance !== 'tertiary' && css`
-      ${InputText} {
+      ${InputEl} {
           box-shadow: ${color.negative} 0 0 0 1px inset;
           &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
       }
@@ -245,7 +187,25 @@ const InputContainer = styled.div`
   `}
 `;
 
-export function Input({
+const ErrorTooltip = styled(WithTooltip)`
+  width: 100%;
+`;
+
+const ErrorTooltipMessage = styled(TooltipMessage)`
+  width: 170px;
+`;
+
+const Action = styled.div`
+  position: absolute;
+  right: 0;
+  min-width: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 11px;
+`;
+
+export function PureInput({
   id,
   value,
   label,
@@ -255,8 +215,10 @@ export function Input({
   error,
   appearance,
   className,
-  focused,
   lastErrorValue,
+  startingType,
+  type,
+  onActionClick,
   ...props
 }) {
   const errorId = `${id}-error`;
@@ -266,6 +228,17 @@ export function Input({
       errorMessage = null;
     }
   }
+
+  const inputEl = (
+    <InputEl
+      id={id}
+      value={value}
+      type={type}
+      aria-describedby={errorId}
+      aria-invalid={!!error}
+      {...props}
+    />
+  );
 
   return (
     <InputContainer orientation={orientation} className={className}>
@@ -280,23 +253,36 @@ export function Input({
         data-error={error}
         icon={icon}
         appearance={appearance}
-        focused={focused}
+        startingType={startingType}
       >
         {icon && <Icon icon={icon} aria-hidden />}
-        <InputText
-          id={id}
-          value={value}
-          aria-describedby={errorId}
-          aria-invalid={!!error}
-          {...props}
-        />
-        <Error id={errorId}>{error}</Error>
+        {error ? (
+          <ErrorTooltip
+            placement="right"
+            trigger="click"
+            startOpen
+            tagName="div"
+            tooltip={<ErrorTooltipMessage desc={error} />}
+          >
+            {inputEl}
+          </ErrorTooltip>
+        ) : (
+          inputEl
+        )}
+        {startingType === 'password' && (
+          <Action>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <Link isButton tertiary onClick={onActionClick}>
+              {type === 'password' ? 'Show' : 'Hide'}
+            </Link>
+          </Action>
+        )}
       </InputWrapper>
     </InputContainer>
   );
 }
 
-Input.propTypes = {
+PureInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
@@ -304,13 +290,15 @@ Input.propTypes = {
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   icon: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.node,
   className: PropTypes.string,
-  focused: PropTypes.bool,
   lastErrorValue: PropTypes.string,
+  startingType: PropTypes.string,
+  type: PropTypes.string,
+  onActionClick: PropTypes.func,
 };
 
-Input.defaultProps = {
+PureInput.defaultProps = {
   value: '',
   appearance: 'default',
   hideLabel: false,
@@ -318,6 +306,41 @@ Input.defaultProps = {
   icon: null,
   error: null,
   className: null,
-  focused: false,
   lastErrorValue: null,
+  startingType: 'text',
+  type: 'text',
+  onActionClick: null,
+};
+
+export function Input({ type: startingType, ...rest }) {
+  const [type, setType] = useState(startingType);
+  const togglePasswordType = useCallback(
+    (event) => {
+      // Make sure this does not submit a form
+      event.preventDefault();
+      if (type === 'password') {
+        setType('text');
+        return;
+      }
+      setType('password');
+    },
+    [type, setType]
+  );
+
+  return (
+    <PureInput
+      startingType={startingType}
+      type={type}
+      onActionClick={togglePasswordType}
+      {...rest}
+    />
+  );
+}
+
+Input.propTypes = {
+  type: PropTypes.string,
+};
+
+Input.defaultProps = {
+  type: 'text',
 };
