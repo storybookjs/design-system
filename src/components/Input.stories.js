@@ -173,7 +173,7 @@ export const Tertiary = () => (
 );
 
 export const Pill = () => (
-  <Input
+  <UnstyledInput
     id="Pill"
     value="Pill"
     label="Search"
