@@ -265,6 +265,7 @@ export const PureInput = forwardRef(
         >
           {icon && <Icon icon={icon} aria-hidden />}
           <ErrorTooltip
+            tabIndex={-1}
             placement="right"
             trigger="none"
             startOpen
