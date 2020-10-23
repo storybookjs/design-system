@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { FunctionComponent, ComponentProps } from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';

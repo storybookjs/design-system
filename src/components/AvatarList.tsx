@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { ComponentProps, FunctionComponent } from 'react';
 import styled from 'styled-components';
 

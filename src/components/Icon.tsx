@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { icons } from './shared/icons';
