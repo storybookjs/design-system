@@ -32,10 +32,6 @@ const Submit = () => (
   </Button>
 );
 
-const onChange = (e) => {
-  action('change')(e.target.value);
-};
-
 const fields = [
   {
     id: 'input-1',
