@@ -264,6 +264,12 @@ export const PureInput = forwardRef(
           startingType={startingType}
         >
           {icon && <Icon icon={icon} aria-hidden />}
+          {/**
+            The tooltip is rendered regardless of the presence of an error.
+            This is done to preserve the focus state of the Input when it is
+            used inside of a form that can choose when to show/hide error
+            states based on various factors.
+          */}
           <ErrorTooltip
             tabIndex={-1}
             placement="right"
