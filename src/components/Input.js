@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useRef, useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography, spacing } from './shared/styles';
@@ -205,82 +205,89 @@ const Action = styled.div`
   font-size: 11px;
 `;
 
-export function PureInput({
-  id,
-  value,
-  label,
-  hideLabel,
-  orientation,
-  icon,
-  error,
-  appearance,
-  className,
-  lastErrorValue,
-  startingType,
-  type,
-  onActionClick,
-  ...props
-}) {
-  const errorId = `${id}-error`;
-  let errorMessage = error;
-  if (lastErrorValue) {
-    if (value !== lastErrorValue) {
-      errorMessage = null;
+export const PureInput = forwardRef(
+  (
+    {
+      id,
+      value,
+      label,
+      hideLabel,
+      orientation,
+      icon,
+      error,
+      appearance,
+      className,
+      lastErrorValue,
+      startingType,
+      type,
+      onActionClick,
+      suppressErrorMessage,
+      ...props
+    },
+    ref
+  ) => {
+    const errorId = `${id}-error`;
+    let errorMessage = error;
+    if (lastErrorValue) {
+      if (value !== lastErrorValue) {
+        errorMessage = null;
+      }
     }
-  }
 
-  const inputEl = (
-    <InputEl
-      id={id}
-      value={value}
-      type={type}
-      aria-describedby={errorId}
-      aria-invalid={!!error}
-      {...props}
-    />
-  );
+    const inputEl = (
+      <InputEl
+        id={id}
+        // Pass the ref to the actual input element so it can be controlled
+        // externally.
+        ref={ref}
+        value={value}
+        type={type}
+        aria-describedby={errorId}
+        aria-invalid={!!error}
+        {...props}
+      />
+    );
 
-  return (
-    <InputContainer orientation={orientation} className={className}>
-      <LabelWrapper hideLabel={hideLabel}>
-        <Label htmlFor={id} appearance={appearance}>
-          {label}
-        </Label>
-      </LabelWrapper>
+    return (
+      <InputContainer orientation={orientation} className={className}>
+        <LabelWrapper hideLabel={hideLabel}>
+          <Label htmlFor={id} appearance={appearance}>
+            {label}
+          </Label>
+        </LabelWrapper>
 
-      <InputWrapper
-        error={errorMessage}
-        data-error={error}
-        icon={icon}
-        appearance={appearance}
-        startingType={startingType}
-      >
-        {icon && <Icon icon={icon} aria-hidden />}
-        {error ? (
+        <InputWrapper
+          error={errorMessage}
+          data-error={error}
+          icon={icon}
+          appearance={appearance}
+          startingType={startingType}
+        >
+          {icon && <Icon icon={icon} aria-hidden />}
           <ErrorTooltip
             placement="right"
-            trigger="click"
+            trigger="none"
             startOpen
             tagName="div"
-            tooltip={<ErrorTooltipMessage desc={error} />}
+            hasChrome={!!error && !suppressErrorMessage}
+            tooltip={error && !suppressErrorMessage && <ErrorTooltipMessage desc={error} />}
           >
             {inputEl}
           </ErrorTooltip>
-        ) : (
-          inputEl
-        )}
-        {startingType === 'password' && (
-          <Action>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <Link isButton tertiary onClick={onActionClick}>
-              {type === 'password' ? 'Show' : 'Hide'}
-            </Link>
-          </Action>
-        )}
-      </InputWrapper>
-    </InputContainer>
-  );
-}
+
+          {startingType === 'password' && (
+            <Action>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link isButton tertiary onClick={onActionClick}>
+                {type === 'password' ? 'Show' : 'Hide'}
+              </Link>
+            </Action>
+          )}
+        </InputWrapper>
+      </InputContainer>
+    );
+  }
+);
 
 PureInput.propTypes = {
   id: PropTypes.string.isRequired,
@@ -291,6 +298,7 @@ PureInput.propTypes = {
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   icon: PropTypes.string,
   error: PropTypes.node,
+  suppressErrorMessage: PropTypes.bool,
   className: PropTypes.string,
   lastErrorValue: PropTypes.string,
   startingType: PropTypes.string,
@@ -305,6 +313,7 @@ PureInput.defaultProps = {
   orientation: 'vertical',
   icon: null,
   error: null,
+  suppressErrorMessage: false,
   className: null,
   lastErrorValue: null,
   startingType: 'text',
@@ -312,7 +321,7 @@ PureInput.defaultProps = {
   onActionClick: null,
 };
 
-export function Input({ type: startingType, ...rest }) {
+export const Input = forwardRef(({ type: startingType, startFocused, ...rest }, ref) => {
   const [type, setType] = useState(startingType);
   const togglePasswordType = useCallback(
     (event) => {
@@ -326,21 +335,33 @@ export function Input({ type: startingType, ...rest }) {
     },
     [type, setType]
   );
+  // Outside refs take precedence
+  const inputRef = ref || useRef();
+  const didFocusOnStart = useRef(false);
+  useEffect(() => {
+    if (inputRef && inputRef.current && startFocused && !didFocusOnStart.current) {
+      inputRef.current.focus();
+      didFocusOnStart.current = true;
+    }
+  }, [inputRef, inputRef.current, didFocusOnStart, didFocusOnStart.current]);
 
   return (
     <PureInput
+      ref={inputRef}
       startingType={startingType}
       type={type}
       onActionClick={togglePasswordType}
       {...rest}
     />
   );
-}
+});
 
 Input.propTypes = {
+  startFocused: PropTypes.bool,
   type: PropTypes.string,
 };
 
 Input.defaultProps = {
+  startFocused: false,
   type: 'text',
 };

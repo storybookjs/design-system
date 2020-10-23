@@ -53,6 +53,15 @@ const All = ({ appearance }) => (
       appearance={appearance}
     />
     <Input
+      id="Focused"
+      label="Focused input"
+      hideLabel
+      placeholder="Focused"
+      onChange={onChange}
+      appearance={appearance}
+      startFocused
+    />
+    <Input
       id="With-value"
       value="With value"
       label="Input with value"
@@ -110,7 +119,7 @@ const All = ({ appearance }) => (
       appearance={appearance}
     />
     <ErrorInput
-      id="Error"
+      id="Error-links"
       label="Input with error and links"
       hideLabel
       placeholder="Error"
@@ -124,7 +133,7 @@ const All = ({ appearance }) => (
       appearance={appearance}
     />
     <ErrorInput
-      id="Error with icon"
+      id="Error-icon"
       label="Input with error and icon"
       hideLabel
       placeholder="Error with icon"

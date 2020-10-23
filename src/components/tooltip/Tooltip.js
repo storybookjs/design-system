@@ -80,7 +80,7 @@ export function Tooltip({
 }) {
   return (
     <TooltipWrapper hasChrome={hasChrome} data-placement={placement} ref={tooltipRef} {...props}>
-      {hasChrome && <Arrow data-placement={placement} ref={arrowRef} {...arrowProps} />}
+      <Arrow data-placement={placement} ref={arrowRef} {...arrowProps} />
       {children}
     </TooltipWrapper>
   );
