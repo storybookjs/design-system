@@ -13,6 +13,13 @@ const ArrowSpacing = 8;
 const Arrow = styled.div`
   position: absolute;
   border-style: solid;
+  /**
+   * Rather than choosing whether or not to render this component in the
+   * render function, the visibility is controlled here. The tooltip library
+   * positions this strangely in some cases if we let the render function
+   * handle this logic.
+   */
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
 
   margin-bottom: ${ifPlacementEquals('top', '0', ArrowSpacing)}px;
   margin-top: ${ifPlacementEquals('bottom', '0', ArrowSpacing)}px;
@@ -80,14 +87,14 @@ export function Tooltip({
 }) {
   return (
     <TooltipWrapper hasChrome={hasChrome} data-placement={placement} ref={tooltipRef} {...props}>
-      <Arrow data-placement={placement} ref={arrowRef} {...arrowProps} />
+      <Arrow isVisible={hasChrome} data-placement={placement} ref={arrowRef} {...arrowProps} />
       {children}
     </TooltipWrapper>
   );
 }
 
 Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   hasChrome: PropTypes.bool,
   /* eslint-disable-next-line */
   arrowProps: PropTypes.any,
@@ -96,6 +103,7 @@ Tooltip.propTypes = {
   tooltipRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 Tooltip.defaultProps = {
+  children: undefined,
   hasChrome: true,
   placement: 'top',
   arrowProps: null,

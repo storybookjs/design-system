@@ -258,7 +258,7 @@ export const PureInput = forwardRef(
 
         <InputWrapper
           error={errorMessage}
-          data-error={error}
+          data-error={errorMessage}
           icon={icon}
           appearance={appearance}
           startingType={startingType}
@@ -299,7 +299,7 @@ PureInput.propTypes = {
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   icon: PropTypes.string,
-  error: PropTypes.node,
+  error: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   suppressErrorMessage: PropTypes.bool,
   className: PropTypes.string,
   lastErrorValue: PropTypes.string,

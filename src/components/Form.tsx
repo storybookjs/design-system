@@ -84,8 +84,6 @@ export const Form = (props: FormProps) => {
         onMouseLeave: (id) => {
           if (blurredFieldIds.has(id)) setHoveredFieldId(undefined);
         },
-        setFocusedFieldId,
-        setHoveredFieldId,
         primaryFieldId,
       }}
     />

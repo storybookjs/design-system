@@ -15,6 +15,7 @@ export default {
 
 export const Basic = (args) => <Input {...args} />;
 Basic.args = {
+  id: 'Basic',
   label: 'label',
   value: 'value',
   appearance: 'pill',
