@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';

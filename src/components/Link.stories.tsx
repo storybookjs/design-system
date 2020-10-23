@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 
 import { Icon } from './Icon';
-import { Link, LinkProps } from './Link';
+import { Link } from './Link';
 // @ts-ignore
 import { StoryLinkWrapper } from './StoryLinkWrapper';
 
@@ -20,7 +20,7 @@ export default {
   component: Link,
 };
 
-export const Basic: React.FunctionComponent<LinkProps> = () => (
+export const Basic: React.FunctionComponent<React.ComponentProps<typeof Link>> = () => (
   <Link href="http://chromatic.com/" inverse={false}>
     link text
   </Link>
