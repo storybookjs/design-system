@@ -227,7 +227,7 @@ export const PureInput = forwardRef(
     ref
   ) => {
     const errorId = `${id}-error`;
-    let errorMessage = error;
+    let errorMessage = typeof error === 'function' ? error(value) : error;
     if (lastErrorValue) {
       if (value !== lastErrorValue) {
         errorMessage = null;
@@ -269,8 +269,10 @@ export const PureInput = forwardRef(
             trigger="none"
             startOpen
             tagName="div"
-            hasChrome={!!error && !suppressErrorMessage}
-            tooltip={error && !suppressErrorMessage && <ErrorTooltipMessage desc={error} />}
+            hasChrome={!!errorMessage && !suppressErrorMessage}
+            tooltip={
+              errorMessage && !suppressErrorMessage && <ErrorTooltipMessage desc={errorMessage} />
+            }
           >
             {inputEl}
           </ErrorTooltip>

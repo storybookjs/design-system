@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 interface Field {
   id: string;
-  validationError: () => string | void;
+  validationError: (value: string) => string | void;
   Component: (props: any) => JSX.Element;
 }
 
@@ -13,10 +13,10 @@ export interface FormProps {
 export interface PureFormProps extends FormProps {
   children?: React.ReactChildren;
   primaryFieldId: string;
-  onMouseEnter: React.Dispatch<any>;
-  onMouseLeave: React.Dispatch<any>;
-  onFocus: React.Dispatch<any>;
-  onBlur: React.Dispatch<any>;
+  onMouseEnter: (id: string) => void;
+  onMouseLeave: (id: string) => void;
+  onFocus: (id: string) => void;
+  onBlur: (id: string) => void;
   blurredFieldIds: Set<string | unknown>;
 }
 
@@ -41,7 +41,7 @@ export const PureForm = ({
           onMouseLeave={() => onMouseLeave(id)}
           onFocus={() => onFocus(id)}
           onBlur={() => onBlur(id)}
-          error={blurredFieldIds.has(id) && validationError()}
+          error={(value: string) => blurredFieldIds.has(id) && validationError(value)}
           suppressErrorMessage={!primaryFieldId || primaryFieldId !== id}
         />
       ))}

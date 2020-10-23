@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { action, actions as makeActions } from '@storybook/addon-actions';
 
@@ -32,36 +32,52 @@ const Submit = () => (
   </Button>
 );
 
-const onChange = action('change');
+const onChange = (e) => {
+  action('change')(e.target.value);
+};
 
 const fields = [
   {
     id: 'input-1',
-    validationError: () => 'There is an error with this field',
-    Component: (props: any) => (
-      <Input
-        startFocused
-        appearance="secondary"
-        label="Label"
-        hideLabel
-        onChange={onChange}
-        {...props}
-      />
-    ),
+    validationError: (value: string) =>
+      !value && `There is an error with this field with value: "${value}"`,
+    Component: (props: any) => {
+      const [value, setValue] = useState('');
+      return (
+        <Input
+          startFocused
+          appearance="secondary"
+          label="Label"
+          hideLabel
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            action('change')(e.target.value);
+            setValue(e.target.value);
+          }}
+          {...props}
+        />
+      );
+    },
   },
   {
     id: 'input-2',
-    validationError: () => 'There is an error with this field',
-    Component: (props: any) => (
-      <Input
-        appearance="secondary"
-        label="Label"
-        hideLabel
-        value="prefilled"
-        onChange={onChange}
-        {...props}
-      />
-    ),
+    validationError: (value: string) => `There is an error with this field with value: "${value}"`,
+    Component: (props: any) => {
+      const [value, setValue] = useState('prefilled');
+      return (
+        <Input
+          appearance="secondary"
+          label="Label"
+          hideLabel
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            action('change')(e.target.value);
+            setValue(e.target.value);
+          }}
+          {...props}
+        />
+      );
+    },
   },
 ];
 
