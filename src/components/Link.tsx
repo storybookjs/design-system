@@ -20,13 +20,13 @@ const LinkInner = styled.span<{ withArrow: boolean }>`
     `};
 `;
 
-type StyledLinkProps = {
+interface StyledLinkProps {
   containsIcon?: boolean;
   secondary?: boolean;
   tertiary?: boolean;
   nochrome?: boolean;
   inverse?: boolean;
-};
+}
 
 const StyledLink = styled.a<StyledLinkProps>`
   display: inline-block;
@@ -143,8 +143,39 @@ export type LinkProps = React.ComponentProps<typeof StyledLink> & {
   LinkWrapper?: React.ComponentType<any>;
 };
 
+// The main purpose of this component is to strip certain props that get passed
+// down to the styled component, so that we don't end up passing them to a
+// tag which would throw warnings for non-standard props.
+const LinkComponentPicker = forwardRef(
+  (
+    {
+      containsIcon,
+      inverse,
+      isButton,
+      LinkWrapper,
+      nochrome,
+      secondary,
+      tertiary,
+      ...rest
+    }: LinkProps,
+    ref
+  ) => {
+    // Use the UnstyledLink here to avoid duplicating styles and creating
+    // specificity conflicts by first rendering the StyledLink higher up the chain
+    // and then re-rendering it through the 'as' prop.
+    /* eslint no-else-return: ["error", { allowElseIf: true }] */
+    if (isButton) {
+      return <LinkButton {...rest} ref={ref} />;
+    } else if (LinkWrapper) {
+      return <LinkWrapper {...rest} ref={ref} />;
+    }
+
+    return <UnstyledLink {...rest} ref={ref} />;
+  }
+);
+
 export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
-  ({ children, withArrow, isButton, LinkWrapper, ...rest }, ref) => {
+  ({ children, withArrow, ...rest }, ref) => {
     const content = (
       <>
         <LinkInner withArrow={withArrow}>
@@ -154,10 +185,8 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>
       </>
     );
 
-    const LinkComponent = isButton ? LinkButton : LinkWrapper || UnstyledLink;
-
     return (
-      <StyledLink as={LinkComponent} ref={ref} {...rest}>
+      <StyledLink as={LinkComponentPicker} ref={ref} {...rest}>
         {content}
       </StyledLink>
     );
