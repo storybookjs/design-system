@@ -72,6 +72,8 @@ export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormEr
     else setPrimaryFieldId(undefined);
   }, [focusedFieldId, hoveredFieldId, setPrimaryFieldId]);
 
+  const isErrorVisible = (id) => blurredFieldIds.has(id) || didAttemptSubmission;
+
   return (
     <PureFormErrorState
       {...rest}
@@ -85,14 +87,14 @@ export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormEr
         onMouseEnter: (id) => {
           // We only care about the hover state of previously blurred fields.
           // We don't want to show error tooltips for fields that haven't been
-          // visited yet.
-          if (blurredFieldIds.has(id)) setHoveredFieldId(id);
+          // visited yet. In the case that the form has already had an attempted
+          // submission, all errors will be visible.
+          if (isErrorVisible(id)) setHoveredFieldId(id);
         },
         onMouseLeave: (id) => {
-          if (blurredFieldIds.has(id)) setHoveredFieldId(undefined);
+          if (isErrorVisible(id)) setHoveredFieldId(undefined);
         },
-        getError: ({ id, value, validate }: GetErrorArgs) =>
-          (blurredFieldIds.has(id) || didAttemptSubmission) && validate(value),
+        getError: ({ id, value, validate }: GetErrorArgs) => isErrorVisible(id) && validate(value),
       }}
     />
   );
