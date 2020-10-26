@@ -14,18 +14,16 @@ interface GetFormErrorFieldPropsArgs {
   validate: (value: string) => string | void;
 }
 
+export interface GetErrorArgs extends GetFormErrorFieldPropsArgs {
+  value: string;
+}
+
 export interface FormErrorStateChildrenArgs {
   getFormErrorFieldProps: (args: GetFormErrorFieldPropsArgs) => FormErrorFieldProps;
 }
 
 export interface FormErrorStateProps {
-  children?: (args: FormErrorStateChildrenArgs) => JSX.Element;
-}
-
-export interface GetErrorArgs {
-  id: string;
-  value: string;
-  validate: (value: string) => string | void;
+  children: (args: FormErrorStateChildrenArgs) => JSX.Element;
 }
 
 export interface PureFormErrorStateProps extends FormErrorStateProps {
