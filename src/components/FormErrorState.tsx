@@ -1,56 +1,64 @@
 import React, { useEffect, useState } from 'react';
 
-interface Field {
+interface FormErrorFieldProps {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  onFocus: () => void;
+  onBlur: () => void;
+  error: (value: string) => string | void;
+  suppressErrorMessage: boolean;
+}
+
+interface GetFormErrorFieldPropsArgs {
   id: string;
-  validationError: (value: string) => string | void;
-  Component: (props: any) => JSX.Element;
+  validate: (value: string) => string | void;
 }
 
-export interface FormProps {
-  fields: [Field?];
+export interface FormErrorStateChildrenArgs {
+  getFormErrorFieldProps: (args: GetFormErrorFieldPropsArgs) => FormErrorFieldProps;
 }
 
-export interface PureFormProps extends FormProps {
-  children?: React.ReactChildren;
+export interface FormErrorStateProps {
+  children?: (args: FormErrorStateChildrenArgs) => JSX.Element;
+}
+
+export interface GetErrorArgs {
+  id: string;
+  value: string;
+  validate: (value: string) => string | void;
+}
+
+export interface PureFormErrorStateProps extends FormErrorStateProps {
   primaryFieldId: string;
   onMouseEnter: (id: string) => void;
   onMouseLeave: (id: string) => void;
   onFocus: (id: string) => void;
   onBlur: (id: string) => void;
-  blurredFieldIds: Set<string | unknown>;
+  getError: (args: GetErrorArgs) => void;
 }
 
-export const PureForm = ({
+export const PureFormErrorState = ({
   children,
-  fields = [],
   onMouseEnter,
   onMouseLeave,
   onBlur,
   onFocus,
+  getError,
   primaryFieldId,
-  blurredFieldIds,
-  ...rest
-}: PureFormProps) => {
-  return (
-    <form {...rest}>
-      {fields.map(({ id, validationError, Component }: Field) => (
-        <Component
-          key={id}
-          id={id}
-          onMouseEnter={() => onMouseEnter(id)}
-          onMouseLeave={() => onMouseLeave(id)}
-          onFocus={() => onFocus(id)}
-          onBlur={() => onBlur(id)}
-          error={(value: string) => blurredFieldIds.has(id) && validationError(value)}
-          suppressErrorMessage={!primaryFieldId || primaryFieldId !== id}
-        />
-      ))}
-      {children}
-    </form>
-  );
+}: PureFormErrorStateProps) => {
+  const getFormErrorFieldProps = ({ id, validate }: GetFormErrorFieldPropsArgs) => ({
+    onMouseEnter: () => onMouseEnter(id),
+    onMouseLeave: () => onMouseLeave(id),
+    onFocus: () => onFocus(id),
+    onBlur: () => onBlur(id),
+    error: (value: string) => getError({ id, value, validate }),
+    suppressErrorMessage: !primaryFieldId || primaryFieldId !== id,
+  });
+
+  return children({ getFormErrorFieldProps });
 };
 
-export const Form = (props: FormProps) => {
+export const FormErrorState = (props: FormErrorStateProps) => {
   const [focusedFieldId, setFocusedFieldId] = useState(undefined);
   const [hoveredFieldId, setHoveredFieldId] = useState(undefined);
   // The primary field is the field that's visual cues take precedence over any
@@ -66,10 +74,10 @@ export const Form = (props: FormProps) => {
   }, [focusedFieldId, hoveredFieldId, setPrimaryFieldId]);
 
   return (
-    <PureForm
+    <PureFormErrorState
       {...props}
       {...{
-        blurredFieldIds,
+        primaryFieldId,
         onFocus: (id) => setFocusedFieldId(id),
         onBlur: (id) => {
           setBlurredFieldIds(blurredFieldIds.add(id));
@@ -84,7 +92,8 @@ export const Form = (props: FormProps) => {
         onMouseLeave: (id) => {
           if (blurredFieldIds.has(id)) setHoveredFieldId(undefined);
         },
-        primaryFieldId,
+        getError: ({ id, value, validate }: GetErrorArgs) =>
+          blurredFieldIds.has(id) && validate(value),
       }}
     />
   );
