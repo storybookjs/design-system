@@ -172,6 +172,49 @@ export const Tertiary = () => (
   </DarkForm>
 );
 
+export const Stacked = () => (
+  <Form>
+    <UnstyledInput
+      id="stacked-1"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="top"
+      onChange={onChange}
+      error="There's a snake in my boots"
+      appearance="secondary"
+    />
+    <UnstyledInput
+      id="stacked-2"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="middle"
+      hideLabel
+      startFocused
+      onChange={onChange}
+      appearance="secondary"
+    />
+    <UnstyledInput
+      id="stacked-3"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="middle"
+      hideLabel
+      onChange={onChange}
+      appearance="secondary"
+    />
+    <UnstyledInput
+      id="stacked-4"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="bottom"
+      hideLabel
+      onChange={onChange}
+      error="There's a snake in my boots"
+      appearance="secondary"
+    />
+  </Form>
+);
+
 export const Pill = () => (
   <UnstyledInput
     id="Pill"

@@ -55,6 +55,43 @@ const InputEl = styled.input`
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
 `;
 
+const getStackLevelStyling = (props) => {
+  const radius = 4;
+  const stackLevelDefinedStyling = css`
+    position: relative;
+    ${props.error && `z-index: 1;`}
+
+    &:focus {
+      z-index: 2;
+    }
+  `;
+  switch (props.stackLevel) {
+    case 'top':
+      return css`
+        border-top-left-radius: ${radius}px;
+        border-top-right-radius: ${radius}px;
+        ${stackLevelDefinedStyling}
+      `;
+    case 'middle':
+      return css`
+        border-radius: 0px;
+        margin-top: -1px;
+        ${stackLevelDefinedStyling}
+      `;
+    case 'bottom':
+      return css`
+        border-bottom-left-radius: ${radius}px;
+        border-bottom-right-radius: ${radius}px;
+        margin-top: -1px;
+        ${stackLevelDefinedStyling}
+      `;
+    default:
+      return css`
+        border-radius: ${radius}px;
+      `;
+  }
+};
+
 // prettier-ignore
 const InputWrapper = styled.div`
   display: inline-block;
@@ -63,8 +100,9 @@ const InputWrapper = styled.div`
   width: 100%;
 
   ${InputEl} {
+    position: relative;
+    ${props => getStackLevelStyling(props)}
     background: ${color.lightest};
-    border-radius: 4px;
     color: ${color.darkest};
     font-family: ${props => props.appearance === 'code' && typography.type.code };
     font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
@@ -221,6 +259,7 @@ export const PureInput = forwardRef(
       startingType,
       type,
       onActionClick,
+      stackLevel,
       suppressErrorMessage,
       ...props
     },
@@ -261,6 +300,7 @@ export const PureInput = forwardRef(
           data-error={errorMessage}
           icon={icon}
           appearance={appearance}
+          stackLevel={stackLevel}
           startingType={startingType}
         >
           {icon && <Icon icon={icon} aria-hidden />}
@@ -302,6 +342,7 @@ PureInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
+  stackLevel: PropTypes.oneOf(['top', 'middle', 'bottom']),
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
@@ -318,6 +359,7 @@ PureInput.propTypes = {
 PureInput.defaultProps = {
   value: '',
   appearance: 'default',
+  stackLevel: undefined,
   hideLabel: false,
   orientation: 'vertical',
   icon: null,
