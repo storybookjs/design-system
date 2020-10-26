@@ -72,7 +72,7 @@ export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormEr
     else setPrimaryFieldId(undefined);
   }, [focusedFieldId, hoveredFieldId, setPrimaryFieldId]);
 
-  const isErrorVisible = (id) => blurredFieldIds.has(id) || didAttemptSubmission;
+  const isErrorVisible = (id: string) => blurredFieldIds.has(id) || didAttemptSubmission;
 
   return (
     <PureFormErrorState
