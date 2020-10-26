@@ -23,6 +23,7 @@ export interface FormErrorStateChildrenArgs {
 }
 
 export interface FormErrorStateProps {
+  didAttemptSubmission?: boolean;
   children: (args: FormErrorStateChildrenArgs) => JSX.Element;
 }
 
@@ -56,7 +57,7 @@ export const PureFormErrorState = ({
   return children({ getFormErrorFieldProps });
 };
 
-export const FormErrorState = (props: FormErrorStateProps) => {
+export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormErrorStateProps) => {
   const [focusedFieldId, setFocusedFieldId] = useState(undefined);
   const [hoveredFieldId, setHoveredFieldId] = useState(undefined);
   // The primary field is the field that's visual cues take precedence over any
@@ -73,7 +74,7 @@ export const FormErrorState = (props: FormErrorStateProps) => {
 
   return (
     <PureFormErrorState
-      {...props}
+      {...rest}
       {...{
         primaryFieldId,
         onFocus: (id) => setFocusedFieldId(id),
@@ -91,7 +92,7 @@ export const FormErrorState = (props: FormErrorStateProps) => {
           if (blurredFieldIds.has(id)) setHoveredFieldId(undefined);
         },
         getError: ({ id, value, validate }: GetErrorArgs) =>
-          blurredFieldIds.has(id) && validate(value),
+          (blurredFieldIds.has(id) || didAttemptSubmission) && validate(value),
       }}
     />
   );
