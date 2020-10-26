@@ -16,7 +16,7 @@ import { Button } from './Button';
 import { Input as UnstyledInput } from './Input';
 
 export default {
-  title: 'Design System/forms/Form',
+  title: 'Design System/forms/FormErrorState',
   component: FormErrorState,
 };
 
