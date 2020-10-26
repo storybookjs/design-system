@@ -165,7 +165,7 @@ const InputWrapper = styled.div`
       width: 0.75em;
   		font-size: ${props.appearance === 'pill' ? 0.75 : 1 }em;
       margin-top: -.375em;
-  		z-index: 1;
+      z-index: 3;
 
       background: transparent;
 
@@ -241,6 +241,7 @@ const Action = styled.div`
   transform: translateY(-50%);
   font-weight: bold;
   font-size: 11px;
+  z-index: 2;
 `;
 
 export const PureInput = forwardRef(

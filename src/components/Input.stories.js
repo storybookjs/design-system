@@ -191,6 +191,8 @@ export const Stacked = () => (
       hideLabel
       startFocused
       onChange={onChange}
+      icon="key"
+      type="password"
       appearance="secondary"
     />
     <UnstyledInput
@@ -209,6 +211,7 @@ export const Stacked = () => (
       stackLevel="bottom"
       hideLabel
       onChange={onChange}
+      icon="key"
       error="There's a snake in my boots"
       appearance="secondary"
     />
