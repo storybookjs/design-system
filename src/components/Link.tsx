@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 
 import { Icon } from './Icon';
 import { color } from './shared/styles';
 
-const LinkInner = styled.span`
+const LinkInner = styled.span<{ withArrow: boolean }>`
   ${(props) =>
     props.withArrow &&
     css`
@@ -21,7 +20,15 @@ const LinkInner = styled.span`
     `};
 `;
 
-const StyledLink = styled.a`
+interface StyledLinkProps {
+  containsIcon?: boolean;
+  secondary?: boolean;
+  tertiary?: boolean;
+  nochrome?: boolean;
+  inverse?: boolean;
+}
+
+const StyledLink = styled.a<StyledLinkProps>`
   display: inline-block;
   transition: transform 150ms ease-out, color 150ms ease-out;
   text-decoration: none;
@@ -127,78 +134,71 @@ const LinkButton = styled.button`
   outline: inherit;
 `;
 
+/**
+ * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
+ */
+export type LinkProps = React.ComponentProps<typeof StyledLink> & {
+  withArrow?: boolean;
+  isButton?: boolean;
+  LinkWrapper?: React.ComponentType<any>;
+};
+
 // The main purpose of this component is to strip certain props that get passed
 // down to the styled component, so that we don't end up passing them to a
 // tag which would throw warnings for non-standard props.
 const LinkComponentPicker = forwardRef(
   (
-    { containsIcon, inverse, isButton, LinkWrapper, nochrome, secondary, tertiary, ...rest },
+    {
+      containsIcon,
+      inverse,
+      isButton,
+      LinkWrapper,
+      nochrome,
+      secondary,
+      tertiary,
+      ...rest
+    }: LinkProps,
     ref
   ) => {
     // Use the UnstyledLink here to avoid duplicating styles and creating
     // specificity conflicts by first rendering the StyledLink higher up the chain
     // and then re-rendering it through the 'as' prop.
-    const LinkComponent = isButton ? LinkButton : LinkWrapper || UnstyledLink;
-    return <LinkComponent {...rest} />;
+    /* eslint no-else-return: ["error", { allowElseIf: true }] */
+    if (isButton) {
+      return <LinkButton {...rest} ref={ref} />;
+    } else if (LinkWrapper) {
+      return <LinkWrapper {...rest} ref={ref} />;
+    }
+
+    return <UnstyledLink {...rest} ref={ref} />;
   }
 );
 
-const linkStyleProps = {
-  containsIcon: PropTypes.bool,
-  inverse: PropTypes.bool,
-  isButton: PropTypes.bool,
-  LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  nochrome: PropTypes.bool,
-  secondary: PropTypes.bool,
-  tertiary: PropTypes.bool,
-};
+export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
+  ({ children, withArrow, ...rest }, ref) => {
+    const content = (
+      <>
+        <LinkInner withArrow={withArrow}>
+          {children}
+          {withArrow && <Icon icon="arrowright" />}
+        </LinkInner>
+      </>
+    );
 
-const linkStyleDefaultProps = {
-  isButton: false,
-  containsIcon: false,
-  LinkWrapper: undefined,
-  inverse: false,
-  nochrome: false,
-  secondary: false,
-  tertiary: false,
-};
-
-LinkComponentPicker.propTypes = {
-  ...linkStyleProps,
-};
-
-LinkComponentPicker.defaultProps = {
-  ...linkStyleDefaultProps,
-};
-
-/**
- * Links can contains text and/or icons. Be careful using only icons, you must provide a text alternative via aria-label for accessibility.
- */
-export const Link = forwardRef(({ children, withArrow, ...rest }, ref) => {
-  const content = (
-    <>
-      <LinkInner withArrow={withArrow}>
-        {children}
-        {withArrow && <Icon icon="arrowright" />}
-      </LinkInner>
-    </>
-  );
-
-  return (
-    <StyledLink as={LinkComponentPicker} ref={ref} {...rest}>
-      {content}
-    </StyledLink>
-  );
-});
-
-Link.propTypes = {
-  children: PropTypes.node,
-  withArrow: PropTypes.bool,
-  ...linkStyleProps,
-};
+    return (
+      <StyledLink as={LinkComponentPicker} ref={ref} {...rest}>
+        {content}
+      </StyledLink>
+    );
+  }
+);
 
 Link.defaultProps = {
-  children: null,
   withArrow: false,
-  ...linkStyleDefaultProps,
+  isButton: false,
+  containsIcon: false,
+  secondary: false,
+  tertiary: false,
+  nochrome: false,
+  inverse: false,
 };
