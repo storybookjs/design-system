@@ -328,7 +328,7 @@ export const PureInput = forwardRef(
           {startingType === 'password' && (
             <Action>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link isButton tertiary onClick={onActionClick}>
+              <Link isButton tertiary onClick={onActionClick} type="button">
                 {type === 'password' ? 'Show' : 'Hide'}
               </Link>
             </Action>
