@@ -84,13 +84,6 @@ Default.args = {
   children: Children,
 };
 
-export const DidAttemptSubmission = Default.bind({})
-DidAttemptSubmission.decorators = [(storyFn: any) => <FormWrapper>{storyFn()}</FormWrapper>];
-DidAttemptSubmission.args = {
-  children: Children,
-  didAttemptSubmission: true
-}
-
 export const PureMultipleErrors = (args: PureFormErrorStateProps) => (
   <PureFormErrorState {...args} />
 );

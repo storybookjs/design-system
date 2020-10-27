@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
 interface FormErrorFieldProps {
   onMouseEnter: () => void;
@@ -19,11 +19,12 @@ export interface GetErrorArgs extends GetFormErrorFieldPropsArgs {
 }
 
 export interface FormErrorStateChildrenArgs {
+  onSubmit: Function;
   getFormErrorFieldProps: (args: GetFormErrorFieldPropsArgs) => FormErrorFieldProps;
 }
 
 export interface FormErrorStateProps {
-  didAttemptSubmission?: boolean;
+  onSubmit: Function;
   children: (args: FormErrorStateChildrenArgs) => JSX.Element;
 }
 
@@ -38,6 +39,7 @@ export interface PureFormErrorStateProps extends FormErrorStateProps {
 
 export const PureFormErrorState = ({
   children,
+  onSubmit,
   onMouseEnter,
   onMouseLeave,
   onBlur,
@@ -54,10 +56,13 @@ export const PureFormErrorState = ({
     suppressErrorMessage: !primaryFieldId || primaryFieldId !== id,
   });
 
-  return children({ getFormErrorFieldProps });
+  return children({ getFormErrorFieldProps, onSubmit });
 };
 
-export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormErrorStateProps) => {
+export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
+  onSubmit,
+  ...rest
+}) => {
   const [focusedFieldId, setFocusedFieldId] = useState(undefined);
   const [hoveredFieldId, setHoveredFieldId] = useState(undefined);
   // The primary field is the field that's visual cues take precedence over any
@@ -65,12 +70,22 @@ export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormEr
   // Use this to control things like error messaging priority.
   const [primaryFieldId, setPrimaryFieldId] = useState(undefined);
   const [blurredFieldIds, setBlurredFieldIds] = useState(new Set());
+  const [didAttemptSubmission, setDidAttemptSubmission] = useState(false);
 
   useEffect(() => {
     if (hoveredFieldId) setPrimaryFieldId(hoveredFieldId);
     else if (focusedFieldId) setPrimaryFieldId(focusedFieldId);
     else setPrimaryFieldId(undefined);
   }, [focusedFieldId, hoveredFieldId, setPrimaryFieldId]);
+
+  // Wrap the submit handler to control form error state once it has been submitted
+  const handleSubmit = useCallback(
+    (...args: any[]) => {
+      setDidAttemptSubmission(true);
+      onSubmit(...args);
+    },
+    [onSubmit]
+  );
 
   const isErrorVisible = (id: string) => blurredFieldIds.has(id) || didAttemptSubmission;
 
@@ -79,6 +94,7 @@ export const FormErrorState = ({ didAttemptSubmission = false, ...rest }: FormEr
       {...rest}
       {...{
         primaryFieldId,
+        onSubmit: handleSubmit,
         onFocus: (id) => setFocusedFieldId(id),
         onBlur: (id) => {
           setBlurredFieldIds(blurredFieldIds.add(id));
