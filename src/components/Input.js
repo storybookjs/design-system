@@ -161,10 +161,10 @@ const InputWrapper = styled.div`
       transition: all 150ms ease-out;
       position: absolute;
       top: 50%;
-      height: 0.75em;
-      width: 0.75em;
+      height: ${props.appearance === 'pill' ? '1em' : '0.75em'};
+      width: ${props.appearance === 'pill' ? '1em' : '0.75em'};
   		font-size: ${props.appearance === 'pill' ? 0.75 : 1 }em;
-      margin-top: -.375em;
+      margin-top: ${props.appearance === 'pill' ? '-.5em' : '-.375em'};;
       z-index: 3;
 
       background: transparent;
