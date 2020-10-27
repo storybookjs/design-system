@@ -379,6 +379,7 @@ export const Input = forwardRef(({ type: startingType, startFocused, ...rest }, 
     (event) => {
       // Make sure this does not submit a form
       event.preventDefault();
+      event.stopPropagation();
       if (type === 'password') {
         setType('text');
         return;
