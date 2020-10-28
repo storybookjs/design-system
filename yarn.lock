@@ -5595,10 +5595,10 @@ chownr@^2.0.0:
   resolved "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromatic@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/chromatic/-/chromatic-5.0.0.tgz#64fcdd26e76c9a9d311d781e91d7532d2a0abd2a"
-  integrity sha512-jreBi7r6BFcJ5o30O9LQpZI/9ofNWAOZ6R8yX0U2EzxLGXA3yC8aiwkS73EDVUPwZC5qUvWm5pqzvD0FCIAHiw==
+chromatic@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/chromatic/-/chromatic-5.2.0.tgz#318fed3c36912151320ab2f6b5e466e7f826d8f6"
+  integrity sha512-uUf0aFsUMiWCxy95vsufbtwQDlqi4B8FsXwnBWGvm0cf+fDHclzfB2ERgFTnW0ye/3Ben1DwH5UAvcGrq+qLIg==
   dependencies:
     "@babel/preset-react" "^7.9.4"
     "@babel/runtime" "^7.9.2"
@@ -5609,7 +5609,6 @@ chromatic@^5.0.0:
     cross-spawn "^7.0.2"
     debug "^4.1.1"
     dotenv "^8.2.0"
-    enhanced-resolve "^4.1.1"
     env-ci "^5.0.2"
     esm "^3.2.25"
     execa "^4.0.0"
@@ -6817,7 +6816,7 @@ endent@^2.0.1:
     fast-json-parse "^1.0.3"
     objectorarray "^1.0.4"
 
-enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0, enhanced-resolve@^4.1.1:
+enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
   version "4.1.1"
   resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-4.1.1.tgz#2937e2b8066cd0fe7ce0990a98f0d71a35189f66"
   integrity sha512-98p2zE+rL7/g/DzMHMTF4zZlCgeVdJ7yr6xzEpJRYwFYrGi9ANdn5DnJURg6RpBkyk60XYDnWIv51VfIhfNGuA==
