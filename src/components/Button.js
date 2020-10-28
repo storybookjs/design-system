@@ -8,6 +8,7 @@ import { easing } from './shared/animation';
 const Text = styled.span`
   display: inline-block;
   vertical-align: top;
+  color: #ff0000;
 `;
 
 const Loading = styled.span`
