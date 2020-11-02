@@ -19,6 +19,7 @@
     "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "build-storybook --docs",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-aws-s3 --bucket-path=storybook.contrast.app/",
     "lint": "yarn lint:js && yarn lint:package",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
@@ -49,6 +50,7 @@
     "react-github-button": "^0.1.11",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
+    "storybook-contrast": "^0.5.1",
     "styled-components": "^4.4.1",
     "uuid": "^3.3.3"
   },
@@ -69,6 +71,7 @@
     "@storybook/eslint-config-storybook": "^2.4.0",
     "@storybook/linter-config": "^2.5.0",
     "@storybook/react": "6.0.20",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@types/fs-extra": "^9.0.1",
     "@types/styled-components": "^5.1.0",
     "auto": "^9.50.1",
