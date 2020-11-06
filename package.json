@@ -23,23 +23,8 @@
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
     "release": "dotenv yarn build && auto shipit",
-    "storybook": "start-storybook -p 6006"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.html": [
-      "yarn lint:js --fix"
-    ],
-    "*.js": [
-      "yarn lint:js --fix"
-    ],
-    "package.json": [
-      "yarn lint:package"
-    ]
+    "storybook": "start-storybook -p 6006",
+    "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes"
   },
   "dependencies": {
     "copy-to-clipboard": "^3.3.1",
