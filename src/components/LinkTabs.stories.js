@@ -14,7 +14,4 @@ export default {
 };
 
 export const Default = () => <LinkTabs items={items} onSelect={action('select')} />;
-
-Default.story = {
-  name: 'default',
-};
+Default.storyName = 'default';

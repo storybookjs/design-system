@@ -4,9 +4,6 @@ import { loadFontsForStorybook } from '../src/utils/index';
 import { GlobalStyle } from '../src/components/shared/global';
 
 export const parameters = {
-  options: {
-    showRoots: true,
-  },
   // automatically create action args for all props that start with "on"
   actions: { argTypesRegex: '^on.*' },
   dependencies: {
