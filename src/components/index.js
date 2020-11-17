@@ -15,6 +15,7 @@ export * from './Link';
 export * from './Subheading';
 export * from './ProgressDots';
 export * from './Spinner';
+export * from './Cardinal';
 
 export * from './Input';
 export * from './Textarea';
