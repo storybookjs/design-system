@@ -161,10 +161,10 @@ const InputWrapper = styled.div`
       transition: all 150ms ease-out;
       position: absolute;
       top: 50%;
-      height: ${props.appearance === 'pill' ? '1em' : '0.75em'};
-      width: ${props.appearance === 'pill' ? '1em' : '0.75em'};
-  		font-size: ${props.appearance === 'pill' ? 0.75 : 1 }em;
-      margin-top: ${props.appearance === 'pill' ? '-.5em' : '-.375em'};;
+      height: 1em;
+      width: 1em;
+      font-size: ${props.appearance === 'pill' ? '0.75em' : '1em'};
+      margin-top: -.5em;
       z-index: 3;
 
       background: transparent;
@@ -180,7 +180,7 @@ const InputWrapper = styled.div`
     }
 
     ${InputEl} {
-      padding-left: 2.45em;
+      padding-left: 2.75em;
 
       ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
       ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
