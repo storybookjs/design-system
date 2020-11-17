@@ -225,19 +225,12 @@ const InputContainer = styled.div`
   `}
 `;
 
-const ErrorTooltipMessage = styled(TooltipMessage)`
-  width: 170px;
-`;
-
 const ErrorTooltip = styled(WithTooltip)`
   width: 100%;
-  ${(props) =>
-    !props.tooltip &&
-    `
-    ${ErrorTooltipMessage} {
-      display: none;
-    }
-  `}
+`;
+
+const ErrorTooltipMessage = styled(TooltipMessage)`
+  width: 170px;
 `;
 
 const Action = styled.div`

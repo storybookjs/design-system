@@ -20,6 +20,10 @@ const ButtonContainer = styled.button`
   text-decoration: none;
 `;
 
+const StyledTooltip = styled(Tooltip)`
+  ${(props) => !props.hasTooltipContent && `display: none;`}
+`;
+
 const isDescendantOfAction = (element) => {
   const { parentElement } = element;
 
@@ -132,7 +136,7 @@ function WithTooltip({
         arrowRef,
         placement: tooltipPlacement,
       }) => (
-        <Tooltip
+        <StyledTooltip
           hasChrome={hasChrome}
           placement={tooltipPlacement}
           tooltipRef={tooltipRef}
@@ -142,9 +146,10 @@ function WithTooltip({
           {...getTooltipProps()}
           id={id}
           role="tooltip"
+          hasTooltipContent={!!tooltip}
         >
           {typeof tooltip === 'function' ? tooltip({ onHide: closeTooltip }) : tooltip}
-        </Tooltip>
+        </StyledTooltip>
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
