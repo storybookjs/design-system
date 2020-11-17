@@ -96,7 +96,7 @@ export const mockTagsData = [
   },
 ];
 
-const Template = (args: { tags: any[]; limit: number; isLoading }) => (
+const Template = (args: { tags: any[]; limit: number; isLoading: boolean }) => (
   <TagList
     isLoading={args.isLoading}
     limit={args.limit}

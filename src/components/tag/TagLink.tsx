@@ -4,27 +4,16 @@ import { color, typography, background, spacing } from '../shared/styles';
 // @ts-ignore
 import { inlineGlow } from '../shared/animation';
 import { Link } from '../Link';
+import { TagItem } from './TagItem';
 
 export interface TagLinkProps extends React.ComponentProps<typeof Link> {
   isLoading?: boolean;
 }
 
-export const TagLink = styled(Link).attrs<TagLinkProps>(({ isLoading, children }) => ({
+export const TagLink = styled(TagItem).attrs<TagLinkProps>(({ isLoading, children }) => ({
   children: isLoading ? 'Loading tag' : children,
+  as: Link,
 }))<TagLinkProps>`
-  display: inline-block;
-  background: ${background.app};
-  border-radius: ${spacing.borderRadius.small}px;
-  padding: 5px 10px;
-  font-size: ${typography.size.s2}px;
-  line-height: ${typography.size.m2}px;
-  position: relative;
-  color: ${color.darkest};
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  white-space: nowrap;
-
   &:after {
     content: '';
     position: absolute;
@@ -47,16 +36,6 @@ export const TagLink = styled(Link).attrs<TagLinkProps>(({ isLoading, children }
         &:after {
           opacity: 1;
         }
-      }
-    `}
-
-  ${(props) =>
-    props.isLoading &&
-    css`
-      cursor: progress !important;
-      ${inlineGlow};
-      &:hover {
-        color: transparent;
       }
     `}
 `;

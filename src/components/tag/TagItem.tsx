@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { rgba } from 'polished';
 import { color, typography, background, spacing } from '../shared/styles';
 // @ts-ignore
 import { inlineGlow } from '../shared/animation';
