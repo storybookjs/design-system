@@ -235,7 +235,7 @@ const ErrorTooltip = styled(WithTooltip)`
     !props.tooltip &&
     `
     ${ErrorTooltipMessage} {
-      visibility: hidden;
+      display: none;
     }
   `}
 `;
