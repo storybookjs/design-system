@@ -112,7 +112,7 @@ const InputWrapper = styled.div`
     &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
 
     ${props => props.appearance === 'secondary' && css`
-      box-shadow: ${color.mediumlight} 0 0 0 1px inset;
+      box-shadow: ${color.border} 0 0 0 1px inset;
 
       &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
     `}
