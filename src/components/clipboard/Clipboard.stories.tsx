@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { action } from '@storybook/addon-actions';
 import { Clipboard } from './Clipboard';
 // @ts-ignore
 import { TooltipNote } from '../tooltip/TooltipNote';
@@ -12,7 +12,7 @@ export default {
 export const Default = () => <Clipboard toCopy="linky">Click to copy</Clipboard>;
 
 export const Callback = () => (
-  <Clipboard getCopyContent={() => 'linky from callback'}>Click to copy</Clipboard>
+  <Clipboard getCopyContent={action('linky from callback') as any}>Click to copy</Clipboard>
 );
 
 export const Tooltips = () => (
@@ -20,6 +20,8 @@ export const Tooltips = () => (
     toCopy="linky"
     renderCopiedTooltip={() => <TooltipNote note="Copied" />}
     renderUncopiedTooltip={() => <TooltipNote note="Copy to clipboard" />}
+    // @ts-ignore
+    startOpen
   >
     Click to copy
   </Clipboard>
