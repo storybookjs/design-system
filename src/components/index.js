@@ -38,6 +38,7 @@ export * from './ShadowBoxCTA';
 export * from './clipboard/Clipboard';
 export * from './clipboard/ClipboardIcon';
 export * from './clipboard/ClipboardCode';
+export * from './clipboard/ClipboardInput';
 
 export * from './LinkTabs';
 export * from './CodeSnippets';
