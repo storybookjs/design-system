@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="600px" height="600px" viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+<path style="fill:#DB4437;" d="M191.3,362.5l108.5-187.2l244.2-0.6c-2-3.8-4-7.7-6.2-11.5C462.2,31.8,294.2-13.6,162.6,62
+	c-39,22.4-70.4,52.9-93.3,88.2L191.3,362.5z"/>
+<path style="fill:#0F9D58;" d="M408.6,362.5l-216.3-0.4L69.7,150.9c-2.3,3.6-4.6,7.3-6.8,11.1c-76.1,131.3-31.4,299.4,99.9,375.5
+	c38.9,22.6,81,34.5,123.1,36.7L408.6,362.5z"/>
+<path style="fill:#FFCD40;" d="M299.5,174.3l108.2,187.3l-121.2,212c4.3,0.2,8.7,0.3,13,0.3c151.8,0,274.8-123,274.8-274.8
+	c0-45-10.8-87.4-30-124.9H299.5L299.5,174.3z"/>
+<radialGradient id="SVGID_1_" cx="-257.8257" cy="444.3799" r="648.8392" gradientTransform="matrix(1 0 0 -1 304 595)" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#3E2723;stop-opacity:0.2"/>
+	<stop  offset="1" style="stop-color:#3E2723;stop-opacity:0"/>
+</radialGradient>
+<path style="fill:url(#SVGID_1_);" d="M300.5,175.2v65.4l244.8-65.4H300.5z M69.4,151.7l178.8,178.7l-55.8,32.2L69.4,151.7z
+	 M287.5,574.6l65.4-244.2l55.8,32.2L287.5,574.6z"/>
+<circle style="fill:#F1F1F1;" cx="300.5" cy="300.1" r="124.9"/>
+<circle style="fill:#4285F4;" cx="300.5" cy="300.1" r="99.9"/>
+</svg>
