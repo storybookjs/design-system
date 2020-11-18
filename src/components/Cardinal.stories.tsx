@@ -60,6 +60,22 @@ AllCardinals.story = {
   name: 'all cardinals',
 };
 
+export const Alignment = () => (
+  <div style={{ background: 'white' }}>
+    <Cardinal size="small" count={14} text="Changes" alignment="left" />
+    <Cardinal size="small" count={14} text="Changes" alignment="center" />
+    <Cardinal size="small" count={14} text="Changes" alignment="right" />
+    <br />
+    <Cardinal size="large" count={2} text="Story" alignment="left" />
+    <Cardinal size="large" count={2} text="Story" alignment="center" />
+    <Cardinal size="large" count={2} text="Story" alignment="right" />
+  </div>
+);
+
+Alignment.story = {
+  name: 'control alignment',
+};
+
 export const SmallLoading = () => <Cardinal isLoading size="small" />;
 
 SmallLoading.story = {

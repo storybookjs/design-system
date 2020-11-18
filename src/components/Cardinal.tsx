@@ -8,6 +8,7 @@ import { inlineGlow } from './shared/animation';
 
 type Status = 'default' | 'positive' | 'negative' | 'warning' | 'neutral' | 'link';
 type Size = 'small' | 'large';
+type Alignment = 'left' | 'center' | 'right';
 
 interface CountProps {
   status: Status;
@@ -66,6 +67,7 @@ interface CardinalInnerProps {
   selectable: boolean;
   active: boolean;
   size: Size;
+  alignment: Alignment;
 }
 
 const CardinalInner = styled.div<CardinalInnerProps>`
@@ -73,6 +75,7 @@ const CardinalInner = styled.div<CardinalInnerProps>`
   vertical-align: top;
   padding: 8px 12px;
   border-radius: ${spacing.borderRadius.small}px;
+  text-align: ${(props) => props.alignment};
 
   svg {
     height: 12px;
@@ -144,6 +147,7 @@ interface CardinalProps {
   noPlural: boolean;
   CountWrapper: React.ElementType;
   TextWrapper: React.ElementType;
+  alignment?: Alignment;
 }
 
 export function Cardinal({
@@ -160,6 +164,7 @@ export function Cardinal({
   status,
   CountWrapper,
   TextWrapper,
+  alignment,
   ...props
 }: CardinalProps) {
   let countValue = count;
@@ -181,6 +186,7 @@ export function Cardinal({
       selectable={selectable}
       active={active}
       size={size}
+      alignment={alignment}
       {...events}
       {...props}
     >
@@ -212,4 +218,5 @@ Cardinal.defaultProps = {
   text: 'loading',
   CountWrapper: DefaultWrapper,
   TextWrapper: DefaultWrapper,
+  alignment: 'left',
 };
