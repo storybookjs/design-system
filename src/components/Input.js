@@ -163,8 +163,8 @@ const InputWrapper = styled.div`
       top: 50%;
       height: 1em;
       width: 1em;
-      font-size: ${props.appearance === 'pill' ? '0.75em' : '1em'};
-      margin-top: -.5em;
+      font-size: ${props.appearance === 'pill' ? '0.75em' : '0.875em'};
+      margin-top: -.525em;
       z-index: 3;
 
       background: transparent;
@@ -180,7 +180,7 @@ const InputWrapper = styled.div`
     }
 
     ${InputEl} {
-      padding-left: 2.75em;
+      padding-left: 2.4em;
 
       ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
       ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
