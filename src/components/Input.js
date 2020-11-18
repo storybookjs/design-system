@@ -37,7 +37,6 @@ const LabelWrapper = styled.div`
 const InputEl = styled.input`
   ::placeholder {
     color: ${color.mediumdark};
-    font-weight: ${typography.weight.bold};
   }
   appearance: none;
   border:none;
