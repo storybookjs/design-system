@@ -14,11 +14,11 @@ const Tooltip = styled(WithTooltip)`
 interface ClipboardProps {
   children: React.ReactNode | ((copied: boolean) => React.ReactNode);
   toCopy?: string;
-  getCopyContent: () => string;
+  getCopyContent?: () => string;
   copyOptions?: any;
-  renderCopiedTooltip: () => React.ReactNode;
-  renderUncopiedTooltip: () => React.ReactNode;
-  resetTimeout: number;
+  renderCopiedTooltip?: () => React.ReactNode;
+  renderUncopiedTooltip?: () => React.ReactNode;
+  resetTimeout?: number;
 }
 
 export const Clipboard = ({
