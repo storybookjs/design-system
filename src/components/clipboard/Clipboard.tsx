@@ -2,13 +2,24 @@ import copyToClipboard from 'copy-to-clipboard';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-
-import { TooltipNote } from './tooltip/TooltipNote';
-import WithTooltip from './tooltip/WithTooltip';
+// @ts-ignore
+import { TooltipNote } from '../tooltip/TooltipNote';
+// @ts-ignore
+import WithTooltip from '../tooltip/WithTooltip';
 
 const Tooltip = styled(WithTooltip)`
   cursor: pointer;
 `;
+
+interface ClipboardProps {
+  children: React.ReactNode | ((copied: boolean) => React.ReactNode);
+  toCopy?: string;
+  getCopyContent?: () => string;
+  copyOptions?: any;
+  renderCopiedTooltip?: () => React.ReactNode;
+  renderUncopiedTooltip?: () => React.ReactNode;
+  resetTimeout?: number;
+}
 
 export const Clipboard = ({
   children,
@@ -19,19 +30,20 @@ export const Clipboard = ({
   renderCopiedTooltip,
   renderUncopiedTooltip,
   ...props
-}) => {
-  const timeout = useRef();
+}: ClipboardProps) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (copied && timeout.current) {
-      clearTimeout(timeout.current);
+    let timeoutId: NodeJS.Timeout;
+
+    if (copied && timeoutId) {
+      clearTimeout(timeoutId);
     }
-    if (copied && resetTimeout) {
-      timeout.current = setTimeout(() => setCopied(false), resetTimeout);
+    if (copied && resetTimeout && timeoutId) {
+      timeoutId = setTimeout(() => setCopied(false), resetTimeout);
     }
     return () => {
-      clearTimeout(timeout.current);
+      clearTimeout(timeoutId);
     };
   }, [copied]);
 
@@ -53,21 +65,11 @@ export const Clipboard = ({
   );
 };
 
-Clipboard.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
-  toCopy: PropTypes.string,
-  getCopyContent: PropTypes.func,
-  copyOptions: PropTypes.object, // eslint-disable-line
-  renderCopiedTooltip: PropTypes.func,
-  renderUncopiedTooltip: PropTypes.func,
-  resetTimeout: PropTypes.number,
-};
-
 Clipboard.defaultProps = {
   copyOptions: undefined,
-  renderCopiedTooltip: () => null,
-  renderUncopiedTooltip: () => null,
+  renderCopiedTooltip: () => {},
+  renderUncopiedTooltip: () => {},
   resetTimeout: 3000,
   toCopy: undefined,
-  getCopyContent: () => undefined,
+  getCopyContent: () => '',
 };

@@ -1,17 +1,18 @@
 import React from 'react';
-
+import { action } from '@storybook/addon-actions';
 import { Clipboard } from './Clipboard';
-import { TooltipNote } from './tooltip/TooltipNote';
+// @ts-ignore
+import { TooltipNote } from '../tooltip/TooltipNote';
 
 export default {
-  title: 'Design System/Clipboard',
-  decorators: [(storyFn) => <div style={{ padding: '3em' }}>{storyFn()}</div>],
+  title: 'Design System/Clipboard/Clipboard',
+  decorators: [(storyFn: any) => <div style={{ padding: '3em' }}>{storyFn()}</div>],
 };
 
 export const Default = () => <Clipboard toCopy="linky">Click to copy</Clipboard>;
 
 export const Callback = () => (
-  <Clipboard getCopyContent={() => 'linky from callback'}>Click to copy</Clipboard>
+  <Clipboard getCopyContent={action('linky from callback') as any}>Click to copy</Clipboard>
 );
 
 export const Tooltips = () => (
@@ -19,6 +20,8 @@ export const Tooltips = () => (
     toCopy="linky"
     renderCopiedTooltip={() => <TooltipNote note="Copied" />}
     renderUncopiedTooltip={() => <TooltipNote note="Copy to clipboard" />}
+    // @ts-ignore
+    startOpen
   >
     Click to copy
   </Clipboard>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Clipboard } from './Clipboard';
+import { Clipboard } from './clipboard/Clipboard';
 import { Highlight } from './Highlight';
 import { color, spacing, typography } from './shared/styles';
 

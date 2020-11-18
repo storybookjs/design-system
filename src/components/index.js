@@ -35,7 +35,11 @@ export { default as WithModal } from './modal/WithModal';
 export * from './table-of-contents/TableOfContents';
 export * from './ShadowBoxCTA';
 
-export * from './Clipboard';
+export * from './clipboard/Clipboard';
+export * from './clipboard/ClipboardIcon';
+export * from './clipboard/ClipboardCode';
+export * from './clipboard/ClipboardInput';
+
 export * from './LinkTabs';
 export * from './CodeSnippets';
 
