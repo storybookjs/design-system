@@ -7,8 +7,16 @@ export type TagItemProps = {
   isLoading?: boolean;
 };
 
+function randomString(min: number, max: number) {
+  const length = Math.random() * (max - min) + min;
+  return Math.round(36 ** length + 1 - Math.random() * 36 ** length)
+    .toString(36)
+    .slice(1);
+}
+
 export const TagItem = styled.div.attrs<TagItemProps>(({ isLoading, children }) => ({
-  children: isLoading ? 'Loading tag' : children,
+  children: isLoading ? randomString(5, 12) : children,
+  ...(isLoading && { 'aria-label': 'Loading tag' }),
 }))<TagItemProps>`
   display: inline-block;
   background: ${background.app};

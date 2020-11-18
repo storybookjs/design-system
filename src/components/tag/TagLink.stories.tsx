@@ -1,7 +1,11 @@
 import React from 'react';
+// @ts-ignore
+import seedrandom from 'seedrandom';
 import { TagLink } from './TagLink';
 // @ts-ignore
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
+
+seedrandom('chromatic testing', { global: true });
 
 export default {
   component: TagLink,
