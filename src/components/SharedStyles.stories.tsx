@@ -12,7 +12,15 @@ const BlockWithMargin = styled.div`
   background-color: #333;
 `;
 
-export const PageMargins = () => <BlockWithMargin />;
+export const PageMargins = () => (
+  <div>
+    <p>
+      The box below has <code>pageMargins</code> styles applied to it which controls the horizontal
+      padding and margin
+    </p>
+    <BlockWithMargin />
+  </div>
+);
 
 const BlockWithHoverEffect = styled.div`
   ${hoverEffect};
@@ -20,7 +28,7 @@ const BlockWithHoverEffect = styled.div`
   height: 300px;
 `;
 
-export const HoverEffectDefault = () => <BlockWithHoverEffect />;
+export const HoverEffectRest = () => <BlockWithHoverEffect />;
 
 export const HoverEffectHover = () => <BlockWithHoverEffect className="__hover" />;
 
