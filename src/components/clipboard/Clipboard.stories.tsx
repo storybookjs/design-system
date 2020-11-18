@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Clipboard } from './Clipboard';
-import { TooltipNote } from './tooltip/TooltipNote';
+// @ts-ignore
+import { TooltipNote } from '../tooltip/TooltipNote';
 
 export default {
-  title: 'Design System/Clipboard',
-  decorators: [(storyFn) => <div style={{ padding: '3em' }}>{storyFn()}</div>],
+  title: 'Design System/Clipboard/Clipboard',
+  decorators: [(storyFn: any) => <div style={{ padding: '3em' }}>{storyFn()}</div>],
 };
 
 export const Default = () => <Clipboard toCopy="linky">Click to copy</Clipboard>;
