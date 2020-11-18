@@ -179,12 +179,12 @@ const InputWrapper = styled.div`
     }
 
     ${InputEl} {
-      padding-left: 2.4em;
+      padding-left: 2.78em;
 
       ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
       ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
     }
-    > svg { left: ${props.appearance === 'tertiary' ? 0 : 0.8 }em; }
+    > svg { left: ${props.appearance === 'tertiary' ? 0 : 1.07 }em; }
 
   `}
 
