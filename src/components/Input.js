@@ -165,6 +165,11 @@ const InputWrapper = styled.div`
       font-size: ${props.appearance === 'pill' ? '0.75em' : '0.875em'};
       margin-top: -.525em;
       z-index: 3;
+      ${props.appearance === 'pill' ? css`
+        left: 0.8em;
+      ` : css `
+        left: ${props.appearance === 'tertiary' ? 0 : 1.07 }em;
+      `}
 
       background: transparent;
 
@@ -184,8 +189,6 @@ const InputWrapper = styled.div`
       ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
       ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
     }
-    > svg { left: ${props.appearance === 'tertiary' ? 0 : 1.07 }em; }
-
   `}
 
   ${props => props.error && css`
