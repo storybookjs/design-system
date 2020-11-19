@@ -246,6 +246,16 @@ const Action = styled.div`
   z-index: 2;
 `;
 
+const getErrorMessage = ({ error, value, lastErrorValue }) => {
+  let errorMessage = typeof error === 'function' ? error(value) : error;
+  if (lastErrorValue) {
+    if (value !== lastErrorValue) {
+      errorMessage = null;
+    }
+  }
+  return errorMessage;
+};
+
 export const PureInput = forwardRef(
   (
     {
@@ -268,13 +278,14 @@ export const PureInput = forwardRef(
     },
     ref
   ) => {
+    const [errorMessage, setErrorMessage] = useState(
+      getErrorMessage({ error, value, lastErrorValue })
+    );
     const errorId = `${id}-error`;
-    let errorMessage = typeof error === 'function' ? error(value) : error;
-    if (lastErrorValue) {
-      if (value !== lastErrorValue) {
-        errorMessage = null;
-      }
-    }
+
+    useEffect(() => {
+      setErrorMessage(getErrorMessage({ error, value, lastErrorValue }));
+    }, [value, error, lastErrorValue]);
 
     const inputEl = (
       <InputEl

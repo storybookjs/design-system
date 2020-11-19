@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useCallback, useState } from 'react';
 
 interface FormErrorFieldProps {
@@ -83,7 +84,7 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
     else if (erroredFieldIds.size > 0) setPrimaryFieldId(lastInteractionFieldId);
     else if (focusedFieldId) setPrimaryFieldId(focusedFieldId);
     else setPrimaryFieldId(undefined);
-  }, [focusedFieldId, hoveredFieldId, setPrimaryFieldId]);
+  }, [focusedFieldId, hoveredFieldId, lastInteractionFieldId, erroredFieldIds]);
 
   // Wrap the submit handler to control form error state once it has been submitted
   const handleSubmit = useCallback(
@@ -94,21 +95,58 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
     [onSubmit]
   );
 
-  const trackErrorsAndValidate = useCallback(
-    ({ id, validate, value }) => {
-      const error = validate(value);
-      if (error) {
-        setErroredFieldIds(erroredFieldIds.add(id));
-      } else {
-        erroredFieldIds.delete(id);
-        setErroredFieldIds(erroredFieldIds);
-      }
-      return error;
-    },
-    [setErroredFieldIds]
-  );
+  // There are a lot of pieces of state that can affect the callbacks. Rather
+  // than list each one in every callback which could lead to one being left
+  // out easily, just regenerate the callbacks when any of them change.
+  const callbackRegenValues = [
+    focusedFieldId,
+    lastInteractionFieldId,
+    hoveredFieldId,
+    primaryFieldId,
+    blurredFieldIds,
+    erroredFieldIds,
+    didAttemptSubmission,
+  ];
 
-  const isErrorVisible = (id: string) => blurredFieldIds.has(id) || didAttemptSubmission;
+  const trackErrorsAndValidate = useCallback(({ id, validate, value }) => {
+    const error = validate(value);
+    if (error) {
+      !erroredFieldIds.has(id) && setErroredFieldIds(new Set(erroredFieldIds.add(id)));
+    } else {
+      erroredFieldIds.delete(id) && setErroredFieldIds(new Set(erroredFieldIds));
+    }
+    return error;
+  }, callbackRegenValues);
+
+  const wasFieldTouched = (id: string) => blurredFieldIds.has(id) || didAttemptSubmission;
+  const isErrorVisible = (id: string) => wasFieldTouched(id) && erroredFieldIds.has(id);
+
+  const onFocus = useCallback((id: string) => setFocusedFieldId(id), []);
+
+  const onBlur = useCallback((id: string) => {
+    !blurredFieldIds.has(id) && setBlurredFieldIds(blurredFieldIds.add(id));
+    setLastInteractionFieldId(focusedFieldId);
+    setFocusedFieldId(undefined);
+  }, callbackRegenValues);
+
+  // We only care about the hover state of previously blurred fields.
+  // We don't want to show error tooltips for fields that haven't been
+  // visited yet. In the case that the form has already had an attempted
+  // submission, all errors will be visible.
+  const onMouseEnter = useCallback((id: string) => {
+    if (isErrorVisible(id)) setHoveredFieldId(id);
+  }, callbackRegenValues);
+
+  const onMouseLeave = useCallback((id: string) => {
+    if (isErrorVisible(id)) {
+      setLastInteractionFieldId(hoveredFieldId);
+      setHoveredFieldId(undefined);
+    }
+  }, callbackRegenValues);
+
+  const getError = useCallback(({ id, value, validate }: GetErrorArgs) => {
+    return wasFieldTouched(id) && trackErrorsAndValidate({ id, validate, value });
+  }, callbackRegenValues);
 
   return (
     <PureFormErrorState
@@ -116,25 +154,11 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
       {...{
         primaryFieldId,
         onSubmit: handleSubmit,
-        onFocus: (id) => setFocusedFieldId(id),
-        onBlur: (id) => {
-          setBlurredFieldIds(blurredFieldIds.add(id));
-          setLastInteractionFieldId(focusedFieldId);
-          setFocusedFieldId(undefined);
-        },
-        onMouseEnter: (id) => {
-          // We only care about the hover state of previously blurred fields.
-          // We don't want to show error tooltips for fields that haven't been
-          // visited yet. In the case that the form has already had an attempted
-          // submission, all errors will be visible.
-          if (isErrorVisible(id)) setHoveredFieldId(id);
-        },
-        onMouseLeave: (id) => {
-          setLastInteractionFieldId(hoveredFieldId);
-          if (isErrorVisible(id)) setHoveredFieldId(undefined);
-        },
-        getError: ({ id, value, validate }: GetErrorArgs) =>
-          isErrorVisible(id) && trackErrorsAndValidate({ id, validate, value }),
+        onFocus,
+        onBlur,
+        onMouseEnter,
+        onMouseLeave,
+        getError,
       }}
     />
   );

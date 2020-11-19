@@ -33,12 +33,15 @@ const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   action('onClick')(e);
 };
 
-const Children = ({ getFormErrorFieldProps }: FormErrorStateChildrenArgs) => {
+const Children = ({
+  onSubmit: handleSubmit,
+  getFormErrorFieldProps,
+}: FormErrorStateChildrenArgs) => {
   // Use whatever form state management you need. This is just an example.
   const [input1Value, setInput1Value] = useState('');
-  const [input2Value, setInput2Value] = useState('prefilled');
+  const [input2Value, setInput2Value] = useState('');
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <Input
         id="input-1"
         {...getFormErrorFieldProps({
@@ -83,6 +86,7 @@ const decorators = [(storyFn: any) => <FormWrapper>{storyFn()}</FormWrapper>];
 export const Default = (args: FormErrorStateProps) => <FormErrorState {...args} />;
 Default.decorators = decorators;
 Default.args = {
+  onSubmit,
   children: Children,
 };
 
