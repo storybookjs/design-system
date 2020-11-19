@@ -37,6 +37,9 @@
     "*.js": [
       "yarn lint:js --fix"
     ],
+    "*.ts?(x)": [
+      "yarn lint:js --fix"
+    ],
     "package.json": [
       "yarn lint:package"
     ]
