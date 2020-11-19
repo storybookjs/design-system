@@ -1,10 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import { color, typography } from '../shared/styles';
-import { Link } from '../Link';
+import { Link, LinkProps } from '../Link';
 
-const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)`
+type StyledBulletLinkProps = React.ComponentProps<typeof Link> & {
+  isActive?: boolean;
+};
+
+const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)<
+  StyledBulletLinkProps
+>`
   outline: none;
   display: inline-block;
   padding: 6px 0;
@@ -53,7 +58,7 @@ const BulletLinkWrapper = styled.li`
   }
 `;
 
-const Bullet = styled.span`
+const Bullet = styled.span<{ isActive?: boolean }>`
   display: inline-block;
   margin-bottom: 1px;
   margin-right: 16px;
@@ -67,7 +72,17 @@ const Bullet = styled.span`
   ${(props) => props.isActive && `background: ${color.secondary};`}
 `;
 
-export function BulletLink({ currentPath, item, ...rest }) {
+export interface BulletLinkItem extends Pick<LinkProps, 'LinkWrapper'> {
+  path: string;
+  title: string;
+}
+
+interface BulletLinkProps {
+  currentPath: string;
+  item: BulletLinkItem;
+}
+
+export function BulletLink({ currentPath, item, ...rest }: BulletLinkProps) {
   const isActive = currentPath === item.path;
 
   return (
@@ -77,6 +92,7 @@ export function BulletLink({ currentPath, item, ...rest }) {
         href={item.path}
         LinkWrapper={item.LinkWrapper}
         tertiary={!isActive}
+        {...rest}
       >
         <Bullet isActive={isActive} />
         {item.title}
@@ -84,12 +100,3 @@ export function BulletLink({ currentPath, item, ...rest }) {
     </BulletLinkWrapper>
   );
 }
-
-BulletLink.propTypes = {
-  currentPath: PropTypes.string.isRequired,
-  item: PropTypes.shape({
-    LinkWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-    path: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-};

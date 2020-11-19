@@ -1,121 +1,172 @@
 import React, { useState } from 'react';
-import { TableOfContents } from './TableOfContents';
+import { TableOfContents, TableOfContentsProps } from './TableOfContents';
+import { Item, ItemType } from './TableOfContentsItems';
+// @ts-ignore
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
   title: 'TableOfContents',
   component: TableOfContents,
   decorators: [
-    (storyFn) => <div style={{ width: 240, outline: '1px dotted grey' }}>{storyFn()}</div>,
+    (storyFn: any) => <div style={{ width: 240, outline: '1px dotted grey' }}>{storyFn()}</div>,
   ],
 };
 
-const items = [
+const items: Item[] = [
   {
     title: 'Get Started',
-    type: 'menu',
+    type: ItemType.MENU,
     children: [
       {
         path: '/introduction',
         title: 'Introduction',
-        type: 'bullet-link',
+        type: ItemType.BULLET_LINK,
       },
       {
         path: '/setup',
         title: 'Setup',
-        type: 'bullet-link',
+        type: ItemType.BULLET_LINK,
       },
       {
         path: '/write-a-story',
         title: 'Write a story',
-        type: 'bullet-link',
+        type: ItemType.BULLET_LINK,
       },
     ],
   },
   {
     title: '😀 Customize',
-    type: 'menu',
+    type: ItemType.MENU,
     children: [
       {
         title: 'User interface',
-        type: 'menu',
+        type: ItemType.MENU,
         children: [
           {
             path: '/features-and-behavior',
             title: 'features and behavior dolor sit amet consectatur',
-            type: 'link',
+            type: ItemType.LINK,
           },
           {
             path: '/theming',
             title: 'Theming',
-            type: 'link',
+            type: ItemType.LINK,
           },
         ],
       },
       {
         title: 'Head tags',
-        type: 'link',
+        type: ItemType.LINK,
         path: '/head-tags',
       },
       {
         title: 'Body tags',
-        type: 'link',
+        type: ItemType.LINK,
         path: '/body-tags',
       },
     ],
   },
   {
     title: '⚙️ Super long root heading that is very long',
-    type: 'menu',
+    type: ItemType.MENU,
     children: [
       {
         title: 'Verbose menu link that is extremely lengthy',
-        type: 'menu',
+        type: ItemType.MENU,
         children: [
           {
             path: '/lorem-ipsum',
             title: 'Lorem ipsum dolor sit amet consectatur',
-            type: 'link',
+            type: ItemType.LINK,
           },
           {
             path: '/theming',
             title: 'Theming',
-            type: 'link',
+            type: ItemType.LINK,
           },
         ],
       },
       {
         title: 'Head tags',
-        type: 'link',
+        type: ItemType.LINK,
         path: '/head-tags',
       },
       {
         title: 'Body tags',
-        type: 'link',
+        type: ItemType.LINK,
         path: '/body-tags',
       },
     ],
   },
 ];
 
-const findPaths = (pathItems) => pathItems.flatMap((item) => item.path || findPaths(item.children));
+const findPaths = (pathItems: Item[]) =>
+  // @ts-ignore
+  pathItems.flatMap((item: Item) => item.path || findPaths(item.children));
 const paths = findPaths(items);
 
-export const Basic = (args) => <TableOfContents {...args} />;
-Basic.args = { currentPath: paths[0], items };
+export const BasicFlat = (args: TableOfContentsProps) => <TableOfContents {...args} />;
+BasicFlat.args = {
+  currentPath: '/essentials',
+  items: [
+    {
+      title: '⭐️  Popular',
+      path: '/popular',
+      type: ItemType.LINK,
+    },
+    {
+      title: '🧩  Essentials',
+      path: '/essentials',
+      type: ItemType.LINK,
+    },
+    {
+      title: '🛠  Code',
+      path: '/code',
+      type: ItemType.LINK,
+    },
+    {
+      title: '⚡️  Data & state',
+      path: '/Data & state',
+      type: ItemType.LINK,
+    },
+    {
+      title: '💅  Style',
+      path: '/style',
+      type: ItemType.LINK,
+    },
+    {
+      title: '🎨  Design',
+      path: '/design',
+      type: ItemType.LINK,
+    },
+    {
+      title: '⚙️  Appearance',
+      path: '/appearance',
+      type: ItemType.LINK,
+    },
+    {
+      title: '🗄  Organize',
+      path: '/organize',
+      type: ItemType.LINK,
+    },
+  ],
+};
 
-export const NestedActivePath = Basic.bind();
+export const BasicNested = (args: TableOfContentsProps) => <TableOfContents {...args} />;
+BasicNested.args = { currentPath: paths[0], items };
+
+export const NestedActivePath = BasicNested.bind({});
 NestedActivePath.args = { currentPath: '/features-and-behavior', items };
 
-const addLinkWrappers = (itemsToCompose) =>
-  itemsToCompose.map((item) => {
-    if (item.type === 'link' || item.type === 'bullet-link')
+const addLinkWrappers = (itemsToCompose: Item[]): Item[] =>
+  itemsToCompose.map((item: Item) => {
+    if (item.type === ItemType.LINK || item.type === ItemType.BULLET_LINK)
       return { ...item, LinkWrapper: StoryLinkWrapper };
     if (item.children) return { ...item, children: addLinkWrappers(item.children) };
     return item;
   });
 const itemsWithLinkWrappers = addLinkWrappers(items);
-export const LinkWrappers = Basic.bind();
+export const LinkWrappers = BasicNested.bind({});
 LinkWrappers.args = { currentPath: paths[0], items: itemsWithLinkWrappers };
 
 export const WithOpenControls = () => (
