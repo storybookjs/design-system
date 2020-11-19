@@ -29,7 +29,6 @@ export interface FormErrorStateProps {
 }
 
 export interface PureFormErrorStateProps extends FormErrorStateProps {
-  hideErrorMessages?: boolean;
   primaryFieldId: string;
   onMouseEnter: (id: string) => void;
   onMouseLeave: (id: string) => void;
@@ -40,7 +39,6 @@ export interface PureFormErrorStateProps extends FormErrorStateProps {
 
 export const PureFormErrorState = ({
   children,
-  hideErrorMessages,
   onSubmit,
   onMouseEnter,
   onMouseLeave,
@@ -55,7 +53,7 @@ export const PureFormErrorState = ({
     onFocus: () => onFocus(id),
     onBlur: () => onBlur(id),
     error: (value: string) => getError({ id, value, validate }),
-    suppressErrorMessage: hideErrorMessages || !primaryFieldId || primaryFieldId !== id,
+    suppressErrorMessage: !primaryFieldId || primaryFieldId !== id,
   });
 
   return children({ getFormErrorFieldProps, onSubmit });

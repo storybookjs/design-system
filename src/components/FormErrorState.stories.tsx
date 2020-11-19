@@ -99,16 +99,3 @@ PureMultipleErrors.args = {
   blurredFieldIds: new Set(['input-1', 'input-2']),
   children: Children,
 };
-
-export const PureMultipleErrorsHiddenErrorMessages = (args: PureFormErrorStateProps) => (
-  <PureFormErrorState {...args} />
-);
-PureMultipleErrorsHiddenErrorMessages.decorators = decorators;
-PureMultipleErrorsHiddenErrorMessages.args = {
-  ...pureActions,
-  getError: (args: GetErrorArgs) => `There is an error with this field with value: "${args.value}"`,
-  primaryFieldId: 'input-2',
-  blurredFieldIds: new Set(['input-1', 'input-2']),
-  children: Children,
-  hideErrorMessages: true,
-};
