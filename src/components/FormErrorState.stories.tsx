@@ -89,7 +89,7 @@ export const PureMultipleErrors = (args: PureFormErrorStateProps) => (
 );
 PureMultipleErrors.decorators = [(storyFn: any) => <FormWrapper>{storyFn()}</FormWrapper>];
 PureMultipleErrors.args = {
-  ...makeActions('onFocus', 'onBlur', 'onMouseEnter', 'onMouseLeave'),
+  ...makeActions('onFocus', 'onBlur', 'onMouseEnter', 'onMouseLeave', 'trackErrors'),
   getError: (args: GetErrorArgs) => `There is an error with this field with value: "${args.value}"`,
   primaryFieldId: 'input-2',
   blurredFieldIds: new Set(['input-1', 'input-2']),
