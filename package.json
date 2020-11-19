@@ -85,6 +85,7 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "seedrandom": "^3.0.5",
     "sort-package-json": "^1.44.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5"
