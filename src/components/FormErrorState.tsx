@@ -29,17 +29,18 @@ export interface FormErrorStateProps {
 }
 
 export interface PureFormErrorStateProps extends FormErrorStateProps {
+  hideErrorMessages?: boolean;
   primaryFieldId: string;
   onMouseEnter: (id: string) => void;
   onMouseLeave: (id: string) => void;
   onFocus: (id: string) => void;
   onBlur: (id: string) => void;
   getError: (args: GetErrorArgs) => void;
-  trackErrors: Function;
 }
 
 export const PureFormErrorState = ({
   children,
+  hideErrorMessages,
   onSubmit,
   onMouseEnter,
   onMouseLeave,
@@ -47,15 +48,14 @@ export const PureFormErrorState = ({
   onFocus,
   getError,
   primaryFieldId,
-  trackErrors,
 }: PureFormErrorStateProps) => {
   const getFormErrorFieldProps = ({ id, validate }: GetFormErrorFieldPropsArgs) => ({
     onMouseEnter: () => onMouseEnter(id),
     onMouseLeave: () => onMouseLeave(id),
     onFocus: () => onFocus(id),
     onBlur: () => onBlur(id),
-    error: (value: string) => getError({ id, value, validate: trackErrors({ id, validate }) }),
-    suppressErrorMessage: !primaryFieldId || primaryFieldId !== id,
+    error: (value: string) => getError({ id, value, validate }),
+    suppressErrorMessage: hideErrorMessages || !primaryFieldId || primaryFieldId !== id,
   });
 
   return children({ getFormErrorFieldProps, onSubmit });
@@ -96,18 +96,16 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
     [onSubmit]
   );
 
-  const trackErrors = useCallback(
-    ({ id, validate }) => {
-      return (value: string) => {
-        const error = validate(value);
-        if (error) {
-          setErroredFieldIds(erroredFieldIds.add(id));
-        } else {
-          erroredFieldIds.delete(id);
-          setErroredFieldIds(erroredFieldIds);
-        }
-        return error;
-      };
+  const trackErrorsAndValidate = useCallback(
+    ({ id, validate, value }) => {
+      const error = validate(value);
+      if (error) {
+        setErroredFieldIds(erroredFieldIds.add(id));
+      } else {
+        erroredFieldIds.delete(id);
+        setErroredFieldIds(erroredFieldIds);
+      }
+      return error;
     },
     [setErroredFieldIds]
   );
@@ -119,7 +117,6 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
       {...rest}
       {...{
         primaryFieldId,
-        trackErrors,
         onSubmit: handleSubmit,
         onFocus: (id) => setFocusedFieldId(id),
         onBlur: (id) => {
@@ -138,7 +135,8 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
           setLastInteractionFieldId(hoveredFieldId);
           if (isErrorVisible(id)) setHoveredFieldId(undefined);
         },
-        getError: ({ id, value, validate }: GetErrorArgs) => isErrorVisible(id) && validate(value),
+        getError: ({ id, value, validate }: GetErrorArgs) =>
+          isErrorVisible(id) && trackErrorsAndValidate({ id, validate, value }),
       }}
     />
   );

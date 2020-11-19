@@ -78,20 +78,37 @@ const Children = ({ getFormErrorFieldProps }: FormErrorStateChildrenArgs) => {
   );
 };
 
+const decorators = [(storyFn: any) => <FormWrapper>{storyFn()}</FormWrapper>];
+
 export const Default = (args: FormErrorStateProps) => <FormErrorState {...args} />;
-Default.decorators = [(storyFn: any) => <FormWrapper>{storyFn()}</FormWrapper>];
+Default.decorators = decorators;
 Default.args = {
   children: Children,
 };
 
+const pureActions = makeActions('onFocus', 'onBlur', 'onMouseEnter', 'onMouseLeave', 'trackErrors');
+
 export const PureMultipleErrors = (args: PureFormErrorStateProps) => (
   <PureFormErrorState {...args} />
 );
-PureMultipleErrors.decorators = [(storyFn: any) => <FormWrapper>{storyFn()}</FormWrapper>];
+PureMultipleErrors.decorators = decorators;
 PureMultipleErrors.args = {
-  ...makeActions('onFocus', 'onBlur', 'onMouseEnter', 'onMouseLeave', 'trackErrors'),
+  ...pureActions,
   getError: (args: GetErrorArgs) => `There is an error with this field with value: "${args.value}"`,
   primaryFieldId: 'input-2',
   blurredFieldIds: new Set(['input-1', 'input-2']),
   children: Children,
+};
+
+export const PureMultipleErrorsHiddenErrorMessages = (args: PureFormErrorStateProps) => (
+  <PureFormErrorState {...args} />
+);
+PureMultipleErrorsHiddenErrorMessages.decorators = decorators;
+PureMultipleErrorsHiddenErrorMessages.args = {
+  ...pureActions,
+  getError: (args: GetErrorArgs) => `There is an error with this field with value: "${args.value}"`,
+  primaryFieldId: 'input-2',
+  blurredFieldIds: new Set(['input-1', 'input-2']),
+  children: Children,
+  hideErrorMessages: true,
 };
