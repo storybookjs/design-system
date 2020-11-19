@@ -66,9 +66,9 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
   ...rest
 }) => {
   const [focusedFieldId, setFocusedFieldId] = useState(undefined);
-  // The lastFocusedFieldId is used to control error messaging for fields that
+  // The lastInteractionFieldId is used to control error messaging for fields that
   // are not active, but had an error after a recent focus.
-  const [lastFocusedFieldId, setLastFocusedFieldId] = useState(undefined);
+  const [lastInteractionFieldId, setLastInteractionFieldId] = useState(undefined);
   const [hoveredFieldId, setHoveredFieldId] = useState(undefined);
   // The primary field is the field that's visual cues take precedence over any
   // others given the entire form's focused & hover states.
@@ -82,7 +82,7 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
     if (hoveredFieldId) setPrimaryFieldId(hoveredFieldId);
     else if (focusedFieldId && erroredFieldIds.has(focusedFieldId))
       setPrimaryFieldId(focusedFieldId);
-    else if (erroredFieldIds.size > 0) setPrimaryFieldId(lastFocusedFieldId);
+    else if (erroredFieldIds.size > 0) setPrimaryFieldId(lastInteractionFieldId);
     else if (focusedFieldId) setPrimaryFieldId(focusedFieldId);
     else setPrimaryFieldId(undefined);
   }, [focusedFieldId, hoveredFieldId, setPrimaryFieldId]);
@@ -124,7 +124,7 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
         onFocus: (id) => setFocusedFieldId(id),
         onBlur: (id) => {
           setBlurredFieldIds(blurredFieldIds.add(id));
-          setLastFocusedFieldId(focusedFieldId);
+          setLastInteractionFieldId(focusedFieldId);
           setFocusedFieldId(undefined);
         },
         onMouseEnter: (id) => {
@@ -135,6 +135,7 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
           if (isErrorVisible(id)) setHoveredFieldId(id);
         },
         onMouseLeave: (id) => {
+          setLastInteractionFieldId(hoveredFieldId);
           if (isErrorVisible(id)) setHoveredFieldId(undefined);
         },
         getError: ({ id, value, validate }: GetErrorArgs) => isErrorVisible(id) && validate(value),
