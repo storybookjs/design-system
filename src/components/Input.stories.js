@@ -9,7 +9,7 @@ import { Link } from './Link';
 const onChange = action('change');
 
 export default {
-  title: 'Design System/forms/Input',
+  title: 'forms/Input',
   component: UnstyledInput,
 };
 

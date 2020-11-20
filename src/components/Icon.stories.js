@@ -49,11 +49,11 @@ const List = styled.ul`
 `;
 
 export default {
-  title: 'Design System/Icon',
+  title: 'Icon',
   component: Icon,
 };
 
-export const Basic = args => <Icon {...args} />;
+export const Basic = (args) => <Icon {...args} />;
 Basic.args = { icon: 'watch' };
 
 export const Labels = () => (

@@ -7,7 +7,7 @@ seedrandom('chromatic testing', { global: true });
 
 export default {
   component: TagItem,
-  title: 'Design System/Tag/TagItem',
+  title: 'Tag/TagItem',
 };
 
 export const Default = () => <TagItem>⚛️ React</TagItem>;

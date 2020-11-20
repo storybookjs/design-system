@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 
 import { ClipboardCode } from './ClipboardCode';
 
 export default {
-  title: 'Design System/Clipboard/ClipboardCode',
+  title: 'Clipboard/ClipboardCode',
 };
 
 export const Default = () => (

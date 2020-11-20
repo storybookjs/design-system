@@ -10,7 +10,7 @@ seedrandom('chromatic testing', { global: true });
 export default {
   component: TagList,
   excludeStories: /.*Data$/,
-  title: 'Design System/Tag/TagList',
+  title: 'Tag/TagList',
 };
 
 export const mockTagsData = [

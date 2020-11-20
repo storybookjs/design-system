@@ -13,7 +13,7 @@ import safariImg from '../images/safari.svg';
 const onSelectIndex = action('onSelectIndex');
 
 export default {
-  title: 'Design System/ButtonToggle',
+  title: 'ButtonToggle',
 };
 
 export const OutlineButtonsSmall = () => {

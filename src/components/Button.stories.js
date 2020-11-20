@@ -7,7 +7,7 @@ import { Icon } from './Icon';
 import { StoryLinkWrapper } from './StoryLinkWrapper';
 
 export default {
-  title: 'Design System/Button',
+  title: 'Button',
   component: Button,
 };
 

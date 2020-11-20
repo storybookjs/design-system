@@ -6,11 +6,11 @@ import { Radio } from './Radio';
 const onChange = action('change');
 
 export default {
-  title: 'Design System/forms/Radio',
+  title: 'forms/Radio',
   component: Radio,
 };
 
-export const Basic = args => <Radio {...args} />;
+export const Basic = (args) => <Radio {...args} />;
 Basic.args = { label: 'label', hideLabel: false };
 
 export const All = () => (

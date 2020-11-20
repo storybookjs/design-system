@@ -6,11 +6,11 @@ import { Checkbox } from './Checkbox';
 const onChange = action('change');
 
 export default {
-  title: 'Design System/forms/Checkbox',
+  title: 'forms/Checkbox',
   component: Checkbox,
 };
 
-export const Basic = args => <Checkbox {...args} />;
+export const Basic = (args) => <Checkbox {...args} />;
 Basic.args = { label: 'Basic', hideLabel: false };
 
 export const All = () => (

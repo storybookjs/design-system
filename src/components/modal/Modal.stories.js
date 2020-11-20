@@ -9,7 +9,7 @@ export const actions = {
 };
 
 export default {
-  title: 'Design System/modal/Modal',
+  title: 'modal/Modal',
   component: Modal,
   decorators: [
     (storyFn) => (

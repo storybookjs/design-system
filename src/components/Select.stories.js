@@ -6,11 +6,11 @@ import { Select } from './Select';
 const onChange = action('change');
 
 export default {
-  title: 'Design System/forms/Select',
+  title: 'forms/Select',
   component: Select,
 };
 
-export const Basic = args => <Select {...args} />;
+export const Basic = (args) => <Select {...args} />;
 Basic.args = {
   value: 'value1',
   options: [

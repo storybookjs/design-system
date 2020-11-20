@@ -27,7 +27,7 @@ const ModalContents = ({ onClose }) => (
 );
 
 export default {
-  title: 'Design System/modal/WithModal',
+  title: 'modal/WithModal',
   decorators: [
     (storyFn) => (
       <div style={{ width: '1200px', height: '800px', background: 'purple', color: 'white' }}>

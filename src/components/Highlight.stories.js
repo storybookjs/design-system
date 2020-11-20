@@ -102,7 +102,7 @@ export const test = () => &#x3C;Derp prop="test" />
 const markdownCodeWithWrappers = `<pre class="language-markdown"><code class="language-markdown">${markdownCode}</code></pre>`;
 
 export default {
-  title: 'Design System/Highlight',
+  title: 'Highlight',
   component: Highlight,
   excludeStories: ['javascriptCodeWithWrappers', 'typescriptCodeWithWrappers'],
 };

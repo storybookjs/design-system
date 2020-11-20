@@ -3,7 +3,7 @@ import { Badge } from './Badge';
 import { Icon } from './Icon';
 
 export default {
-  title: 'Design System/Badge',
+  title: 'Badge',
   component: Badge,
 };
 

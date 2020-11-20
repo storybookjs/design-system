@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ItemLink } from './ItemLink';
 
 export default {
-  title: 'Design System/TableOfContents/ItemLink',
+  title: 'TableOfContents/ItemLink',
   component: ItemLink,
   parameters: { chromatic: { disable: true } },
 };

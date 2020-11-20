@@ -37,7 +37,7 @@ const snippets = [
 export default {
   component: CodeSnippets,
   decorators: [(story) => <Wrapper>{story()}</Wrapper>],
-  title: 'Design System/CodeSnippets',
+  title: 'CodeSnippets',
 };
 
 const Story = (args) => <CodeSnippets {...args} />;

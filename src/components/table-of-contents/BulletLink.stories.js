@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BulletLink } from './BulletLink';
 
 export default {
-  title: 'Design System/TableOfContents/BulletLink',
+  title: 'TableOfContents/BulletLink',
   component: BulletLink,
   parameters: { chromatic: { disable: true } },
 };

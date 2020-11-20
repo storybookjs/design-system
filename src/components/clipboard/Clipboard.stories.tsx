@@ -5,7 +5,7 @@ import { Clipboard } from './Clipboard';
 import { TooltipNote } from '../tooltip/TooltipNote';
 
 export default {
-  title: 'Design System/Clipboard/Clipboard',
+  title: 'Clipboard/Clipboard',
   decorators: [(storyFn: any) => <div style={{ padding: '3em' }}>{storyFn()}</div>],
 };
 

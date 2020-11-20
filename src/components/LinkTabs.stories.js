@@ -10,7 +10,7 @@ const items = [
 ];
 
 export default {
-  title: 'Design System/LinkTabs',
+  title: 'LinkTabs',
 };
 
 export const Default = () => <LinkTabs items={items} onSelect={action('select')} />;
