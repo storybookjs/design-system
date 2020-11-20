@@ -13,11 +13,12 @@ const Label = styled.label`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
   font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
+  line-height: ${props => props.appearance === 'code' ? 16 : 20 }px;
 `;
 
 // prettier-ignore
 const LabelWrapper = styled.div`
-  margin-bottom: 0.33em;
+  margin-bottom: 8px;
   
   ${props => props.hideLabel && css`
     border: 0px !important;
@@ -106,7 +107,7 @@ const InputWrapper = styled.div`
     font-family: ${props => props.appearance === 'code' && typography.type.code };
     font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
     line-height: 20px;
-    padding: .715em 1em; //40
+    padding: 10px 15px; //40px tall
 
     &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
 
@@ -128,7 +129,7 @@ const InputWrapper = styled.div`
     ${props => props.appearance === 'pill' && css`
       font-size: ${typography.size.s1}px;
       line-height: 16px;
-      padding: .5em 1em; //28
+      padding: 6px 12px; //28px tall
       border-radius: 3em;
       background: transparent;
 
@@ -151,7 +152,7 @@ const InputWrapper = styled.div`
 
   ${props => props.startingType === 'password' && css`
     ${InputEl} {
-      padding-right: 3.8em;
+      padding-right: 52px;
     }
   `}
 
@@ -160,15 +161,15 @@ const InputWrapper = styled.div`
       transition: all 150ms ease-out;
       position: absolute;
       top: 50%;
+      font-size: ${props.appearance === 'pill' ? '12px' : '14px'};
       height: 1em;
       width: 1em;
-      font-size: ${props.appearance === 'pill' ? '0.75em' : '0.875em'};
       margin-top: -.525em;
       z-index: 3;
       ${props.appearance === 'pill' ? css`
-        left: 0.8em;
+        left: 10px;
       ` : css `
-        left: ${props.appearance === 'tertiary' ? 0 : 1.07 }em;
+        left: ${props.appearance === 'tertiary' ? 0 : `15px` };
       `}
 
       background: transparent;
@@ -184,10 +185,10 @@ const InputWrapper = styled.div`
     }
 
     ${InputEl} {
-      padding-left: 2.78em;
+      padding-left: 40px;
 
-      ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
-      ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
+      ${props.appearance === 'pill' && css` padding-left: 30px; `};
+      ${props.appearance === 'tertiary' && css` padding-left: 25px; `};
     }
   `}
 
