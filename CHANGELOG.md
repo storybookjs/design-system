@@ -1,3 +1,33 @@
+# v5.2.0 (Fri Nov 20 2020)
+
+#### 🚀 Enhancement
+
+- Input styling changes, Form component addition [#216](https://github.com/storybookjs/design-system/pull/216) ([@kylesuss](https://github.com/kylesuss) [@winkerVSbecks](https://github.com/winkerVSbecks))
+- Add ButtonToggle [#224](https://github.com/storybookjs/design-system/pull/224) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- TagItem and TagList components [#212](https://github.com/storybookjs/design-system/pull/212) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Clipboard components [#222](https://github.com/storybookjs/design-system/pull/222) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### 🐛 Bug Fix
+
+- Add hoverable effect to shared styles [#223](https://github.com/storybookjs/design-system/pull/223) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- add the outline icon [#219](https://github.com/storybookjs/design-system/pull/219) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Convert Link to TS [#215](https://github.com/storybookjs/design-system/pull/215) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Fix Loading AvatarList Not Showing in Stories [#214](https://github.com/storybookjs/design-system/pull/214) ([@ahmadatallah](https://github.com/ahmadatallah) [@kylesuss](https://github.com/kylesuss))
+- remove extra space around the github button [#213](https://github.com/storybookjs/design-system/pull/213) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### 🔩 Dependency Updates
+
+- Upgrade to 6.1 [#220](https://github.com/storybookjs/design-system/pull/220) ([@shilman](https://github.com/shilman))
+
+#### Authors: 4
+
+- Ahmad Atallah ([@ahmadatallah](https://github.com/ahmadatallah))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+- Michael Shilman ([@shilman](https://github.com/shilman))
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.1.27 (Tue Oct 13 2020)
 
 #### 🐛 Bug Fix
