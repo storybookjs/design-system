@@ -12,9 +12,7 @@
     "email": "michael@lab80.co"
   },
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "build-storybook --docs",
@@ -26,22 +24,6 @@
     "lint:package": "sort-package-json",
     "release": "dotenv yarn build && auto shipit",
     "storybook": "start-storybook -p 6006"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.html": [
-      "yarn lint:js --fix"
-    ],
-    "*.js": [
-      "yarn lint:js --fix"
-    ],
-    "package.json": [
-      "yarn lint:package"
-    ]
   },
   "dependencies": {
     "copy-to-clipboard": "^3.3.1",
@@ -102,10 +84,7 @@
     "npm": ">=5"
   },
   "auto": {
-    "plugins": [
-      "npm",
-      "released"
-    ]
+    "plugins": ["npm", "released"]
   },
   "collective": {
     "type": "opencollective",
