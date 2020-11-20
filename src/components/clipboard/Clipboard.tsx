@@ -67,8 +67,8 @@ export const Clipboard = ({
 
 Clipboard.defaultProps = {
   copyOptions: undefined,
-  renderCopiedTooltip: () => {},
-  renderUncopiedTooltip: () => {},
+  renderCopiedTooltip: () => <TooltipNote note="Copied" />,
+  renderUncopiedTooltip: () => <TooltipNote note="Copy to clipboard" />,
   resetTimeout: 3000,
   toCopy: undefined,
   getCopyContent: () => '',
