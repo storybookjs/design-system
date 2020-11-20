@@ -3,7 +3,7 @@ import { TableOfContents } from './TableOfContents';
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
-  title: 'Design System/TableOfContents',
+  title: 'TableOfContents',
   component: TableOfContents,
   decorators: [
     (storyFn) => <div style={{ width: 240, outline: '1px dotted grey' }}>{storyFn()}</div>,

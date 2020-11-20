@@ -13,7 +13,7 @@ const ctaAction = <Button appearance="secondary">Continue</Button>;
 export default {
   component: ShadowBoxCTA,
   decorators: [(story) => <Wrapper>{story()}</Wrapper>],
-  title: 'Design System/ShadowBoxCTA',
+  title: 'ShadowBoxCTA',
 };
 
 const Story = (args) => <ShadowBoxCTA {...args} />;

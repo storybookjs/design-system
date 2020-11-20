@@ -4,7 +4,7 @@ import { Icon } from '../Icon';
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
-  title: 'Design System/tooltip/ListItem',
+  title: 'tooltip/ListItem',
   decorators: [
     (storyFn) => (
       <div style={{ width: 200, border: '1px solid #ddd', margin: '3rem' }}>{storyFn()}</div>
@@ -13,7 +13,7 @@ export default {
   component: ListItem,
 };
 
-export const Default = args => <ListItem {...args} />;
+export const Default = (args) => <ListItem {...args} />;
 Default.args = { title: 'Default' };
 
 export const All = () => (

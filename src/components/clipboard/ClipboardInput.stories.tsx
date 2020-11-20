@@ -3,7 +3,7 @@ import React from 'react';
 import { ClipboardInput } from './ClipboardInput';
 
 export default {
-  title: 'Design System/Clipboard/ClipboardInput',
+  title: 'Clipboard/ClipboardInput',
 };
 
 export const Default = () => (

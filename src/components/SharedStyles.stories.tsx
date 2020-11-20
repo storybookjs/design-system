@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { pageMargins, hoverEffect } from './shared/styles';
 
 export default {
-  title: 'Design System/SharedStyles',
+  title: 'SharedStyles',
 };
 
 const BlockWithMargin = styled.div`

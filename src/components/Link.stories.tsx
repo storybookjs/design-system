@@ -16,7 +16,7 @@ const CustomLink = styled(Link)`
 const onLinkClick = action('onLinkClick');
 
 export default {
-  title: 'Design System/Link',
+  title: 'Link',
   component: Link,
 };
 

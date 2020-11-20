@@ -9,7 +9,7 @@ seedrandom('chromatic testing', { global: true });
 
 export default {
   component: TagLink,
-  title: 'Design System/Tag/TagLink',
+  title: 'Tag/TagLink',
 };
 
 export const Default = () => <TagLink href="https://chromatic.com">⚛️ React</TagLink>;

@@ -16,7 +16,7 @@ import { Icon } from '../Icon';
 import { StoryLinkWrapper } from '../StoryLinkWrapper';
 
 export default {
-  title: 'Design System/Header',
+  title: 'Header',
   component: Header,
   subcomponents: { NavLink, NavItem },
   parameters: { layout: 'fullscreen' },

@@ -3,7 +3,7 @@ import React from 'react';
 import { ClipboardIcon } from './ClipboardIcon';
 
 export default {
-  title: 'Design System/Clipboard/ClipboardIcon',
+  title: 'Clipboard/ClipboardIcon',
 };
 
 export const Default = () => (

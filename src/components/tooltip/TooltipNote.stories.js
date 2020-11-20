@@ -4,7 +4,7 @@ import WithTooltip from './WithTooltip';
 import { TooltipNote } from './TooltipNote';
 
 export default {
-  title: 'Design System/tooltip/TooltipNote',
+  title: 'tooltip/TooltipNote',
 
   decorators: [
     (storyFn) => (

@@ -6,7 +6,7 @@ import { Textarea } from './Textarea';
 const onChange = action('change');
 
 export default {
-  title: 'Design System/forms/Textarea',
+  title: 'forms/Textarea',
   component: Textarea,
 };
 

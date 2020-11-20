@@ -26,7 +26,7 @@ export const users = [
 ];
 
 export default {
-  title: 'Design System/AvatarList',
+  title: 'AvatarList',
   component: AvatarList,
   parameters: {
     subcomponents: { Avatar },
