@@ -41,6 +41,7 @@ const Children = ({
   const [input1Value, setInput1Value] = useState('');
   const [input2Value, setInput2Value] = useState('');
   return (
+    // @ts-ignore
     <form onSubmit={handleSubmit}>
       <Input
         id="input-1"
