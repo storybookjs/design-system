@@ -1,3 +1,20 @@
+# v5.2.1 (Fri Nov 20 2020)
+
+#### 🐛 Bug Fix
+
+- Hardcode input sizes in pixels [#227](https://github.com/storybookjs/design-system/pull/227) ([@domyen](https://github.com/domyen))
+
+#### 🔩 Dependency Updates
+
+- Upgrade to SB6.1 final [#225](https://github.com/storybookjs/design-system/pull/225) ([@shilman](https://github.com/shilman))
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Michael Shilman ([@shilman](https://github.com/shilman))
+
+---
+
 # v5.2.0 (Fri Nov 20 2020)
 
 #### 🚀 Enhancement
