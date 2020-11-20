@@ -20,6 +20,10 @@ const ButtonContainer = styled.button`
   text-decoration: none;
 `;
 
+const StyledTooltip = styled(Tooltip)`
+  ${(props) => !props.hasTooltipContent && `display: none;`}
+`;
+
 const isDescendantOfAction = (element) => {
   const { parentElement } = element;
 
@@ -35,7 +39,7 @@ const isDescendantOfAction = (element) => {
 };
 
 const AsComponent = React.forwardRef(
-  ({ tagName, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
+  ({ tabIndex, tagName, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
     const Component = tagName || ButtonContainer;
     const asProps = {
       ref,
@@ -63,7 +67,7 @@ const AsComponent = React.forwardRef(
 
     // for non button component, we need to simulate the same behavior as a button
     if (tagName) {
-      asProps.tabIndex = 0;
+      asProps.tabIndex = tabIndex || 0;
       asProps.onKeyDown = onKeyDown;
     }
     return <Component {...asProps} />;
@@ -71,6 +75,7 @@ const AsComponent = React.forwardRef(
 );
 
 AsComponent.propTypes = {
+  tabIndex: PropTypes.number,
   tagName: PropTypes.string,
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
@@ -78,6 +83,7 @@ AsComponent.propTypes = {
 };
 
 AsComponent.defaultProps = {
+  tabIndex: undefined,
   tagName: undefined,
   onClick: undefined,
   onMouseEnter: undefined,
@@ -130,7 +136,7 @@ function WithTooltip({
         arrowRef,
         placement: tooltipPlacement,
       }) => (
-        <Tooltip
+        <StyledTooltip
           hasChrome={hasChrome}
           placement={tooltipPlacement}
           tooltipRef={tooltipRef}
@@ -140,9 +146,10 @@ function WithTooltip({
           {...getTooltipProps()}
           id={id}
           role="tooltip"
+          hasTooltipContent={!!tooltip}
         >
           {typeof tooltip === 'function' ? tooltip({ onHide: closeTooltip }) : tooltip}
-        </Tooltip>
+        </StyledTooltip>
       )}
     >
       {({ getTriggerProps, triggerRef }) => (
@@ -169,7 +176,7 @@ WithTooltip.propTypes = {
   placement: PropTypes.string,
   modifiers: PropTypes.shape({}),
   hasChrome: PropTypes.bool,
-  tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node.isRequired,
   startOpen: PropTypes.bool,
   delayHide: PropTypes.number,
@@ -181,6 +188,7 @@ WithTooltip.defaultProps = {
   closeOnClick: false,
   placement: 'top',
   modifiers: {},
+  tooltip: undefined,
   hasChrome: true,
   startOpen: false,
   delayHide: 100,

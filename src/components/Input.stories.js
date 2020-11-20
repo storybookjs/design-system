@@ -1,17 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
+import styled from 'styled-components';
 
-import { Input } from './Input';
+import { Input as UnstyledInput, PureInput as UnstyledPureInput } from './Input';
+import { Link } from './Link';
 
 const onChange = action('change');
 
 export default {
   title: 'Design System/forms/Input',
-  component: Input,
+  component: UnstyledInput,
 };
 
-export const Basic = args => <Input {...args} />;
+export const Basic = (args) => <Input {...args} />;
 Basic.args = {
+  id: 'Basic',
   label: 'label',
   value: 'value',
   appearance: 'pill',
@@ -19,72 +23,44 @@ Basic.args = {
   hideLabel: false,
 };
 
-export const All = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
-    <Input id="Default" value="Default" label="Email" hideLabel icon="email" onChange={onChange} />
-    <Input
-      id="Secondary"
-      value="Secondary"
-      label="Email"
-      hideLabel
-      icon="email"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="Secondary-with-label"
-      value="Secondary"
-      label="Label secondary"
-      icon="email"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="Tertiary"
-      value="Tertiary"
-      label="Email"
-      hideLabel
-      icon="email"
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Pill"
-      value="Pill"
-      label="Search"
-      hideLabel
-      icon="search"
-      appearance="pill"
-      onChange={onChange}
-    />
-    <Input id="Code" value="Code" label="Code" hideLabel appearance="code" onChange={onChange} />
-    <Input
-      id="Code-horizontal"
-      value="Code"
-      appearance="code"
-      orientation="horizontal"
-      onChange={onChange}
-      label="horizontal"
-    />
-    <Input
-      id="Code-secondary-horizontal"
-      value="Code"
-      appearance="secondary"
-      orientation="horizontal"
-      onChange={onChange}
-      label="horizontal"
-    />
-  </form>
-);
+const Form = styled.form`
+  padding: 3em 12em;
+`;
 
-export const Default = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
+const DarkForm = styled(Form)`
+  background: #eeeeee;
+`;
+
+const Input = styled(UnstyledInput)`
+  padding-top: 1em;
+`;
+
+const PureInput = styled(UnstyledPureInput)`
+  padding-top: 1em;
+`;
+
+const ErrorInput = styled(Input)`
+  padding-top: 2em;
+`;
+
+const All = ({ appearance }) => (
+  <>
     <Input
       id="Placeholder"
       label="Input with placeholder"
       hideLabel
       placeholder="Placeholder"
       onChange={onChange}
+      appearance={appearance}
+    />
+    <Input
+      id="Focused"
+      label="Focused input"
+      hideLabel
+      placeholder="Focused"
+      onChange={onChange}
+      appearance={appearance}
+      startFocused
     />
     <Input
       id="With-value"
@@ -92,6 +68,7 @@ export const Default = () => (
       label="Input with value"
       hideLabel
       onChange={onChange}
+      appearance={appearance}
     />
     <Input
       id="Disabled"
@@ -100,6 +77,7 @@ export const Default = () => (
       hideLabel
       disabled
       onChange={onChange}
+      appearance={appearance}
     />
     <Input
       id="Icon"
@@ -108,132 +86,140 @@ export const Default = () => (
       hideLabel
       icon="email"
       onChange={onChange}
+      appearance={appearance}
     />
     <Input
+      id="Password"
+      value="Password"
+      label="Password input"
+      type="password"
+      hideLabel
+      icon="key"
+      onChange={onChange}
+      appearance={appearance}
+    />
+    <PureInput
+      id="Password-visible"
+      value="Password visible (PureInput)"
+      label="Password input with visible password"
+      type="text"
+      startingType="password"
+      onActionClick={(e) => e.preventDefault()}
+      hideLabel
+      icon="key"
+      onChange={onChange}
+      appearance={appearance}
+    />
+    <ErrorInput
       id="Error"
       label="Input with error"
       hideLabel
       placeholder="Error"
       error="There's a snake in my boots"
       onChange={onChange}
+      appearance={appearance}
     />
-    <Input
-      id="Error with icon"
+    <ErrorInput
+      id="Error-links"
+      label="Input with error and links"
+      hideLabel
+      placeholder="Error"
+      error={
+        <div>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          This is an error with a <Link>link</Link> in it
+        </div>
+      }
+      onChange={onChange}
+      appearance={appearance}
+    />
+    <ErrorInput
+      id="Error-icon"
       label="Input with error and icon"
       hideLabel
       placeholder="Error with icon"
       icon="email"
       error="There's a snake in my boots"
       onChange={onChange}
+      appearance={appearance}
     />
-  </form>
+  </>
+);
+
+All.propTypes = {
+  appearance: PropTypes.string,
+};
+
+All.defaultProps = {
+  appearance: undefined,
+};
+
+export const Default = () => (
+  <DarkForm>
+    <All />
+  </DarkForm>
 );
 
 export const Secondary = () => (
-  <form style={{ background: '#fff', padding: '3em' }}>
-    <Input
-      id="Placeholder"
-      label="Input with placeholder"
-      hideLabel
-      placeholder="Placeholder"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="With-value"
-      value="With value"
-      label="Input with value"
-      hideLabel
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="Disabled"
-      value="Disabled"
-      label="Disabled input"
-      hideLabel
-      disabled
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="Icon"
-      value="Icon"
-      label="Input with icon"
-      hideLabel
-      icon="email"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="Error"
-      label="Input with error"
-      hideLabel
-      placeholder="Error"
-      error="There's a snake in my boots"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
-      id="With-label"
-      value="With value"
-      label="Label secondary"
-      appearance="secondary"
-      onChange={onChange}
-    />
-  </form>
+  <Form>
+    <All appearance="secondary" />
+  </Form>
 );
 
 export const Tertiary = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
-    <Input
-      id="Placeholder"
-      label="Input with placeholder"
-      hideLabel
-      placeholder="Placeholder"
-      appearance="tertiary"
+  <DarkForm>
+    <All appearance="tertiary" />
+  </DarkForm>
+);
+
+export const Stacked = () => (
+  <Form>
+    <UnstyledInput
+      id="stacked-1"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="top"
       onChange={onChange}
-    />
-    <Input
-      id="With-value"
-      value="With value"
-      label="Input with value"
-      hideLabel
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Disabled"
-      value="Disabled"
-      label="Disabled input"
-      hideLabel
-      disabled
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Icon"
-      value="Icon"
-      label="Input with icon"
-      hideLabel
-      icon="email"
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Error"
-      label="Input with error"
-      hideLabel
-      placeholder="Error"
       error="There's a snake in my boots"
-      appearance="tertiary"
-      onChange={onChange}
+      appearance="secondary"
     />
-  </form>
+    <UnstyledInput
+      id="stacked-2"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="middle"
+      hideLabel
+      startFocused
+      onChange={onChange}
+      icon="key"
+      type="password"
+      appearance="secondary"
+    />
+    <UnstyledInput
+      id="stacked-3"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="middle"
+      hideLabel
+      onChange={onChange}
+      appearance="secondary"
+    />
+    <UnstyledInput
+      id="stacked-4"
+      value="Stacked"
+      label="Stacked"
+      stackLevel="bottom"
+      hideLabel
+      onChange={onChange}
+      icon="key"
+      error="There's a snake in my boots"
+      appearance="secondary"
+    />
+  </Form>
 );
 
 export const Pill = () => (
-  <Input
+  <UnstyledInput
     id="Pill"
     value="Pill"
     label="Search"
@@ -245,7 +231,7 @@ export const Pill = () => (
 );
 
 export const Code = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
+  <Form>
     <Input
       id="Code-placeholder"
       placeholder="Code placeholder"
@@ -273,5 +259,5 @@ export const Code = () => (
       onChange={onChange}
       label="horizontal"
     />
-  </form>
+  </Form>
 );

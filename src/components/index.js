@@ -16,6 +16,7 @@ export * from './Subheading';
 export * from './ProgressDots';
 export * from './Spinner';
 
+export * from './FormErrorState';
 export * from './Input';
 export * from './Textarea';
 export * from './Checkbox';

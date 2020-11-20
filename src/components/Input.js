@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useCallback, useRef, useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
+import { Link } from './Link';
+import WithTooltip from './tooltip/WithTooltip';
+import { TooltipMessage } from './tooltip/TooltipMessage';
 
 // prettier-ignore
 const Label = styled.label`
@@ -31,10 +34,9 @@ const LabelWrapper = styled.div`
 `;
 
 // prettier-ignore
-const InputText = styled.input.attrs({ type: 'text' })`
+const InputEl = styled.input`
   ::placeholder {
     color: ${color.mediumdark};
-    font-weight: ${typography.weight.bold};
   }
   appearance: none;
   border:none;
@@ -52,10 +54,42 @@ const InputText = styled.input.attrs({ type: 'text' })`
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
 `;
 
-const Error = styled.div`
-  position: absolute;
-  right: 0;
-`;
+const getStackLevelStyling = (props) => {
+  const radius = 4;
+  const stackLevelDefinedStyling = css`
+    position: relative;
+    ${props.error && `z-index: 1;`}
+
+    &:focus {
+      z-index: 2;
+    }
+  `;
+  switch (props.stackLevel) {
+    case 'top':
+      return css`
+        border-top-left-radius: ${radius}px;
+        border-top-right-radius: ${radius}px;
+        ${stackLevelDefinedStyling}
+      `;
+    case 'middle':
+      return css`
+        border-radius: 0px;
+        margin-top: -1px;
+        ${stackLevelDefinedStyling}
+      `;
+    case 'bottom':
+      return css`
+        border-bottom-left-radius: ${radius}px;
+        border-bottom-right-radius: ${radius}px;
+        margin-top: -1px;
+        ${stackLevelDefinedStyling}
+      `;
+    default:
+      return css`
+        border-radius: ${radius}px;
+      `;
+  }
+};
 
 // prettier-ignore
 const InputWrapper = styled.div`
@@ -64,9 +98,10 @@ const InputWrapper = styled.div`
   vertical-align: top;
   width: 100%;
 
-  ${InputText} {
+  ${InputEl} {
+    position: relative;
+    ${props => getStackLevelStyling(props)}
     background: ${color.lightest};
-    border-radius: 0;
     color: ${color.darkest};
     font-family: ${props => props.appearance === 'code' && typography.type.code };
     font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
@@ -76,7 +111,7 @@ const InputWrapper = styled.div`
     &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
 
     ${props => props.appearance === 'secondary' && css`
-      box-shadow: ${color.mediumlight} 0 0 0 1px inset;
+      box-shadow: ${color.border} 0 0 0 1px inset;
 
       &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
     `}
@@ -114,33 +149,11 @@ const InputWrapper = styled.div`
     `}
   }
 
-  ${Error} {
-    position: absolute;
-    top: 50%;
-    right: 1px;
-    margin-left: 1px;
-    transform: translate3d(100%, -50%, 0);
-    transition: all 200ms ease-out;
-    font-family: ${props => props.appearance === 'code' ? typography.type.code : typography.type.primary } ;
-    font-size: ${typography.size.s1}px;
-    line-height: 1em;
-    opacity: 0;
-    pointer-events: none;
-
-    background: ${props =>
-      props.appearance !== 'tertiary' &&
-       'rgba(255,255,255,.9)' };
-    color: ${color.negative};
-
-    ${props => props.appearance === 'tertiary' && css` right: 0; `}
-    ${props => props.appearance === 'code' && css`
-      top: -4px;
-      right: auto;
-      left: 0;
-      border-radius: ${spacing.borderRadius.small}px;
-      padding: 6px;
-    `}
-  }
+  ${props => props.startingType === 'password' && css`
+    ${InputEl} {
+      padding-right: 3.8em;
+    }
+  `}
 
   ${props => props.icon && css`
     > svg {
@@ -149,9 +162,14 @@ const InputWrapper = styled.div`
       top: 50%;
       height: 1em;
       width: 1em;
-  		font-size: ${props.appearance === 'pill' ? 0.75 : 1 }em;
-  		margin-top: -.5em;
-  		z-index: 1;
+      font-size: ${props.appearance === 'pill' ? '0.75em' : '0.875em'};
+      margin-top: -.525em;
+      z-index: 3;
+      ${props.appearance === 'pill' ? css`
+        left: 0.8em;
+      ` : css `
+        left: ${props.appearance === 'tertiary' ? 0 : 1.07 }em;
+      `}
 
       background: transparent;
 
@@ -161,57 +179,21 @@ const InputWrapper = styled.div`
       }
     }
 
-    ${InputText}:focus + svg path {
+    ${InputEl}:focus + svg path {
       fill: ${color.darker};
     }
 
-    ${InputText} {
-      padding-left: 2.75em;
+    ${InputEl} {
+      padding-left: 2.78em;
 
       ${props.appearance === 'pill' && css` padding-left: 2.4em; `};
       ${props.appearance === 'tertiary' && css` padding-left: 1.75em; `};
     }
-    > svg { left: ${props.appearance === 'tertiary' ? 0 : 0.8 }em; }
-
   `}
 
   ${props => props.error && css`
-    ${Error} {
-      color: ${color.negative};
-      background: none;
-      transform: translate3d(0%, -50%, 0);
-      opacity: 1;
-      padding: .25em 1.25em .25em .5em;
-    }
-
-    ${InputText}:hover + ${Error},
-    ${InputText}:focus + ${Error} {
-      opacity: 0;
-      transform: translate3d(100%, -50%, 0);
-      padding: 0;
-    }
-
-    ${props.focused && css`
-      ${Error} {
-        opacity: 0;
-        transform: translate3d(100%, -50%, 0);
-      }
-    `}
-
-    ${props.appearance === 'code' && css`
-      ${Error} {
-        opacity: 0;
-      }
-      ${InputText}:hover + ${Error},
-      ${InputText}:focus + ${Error} {
-        transform: translate3d(0%, -100%, 0);
-        opacity: 1;
-        padding: .25em 1.25em .25em .5em;
-      }
-    `}
-
     ${props.appearance !== 'tertiary' && css`
-      ${InputText} {
+      ${InputEl} {
           box-shadow: ${color.negative} 0 0 0 1px inset;
           &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
       }
@@ -245,79 +227,207 @@ const InputContainer = styled.div`
   `}
 `;
 
-export function Input({
-  id,
-  value,
-  label,
-  hideLabel,
-  orientation,
-  icon,
-  error,
-  appearance,
-  className,
-  focused,
-  lastErrorValue,
-  ...props
-}) {
-  const errorId = `${id}-error`;
-  let errorMessage = error;
+const ErrorTooltip = styled(WithTooltip)`
+  width: 100%;
+`;
+
+const ErrorTooltipMessage = styled(TooltipMessage)`
+  width: 170px;
+`;
+
+const Action = styled.div`
+  position: absolute;
+  right: 0;
+  min-width: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 11px;
+  z-index: 2;
+`;
+
+const getErrorMessage = ({ error, value, lastErrorValue }) => {
+  let errorMessage = typeof error === 'function' ? error(value) : error;
   if (lastErrorValue) {
     if (value !== lastErrorValue) {
       errorMessage = null;
     }
   }
+  return errorMessage;
+};
 
-  return (
-    <InputContainer orientation={orientation} className={className}>
-      <LabelWrapper hideLabel={hideLabel}>
-        <Label htmlFor={id} appearance={appearance}>
-          {label}
-        </Label>
-      </LabelWrapper>
+export const PureInput = forwardRef(
+  (
+    {
+      id,
+      value,
+      label,
+      hideLabel,
+      orientation,
+      icon,
+      error,
+      appearance,
+      className,
+      lastErrorValue,
+      startingType,
+      type,
+      onActionClick,
+      stackLevel,
+      suppressErrorMessage,
+      ...props
+    },
+    ref
+  ) => {
+    const [errorMessage, setErrorMessage] = useState(
+      getErrorMessage({ error, value, lastErrorValue })
+    );
+    const errorId = `${id}-error`;
 
-      <InputWrapper
-        error={errorMessage}
-        data-error={error}
-        icon={icon}
-        appearance={appearance}
-        focused={focused}
-      >
-        {icon && <Icon icon={icon} aria-hidden />}
-        <InputText
-          id={id}
-          value={value}
-          aria-describedby={errorId}
-          aria-invalid={!!error}
-          {...props}
-        />
-        <Error id={errorId}>{error}</Error>
-      </InputWrapper>
-    </InputContainer>
-  );
-}
+    useEffect(() => {
+      setErrorMessage(getErrorMessage({ error, value, lastErrorValue }));
+    }, [value, error, lastErrorValue]);
 
-Input.propTypes = {
+    const inputEl = (
+      <InputEl
+        id={id}
+        // Pass the ref to the actual input element so it can be controlled
+        // externally.
+        ref={ref}
+        value={value}
+        type={type}
+        aria-describedby={errorId}
+        aria-invalid={!!error}
+        {...props}
+      />
+    );
+
+    return (
+      <InputContainer orientation={orientation} className={className}>
+        <LabelWrapper hideLabel={hideLabel}>
+          <Label htmlFor={id} appearance={appearance}>
+            {label}
+          </Label>
+        </LabelWrapper>
+
+        <InputWrapper
+          error={errorMessage}
+          data-error={errorMessage}
+          icon={icon}
+          appearance={appearance}
+          stackLevel={stackLevel}
+          startingType={startingType}
+        >
+          {icon && <Icon icon={icon} aria-hidden />}
+          {/**
+            The tooltip is rendered regardless of the presence of an error.
+            This is done to preserve the focus state of the Input when it is
+            used inside of a form that can choose when to show/hide error
+            states based on various factors.
+          */}
+          <ErrorTooltip
+            tabIndex={-1}
+            placement="right"
+            trigger="none"
+            startOpen
+            tagName="div"
+            hasChrome={!!errorMessage && !suppressErrorMessage}
+            tooltip={
+              errorMessage && !suppressErrorMessage && <ErrorTooltipMessage desc={errorMessage} />
+            }
+          >
+            {inputEl}
+          </ErrorTooltip>
+
+          {startingType === 'password' && (
+            <Action>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link isButton tertiary onClick={onActionClick} type="button">
+                {type === 'password' ? 'Show' : 'Hide'}
+              </Link>
+            </Action>
+          )}
+        </InputWrapper>
+      </InputContainer>
+    );
+  }
+);
+
+PureInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
+  stackLevel: PropTypes.oneOf(['top', 'middle', 'bottom']),
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   icon: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  suppressErrorMessage: PropTypes.bool,
   className: PropTypes.string,
-  focused: PropTypes.bool,
   lastErrorValue: PropTypes.string,
+  startingType: PropTypes.string,
+  type: PropTypes.string,
+  onActionClick: PropTypes.func,
 };
 
-Input.defaultProps = {
+PureInput.defaultProps = {
   value: '',
   appearance: 'default',
+  stackLevel: undefined,
   hideLabel: false,
   orientation: 'vertical',
   icon: null,
   error: null,
+  suppressErrorMessage: false,
   className: null,
-  focused: false,
   lastErrorValue: null,
+  startingType: 'text',
+  type: 'text',
+  onActionClick: null,
+};
+
+export const Input = forwardRef(({ type: startingType, startFocused, ...rest }, ref) => {
+  const [type, setType] = useState(startingType);
+  const togglePasswordType = useCallback(
+    (event) => {
+      // Make sure this does not submit a form
+      event.preventDefault();
+      event.stopPropagation();
+      if (type === 'password') {
+        setType('text');
+        return;
+      }
+      setType('password');
+    },
+    [type, setType]
+  );
+  // Outside refs take precedence
+  const inputRef = ref || useRef();
+  const didFocusOnStart = useRef(false);
+  useEffect(() => {
+    if (inputRef && inputRef.current && startFocused && !didFocusOnStart.current) {
+      inputRef.current.focus();
+      didFocusOnStart.current = true;
+    }
+  }, [inputRef, inputRef.current, didFocusOnStart, didFocusOnStart.current]);
+
+  return (
+    <PureInput
+      ref={inputRef}
+      startingType={startingType}
+      type={type}
+      onActionClick={togglePasswordType}
+      {...rest}
+    />
+  );
+});
+
+Input.propTypes = {
+  startFocused: PropTypes.bool,
+  type: PropTypes.string,
+};
+
+Input.defaultProps = {
+  startFocused: false,
+  type: 'text',
 };

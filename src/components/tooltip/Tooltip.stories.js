@@ -52,7 +52,7 @@ export const basicDefaultRight = () => (
 basicDefaultRight.storyName = 'basic, default, right';
 
 export const noChrome = () => (
-  <Tooltip {...mockPopperProps}>
+  <Tooltip hasChrome={false} {...mockPopperProps}>
     <Content>Text</Content>
   </Tooltip>
 );

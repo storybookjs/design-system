@@ -22,22 +22,24 @@ PureWithModal.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
-export default function WithModal({ startOpen, ...rest }) {
+export default function WithModal({ startOpen, onClose, ...rest }) {
   const [isOpen, onSetIsOpen] = useState(startOpen);
   const onOpen = () => onSetIsOpen(true);
-  const onClose = () => {
+  const handleClose = () => {
     onSetIsOpen(false);
     if (onClose) {
       onClose();
     }
   };
-  return <PureWithModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} {...rest} />;
+  return <PureWithModal isOpen={isOpen} onOpen={onOpen} onClose={handleClose} {...rest} />;
 }
 
 WithModal.propTypes = {
   startOpen: PropTypes.bool,
+  onClose: PropTypes.func,
 };
 
 WithModal.defaultProps = {
   startOpen: false,
+  onClose: undefined,
 };
