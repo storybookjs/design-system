@@ -118,8 +118,15 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
     return error;
   }, callbackRegenValues);
 
-  const wasFieldTouched = (id: string) => blurredFieldIds.has(id) || didAttemptSubmission;
-  const isErrorVisible = (id: string) => wasFieldTouched(id) && erroredFieldIds.has(id);
+  const wasFieldTouched = useCallback(
+    (id: string) => blurredFieldIds.has(id) || didAttemptSubmission,
+    callbackRegenValues
+  );
+
+  const isErrorVisible = useCallback(
+    (id: string) => wasFieldTouched(id) && erroredFieldIds.has(id),
+    callbackRegenValues
+  );
 
   const onFocus = useCallback((id: string) => setFocusedFieldId(id), []);
 
