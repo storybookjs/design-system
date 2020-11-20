@@ -128,7 +128,7 @@ export const FormErrorState: React.FunctionComponent<FormErrorStateProps> = ({
     callbackRegenValues
   );
 
-  const onFocus = useCallback((id: string) => setFocusedFieldId(id), []);
+  const onFocus = useCallback((id: string) => setFocusedFieldId(id), callbackRegenValues);
 
   const onBlur = useCallback((id: string) => {
     !blurredFieldIds.has(id) && setBlurredFieldIds(blurredFieldIds.add(id));
