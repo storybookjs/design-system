@@ -11,7 +11,7 @@ const Content = styled.div`
   font-size: 16px;
   text-align: center;
   line-height: 100px;
-  background: #eee;
+  outline: 1px dotted red;
 `;
 
 export default {

@@ -65,11 +65,8 @@ const TooltipWrapper = styled.div`
       margin-left: ${ifPlacementEquals('right', ArrowSpacing + 2)}px;
       margin-right: ${ifPlacementEquals('left', ArrowSpacing + 2)}px;
 
-      background-image: linear-gradient(
-        -1deg,
-        rgba(248, 248, 248, 0.97) 0%,
-        rgba(255, 255, 255, 0.97) 100%
-      );
+      background: rgba(255, 255, 255, 0.97);
+
       filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.05)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
       border-radius: ${spacing.borderRadius.small}px;
       font-size: ${typography.size.s1}px;
