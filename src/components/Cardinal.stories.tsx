@@ -7,7 +7,7 @@ const onHover = action('hover');
 const onClick = action('click');
 
 export default {
-  title: 'Design System/Cardinal',
+  title: 'Cardinal',
 };
 
 export const AllCardinals = () => (
