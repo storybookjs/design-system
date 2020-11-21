@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Tooltip } from './Tooltip';
 
 // Popper would position the tooltip absolutely. We just need to make sure we are pos:rel
-const mockPopperProps = { style: { position: 'relative', top: '20px', left: '20px' } };
+const mockPopperProps = { style: { position: 'relative', top: '0px', left: '0px' } };
 
 const Content = styled.div`
   width: 100px;
@@ -17,6 +17,11 @@ const Content = styled.div`
 export default {
   title: 'tooltip/Tooltip',
   component: Tooltip,
+  decorators: [
+    (storyFn) => (
+      <div style={{ padding: '1em', background: '#eee', display: 'inline-block' }}>{storyFn()}</div>
+    ),
+  ],
 };
 
 export const basicDefault = () => (
