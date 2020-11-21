@@ -45,7 +45,9 @@
     ]
   },
   "dependencies": {
+    "@types/pluralize": "^0.0.29",
     "copy-to-clipboard": "^3.3.1",
+    "pluralize": "^8.0.0",
     "polished": "^3.6.4",
     "prismjs": "1.20.0",
     "prop-types": "^15.5.4",
