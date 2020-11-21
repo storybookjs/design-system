@@ -8,7 +8,6 @@ import { ClipboardIcon } from './ClipboardIcon';
 
 const Container = styled.div`
   position: relative;
-  margin-top: 15px;
 `;
 
 const StyledInput = styled(Input)`
