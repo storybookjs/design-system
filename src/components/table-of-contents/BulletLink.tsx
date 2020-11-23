@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, typography } from '../shared/styles';
-import { Link, LinkProps } from '../Link';
+import { Link } from '../Link';
 
 type StyledBulletLinkProps = React.ComponentProps<typeof Link> & {
   isActive?: boolean;
@@ -72,9 +72,10 @@ const Bullet = styled.span<{ isActive?: boolean }>`
   ${(props) => props.isActive && `background: ${color.secondary};`}
 `;
 
-export interface BulletLinkItem extends Pick<LinkProps, 'LinkWrapper'> {
+export interface BulletLinkItem {
   path: string;
   title: string;
+  LinkWrapper?: Pick<React.ComponentProps<typeof Link>, 'LinkWrapper'>;
 }
 
 interface BulletLinkProps {
