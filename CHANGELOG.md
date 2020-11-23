@@ -1,3 +1,22 @@
+# v5.3.0 (Mon Nov 23 2020)
+
+#### 🚀 Enhancement
+
+- Port over Cardinal component from Chromatic [#221](https://github.com/storybookjs/design-system/pull/221) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### 🐛 Bug Fix
+
+- remove gradient background from tooltips [#230](https://github.com/storybookjs/design-system/pull/230) ([@domyen](https://github.com/domyen))
+- Add default tooltips for copied and uncopied states [#229](https://github.com/storybookjs/design-system/pull/229) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Update Storybook to 6.1.1 and change component organization [#228](https://github.com/storybookjs/design-system/pull/228) ([@domyen](https://github.com/domyen))
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.2.1 (Fri Nov 20 2020)
 
 #### 🐛 Bug Fix
