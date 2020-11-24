@@ -1,3 +1,15 @@
+# v5.3.1 (Tue Nov 24 2020)
+
+#### 🐛 Bug Fix
+
+- Add verified icon [#231](https://github.com/storybookjs/design-system/pull/231) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.3.0 (Mon Nov 23 2020)
 
 #### 🚀 Enhancement
