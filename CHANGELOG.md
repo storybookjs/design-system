@@ -1,3 +1,15 @@
+# v5.3.2 (Wed Nov 25 2020)
+
+#### 🐛 Bug Fix
+
+- bugfix: add ButtonToggle to the list of exports [#232](https://github.com/storybookjs/design-system/pull/232) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.3.1 (Tue Nov 24 2020)
 
 #### 🐛 Bug Fix
