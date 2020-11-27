@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { TableOfContentsItems, ITEM_TYPES } from './TableOfContentsItems';
-import { breakpoint, color, typography } from '../shared/styles';
-import { Icon } from '../Icon';
-import { Link } from '../Link';
+import {
+  TableOfContentsItems,
+  Item,
+  ItemWithId,
+  ItemWithStateAndId,
+  ItemType,
+} from './TableOfContentsItems';
 
-const toKebabcase = (string) => string.toLowerCase().split(' ').join('-');
+type GlobalItemUpdate = { isOpen?: boolean };
+type SingleItemUpdate = { isOpen?: boolean; id?: string };
 
-const hasActiveChildren = (args) => {
+const toKebabCase = (string: string) => string.toLowerCase().split(' ').join('-');
+
+const hasActiveChildren = (args: { children: Item[]; currentPath: string }): boolean => {
   const { children, currentPath } = args;
 
   return !!children.find(
@@ -17,18 +22,24 @@ const hasActiveChildren = (args) => {
   );
 };
 
+interface GetOpenStateArgs {
+  item: ItemWithStateAndId;
+  globalItemUpdate?: GlobalItemUpdate;
+  singleItemUpdate?: SingleItemUpdate;
+  currentPath: string;
+  didChangeCurrentPath: boolean;
+}
+
 const getOpenState = ({
   item,
   globalItemUpdate = {},
   singleItemUpdate = {},
-  lastFocusedId,
   currentPath,
   didChangeCurrentPath,
-}) => {
+}: GetOpenStateArgs) => {
   const withActiveChildren = hasActiveChildren({
     children: item.children,
     currentPath,
-    lastFocusedId,
   });
 
   // If there is no 'isOpen' field yet, set a default based on whether or not
@@ -45,17 +56,26 @@ const getOpenState = ({
   return item.isOpen;
 };
 
-const mapItemIds = (items, depth = 0) =>
+const mapItemIds = (items: Item[], depth = 0): ItemWithId[] =>
   items.map((item) => ({
     ...item,
-    id: `${toKebabcase(item.title)}-${depth}`,
+    id: `${toKebabCase(item.title)}-${depth}`,
     ...(item.children && {
       children: mapItemIds(item.children, depth + 1),
     }),
   }));
 
+interface MapItemUIStateArgs {
+  items: ItemWithStateAndId[];
+  currentPath: string;
+  depth?: number;
+  didChangeCurrentPath?: boolean;
+  globalItemUpdate?: GlobalItemUpdate;
+  singleItemUpdate?: SingleItemUpdate;
+}
+
 // Add UI state to the 'items' that are passed in as props
-const mapItemUIState = (args) => {
+const mapItemUIState = (args: MapItemUIStateArgs): ItemWithStateAndId[] => {
   const {
     items,
     currentPath,
@@ -63,11 +83,10 @@ const mapItemUIState = (args) => {
     depth = 0,
     globalItemUpdate,
     singleItemUpdate,
-    lastFocusedId,
   } = args;
 
   return items.map((item) => {
-    const isMenuWithChildren = item.type === ITEM_TYPES.MENU && !!item.children;
+    const isMenuWithChildren = item.type === ItemType.MENU && !!item.children;
 
     return {
       ...item,
@@ -77,7 +96,6 @@ const mapItemUIState = (args) => {
           item,
           globalItemUpdate,
           singleItemUpdate,
-          lastFocusedId,
           currentPath,
           didChangeCurrentPath,
         }),
@@ -93,18 +111,29 @@ const mapItemUIState = (args) => {
   });
 };
 
+export interface TableOfContentsProps {
+  children?: (args: {
+    menu: React.ReactNode;
+    allTopLevelMenusAreOpen: boolean;
+    toggleAllOpen: () => void;
+    toggleAllClosed: () => void;
+  }) => JSX.Element;
+  currentPath: string;
+  items: Item[];
+}
+
 // State management and event handlers for the TableOfContentsItems
-export function TableOfContents({ children, currentPath, items, ...rest }) {
-  const [itemsWithIds] = useState(mapItemIds(items));
+export function TableOfContents({ children, currentPath, items, ...rest }: TableOfContentsProps) {
+  const [itemsWithIds] = useState<ItemWithId[]>(mapItemIds(items));
   const [itemsWithUIState, setItemsWithUIState] = useState(
-    mapItemUIState({ currentPath, items: itemsWithIds })
+    mapItemUIState({ currentPath, items: itemsWithIds as ItemWithStateAndId[] })
   );
   const uiStateCommonArgs = { currentPath, items: itemsWithUIState };
-  const toggleAllOpenStates = (isOpen) =>
+  const toggleAllOpenStates = (isOpen: boolean) =>
     setItemsWithUIState(mapItemUIState({ ...uiStateCommonArgs, globalItemUpdate: { isOpen } }));
   const toggleAllOpen = () => toggleAllOpenStates(true);
   const toggleAllClosed = () => toggleAllOpenStates(false);
-  const setMenuOpenStateById = (args) => {
+  const setMenuOpenStateById = (args: SingleItemUpdate) => {
     setItemsWithUIState(mapItemUIState({ ...uiStateCommonArgs, singleItemUpdate: args }));
   };
 
@@ -129,7 +158,7 @@ export function TableOfContents({ children, currentPath, items, ...rest }) {
 
   // Top level menu state is used to control expand/collapse buttons in consumers
   const allTopLevelMenusAreOpen = itemsWithUIState.every(
-    (item) => item.type === ITEM_TYPES.MENU && item.isOpen
+    (item) => item.type === ItemType.MENU && item.isOpen
   );
 
   return typeof children === 'function'
@@ -141,16 +170,6 @@ export function TableOfContents({ children, currentPath, items, ...rest }) {
       })
     : tableOfContentsMenu;
 }
-
-TableOfContents.propTypes = {
-  children: PropTypes.func,
-  currentPath: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.oneOf(Object.values(ITEM_TYPES)).isRequired,
-    }).isRequired
-  ).isRequired,
-};
 
 TableOfContents.defaultProps = {
   children: undefined,
