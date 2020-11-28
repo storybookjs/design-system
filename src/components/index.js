@@ -49,5 +49,7 @@ export * from './CodeSnippets';
 export * from './header/Header';
 export * from './header/NavLink';
 export { NavItem } from './header/NavItem';
+
 export * from './tag/TagItem';
+export * from './tag/TagLink';
 export * from './tag/TagList';
