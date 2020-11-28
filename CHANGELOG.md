@@ -1,3 +1,19 @@
+# v5.4.0 (Fri Nov 27 2020)
+
+#### 🚀 Enhancement
+
+- Toc [#226](https://github.com/storybookjs/design-system/pull/226) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### 🐛 Bug Fix
+
+- Add TagLink export [#233](https://github.com/storybookjs/design-system/pull/233) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.3.2 (Wed Nov 25 2020)
 
 #### 🐛 Bug Fix
