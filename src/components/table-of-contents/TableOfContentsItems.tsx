@@ -12,12 +12,10 @@ import { Link } from '../Link';
 
 type SetMenuOpenStateById = (args: { id: string; isOpen: boolean }) => void;
 
-// export type ItemType = 'menu' | 'link' | 'bullet-link';
-
 export enum ItemType {
-  MENU,
-  LINK,
-  BULLET_LINK,
+  MENU = 'menu',
+  LINK = 'link',
+  BULLET_LINK = 'bullet-link',
 }
 
 export interface Item {
