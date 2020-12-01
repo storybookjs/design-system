@@ -12,7 +12,9 @@
     "email": "michael@lab80.co"
   },
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "build-storybook --docs",
@@ -33,8 +35,9 @@
     "react-github-button": "^0.1.11",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
-    "storybook-contrast": "^0.5.1",
+    "storybook-contrast": "^0.11.1",
     "styled-components": "^4.4.1",
+    "styled-system": "^5.1.5",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
@@ -46,14 +49,14 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
-    "@storybook/addon-a11y": "6.0.20",
-    "@storybook/addon-actions": "6.0.20",
-    "@storybook/addon-docs": "6.0.20",
-    "@storybook/addon-essentials": "6.0.20",
-    "@storybook/addon-storysource": "6.0.20",
+    "@storybook/addon-a11y": "6.1.5",
+    "@storybook/addon-actions": "6.1.5",
+    "@storybook/addon-docs": "6.1.5",
+    "@storybook/addon-essentials": "6.1.5",
+    "@storybook/addon-storysource": "6.1.5",
     "@storybook/eslint-config-storybook": "^2.4.0",
     "@storybook/linter-config": "^2.5.0",
-    "@storybook/react": "6.0.20",
+    "@storybook/react": "6.1.5",
     "@storybook/storybook-deployer": "^2.8.7",
     "@types/fs-extra": "^9.0.1",
     "@types/styled-components": "^5.1.0",
@@ -84,7 +87,10 @@
     "npm": ">=5"
   },
   "auto": {
-    "plugins": ["npm", "released"]
+    "plugins": [
+      "npm",
+      "released"
+    ]
   },
   "collective": {
     "type": "opencollective",
