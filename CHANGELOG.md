@@ -1,3 +1,15 @@
+# v5.4.3 (Fri Dec 04 2020)
+
+#### 🐛 Bug Fix
+
+- Make tag items shorter (32px) [#235](https://github.com/storybookjs/design-system/pull/235) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.4.1 (Mon Nov 30 2020)
 
 #### 🐛 Bug Fix
