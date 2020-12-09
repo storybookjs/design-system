@@ -1,3 +1,17 @@
+# v5.4.4 (Wed Dec 09 2020)
+
+#### 🐛 Bug Fix
+
+- Tighter spacing for top level flat list [#238](https://github.com/storybookjs/design-system/pull/238) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Change grave accents to single quotes [#237](https://github.com/storybookjs/design-system/pull/237) ([@yhor1e](https://github.com/yhor1e))
+
+#### Authors: 2
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- yhor1e ([@yhor1e](https://github.com/yhor1e))
+
+---
+
 # v5.4.3 (Fri Dec 04 2020)
 
 #### 🐛 Bug Fix
