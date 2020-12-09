@@ -138,7 +138,7 @@ Menu.defaultProps = {
   isTopLevel: false,
 };
 
-const List = styled.ul<{ isTopLevel?: boolean }>`
+const List = styled.ul<{ isTopLevel?: boolean; isFlatList?: boolean }>`
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -155,7 +155,7 @@ const List = styled.ul<{ isTopLevel?: boolean }>`
     props.isTopLevel &&
     css`
       > li {
-        padding-top: 24px;
+        padding-top: ${props.isFlatList ? 16 : 24}px;
 
         ul,
         ol {
@@ -196,9 +196,15 @@ export function TableOfContentsItems({
   ...rest
 }: TableOfContentsItemsProps) {
   const isOrderedList = items.every((item) => item.type === ItemType.BULLET_LINK);
+  const isFlatList = items.every((item) => item.type === ItemType.LINK);
 
   return (
-    <List className={className} isTopLevel={isTopLevel} as={isOrderedList ? 'ol' : 'ul'}>
+    <List
+      className={className}
+      isTopLevel={isTopLevel}
+      isFlatList={isFlatList}
+      as={isOrderedList ? 'ol' : 'ul'}
+    >
       {items.map((item) => {
         return (
           <ItemComponent
