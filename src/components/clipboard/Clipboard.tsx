@@ -39,7 +39,7 @@ export const Clipboard = ({
     if (copied && timeoutId) {
       clearTimeout(timeoutId);
     }
-    if (copied && resetTimeout && timeoutId) {
+    if (copied && resetTimeout) {
       timeoutId = setTimeout(() => setCopied(false), resetTimeout);
     }
     return () => {
