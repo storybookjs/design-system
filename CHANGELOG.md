@@ -1,3 +1,15 @@
+# v5.4.5 (Tue Dec 22 2020)
+
+#### 🐛 Bug Fix
+
+- Fix clipboard logic to reset state [#240](https://github.com/storybookjs/design-system/pull/240) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.4.4 (Wed Dec 09 2020)
 
 #### 🐛 Bug Fix
