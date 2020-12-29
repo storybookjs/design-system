@@ -22,7 +22,7 @@ const Spacer = styled.div`
   height: 100px;
 `;
 
-const Trigger = styled.div`
+const Trigger = styled.button`
   width: 200px;
   height: 100px;
   background-color: red;
@@ -30,7 +30,7 @@ const Trigger = styled.div`
 `;
 
 const Circle = styled.circle`
-  fill: fill: rgb(255, 0, 255);
+  fill: rgb(255, 0, 255);
 `;
 
 const Tooltip = ({ onHide }) => (

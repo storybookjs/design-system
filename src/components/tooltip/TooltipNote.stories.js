@@ -16,7 +16,7 @@ export default {
           startOpen
           tooltip={storyFn()}
         >
-          <div>Tooltip</div>
+          <button type="button">Tooltip</button>
         </WithTooltip>
       </div>
     ),
