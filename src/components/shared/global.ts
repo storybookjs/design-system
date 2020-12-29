@@ -35,7 +35,6 @@ export const bodyStyles = css`
   input,
   textarea,
   select {
-    outline: none;
     font-family: ${typography.type.primary};
   }
 
@@ -121,5 +120,10 @@ export const fontUrl =
 export const GlobalStyle = createGlobalStyle`
   body {
     ${bodyStyles}
+  }
+  // prevent mouse-clicks from focusing elements
+  // this removes the ugly blue outline
+  * :focus:not(:focus-visible) {
+    outline: none;
   }
 `;
