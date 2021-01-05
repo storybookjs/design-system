@@ -157,9 +157,8 @@ const SelectWrapper = styled.span`
       height: auto;
 
       ${Selector} {
-        color: ${color.dark};
+        color: ${color.darkest};
         background-color: transparent;
-        font-weight: ${typography.weight.bold};
         padding: 0 1.5em 0 0;
         text-decoration: none;
 
