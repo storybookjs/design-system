@@ -37,7 +37,6 @@ const GithubNavItem = styled(NavItem)`
 `;
 
 const MobileMenuTooltip = styled(WithTooltip)`
-  outline: none;
   &:focus svg {
     color: ${color.secondary};
   }
