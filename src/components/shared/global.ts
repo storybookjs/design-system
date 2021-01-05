@@ -123,7 +123,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   // prevent mouse-clicks from focusing elements
   // this removes the ugly blue outline
-  * :focus:not(:focus-visible) {
+  :focus:not(:focus-visible) {
     outline: none;
   }
 `;
