@@ -1,3 +1,17 @@
+# v5.4.6 (Tue Jan 05 2021)
+
+#### 🐛 Bug Fix
+
+- Update tertiary Select variant to match new designs [#245](https://github.com/storybookjs/design-system/pull/245) ([@kylesuss](https://github.com/kylesuss))
+- Use focus-visible to hide outlines when using mouse [#241](https://github.com/storybookjs/design-system/pull/241) ([@domyen](https://github.com/domyen))
+
+#### Authors: 2
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.4.5 (Tue Dec 22 2020)
 
 #### 🐛 Bug Fix
