@@ -244,7 +244,7 @@ Textarea.propTypes = {
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   startFocused: PropTypes.bool,
   subtext: PropTypes.string,
   subtextSentiment: PropTypes.oneOf(['default', 'negative', 'warning']),
