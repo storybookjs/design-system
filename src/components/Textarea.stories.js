@@ -48,7 +48,6 @@ export const defaultStory = () => (
       id="Placeholder"
       label="Textarea with placeholder"
       hideLabel
-      value="placeholder"
       placeholder="Placeholder"
       onChange={onChange}
     />
@@ -119,7 +118,6 @@ export const secondary = () => (
       id="Placeholder"
       label="Textarea with placeholder"
       hideLabel
-      value="placeholder"
       placeholder="Placeholder"
       appearance="secondary"
       onChange={onChange}
@@ -196,7 +194,6 @@ export const tertiary = () => (
       id="Placeholder"
       label="Textarea with placeholder"
       hideLabel
-      value="placeholder"
       placeholder="Placeholder"
       appearance="tertiary"
       onChange={onChange}
@@ -273,7 +270,6 @@ export const code = () => (
       id="Placeholder"
       label="Textarea with placeholder"
       hideLabel
-      value="placeholder"
       placeholder="Code placeholder"
       appearance="code"
       onChange={onChange}

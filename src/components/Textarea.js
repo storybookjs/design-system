@@ -52,7 +52,9 @@ const LabelWrapper = styled.div`
 const Subtext = styled.div``;
 
 const TextareaText = styled.textarea`
-  ::placeholder: ${color.mediumdark};
+  ::placeholder {
+    ${color.mediumdark};
+  }
   appearance: none;
   border: none;
   box-sizing: border-box;
