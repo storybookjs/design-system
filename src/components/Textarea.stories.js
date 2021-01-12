@@ -53,6 +53,15 @@ export const defaultStory = () => (
       onChange={onChange}
     />
     <Textarea
+      id="Focus"
+      label="Textarea with focus on start"
+      hideLabel
+      value="startFocused"
+      placeholder="Focused"
+      onChange={onChange}
+      startFocused
+    />
+    <Textarea
       id="With-value"
       label="Textarea with value"
       hideLabel
@@ -74,6 +83,14 @@ export const defaultStory = () => (
       hideLabel
       value="Error"
       error="There's a snake in my boots"
+      onChange={onChange}
+    />
+    <Textarea
+      id="Error"
+      label="Textarea with error"
+      hideLabel
+      value="Error"
+      error={() => `There's a snake in my boots (Function error)`}
       onChange={onChange}
     />
     <Textarea
@@ -108,6 +125,16 @@ export const secondary = () => (
       onChange={onChange}
     />
     <Textarea
+      id="Focus"
+      label="Textarea with focus on start"
+      hideLabel
+      value="startFocused"
+      placeholder="Focused"
+      appearance="secondary"
+      onChange={onChange}
+      startFocused
+    />
+    <Textarea
       id="With-value"
       label="Textarea with value"
       hideLabel
@@ -131,6 +158,15 @@ export const secondary = () => (
       hideLabel
       value="Error"
       error="There's a snake in my boots"
+      appearance="secondary"
+      onChange={onChange}
+    />
+    <Textarea
+      id="Error"
+      label="Textarea with error"
+      hideLabel
+      value="Error"
+      error={() => `There's a snake in my boots (Function error)`}
       appearance="secondary"
       onChange={onChange}
     />
@@ -166,6 +202,16 @@ export const tertiary = () => (
       onChange={onChange}
     />
     <Textarea
+      id="Focus"
+      label="Textarea with focus on start"
+      hideLabel
+      value="startFocused"
+      placeholder="Focused"
+      appearance="tertiary"
+      onChange={onChange}
+      startFocused
+    />
+    <Textarea
       id="With-value"
       label="Textarea with value"
       hideLabel
@@ -189,6 +235,15 @@ export const tertiary = () => (
       hideLabel
       value="Error"
       error="There's a snake in my boots"
+      appearance="tertiary"
+      onChange={onChange}
+    />
+    <Textarea
+      id="Error"
+      label="Textarea with error"
+      hideLabel
+      value="Error"
+      error={() => `There's a snake in my boots (Function error)`}
       appearance="tertiary"
       onChange={onChange}
     />
