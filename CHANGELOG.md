@@ -1,3 +1,15 @@
+# v5.4.7 (Wed Jan 13 2021)
+
+#### 🐛 Bug Fix
+
+- Add function support for errors on textarea, startFocused behavior [#246](https://github.com/storybookjs/design-system/pull/246) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.4.6 (Tue Jan 05 2021)
 
 #### 🐛 Bug Fix
