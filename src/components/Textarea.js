@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
@@ -52,7 +52,9 @@ const LabelWrapper = styled.div`
 const Subtext = styled.div``;
 
 const TextareaText = styled.textarea`
-  ::placeholder: ${color.medium};
+  ::placeholder {
+    color: ${color.mediumdark};
+  }
   appearance: none;
   border: none;
   box-sizing: border-box;
@@ -163,54 +165,79 @@ const TextareaContainer = styled.div`
     `}
 `;
 
-export function Textarea({
-  id,
-  value,
-  label,
-  hideLabel,
-  error,
-  subtext,
-  subtextSentiment,
-  appearance,
-  orientation,
-  className,
-  ...other
-}) {
-  const errorId = `${id}-error`;
-  const subtextId = `${id}-subtext`;
+const getErrorMessage = ({ error, value }) => (typeof error === 'function' ? error(value) : error);
 
-  const ariaDescribedBy = `${error ? errorId : ''} ${subtext ? subtextId : ''}`;
+export const Textarea = forwardRef(
+  (
+    {
+      id,
+      value,
+      label,
+      hideLabel,
+      error,
+      subtext,
+      subtextSentiment,
+      appearance,
+      orientation,
+      className,
+      startFocused,
+      ...rest
+    },
+    ref
+  ) => {
+    // Outside refs take precedence
+    const textareaRef = ref || useRef();
+    const didFocusOnStart = useRef(false);
+    useEffect(() => {
+      if (textareaRef && textareaRef.current && startFocused && !didFocusOnStart.current) {
+        textareaRef.current.focus();
+        didFocusOnStart.current = true;
+      }
+    }, [textareaRef, textareaRef.current, didFocusOnStart, didFocusOnStart.current]);
 
-  return (
-    <TextareaContainer orientation={orientation} className={className}>
-      <LabelWrapper appearance={appearance} hideLabel={hideLabel} error={error}>
-        <Label htmlFor={id} hideLabel={hideLabel}>
-          {label}
-        </Label>
-        {error && (
-          <ErrorMessage id={errorId} aria-hidden>
-            {error}
-          </ErrorMessage>
-        )}
-      </LabelWrapper>
-      <TextareaWrapper error={error} appearance={appearance}>
-        <TextareaText
-          id={id}
-          value={value}
-          rows="7"
-          aria-invalid={!!error}
-          aria-describedby={ariaDescribedBy}
-          {...other}
-        />
-        {subtext && (
-          <Subtext id={subtextId} sentiment={subtextSentiment}>
-            {subtext}
-          </Subtext>
-        )}
-      </TextareaWrapper>
-    </TextareaContainer>
-  );
-}
+    const [errorMessage, setErrorMessage] = useState(getErrorMessage({ error, value }));
+
+    useEffect(() => {
+      setErrorMessage(getErrorMessage({ error, value }));
+    }, [value, error]);
+
+    const errorId = `${id}-error`;
+    const subtextId = `${id}-subtext`;
+
+    const ariaDescribedBy = `${error ? errorId : ''} ${subtext ? subtextId : ''}`;
+
+    return (
+      <TextareaContainer orientation={orientation} className={className}>
+        <LabelWrapper appearance={appearance} hideLabel={hideLabel} error={errorMessage}>
+          <Label htmlFor={id} hideLabel={hideLabel}>
+            {label}
+          </Label>
+          {errorMessage && (
+            <ErrorMessage id={errorId} aria-hidden>
+              {errorMessage}
+            </ErrorMessage>
+          )}
+        </LabelWrapper>
+        <TextareaWrapper error={errorMessage} appearance={appearance}>
+          <TextareaText
+            id={id}
+            value={value}
+            rows="7"
+            aria-invalid={!!error}
+            aria-describedby={ariaDescribedBy}
+            ref={textareaRef}
+            {...rest}
+          />
+          {subtext && (
+            <Subtext id={subtextId} sentiment={subtextSentiment}>
+              {subtext}
+            </Subtext>
+          )}
+        </TextareaWrapper>
+      </TextareaContainer>
+    );
+  }
+);
 
 Textarea.propTypes = {
   id: PropTypes.string.isRequired,
@@ -219,7 +246,8 @@ Textarea.propTypes = {
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  startFocused: PropTypes.bool,
   subtext: PropTypes.string,
   subtextSentiment: PropTypes.oneOf(['default', 'negative', 'warning']),
   className: PropTypes.string,
@@ -230,6 +258,7 @@ Textarea.defaultProps = {
   hideLabel: false,
   orientation: 'vertical',
   error: null,
+  startFocused: false,
   subtext: null,
   subtextSentiment: 'default',
   className: null,
