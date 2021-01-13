@@ -53,7 +53,7 @@ const Subtext = styled.div``;
 
 const TextareaText = styled.textarea`
   ::placeholder {
-    ${color.mediumdark};
+    color: ${color.mediumdark};
   }
   appearance: none;
   border: none;
