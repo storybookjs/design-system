@@ -23,7 +23,8 @@
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
     "release": "dotenv yarn build && auto shipit",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes"
   },
   "husky": {
     "hooks": {
@@ -80,7 +81,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "chromatic": "^5.0.0",
+    "chromatic": "^5.6.3",
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
     "eslint": "^7.1.0",
