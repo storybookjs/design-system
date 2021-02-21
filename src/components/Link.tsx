@@ -32,7 +32,7 @@ const StyledLink = styled.a<StyledLinkProps>`
   display: inline-block;
   transition: transform 150ms ease-out, color 150ms ease-out;
   text-decoration: none;
-  color: ${color.primary};
+  color: ${color.secondary};
 
   &:hover,
   &:focus {
