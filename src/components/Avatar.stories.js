@@ -12,12 +12,12 @@ export default {
 
 const Base = (args) => (
   <div>
-    <Avatar isLoading {...args} />
-    <Avatar username="Tom Coleman" {...args} />
+    <Avatar {...args} isLoading />
+    <Avatar {...args} username="Tom Coleman" />
     <Avatar
+      {...args}
       username="Tom Coleman"
       src="https://avatars2.githubusercontent.com/u/132554"
-      {...args}
     />
   </div>
 );
