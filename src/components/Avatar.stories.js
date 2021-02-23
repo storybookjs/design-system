@@ -5,50 +5,32 @@ import { Avatar } from './Avatar';
 export default {
   title: 'Avatar',
   component: Avatar,
+  args: {
+    type: 'user',
+  },
 };
 
-export const Basic = (args) => <Avatar {...args} />;
-
-export const large = () => (
+// eslint-disable-next-line react/prop-types
+const Base = ({ src, ...props }) => (
   <div>
-    <Avatar isLoading size="large" />
-    <Avatar size="large" username="Tom Coleman" />
+    <Avatar isLoading {...props} />
+    <Avatar username="Tom Coleman" {...props} />
     <Avatar
-      size="large"
       username="Tom Coleman"
-      src="https://avatars2.githubusercontent.com/u/132554"
+      src={src || 'https://avatars2.githubusercontent.com/u/132554'}
+      {...props}
     />
   </div>
 );
 
-export const medium = () => (
-  <div>
-    <Avatar isLoading />
-    <Avatar username="Tom Coleman" />
-    <Avatar username="Tom Coleman" src="https://avatars2.githubusercontent.com/u/132554" />
-  </div>
-);
+export const Large = () => <Base size="large" />;
 
-export const small = () => (
-  <div>
-    <Avatar isLoading size="small" />
-    <Avatar size="small" username="Dominic Nguyen" />
-    <Avatar
-      size="small"
-      username="Dominic Nguyen"
-      src="https://avatars2.githubusercontent.com/u/263385"
-    />
-  </div>
-);
+export const Medium = () => <Base />;
 
-export const tiny = () => (
-  <div>
-    <Avatar isLoading size="tiny" />
-    <Avatar size="tiny" username="Dominic Nguyen" />
-    <Avatar
-      size="tiny"
-      username="Dominic Nguyen"
-      src="https://avatars2.githubusercontent.com/u/263385"
-    />
-  </div>
+export const Small = () => <Base size="small" />;
+
+export const Tiny = () => <Base size="tiny" />;
+
+export const Organization = () => (
+  <Base type="organization" username="Chromatic" src="/chromatic-logo-square.png" />
 );

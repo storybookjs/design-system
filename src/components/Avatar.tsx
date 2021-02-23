@@ -11,9 +11,14 @@ export const sizes = {
   tiny: 16,
 };
 
+export enum AvatarType {
+  USER = 'user',
+  ORGANIZATION = 'organization',
+}
+
 const Image = styled.div<Partial<Props>>`
   background: ${(props) => (!props.isLoading ? 'transparent' : color.light)};
-  border-radius: 50%;
+  border-radius: ${(props) => (props.type === AvatarType.USER ? '50%' : '5px')};
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
@@ -58,14 +63,21 @@ const Image = styled.div<Partial<Props>>`
     height: auto;
     display: block;
   }
+`;
 
-  svg {
-    position: relative;
-    bottom: -2px;
-    height: 100%;
-    width: 100%;
-    vertical-align: top;
-  }
+interface LoadingIconProps {
+  icon: string;
+  type: AvatarType;
+}
+
+const LoadingIcon = styled(Icon)<LoadingIconProps>`
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  bottom: ${(props) => (props.type === AvatarType.USER ? -2 : -3)}px;
+  height: ${(props) => (props.type === AvatarType.USER ? 100 : 80)}%;
+  width: ${(props) => (props.type === AvatarType.USER ? 100 : 80)}%;
+  vertical-align: top;
 
   path {
     fill: ${color.medium};
@@ -105,9 +117,12 @@ export const Avatar: FunctionComponent<Props> = ({
   username = 'loading',
   src = null,
   size = 'medium',
+  type = AvatarType.USER,
   ...props
 }: Props) => {
-  let avatarFigure = <Icon icon="useralt" />;
+  let avatarFigure = (
+    <LoadingIcon icon={type === AvatarType.USER ? 'useralt' : 'repository'} type={type} />
+  );
   const a11yProps: ComponentProps<typeof Image> = {};
 
   if (isLoading) {
@@ -117,6 +132,7 @@ export const Avatar: FunctionComponent<Props> = ({
     avatarFigure = <img src={src} alt={username} />;
   } else {
     a11yProps['aria-label'] = username;
+    console.log(username);
     avatarFigure = (
       <Initial size={size} aria-hidden="true">
         {username.substring(0, 1)}
@@ -125,7 +141,7 @@ export const Avatar: FunctionComponent<Props> = ({
   }
 
   return (
-    <Image size={size} isLoading={isLoading} src={src} {...a11yProps} {...props}>
+    <Image size={size} isLoading={isLoading} src={src} type={type} {...a11yProps} {...props}>
       {avatarFigure}
     </Image>
   );
@@ -138,4 +154,5 @@ interface Props {
   src: string;
   /** Specify size */
   size: keyof typeof sizes;
+  type: AvatarType;
 }
