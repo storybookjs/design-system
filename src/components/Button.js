@@ -46,7 +46,8 @@ export const StyledButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 150ms ease-out;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
   vertical-align: top;
   white-space: nowrap;
   user-select: none;
