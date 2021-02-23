@@ -132,6 +132,7 @@ export const Avatar: FunctionComponent<Props> = ({
     avatarFigure = <img src={src} alt={username} />;
   } else {
     a11yProps['aria-label'] = username;
+    console.log(username);
     avatarFigure = (
       <Initial size={size} aria-hidden="true">
         {username.substring(0, 1)}

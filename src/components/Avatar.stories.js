@@ -10,36 +10,27 @@ export default {
   },
 };
 
-const Base = (args) => (
+// eslint-disable-next-line react/prop-types
+const Base = ({ src, ...props }) => (
   <div>
-    <Avatar {...args} isLoading />
-    <Avatar {...args} username="Tom Coleman" />
+    <Avatar isLoading {...props} />
+    <Avatar username="Tom Coleman" {...props} />
     <Avatar
-      {...args}
       username="Tom Coleman"
-      src="https://avatars2.githubusercontent.com/u/132554"
+      src={src || 'https://avatars2.githubusercontent.com/u/132554'}
+      {...props}
     />
   </div>
 );
 
-export const Large = Base.bind({});
-Large.args = {
-  size: 'large',
-};
+export const Large = () => <Base size="large" />;
 
-export const Medium = Base.bind({});
+export const Medium = () => <Base />;
 
-export const Small = Base.bind({});
-Small.args = {
-  size: 'small',
-};
+export const Small = () => <Base size="small" />;
 
-export const Tiny = Base.bind({});
-Tiny.args = {
-  size: 'tiny',
-};
+export const Tiny = () => <Base size="tiny" />;
 
-export const Organization = Base.bind({});
-Organization.args = {
-  type: 'organization',
-};
+export const Organization = () => (
+  <Base type="organization" username="Chromatic" src="/chromatic-logo-square.png" />
+);
