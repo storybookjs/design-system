@@ -1,3 +1,15 @@
+# v5.4.8 (Mon Feb 22 2021)
+
+#### 🐛 Bug Fix
+
+- Add organization type to avatar [#249](https://github.com/storybookjs/design-system/pull/249) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.4.7 (Wed Jan 13 2021)
 
 #### 🐛 Bug Fix
