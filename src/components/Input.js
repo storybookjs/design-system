@@ -327,7 +327,7 @@ export const PureInput = forwardRef(
           */}
           <ErrorTooltip
             tabIndex={-1}
-            placement="right"
+            placement="auto-end"
             trigger="none"
             startOpen
             tagName="div"
