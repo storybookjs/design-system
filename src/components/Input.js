@@ -5,7 +5,7 @@ import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 import { Link } from './Link';
-import WithTooltip from './tooltip/WithTooltip';
+import WithTooltip, { validPlacements as validTooltipPlacements } from './tooltip/WithTooltip';
 import { TooltipMessage } from './tooltip/TooltipMessage';
 
 // prettier-ignore
@@ -358,7 +358,7 @@ PureInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
-  errorTooltipPlacement: PropTypes.string,
+  errorTooltipPlacement: PropTypes.oneOf(validTooltipPlacements),
   stackLevel: PropTypes.oneOf(['top', 'middle', 'bottom']),
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,

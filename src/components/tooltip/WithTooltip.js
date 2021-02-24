@@ -169,11 +169,17 @@ function WithTooltip({
   );
 }
 
+const placementVariations = ['start', 'end'];
+export const validPlacements = ['auto', 'top', 'right', 'left', 'bottom'].flatMap((placement) => [
+  placement,
+  ...placementVariations.map((variation) => `${placement}-${variation}`),
+]);
+
 WithTooltip.propTypes = {
   tagName: PropTypes.string,
   trigger: PropTypes.string,
   closeOnClick: PropTypes.bool,
-  placement: PropTypes.string,
+  placement: PropTypes.oneOf(validPlacements),
   modifiers: PropTypes.shape({}),
   hasChrome: PropTypes.bool,
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
