@@ -21,7 +21,7 @@ export default {
 };
 
 const FormWrapper = styled.div`
-  padding: 3em 2em;
+  padding: 3em 12em;
 `;
 
 const Input = styled(UnstyledInput)`
