@@ -14,7 +14,6 @@ import {
 import { Button } from './Button';
 // @ts-ignore
 import { Input as UnstyledInput } from './Input';
-import { breakpoint } from './shared/styles';
 
 export default {
   title: 'forms/FormErrorState',
@@ -23,10 +22,6 @@ export default {
 
 const FormWrapper = styled.div`
   padding: 3em 2em;
-
-  @media (min-width: ${breakpoint}px) {
-    padding: 3em 12em;
-  }
 `;
 
 const Input = styled(UnstyledInput)`
@@ -108,9 +103,4 @@ PureMultipleErrors.args = {
   primaryFieldId: 'input-2',
   blurredFieldIds: new Set(['input-1', 'input-2']),
   children: Children,
-};
-PureMultipleErrors.story = {
-  parameters: {
-    chromatic: { viewports: [breakpoint - 1, 1200] },
-  },
 };
