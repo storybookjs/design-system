@@ -140,7 +140,7 @@ const All = ({ appearance }) => (
       placeholder="Error with icon"
       icon="email"
       error="There's a snake in my boots"
-      errorTooltipPlacement="bottom"
+      errorTooltipPlacement="left"
       onChange={onChange}
       appearance={appearance}
     />
