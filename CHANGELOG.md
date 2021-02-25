@@ -1,3 +1,17 @@
+# v5.4.9 (Thu Feb 25 2021)
+
+#### 🐛 Bug Fix
+
+- Allow customization of form error state placement [#250](https://github.com/storybookjs/design-system/pull/250) ([@kylesuss](https://github.com/kylesuss))
+- fix: Remove button jiggle [#247](https://github.com/storybookjs/design-system/pull/247) ([@alii](https://github.com/alii))
+
+#### Authors: 2
+
+- Alistair Smith ([@alii](https://github.com/alii))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.4.8 (Mon Feb 22 2021)
 
 #### 🐛 Bug Fix
