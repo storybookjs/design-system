@@ -109,22 +109,9 @@ const InputWrapper = styled.div`
     line-height: 20px;
     padding: 10px 15px; //40px tall
 
-    &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
+    box-shadow: ${color.border} 0 0 0 1px inset;
+    &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
 
-    ${props => props.appearance === 'secondary' && css`
-      box-shadow: ${color.border} 0 0 0 1px inset;
-
-      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
-    `}
-
-    ${props => props.appearance === 'tertiary' && css`
-      padding: 0;
-      border: none;
-      box-shadow: none;
-      background: none;
-
-      &:focus { box-shadow: none !important; }
-    `}
 
     ${props => props.appearance === 'pill' && css`
       font-size: ${typography.size.s1}px;
@@ -188,18 +175,11 @@ const InputWrapper = styled.div`
       padding-left: 40px;
 
       ${props.appearance === 'pill' && css` padding-left: 30px; `};
-      ${props.appearance === 'tertiary' && css` padding-left: 25px; `};
+      
     }
   `}
 
   ${props => props.error && css`
-    ${props.appearance !== 'tertiary' && css`
-      ${InputEl} {
-          box-shadow: ${color.negative} 0 0 0 1px inset;
-          &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
-      }
-    `};
-
     svg {
       animation: ${jiggle} 700ms ease-out;
       path { fill: ${color.negative}; }
@@ -357,7 +337,7 @@ export const PureInput = forwardRef(
 PureInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
-  appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
+  appearance: PropTypes.oneOf(['default', 'pill', 'code']),
   errorTooltipPlacement: PropTypes.oneOf(validTooltipPlacements),
   stackLevel: PropTypes.oneOf(['top', 'middle', 'bottom']),
   label: PropTypes.string.isRequired,

@@ -161,18 +161,6 @@ export const Default = () => (
   </DarkForm>
 );
 
-export const Secondary = () => (
-  <Form>
-    <All appearance="secondary" />
-  </Form>
-);
-
-export const Tertiary = () => (
-  <DarkForm>
-    <All appearance="tertiary" />
-  </DarkForm>
-);
-
 export const Stacked = () => (
   <Form>
     <UnstyledInput
@@ -182,7 +170,6 @@ export const Stacked = () => (
       stackLevel="top"
       onChange={onChange}
       error="There's a snake in my boots"
-      appearance="secondary"
     />
     <UnstyledInput
       id="stacked-2"
@@ -194,7 +181,6 @@ export const Stacked = () => (
       onChange={onChange}
       icon="key"
       type="password"
-      appearance="secondary"
     />
     <UnstyledInput
       id="stacked-3"
@@ -203,7 +189,6 @@ export const Stacked = () => (
       stackLevel="middle"
       hideLabel
       onChange={onChange}
-      appearance="secondary"
     />
     <UnstyledInput
       id="stacked-4"
@@ -214,7 +199,6 @@ export const Stacked = () => (
       onChange={onChange}
       icon="key"
       error="There's a snake in my boots"
-      appearance="secondary"
     />
   </Form>
 );
