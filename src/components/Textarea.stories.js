@@ -29,14 +29,6 @@ export const allTextareas = () => (
       appearance="tertiary"
       onChange={onChange}
     />
-    <Textarea
-      id="Code"
-      label="Code textarea"
-      hideLabel
-      value="Code"
-      appearance="code"
-      onChange={onChange}
-    />
   </form>
 );
 
@@ -259,72 +251,6 @@ export const tertiary = () => (
       hideLabel
       subtext="140 chars left"
       appearance="tertiary"
-      onChange={onChange}
-    />
-  </form>
-);
-
-export const code = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
-    <Textarea
-      id="Placeholder"
-      label="Textarea with placeholder"
-      hideLabel
-      placeholder="Code placeholder"
-      appearance="code"
-      onChange={onChange}
-    />
-    <Textarea
-      id="With-value"
-      label="Textarea with value"
-      hideLabel
-      value="Code"
-      appearance="code"
-      onChange={onChange}
-    />
-    <Textarea
-      id="Error"
-      label="Textarea with error"
-      hideLabel
-      value="Code"
-      appearance="code"
-      error="Does not compute"
-      onChange={onChange}
-    />
-    <Textarea id="Label" label="Label" value="Label" appearance="code" onChange={onChange} />
-
-    <Textarea
-      id="Label-and-error"
-      value="Label and error"
-      label="Cats"
-      error="There's a snake in my boots"
-      appearance="code"
-      onChange={onChange}
-    />
-    <Textarea
-      id="Label-horizontal"
-      value="Label"
-      label="Cats"
-      appearance="code"
-      orientation="horizontal"
-      onChange={onChange}
-    />
-    <Textarea
-      id="Label-and-error-horizontal"
-      value="Label and error"
-      label="Cats"
-      error="There's a snake in my boots"
-      appearance="code"
-      orientation="horizontal"
-      onChange={onChange}
-    />
-    <Textarea
-      id="Subtext"
-      value="Subtext"
-      label="Textarea with subtext"
-      hideLabel
-      subtext="140 chars left"
-      appearance="code"
       onChange={onChange}
     />
   </form>
