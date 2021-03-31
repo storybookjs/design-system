@@ -10,8 +10,8 @@ export default {
   component: Select,
 };
 
-export const playground = (args) => <Select {...args} />;
-playground.args = {
+export const Template = (args) => <Select {...args} />;
+Template.args = {
   value: 'value1',
   options: [
     { label: 'Default', value: 'value1' },
@@ -19,6 +19,7 @@ playground.args = {
     { label: 'Mouse', value: 'value3' },
   ],
 };
+Template.story = { name: 'Playground' };
 
 export const All = () => (
   <form>

@@ -13,8 +13,8 @@ export default {
   component: UnstyledInput,
 };
 
-export const playground = (args) => <Input {...args} />;
-playground.args = {
+export const Template = (args) => <Input {...args} />;
+Template.args = {
   id: 'Basic',
   label: 'label',
   value: 'value',
@@ -22,6 +22,7 @@ playground.args = {
   orientation: 'horizontal',
   hideLabel: false,
 };
+Template.story = { name: 'Playground' };
 
 const Form = styled.form`
   padding: 3em 12em;
