@@ -119,21 +119,15 @@ const InputWrapper = styled.div`
       padding: 6px 12px; //28px tall
       border-radius: 3em;
       background: transparent;
-
-      box-shadow: ${color.medium} 0 0 0 1px inset;
-
-      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
     `}
 
     ${props => props.appearance === 'code' && css`
-      font-size: ${typography.size.s2 -1 }px;
+      font-size: ${typography.size.s1}px;
       line-height: 16px;
       font-family: ${typography.type.code};
-      border-radius: 2px;
-      background: rgba(0,0,0,.05);
-      padding: 3px 6px;
-
-      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
+      border-radius: ${spacing.borderRadius.small}px;
+      background: ${color.lightest};
+      padding: 8px 10px;
     `}
   }
 
@@ -148,12 +142,16 @@ const InputWrapper = styled.div`
       transition: all 150ms ease-out;
       position: absolute;
       top: 50%;
-      font-size: ${props.appearance === 'pill' ? '12px' : '14px'};
+      ${props.appearance === 'pill' || props.appearance === 'code' ? css`
+        font-size: ${typography.size.s1}px;
+      ` : css `
+        font-size: ${typography.size.s2}px;
+      `}
       height: 1em;
       width: 1em;
       margin-top: -.525em;
       z-index: 3;
-      ${props.appearance === 'pill' ? css`
+      ${props.appearance === 'pill' || props.appearance === 'code' ? css`
         left: 10px;
       ` : css `
         left: ${props.appearance === 'tertiary' ? 0 : `15px` };
@@ -174,12 +172,23 @@ const InputWrapper = styled.div`
     ${InputEl} {
       padding-left: 40px;
 
-      ${props.appearance === 'pill' && css` padding-left: 30px; `};
+
+      /* ${props.appearance === 'pill' || props.appearance === 'code' ? css`
+        left: 10px;
+      ` : css `
+        left: ${props.appearance === 'tertiary' ? 0 : `15px` };
+      `} */
+      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};
       
     }
   `}
 
   ${props => props.error && css`
+    ${InputEl} {
+        box-shadow: ${color.negative} 0 0 0 1px inset;
+        &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
+    }
+    
     svg {
       animation: ${jiggle} 700ms ease-out;
       path { fill: ${color.negative}; }

@@ -227,6 +227,15 @@ export const Code = () => (
     />
     <Input id="Code" value="Code" label="Code" hideLabel appearance="code" onChange={onChange} />
     <Input
+      id="Code"
+      value="Code"
+      label="Code"
+      icon="link"
+      hideLabel
+      appearance="code"
+      onChange={onChange}
+    />
+    <Input
       id="Code-with-error"
       placeholder="Code"
       label="Code"
