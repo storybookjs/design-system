@@ -87,47 +87,22 @@ const TextareaWrapper = styled.div`
     line-height: 20px;
     padding: 0.7111em 1em; //40
 
+    box-shadow: ${color.border} 0 0 0 1px inset;
     &:focus {
-      box-shadow: ${color.primary} 0 0 0 1px inset;
+      box-shadow: ${color.secondary} 0 0 0 1px inset;
     }
-
-    ${(props) =>
-      props.appearance === 'secondary' &&
-      css`
-        box-shadow: ${color.mediumlight} 0 0 0 1px inset;
-
-        &:focus {
-          box-shadow: ${color.secondary} 0 0 0 1px inset;
-        }
-      `}
-
-    ${(props) =>
-      props.appearance === 'tertiary' &&
-      css`
-        padding: 0;
-        border: none;
-        box-shadow: none;
-        background: none;
-
-        &:focus {
-          box-shadow: none !important;
-        }
-      `}
   }
 
   ${(props) =>
     props.error &&
     css`
-      ${props.appearance !== 'tertiary' &&
-      css`
-        ${TextareaText} {
-          box-shadow: ${color.negative} 0 0 0 1px inset;
-          &:focus {
-            box-shadow: ${color.negative} 0 0 0 1px inset !important;
-          }
+      ${TextareaText} {
+        box-shadow: ${color.negative} 0 0 0 1px inset;
+        &:focus {
+          box-shadow: ${color.negative} 0 0 0 1px inset !important;
         }
-      `};
-    `}
+      }
+    `};
 `;
 
 const TextareaContainer = styled.div`
@@ -228,7 +203,7 @@ export const Textarea = forwardRef(
 Textarea.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary']),
+  appearance: PropTypes.oneOf(['default']),
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
