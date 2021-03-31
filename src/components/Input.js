@@ -172,14 +172,7 @@ const InputWrapper = styled.div`
     ${InputEl} {
       padding-left: 40px;
 
-
-      /* ${props.appearance === 'pill' || props.appearance === 'code' ? css`
-        left: 10px;
-      ` : css `
-        left: ${props.appearance === 'tertiary' ? 0 : `15px` };
-      `} */
-      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};
-      
+      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};      
     }
   `}
 
@@ -188,7 +181,7 @@ const InputWrapper = styled.div`
         box-shadow: ${color.negative} 0 0 0 1px inset;
         &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
     }
-    
+
     svg {
       animation: ${jiggle} 700ms ease-out;
       path { fill: ${color.negative}; }
