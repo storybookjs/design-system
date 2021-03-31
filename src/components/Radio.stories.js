@@ -10,8 +10,8 @@ export default {
   component: Radio,
 };
 
-export const Basic = (args) => <Radio {...args} />;
-Basic.args = { label: 'label', hideLabel: false };
+export const playground = (args) => <Radio {...args} />;
+playground.args = { label: 'label', hideLabel: false };
 
 export const All = () => (
   <form>
@@ -24,10 +24,10 @@ export const All = () => (
   </form>
 );
 
-export const Unchecked = Basic.bind();
+export const Unchecked = playground.bind();
 Unchecked.args = { id: 'Mice', label: 'Mice', hideLabel: true, value: 'mice' };
 
-export const Checked = Basic.bind();
+export const Checked = playground.bind();
 Checked.args = {
   id: 'Dogs',
   label: 'Dogs',

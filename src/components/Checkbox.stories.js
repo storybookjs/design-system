@@ -10,8 +10,8 @@ export default {
   component: Checkbox,
 };
 
-export const Basic = (args) => <Checkbox {...args} />;
-Basic.args = { label: 'Basic', hideLabel: false };
+export const playground = (args) => <Checkbox {...args} />;
+playground.args = { label: 'Basic', hideLabel: false };
 
 export const All = () => (
   <form>
@@ -35,8 +35,8 @@ export const All = () => (
   </form>
 );
 
-export const Unchecked = Basic.bind();
+export const Unchecked = playground.bind();
 Unchecked.args = { id: 'Unchecked', label: 'Cats', hideLabel: true };
 
-export const Checked = Basic.bind();
+export const Checked = playground.bind();
 Checked.args = { id: 'Checked', label: 'Cats', hideLabel: true, checked: true };

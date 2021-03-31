@@ -10,7 +10,16 @@ export default {
   component: Textarea,
 };
 
-export const defaultStory = () => (
+export const playground = (args) => <Textarea {...args} />;
+playground.args = {
+  id: 'Basic',
+  label: 'label',
+  value: 'value',
+  orientation: 'horizontal',
+  hideLabel: false,
+};
+
+export const Default = () => (
   <form>
     <Textarea
       id="Placeholder"
@@ -77,5 +86,3 @@ export const defaultStory = () => (
     />
   </form>
 );
-
-defaultStory.storyName = 'default';

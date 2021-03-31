@@ -13,8 +13,8 @@ export default {
   component: UnstyledInput,
 };
 
-export const Basic = (args) => <Input {...args} />;
-Basic.args = {
+export const playground = (args) => <Input {...args} />;
+playground.args = {
   id: 'Basic',
   label: 'label',
   value: 'value',
