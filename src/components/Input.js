@@ -12,7 +12,7 @@ import { TooltipMessage } from './tooltip/TooltipMessage';
 const Label = styled.label`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
-  font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
+  font-size: ${props => props.appearance === 'code' ? typography.size.s1 - 1 : typography.size.s2 }px;
   line-height: ${props => props.appearance === 'code' ? 16 : 20 }px;
 `;
 
@@ -104,11 +104,8 @@ const InputWrapper = styled.div`
     ${props => getStackLevelStyling(props)}
     background: ${color.lightest};
     color: ${color.darkest};
-    font-family: ${props => props.appearance === 'code' && typography.type.code };
-    font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
     line-height: 20px;
     padding: 10px 15px; //40px tall
-
     box-shadow: ${color.border} 0 0 0 1px inset;
     &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
 
@@ -122,7 +119,7 @@ const InputWrapper = styled.div`
     `}
 
     ${props => props.appearance === 'code' && css`
-      font-size: ${typography.size.s1}px;
+      font-size: ${typography.size.s1 - 1}px;
       line-height: 16px;
       font-family: ${typography.type.code};
       border-radius: ${spacing.borderRadius.small}px;

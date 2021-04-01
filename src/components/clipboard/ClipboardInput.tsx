@@ -14,17 +14,7 @@ const StyledInput = styled(Input)`
   width: 100%;
   display: block;
   && input {
-    padding-top: 7px !important;
-    padding-bottom: 7px !important;
     padding-right: 26px !important;
-    background: ${color.lightest};
-    border: 1px solid ${color.border};
-    border-radius: ${spacing.borderRadius.small}px;
-    font-size: 11px;
-    &:focus {
-      box-shadow: none;
-      border: 1px solid ${color.secondary};
-    }
   }
 `;
 
