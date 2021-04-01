@@ -102,8 +102,10 @@ const InputWrapper = styled.div`
   ${InputEl} {
     position: relative;
     ${props => getStackLevelStyling(props)}
+
     background: ${color.lightest};
     color: ${color.darkest};
+    font-size: ${typography.size.s2}px;
     line-height: 20px;
     padding: 10px 15px; //40px tall
     box-shadow: ${color.border} 0 0 0 1px inset;
