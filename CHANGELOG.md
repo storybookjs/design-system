@@ -1,3 +1,15 @@
+# v5.5.0 (Thu Apr 01 2021)
+
+#### 🚀 Enhancement
+
+- Update design system [#255](https://github.com/storybookjs/design-system/pull/255) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.4.9 (Thu Feb 25 2021)
 
 #### 🐛 Bug Fix
