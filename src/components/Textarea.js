@@ -26,11 +26,9 @@ const ErrorMessage = styled.span`
 `;
 
 const LabelWrapper = styled.div`
-  margin-bottom: ${(props) => (props.appearance === 'code' ? 0.5 : 0.33)}em;
-  font-weight: ${(props) => props.appearance !== 'code' && typography.weight.bold};
-  font-family: ${(props) => props.appearance === 'code' && typography.type.code};
-  font-size: ${(props) =>
-    props.appearance === 'code' ? typography.size.s1 : typography.size.s2}px;
+  margin-bottom: 0.33em;
+  font-weight: ${typography.weight.bold};
+  font-size: ${typography.size.s2}px;
 
   ${(props) =>
     props.hideLabel &&
@@ -75,9 +73,7 @@ const TextareaText = styled.textarea`
 
 const TextareaWrapper = styled.div`
   display: inline-block;
-  font-family: ${(props) => props.appearance === 'code' && typography.type.code};
-  font-size: ${(props) =>
-    props.appearance === 'code' ? typography.size.s1 : typography.size.s2}px;
+  font-size: ${typography.size.s2}px;
   overflow: hidden;
   position: relative;
   vertical-align: top;
@@ -89,59 +85,24 @@ const TextareaWrapper = styled.div`
     color: ${color.darkest};
     font-size: ${typography.size.s2}px;
     line-height: 20px;
-    padding: .7111em 1em; //40
+    padding: 0.7111em 1em; //40
 
-    &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
-
-    ${(props) =>
-      props.appearance === 'secondary' &&
-      css`
-        box-shadow: ${color.mediumlight} 0 0 0 1px inset;
-
-        &:focus {
-          box-shadow: ${color.secondary} 0 0 0 1px inset;
-        }
-      `}
-
-    ${(props) =>
-      props.appearance === 'tertiary' &&
-      css`
-        padding: 0;
-        border: none;
-        box-shadow: none;
-        background: none;
-
-        &:focus {
-          box-shadow: none !important;
-        }
-      `}
-
-    ${(props) =>
-      props.appearance === 'code' &&
-      css`
-        font-size: ${typography.size.s1}px;
-        line-height: 16px;
-        font-family: ${typography.type.code};
-        border-radius: 2px;
-        background: ${color.border};
-        padding: 6px 6px;
-      `}
+    box-shadow: ${color.border} 0 0 0 1px inset;
+    &:focus {
+      box-shadow: ${color.secondary} 0 0 0 1px inset;
+    }
   }
 
   ${(props) =>
     props.error &&
     css`
-      ${props.appearance !== 'tertiary' &&
-      css`
-        ${TextareaText} {
-          box-shadow: ${color.negative} 0 0 0 1px inset;
-          &:focus {
-            box-shadow: ${color.negative} 0 0 0 1px inset !important;
-          }
+      ${TextareaText} {
+        box-shadow: ${color.negative} 0 0 0 1px inset;
+        &:focus {
+          box-shadow: ${color.negative} 0 0 0 1px inset !important;
         }
-      `};
-    `}
-
+      }
+    `};
 `;
 
 const TextareaContainer = styled.div`
@@ -242,7 +203,7 @@ export const Textarea = forwardRef(
 Textarea.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'code']),
+  appearance: PropTypes.oneOf(['default']),
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),

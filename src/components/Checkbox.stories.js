@@ -10,8 +10,9 @@ export default {
   component: Checkbox,
 };
 
-export const Basic = (args) => <Checkbox {...args} />;
-Basic.args = { label: 'Basic', hideLabel: false };
+export const Template = (args) => <Checkbox {...args} />;
+Template.args = { label: 'Basic', hideLabel: false };
+Template.story = { name: 'Playground' };
 
 export const All = () => (
   <form>
@@ -35,8 +36,8 @@ export const All = () => (
   </form>
 );
 
-export const Unchecked = Basic.bind();
+export const Unchecked = Template.bind();
 Unchecked.args = { id: 'Unchecked', label: 'Cats', hideLabel: true };
 
-export const Checked = Basic.bind();
+export const Checked = Template.bind();
 Checked.args = { id: 'Checked', label: 'Cats', hideLabel: true, checked: true };

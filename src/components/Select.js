@@ -125,6 +125,7 @@ const SelectWrapper = styled.span`
     path {fill: ${color.mediumdark} }
   }
 
+  ${Selector} { box-shadow: ${color.border} 0 0 0 1px inset; }
   ${Selector}:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
 
   ${(props) =>
@@ -139,16 +140,7 @@ const SelectWrapper = styled.span`
     color: ${color.darkest};
   }
 
-  ${(props) =>
-    props.appearance === 'secondary' &&
-    css`
-      ${Selector} {
-        box-shadow: ${color.mediumlight} 0 0 0 1px inset;
-      }
-      ${Selector}:focus {
-        box-shadow: ${color.secondary} 0 0 0 1px inset;
-      }
-    `}
+  
 
   ${(props) =>
     props.appearance === 'tertiary' &&
@@ -161,10 +153,7 @@ const SelectWrapper = styled.span`
         background-color: transparent;
         padding: 0 1.5em 0 0;
         text-decoration: none;
-
-        &:focus {
-          box-shadow: none !important;
-        }
+        box-shadow: none;
       }
       &:before {
         content: none;
@@ -285,7 +274,7 @@ Select.propTypes = {
   id: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape(Option.propTypes)),
   value: PropTypes.string,
-  appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary']),
+  appearance: PropTypes.oneOf(['default', 'tertiary']),
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
   error: PropTypes.string,

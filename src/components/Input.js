@@ -12,7 +12,7 @@ import { TooltipMessage } from './tooltip/TooltipMessage';
 const Label = styled.label`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
-  font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
+  font-size: ${props => props.appearance === 'code' ? typography.size.s1 - 1 : typography.size.s2 }px;
   line-height: ${props => props.appearance === 'code' ? 16 : 20 }px;
 `;
 
@@ -102,29 +102,15 @@ const InputWrapper = styled.div`
   ${InputEl} {
     position: relative;
     ${props => getStackLevelStyling(props)}
+
     background: ${color.lightest};
     color: ${color.darkest};
-    font-family: ${props => props.appearance === 'code' && typography.type.code };
-    font-size: ${props => props.appearance === 'code' ? typography.size.s1 : typography.size.s2 }px;
+    font-size: ${typography.size.s2}px;
     line-height: 20px;
     padding: 10px 15px; //40px tall
+    box-shadow: ${color.border} 0 0 0 1px inset;
+    &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
 
-    &:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
-
-    ${props => props.appearance === 'secondary' && css`
-      box-shadow: ${color.border} 0 0 0 1px inset;
-
-      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
-    `}
-
-    ${props => props.appearance === 'tertiary' && css`
-      padding: 0;
-      border: none;
-      box-shadow: none;
-      background: none;
-
-      &:focus { box-shadow: none !important; }
-    `}
 
     ${props => props.appearance === 'pill' && css`
       font-size: ${typography.size.s1}px;
@@ -132,21 +118,15 @@ const InputWrapper = styled.div`
       padding: 6px 12px; //28px tall
       border-radius: 3em;
       background: transparent;
-
-      box-shadow: ${color.medium} 0 0 0 1px inset;
-
-      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
     `}
 
     ${props => props.appearance === 'code' && css`
-      font-size: ${typography.size.s2 -1 }px;
+      font-size: ${typography.size.s1 - 1}px;
       line-height: 16px;
       font-family: ${typography.type.code};
-      border-radius: 2px;
-      background: rgba(0,0,0,.05);
-      padding: 3px 6px;
-
-      &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
+      border-radius: ${spacing.borderRadius.small}px;
+      background: ${color.lightest};
+      padding: 8px 10px;
     `}
   }
 
@@ -161,12 +141,16 @@ const InputWrapper = styled.div`
       transition: all 150ms ease-out;
       position: absolute;
       top: 50%;
-      font-size: ${props.appearance === 'pill' ? '12px' : '14px'};
+      ${props.appearance === 'pill' || props.appearance === 'code' ? css`
+        font-size: ${typography.size.s1}px;
+      ` : css `
+        font-size: ${typography.size.s2}px;
+      `}
       height: 1em;
       width: 1em;
       margin-top: -.525em;
       z-index: 3;
-      ${props.appearance === 'pill' ? css`
+      ${props.appearance === 'pill' || props.appearance === 'code' ? css`
         left: 10px;
       ` : css `
         left: ${props.appearance === 'tertiary' ? 0 : `15px` };
@@ -187,18 +171,15 @@ const InputWrapper = styled.div`
     ${InputEl} {
       padding-left: 40px;
 
-      ${props.appearance === 'pill' && css` padding-left: 30px; `};
-      ${props.appearance === 'tertiary' && css` padding-left: 25px; `};
+      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};      
     }
   `}
 
   ${props => props.error && css`
-    ${props.appearance !== 'tertiary' && css`
-      ${InputEl} {
-          box-shadow: ${color.negative} 0 0 0 1px inset;
-          &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
-      }
-    `};
+    ${InputEl} {
+        box-shadow: ${color.negative} 0 0 0 1px inset;
+        &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
+    }
 
     svg {
       animation: ${jiggle} 700ms ease-out;
@@ -357,7 +338,7 @@ export const PureInput = forwardRef(
 PureInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
-  appearance: PropTypes.oneOf(['default', 'secondary', 'tertiary', 'pill', 'code']),
+  appearance: PropTypes.oneOf(['default', 'pill', 'code']),
   errorTooltipPlacement: PropTypes.oneOf(validTooltipPlacements),
   stackLevel: PropTypes.oneOf(['top', 'middle', 'bottom']),
   label: PropTypes.string.isRequired,

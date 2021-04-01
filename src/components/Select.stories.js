@@ -10,8 +10,8 @@ export default {
   component: Select,
 };
 
-export const Basic = (args) => <Select {...args} />;
-Basic.args = {
+export const Template = (args) => <Select {...args} />;
+Template.args = {
   value: 'value1',
   options: [
     { label: 'Default', value: 'value1' },
@@ -19,9 +19,10 @@ Basic.args = {
     { label: 'Mouse', value: 'value3' },
   ],
 };
+Template.story = { name: 'Playground' };
 
 export const All = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
+  <form>
     <Select
       id="Primary"
       value="value1"
@@ -30,19 +31,6 @@ export const All = () => (
         { label: 'Dog', value: 'value2' },
         { label: 'Mouse', value: 'value3' },
       ]}
-      onChange={onChange}
-      label="Animal"
-      hideLabel
-    />
-    <Select
-      id="Secondary"
-      value="value1"
-      options={[
-        { label: 'Secondary', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-        { label: 'Mouse', value: 'value3' },
-      ]}
-      appearance="secondary"
       onChange={onChange}
       label="Animal"
       hideLabel
@@ -64,7 +52,7 @@ export const All = () => (
 );
 
 export const Default = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
+  <form>
     <Select
       id="Primary"
       label="Animal"
@@ -152,90 +140,8 @@ export const Default = () => (
   </form>
 );
 
-export const Secondary = () => (
-  <form style={{ background: '#FFFFFF', padding: '3em' }}>
-    <Select
-      id="Secondary"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Select
-      id="Secondary-disabled"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      disabled
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Select
-      id="Secondary-with-icon"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      icon="chromatic"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Select
-      id="Secondary-with-error"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      error="There's a snake in my boots"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Select
-      id="Secondary-with-icon-and-error"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      icon="chromatic"
-      error="There's a snake in my boots"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Select
-      id="Secondary-with-label"
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      icon="chromatic"
-      label="Label"
-      appearance="secondary"
-      onChange={onChange}
-    />
-  </form>
-);
-
 export const Tertiary = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
+  <form>
     <Select
       id="Tertiary"
       label="Animal"
