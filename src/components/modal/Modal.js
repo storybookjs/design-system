@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 
 import { Button } from '../Button';
 import { Icon } from '../Icon';
-import { pageMargins, breakpoint } from '../shared/styles';
+import { color, pageMargins, breakpoint } from '../shared/styles';
 
 const Action = styled.div`
   position: absolute;
@@ -45,7 +45,7 @@ const CenteredWrapper = styled.div`
   left: 0;
 `;
 
-export function Modal({ isOpen, onClose, children }) {
+export function Modal({ isBlank, isOpen, onClose, children }) {
   const actions = {
     onClose,
   };
@@ -59,7 +59,7 @@ export function Modal({ isOpen, onClose, children }) {
       closeTimeoutMS={300}
       style={{
         overlay: {
-          backgroundColor: 'rgba(246, 249, 252, .97)',
+          backgroundColor: isBlank ? color.lightest : 'rgba(246, 249, 252, .97)',
           // 1 less that max, to allow intercom over the top
           zIndex: 2147483646,
           overflowX: 'hidden',
@@ -79,20 +79,32 @@ export function Modal({ isOpen, onClose, children }) {
         },
       }}
     >
-      <CenteredWrapper>
-        <CenteredItem>{Children.only(children(actions))}</CenteredItem>
-      </CenteredWrapper>
-      <Action>
-        <Button containsIcon appearance="outline" onClick={onClose}>
-          <Icon icon="cross" />
-        </Button>
-      </Action>
+      {isBlank ? (
+        Children.only(children(actions))
+      ) : (
+        <CenteredWrapper>
+          <CenteredItem>{Children.only(children(actions))}</CenteredItem>
+        </CenteredWrapper>
+      )}
+
+      {!isBlank && (
+        <Action>
+          <Button containsIcon appearance="outline" onClick={onClose}>
+            <Icon icon="cross" />
+          </Button>
+        </Action>
+      )}
     </ReactModal>
   );
 }
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  isBlank: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
+};
+
+Modal.defaultProps = {
+  isBlank: false,
 };
