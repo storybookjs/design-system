@@ -3,11 +3,11 @@ import { PropTypes } from 'prop-types';
 
 import { Modal } from './Modal';
 
-function PureWithModal({ isOpen, onOpen, onClose, modal, children }) {
+function PureWithModal({ isOpen, onOpen, onClose, modal, children, ...rest }) {
   return (
     <>
       {Children.only(children({ isOpen, onOpen, onClose }))}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} {...rest}>
         {modal}
       </Modal>
     </>
