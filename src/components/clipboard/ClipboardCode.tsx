@@ -13,6 +13,7 @@ const Code = styled.pre`
   margin: 0;
   padding-right: 32px;
   overflow: hidden;
+  word-wrap: break-word;
 `;
 
 const StyledClipboardIcon = styled(ClipboardIcon)`
