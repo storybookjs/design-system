@@ -15,6 +15,9 @@ export const parameters = {
     // by default this is false
     hideEmpty: true,
   },
+  playroom: {
+    url: 'http://localhost:9000'
+  }
 };
 
 const withGlobalStyle = (storyFn) => (

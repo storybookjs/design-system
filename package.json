@@ -45,6 +45,7 @@
     ]
   },
   "dependencies": {
+    "@storybook/design-system": "^5.5.1",
     "@types/pluralize": "^0.0.29",
     "copy-to-clipboard": "^3.3.1",
     "pluralize": "^8.0.0",
@@ -66,7 +67,7 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
-    "@storybook/addon-a11y": "^6.2.0",
+    "@storybook/addon-a11y": "^6.2.9",
     "@storybook/addon-actions": "^6.2.0",
     "@storybook/addon-docs": "^6.2.0",
     "@storybook/addon-essentials": "^6.2.0",
@@ -83,7 +84,7 @@
     "chromatic": "^5.0.0",
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
-    "eslint": "^7.1.0",
+    "eslint": "^6.8.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "node-fetch": "^2.6.0",
@@ -92,6 +93,7 @@
     "react-dom": "^16.13.1",
     "seedrandom": "^3.0.5",
     "sort-package-json": "^1.44.0",
+    "storybook-addon-playroom": "^2.0.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5"
   },
