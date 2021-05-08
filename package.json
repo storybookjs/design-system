@@ -22,6 +22,8 @@
     "lint": "yarn lint:js && yarn lint:package",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
+    "playroom:build": "playroom build",
+    "playroom:start": "playroom start",
     "release": "dotenv yarn build && auto shipit",
     "storybook": "start-storybook -p 6006 -s .storybook/static"
   },
@@ -47,6 +49,7 @@
   "dependencies": {
     "@storybook/design-system": "^5.5.1",
     "@types/pluralize": "^0.0.29",
+    "autoprefixer": "^9.8.6",
     "copy-to-clipboard": "^3.3.1",
     "pluralize": "^8.0.0",
     "polished": "^3.6.4",
@@ -88,6 +91,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "node-fetch": "^2.6.0",
+    "playroom": "^0.23.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -95,7 +99,8 @@
     "sort-package-json": "^1.44.0",
     "storybook-addon-playroom": "^2.0.0",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "webpack-dev-server": "^3.11.2"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
