@@ -1,5 +1,6 @@
 import React from 'react';
 import { loadFontsForStorybook } from '../src/utils/index';
+import { withPlayroom } from 'storybook-addon-playroom';
 
 import { GlobalStyle } from '../src/components/shared/global';
 
@@ -16,7 +17,10 @@ export const parameters = {
     hideEmpty: true,
   },
   playroom: {
-    url: 'http://localhost:9000'
+    url: 
+    process.env.NODE_ENV === 'production'
+        ? '/playroom/'
+        : 'http://localhost:4242',
   }
 };
 
@@ -27,6 +31,7 @@ const withGlobalStyle = (storyFn) => (
   </>
 );
 
-export const decorators = [withGlobalStyle];
+export const decorators = [
+  withPlayroom,withGlobalStyle];
 
 loadFontsForStorybook();

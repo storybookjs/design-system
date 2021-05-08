@@ -5,7 +5,7 @@ const commonIncludes = [path.resolve(__dirname, './'), path.resolve(__dirname, '
 
 module.exports = {
   components: './src/components',
-  outputPath: './dist/playroom',
+  outputPath: './storybook-static/playroom',
 
   // Optional:
   title: 'My Awesome Library',
@@ -15,7 +15,7 @@ module.exports = {
   scope: '',
   widths: [320, 768, 1024],
   port: 9000,
-  openBrowser: true,
+  openBrowser: false,
   paramType: 'search', // default is 'hash'
   exampleCode: ``,
   baseUrl: '/playroom/',
