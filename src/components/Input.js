@@ -70,6 +70,8 @@ const getStackLevelStyling = (props) => {
       return css`
         border-top-left-radius: ${radius}px;
         border-top-right-radius: ${radius}px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         ${stackLevelDefinedStyling}
       `;
     case 'middle':
@@ -82,6 +84,8 @@ const getStackLevelStyling = (props) => {
       return css`
         border-bottom-left-radius: ${radius}px;
         border-bottom-right-radius: ${radius}px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
         margin-top: -1px;
         ${stackLevelDefinedStyling}
       `;
