@@ -1,3 +1,27 @@
+# v5.5.1 (Thu May 06 2021)
+
+#### 🐛 Bug Fix
+
+- Break words in ClipboardCode [#259](https://github.com/storybookjs/design-system/pull/259) ([@ghengeveld](https://github.com/ghengeveld))
+- Remove console log in Avatar component [#258](https://github.com/storybookjs/design-system/pull/258) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️ Pushed to `master`
+
+- Update browser database ([@ghengeveld](https://github.com/ghengeveld))
+- Add Azure DevOps icon ([@ghengeveld](https://github.com/ghengeveld))
+
+#### 🔩 Dependency Updates
+
+- Bump prismjs from 1.20.0 to 1.23.0 [#253](https://github.com/storybookjs/design-system/pull/253) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.5.0 (Thu Apr 01 2021)
 
 #### 🚀 Enhancement
