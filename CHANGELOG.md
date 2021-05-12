@@ -1,3 +1,15 @@
+# v5.5.2 (Wed May 12 2021)
+
+#### 🐛 Bug Fix
+
+- Fix #262 iOS styling for stacked inputs [#263](https://github.com/storybookjs/design-system/pull/263) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.5.1 (Thu May 06 2021)
 
 #### 🐛 Bug Fix
