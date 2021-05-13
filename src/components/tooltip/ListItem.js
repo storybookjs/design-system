@@ -18,7 +18,7 @@ const ItemWrapper = styled.li`
   list-style: none;
 
   &:not(:first-child) {
-    border-top: 1px solid ${color.mediumlight};
+    border-top: 1px solid ${color.border};
   }
 `;
 
