@@ -15,7 +15,7 @@ interface CountProps {
 }
 
 const Count = styled.div<CountProps>`
-  color: ${color.dark};
+  color: ${color.darker};
   display: block;
 
   ${(props) =>
@@ -36,7 +36,7 @@ const Count = styled.div<CountProps>`
   ${(props) =>
     props.status === 'neutral' &&
     css`
-      color: ${color.mediumdark};
+      color: ${color.dark};
     `};
   ${(props) =>
     props.status === 'link' &&
@@ -126,7 +126,7 @@ const CardinalInner = styled.div<CardinalInnerProps>`
   }
 
   ${Text} {
-    color: ${(props) => (props.size === 'small' ? color.mediumdark : color.dark)};
+    color: ${color.dark};
     font-size: ${(props) => (props.size === 'small' ? typography.size.s1 : typography.size.s2)}px;
     line-height: ${(props) => (props.size === 'small' ? typography.size.s2 : typography.size.m1)}px;
     clear: both;
