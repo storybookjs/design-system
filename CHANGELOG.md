@@ -1,3 +1,15 @@
+# v5.5.3 (Thu May 13 2021)
+
+#### 🐛 Bug Fix
+
+- Improve contrast [#264](https://github.com/storybookjs/design-system/pull/264) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.5.2 (Wed May 12 2021)
 
 #### 🐛 Bug Fix
