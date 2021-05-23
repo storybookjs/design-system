@@ -1,0 +1,75 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+   
+  }
+  
+  .colorPicker{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Cabin', sans-serif;
+  }
+  
+  .colorPicker h3{
+    text-shadow: 1px 1px 4px black;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  .colorPicker h3 b{
+    color: rgb(252, 212, 33);
+  
+  }
+  .arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(151, 15, 110);
+  }
+  
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    
+    border-top: 10px solid rgb(151, 15, 110);
+  }
+  
+  .area{
+    padding:100px;
+    background-color: darkviolet;
+    border-radius: 20px;
+   
+  }
+  .ref-button{
+    width: 200px;
+    height:45px;
+    background-color: white;
+    border: 2px dotted #423842;
+    margin-top: 100px;
+  }
+  
+  .ref-button:hover{
+    background-color: #ccc;
+  }
+  
+  .ref-button2{
+    width: 150px;
+    height:45px;
+    background-color:cadetblue;
+    border: 1px dotted #423842;
+    box-shadow: 1px 4px 1px #ccc;
+    margin:4px;
+  }
+  
+  .ref-button3{
+    width: 100px;
+    height:45px;
+    background-color:darkorange;
+    border: 1px dotted #423842;
+  }
