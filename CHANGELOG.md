@@ -1,3 +1,15 @@
+# v5.5.4 (Tue May 25 2021)
+
+#### 🐛 Bug Fix
+
+- Add ruler icon [#266](https://github.com/storybookjs/design-system/pull/266) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.5.3 (Thu May 13 2021)
 
 #### 🐛 Bug Fix
