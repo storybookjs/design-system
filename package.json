@@ -47,6 +47,9 @@
   "dependencies": {
     "@types/pluralize": "^0.0.29",
     "copy-to-clipboard": "^3.3.1",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "null-loader": "^4.0.1",
     "pluralize": "^8.0.0",
     "polished": "^3.6.4",
     "prismjs": "1.23.0",
@@ -54,8 +57,10 @@
     "react-github-button": "^0.1.11",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
+    "style-loader": "^2.0.0",
     "styled-components": "^4.4.1",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "webpack": "5"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -93,7 +98,9 @@
     "seedrandom": "^3.0.5",
     "sort-package-json": "^1.44.0",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
