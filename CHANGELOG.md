@@ -1,5 +1,21 @@
 # v5.5.5 (Wed Jun 23 2021)
 
+#### 🐛 Bug Fix
+
+- Add "blank" modal variant [#269](https://github.com/storybookjs/design-system/pull/269) ([@kylesuss](https://github.com/kylesuss))
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:storybookjs/design-system ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
+# v5.5.5 (Wed Jun 23 2021)
+
 
 
 ---
