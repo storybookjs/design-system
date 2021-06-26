@@ -132,7 +132,7 @@ export default Layout;
 _Notes:_
 
 - Requires authentication with [`npm adduser`](https://docs.npmjs.com/cli/adduser.html)
-- [`auto`](https://github.com/intuit/auto) is used to generate a changelog and push it to GitHub. In order for this to work correctly, **an environment variable called `GH_TOKEN` is needed** that references a [GitHub personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with the appropriate permissions to update the repo.
+- [`auto`](https://github.com/intuit/auto) is used to generate a changelog and push it to GitHub. In order for this to work correctly, **environment variables called `GH_TOKEN` and `NPM_TOKEN` are needed** that reference a [GitHub personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) and a [NPM "Publish" token](https://docs.npmjs.com/creating-and-viewing-access-tokens) with the appropriate permissions to update the repo.
 
 ## License
 
