@@ -1,3 +1,17 @@
+# v5.5.7 (Mon Jun 28 2021)
+
+#### 🐛 Bug Fix
+
+- Add a github action to auto release [#274](https://github.com/storybookjs/design-system/pull/274) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Update README to include note about npm access token in release instructions [#273](https://github.com/storybookjs/design-system/pull/273) ([@darleendenno](https://github.com/darleendenno) [@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 2
+
+- Deen ([@darleendenno](https://github.com/darleendenno))
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v5.5.5 (Wed Jun 23 2021)
 
 #### 🐛 Bug Fix
