@@ -1,3 +1,15 @@
+# v5.6.0 (Mon Jun 28 2021)
+
+#### 🚀 Enhancement
+
+- Ensure outline appears on LinkButton keyboard focus [#271](https://github.com/storybookjs/design-system/pull/271) ([@darleendenno](https://github.com/darleendenno))
+
+#### Authors: 1
+
+- Deen ([@darleendenno](https://github.com/darleendenno))
+
+---
+
 # v5.5.7 (Mon Jun 28 2021)
 
 #### 🐛 Bug Fix
