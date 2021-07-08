@@ -1,3 +1,15 @@
+# v5.6.2 (Thu Jul 08 2021)
+
+#### 🐛 Bug Fix
+
+- Update icon set [#278](https://github.com/storybookjs/design-system/pull/278) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.6.1 (Thu Jul 08 2021)
 
 #### 🐛 Bug Fix
