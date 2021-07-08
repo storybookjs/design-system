@@ -1,3 +1,15 @@
+# v5.6.1 (Thu Jul 08 2021)
+
+#### 🐛 Bug Fix
+
+- Added ComponentDriven Icon [#277](https://github.com/storybookjs/design-system/pull/277) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v5.6.0 (Mon Jun 28 2021)
 
 #### 🚀 Enhancement
