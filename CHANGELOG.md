@@ -1,3 +1,15 @@
+# v5.6.3 (Wed Jul 14 2021)
+
+#### 🐛 Bug Fix
+
+- Redraw menu [#279](https://github.com/storybookjs/design-system/pull/279) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v5.6.2 (Thu Jul 08 2021)
 
 #### 🐛 Bug Fix
