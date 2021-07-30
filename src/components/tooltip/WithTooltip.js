@@ -101,6 +101,7 @@ function WithTooltip({
   children,
   startOpen,
   delayHide,
+  onVisibilityChange,
   ...props
 }) {
   const id = React.useMemo(() => uuid.v4(), []);
@@ -115,6 +116,10 @@ function WithTooltip({
     },
     [closeOnClick, closeTooltip]
   );
+  const handleVisibilityChange = (isVisible) => {
+    onVisibilityChange(isVisible);
+    setTooltipShown(isVisible);
+  };
 
   /* eslint-env browser */
   const portalContainer =
@@ -126,7 +131,7 @@ function WithTooltip({
       placement={placement}
       trigger={trigger}
       tooltipShown={isTooltipShown}
-      onVisibilityChange={setTooltipShown}
+      onVisibilityChange={handleVisibilityChange}
       modifiers={modifiers}
       portalContainer={portalContainer}
       tooltip={({
@@ -186,6 +191,7 @@ WithTooltip.propTypes = {
   children: PropTypes.node.isRequired,
   startOpen: PropTypes.bool,
   delayHide: PropTypes.number,
+  onVisibilityChange: PropTypes.func,
 };
 
 WithTooltip.defaultProps = {
@@ -198,6 +204,7 @@ WithTooltip.defaultProps = {
   hasChrome: true,
   startOpen: false,
   delayHide: 100,
+  onVisibilityChange: () => {},
 };
 
 export default WithTooltip;
