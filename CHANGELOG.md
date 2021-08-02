@@ -1,3 +1,15 @@
+# v5.6.4 (Mon Aug 02 2021)
+
+#### 🐛 Bug Fix
+
+- Support onVisibilityChange in WithTooltip [#280](https://github.com/storybookjs/design-system/pull/280) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.6.3 (Wed Jul 14 2021)
 
 #### 🐛 Bug Fix
