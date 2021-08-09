@@ -101,8 +101,7 @@ export const pageMargins = css`
 export const hoverEffect = css`
   border: 1px solid ${color.border};
   border-radius: ${spacing.borderRadius.small}px;
-  transition: background 150ms ease-out, border 150ms ease-out,
-    transform 150ms ease-out;
+  transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
 
   &:hover,
   &.__hover {
@@ -117,3 +116,7 @@ export const hoverEffect = css`
     transform: translate3d(0, 0, 0);
   }
 `;
+
+export const zIndex = {
+  tooltip: 2147483647,
+};

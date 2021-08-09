@@ -102,6 +102,7 @@ function WithTooltip({
   startOpen,
   delayHide,
   onVisibilityChange,
+  tooltipZIndex,
   ...props
 }) {
   const id = React.useMemo(() => uuid.v4(), []);
@@ -152,6 +153,7 @@ function WithTooltip({
           id={id}
           role="tooltip"
           hasTooltipContent={!!tooltip}
+          zIndex={tooltipZIndex}
         >
           {typeof tooltip === 'function' ? tooltip({ onHide: closeTooltip }) : tooltip}
         </StyledTooltip>
@@ -192,6 +194,7 @@ WithTooltip.propTypes = {
   startOpen: PropTypes.bool,
   delayHide: PropTypes.number,
   onVisibilityChange: PropTypes.func,
+  tooltipZIndex: PropTypes.number,
 };
 
 WithTooltip.defaultProps = {
@@ -205,6 +208,7 @@ WithTooltip.defaultProps = {
   startOpen: false,
   delayHide: 100,
   onVisibilityChange: () => {},
+  tooltipZIndex: undefined,
 };
 
 export default WithTooltip;

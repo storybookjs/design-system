@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { typography, spacing } from '../shared/styles';
+import { typography, spacing, zIndex as sharedZIndex } from '../shared/styles';
 
 const ifPlacementEquals = (placement, value, fallback = 0) => (props) =>
   props['data-placement'].split('-')[0] === placement ? value : fallback;
@@ -44,7 +44,7 @@ const Arrow = styled.div`
 
 const TooltipWrapper = styled.div`
   display: ${(props) => (props.hidden ? 'none' : 'inline-block')};
-  z-index: 2147483647;
+  z-index: ${(props) => props.zIndex};
 
   ${(props) =>
     !props.hasChrome &&
@@ -80,10 +80,17 @@ export function Tooltip({
   arrowProps,
   tooltipRef,
   arrowRef,
+  zIndex,
   ...props
 }) {
   return (
-    <TooltipWrapper hasChrome={hasChrome} data-placement={placement} ref={tooltipRef} {...props}>
+    <TooltipWrapper
+      hasChrome={hasChrome}
+      data-placement={placement}
+      ref={tooltipRef}
+      zIndex={zIndex}
+      {...props}
+    >
       <Arrow isVisible={hasChrome} data-placement={placement} ref={arrowRef} {...arrowProps} />
       {children}
     </TooltipWrapper>
@@ -98,6 +105,7 @@ Tooltip.propTypes = {
   placement: PropTypes.string,
   arrowRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   tooltipRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  zIndex: PropTypes.number,
 };
 Tooltip.defaultProps = {
   children: undefined,
@@ -106,4 +114,5 @@ Tooltip.defaultProps = {
   arrowProps: null,
   arrowRef: undefined,
   tooltipRef: undefined,
+  zIndex: sharedZIndex.tooltip,
 };
