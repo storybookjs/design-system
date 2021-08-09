@@ -1,3 +1,15 @@
+# v5.6.5 (Mon Aug 09 2021)
+
+#### 🐛 Bug Fix
+
+- Support z index for WithTooltip & Tooltip [#283](https://github.com/storybookjs/design-system/pull/283) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.6.4 (Mon Aug 02 2021)
 
 #### 🐛 Bug Fix
