@@ -92,6 +92,7 @@ interface WrapperProps {
   disabled: boolean;
   appearance: 'default' | 'tertiary';
   icon: string;
+  error: any;
 }
 
 const SelectWrapper = styled.span<WrapperProps>`
@@ -267,7 +268,13 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
       <LabelWrapper hideLabel={hideLabel}>
         <Label htmlFor={id}>{label}</Label>
       </LabelWrapper>
-      <SelectWrapper appearance={appearance} icon={icon} data-error={error} disabled={disabled}>
+      <SelectWrapper
+        appearance={appearance}
+        icon={icon}
+        data-error={error}
+        error={error}
+        disabled={disabled}
+      >
         {!inProgress && <Arrow />}
         <Selector
           id={id}
