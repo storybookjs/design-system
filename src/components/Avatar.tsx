@@ -147,11 +147,11 @@ export const Avatar: FunctionComponent<Props> = ({
 };
 
 interface Props {
-  isLoading: boolean;
+  isLoading?: boolean;
   /** The name of the user (not the nice name) */
-  username: string;
-  src: string;
+  username?: string;
+  src?: string;
   /** Specify size */
-  size: keyof typeof sizes;
+  size?: keyof typeof sizes;
   type?: AvatarType;
 }

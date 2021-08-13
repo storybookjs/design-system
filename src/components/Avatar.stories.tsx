@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps, FunctionComponent } from 'react';
 
 import { Avatar } from './Avatar';
 
@@ -10,8 +10,7 @@ export default {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const Base = ({ src, ...props }) => (
+const Base: FunctionComponent<ComponentProps<typeof Avatar>> = ({ src, ...props }) => (
   <div>
     <Avatar isLoading {...props} />
     <Avatar username="Tom Coleman" {...props} />
