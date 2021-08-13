@@ -349,7 +349,16 @@ export const Button = forwardRef<
   >
 >(
   (
-    { children, isDisabled = false, isLoading, loadingText = null, isLink, ButtonWrapper, ...rest },
+    {
+      children,
+      isDisabled = false,
+      isLoading,
+      loadingText = null,
+      isLink,
+      ButtonWrapper = null,
+      appearance = 'tertiary',
+      ...rest
+    },
     ref
   ) => {
     if (ButtonWrapper) {
@@ -358,6 +367,7 @@ export const Button = forwardRef<
           as={ButtonWrapper}
           disabled={isDisabled}
           isLoading={isLoading}
+          appearance={appearance}
           {...rest}
           ref={ref}
         >
@@ -370,7 +380,13 @@ export const Button = forwardRef<
     }
     if (isLink) {
       return (
-        <StyledButton as={ButtonLink} isLoading={isLoading} {...rest} ref={ref}>
+        <StyledButton
+          as={ButtonLink}
+          isLoading={isLoading}
+          appearance={appearance}
+          {...rest}
+          ref={ref}
+        >
           <>
             <Text>{children}</Text>
             {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
@@ -382,6 +398,7 @@ export const Button = forwardRef<
       <StyledButton
         disabled={isDisabled}
         isLoading={isLoading}
+        appearance={appearance}
         {...rest}
         ref={ref as ComponentProps<typeof StyledButton>['ref']}
       >
