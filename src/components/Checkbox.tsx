@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
@@ -14,7 +13,7 @@ const Label = styled.label`
   align-items: center;
 `;
 
-const OptionalText = styled.span`
+const OptionalText = styled.span<{ hideLabel: boolean }>`
   ${(props) =>
     props.hideLabel &&
     css`
@@ -43,7 +42,7 @@ const Error = styled.span`
 
 const LabelText = styled.span``;
 
-const Input = styled.input.attrs({ type: 'checkbox' })`
+const Input = styled.input.attrs({ type: 'checkbox' })<{ checkboxColor: string }>`
   margin: 0 0.4em 0 0;
   font-size: initial;
   opacity: 0;
@@ -112,7 +111,21 @@ const CheckboxWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export function Checkbox({ appearance, id, label, error, hideLabel, ...props }) {
+interface Props {
+  appearance?: 'primary' | 'secondary';
+  id: string;
+  label: ReactNode;
+  hideLabel?: boolean;
+}
+
+export const Checkbox: FunctionComponent<Props & ComponentProps<typeof Input>> = ({
+  appearance = 'primary',
+  id,
+  label,
+  error,
+  hideLabel,
+  ...props
+}) => {
   const errorId = `${id}-error`;
   const checkboxColor = color[appearance];
   return (
@@ -130,23 +143,7 @@ export function Checkbox({ appearance, id, label, error, hideLabel, ...props }) 
           <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
         </LabelText>
       </Label>
-      <Error id={errorId} error={error}>
-        {error}
-      </Error>
+      <Error id={errorId}>{error}</Error>
     </CheckboxWrapper>
   );
-}
-
-Checkbox.propTypes = {
-  appearance: PropTypes.oneOf(['primary', 'secondary']),
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  hideLabel: PropTypes.bool,
-  error: PropTypes.string,
-};
-
-Checkbox.defaultProps = {
-  appearance: 'primary',
-  hideLabel: false,
-  error: null,
 };
