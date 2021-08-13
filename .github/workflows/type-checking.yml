@@ -1,4 +1,4 @@
-name: "Chromatic"
+name: "Type Checking"
 on:
   push
 
