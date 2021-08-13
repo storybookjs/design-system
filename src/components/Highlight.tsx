@@ -1,12 +1,11 @@
 /* eslint-disable react/no-danger, global-require */
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { ComponentProps, FunctionComponent, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Prism from 'prismjs';
-import PropTypes from 'prop-types';
 import { color } from './shared/styles';
 
 if (typeof document !== 'undefined') {
+  // @ts-ignore
   global.Prism = Prism;
   require('prismjs/components/prism-bash');
   require('prismjs/components/prism-javascript');
@@ -18,19 +17,6 @@ if (typeof document !== 'undefined') {
   require('prismjs/components/prism-jsx');
   require('prismjs/components/prism-tsx');
 }
-
-const languages = [
-  'bash',
-  'javascript',
-  'typescript',
-  'json',
-  'css',
-  'yaml',
-  'markdown',
-  'md',
-  'jsx',
-  'tsx',
-];
 
 // Prism theme copied from 'prismjs/themes/prism.css.' -- without Webpack, the CSS
 // cannot be imported easily and any app which pulls in the design system will
@@ -80,52 +66,52 @@ const HighlightBlock = styled.div`
 
 const languageMap = {
   mdx: 'markdown',
-};
+  bash: 'bash',
+  javascript: 'javascript',
+  typescript: 'typescript',
+  json: 'json',
+  css: 'css',
+  yaml: 'yaml',
+  markdown: 'markdown',
+  md: 'md',
+  jsx: 'jsx',
+  tsx: 'tsx',
+} as const;
 
-export class Highlight extends React.Component {
-  componentDidMount() {
-    this.highlightCode();
-  }
-
-  componentDidUpdate() {
-    this.highlightCode();
-  }
-
-  highlightCode() {
-    const domNode = ReactDOM.findDOMNode(this); // eslint-disable-line
-    Prism.highlightAllUnder(domNode);
-  }
-
-  render() {
-    const { children, language: inputLanguage, withHTMLChildren, ...rest } = this.props;
-    const language = languageMap[inputLanguage] || inputLanguage;
-    const codeBlock = withHTMLChildren ? (
-      <div dangerouslySetInnerHTML={{ __html: children }} />
-    ) : (
-      children
-    );
-
-    return (
-      <HighlightBlock {...rest}>
-        {language ? (
-          <pre className={`language-${language}`}>
-            <code className={`language-${language}`}>{codeBlock}</code>
-          </pre>
-        ) : (
-          codeBlock
-        )}
-      </HighlightBlock>
-    );
-  }
+interface Props {
+  language?: keyof typeof languageMap;
+  withHTMLChildren?: boolean;
 }
 
-Highlight.propTypes = {
-  children: PropTypes.node.isRequired,
-  language: PropTypes.oneOf(languages),
-  withHTMLChildren: PropTypes.bool,
-};
+export const Highlight: FunctionComponent<Props & ComponentProps<typeof HighlightBlock>> = ({
+  children,
+  language: inputLanguage,
+  withHTMLChildren = true,
+  ...rest
+}) => {
+  const language = languageMap[inputLanguage] || inputLanguage;
+  const codeBlock = withHTMLChildren ? (
+    <div dangerouslySetInnerHTML={{ __html: children as string }} />
+  ) : (
+    children
+  );
+  const domNode = useRef<HTMLDivElement>();
 
-Highlight.defaultProps = {
-  language: null,
-  withHTMLChildren: true,
+  useEffect(() => {
+    if (domNode.current) {
+      Prism.highlightAllUnder(domNode.current);
+    }
+  });
+
+  return (
+    <HighlightBlock {...rest} ref={domNode}>
+      {language ? (
+        <pre className={`language-${language}`}>
+          <code className={`language-${language}`}>{codeBlock}</code>
+        </pre>
+      ) : (
+        codeBlock
+      )}
+    </HighlightBlock>
+  );
 };
