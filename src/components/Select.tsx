@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
@@ -11,7 +10,11 @@ const Label = styled.label`
   font-size: ${typography.size.s2}px;
 `;
 
-const LabelWrapper = styled.div`
+interface LabelProps {
+  hideLabel: boolean;
+}
+
+const LabelWrapper = styled.div<LabelProps>`
   margin-bottom: 0.5em;
 
   ${(props) =>
@@ -30,7 +33,12 @@ const LabelWrapper = styled.div`
     `}
 `;
 
-const Selector = styled.select`
+interface SelectProps {
+  disabled: boolean;
+  inProgress: boolean;
+}
+
+const Selector = styled.select<SelectProps>`
   appearance: none;
   border: 0;
   border-radius: 0;
@@ -80,7 +88,13 @@ const SelectError = styled.div`
   padding-right: 2.75em;
 `;
 
-const SelectWrapper = styled.span`
+interface WrapperProps {
+  disabled: boolean;
+  appearance: 'default' | 'tertiary';
+  icon: string;
+}
+
+const SelectWrapper = styled.span<WrapperProps>`
   display: inline-block;
   height: 40px;
   line-height: normal;
@@ -200,29 +214,42 @@ const SelectWrapper = styled.span`
   `}
 `;
 
-function Option({ label, value }) {
-  return <OptionWrapper value={value}>{label}</OptionWrapper>;
+interface OptionProps {
+  label: string;
+  value: string;
 }
 
-Option.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+const Option: FunctionComponent<OptionProps> = ({ label, value }) => {
+  return <OptionWrapper value={value}>{label}</OptionWrapper>;
 };
 
-export function Select({
+interface Props {
+  options: OptionProps[];
+  value: string;
+  appearance?: 'default' | 'tertiary';
+  label: string;
+  hideLabel?: boolean;
+  error?: ReactNode;
+  icon?: ComponentProps<typeof Icon>['icon'];
+  className?: string;
+  inProgress?: boolean;
+  disabled?: boolean;
+}
+
+export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> = ({
   id,
-  options,
-  value,
-  appearance,
+  options = [{ label: 'Loading', value: 'loading' }],
+  value = 'loading',
+  appearance = 'default',
   label,
-  hideLabel,
+  hideLabel = false,
   error,
   icon,
   className,
-  inProgress,
-  disabled,
+  inProgress = false,
+  disabled = false,
   ...other
-}) {
+}) => {
   let spinnerId;
   let errorId;
   let ariaDescribedBy;
@@ -240,13 +267,7 @@ export function Select({
       <LabelWrapper hideLabel={hideLabel}>
         <Label htmlFor={id}>{label}</Label>
       </LabelWrapper>
-      <SelectWrapper
-        appearance={appearance}
-        icon={icon}
-        error={error}
-        data-error={error}
-        disabled={disabled}
-      >
+      <SelectWrapper appearance={appearance} icon={icon} data-error={error} disabled={disabled}>
         {!inProgress && <Arrow />}
         <Selector
           id={id}
@@ -268,30 +289,4 @@ export function Select({
       </SelectWrapper>
     </div>
   );
-}
-
-Select.propTypes = {
-  id: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape(Option.propTypes)),
-  value: PropTypes.string,
-  appearance: PropTypes.oneOf(['default', 'tertiary']),
-  label: PropTypes.string.isRequired,
-  hideLabel: PropTypes.bool,
-  error: PropTypes.string,
-  icon: PropTypes.string,
-  className: PropTypes.string,
-  inProgress: PropTypes.bool,
-  disabled: PropTypes.bool,
-};
-
-Select.defaultProps = {
-  value: 'loading',
-  options: [{ title: 'Loading', value: 'loading' }],
-  appearance: 'default',
-  hideLabel: false,
-  error: null,
-  icon: null,
-  className: null,
-  inProgress: false,
-  disabled: false,
 };
