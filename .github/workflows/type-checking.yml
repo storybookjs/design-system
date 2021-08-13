@@ -1,0 +1,13 @@
+name: "Chromatic"
+on:
+  push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: |
+        yarn
+    - run: |
+        yarn types
