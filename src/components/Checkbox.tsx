@@ -116,6 +116,7 @@ interface Props {
   id: string;
   label: ReactNode;
   hideLabel?: boolean;
+  error?: ReactNode;
 }
 
 export const Checkbox: FunctionComponent<Props & ComponentProps<typeof Input>> = ({

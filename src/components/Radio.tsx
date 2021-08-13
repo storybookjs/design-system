@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
@@ -14,7 +14,7 @@ const Label = styled.label`
   align-items: center;
 `;
 
-const OptionalText = styled.span`
+const OptionalText = styled.span<{ hideLabel: boolean }>`
   ${(props) =>
     props.hideLabel &&
     css`
@@ -52,7 +52,7 @@ const Description = styled.div`
   width: 100%;
 `;
 
-const Input = styled.input.attrs({ type: 'radio' })`
+const Input = styled.input.attrs({ type: 'radio' })<{ radioColor: string }>`
   margin: 0 0.4em 0 0;
   font-size: initial;
   opacity: 0;
@@ -113,17 +113,17 @@ const RadioWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export function Radio({
-  appearance,
+export const Radio: FunctionComponent<Props & ComponentProps<typeof Input>> = ({
   id,
+  appearance = 'primary',
   label,
   description,
   error,
-  hideLabel,
-  value,
+  hideLabel = false,
+  value = '',
   className,
   ...props
-}) {
+}) => {
   const radioColor = color[appearance];
   let errorId;
   let descriptionId;
@@ -158,25 +158,15 @@ export function Radio({
       {description && <Description id={descriptionId}>{description}</Description>}
     </RadioWrapper>
   );
+};
+
+interface Props {
+  appearance?: 'primary' | 'secondary';
+  id: string;
+  value?: string;
+  label: string;
+  hideLabel?: boolean;
+  description?: string;
+  error?: ReactNode;
+  className?: string;
 }
-
-Radio.propTypes = {
-  appearance: PropTypes.oneOf(['primary', 'secondary']),
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  label: PropTypes.string,
-  hideLabel: PropTypes.bool,
-  description: PropTypes.string,
-  error: PropTypes.string,
-  className: PropTypes.string,
-};
-
-Radio.defaultProps = {
-  appearance: 'primary',
-  value: '',
-  label: null,
-  hideLabel: false,
-  description: null,
-  error: null,
-  className: null,
-};
