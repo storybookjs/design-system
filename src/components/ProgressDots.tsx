@@ -1,15 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FunctionComponent } from 'react';
 import styled, { css } from 'styled-components';
 import { color } from './shared/styles';
 import { glow } from './shared/animation';
 
-const ProgressWrapper = styled.div`
+const ProgressWrapper = styled.div<{ size: 'small' | 'large' }>`
   display: inline-block;
   height: ${(props) => (props.size === 'small' ? 4 : 5)}px;
 `;
 
-const Dot = styled.div`
+interface DotProps {
+  size: 'small' | 'large';
+  active: boolean;
+  isLoading: boolean;
+}
+
+const Dot = styled.div<DotProps>`
   background: ${color.medium};
   display: inline-block;
   vertical-align: top;
@@ -43,36 +48,33 @@ const Dot = styled.div`
     `};
 `;
 
-export function ProgressDots({ isLoading, steps, progress, className, size }) {
+interface Props {
+  isLoading: boolean;
+  steps: number;
+  progress: number;
+  size: 'small' | 'large';
+}
+
+export const ProgressDots: FunctionComponent<Props & ComponentProps<typeof ProgressWrapper>> = ({
+  isLoading = false,
+  steps = 4,
+  progress = 0,
+  size = 'small',
+  ...rest
+}) => {
   const dots = [];
   for (let i = 0; i < steps; i += 1) {
     dots.push(<Dot isLoading={isLoading} active={i === progress - 1} key={i} size={size} />);
   }
   return (
     <ProgressWrapper
-      className={className}
       size={size}
       role="status"
       aria-live="polite"
       aria-label="Content is loading ..."
+      {...rest}
     >
       {dots}
     </ProgressWrapper>
   );
-}
-
-ProgressDots.propTypes = {
-  isLoading: PropTypes.bool,
-  steps: PropTypes.number,
-  progress: PropTypes.number,
-  className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'large']),
-};
-
-ProgressDots.defaultProps = {
-  isLoading: false,
-  steps: 4,
-  progress: 0,
-  className: null,
-  size: 'small',
 };
