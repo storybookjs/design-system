@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react';
+import React, { ComponentProps, forwardRef, ReactElement } from 'react';
 import styled from 'styled-components';
 import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
@@ -17,29 +17,29 @@ const Loading = styled.span`
   opacity: 0;
 `;
 
-enum APPEARANCES {
-  PRIMARY = 'primary',
-  PRIMARY_OUTLINE = 'primaryOutline',
-  SECONDARY = 'secondary',
-  SECONDARY_OUTLINE = 'secondaryOutline',
-  TERTIARY = 'tertiary',
-  OUTLINE = 'outline',
-  INVERSE_PRIMARY = 'inversePrimary',
-  INVERSE_SECONDARY = 'inverseSecondary',
-  INVERSE_OUTLINE = 'inverseOutline',
-}
+const APPEARANCES = {
+  PRIMARY: 'primary',
+  PRIMARY_OUTLINE: 'primaryOutline',
+  SECONDARY: 'secondary',
+  SECONDARY_OUTLINE: 'secondaryOutline',
+  TERTIARY: 'tertiary',
+  OUTLINE: 'outline',
+  INVERSE_PRIMARY: 'inversePrimary',
+  INVERSE_SECONDARY: 'inverseSecondary',
+  INVERSE_OUTLINE: 'inverseOutline',
+} as const;
 
-enum SIZES {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-}
+const SIZES = {
+  SMALL: 'small',
+  MEDIUM: 'medium',
+} as const;
 
 interface StylingProps {
-  size: SIZES;
   isLoading: boolean;
   isUnclickable: boolean;
   containsIcon: boolean;
-  appearance: APPEARANCES;
+  size: typeof SIZES[keyof typeof SIZES];
+  appearance: typeof APPEARANCES[keyof typeof APPEARANCES];
 }
 
 export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
@@ -342,7 +342,7 @@ interface ConfigProps {
   loadingText?: ReactElement;
 }
 
-export const Button = forwardRef<any, ConfigProps & StylingProps>(
+export const Button = forwardRef<unknown, ConfigProps & StylingProps>(
   (
     { children, isDisabled = false, isLoading, loadingText = null, isLink, ButtonWrapper, ...rest },
     ref
@@ -374,7 +374,12 @@ export const Button = forwardRef<any, ConfigProps & StylingProps>(
       );
     }
     return (
-      <StyledButton disabled={isDisabled} isLoading={isLoading} {...rest} ref={ref}>
+      <StyledButton
+        disabled={isDisabled}
+        isLoading={isLoading}
+        {...rest}
+        ref={ref as ComponentProps<typeof StyledButton>['ref']}
+      >
         <>
           <Text>{children}</Text>
           {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
