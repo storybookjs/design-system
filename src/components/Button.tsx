@@ -1,4 +1,10 @@
-import React, { ComponentProps, forwardRef, PropsWithChildren, ReactElement } from 'react';
+import React, {
+  ComponentProps,
+  forwardRef,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from 'react';
 import styled from 'styled-components';
 import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
@@ -339,7 +345,7 @@ interface ConfigProps {
   ButtonWrapper?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   isDisabled?: boolean;
   isLoading?: boolean;
-  loadingText?: ReactElement;
+  loadingText?: ReactNode;
 }
 
 export const Button = forwardRef<
