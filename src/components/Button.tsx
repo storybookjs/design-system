@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef, ReactElement } from 'react';
+import React, { forwardRef, ReactElement } from 'react';
 import styled from 'styled-components';
 import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
@@ -332,67 +332,54 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `};
 `;
 
-const UnstyledButton = styled.button``;
 const ButtonLink = styled.a``;
 
-// The main purpose of this component is to strip certain props that get passed
-// down to the styled component, so that we don't end up passing them to a
-// tag which would throw warnings for non-standard props.
-const ButtonComponentPicker = forwardRef<
-  ReactElement<HTMLButtonElement | HTMLAnchorElement>,
-  ConfigProps & StylingProps
->(
-  (
-    {
-      appearance,
-      ButtonWrapper = null,
-      containsIcon,
-      isLink = false,
-      isLoading,
-      isUnclickable,
-      size,
-      ...rest
-    },
-    ref
-  ) => {
-    // Use the UnstyledButton here to avoid duplicating styles and creating
-    // specificity conflicts by first rendering the StyledLink higher up the chain
-    // and then re-rendering it through the 'as' prop.
-    if (isLink) {
-      return <ButtonLink {...rest} />;
-    }
-    if (ButtonWrapper) {
-      return <ButtonWrapper {...rest} />;
-    }
-    return <UnstyledButton {...rest} />;
-  }
-);
-
 interface ConfigProps {
-  isLink: boolean;
-  ButtonWrapper: ComponentProps<typeof StyledButton>['as'];
-  isDisabled: boolean;
-  isLoading: boolean;
-  loadingText: ReactElement;
+  isLink?: boolean;
+  ButtonWrapper?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  loadingText?: ReactElement;
 }
 
-export const Button = forwardRef<
-  ReactElement<HTMLButtonElement | HTMLAnchorElement>,
-  ConfigProps & StylingProps
->(({ children, isDisabled = false, isLoading, loadingText = null, ...rest }, ref) => {
-  return (
-    <StyledButton
-      as={ButtonComponentPicker}
-      // @ts-ignore
-      disabled={isDisabled}
-      isLoading={isLoading}
-      {...rest}
-      ref={ref}
-    >
-      <>
-        <Text>{children}</Text>
-        {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
-      </>
-    </StyledButton>
-  );
-});
+export const Button = forwardRef<any, ConfigProps & StylingProps>(
+  (
+    { children, isDisabled = false, isLoading, loadingText = null, isLink, ButtonWrapper, ...rest },
+    ref
+  ) => {
+    if (ButtonWrapper) {
+      return (
+        <StyledButton
+          as={ButtonWrapper}
+          disabled={isDisabled}
+          isLoading={isLoading}
+          {...rest}
+          ref={ref}
+        >
+          <>
+            <Text>{children}</Text>
+            {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+          </>
+        </StyledButton>
+      );
+    }
+    if (isLink) {
+      return (
+        <StyledButton as={ButtonLink} isLoading={isLoading} {...rest} ref={ref}>
+          <>
+            <Text>{children}</Text>
+            {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+          </>
+        </StyledButton>
+      );
+    }
+    return (
+      <StyledButton disabled={isDisabled} isLoading={isLoading} {...rest} ref={ref}>
+        <>
+          <Text>{children}</Text>
+          {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+        </>
+      </StyledButton>
+    );
+  }
+);
