@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef, ReactElement } from 'react';
+import React, { ComponentProps, forwardRef, PropsWithChildren, ReactElement } from 'react';
 import styled from 'styled-components';
 import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
@@ -33,14 +33,6 @@ const SIZES = {
   SMALL: 'small',
   MEDIUM: 'medium',
 } as const;
-
-interface StylingProps {
-  isLoading: boolean;
-  isUnclickable: boolean;
-  containsIcon: boolean;
-  size: typeof SIZES[keyof typeof SIZES];
-  appearance: typeof APPEARANCES[keyof typeof APPEARANCES];
-}
 
 export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
   border: 0;
@@ -334,6 +326,14 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
 
 const ButtonLink = styled.a``;
 
+interface StylingProps {
+  isLoading?: boolean;
+  isUnclickable?: boolean;
+  containsIcon?: boolean;
+  size?: typeof SIZES[keyof typeof SIZES];
+  appearance?: typeof APPEARANCES[keyof typeof APPEARANCES];
+}
+
 interface ConfigProps {
   isLink?: boolean;
   ButtonWrapper?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
@@ -342,7 +342,12 @@ interface ConfigProps {
   loadingText?: ReactElement;
 }
 
-export const Button = forwardRef<unknown, ConfigProps & StylingProps>(
+export const Button = forwardRef<
+  unknown,
+  PropsWithChildren<
+    ConfigProps & StylingProps & (JSX.IntrinsicElements['button'] & JSX.IntrinsicElements['a'])
+  >
+>(
   (
     { children, isDisabled = false, isLoading, loadingText = null, isLink, ButtonWrapper, ...rest },
     ref
