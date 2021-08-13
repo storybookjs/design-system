@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
     "baseUrl": ".",
     "incremental": false,
     "noImplicitAny": true,
@@ -16,12 +18,16 @@
     "types": ["jest"],
     "lib": ["es2017", "dom"]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "**/dist",
     "node_modules",
     "**/node_modules",
     "**/*.spec.ts",
     "**/__tests__",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "**/*.stories.*"
   ]
 }

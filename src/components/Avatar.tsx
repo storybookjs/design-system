@@ -153,5 +153,5 @@ interface Props {
   src: string;
   /** Specify size */
   size: keyof typeof sizes;
-  type: AvatarType;
+  type?: AvatarType;
 }
