@@ -1,7 +1,6 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { darken, rgba, opacify } from 'polished';
+import React, { ComponentProps, forwardRef, ReactElement } from 'react';
+import styled from 'styled-components';
+import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
 
@@ -18,24 +17,32 @@ const Loading = styled.span`
   opacity: 0;
 `;
 
-const APPEARANCES = {
-  PRIMARY: 'primary',
-  PRIMARY_OUTLINE: 'primaryOutline',
-  SECONDARY: 'secondary',
-  SECONDARY_OUTLINE: 'secondaryOutline',
-  TERTIARY: 'tertiary',
-  OUTLINE: 'outline',
-  INVERSE_PRIMARY: 'inversePrimary',
-  INVERSE_SECONDARY: 'inverseSecondary',
-  INVERSE_OUTLINE: 'inverseOutline',
-};
+enum APPEARANCES {
+  PRIMARY = 'primary',
+  PRIMARY_OUTLINE = 'primaryOutline',
+  SECONDARY = 'secondary',
+  SECONDARY_OUTLINE = 'secondaryOutline',
+  TERTIARY = 'tertiary',
+  OUTLINE = 'outline',
+  INVERSE_PRIMARY = 'inversePrimary',
+  INVERSE_SECONDARY = 'inverseSecondary',
+  INVERSE_OUTLINE = 'inverseOutline',
+}
 
-const SIZES = {
-  SMALL: 'small',
-  MEDIUM: 'medium',
-};
+enum SIZES {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+}
 
-export const StyledButton = styled.button`
+interface StylingProps {
+  size: SIZES;
+  isLoading: boolean;
+  isUnclickable: boolean;
+  containsIcon: boolean;
+  appearance: APPEARANCES;
+}
+
+export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -331,91 +338,61 @@ const ButtonLink = styled.a``;
 // The main purpose of this component is to strip certain props that get passed
 // down to the styled component, so that we don't end up passing them to a
 // tag which would throw warnings for non-standard props.
-const ButtonComponentPicker = forwardRef(
+const ButtonComponentPicker = forwardRef<
+  ReactElement<HTMLButtonElement | HTMLAnchorElement>,
+  ConfigProps & StylingProps
+>(
   (
-    { appearance, ButtonWrapper, containsIcon, isLink, isLoading, isUnclickable, size, ...rest },
+    {
+      appearance,
+      ButtonWrapper = null,
+      containsIcon,
+      isLink = false,
+      isLoading,
+      isUnclickable,
+      size,
+      ...rest
+    },
     ref
   ) => {
     // Use the UnstyledButton here to avoid duplicating styles and creating
     // specificity conflicts by first rendering the StyledLink higher up the chain
     // and then re-rendering it through the 'as' prop.
-    const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || UnstyledButton;
-    return <ButtonComponent {...rest} />;
+    if (isLink) {
+      return <ButtonLink {...rest} />;
+    }
+    if (ButtonWrapper) {
+      return <ButtonWrapper {...rest} />;
+    }
+    return <UnstyledButton {...rest} />;
   }
 );
 
-const buttonStyleProps = {
-  appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
-  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  /**
-   Buttons with icons by themselves have a circular shape
-  */
-  containsIcon: PropTypes.bool,
-  /**
-   Buttons that have hrefs should use <a> instead of <button>
-  */
-  isLink: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  /**
-   Prevents users from clicking on a button multiple times (for things like payment forms)
-  */
-  isUnclickable: PropTypes.bool,
-  size: PropTypes.oneOf(Object.values(SIZES)),
-};
+interface ConfigProps {
+  isLink: boolean;
+  ButtonWrapper: ComponentProps<typeof StyledButton>['as'];
+  isDisabled: boolean;
+  isLoading: boolean;
+  loadingText: ReactElement;
+}
 
-const buttonStyleDefaultProps = {
-  isLoading: false,
-  isLink: false,
-  appearance: APPEARANCES.TERTIARY,
-  isUnclickable: false,
-  containsIcon: false,
-  size: SIZES.MEDIUM,
-  ButtonWrapper: undefined,
-};
-
-ButtonComponentPicker.propTypes = {
-  ...buttonStyleProps,
-};
-
-ButtonComponentPicker.defaultProps = {
-  ...buttonStyleDefaultProps,
-};
-
-export const Button = forwardRef(
-  ({ children, isDisabled, isLoading, loadingText, ...rest }, ref) => {
-    const content = (
+export const Button = forwardRef<
+  ReactElement<HTMLButtonElement | HTMLAnchorElement>,
+  ConfigProps & StylingProps
+>(({ children, isDisabled = false, isLoading, loadingText = null, ...rest }, ref) => {
+  return (
+    <StyledButton
+      as={ButtonComponentPicker}
+      // @ts-ignore
+      disabled={isDisabled}
+      isLoading={isLoading}
+      {...rest}
+      ref={ref}
+    >
       <>
         <Text>{children}</Text>
         {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
       </>
-    );
-
-    return (
-      <StyledButton
-        as={ButtonComponentPicker}
-        disabled={isDisabled}
-        isLoading={isLoading}
-        ref={ref}
-        {...rest}
-      >
-        {content}
-      </StyledButton>
-    );
-  }
-);
-
-Button.propTypes = {
-  ...buttonStyleProps,
-  children: PropTypes.node.isRequired,
-  isDisabled: PropTypes.bool,
-  /**
-   When a button is in the loading state you can supply custom text
-  */
-  loadingText: PropTypes.node,
-};
-
-Button.defaultProps = {
-  loadingText: null,
-  isDisabled: false,
-  ...buttonStyleDefaultProps,
-};
+    </StyledButton>
+  );
+});
