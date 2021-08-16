@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
@@ -14,7 +14,7 @@ const Label = styled.label`
   align-items: center;
 `;
 
-const OptionalText = styled.span`
+const OptionalText = styled.span<{ hideLabel: boolean }>`
   ${(props) =>
     props.hideLabel &&
     css`
@@ -43,11 +43,19 @@ const Error = styled.span`
 
 const LabelText = styled.span``;
 
-const Input = styled.input.attrs({ type: 'checkbox' })`
+const Description = styled.div`
+  font-size: ${typography.size.s1}px;
+  font-weight: ${typography.weight.regular};
+  color: ${color.mediumdark};
+  margin-top: 4px;
+  margin-left: calc(${typography.size.s2}px + 0.4em);
+  width: 100%;
+`;
+
+const Input = styled.input.attrs({ type: 'radio' })<{ radioColor: string }>`
   margin: 0 0.4em 0 0;
   font-size: initial;
   opacity: 0;
-  vertical-align: text-top;
 
   & + ${LabelText} {
     &:before,
@@ -59,14 +67,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
       width: 1em;
       content: '';
       display: block;
-    }
-
-    &:before {
-      border-radius: 4px;
-    }
-
-    &:after {
-      border-radius: 3px;
+      border-radius: 3em;
     }
   }
 
@@ -75,16 +76,16 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   }
 
   &:focus + ${LabelText}:before {
-    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset;
   }
 
   &:checked + ${LabelText}:before {
-    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset;
   }
 
   &:checked:focus + ${LabelText}:before {
-    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset,
-      ${(props) => rgba(props.checkboxColor, 0.3)} 0 0 5px 2px;
+    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset,
+      ${(props) => rgba(props.radioColor, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
@@ -101,52 +102,71 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 
   &:checked + ${LabelText}:after {
     transform: scale3d(1, 1, 1);
-    background: ${(props) => props.checkboxColor};
+    background: ${(props) => props.radioColor};
     opacity: 1;
   }
 `;
 
-const CheckboxWrapper = styled.div`
+const RadioWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
-export function Checkbox({ appearance, id, label, error, hideLabel, ...props }) {
-  const errorId = `${id}-error`;
-  const checkboxColor = color[appearance];
+export const Radio: FunctionComponent<Props & ComponentProps<typeof Input>> = ({
+  id,
+  appearance = 'primary',
+  label,
+  description,
+  error,
+  hideLabel = false,
+  value = '',
+  className,
+  ...props
+}) => {
+  const radioColor = color[appearance];
+  let errorId;
+  let descriptionId;
+  let ariaDescribedBy;
+
+  if (error) {
+    errorId = `${id}-error`;
+    ariaDescribedBy = errorId;
+  }
+  if (description) {
+    descriptionId = `${id}-description`;
+    ariaDescribedBy = `${ariaDescribedBy} ${descriptionId}`;
+  }
+
   return (
-    <CheckboxWrapper>
-      <Label>
+    <RadioWrapper>
+      <Label className={className}>
         <Input
           {...props}
           id={id}
-          aria-describedby={errorId}
+          aria-describedby={ariaDescribedBy}
           aria-invalid={!!error}
-          checkboxColor={checkboxColor}
-          type="checkbox"
+          radioColor={radioColor}
+          type="radio"
+          value={value}
         />
         <LabelText>
           <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
         </LabelText>
       </Label>
-      <Error id={errorId} error={error}>
-        {error}
-      </Error>
-    </CheckboxWrapper>
+      {error && <Error id={errorId}>{error}</Error>}
+      {description && <Description id={descriptionId}>{description}</Description>}
+    </RadioWrapper>
   );
+};
+
+interface Props {
+  appearance?: 'primary' | 'secondary';
+  id: string;
+  value?: string;
+  label: string;
+  hideLabel?: boolean;
+  description?: string;
+  error?: ReactNode;
+  className?: string;
 }
-
-Checkbox.propTypes = {
-  appearance: PropTypes.oneOf(['primary', 'secondary']),
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  hideLabel: PropTypes.bool,
-  error: PropTypes.string,
-};
-
-Checkbox.defaultProps = {
-  appearance: 'primary',
-  hideLabel: false,
-  error: null,
-};

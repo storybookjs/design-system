@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { ComponentProps, FunctionComponent } from 'react';
 import styled, { css } from 'styled-components';
 import { color } from './shared/styles';
 import { rotate360 } from './shared/animation';
 
-const SpinnerWrapper = styled.div`
+interface Props {
+  inline?: boolean;
+  inverse?: boolean;
+  inForm?: boolean;
+  positive?: boolean;
+  negative?: boolean;
+  neutral?: boolean;
+}
+
+const SpinnerWrapper = styled.div<Props>`
   border-radius: 3em;
   cursor: progress;
   display: inline-block;
@@ -90,7 +99,9 @@ const SpinnerWrapper = styled.div`
     `};
 `;
 
-export function Spinner({ ...props }) {
+export const Spinner: FunctionComponent<Props & ComponentProps<typeof SpinnerWrapper>> = (
+  props
+) => {
   return (
     <SpinnerWrapper
       aria-label="Content is loading ..."
@@ -99,4 +110,4 @@ export function Spinner({ ...props }) {
       {...props}
     />
   );
-}
+};

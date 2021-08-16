@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
@@ -14,7 +13,7 @@ const Label = styled.label`
   align-items: center;
 `;
 
-const OptionalText = styled.span`
+const OptionalText = styled.span<{ hideLabel: boolean }>`
   ${(props) =>
     props.hideLabel &&
     css`
@@ -43,19 +42,11 @@ const Error = styled.span`
 
 const LabelText = styled.span``;
 
-const Description = styled.div`
-  font-size: ${typography.size.s1}px;
-  font-weight: ${typography.weight.regular};
-  color: ${color.mediumdark};
-  margin-top: 4px;
-  margin-left: calc(${typography.size.s2}px + 0.4em);
-  width: 100%;
-`;
-
-const Input = styled.input.attrs({ type: 'radio' })`
+const Input = styled.input.attrs({ type: 'checkbox' })<{ checkboxColor: string }>`
   margin: 0 0.4em 0 0;
   font-size: initial;
   opacity: 0;
+  vertical-align: text-top;
 
   & + ${LabelText} {
     &:before,
@@ -67,7 +58,14 @@ const Input = styled.input.attrs({ type: 'radio' })`
       width: 1em;
       content: '';
       display: block;
-      border-radius: 3em;
+    }
+
+    &:before {
+      border-radius: 4px;
+    }
+
+    &:after {
+      border-radius: 3px;
     }
   }
 
@@ -76,16 +74,16 @@ const Input = styled.input.attrs({ type: 'radio' })`
   }
 
   &:focus + ${LabelText}:before {
-    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset;
   }
 
   &:checked + ${LabelText}:before {
-    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset;
+    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset;
   }
 
   &:checked:focus + ${LabelText}:before {
-    box-shadow: ${(props) => props.radioColor} 0 0 0 1px inset,
-      ${(props) => rgba(props.radioColor, 0.3)} 0 0 5px 2px;
+    box-shadow: ${(props) => props.checkboxColor} 0 0 0 1px inset,
+      ${(props) => rgba(props.checkboxColor, 0.3)} 0 0 5px 2px;
   }
 
   & + ${LabelText}:after {
@@ -102,81 +100,51 @@ const Input = styled.input.attrs({ type: 'radio' })`
 
   &:checked + ${LabelText}:after {
     transform: scale3d(1, 1, 1);
-    background: ${(props) => props.radioColor};
+    background: ${(props) => props.checkboxColor};
     opacity: 1;
   }
 `;
 
-const RadioWrapper = styled.div`
+const CheckboxWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
-export function Radio({
-  appearance,
+interface Props {
+  appearance?: 'primary' | 'secondary';
+  id: string;
+  label: ReactNode;
+  hideLabel?: boolean;
+  error?: ReactNode;
+}
+
+export const Checkbox: FunctionComponent<Props & ComponentProps<typeof Input>> = ({
+  appearance = 'primary',
   id,
   label,
-  description,
   error,
   hideLabel,
-  value,
-  className,
   ...props
-}) {
-  const radioColor = color[appearance];
-  let errorId;
-  let descriptionId;
-  let ariaDescribedBy;
-
-  if (error) {
-    errorId = `${id}-error`;
-    ariaDescribedBy = errorId;
-  }
-  if (description) {
-    descriptionId = `${id}-description`;
-    ariaDescribedBy = `${ariaDescribedBy} ${descriptionId}`;
-  }
-
+}) => {
+  const errorId = `${id}-error`;
+  const checkboxColor = color[appearance];
   return (
-    <RadioWrapper>
-      <Label className={className}>
+    <CheckboxWrapper>
+      <Label>
         <Input
           {...props}
           id={id}
-          aria-describedby={ariaDescribedBy}
+          aria-describedby={errorId}
           aria-invalid={!!error}
-          radioColor={radioColor}
-          type="radio"
-          value={value}
+          checkboxColor={checkboxColor}
+          type="checkbox"
         />
         <LabelText>
           <OptionalText hideLabel={hideLabel}>{label}</OptionalText>
         </LabelText>
       </Label>
-      {error && <Error id={errorId}>{error}</Error>}
-      {description && <Description id={descriptionId}>{description}</Description>}
-    </RadioWrapper>
+      <Error id={errorId}>{error}</Error>
+    </CheckboxWrapper>
   );
-}
-
-Radio.propTypes = {
-  appearance: PropTypes.oneOf(['primary', 'secondary']),
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  label: PropTypes.string,
-  hideLabel: PropTypes.bool,
-  description: PropTypes.string,
-  error: PropTypes.string,
-  className: PropTypes.string,
-};
-
-Radio.defaultProps = {
-  appearance: 'primary',
-  value: '',
-  label: null,
-  hideLabel: false,
-  description: null,
-  error: null,
-  className: null,
 };

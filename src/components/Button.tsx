@@ -1,7 +1,12 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { darken, rgba, opacify } from 'polished';
+import React, {
+  ComponentProps,
+  forwardRef,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from 'react';
+import styled from 'styled-components';
+import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
 
@@ -28,14 +33,14 @@ const APPEARANCES = {
   INVERSE_PRIMARY: 'inversePrimary',
   INVERSE_SECONDARY: 'inverseSecondary',
   INVERSE_OUTLINE: 'inverseOutline',
-};
+} as const;
 
 const SIZES = {
   SMALL: 'small',
   MEDIUM: 'medium',
-};
+} as const;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -325,97 +330,89 @@ export const StyledButton = styled.button`
     `};
 `;
 
-const UnstyledButton = styled.button``;
 const ButtonLink = styled.a``;
 
-// The main purpose of this component is to strip certain props that get passed
-// down to the styled component, so that we don't end up passing them to a
-// tag which would throw warnings for non-standard props.
-const ButtonComponentPicker = forwardRef(
+interface StylingProps {
+  isLoading?: boolean;
+  isUnclickable?: boolean;
+  containsIcon?: boolean;
+  size?: typeof SIZES[keyof typeof SIZES];
+  appearance?: typeof APPEARANCES[keyof typeof APPEARANCES];
+}
+
+interface ConfigProps {
+  isLink?: boolean;
+  ButtonWrapper?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  loadingText?: ReactNode;
+}
+
+export const Button = forwardRef<
+  unknown,
+  PropsWithChildren<
+    ConfigProps & StylingProps & (JSX.IntrinsicElements['button'] & JSX.IntrinsicElements['a'])
+  >
+>(
   (
-    { appearance, ButtonWrapper, containsIcon, isLink, isLoading, isUnclickable, size, ...rest },
+    {
+      children,
+      isDisabled = false,
+      isLoading,
+      loadingText = null,
+      isLink,
+      ButtonWrapper = null,
+      appearance = 'tertiary',
+      ...rest
+    },
     ref
   ) => {
-    // Use the UnstyledButton here to avoid duplicating styles and creating
-    // specificity conflicts by first rendering the StyledLink higher up the chain
-    // and then re-rendering it through the 'as' prop.
-    const ButtonComponent = isLink ? ButtonLink : ButtonWrapper || UnstyledButton;
-    return <ButtonComponent {...rest} />;
-  }
-);
-
-const buttonStyleProps = {
-  appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
-  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  /**
-   Buttons with icons by themselves have a circular shape
-  */
-  containsIcon: PropTypes.bool,
-  /**
-   Buttons that have hrefs should use <a> instead of <button>
-  */
-  isLink: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  /**
-   Prevents users from clicking on a button multiple times (for things like payment forms)
-  */
-  isUnclickable: PropTypes.bool,
-  size: PropTypes.oneOf(Object.values(SIZES)),
-};
-
-const buttonStyleDefaultProps = {
-  isLoading: false,
-  isLink: false,
-  appearance: APPEARANCES.TERTIARY,
-  isUnclickable: false,
-  containsIcon: false,
-  size: SIZES.MEDIUM,
-  ButtonWrapper: undefined,
-};
-
-ButtonComponentPicker.propTypes = {
-  ...buttonStyleProps,
-};
-
-ButtonComponentPicker.defaultProps = {
-  ...buttonStyleDefaultProps,
-};
-
-export const Button = forwardRef(
-  ({ children, isDisabled, isLoading, loadingText, ...rest }, ref) => {
-    const content = (
-      <>
-        <Text>{children}</Text>
-        {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
-      </>
-    );
-
+    if (ButtonWrapper) {
+      return (
+        <StyledButton
+          as={ButtonWrapper}
+          disabled={isDisabled}
+          isLoading={isLoading}
+          appearance={appearance}
+          {...rest}
+          ref={ref}
+        >
+          <>
+            <Text>{children}</Text>
+            {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+          </>
+        </StyledButton>
+      );
+    }
+    if (isLink) {
+      return (
+        <StyledButton
+          as={ButtonLink}
+          isLoading={isLoading}
+          appearance={appearance}
+          {...rest}
+          ref={ref}
+        >
+          <>
+            <Text>{children}</Text>
+            {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+          </>
+        </StyledButton>
+      );
+    }
     return (
       <StyledButton
-        as={ButtonComponentPicker}
         disabled={isDisabled}
         isLoading={isLoading}
-        ref={ref}
+        appearance={appearance}
         {...rest}
+        ref={ref as ComponentProps<typeof StyledButton>['ref']}
       >
-        {content}
+        <>
+          <Text>{children}</Text>
+          {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+        </>
       </StyledButton>
     );
   }
 );
-
-Button.propTypes = {
-  ...buttonStyleProps,
-  children: PropTypes.node.isRequired,
-  isDisabled: PropTypes.bool,
-  /**
-   When a button is in the loading state you can supply custom text
-  */
-  loadingText: PropTypes.node,
-};
-
-Button.defaultProps = {
-  loadingText: null,
-  isDisabled: false,
-  ...buttonStyleDefaultProps,
-};
