@@ -1,3 +1,15 @@
+# v5.6.8 (Tue Aug 17 2021)
+
+#### 🐛 Bug Fix
+
+- Support external portalContainer in WithTooltip [#291](https://github.com/storybookjs/design-system/pull/291) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v5.6.7 (Mon Aug 16 2021)
 
 #### 🐛 Bug Fix
