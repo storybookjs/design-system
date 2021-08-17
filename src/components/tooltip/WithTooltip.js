@@ -102,6 +102,7 @@ function WithTooltip({
   startOpen,
   delayHide,
   onVisibilityChange,
+  portalContainer,
   tooltipZIndex,
   ...props
 }) {
@@ -123,7 +124,7 @@ function WithTooltip({
   };
 
   /* eslint-env browser */
-  const portalContainer =
+  const defaultPortalContainer =
     typeof window !== 'undefined' ? document.getElementById('root') || document.body : undefined;
 
   return (
@@ -134,7 +135,7 @@ function WithTooltip({
       tooltipShown={isTooltipShown}
       onVisibilityChange={handleVisibilityChange}
       modifiers={modifiers}
-      portalContainer={portalContainer}
+      portalContainer={portalContainer || defaultPortalContainer}
       tooltip={({
         getTooltipProps,
         getArrowProps,
@@ -194,6 +195,7 @@ WithTooltip.propTypes = {
   startOpen: PropTypes.bool,
   delayHide: PropTypes.number,
   onVisibilityChange: PropTypes.func,
+  portalContainer: PropTypes.node,
   tooltipZIndex: PropTypes.number,
 };
 
@@ -204,6 +206,7 @@ WithTooltip.defaultProps = {
   placement: 'top',
   modifiers: {},
   tooltip: undefined,
+  portalContainer: undefined,
   hasChrome: true,
   startOpen: false,
   delayHide: 100,
