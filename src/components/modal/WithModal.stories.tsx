@@ -60,11 +60,3 @@ export const StartsOpen = () => (
     )}
   </WithModal>
 );
-
-export const Test = () => {
-  return (
-    <WithModal modal={({ onClose }) => <div />}>
-      {({ isOpen, onOpen, onClose }) => <div />}
-    </WithModal>
-  );
-};
