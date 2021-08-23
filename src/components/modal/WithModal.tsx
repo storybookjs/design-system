@@ -1,4 +1,4 @@
-import React, { Children, ComponentProps, FC, ReactNode, useState } from 'react';
+import React, { Children, ComponentProps, ReactNode, useState } from 'react';
 
 import { Modal } from './Modal';
 
