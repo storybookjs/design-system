@@ -22,9 +22,10 @@
     "lint": "yarn lint:js && yarn lint:package",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
-    "release": "dotenv yarn build & yarn types && auto shipit",
+    "release": "dotenv yarn build & yarn typescript:generate && auto shipit",
     "storybook": "start-storybook -p 6006 -s .storybook/static",
-    "types": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap"
+    "typescript:check": "tsc --project ./tsconfig.json --noEmit",
+    "typescript:generate": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap"
   },
   "husky": {
     "hooks": {
