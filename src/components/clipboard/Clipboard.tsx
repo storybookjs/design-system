@@ -1,9 +1,7 @@
 import copyToClipboard from 'copy-to-clipboard';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// @ts-ignore
 import { TooltipNote } from '../tooltip/TooltipNote';
-// @ts-ignore
 import WithTooltip from '../tooltip/WithTooltip';
 
 const Tooltip = styled(WithTooltip)`
@@ -33,7 +31,7 @@ export const Clipboard = ({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
 
     if (copied && timeoutId) {
       clearTimeout(timeoutId);

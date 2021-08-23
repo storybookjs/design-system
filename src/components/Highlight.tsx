@@ -7,14 +7,23 @@ import { color } from './shared/styles';
 if (typeof document !== 'undefined') {
   // @ts-ignore
   global.Prism = Prism;
+  // @ts-ignore
   require('prismjs/components/prism-bash');
+  // @ts-ignore
   require('prismjs/components/prism-javascript');
+  // @ts-ignore
   require('prismjs/components/prism-typescript');
+  // @ts-ignore
   require('prismjs/components/prism-json');
+  // @ts-ignore
   require('prismjs/components/prism-css');
+  // @ts-ignore
   require('prismjs/components/prism-yaml');
+  // @ts-ignore
   require('prismjs/components/prism-markdown');
+  // @ts-ignore
   require('prismjs/components/prism-jsx');
+  // @ts-ignore
   require('prismjs/components/prism-tsx');
 }
 
