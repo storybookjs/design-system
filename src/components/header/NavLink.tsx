@@ -1,7 +1,5 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { ComponentProps, forwardRef, useContext } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-// @ts-ignore
 import { Link } from '../Link';
 import { typography } from '../shared/styles';
 import { HeaderContext } from './HeaderContext';
@@ -11,7 +9,7 @@ const StyledNavLink = styled(Link)`
   font-weight: ${typography.weight.extrabold};
 `;
 
-type NavLinkProps = PropTypes.InferProps<typeof Link.propTypes>;
+type NavLinkProps = ComponentProps<typeof Link>;
 
 export const NavLink = forwardRef<HTMLAnchorElement | HTMLButtonElement, NavLinkProps>(
   (props, ref) => {

@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from './Button';
 import { CodeSnippets } from './CodeSnippets';
-import { Highlight } from './Highlight';
 import { javascriptCodeWithWrappers, typescriptCodeWithWrappers } from './Highlight.stories';
 import { color } from './shared/styles';
 

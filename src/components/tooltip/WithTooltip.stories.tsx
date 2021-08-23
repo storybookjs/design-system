@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { TooltipMessage } from './TooltipMessage';
@@ -33,21 +32,13 @@ const Circle = styled.circle`
   fill: fill: rgb(255, 0, 255);
 `;
 
-const Tooltip = ({ onHide }) => (
+const Tooltip = ({ onHide }: { onHide?: Function }) => (
   <TooltipMessage
     title="Lorem ipsum dolor sit"
     desc="Amet consectatur vestibulum concet durum politu coret weirom"
     links={[{ title: 'Continue', onClick: onHide }]}
   />
 );
-
-Tooltip.propTypes = {
-  onHide: PropTypes.func,
-};
-
-Tooltip.defaultProps = {
-  onHide: null,
-};
 
 export default {
   title: 'tooltip/WithTooltip',

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import { Button } from '../Button';
 
 import WithModal from './WithModal';
 
-// eslint-disable-next-line react/prop-types
-const ModalContents = ({ onClose }) => (
+const ModalContents: ComponentProps<typeof WithModal>['modal'] = ({ onClose }) => (
   <div style={{ background: 'papayawhip', fontSize: '12px' }}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent egestas, ante eu ornare
     tincidunt, justo velit ultrices est, eu porta libero ante malesuada ante. Maecenas fermentum ex
@@ -20,7 +19,7 @@ const ModalContents = ({ onClose }) => (
     sit amet lacus sit amet, cursus porttitor sapien. Donec a massa et felis dictum eleifend. Etiam
     in dui at magna imperdiet gravida. Nam id tortor in leo facilisis elementum sit amet accumsan
     nunc. Maecenas lacus metus, dapibus aliquam mauris ac, luctus gravida ex.{' '}
-    <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
+    <Button appearance="primary" onClick={onClose} role="button" tab-index="0">
       Close
     </Button>
   </div>
@@ -42,7 +41,7 @@ export const StartsClosed = () => (
   <WithModal modal={ModalContents}>
     {({ onOpen }) => (
       <div>
-        <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
+        <Button appearance="primary" onClick={onOpen} role="button" tab-index="0">
           Open Modal
         </Button>
       </div>
@@ -54,7 +53,7 @@ export const StartsOpen = () => (
   <WithModal startOpen modal={ModalContents}>
     {({ onOpen }) => (
       <div>
-        <Button appearance="primary" onClick={onOpen} role="button" tabIndex="0">
+        <Button appearance="primary" onClick={onOpen} role="button" tab-index="0">
           Open Modal
         </Button>
       </div>

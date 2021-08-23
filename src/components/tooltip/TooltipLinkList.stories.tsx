@@ -26,12 +26,8 @@ export default {
   excludeStories: ['links'],
 };
 
-export const story0 = () => <TooltipLinkList links={links.slice(0, 2)} LinkWrapper={null} />;
+export const Links = () => <TooltipLinkList links={links.slice(0, 2)} LinkWrapper={null} />;
 
-story0.storyName = 'links';
-
-export const linksAndCallback = () => (
+export const LinksAndCallback = () => (
   <TooltipLinkList links={links} LinkWrapper={StoryLinkWrapper} />
 );
-
-linksAndCallback.storyName = 'links and callback';

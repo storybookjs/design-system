@@ -1,5 +1,4 @@
-import React, { Children } from 'react';
-import { PropTypes } from 'prop-types';
+import React, { Children, ComponentProps, FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import ReactModal from 'react-modal';
 
@@ -45,7 +44,7 @@ const CenteredWrapper = styled.div`
   left: 0;
 `;
 
-export function Modal({ isBlank, isOpen, onClose, children }) {
+export const Modal: FC<Props> = ({ isBlank = false, isOpen, onClose, children }) => {
   const actions = {
     onClose,
   };
@@ -96,15 +95,11 @@ export function Modal({ isBlank, isOpen, onClose, children }) {
       )}
     </ReactModal>
   );
+};
+
+interface Props {
+  isOpen: boolean;
+  isBlank?: boolean;
+  onClose: ComponentProps<typeof ReactModal>['onRequestClose'];
+  children: (obj: { onClose: Props['onClose'] }) => ReactNode;
 }
-
-Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  isBlank: PropTypes.bool,
-  onClose: PropTypes.func.isRequired,
-  children: PropTypes.func.isRequired,
-};
-
-Modal.defaultProps = {
-  isBlank: false,
-};

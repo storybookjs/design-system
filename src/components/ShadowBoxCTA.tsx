@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FC, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { breakpoint, spacing, typography } from './shared/styles';
@@ -56,7 +55,18 @@ const Action = styled.div`
   }
 `;
 
-export const ShadowBoxCTA = ({ action, headingText, messageText, ...rest }) => (
+interface Props {
+  headingText: ReactNode;
+  messageText?: ReactNode;
+  action: ReactNode;
+}
+
+export const ShadowBoxCTA: FC<Props & ComponentProps<typeof ShadowBoxCTAWrapper>> = ({
+  action,
+  headingText,
+  messageText,
+  ...rest
+}) => (
   <ShadowBoxCTAWrapper {...rest}>
     <TextWrapper>
       <HeadingText>{headingText}</HeadingText>
@@ -66,13 +76,3 @@ export const ShadowBoxCTA = ({ action, headingText, messageText, ...rest }) => (
     <Action>{action}</Action>
   </ShadowBoxCTAWrapper>
 );
-
-ShadowBoxCTA.propTypes = {
-  headingText: PropTypes.node.isRequired,
-  messageText: PropTypes.node,
-  action: PropTypes.node.isRequired,
-};
-
-ShadowBoxCTA.defaultProps = {
-  messageText: undefined,
-};

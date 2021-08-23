@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FC, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
@@ -60,7 +59,12 @@ const ItemInner = styled.span`
   }
 `;
 
-const linkStyles = css`
+const linkStyles = css<{
+  activeColor: string;
+  active: boolean;
+  isLoading: boolean;
+  disabled: boolean;
+}>`
   font-size: ${typography.size.s1}px;
   transition: all 150ms ease-out;
   color: ${color.mediumdark};
@@ -138,26 +142,26 @@ const Item = styled(({ active, activeColor, isLoading, ...rest }) => <a {...rest
 `;
 
 const buildStyledLinkWrapper = (
-  LinkWrapper
+  LinkWrapper: Props['LinkWrapper']
 ) => styled(({ active, isLoading, activeColor, ...linkWrapperRest }) => (
   <LinkWrapper {...linkWrapperRest} />
 ))`
   ${linkStyles}
 `;
 
-export function ListItem({
-  appearance,
+export const ListItem: FC<Props & ComponentProps<ReturnType<typeof buildStyledLinkWrapper>>> = ({
+  appearance = 'primary',
   left,
-  title,
+  title = <span>Loading</span>,
   center,
   right,
   onClick,
   LinkWrapper,
   ...rest
-}) {
+}) => {
   const listItemActiveColor = color[appearance];
   const linkInner = (
-    <ItemInner onClick={onClick} role="presentation">
+    <ItemInner onClick={onClick as any} role="presentation">
       {left && <Left>{left}</Left>}
       {title && <Title>{title}</Title>}
       {center && <Center>{center}</Center>}
@@ -184,30 +188,17 @@ export function ListItem({
       </Item>
     </ItemWrapper>
   );
+};
+
+interface Props {
+  appearance?: 'primary' | 'secondary';
+  isLoading?: boolean;
+  left?: ReactNode;
+  title?: ReactNode;
+  center?: ReactNode;
+  right?: ReactNode;
+  active?: boolean;
+  disabled?: boolean;
+  LinkWrapper?: Function;
+  onClick?: Function;
 }
-
-ListItem.propTypes = {
-  appearance: PropTypes.oneOf(['primary', 'secondary']),
-  isLoading: PropTypes.bool,
-  left: PropTypes.node,
-  title: PropTypes.node,
-  center: PropTypes.node,
-  right: PropTypes.node,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
-  LinkWrapper: PropTypes.func,
-  onClick: PropTypes.func,
-};
-
-ListItem.defaultProps = {
-  appearance: 'primary',
-  isLoading: false,
-  left: null,
-  title: <span>Loading</span>,
-  center: null,
-  right: null,
-  active: false,
-  disabled: false,
-  LinkWrapper: undefined,
-  onClick: undefined,
-};

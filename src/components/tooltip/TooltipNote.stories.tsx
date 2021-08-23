@@ -24,6 +24,4 @@ export default {
   component: TooltipNote,
 };
 
-export const defaultStory = () => <TooltipNote note="Lorem ipsum dolor" />;
-
-defaultStory.storyName = 'default';
+export const Default = () => <TooltipNote note="Lorem ipsum dolor" />;

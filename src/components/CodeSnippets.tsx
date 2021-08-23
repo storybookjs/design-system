@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, ComponentType, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { Clipboard } from './clipboard/Clipboard';
@@ -53,9 +52,9 @@ const StyledClipboard = styled(Clipboard)`
   }
 `;
 
-function Snippet({ snippet }) {
+function Snippet({ snippet }: { snippet: SnippetType }) {
   const { PreSnippet: PreSnippetComponent, Snippet: SnippetComponent } = snippet;
-  const snippetRef = useRef();
+  const snippetRef = useRef<HTMLDivElement>();
   const getCopyContent = () => snippetRef.current && snippetRef.current.textContent;
 
   return (
@@ -70,13 +69,6 @@ function Snippet({ snippet }) {
     </StyledHighlight>
   );
 }
-
-Snippet.propTypes = {
-  snippet: PropTypes.shape({
-    Snippet: PropTypes.elementType.isRequired,
-    PreSnippet: PropTypes.elementType,
-  }).isRequired,
-};
 
 const TabsWrapper = styled.div`
   background: ${color.lightest};
@@ -97,7 +89,7 @@ const StyledTabs = styled(LinkTabs)`
   }
 `;
 
-function SnippetList({ snippets }) {
+function SnippetList({ snippets }: { snippets: SnippetType[] }) {
   const [activeSnippet, setActiveSnippet] = useState(snippets[0]);
 
   const tabItems = snippets.map((snippet, index) => {
@@ -123,16 +115,10 @@ function SnippetList({ snippets }) {
   );
 }
 
-SnippetList.propTypes = {
-  snippets: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      renderTabLabel: PropTypes.func.isRequired,
-    }).isRequired
-  ).isRequired,
-};
-
-export function CodeSnippets({ snippets, ...rest }) {
+export function CodeSnippets({
+  snippets,
+  ...rest
+}: Props & ComponentProps<typeof Wrapper> & { children?: never }) {
   return (
     <Wrapper {...rest}>
       <Background>
@@ -146,6 +132,13 @@ export function CodeSnippets({ snippets, ...rest }) {
   );
 }
 
-CodeSnippets.propTypes = {
-  snippets: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-};
+interface SnippetType {
+  Snippet: ComponentType;
+  PreSnippet?: ComponentType;
+  id: string;
+  renderTabLabel: (...a: any[]) => string;
+}
+
+interface Props {
+  snippets: SnippetType[];
+}

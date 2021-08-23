@@ -9,7 +9,7 @@ const Meta = styled.div`
   font-size: 12px;
 `;
 
-const Item = styled.li`
+const Item = styled.li<{ minimal?: boolean }>`
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -62,7 +62,7 @@ export const Labels = () => (
     <List>
       {Object.keys(icons).map((key) => (
         <Item key={key}>
-          <Icon icon={key} aria-hidden />
+          <Icon icon={key as keyof typeof icons} aria-hidden />
           <Meta>{key}</Meta>
         </Item>
       ))}
@@ -74,7 +74,7 @@ export const NoLabels = () => (
   <List>
     {Object.keys(icons).map((key) => (
       <Item minimal key={key}>
-        <Icon icon={key} aria-label={key} />
+        <Icon icon={key as keyof typeof icons} aria-label={key} />
       </Item>
     ))}
   </List>

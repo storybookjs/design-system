@@ -1,15 +1,24 @@
-import React, { useEffect, useCallback, useRef, useState, forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+  useEffect,
+  useCallback,
+  useRef,
+  useState,
+  forwardRef,
+  ReactNode,
+  FC,
+  ComponentProps,
+  MutableRefObject,
+} from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 import { Link } from './Link';
-import WithTooltip, { validPlacements as validTooltipPlacements } from './tooltip/WithTooltip';
+import WithTooltip from './tooltip/WithTooltip';
 import { TooltipMessage } from './tooltip/TooltipMessage';
 
 // prettier-ignore
-const Label = styled.label`
+const Label = styled.label<Pick<Props, 'appearance'>>`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
   font-size: ${props => props.appearance === 'code' ? typography.size.s1 - 1 : typography.size.s2 }px;
@@ -17,7 +26,7 @@ const Label = styled.label`
 `;
 
 // prettier-ignore
-const LabelWrapper = styled.div`
+const LabelWrapper = styled.div<Pick<Props, 'hideLabel'>>`
   margin-bottom: 8px;
   
   ${props => props.hideLabel && css`
@@ -55,7 +64,7 @@ const InputEl = styled.input`
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
 `;
 
-const getStackLevelStyling = (props) => {
+const getStackLevelStyling = (props: Pick<Props, 'error' | 'stackLevel'>) => {
   const radius = 4;
   const stackLevelDefinedStyling = css`
     position: relative;
@@ -97,7 +106,7 @@ const getStackLevelStyling = (props) => {
 };
 
 // prettier-ignore
-const InputWrapper = styled.div`
+const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance' | 'startingType' | 'icon'>>`
   display: inline-block;
   position: relative;
   vertical-align: top;
@@ -192,7 +201,7 @@ const InputWrapper = styled.div`
   `}
 `;
 // prettier-ignore
-const InputContainer = styled.div`
+const InputContainer = styled.div<Pick<Props, 'orientation'>>`
   ${props => props.orientation === 'horizontal' && css`
     display: table-row;
 
@@ -232,7 +241,11 @@ const Action = styled.div`
   z-index: 2;
 `;
 
-const getErrorMessage = ({ error, value, lastErrorValue }) => {
+const getErrorMessage = ({
+  error,
+  value,
+  lastErrorValue,
+}: Pick<Props, 'error' | 'value' | 'lastErrorValue'>) => {
   let errorMessage = typeof error === 'function' ? error(value) : error;
   if (lastErrorValue) {
     if (value !== lastErrorValue) {
@@ -242,25 +255,25 @@ const getErrorMessage = ({ error, value, lastErrorValue }) => {
   return errorMessage;
 };
 
-export const PureInput = forwardRef(
+export const PureInput: FC<Props & ComponentProps<typeof InputEl>> = forwardRef(
   (
     {
       id,
-      value,
+      appearance = 'default',
+      className = null,
+      error = null,
+      errorTooltipPlacement = 'right',
+      hideLabel = false,
+      icon = null,
       label,
-      hideLabel,
-      orientation,
-      icon,
-      error,
-      appearance,
-      errorTooltipPlacement,
-      className,
-      lastErrorValue,
-      startingType,
-      type,
-      onActionClick,
-      stackLevel,
-      suppressErrorMessage,
+      lastErrorValue = null,
+      onActionClick = null,
+      orientation = 'vertical',
+      stackLevel = undefined,
+      startingType = 'text',
+      suppressErrorMessage = false,
+      type = 'text',
+      value = '',
       ...props
     },
     ref
@@ -339,84 +352,62 @@ export const PureInput = forwardRef(
   }
 );
 
-PureInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  appearance: PropTypes.oneOf(['default', 'pill', 'code']),
-  errorTooltipPlacement: PropTypes.oneOf(validTooltipPlacements),
-  stackLevel: PropTypes.oneOf(['top', 'middle', 'bottom']),
-  label: PropTypes.string.isRequired,
-  hideLabel: PropTypes.bool,
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-  icon: PropTypes.string,
-  error: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  suppressErrorMessage: PropTypes.bool,
-  className: PropTypes.string,
-  lastErrorValue: PropTypes.string,
-  startingType: PropTypes.string,
-  type: PropTypes.string,
-  onActionClick: PropTypes.func,
-};
+interface Props {
+  id: string;
+  value?: string;
+  appearance?: 'default' | 'pill' | 'code' | 'tertiary';
+  errorTooltipPlacement?: ComponentProps<typeof WithTooltip>['placement'];
+  stackLevel?: 'top' | 'middle' | 'bottom';
+  label: string;
+  hideLabel?: boolean;
+  orientation?: 'vertical' | 'horizontal';
+  icon?: ComponentProps<typeof Icon>['icon'];
+  error?: ReactNode | Function;
+  suppressErrorMessage?: boolean;
+  className?: string;
+  lastErrorValue?: string;
+  startingType?: string;
+  type?: string;
+  onActionClick?: Function;
+}
 
-PureInput.defaultProps = {
-  value: '',
-  appearance: 'default',
-  errorTooltipPlacement: 'right',
-  stackLevel: undefined,
-  hideLabel: false,
-  orientation: 'vertical',
-  icon: null,
-  error: null,
-  suppressErrorMessage: false,
-  className: null,
-  lastErrorValue: null,
-  startingType: 'text',
-  type: 'text',
-  onActionClick: null,
-};
+export const Input = forwardRef<unknown, ComponentProps<typeof PureInput>>(
+  ({ type: startingType, startFocused, ...rest }, ref) => {
+    const [type, setType] = useState(startingType);
+    const togglePasswordType = useCallback(
+      (event) => {
+        // Make sure this does not submit a form
+        event.preventDefault();
+        event.stopPropagation();
+        if (type === 'password') {
+          setType('text');
+          return;
+        }
+        setType('password');
+      },
+      [type, setType]
+    );
 
-export const Input = forwardRef(({ type: startingType, startFocused, ...rest }, ref) => {
-  const [type, setType] = useState(startingType);
-  const togglePasswordType = useCallback(
-    (event) => {
-      // Make sure this does not submit a form
-      event.preventDefault();
-      event.stopPropagation();
-      if (type === 'password') {
-        setType('text');
-        return;
+    // Outside refs take precedence
+    const selfRef = useRef();
+    const inputRef = (ref as MutableRefObject<HTMLInputElement>) || selfRef;
+    const didFocusOnStart = useRef(false);
+
+    useEffect(() => {
+      if (inputRef && inputRef.current && startFocused && !didFocusOnStart.current) {
+        inputRef.current.focus();
+        didFocusOnStart.current = true;
       }
-      setType('password');
-    },
-    [type, setType]
-  );
-  // Outside refs take precedence
-  const inputRef = ref || useRef();
-  const didFocusOnStart = useRef(false);
-  useEffect(() => {
-    if (inputRef && inputRef.current && startFocused && !didFocusOnStart.current) {
-      inputRef.current.focus();
-      didFocusOnStart.current = true;
-    }
-  }, [inputRef, inputRef.current, didFocusOnStart, didFocusOnStart.current]);
+    }, [inputRef, inputRef.current, didFocusOnStart, didFocusOnStart.current]);
 
-  return (
-    <PureInput
-      ref={inputRef}
-      startingType={startingType}
-      type={type}
-      onActionClick={togglePasswordType}
-      {...rest}
-    />
-  );
-});
-
-Input.propTypes = {
-  startFocused: PropTypes.bool,
-  type: PropTypes.string,
-};
-
-Input.defaultProps = {
-  startFocused: false,
-  type: 'text',
-};
+    return (
+      <PureInput
+        ref={inputRef}
+        startingType={startingType}
+        type={type}
+        onActionClick={togglePasswordType}
+        {...rest}
+      />
+    );
+  }
+);

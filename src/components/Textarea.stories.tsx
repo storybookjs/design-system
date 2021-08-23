@@ -23,6 +23,7 @@ export const Default = () => (
   <form>
     <Textarea
       id="Placeholder"
+      value=""
       label="Textarea with placeholder"
       hideLabel
       placeholder="Placeholder"
