@@ -91,17 +91,17 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "node-fetch": "^2.6.0",
-    "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "prettier": "^2.3.0",
+    "react": "17",
+    "react-dom": "17",
     "seedrandom": "^3.0.5",
     "sort-package-json": "^1.44.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "engines": {
     "node": ">=10",
