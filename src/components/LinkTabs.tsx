@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ComponentProps, FC } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Link } from './Link';
@@ -53,7 +52,21 @@ const Tab = styled(Link)`
     `};
 `;
 
-export const LinkTabs = ({ isLoading, items, ...props }) => (
+type ItemProps = {
+  key: string;
+  label: string;
+} & ComponentProps<typeof Tab>;
+
+interface Props {
+  isLoading?: boolean;
+  items: ItemProps[];
+}
+
+export const LinkTabs: FC<Props & ComponentProps<typeof Wrapper>> = ({
+  isLoading = false,
+  items = [],
+  ...props
+}) => (
   <Wrapper {...props}>
     {items.map(({ key, label, ...item }) => (
       <li key={key}>
@@ -64,13 +77,3 @@ export const LinkTabs = ({ isLoading, items, ...props }) => (
     ))}
   </Wrapper>
 );
-
-LinkTabs.propTypes = {
-  isLoading: PropTypes.bool,
-  items: PropTypes.arrayOf(PropTypes.object),
-};
-
-LinkTabs.defaultProps = {
-  isLoading: false,
-  items: [],
-};

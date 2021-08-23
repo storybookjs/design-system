@@ -1,9 +1,18 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+  ComponentProps,
+  ComponentType,
+  FC,
+  forwardRef,
+  MutableRefObject,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import styled, { css } from 'styled-components';
 import { color, typography } from './shared/styles';
 
-const Label = styled.label`
+const Label = styled.label<{ hideLabel: boolean }>`
   ${(props) =>
     props.hideLabel &&
     css`
@@ -25,7 +34,7 @@ const ErrorMessage = styled.span`
   font-weight: ${typography.weight.regular};
 `;
 
-const LabelWrapper = styled.div`
+const LabelWrapper = styled.div<{ hideLabel: boolean; error: ReactNode }>`
   margin-bottom: 0.33em;
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s2}px;
@@ -71,7 +80,7 @@ const TextareaText = styled.textarea`
   }
 `;
 
-const TextareaWrapper = styled.div`
+const TextareaWrapper = styled.div<{ error: ReactNode }>`
   display: inline-block;
   font-size: ${typography.size.s2}px;
   overflow: hidden;
@@ -105,7 +114,7 @@ const TextareaWrapper = styled.div`
     `};
 `;
 
-const TextareaContainer = styled.div`
+const TextareaContainer = styled.div<{ orientation: Props['orientation'] }>`
   ${(props) =>
     props.orientation === 'horizontal' &&
     css`
@@ -126,29 +135,47 @@ const TextareaContainer = styled.div`
     `}
 `;
 
-const getErrorMessage = ({ error, value }) => (typeof error === 'function' ? error(value) : error);
+const getErrorMessage = ({ error, value }: any): ReactNode =>
+  typeof error === 'function' ? error(value) : error;
 
-export const Textarea = forwardRef(
+interface Props {
+  id: string;
+  value: string;
+  label: string;
+  appearance?: 'default';
+  hideLabel?: boolean;
+  orientation?: 'vertical' | 'horizontal';
+  error?: ReactNode | ComponentType;
+  startFocused?: boolean;
+  subtext?: string;
+  className?: string;
+  subtextSentiment?: 'default' | 'negative' | 'warning';
+}
+
+export const Textarea: FC<Props & ComponentProps<typeof TextareaText>> = forwardRef(
   (
     {
       id,
       value,
       label,
-      hideLabel,
-      error,
+      hideLabel = false,
+      error = null,
       subtext,
       subtextSentiment,
-      appearance,
-      orientation,
+      appearance = 'default',
+      orientation = 'vertical',
       className,
-      startFocused,
+      startFocused = false,
       ...rest
     },
     ref
   ) => {
     // Outside refs take precedence
-    const textareaRef = ref || useRef();
+    const selfRef = useRef();
+    const textareaRef: MutableRefObject<HTMLTextAreaElement> =
+      (ref as MutableRefObject<HTMLTextAreaElement>) || selfRef;
     const didFocusOnStart = useRef(false);
+
     useEffect(() => {
       if (textareaRef && textareaRef.current && startFocused && !didFocusOnStart.current) {
         textareaRef.current.focus();
@@ -164,12 +191,11 @@ export const Textarea = forwardRef(
 
     const errorId = `${id}-error`;
     const subtextId = `${id}-subtext`;
-
     const ariaDescribedBy = `${error ? errorId : ''} ${subtext ? subtextId : ''}`;
 
     return (
       <TextareaContainer orientation={orientation} className={className}>
-        <LabelWrapper appearance={appearance} hideLabel={hideLabel} error={errorMessage}>
+        <LabelWrapper hideLabel={hideLabel} error={errorMessage}>
           <Label htmlFor={id} hideLabel={hideLabel}>
             {label}
           </Label>
@@ -179,7 +205,7 @@ export const Textarea = forwardRef(
             </ErrorMessage>
           )}
         </LabelWrapper>
-        <TextareaWrapper error={errorMessage} appearance={appearance}>
+        <TextareaWrapper error={errorMessage}>
           <TextareaText
             id={id}
             value={value}
@@ -189,38 +215,9 @@ export const Textarea = forwardRef(
             ref={textareaRef}
             {...rest}
           />
-          {subtext && (
-            <Subtext id={subtextId} sentiment={subtextSentiment}>
-              {subtext}
-            </Subtext>
-          )}
+          {subtext && <Subtext id={subtextId}>{subtext}</Subtext>}
         </TextareaWrapper>
       </TextareaContainer>
     );
   }
 );
-
-Textarea.propTypes = {
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  appearance: PropTypes.oneOf(['default']),
-  label: PropTypes.string.isRequired,
-  hideLabel: PropTypes.bool,
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']),
-  error: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  startFocused: PropTypes.bool,
-  subtext: PropTypes.string,
-  subtextSentiment: PropTypes.oneOf(['default', 'negative', 'warning']),
-  className: PropTypes.string,
-};
-
-Textarea.defaultProps = {
-  appearance: 'default',
-  hideLabel: false,
-  orientation: 'vertical',
-  error: null,
-  startFocused: false,
-  subtext: null,
-  subtextSentiment: 'default',
-  className: null,
-};

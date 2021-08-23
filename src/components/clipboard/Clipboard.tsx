@@ -1,6 +1,5 @@
 import copyToClipboard from 'copy-to-clipboard';
-import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 // @ts-ignore
 import { TooltipNote } from '../tooltip/TooltipNote';

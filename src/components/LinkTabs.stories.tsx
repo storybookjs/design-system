@@ -4,9 +4,9 @@ import React from 'react';
 import { LinkTabs } from './LinkTabs';
 
 const items = [
-  { label: 'Activity', title: 'View activity', href: '/activity' },
-  { label: 'Components', title: 'View components', href: '/components', isActive: true },
-  { label: 'Changeset', title: 'View UI changes', href: '/changes' },
+  { key: '1', label: 'Activity', title: 'View activity', href: '/activity' },
+  { key: '2', label: 'Components', title: 'View components', href: '/components', isActive: true },
+  { key: '3', label: 'Changeset', title: 'View UI changes', href: '/changes' },
 ];
 
 export default {

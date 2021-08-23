@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { color, typography } from '../shared/styles';
@@ -32,14 +31,19 @@ const MessageWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-export function TooltipMessage({ title, desc, links, ...rest }) {
+export function TooltipMessage({
+  title,
+  desc,
+  links,
+  ...rest
+}: Props & ComponentProps<typeof MessageWrapper> & { children?: never }) {
   return (
     <MessageWrapper {...rest}>
       <Message>
         {title && <Title>{title}</Title>}
         {desc && <Desc>{desc}</Desc>}
       </Message>
-      {links && (
+      {links && links.length > 0 && (
         <Links>
           {links.map(({ title: linkTitle, ...other }) => (
             <Link {...other} key={linkTitle}>
@@ -52,18 +56,8 @@ export function TooltipMessage({ title, desc, links, ...rest }) {
   );
 }
 
-TooltipMessage.propTypes = {
-  title: PropTypes.node,
-  desc: PropTypes.node,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    })
-  ),
-};
-
-TooltipMessage.defaultProps = {
-  title: null,
-  desc: null,
-  links: null,
-};
+interface Props {
+  title?: ReactNode;
+  desc?: ReactNode;
+  links?: Omit<ComponentProps<typeof Link>, 'children'>[];
+}

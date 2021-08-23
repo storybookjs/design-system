@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useMemo, FC, ReactNode, ComponentProps } from 'react';
 import styled from 'styled-components';
 import TooltipTrigger from 'react-popper-tooltip';
 import uuid from 'uuid';
@@ -7,7 +6,7 @@ import uuid from 'uuid';
 import { Tooltip } from './Tooltip';
 
 // A target that doesn't speak popper
-const ButtonContainer = styled.button`
+const ButtonContainer = styled.button<Pick<Props, 'trigger'>>`
   background: transparent;
   border: 0;
   cursor: ${(props) => (props.trigger === 'hover' ? 'default' : 'pointer')};
@@ -24,7 +23,7 @@ const StyledTooltip = styled(Tooltip)`
   ${(props) => !props.hasTooltipContent && `display: none;`}
 `;
 
-const isDescendantOfAction = (element) => {
+const isDescendantOfAction = (element: HTMLElement): boolean => {
   const { parentElement } = element;
 
   if (parentElement.tagName === 'BODY') {
@@ -38,7 +37,7 @@ const isDescendantOfAction = (element) => {
   return isDescendantOfAction(parentElement);
 };
 
-const AsComponent = React.forwardRef(
+const AsComponent = React.forwardRef<unknown, Pick<Props, 'tagName'> & Record<string, any>>(
   ({ tabIndex, tagName, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
     const Component = tagName || ButtonContainer;
     const asProps = {
@@ -50,10 +49,10 @@ const AsComponent = React.forwardRef(
       onBlur: onMouseLeave,
       role: 'button',
       ...props,
-    };
+    } as any;
 
     const onKeyDown = useMemo(
-      () => (event) => {
+      () => (event: any) => {
         if (!onClick) {
           return;
         }
@@ -74,43 +73,27 @@ const AsComponent = React.forwardRef(
   }
 );
 
-AsComponent.propTypes = {
-  tabIndex: PropTypes.number,
-  tagName: PropTypes.string,
-  onClick: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-};
-
-AsComponent.defaultProps = {
-  tabIndex: undefined,
-  tagName: undefined,
-  onClick: undefined,
-  onMouseEnter: undefined,
-  onMouseLeave: undefined,
-};
-
-function WithTooltip({
-  tagName,
-  trigger,
-  closeOnClick,
-  placement,
-  modifiers,
-  hasChrome,
-  tooltip,
+const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
   children,
-  startOpen,
-  delayHide,
-  onVisibilityChange,
-  portalContainer,
-  tooltipZIndex,
+  closeOnClick = false,
+  delayHide = 100,
+  hasChrome = true,
+  modifiers = {},
+  onVisibilityChange = () => {},
+  placement = 'top',
+  portalContainer = undefined,
+  startOpen = false,
+  tagName = undefined,
+  tooltip = undefined,
+  tooltipZIndex = undefined,
+  trigger = 'hover',
   ...props
-}) {
+}) => {
   const id = React.useMemo(() => uuid.v4(), []);
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
   const closeTooltip = useMemo(() => () => setTooltipShown(false), [setTooltipShown]);
   const closeTooltipOnClick = useMemo(
-    () => (event) => {
+    () => (event: any) => {
       if (!closeOnClick || !isDescendantOfAction(event.target)) {
         return;
       }
@@ -118,7 +101,7 @@ function WithTooltip({
     },
     [closeOnClick, closeTooltip]
   );
-  const handleVisibilityChange = (isVisible) => {
+  const handleVisibilityChange = (isVisible: boolean) => {
     onVisibilityChange(isVisible);
     setTooltipShown(isVisible);
   };
@@ -175,43 +158,22 @@ function WithTooltip({
       )}
     </TooltipTrigger>
   );
+};
+
+interface Props {
+  tagName?: keyof JSX.IntrinsicElements;
+  trigger?: ComponentProps<typeof TooltipTrigger>['trigger'];
+  closeOnClick?: boolean;
+  placement?: ComponentProps<typeof TooltipTrigger>['placement'];
+  modifiers?: any;
+  hasChrome?: boolean;
+  tooltip?: ReactNode | Function;
+  children: ReactNode;
+  startOpen?: boolean;
+  delayHide?: number;
+  onVisibilityChange?: Function;
+  portalContainer?: ComponentProps<typeof TooltipTrigger>['portalContainer'];
+  tooltipZIndex?: number;
 }
-
-const placementVariations = ['start', 'end'];
-export const validPlacements = ['auto', 'top', 'right', 'left', 'bottom'].flatMap((placement) => [
-  placement,
-  ...placementVariations.map((variation) => `${placement}-${variation}`),
-]);
-
-WithTooltip.propTypes = {
-  tagName: PropTypes.string,
-  trigger: PropTypes.string,
-  closeOnClick: PropTypes.bool,
-  placement: PropTypes.oneOf(validPlacements),
-  modifiers: PropTypes.shape({}),
-  hasChrome: PropTypes.bool,
-  tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  children: PropTypes.node.isRequired,
-  startOpen: PropTypes.bool,
-  delayHide: PropTypes.number,
-  onVisibilityChange: PropTypes.func,
-  portalContainer: PropTypes.node,
-  tooltipZIndex: PropTypes.number,
-};
-
-WithTooltip.defaultProps = {
-  tagName: undefined,
-  trigger: 'hover',
-  closeOnClick: false,
-  placement: 'top',
-  modifiers: {},
-  tooltip: undefined,
-  portalContainer: undefined,
-  hasChrome: true,
-  startOpen: false,
-  delayHide: 100,
-  onVisibilityChange: () => {},
-  tooltipZIndex: undefined,
-};
 
 export default WithTooltip;

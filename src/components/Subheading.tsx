@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps, FC } from 'react';
 import styled from 'styled-components';
 import { typography } from './shared/styles';
 
@@ -9,4 +9,4 @@ const Heading = styled.span`
   font-size: ${typography.size.s2 - 1}px;
 `;
 
-export const Subheading = (props) => <Heading {...props} />;
+export const Subheading: FC<ComponentProps<typeof Heading>> = (props) => <Heading {...props} />;

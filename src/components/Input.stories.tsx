@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
@@ -148,17 +147,9 @@ const All = ({ appearance }) => (
   </>
 );
 
-All.propTypes = {
-  appearance: PropTypes.string,
-};
-
-All.defaultProps = {
-  appearance: undefined,
-};
-
 export const Default = () => (
   <DarkForm>
-    <All />
+    <All appearance="default" />
   </DarkForm>
 );
 

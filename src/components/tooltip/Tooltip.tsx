@@ -1,16 +1,41 @@
 // Our wrapper around react-popper that does common stuff.
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FC } from 'react';
 import styled, { css } from 'styled-components';
 import { typography, spacing, zIndex as sharedZIndex } from '../shared/styles';
 
-const ifPlacementEquals = (placement, value, fallback = 0) => (props) =>
+const ifPlacementEquals = (
+  placement: string,
+  value: number | string,
+  fallback: number | string = 0
+) => (props: Pick<ArrowProps, 'data-placement'>) =>
   props['data-placement'].split('-')[0] === placement ? value : fallback;
 
 const ArrowSpacing = 8;
 
-const Arrow = styled.div`
+type Placement =
+  | 'top-left'
+  | 'top'
+  | 'top-right'
+  | 'right'
+  | 'bottom-right'
+  | 'bottom'
+  | 'bottom-left'
+  | 'left';
+
+interface ArrowProps {
+  'data-placement': Placement;
+  isVisible: boolean;
+}
+
+interface WrapperProps {
+  'data-placement': Placement;
+  zIndex: number;
+  hasChrome: boolean;
+  hidden: boolean;
+}
+
+const Arrow = styled.div<ArrowProps>`
   position: absolute;
   border-style: solid;
   /**
@@ -21,20 +46,20 @@ const Arrow = styled.div`
    */
   display: ${(props) => (props.isVisible ? 'block' : 'none')};
 
-  margin-bottom: ${ifPlacementEquals('top', '0', ArrowSpacing)}px;
-  margin-top: ${ifPlacementEquals('bottom', '0', ArrowSpacing)}px;
-  margin-right: ${ifPlacementEquals('left', '0', ArrowSpacing)}px;
-  margin-left: ${ifPlacementEquals('right', '0', ArrowSpacing)}px;
+  margin-bottom: ${ifPlacementEquals('top', 0, ArrowSpacing)}px;
+  margin-top: ${ifPlacementEquals('bottom', 0, ArrowSpacing)}px;
+  margin-right: ${ifPlacementEquals('left', 0, ArrowSpacing)}px;
+  margin-left: ${ifPlacementEquals('right', 0, ArrowSpacing)}px;
 
   bottom: ${ifPlacementEquals('top', ArrowSpacing * -1, 'auto')}px;
   top: ${ifPlacementEquals('bottom', ArrowSpacing * -1, 'auto')}px;
   right: ${ifPlacementEquals('left', ArrowSpacing * -1, 'auto')}px;
   left: ${ifPlacementEquals('right', ArrowSpacing * -1, 'auto')}px;
 
-  border-bottom-width: ${ifPlacementEquals('top', '0', ArrowSpacing)}px;
-  border-top-width: ${ifPlacementEquals('bottom', '0', ArrowSpacing)}px;
-  border-right-width: ${ifPlacementEquals('left', '0', ArrowSpacing)}px;
-  border-left-width: ${ifPlacementEquals('right', '0', ArrowSpacing)}px;
+  border-bottom-width: ${ifPlacementEquals('top', 0, ArrowSpacing)}px;
+  border-top-width: ${ifPlacementEquals('bottom', 0, ArrowSpacing)}px;
+  border-right-width: ${ifPlacementEquals('left', 0, ArrowSpacing)}px;
+  border-left-width: ${ifPlacementEquals('right', 0, ArrowSpacing)}px;
 
   border-top-color: ${ifPlacementEquals('top', 'white', 'transparent')};
   border-bottom-color: ${ifPlacementEquals('bottom', 'white', 'transparent')};
@@ -42,7 +67,7 @@ const Arrow = styled.div`
   border-right-color: ${ifPlacementEquals('right', 'white', 'transparent')};
 `;
 
-const TooltipWrapper = styled.div`
+const TooltipWrapper = styled.div<WrapperProps>`
   display: ${(props) => (props.hidden ? 'none' : 'inline-block')};
   z-index: ${(props) => props.zIndex};
 
@@ -73,16 +98,16 @@ const TooltipWrapper = styled.div`
     `};
 `;
 
-export function Tooltip({
-  placement,
-  hasChrome,
+export const Tooltip: FC<Props & ComponentProps<typeof TooltipWrapper>> = ({
+  placement = 'top',
+  hasChrome = true,
   children,
   arrowProps,
   tooltipRef,
   arrowRef,
-  zIndex,
+  zIndex = sharedZIndex.tooltip,
   ...props
-}) {
+}) => {
   return (
     <TooltipWrapper
       hasChrome={hasChrome}
@@ -95,24 +120,13 @@ export function Tooltip({
       {children}
     </TooltipWrapper>
   );
-}
+};
 
-Tooltip.propTypes = {
-  children: PropTypes.node,
-  hasChrome: PropTypes.bool,
-  /* eslint-disable-next-line */
-  arrowProps: PropTypes.any,
-  placement: PropTypes.string,
-  arrowRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  tooltipRef: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  zIndex: PropTypes.number,
-};
-Tooltip.defaultProps = {
-  children: undefined,
-  hasChrome: true,
-  placement: 'top',
-  arrowProps: null,
-  arrowRef: undefined,
-  tooltipRef: undefined,
-  zIndex: sharedZIndex.tooltip,
-};
+interface Props {
+  hasChrome?: boolean;
+  arrowProps?: ComponentProps<typeof Arrow>;
+  placement?: Placement;
+  arrowRef?: any;
+  tooltipRef?: any;
+  zIndex?: number;
+}

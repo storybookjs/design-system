@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, FC } from 'react';
 import styled from 'styled-components';
 
 import { color, typography, spacing } from '../shared/styles';
@@ -19,10 +18,13 @@ const Note = styled.div`
   margin: 6px;
 `;
 
-export function TooltipNote({ note, ...rest }) {
+export const TooltipNote = ({
+  note,
+  ...rest
+}: Props & Omit<ComponentProps<typeof Note>, 'children'> & { children?: never }) => {
   return <Note {...rest}>{note}</Note>;
-}
-
-TooltipNote.propTypes = {
-  note: PropTypes.string.isRequired,
 };
+
+interface Props {
+  note: string;
+}

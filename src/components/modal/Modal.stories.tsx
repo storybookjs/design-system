@@ -43,7 +43,7 @@ export const VisibleShort = () => (
     {({ onClose }) => (
       <div style={{ background: 'papayawhip', fontSize: '12px' }}>
         {loremIpsum}{' '}
-        <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
+        <Button appearance="primary" onClick={onClose} role="button" tab-index="0">
           Close
         </Button>
       </div>
@@ -56,7 +56,7 @@ export const VisibleTall = () => (
     {({ onClose }) => (
       <div style={{ background: 'papayawhip', fontSize: '36px' }}>
         {loremIpsum}{' '}
-        <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
+        <Button appearance="primary" onClick={onClose} role="button" tab-index="0">
           Close
         </Button>
       </div>
@@ -68,7 +68,7 @@ export const NotVisible = () => (
   <Modal isOpen={false} {...actions}>
     {({ onClose }) => (
       <div>
-        <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
+        <Button appearance="primary" onClick={onClose} role="button" tab-index="0">
           Close
         </Button>
       </div>
@@ -81,7 +81,7 @@ export const Blank = () => (
     {({ onClose }) => (
       <div style={{ background: 'papayawhip', fontSize: '12px' }}>
         {loremIpsum}{' '}
-        <Button appearance="primary" onClick={onClose} role="button" tabIndex="0">
+        <Button appearance="primary" onClick={onClose} role="button" tab-index="0">
           Close
         </Button>
       </div>
