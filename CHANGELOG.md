@@ -1,3 +1,15 @@
+# v6.0.0 (Mon Aug 23 2021)
+
+#### 💥 Breaking Change
+
+- convert more to typescript [#292](https://github.com/storybookjs/design-system/pull/292) ([@ndelangen](https://github.com/ndelangen))
+
+#### Authors: 1
+
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
+---
+
 # v5.6.8 (Tue Aug 17 2021)
 
 #### 🐛 Bug Fix
