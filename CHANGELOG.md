@@ -1,3 +1,16 @@
+# v6.0.1 (Tue Aug 24 2021)
+
+#### 🐛 Bug Fix
+
+- feat: add playback, playnext, and stopalt icons [#293](https://github.com/storybookjs/design-system/pull/293) ([@darleendenno](https://github.com/darleendenno) [@domyen](https://github.com/domyen))
+
+#### Authors: 2
+
+- Deen ([@darleendenno](https://github.com/darleendenno))
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v6.0.0 (Mon Aug 23 2021)
 
 #### 💥 Breaking Change
