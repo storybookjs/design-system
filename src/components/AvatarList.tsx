@@ -38,7 +38,7 @@ const Users = styled.ul`
   padding: 0;
   list-style: none;
 
-  ${User} {
+  & > li {
     position: relative;
 
     &:not(:first-child) {
