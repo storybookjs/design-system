@@ -1,4 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
+import React from 'react';
+import { Global, css } from '@storybook/theming';
 import { color, typography } from './styles';
 
 export const bodyStyles = css`
@@ -117,7 +118,7 @@ export const bodyStyles = css`
 export const fontUrl =
   'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap';
 
-export const GlobalStyle = createGlobalStyle`
+const newLocal = `
   body {
     ${bodyStyles}
   }
@@ -127,3 +128,4 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 `;
+export const GlobalStyle = () => <Global styles={newLocal} />;

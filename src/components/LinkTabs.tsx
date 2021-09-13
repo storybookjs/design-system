@@ -1,5 +1,5 @@
 import React, { ComponentProps, FC } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 
 import { Link } from './Link';
 import { breakpoint, color, typography } from './shared/styles';

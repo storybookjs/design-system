@@ -1,7 +1,7 @@
 import pluralize from 'pluralize';
 import { darken } from 'polished';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { Link } from './Link';
 import { background, color, typography, spacing } from './shared/styles';
 import { inlineGlow } from './shared/animation';

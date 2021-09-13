@@ -1,5 +1,5 @@
 import React, { useState, useMemo, FC, ReactNode, ComponentProps } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import TooltipTrigger from 'react-popper-tooltip';
 import uuid from 'uuid';
 
@@ -19,7 +19,9 @@ const ButtonContainer = styled.button<Pick<Props, 'trigger'>>`
   text-decoration: none;
 `;
 
-const StyledTooltip = styled(Tooltip)`
+const StyledTooltip = styled(Tooltip)<
+  ComponentProps<typeof Tooltip> & { hasTooltipContent?: boolean }
+>`
   ${(props) => !props.hasTooltipContent && `display: none;`}
 `;
 
@@ -127,11 +129,12 @@ const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
         placement: tooltipPlacement,
       }) => (
         <StyledTooltip
+          hidden={undefined}
           hasChrome={hasChrome}
           placement={tooltipPlacement}
           tooltipRef={tooltipRef}
           arrowRef={arrowRef}
-          arrowProps={getArrowProps()}
+          arrowProps={getArrowProps() as any}
           onClick={closeTooltipOnClick}
           {...getTooltipProps()}
           id={id}

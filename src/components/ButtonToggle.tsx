@@ -1,6 +1,6 @@
 import { opacify, rgba } from 'polished';
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React, { ComponentProps } from 'react';
+import { styled, css } from '@storybook/theming';
 import { color, typography } from './shared/styles';
 import { Link } from './Link';
 // @ts-ignore
@@ -81,7 +81,7 @@ const TooltipWrapper = styled(WithTooltip)`
   }
 `;
 
-const PillButton = styled(Link)`
+const PillButton = styled(Link)<ComponentProps<typeof Link> & { active?: boolean }>`
   font-size: ${typography.size.s1}px;
   font-weight: ${typography.weight.bold};
   line-height: 1;
@@ -114,7 +114,7 @@ const PillButton = styled(Link)`
     `};
 `;
 
-const TabButton = styled(Link)`
+const TabButton = styled(Link)<ComponentProps<typeof Link> & { active?: boolean }>`
   font-size: ${typography.size.s2 - 1}px;
   font-weight: ${typography.weight.bold};
   line-height: 20px;

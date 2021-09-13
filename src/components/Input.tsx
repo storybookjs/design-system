@@ -9,7 +9,7 @@ import React, {
   ComponentProps,
   MutableRefObject,
 } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';

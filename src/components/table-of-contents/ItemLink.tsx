@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { MenuLink } from './MenuLink';
 import { LinkProps } from '../Link';
 

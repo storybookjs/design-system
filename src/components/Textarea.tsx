@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { color, typography } from './shared/styles';
 
 const Label = styled.label<{ hideLabel: boolean }>`

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { icons } from './shared/icons';
 
 const Svg = styled.svg<Partial<Props>>`

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 import { Header } from './Header';

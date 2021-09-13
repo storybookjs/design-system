@@ -1,5 +1,5 @@
 import React, { useState, forwardRef } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { typography } from '../shared/styles';
 import { Link } from '../Link';
 import { TagItem } from './TagItem';

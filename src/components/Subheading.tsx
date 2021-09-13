@@ -1,5 +1,5 @@
 import React, { ComponentProps, FC } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { typography } from './shared/styles';
 
 const Heading = styled.span`

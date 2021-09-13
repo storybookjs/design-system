@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { background, color, typography } from './shared/styles';
 
 export const Badge = styled.div<{

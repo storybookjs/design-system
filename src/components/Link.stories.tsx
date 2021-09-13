@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { action } from '@storybook/addon-actions';
 
 import { Icon } from './Icon';
@@ -74,7 +74,6 @@ export const IsButton = () => (
 
 export const HasLinkWrapper = () => (
   <>
-    {/* gatsby and styled-components don't work nicely together  */}
     <Link tertiary LinkWrapper={StoryLinkWrapper} href="http://storybook.js.org">
       has a LinkWrapper like GatsbyLink or NextLink
     </Link>

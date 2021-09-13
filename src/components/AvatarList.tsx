@@ -1,5 +1,5 @@
 import React, { ComponentProps, FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { Avatar, sizes } from './Avatar';
 // @ts-ignore

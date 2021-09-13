@@ -1,5 +1,5 @@
 import React, { ComponentProps, FC } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { ListItem } from './ListItem';
 import { spacing } from '../shared/styles';
 

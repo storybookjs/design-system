@@ -1,27 +1,18 @@
 // Our wrapper around react-popper that does common stuff.
 
 import React, { ComponentProps, FC } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
+import { TooltipArg } from 'react-popper-tooltip';
 import { typography, spacing, zIndex as sharedZIndex } from '../shared/styles';
 
-const ifPlacementEquals = (
-  placement: string,
-  value: number | string,
-  fallback: number | string = 0
-) => (props: Pick<ArrowProps, 'data-placement'>) =>
-  props['data-placement'].split('-')[0] === placement ? value : fallback;
+const ifPlacementEquals =
+  (placement: string, value: number | string, fallback: number | string = 0) =>
+  (props: Pick<ArrowProps, 'data-placement'>) =>
+    props['data-placement'].split('-')[0] === placement ? value : fallback;
 
 const ArrowSpacing = 8;
 
-type Placement =
-  | 'top-left'
-  | 'top'
-  | 'top-right'
-  | 'right'
-  | 'bottom-right'
-  | 'bottom'
-  | 'bottom-left'
-  | 'left';
+type Placement = TooltipArg['placement'];
 
 interface ArrowProps {
   'data-placement': Placement;
@@ -73,7 +64,7 @@ const TooltipWrapper = styled.div<WrapperProps>`
 
   ${(props) =>
     !props.hasChrome &&
-    css`
+    `
       margin-bottom: ${ifPlacementEquals('top', 8)}px;
       margin-bottom: ${ifPlacementEquals('top-start', 8)}px;
       margin-top: ${ifPlacementEquals('bottom', 8)}px;
@@ -84,7 +75,7 @@ const TooltipWrapper = styled.div<WrapperProps>`
 
   ${(props) =>
     props.hasChrome &&
-    css`
+    `
       margin-bottom: ${ifPlacementEquals('top', ArrowSpacing + 2)}px;
       margin-top: ${ifPlacementEquals('bottom', ArrowSpacing + 2)}px;
       margin-left: ${ifPlacementEquals('right', ArrowSpacing + 2)}px;
@@ -98,7 +89,10 @@ const TooltipWrapper = styled.div<WrapperProps>`
     `};
 `;
 
-export const Tooltip: FC<Props & ComponentProps<typeof TooltipWrapper>> = ({
+export const Tooltip: FC<
+  Props &
+    Omit<ComponentProps<typeof TooltipWrapper>, keyof Props | 'data-placement' | 'ref' | 'zIndex'>
+> = ({
   placement = 'top',
   hasChrome = true,
   children,

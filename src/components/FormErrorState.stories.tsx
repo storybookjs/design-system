@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { action, actions as makeActions } from '@storybook/addon-actions';
 
 import {

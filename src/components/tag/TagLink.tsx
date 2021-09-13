@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { rgba } from 'polished';
 import { color, typography, background, spacing } from '../shared/styles';
 // @ts-ignore

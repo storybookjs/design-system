@@ -14,7 +14,7 @@ Note: this design system is not used in Storybook's UI. The stack is different a
 ## Tech stack
 Building components
 - 📚 [Storybook](https://storybook.js.org) for UI component development and [auto-generated docs](https://medium.com/storybookjs/storybook-docs-sneak-peak-5be78445094a)
-- 💅 [Styled-components](https://www.styled-components.com/) for component-scoped styling
+- 👩‍🎤 [Storybook theming |](https://emotion.sh/) for component-scoped styling
 - ⚛️ [React](https://reactjs.org/) declarative component-centric UI
 
 Maintaining the system
@@ -66,7 +66,7 @@ const { GlobalStyle } = global;
 Useful when you want build upon the shared global styling.
 
 ```javascript
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from '@storybook/theming';
 import { global } from '@storybook/design-system';
 const { bodyStyles } = global;
 

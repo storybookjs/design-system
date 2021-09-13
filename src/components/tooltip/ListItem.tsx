@@ -1,5 +1,5 @@
 import React, { ComponentProps, FC, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { color, typography } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
 
@@ -37,7 +37,7 @@ const ItemInner = styled.span`
     display: inline-flex;
   }
 
-  ${Title}{
+  ${Title} {
     flex: 0 1 auto;
     margin-right: auto;
   }
@@ -141,11 +141,9 @@ const Item = styled(({ active, activeColor, isLoading, ...rest }) => <a {...rest
   ${linkStyles}
 `;
 
-const buildStyledLinkWrapper = (
-  LinkWrapper: Props['LinkWrapper']
-) => styled(({ active, isLoading, activeColor, ...linkWrapperRest }) => (
-  <LinkWrapper {...linkWrapperRest} />
-))`
+const buildStyledLinkWrapper = (LinkWrapper: Props['LinkWrapper']) => styled(
+  ({ active, isLoading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
+)`
   ${linkStyles}
 `;
 

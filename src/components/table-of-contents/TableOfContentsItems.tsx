@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 // @ts-ignore
 import { BulletLink, BulletLinkItem } from './BulletLink';
 // @ts-ignore

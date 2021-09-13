@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger, global-require */
 import React, { ComponentProps, FunctionComponent, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import Prism from 'prismjs';
 import { color } from './shared/styles';
 

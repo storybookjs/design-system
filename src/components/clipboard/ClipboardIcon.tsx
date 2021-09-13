@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { color } from '../shared/styles';
 import { Icon } from '../Icon';
 import { Clipboard } from './Clipboard';

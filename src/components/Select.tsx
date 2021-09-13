@@ -1,5 +1,5 @@
-import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ComponentProps, FC, FunctionComponent, ReactNode } from 'react';
+import { styled, css } from '@storybook/theming';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
@@ -64,7 +64,9 @@ const Selector = styled.select<SelectProps>`
 
 const OptionWrapper = styled.option``;
 
-const Arrow = styled(Icon).attrs({ icon: 'arrowdown' })``;
+const Arrow: FC<Omit<ComponentProps<typeof Icon>, 'icon'>> = (props) => (
+  <Icon {...props} icon="arrowdown" />
+);
 
 const SelectIcon = styled(Icon)``;
 
@@ -91,7 +93,7 @@ const SelectError = styled.div`
 interface WrapperProps {
   disabled: boolean;
   appearance: 'default' | 'tertiary';
-  icon: string;
+  hasIcon: boolean;
   error: any;
 }
 
@@ -105,43 +107,49 @@ const SelectWrapper = styled.span<WrapperProps>`
   width: 100%;
 
   transition: all 150ms ease-out;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
 
   &:hover {
-    transform: translate3d(0,-1px,0);
+    transform: translate3d(0, -1px, 0);
   }
 
   &:active {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 
   &:before {
-    content: "";
-	  bottom: 1px;
-		right: 1px;
-		top: 1px;
-		width: 2em;
+    content: '';
+    bottom: 1px;
+    right: 1px;
+    top: 1px;
+    width: 2em;
     margin-left: 1px;
-		position: absolute;
-		z-index: 1;
-		pointer-events: none;
-    border-radius: ${spacing.borderRadius.small}px;
-	}
-
-  ${Arrow} {
     position: absolute;
-		z-index: 1;
-		pointer-events: none;
-    height: 12px;
-    margin-top: -6px;
-		right: 12px;
-		top: 50%;
-
-    path {fill: ${color.mediumdark} }
+    z-index: 1;
+    pointer-events: none;
+    border-radius: ${spacing.borderRadius.small}px;
   }
 
-  ${Selector} { box-shadow: ${color.border} 0 0 0 1px inset; }
-  ${Selector}:focus { box-shadow: ${color.primary} 0 0 0 1px inset; }
+  ${css(Arrow as unknown as string)} {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    height: 12px;
+    margin-top: -6px;
+    right: 12px;
+    top: 50%;
+
+    path {
+      fill: ${color.mediumdark};
+    }
+  }
+
+  ${Selector} {
+    box-shadow: ${color.border} 0 0 0 1px inset;
+  }
+  ${Selector}:focus {
+    box-shadow: ${color.primary} 0 0 0 1px inset;
+  }
 
   ${(props) =>
     props.disabled &&
@@ -149,17 +157,17 @@ const SelectWrapper = styled.span<WrapperProps>`
       opacity: 0.5;
     `}
 
-  &:before { background-color: rgba(255,255,255,.9); }
-	${Selector} {
+  &:before {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  ${css(Selector)} {
     background-color: ${color.lightest};
     color: ${color.darkest};
   }
 
-  
-
   ${(props) =>
     props.appearance === 'tertiary' &&
-    css`
+    `
       width: auto;
       height: auto;
 
@@ -179,40 +187,48 @@ const SelectWrapper = styled.span<WrapperProps>`
     `}
 
   ${(props) =>
-    props.icon &&
-    css`
-    ${Selector} { padding-left: 2.5em; }
+    props.hasIcon &&
+    `
+      ${Selector} {
+        padding-left: 2.5em;
+      }
 
-    ${Selector} + ${SelectIcon} {
-      transition: all 150ms ease-out ;
-      position: absolute;
-      top: 50%;
-      left: .8em;
-			height: 1em;
-      width: 1em;
-			margin-top: -.5em;
-			z-index: 1;
+      ${Selector} + ${SelectIcon} {
+        transition: all 150ms ease-out;
+        position: absolute;
+        top: 50%;
+        left: 0.8em;
+        height: 1em;
+        width: 1em;
+        margin-top: -0.5em;
+        z-index: 1;
 
-	    path { fill: ${color.mediumdark}; }
-    }
-    ${Selector}:focus + ${SelectIcon} path {
-      fill: ${color.darker};
-	  }
-  `}
+        path {
+          fill: ${color.mediumdark};
+        }
+      }
+      ${Selector}:focus + ${SelectIcon} path {
+        fill: ${color.darker};
+      }
+    `}
 
   ${(props) =>
     props.error &&
-    css`
-    ${Selector} {
-      box-shadow: ${color.negative} 0 0 0 1px inset;
-      &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
-    }
+    `
+      ${Selector} {
+        box-shadow: ${color.negative} 0 0 0 1px inset;
+        &:focus {
+          box-shadow: ${color.negative} 0 0 0 1px inset !important;
+        }
+      }
 
-    ${Selector} + ${SelectIcon} {
-      animation: ${jiggle} 700ms ease-out;
-      path { fill: ${color.negative}; }
-    }
-  `}
+      ${Selector} + ${SelectIcon} {
+        animation: ${jiggle} 700ms ease-out;
+        path {
+          fill: ${color.negative};
+        }
+      }
+    `}
 `;
 
 interface OptionProps {
@@ -270,7 +286,7 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
       </LabelWrapper>
       <SelectWrapper
         appearance={appearance}
-        icon={icon}
+        hasIcon={!!icon}
         data-error={error}
         error={error}
         disabled={disabled}

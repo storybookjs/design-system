@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { HeaderContext } from './HeaderContext';
 
 type StyledNavItemProps = {

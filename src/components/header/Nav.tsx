@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { pageMargins, breakpoint } from '../shared/styles';
 import { StyledNavItem } from './NavItem';
 

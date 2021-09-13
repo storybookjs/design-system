@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ComponentProps } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { color, typography } from './shared/styles';
 import { glow } from './shared/animation';
 import { Icon } from './Icon';
@@ -70,7 +70,7 @@ interface LoadingIconProps {
   type: AvatarType;
 }
 
-const LoadingIcon = styled(Icon)<LoadingIconProps>`
+const LoadingIcon = styled(Icon)<LoadingIconProps & ComponentProps<typeof Icon>>`
   position: relative;
   margin: 0 auto;
   display: block;

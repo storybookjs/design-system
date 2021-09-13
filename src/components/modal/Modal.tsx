@@ -1,5 +1,5 @@
 import React, { Children, ComponentProps, FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import ReactModal from 'react-modal';
 
 import { Button } from '../Button';
