@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 import { typography } from '../shared/styles';
 import { Link } from '../Link';
@@ -16,7 +16,7 @@ const TagListWrapper = styled.div`
   margin-bottom: -10px;
 `;
 
-const MoreTagsButton = styled(Link)`
+const MoreTagsButton = styled(Link)<ComponentProps<typeof Link> & { appearance: any }>`
   font-size: ${typography.size.s2}px;
   padding-left: 5px;
   padding-right: 5px;

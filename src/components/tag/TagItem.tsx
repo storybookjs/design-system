@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { styled, css } from '@storybook/theming';
 import { color, typography, background, spacing } from '../shared/styles';
 // @ts-ignore
@@ -14,10 +15,19 @@ function randomString(min: number, max: number) {
     .slice(1);
 }
 
-export const TagItem = styled.div.attrs<TagItemProps>(({ isLoading, children }) => ({
-  children: isLoading ? randomString(5, 12) : children,
-  ...(isLoading && { 'aria-label': 'Loading tag' }),
-}))<TagItemProps>`
+const TagItemInner: FC<TagItemProps> = ({ isLoading, children, ...rest }) => {
+  return (
+    <div
+      {...rest}
+      {...{
+        children: isLoading ? randomString(5, 12) : children,
+        ...(isLoading && { 'aria-label': 'Loading tag' }),
+      }}
+    />
+  );
+};
+
+export const TagItem = styled(TagItemInner)<TagItemProps>`
   display: inline-block;
   background: ${background.app};
   border-radius: ${spacing.borderRadius.small}px;
