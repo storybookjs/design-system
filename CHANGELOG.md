@@ -1,3 +1,15 @@
+# v6.1.0 (Tue Sep 14 2021)
+
+#### 🚀 Enhancement
+
+- Remove italic style from em tags [#294](https://github.com/storybookjs/design-system/pull/294) ([@smithambera](https://github.com/smithambera))
+
+#### Authors: 1
+
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+
+---
+
 # v6.0.1 (Tue Aug 24 2021)
 
 #### 🐛 Bug Fix
