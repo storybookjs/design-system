@@ -56,6 +56,10 @@ export const bodyStyles = css`
     font-weight: ${typography.weight.bold};
   }
 
+  em {
+    font-style: normal;
+  }
+
   hr {
     border: none;
     border-top: 1px solid ${color.border};
