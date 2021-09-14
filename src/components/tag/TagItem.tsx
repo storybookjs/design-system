@@ -15,19 +15,13 @@ function randomString(min: number, max: number) {
     .slice(1);
 }
 
-const TagItemInner: FC<TagItemProps> = ({ isLoading, children, ...rest }) => {
+export const TagItem = styled(({ isLoading, children, ...rest }) => {
   return (
-    <div
-      {...rest}
-      {...{
-        children: isLoading ? randomString(5, 12) : children,
-        ...(isLoading && { 'aria-label': 'Loading tag' }),
-      }}
-    />
+    <div {...{ ...rest, ...(isLoading && { 'aria-label': 'Loading tag' }) }}>
+      {isLoading ? randomString(5, 12) : children}
+    </div>
   );
-};
-
-export const TagItem = styled(TagItemInner)<TagItemProps>`
+})<TagItemProps>`
   display: inline-block;
   background: ${background.app};
   border-radius: ${spacing.borderRadius.small}px;
