@@ -1,7 +1,7 @@
-import { opacify, rgba } from 'polished';
+import { opacify } from 'polished';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { color, typography } from './shared/styles';
+import { background, color, typography } from './shared/styles';
 import { Link } from './Link';
 // @ts-ignore
 import { TooltipNote } from './tooltip/TooltipNote';
@@ -90,7 +90,7 @@ const PillButton = styled(Link)`
   padding: 4px 8px;
   border-radius: 10px;
   &:hover {
-    background: #e3f3ff;
+    background: ${background.calmBlue};
     color: ${color.secondary};
     img {
       opacity: 1;
@@ -106,7 +106,7 @@ const PillButton = styled(Link)`
   ${(props) =>
     props.active &&
     css`
-      background: #e3f3ff;
+      background: ${background.calmBlue};
       color: ${color.secondary};
       img {
         opacity: 1;
