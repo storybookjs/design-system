@@ -16,12 +16,13 @@ export const All = () => (
     <Badge status="neutral">Neutral</Badge>
     <Badge status="error">Error</Badge>
     <Badge status="warning">Warning</Badge>
+    <Badge status="selected">Selected</Badge>
   </div>
 );
 
 export const WithIcon = () => (
   <Badge status="warning">
-    <Icon icon="check" inline />
+    <Icon icon="check" />
     with icon
   </Badge>
 );
