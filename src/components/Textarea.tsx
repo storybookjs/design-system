@@ -106,9 +106,9 @@ const TextareaWrapper = styled.div<{ error: ReactNode }>`
     props.error &&
     css`
       ${TextareaText} {
-        box-shadow: ${color.negative} 0 0 0 1px inset;
+        box-shadow: ${color.red} 0 0 0 1px inset;
         &:focus {
-          box-shadow: ${color.negative} 0 0 0 1px inset !important;
+          box-shadow: ${color.red} 0 0 0 1px inset !important;
         }
       }
     `};
