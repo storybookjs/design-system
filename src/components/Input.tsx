@@ -190,13 +190,13 @@ const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance
 
   ${props => props.error && css`
     ${InputEl} {
-        box-shadow: ${color.negative} 0 0 0 1px inset;
-        &:focus { box-shadow: ${color.negative} 0 0 0 1px inset !important;  }
+        box-shadow: ${color.red} 0 0 0 1px inset;
+        &:focus { box-shadow: ${color.red} 0 0 0 1px inset !important;  }
     }
 
     svg {
       animation: ${jiggle} 700ms ease-out;
-      path { fill: ${color.negative}; }
+      path { fill: ${color.red}; }
     }
   `}
 `;
