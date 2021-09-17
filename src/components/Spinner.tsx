@@ -78,9 +78,9 @@ const SpinnerWrapper = styled.div<Props>`
 
       ${props.negative &&
       css`
-        border-top-color: ${color.negative};
-        border-left-color: ${color.negative};
-        border-right-color: ${color.negative};
+        border-top-color: ${color.red};
+        border-left-color: ${color.red};
+        border-right-color: ${color.red};
       `};
 
       ${props.neutral &&
