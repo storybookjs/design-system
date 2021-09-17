@@ -8,13 +8,14 @@ export const background = {
   positive: '#E1FFD4',
   negative: '#FEDED2',
   warning: '#FFF5CF',
+  calmBlue: '#E3F3FF',
 };
 
 export const color = {
   // Palette
-  primary: '#FF4785', // coral
-  secondary: '#1EA7FD', // ocean
-  tertiary: '#DDDDDD',
+  primary: '#FF4785', // Coral
+  secondary: '#1EA7FD', // Ocean
+  tertiary: '#DDDDDD', // Light grey
 
   orange: '#FC521F',
   gold: '#FFAE00',
@@ -22,6 +23,7 @@ export const color = {
   seafoam: '#37D5D3',
   purple: '#6F2CAC',
   ultraviolet: '#2A0481',
+  red: '#ff4400',
 
   // Monochrome
   lightest: '#FFFFFF',
@@ -37,9 +39,10 @@ export const color = {
   border: 'rgba(0,0,0,.1)',
 
   // Status
-  positive: '#66BF3C',
-  negative: '#FF4400',
-  warning: '#E69D00',
+  positive: '#448028', // Evergreen
+  negative: '#D43900', // Crimson
+  warning: '#A15C20', // Burnt sienna
+  selected: '#0271B6', // Navy
 };
 
 export const spacing = {

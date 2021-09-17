@@ -1,6 +1,6 @@
 import React, { ComponentProps, FC, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { color, typography } from '../shared/styles';
+import { background, color, typography } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
 
 const Left = styled.span``;
@@ -37,7 +37,7 @@ const ItemInner = styled.span`
     display: inline-flex;
   }
 
-  ${Title}{
+  ${Title} {
     flex: 0 1 auto;
     margin-right: auto;
   }
@@ -90,7 +90,7 @@ const linkStyles = css<{
   }
 
   &:hover {
-    background: #e3f3ff;
+    background: ${background.calmBlue};
     cursor: pointer;
 
     ${Right} svg {
@@ -141,11 +141,9 @@ const Item = styled(({ active, activeColor, isLoading, ...rest }) => <a {...rest
   ${linkStyles}
 `;
 
-const buildStyledLinkWrapper = (
-  LinkWrapper: Props['LinkWrapper']
-) => styled(({ active, isLoading, activeColor, ...linkWrapperRest }) => (
-  <LinkWrapper {...linkWrapperRest} />
-))`
+const buildStyledLinkWrapper = (LinkWrapper: Props['LinkWrapper']) => styled(
+  ({ active, isLoading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
+)`
   ${linkStyles}
 `;
 
