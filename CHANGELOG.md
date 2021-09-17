@@ -1,3 +1,15 @@
+# v6.2.0 (Fri Sep 17 2021)
+
+#### 🚀 Enhancement
+
+- Update colors and add new badges [#298](https://github.com/storybookjs/design-system/pull/298) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v6.1.0 (Tue Sep 14 2021)
 
 #### 🚀 Enhancement
