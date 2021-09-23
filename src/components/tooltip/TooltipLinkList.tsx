@@ -27,7 +27,10 @@ export const TooltipLinkList: FC<Props> = ({ links, LinkWrapper, ...rest }) => {
   );
 };
 
+type AnyProps = Record<string, any>;
+type LinkWrapperType = (props: AnyProps) => React.ReactElement<any, any>;
+
 interface Props {
   links: Omit<ComponentProps<typeof ListItem>, 'LinkWrapper'>[];
-  LinkWrapper?: Function;
+  LinkWrapper?: LinkWrapperType;
 }

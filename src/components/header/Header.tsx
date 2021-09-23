@@ -101,7 +101,7 @@ export function Header({
                 trigger="click"
                 tooltip={mobileMenu}
               >
-                <Menu secondary inverse={inverse} icon={1} isButton>
+                <Menu secondary inverse={inverse} isButton>
                   <Icon icon="menu" aria-label="Menu" />
                 </Menu>
               </MobileMenuTooltip>

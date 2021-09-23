@@ -1,5 +1,6 @@
 import React, { ComponentProps, FC, ReactNode } from 'react';
 import { styled, css } from '@storybook/theming';
+import weakMemoize from '@emotion/weak-memoize';
 import { color, typography } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
 
@@ -59,12 +60,14 @@ const ItemInner = styled.span`
   }
 `;
 
-const linkStyles = css<{
+interface LinkStyleProps {
   activeColor: string;
-  active: boolean;
-  isLoading: boolean;
-  disabled: boolean;
-}>`
+  active?: boolean;
+  isLoading?: boolean;
+  disabled?: boolean;
+}
+
+const linkStyles = (props: LinkStyleProps) => css`
   font-size: ${typography.size.s1}px;
   transition: all 150ms ease-out;
   color: ${color.mediumdark};
@@ -98,56 +101,71 @@ const linkStyles = css<{
     }
   }
 
-  ${(props) =>
-    props.active &&
-    css`
-      ${Title} {
-        font-weight: ${typography.weight.bold};
-      }
-      ${Title}, ${Center} {
-        color: ${props.activeColor};
-      }
+  ${props.active &&
+  css`
+    ${Title} {
+      font-weight: ${typography.weight.bold};
+    }
+    ${Title}, ${Center} {
+      color: ${props.activeColor};
+    }
 
-      ${Right} svg {
-        opacity: 1;
-        path {
-          fill: ${props.activeColor};
-        }
+    ${Right} svg {
+      opacity: 1;
+      path {
+        fill: ${props.activeColor};
       }
-    `};
+    }
+  `};
 
-  ${(props) =>
-    props.isLoading &&
-    css`
-      ${Title} {
-        ${inlineGlow};
-        flex: 0 1 auto;
-        display: inline-block;
-      }
-    `};
+  ${props.isLoading &&
+  css`
+    ${Title} {
+      ${inlineGlow};
+      flex: 0 1 auto;
+      display: inline-block;
+    }
+  `};
 
-  ${(props) =>
-    props.disabled &&
-    css`
-      cursor: not-allowed !important;
-      ${Title}, ${Center} {
-        color: ${color.mediumdark};
-      }
-    `};
+  ${props.disabled &&
+  css`
+    cursor: not-allowed !important;
+    ${Title}, ${Center} {
+      color: ${color.mediumdark};
+    }
+  `};
 `;
 
-// eslint-disable-next-line jsx-a11y/anchor-has-content
-const Item = styled(({ active, activeColor, isLoading, ...rest }) => <a {...rest} />)`
-  ${linkStyles}
-`;
-
-const buildStyledLinkWrapper = (LinkWrapper: Props['LinkWrapper']) => styled(
-  ({ active, isLoading, activeColor, ...linkWrapperRest }) => <LinkWrapper {...linkWrapperRest} />
+const Item = styled(
+  ({
+    active,
+    activeColor,
+    isLoading,
+    ...rest
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement> & LinkStyleProps) => {
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
+    return <a {...rest} />;
+  }
 )`
   ${linkStyles}
 `;
 
-export const ListItem: FC<Props & ComponentProps<ReturnType<typeof buildStyledLinkWrapper>>> = ({
+const buildStyledLinkWrapper = weakMemoize(
+  (LinkWrapper: LinkWrapperType) => styled(
+    ({
+      active,
+      isLoading,
+      activeColor,
+      ...linkWrapperRest
+    }: ComponentProps<LinkWrapperType> & LinkStyleProps) => <LinkWrapper {...linkWrapperRest} />
+  )`
+    ${linkStyles}
+  `
+);
+
+type StyledLinkWrapperProps = ComponentProps<ReturnType<typeof buildStyledLinkWrapper>>;
+
+export const ListItem: FC<Props & Omit<StyledLinkWrapperProps, 'activeColor'>> = ({
   appearance = 'primary',
   left,
   title = <span>Loading</span>,
@@ -188,6 +206,9 @@ export const ListItem: FC<Props & ComponentProps<ReturnType<typeof buildStyledLi
   );
 };
 
+type AnyProps = Record<string, any>;
+type LinkWrapperType = (props: AnyProps) => React.ReactElement<any, any>;
+
 interface Props {
   appearance?: 'primary' | 'secondary';
   isLoading?: boolean;
@@ -197,6 +218,6 @@ interface Props {
   right?: ReactNode;
   active?: boolean;
   disabled?: boolean;
-  LinkWrapper?: Function;
+  LinkWrapper?: LinkWrapperType | null;
   onClick?: Function;
 }

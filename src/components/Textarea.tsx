@@ -209,7 +209,7 @@ export const Textarea: FC<Props & ComponentProps<typeof TextareaText>> = forward
           <TextareaText
             id={id}
             value={value}
-            rows="7"
+            rows={7}
             aria-invalid={!!error}
             aria-describedby={ariaDescribedBy}
             ref={textareaRef}

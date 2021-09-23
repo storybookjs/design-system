@@ -61,7 +61,7 @@ const ItemComponent = ({ currentPath, item, isTopLevel, setMenuOpenStateById }: 
   return null;
 };
 
-const TopLevelMenuToggle = styled(Link).attrs({ isButton: true, tertiary: true })`
+const TopLevelMenuToggle = styled(Link)`
   font-weight: ${typography.weight.bold};
   line-height: 24px;
   word-break: break-word;
@@ -85,7 +85,7 @@ interface ArrowIconProps {
   isTopLevel?: boolean;
 }
 
-const ArrowIcon = styled(Icon).attrs({ icon: 'arrowright' })<ArrowIconProps>`
+const ArrowIcon = styled(Icon)<ArrowIconProps>`
   && {
     width: 12px;
     height: 12px;
@@ -105,13 +105,15 @@ interface MenuProps {
 
 function Menu({ isTopLevel, item, setMenuOpenStateById, currentPath, ...rest }: MenuProps) {
   if (!item.children) return null;
-  const arrow = <ArrowIcon isOpen={item.isOpen} isTopLevel={isTopLevel} aria-hidden />;
+  const arrow = (
+    <ArrowIcon icon="arrowright" isOpen={item.isOpen} isTopLevel={isTopLevel} aria-hidden />
+  );
   const toggleOpenState = () => setMenuOpenStateById({ id: item.id, isOpen: !item.isOpen });
 
   return (
     <li>
       {isTopLevel ? (
-        <TopLevelMenuToggle onClick={toggleOpenState}>
+        <TopLevelMenuToggle isButton tertiary onClick={toggleOpenState}>
           {arrow}
           <span>{item.title}</span>
         </TopLevelMenuToggle>
@@ -203,6 +205,7 @@ export function TableOfContentsItems({
       className={className}
       isTopLevel={isTopLevel}
       isFlatList={isFlatList}
+      // @ts-expect-error Emotion 10 doesn't include `as` in its types
       as={isOrderedList ? 'ol' : 'ul'}
     >
       {items.map((item) => {
