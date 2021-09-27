@@ -64,9 +64,9 @@ const Selector = styled.select<SelectProps>`
 
 const OptionWrapper = styled.option``;
 
-const Arrow: FC<Omit<ComponentProps<typeof Icon>, 'icon'>> = (props) => (
+const Arrow = styled((props: Omit<ComponentProps<typeof Icon>, 'icon'>) => (
   <Icon {...props} icon="arrowdown" />
-);
+))``;
 
 const SelectIcon = styled(Icon)``;
 
@@ -130,7 +130,7 @@ const SelectWrapper = styled.span<WrapperProps>`
     border-radius: ${spacing.borderRadius.small}px;
   }
 
-  ${css(Arrow as unknown as string)} {
+  ${Arrow} {
     position: absolute;
     z-index: 1;
     pointer-events: none;
@@ -160,7 +160,7 @@ const SelectWrapper = styled.span<WrapperProps>`
   &:before {
     background-color: rgba(255, 255, 255, 0.9);
   }
-  ${css(Selector)} {
+  ${Selector} {
     background-color: ${color.lightest};
     color: ${color.darkest};
   }
