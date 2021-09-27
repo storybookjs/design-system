@@ -216,16 +216,16 @@ const SelectWrapper = styled.span<WrapperProps>`
     props.error &&
     `
       ${Selector} {
-        box-shadow: ${color.negative} 0 0 0 1px inset;
+        box-shadow: ${color.red} 0 0 0 1px inset;
         &:focus {
-          box-shadow: ${color.negative} 0 0 0 1px inset !important;
+          box-shadow: ${color.red} 0 0 0 1px inset !important;
         }
       }
 
       ${Selector} + ${SelectIcon} {
         animation: ${jiggle} 700ms ease-out;
         path {
-          fill: ${color.negative};
+          fill: ${color.red};
         }
       }
     `}

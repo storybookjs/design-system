@@ -1,7 +1,7 @@
 import React, { ComponentProps, FC, ReactNode } from 'react';
 import { styled, css } from '@storybook/theming';
 import weakMemoize from '@emotion/weak-memoize';
-import { color, typography } from '../shared/styles';
+import { background, color, typography } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
 
 const Left = styled.span``;
@@ -93,7 +93,7 @@ const linkStyles = (props: LinkStyleProps) => css`
   }
 
   &:hover {
-    background: #e3f3ff;
+    background: ${background.calmBlue};
     cursor: pointer;
 
     ${Right} svg {
