@@ -25,6 +25,19 @@ const UserEllipses = styled.li`
 
 const User = styled.li`
   display: inline-flex;
+
+  &:not(:first-child) {
+    margin-left: -6px;
+  }
+  &:nth-child(1) {
+    z-index: 3;
+  }
+  &:nth-child(2) {
+    z-index: 2;
+  }
+  &:nth-child(3) {
+    z-index: 1;
+  }
 `;
 
 const Users = styled.ul`
@@ -40,19 +53,6 @@ const Users = styled.ul`
 
   & > li {
     position: relative;
-
-    &:not(:first-child) {
-      margin-left: -6px;
-    }
-    &:nth-child(1) {
-      z-index: 3;
-    }
-    &:nth-child(2) {
-      z-index: 2;
-    }
-    &:nth-child(3) {
-      z-index: 1;
-    }
   }
 `;
 
