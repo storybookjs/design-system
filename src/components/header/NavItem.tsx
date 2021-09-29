@@ -13,7 +13,7 @@ export const StyledNavItem = styled.div<StyledNavItemProps & { navBreakpoint: nu
   line-height: 3rem;
   align-items: center;
 
-  svg {
+  && svg {
     margin-right: 0;
   }
 
