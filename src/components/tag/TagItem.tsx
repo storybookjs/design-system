@@ -15,13 +15,18 @@ function randomString(min: number, max: number) {
     .slice(1);
 }
 
-export const TagItem = styled(({ isLoading, children, ...rest }) => {
-  return (
-    <div {...{ ...rest, ...(isLoading && { 'aria-label': 'Loading tag' }) }}>
-      {isLoading ? randomString(5, 12) : children}
-    </div>
-  );
-})<TagItemProps>`
+export const TagItem = styled(
+  ({ isLoading, children, ...rest }) => {
+    return (
+      <div {...{ ...rest, ...(isLoading && { 'aria-label': 'Loading tag' }) }}>
+        {isLoading ? randomString(5, 12) : children}
+      </div>
+    );
+  },
+  {
+    shouldForwardProp: (prop) => prop !== 'theme' && prop !== 'as',
+  }
+)<TagItemProps>`
   display: inline-block;
   background: ${background.app};
   border-radius: ${spacing.borderRadius.small}px;

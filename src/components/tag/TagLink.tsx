@@ -11,10 +11,6 @@ export interface TagLinkProps extends React.ComponentProps<typeof Link> {
   isLoading?: boolean;
 }
 
-// .attrs<TagLinkProps>(({ isLoading, children }) => ({
-//   children: isLoading ? 'Loading tag' : children,
-//   as: Link,
-// }))
 export const TagLink = styled((props: TagLinkProps) => {
   return (
     <TagItem {...props} as={Link}>
