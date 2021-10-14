@@ -42,7 +42,7 @@ const SIZES = {
 
 export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
   border: 0;
-  border-radius: 3em;
+  border-radius: 5em;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
@@ -78,7 +78,7 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
   ${Text} {
-    transform: scale3d(1,1,1) translate3d(0,0,0);
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
     transition: transform 700ms ${easing.rubber};
     opacity: 1;
   }
@@ -273,9 +273,9 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
       }
     `};
 
-    ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_PRIMARY &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_PRIMARY &&
+    `
         background: ${color.lightest};
         color: ${color.primary};
 
@@ -292,9 +292,9 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
         }
     `}
 
-    ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_SECONDARY &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_SECONDARY &&
+    `
         background: ${color.lightest};
         color: ${color.secondary};
 
@@ -312,8 +312,8 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
     ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_OUTLINE &&
-      `
+    props.appearance === APPEARANCES.INVERSE_OUTLINE &&
+    `
         box-shadow: ${color.lightest} 0 0 0 1px inset;
         color: ${color.lightest};
 
