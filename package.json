@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "patch-package": "patch-package",
-    "build": "babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
+    "build": "yarn patch-package && babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
     "build-docs": "yarn patch-package && build-storybook --docs",
     "build-storybook": "yarn patch-package && build-storybook -s .storybook/static",
     "lint": "yarn lint:js && yarn lint:package",
