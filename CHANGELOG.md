@@ -1,3 +1,15 @@
+# v6.3.0 (Tue Oct 19 2021)
+
+#### 🚀 Enhancement
+
+- Add OutlineCTA component [#306](https://github.com/storybookjs/design-system/pull/306) ([@kylegach](https://github.com/kylegach))
+
+#### Authors: 1
+
+- Kyle Gach ([@kylegach](https://github.com/kylegach))
+
+---
+
 # v6.2.0 (Fri Sep 17 2021)
 
 #### 🚀 Enhancement
