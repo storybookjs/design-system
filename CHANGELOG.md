@@ -1,3 +1,15 @@
+# v6.4.1 (Thu Oct 21 2021)
+
+#### 🐛 Bug Fix
+
+- Update TagItem && TagList Styles [#308](https://github.com/storybookjs/design-system/pull/308) ([@smithambera](https://github.com/smithambera))
+
+#### Authors: 1
+
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+
+---
+
 # v6.4.0 (Thu Oct 21 2021)
 
 #### 🚀 Enhancement
