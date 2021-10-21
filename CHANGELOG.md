@@ -1,3 +1,15 @@
+# v6.4.0 (Thu Oct 21 2021)
+
+#### 🚀 Enhancement
+
+- TooltipNote: Increased the opacity of the background color [#307](https://github.com/storybookjs/design-system/pull/307) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v6.3.0 (Tue Oct 19 2021)
 
 #### 🚀 Enhancement
