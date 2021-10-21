@@ -18,17 +18,17 @@ export const TagItem = styled.div.attrs<TagItemProps>(({ isLoading, children }) 
   children: isLoading ? randomString(5, 12) : children,
   ...(isLoading && { 'aria-label': 'Loading tag' }),
 }))<TagItemProps>`
-  display: inline-block;
-  background: ${background.app};
+  background: ${color.blueLight};
+  border-color: transparent;
   border-radius: ${spacing.borderRadius.small}px;
-  padding: 6px 10px 4px 10px;
+  border-style: solid;
+  border-width: 1px;
+  color: ${color.darkest};
+  display: inline-block;
   font-size: ${typography.size.s2}px;
   line-height: ${typography.size.m1}px;
+  padding: 6px 10px 4px 10px;
   position: relative;
-  color: ${color.darkest};
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
   white-space: nowrap;
 
   ${(props) =>

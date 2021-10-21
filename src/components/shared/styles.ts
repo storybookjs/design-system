@@ -25,6 +25,10 @@ export const color = {
   ultraviolet: '#2A0481',
   red: '#ff4400',
 
+  // Calm
+  blueLighter: '#E3F3FF', // rgba($color.blue, 12%)
+  blueLight: '#F3FAFF', // rgba($color.blue, 6%)
+
   // Monochrome
   lightest: '#FFFFFF',
   lighter: '#F8F8F8',
