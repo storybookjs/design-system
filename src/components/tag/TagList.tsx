@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import styled from 'styled-components';
-import { typography } from '../shared/styles';
+import { color, typography } from '../shared/styles';
 import { Link } from '../Link';
 import { TagItem } from './TagItem';
 
@@ -17,7 +17,9 @@ const TagListWrapper = styled.div`
 `;
 
 const MoreTagsButton = styled(Link)`
+  color: ${color.mediumdark};
   font-size: ${typography.size.s2}px;
+  font-weight: ${typography.weight.bold};
   padding-left: 5px;
   padding-right: 5px;
 
