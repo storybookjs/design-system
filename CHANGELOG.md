@@ -1,3 +1,39 @@
+# v6.4.1 (Thu Oct 21 2021)
+
+#### 🐛 Bug Fix
+
+- Update TagItem && TagList Styles [#308](https://github.com/storybookjs/design-system/pull/308) ([@smithambera](https://github.com/smithambera))
+
+#### Authors: 1
+
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+
+---
+
+# v6.4.0 (Thu Oct 21 2021)
+
+#### 🚀 Enhancement
+
+- TooltipNote: Increased the opacity of the background color [#307](https://github.com/storybookjs/design-system/pull/307) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
+# v6.3.0 (Tue Oct 19 2021)
+
+#### 🚀 Enhancement
+
+- Add OutlineCTA component [#306](https://github.com/storybookjs/design-system/pull/306) ([@kylegach](https://github.com/kylegach))
+
+#### Authors: 1
+
+- Kyle Gach ([@kylegach](https://github.com/kylegach))
+
+---
+
 # v6.2.0 (Fri Sep 17 2021)
 
 #### 🚀 Enhancement

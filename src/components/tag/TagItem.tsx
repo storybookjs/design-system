@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { styled, css } from '@storybook/theming';
-import { color, typography, background, spacing } from '../shared/styles';
-// @ts-ignore
+import { color, typography, spacing } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
 
 export type TagItemProps = {
+  children?: React.ReactNode;
   isLoading?: boolean;
 };
 
@@ -14,30 +14,27 @@ function randomString(min: number, max: number) {
     .toString(36)
     .slice(1);
 }
-
 export const TagItem = styled(
-  ({ isLoading, children, ...rest }) => {
-    return (
-      <div {...{ ...rest, ...(isLoading && { 'aria-label': 'Loading tag' }) }}>
-        {isLoading ? randomString(5, 12) : children}
-      </div>
-    );
-  },
+  ({ isLoading, children, ...rest }) => (
+    <div {...rest} {...(isLoading && { 'aria-label': 'Loading tag' })}>
+      {isLoading ? randomString(5, 12) : children}
+    </div>
+  ),
   {
     shouldForwardProp: (prop) => prop !== 'theme' && prop !== 'as',
   }
 )<TagItemProps>`
-  display: inline-block;
-  background: ${background.app};
+  background: ${color.blueLight};
+  border-color: transparent;
   border-radius: ${spacing.borderRadius.small}px;
-  padding: 6px 10px 4px 10px;
+  border-style: solid;
+  border-width: 1px;
+  color: ${color.darkest};
+  display: inline-block;
   font-size: ${typography.size.s2}px;
   line-height: ${typography.size.m1}px;
+  padding: 6px 10px 4px 10px;
   position: relative;
-  color: ${color.darkest};
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
   white-space: nowrap;
 
   ${(props) =>

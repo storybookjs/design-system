@@ -1,9 +1,7 @@
 import React from 'react';
 import { styled, css } from '@storybook/theming';
 import { rgba } from 'polished';
-import { color, typography, background, spacing } from '../shared/styles';
-// @ts-ignore
-import { inlineGlow } from '../shared/animation';
+import { color } from '../shared/styles';
 import { Link } from '../Link';
 import { TagItem } from './TagItem';
 
