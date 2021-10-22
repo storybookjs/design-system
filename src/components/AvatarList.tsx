@@ -2,9 +2,7 @@ import React, { ComponentProps, FunctionComponent } from 'react';
 import { styled } from '@storybook/theming';
 
 import { Avatar, sizes } from './Avatar';
-// @ts-ignore
 import WithTooltip from './tooltip/WithTooltip';
-// @ts-ignore
 import { TooltipNote } from './tooltip/TooltipNote';
 import { color, typography } from './shared/styles';
 
@@ -12,8 +10,6 @@ const UserAvatar = styled(Avatar)`
   box-shadow: ${color.lightest} 0 0 0 2px;
   display: block;
 `;
-
-const UserTooltipWrapper = styled(WithTooltip)``;
 
 const UserEllipses = styled.li`
   display: inline-flex;
@@ -25,19 +21,6 @@ const UserEllipses = styled.li`
 
 const User = styled.li`
   display: inline-flex;
-
-  &:not(:first-child) {
-    margin-left: -6px;
-  }
-  &:nth-child(1) {
-    z-index: 3;
-  }
-  &:nth-child(2) {
-    z-index: 2;
-  }
-  &:nth-child(3) {
-    z-index: 1;
-  }
 `;
 
 const Users = styled.ul`
@@ -51,8 +34,21 @@ const Users = styled.ul`
   padding: 0;
   list-style: none;
 
-  & > li {
+  ${User} {
     position: relative;
+
+    &:not(:first-child) {
+      margin-left: -6px;
+    }
+    &:nth-child(1) {
+      z-index: 3;
+    }
+    &:nth-child(2) {
+      z-index: 2;
+    }
+    &:nth-child(3) {
+      z-index: 1;
+    }
   }
 `;
 
@@ -85,14 +81,14 @@ export const AvatarList: FunctionComponent<Props & ComponentProps<typeof Users>>
     <Users aria-label="users" {...props}>
       {users.slice(0, 3).map(({ id, name, avatarUrl }) => (
         <User key={id}>
-          <UserTooltipWrapper
+          <WithTooltip
             hasChrome={false}
             placement="bottom"
             trigger="hover"
             tooltip={<TooltipNote note={name} />}
           >
             <UserAvatar size={size} username={name} src={avatarUrl} isLoading={isLoading} />
-          </UserTooltipWrapper>
+          </WithTooltip>
         </User>
       ))}
       {count > 3 && (
