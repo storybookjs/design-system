@@ -122,7 +122,7 @@ export const bodyStyles = css`
 export const fontUrl =
   'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap';
 
-const newLocal = css`
+const globalStyles = css`
   body {
     ${bodyStyles}
   }
@@ -132,4 +132,4 @@ const newLocal = css`
     outline: none;
   }
 `;
-export const GlobalStyle = () => <Global styles={newLocal} />;
+export const GlobalStyle = () => <Global styles={globalStyles} />;
