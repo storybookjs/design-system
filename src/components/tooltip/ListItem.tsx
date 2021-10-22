@@ -150,6 +150,10 @@ const Item = styled(
   ${linkStyles}
 `;
 
+// `LinkWrapper` is an input prop that gets internally wrapped with this function here
+// `weakMemoize` ensures that for any given `LinkWrapper` we always createa single "WrappedLinkWrapper"
+// without this memoization the `LinkWrapper` gets *remounted* each render
+// this happens because React can't reconcile it correctly, given that the component's type (a styled component) is recreated each render
 const buildStyledLinkWrapper = weakMemoize(
   (LinkWrapper: LinkWrapperType) => styled(
     ({
