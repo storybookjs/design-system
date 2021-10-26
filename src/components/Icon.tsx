@@ -8,10 +8,10 @@ const Svg = styled.svg<Partial<Props>>`
 
   shape-rendering: inherit;
   transform: translate3d(0, 0, 0);
-`;
 
-const Path = styled.path`
-  fill: ${(props) => props.color};
+  path {
+    fill: ${(props) => props.color};
+  }
 `;
 
 /**
@@ -28,8 +28,8 @@ export const Icon: FunctionComponent<Props> = ({
   ...props
 }: Props) => {
   return (
-    <Svg viewBox="0 0 1024 1024" width="20px" height="20px" block={block} {...props}>
-      <Path d={icons[icon]} color={color} />
+    <Svg viewBox="0 0 1024 1024" width="20px" height="20px" block={block} color={color} {...props}>
+      <path d={icons[icon]} />
     </Svg>
   );
 };
