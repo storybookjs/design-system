@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { styled } from '@storybook/theming';
 import { icons } from './shared/icons';
 
-const Svg = styled.svg<Partial<Props>>`
+const Svg = styled('svg', { shouldForwardProp: (prop) => !['block', 'color'].includes(prop) })<
+  Partial<Props>
+>`
   display: ${(props) => (props.block ? 'block' : 'inline-block')};
   vertical-align: middle;
 

@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { styled } from '@storybook/theming';
-import { darken } from 'polished';
 import { color, breakpoint, typography } from '../shared/styles';
 import { Icon } from '../Icon';
 import { Link } from '../Link';
