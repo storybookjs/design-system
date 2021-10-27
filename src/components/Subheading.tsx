@@ -1,12 +1,16 @@
 import React, { ComponentProps, FC } from 'react';
-import { styled } from '@storybook/theming';
+import { styled, css } from '@storybook/theming';
 import { typography } from './shared/styles';
 
-const Heading = styled.span`
+export const subheadingStyles = css`
+  font-size: ${typography.size.s2 - 1}px;
+  font-weight: ${typography.weight.black};
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-weight: ${typography.weight.black};
-  font-size: ${typography.size.s2 - 1}px;
+`;
+
+const Heading = styled.span`
+  ${subheadingStyles}
 `;
 
 export const Subheading: FC<ComponentProps<typeof Heading>> = (props) => <Heading {...props} />;
