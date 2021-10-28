@@ -1,13 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { styled, css } from '@storybook/theming';
+import { styled } from '@storybook/theming';
 import { typography, color } from './shared/styles';
-
-export const subheadingStyles = css`
-  font-size: ${typography.size.s2 - 1}px;
-  font-weight: ${typography.weight.black};
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-`;
 
 const StyledSubheading = styled('span', { shouldForwardProp: (prop) => !['muted'].includes(prop) })<
   Partial<Props>
