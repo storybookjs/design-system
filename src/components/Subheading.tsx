@@ -15,7 +15,6 @@ const StyledSubheading = styled('span', { shouldForwardProp: (prop) => !['muted'
     `
     color: ${color.dark};
     display: block;
-    letter-spacing: 5.57px;
     line-height: ${typography.size.m1}px;
     margin-bottom: 12px;
   `}
