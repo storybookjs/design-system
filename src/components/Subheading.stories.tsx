@@ -8,5 +8,3 @@ export default {
 };
 
 export const Basic = () => <Subheading>Subheading</Subheading>;
-
-export const Muted = () => <Subheading muted>Subheading</Subheading>;
