@@ -91,8 +91,8 @@ export const pageMargin = 5.55555;
 
 export const pageMargins = css`
   padding: 0 ${spacing.padding.medium}px;
-  @media (min-width: ${breakpoint * 1}px) {
-    margin: 0 ${pageMargin * 1}%;
+  @media (min-width: ${breakpoint}px) {
+    margin: 0 ${pageMargin}%;
   }
   @media (min-width: ${breakpoint * 2}px) {
     margin: 0 ${pageMargin * 2}%;
