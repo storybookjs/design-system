@@ -1,7 +1,7 @@
 import { styled } from '@storybook/theming';
 
-import { Link } from '../Link';
-import { Subheading } from '../Subheading';
+import { Link } from '../../Link';
+import { Subheading } from '../../Subheading';
 
 import {
   background,
@@ -11,7 +11,7 @@ import {
   pageMargin,
   spacing,
   breakpoint,
-} from '../shared/styles';
+} from '../../shared/styles';
 
 export const Title = styled(Subheading)`
   display: block;
@@ -121,26 +121,6 @@ export const Upper = styled.div`
 
   @media (min-width: ${breakpoint}px) {
     flex-direction: row;
-  }
-`;
-
-export const LogotypeWrapper = styled(Link)`
-  margin-bottom: 1rem;
-  display: block;
-
-  img {
-    height: 28px;
-    width: auto;
-    display: block;
-
-    transition: all 150ms ease-out;
-    transform: translate3d(0, 0, 0);
-    &:hover {
-      transform: translate3d(0, -1px, 0);
-    }
-    &:active {
-      transform: translate3d(0, 0, 0);
-    }
   }
 `;
 
