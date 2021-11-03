@@ -26,6 +26,18 @@ const LogotypeWrapper = styled(Link)`
   }
 `;
 
+const navLinksData = [
+  { title: 'Docs', href: '/' },
+  { title: 'Tutorials', href: '/' },
+  { title: 'Releases', href: '/' },
+];
+
+const navLinks = navLinksData.map(({ title, href }) => (
+  <Link tertiary key={title} href={href}>
+    {title}
+  </Link>
+));
+
 export default {
   title: 'Marketing/PageFooter',
   component: PageFooter,
@@ -40,7 +52,7 @@ export const Default = () => (
         <img src={StorybookLogoSVG} alt="Storybook" />
       </LogotypeWrapper>
     }
-    navLinks={<div>hiya!</div>}
+    navLinks={navLinks}
     communityLinks={{
       gitHub: {
         repo: '/',

@@ -1,16 +1,13 @@
 import React from 'react';
 
 import { Link } from '../../Link';
+import { Resource } from './Resource';
 import { CommunityLink } from './CommunityLink';
 import { Service } from './Service';
 
 import {
   Title,
-  ResourceTitle,
-  ResourceDesc,
   ResourceAction,
-  Meta,
-  Resource,
   UpperColumn,
   Upper,
   Text,
@@ -25,8 +22,6 @@ import {
   Lower,
   FooterWrapper,
 } from './PageFooter.styles';
-
-// import ConfirmedMailingList from './ConfirmedMailingList';
 
 // @ts-ignore
 import DirectionSVG from '../../../images/direction.svg';
@@ -50,50 +45,34 @@ export const PageFooter = ({
   <FooterWrapper {...props}>
     <Upper>
       <UpperColumn>
-        <div>
-          <Resource>
-            <img src={RepoSVG} alt="Docs" />
-            <Meta>
-              <ResourceTitle>Documentation</ResourceTitle>
-              <ResourceDesc>
-                Add Storybook to your project in less than a minute to build components faster and
-                easier.
-              </ResourceDesc>
-              {coreFrameworks?.length && (
-                <div>
-                  {coreFrameworks.map((framework) => (
-                    <ResourceAction
-                      withArrow
-                      key={framework}
-                      href={`/docs/${framework}/get-started/introduction`}
-                    >
-                      {framework}
-                    </ResourceAction>
-                  ))}
-                </div>
-              )}
-            </Meta>
-          </Resource>
-        </div>
+        <Resource
+          image={<img src={RepoSVG} alt="Docs" />}
+          title="Documentation"
+          description="Add Storybook to your project in less than a minute to build components faster and
+          easier."
+          links={coreFrameworks.map((framework) => (
+            <ResourceAction
+              withArrow
+              key={framework}
+              href={`/docs/${framework}/get-started/introduction`}
+            >
+              {framework}
+            </ResourceAction>
+          ))}
+        />
       </UpperColumn>
       <UpperColumn>
-        <div>
-          <Resource>
-            <img src={DirectionSVG} alt="Tutorial" />
-            <Meta>
-              <ResourceTitle>Tutorials</ResourceTitle>
-              <ResourceDesc>
-                Learn Storybook with in-depth tutorials that teaches Storybook best practices.
-                Follow along with code samples.
-              </ResourceDesc>
-              <div>
-                <Link withArrow href={tutorialsLink}>
-                  Learn Storybook now
-                </Link>
-              </div>
-            </Meta>
-          </Resource>
-        </div>
+        <Resource
+          image={<img src={DirectionSVG} alt="Tutorial" />}
+          title="Tutorials"
+          description="Learn Storybook with in-depth tutorials that teaches Storybook best practices.
+          Follow along with code samples."
+          links={
+            <Link withArrow href={tutorialsLink}>
+              Learn Storybook now
+            </Link>
+          }
+        />
       </UpperColumn>
     </Upper>
     <Lower>
@@ -126,7 +105,7 @@ export const PageFooter = ({
       <Subscribe>
         <Title>Subscribe</Title>
         <Text>Get news, free tutorials, and Storybook tips emailed to you.</Text>
-        {/* <ConfirmedMailingList /> */}
+        {/* TODO - pull in and add <ConfirmedMailingList /> */}
       </Subscribe>
     </Lower>
     <HrWrapper>
@@ -167,7 +146,7 @@ interface Props {
   /** Pass the storybook logo with the appropriate link */
   storybookLogoLink: React.ReactElement;
   /** Pass a component that generates the links for the Storybook column */
-  navLinks: React.ComponentType<any>;
+  navLinks: React.ReactNode | (() => React.ReactNode);
   /** Generates the links for the Community column */
   communityLinks: CommunityLinksType;
 }
