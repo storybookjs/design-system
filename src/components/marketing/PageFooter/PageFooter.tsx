@@ -34,14 +34,9 @@ import ChromaticLogoSVG from '../../../images/logos/chromatic.svg';
 // @ts-ignore
 import CircleCILogoSVG from '../../../images/logos/circleci.svg';
 
-export const PageFooter = ({
-  coreFrameworks,
-  tutorialsLink,
-  storybookLogoLink,
-  navLinks,
-  communityLinks,
-  ...props
-}: Props) => (
+const coreFrameworks = ['react', 'vue', 'angular', 'web-components'];
+
+export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...props }: Props) => (
   <FooterWrapper {...props}>
     <Upper>
       <UpperColumn>
@@ -92,10 +87,18 @@ export const PageFooter = ({
       </Column>
       <Column>
         <Title>Community</Title>
-        <CommunityLink href={communityLinks?.gitHub.repo} icon="github" name="GitHub" />
-        <CommunityLink href={communityLinks?.twitter} icon="twitter" name="Twitter" />
-        <CommunityLink href={communityLinks?.chat} icon="discord" name="Discord" />
-        <CommunityLink href={communityLinks?.youtube} icon="youtube" name="Youtube" />
+        <CommunityLink
+          href="https://github.com/storybookjs/storybook"
+          icon="github"
+          name="GitHub"
+        />
+        <CommunityLink href="https://twitter.com/storybookjs" icon="twitter" name="Twitter" />
+        <CommunityLink href="https://discord.com/invite/storybook" icon="discord" name="Discord" />
+        <CommunityLink
+          href="https://www.youtube.com/channel/UCr7Quur3eIyA_oe8FNYexfg"
+          icon="youtube"
+          name="Youtube"
+        />
         <CommunityLink
           href="https://componentdriven.org/"
           icon="componentdriven"
@@ -131,22 +134,11 @@ export const PageFooter = ({
   </FooterWrapper>
 );
 
-type CommunityLinksType = {
-  gitHub: { repo: string };
-  twitter: string;
-  chat: string;
-  youtube: string;
-};
-
 interface Props {
-  /** An array of core framework names */
-  coreFrameworks: Array<string>;
   /** Link to tutorials */
   tutorialsLink: string;
   /** Pass the storybook logo with the appropriate link */
   storybookLogoLink: React.ReactElement;
   /** Pass a component that generates the links for the Storybook column */
   navLinks: React.ReactNode | (() => React.ReactNode);
-  /** Generates the links for the Community column */
-  communityLinks: CommunityLinksType;
 }

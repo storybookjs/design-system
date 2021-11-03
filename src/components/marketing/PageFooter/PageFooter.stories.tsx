@@ -45,7 +45,6 @@ export default {
 
 export const Default = () => (
   <PageFooter
-    coreFrameworks={['react', 'vue', 'angular', 'web-components']}
     tutorialsLink="/"
     storybookLogoLink={
       <LogotypeWrapper to="/">
@@ -53,13 +52,5 @@ export const Default = () => (
       </LogotypeWrapper>
     }
     navLinks={navLinks}
-    communityLinks={{
-      gitHub: {
-        repo: '/',
-      },
-      twitter: '/',
-      chat: '/',
-      youtube: '/',
-    }}
   />
 );
