@@ -12,5 +12,5 @@ export const Service = ({ text, href, logo }: Props) => (
 interface Props {
   text: string;
   href: string;
-  logo: any;
+  logo: React.ReactNode;
 }
