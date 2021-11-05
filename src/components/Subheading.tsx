@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 import { typography, color } from './shared/styles';
 
 const StyledSubheading = styled('span', { shouldForwardProp: (prop) => !['muted'].includes(prop) })<
-  Partial<Props>
+  Partial<SubheadingProps>
 >`
   font-size: ${typography.size.s2 - 1}px;
   font-weight: ${typography.weight.black};
@@ -20,11 +20,12 @@ const StyledSubheading = styled('span', { shouldForwardProp: (prop) => !['muted'
   `}
 `;
 
-export const Subheading: FunctionComponent<Props> = ({ muted = false, ...props }: Props) => (
-  <StyledSubheading muted={muted} {...props} />
-);
+export const Subheading: FunctionComponent<SubheadingProps> = ({
+  muted = false,
+  ...props
+}: SubheadingProps) => <StyledSubheading muted={muted} {...props} />;
 
-interface Props {
+export interface SubheadingProps {
   /** This prop lightens the Subheading color and increases the letter spacing */
   muted?: boolean;
 }
