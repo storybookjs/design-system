@@ -3,10 +3,10 @@ import { styled } from '@storybook/theming';
 import { icons } from './shared/icons';
 
 const Svg = styled.svg`
-  vertical-align: middle;
-
+  display: inline-block;
   shape-rendering: inherit;
   transform: translate3d(0, 0, 0);
+  vertical-align: middle;
 
   path {
     fill: currentColor;
