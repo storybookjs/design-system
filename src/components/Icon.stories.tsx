@@ -79,21 +79,3 @@ export const NoLabels = () => (
     ))}
   </List>
 );
-
-export const Inline = () => (
-  <>
-    this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
-  </>
-);
-
-export const Block = () => (
-  <>
-    this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
-  </>
-);
-
-export const CustomColor = () => (
-  <>
-    this is a colorful <Icon icon="facehappy" aria-label="Pink happy face" color="pink" /> icon
-  </>
-);
