@@ -22,6 +22,10 @@ const BreadcrumbInner = styled.div`
   }
 `;
 
+const BreadcrumbIcon = styled(Icon)`
+  color: ${color.mediumdark};
+`;
+
 export const Breadcrumb: FunctionComponent<Props> = ({
   children,
   linkWrapper,
@@ -29,7 +33,7 @@ export const Breadcrumb: FunctionComponent<Props> = ({
 }: Props) => (
   <BreadcrumbInner>
     <BreadcrumbLink tertiary LinkWrapper={linkWrapper} {...props}>
-      <Icon icon="arrowleft" color={color.mediumdark} />
+      <BreadcrumbIcon icon="arrowleft" />
       {children}
     </BreadcrumbLink>
   </BreadcrumbInner>
