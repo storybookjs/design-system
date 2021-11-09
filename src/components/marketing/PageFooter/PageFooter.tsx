@@ -24,9 +24,9 @@ import {
 } from './PageFooter.styles';
 
 // @ts-ignore
-import DirectionSVG from '../../../images/direction.svg';
+import DirectionSVG from '../../../images/colored-icons/direction.svg';
 // @ts-ignore
-import RepoSVG from '../../../images/repo.svg';
+import RepoSVG from '../../../images/colored-icons/repo.svg';
 // @ts-ignore
 import NetlifyLogoSVG from '../../../images/logos/netlify.svg';
 // @ts-ignore

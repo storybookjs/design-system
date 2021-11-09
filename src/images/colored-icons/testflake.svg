@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <rect id="testflake-a" width="40" height="40" x="0" y="4" rx="4"/>
+    <mask id="testflake-b" width="40" height="40" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+      <use xlink:href="#testflake-a"/>
+    </mask>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#FEFAD2" stroke="#FDDA9F" stroke-dasharray="3 2" stroke-width="2" mask="url(#testflake-b)" xlink:href="#testflake-a"/>
+    <rect width="10.5" height="8" x="2" y="20" fill="#AAD895" rx="2"/>
+    <rect width="34.331" height="8" x="2" y="30.125" fill="#AAD895" rx="2"/>
+    <rect width="15" height="8" x="14.611" y="20" fill="#AAD895" rx="2"/>
+    <rect width="46" height="8" x="2" y="9.875" fill="#FD8360" opacity=".5" rx="2"/>
+  </g>
+</svg>
