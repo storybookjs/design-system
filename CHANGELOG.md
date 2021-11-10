@@ -1,3 +1,28 @@
+# v7.0.0 (Wed Nov 10 2021)
+
+#### 💥 Breaking Change
+
+- emotion convertion [#305](https://github.com/storybookjs/design-system/pull/305) ([@ndelangen](https://github.com/ndelangen) [@Andarist](https://github.com/Andarist) [@smithambera](https://github.com/smithambera) [@domyen](https://github.com/domyen))
+
+#### 🐛 Bug Fix
+
+- Remove props from Icon [#315](https://github.com/storybookjs/design-system/pull/315) ([@smithambera](https://github.com/smithambera))
+- Pull (most of) Footer from `frontpage` into the DS [#314](https://github.com/storybookjs/design-system/pull/314) ([@smithambera](https://github.com/smithambera))
+- Remove letter spacing from Subheading muted styles [#312](https://github.com/storybookjs/design-system/pull/312) ([@smithambera](https://github.com/smithambera))
+- Pull AddonsSubheading from `frontpage` into the DS [#311](https://github.com/storybookjs/design-system/pull/311) ([@smithambera](https://github.com/smithambera))
+- Pull Heading from `frontpage` into the DS [#310](https://github.com/storybookjs/design-system/pull/310) ([@smithambera](https://github.com/smithambera))
+- 333 - Pull Breadcrumb from `frontpage` into the DS [#309](https://github.com/storybookjs/design-system/pull/309) ([@smithambera](https://github.com/smithambera))
+- Merge branch 'tech/upgrade-storybook' into tech/convert-to-emotion [#296](https://github.com/storybookjs/design-system/pull/296) ([@ndelangen](https://github.com/ndelangen))
+
+#### Authors: 4
+
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+- Mateusz Burzyński ([@Andarist](https://github.com/Andarist))
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
+---
+
 # v6.4.1 (Thu Oct 21 2021)
 
 #### 🐛 Bug Fix
