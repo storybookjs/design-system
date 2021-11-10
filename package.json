@@ -84,7 +84,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "chromatic": "^5.0.0",
+    "chromatic": "^5.10.2",
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
     "eslint": "^7.1.0",
