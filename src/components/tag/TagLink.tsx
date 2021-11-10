@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components';
+import React from 'react';
+import { styled, css } from '@storybook/theming';
 import { rgba } from 'polished';
-import { color, typography, background, spacing } from '../shared/styles';
-// @ts-ignore
-import { inlineGlow } from '../shared/animation';
+import { color } from '../shared/styles';
 import { Link } from '../Link';
 import { TagItem } from './TagItem';
 
@@ -10,10 +9,14 @@ export interface TagLinkProps extends React.ComponentProps<typeof Link> {
   isLoading?: boolean;
 }
 
-export const TagLink = styled(TagItem).attrs<TagLinkProps>(({ isLoading, children }) => ({
-  children: isLoading ? 'Loading tag' : children,
-  as: Link,
-}))<TagLinkProps>`
+export const TagLink = styled((props: TagLinkProps) => {
+  return (
+    <TagItem {...props} as={Link}>
+      {props.isLoading ? 'Loading tag' : props.children}
+    </TagItem>
+  );
+  // TODO: check if this explicit type param is needed
+})<TagLinkProps>`
   &:after {
     content: '';
     position: absolute;

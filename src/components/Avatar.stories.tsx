@@ -1,6 +1,6 @@
 import React, { ComponentProps, FunctionComponent } from 'react';
 
-import { Avatar } from './Avatar';
+import { Avatar, AvatarType } from './Avatar';
 
 export default {
   title: 'Avatar',
@@ -31,5 +31,5 @@ export const Small = () => <Base size="small" />;
 export const Tiny = () => <Base size="tiny" />;
 
 export const Organization = () => (
-  <Base type="organization" username="Chromatic" src="/chromatic-logo-square.png" />
+  <Base type={AvatarType.ORGANIZATION} username="Chromatic" src="/chromatic-logo-square.png" />
 );

@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { opacify, rgba } from 'polished';
+import { styled, css } from '@storybook/theming';
+import { rgba } from 'polished';
 import { background, color, typography } from './shared/styles';
 
 export const Badge = styled.div<{

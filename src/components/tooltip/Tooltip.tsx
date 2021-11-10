@@ -1,27 +1,20 @@
 // Our wrapper around react-popper that does common stuff.
 
 import React, { ComponentProps, FC } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
+import { TooltipArg } from 'react-popper-tooltip';
 import { typography, spacing, zIndex as sharedZIndex } from '../shared/styles';
 
 const ifPlacementEquals = (
+  props: Pick<ArrowProps, 'data-placement'>,
   placement: string,
   value: number | string,
   fallback: number | string = 0
-) => (props: Pick<ArrowProps, 'data-placement'>) =>
-  props['data-placement'].split('-')[0] === placement ? value : fallback;
+) => (props['data-placement'].split('-')[0] === placement ? value : fallback);
 
 const ArrowSpacing = 8;
 
-type Placement =
-  | 'top-left'
-  | 'top'
-  | 'top-right'
-  | 'right'
-  | 'bottom-right'
-  | 'bottom'
-  | 'bottom-left'
-  | 'left';
+type Placement = TooltipArg['placement'];
 
 interface ArrowProps {
   'data-placement': Placement;
@@ -46,25 +39,27 @@ const Arrow = styled.div<ArrowProps>`
    */
   display: ${(props) => (props.isVisible ? 'block' : 'none')};
 
-  margin-bottom: ${ifPlacementEquals('top', 0, ArrowSpacing)}px;
-  margin-top: ${ifPlacementEquals('bottom', 0, ArrowSpacing)}px;
-  margin-right: ${ifPlacementEquals('left', 0, ArrowSpacing)}px;
-  margin-left: ${ifPlacementEquals('right', 0, ArrowSpacing)}px;
+  ${(props) => css`
+    margin-bottom: ${ifPlacementEquals(props, 'top', 0, ArrowSpacing)}px;
+    margin-top: ${ifPlacementEquals(props, 'bottom', 0, ArrowSpacing)}px;
+    margin-right: ${ifPlacementEquals(props, 'left', 0, ArrowSpacing)}px;
+    margin-left: ${ifPlacementEquals(props, 'right', 0, ArrowSpacing)}px;
 
-  bottom: ${ifPlacementEquals('top', ArrowSpacing * -1, 'auto')}px;
-  top: ${ifPlacementEquals('bottom', ArrowSpacing * -1, 'auto')}px;
-  right: ${ifPlacementEquals('left', ArrowSpacing * -1, 'auto')}px;
-  left: ${ifPlacementEquals('right', ArrowSpacing * -1, 'auto')}px;
+    bottom: ${ifPlacementEquals(props, 'top', ArrowSpacing * -1, 'auto')}px;
+    top: ${ifPlacementEquals(props, 'bottom', ArrowSpacing * -1, 'auto')}px;
+    right: ${ifPlacementEquals(props, 'left', ArrowSpacing * -1, 'auto')}px;
+    left: ${ifPlacementEquals(props, 'right', ArrowSpacing * -1, 'auto')}px;
 
-  border-bottom-width: ${ifPlacementEquals('top', 0, ArrowSpacing)}px;
-  border-top-width: ${ifPlacementEquals('bottom', 0, ArrowSpacing)}px;
-  border-right-width: ${ifPlacementEquals('left', 0, ArrowSpacing)}px;
-  border-left-width: ${ifPlacementEquals('right', 0, ArrowSpacing)}px;
+    border-bottom-width: ${ifPlacementEquals(props, 'top', 0, ArrowSpacing)}px;
+    border-top-width: ${ifPlacementEquals(props, 'bottom', 0, ArrowSpacing)}px;
+    border-right-width: ${ifPlacementEquals(props, 'left', 0, ArrowSpacing)}px;
+    border-left-width: ${ifPlacementEquals(props, 'right', 0, ArrowSpacing)}px;
 
-  border-top-color: ${ifPlacementEquals('top', 'white', 'transparent')};
-  border-bottom-color: ${ifPlacementEquals('bottom', 'white', 'transparent')};
-  border-left-color: ${ifPlacementEquals('left', 'white', 'transparent')};
-  border-right-color: ${ifPlacementEquals('right', 'white', 'transparent')};
+    border-top-color: ${ifPlacementEquals(props, 'top', 'white', 'transparent')};
+    border-bottom-color: ${ifPlacementEquals(props, 'bottom', 'white', 'transparent')};
+    border-left-color: ${ifPlacementEquals(props, 'left', 'white', 'transparent')};
+    border-right-color: ${ifPlacementEquals(props, 'right', 'white', 'transparent')};
+  `}
 `;
 
 const TooltipWrapper = styled.div<WrapperProps>`
@@ -73,22 +68,22 @@ const TooltipWrapper = styled.div<WrapperProps>`
 
   ${(props) =>
     !props.hasChrome &&
-    css`
-      margin-bottom: ${ifPlacementEquals('top', 8)}px;
-      margin-bottom: ${ifPlacementEquals('top-start', 8)}px;
-      margin-top: ${ifPlacementEquals('bottom', 8)}px;
-      margin-top: ${ifPlacementEquals('bottom-start', 8)}px;
-      margin-left: ${ifPlacementEquals('right', 8)}px;
-      margin-right: ${ifPlacementEquals('left', 8)}px;
+    `
+      margin-bottom: ${ifPlacementEquals(props, 'top', 8)}px;
+      margin-bottom: ${ifPlacementEquals(props, 'top-start', 8)}px;
+      margin-top: ${ifPlacementEquals(props, 'bottom', 8)}px;
+      margin-top: ${ifPlacementEquals(props, 'bottom-start', 8)}px;
+      margin-left: ${ifPlacementEquals(props, 'right', 8)}px;
+      margin-right: ${ifPlacementEquals(props, 'left', 8)}px;
     `};
 
   ${(props) =>
     props.hasChrome &&
-    css`
-      margin-bottom: ${ifPlacementEquals('top', ArrowSpacing + 2)}px;
-      margin-top: ${ifPlacementEquals('bottom', ArrowSpacing + 2)}px;
-      margin-left: ${ifPlacementEquals('right', ArrowSpacing + 2)}px;
-      margin-right: ${ifPlacementEquals('left', ArrowSpacing + 2)}px;
+    `
+      margin-bottom: ${ifPlacementEquals(props, 'top', ArrowSpacing + 2)}px;
+      margin-top: ${ifPlacementEquals(props, 'bottom', ArrowSpacing + 2)}px;
+      margin-left: ${ifPlacementEquals(props, 'right', ArrowSpacing + 2)}px;
+      margin-right: ${ifPlacementEquals(props, 'left', ArrowSpacing + 2)}px;
 
       background: rgba(255, 255, 255, 0.97);
 
@@ -98,7 +93,10 @@ const TooltipWrapper = styled.div<WrapperProps>`
     `};
 `;
 
-export const Tooltip: FC<Props & ComponentProps<typeof TooltipWrapper>> = ({
+export const Tooltip: FC<
+  Props &
+    Omit<ComponentProps<typeof TooltipWrapper>, keyof Props | 'data-placement' | 'ref' | 'zIndex'>
+> = ({
   placement = 'top',
   hasChrome = true,
   children,

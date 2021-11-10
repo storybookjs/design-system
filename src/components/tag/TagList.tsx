@@ -1,5 +1,5 @@
-import React, { useState, forwardRef } from 'react';
-import styled from 'styled-components';
+import React, { ComponentProps, useState, forwardRef } from 'react';
+import { styled } from '@storybook/theming';
 import { color, typography } from '../shared/styles';
 import { Link } from '../Link';
 import { TagItem } from './TagItem';
@@ -16,7 +16,7 @@ const TagListWrapper = styled.div`
   margin-bottom: -10px;
 `;
 
-const MoreTagsButton = styled(Link)`
+const MoreTagsButton = styled(Link)<ComponentProps<typeof Link> & { appearance: any }>`
   color: ${color.mediumdark};
   font-size: ${typography.size.s2}px;
   font-weight: ${typography.weight.bold};

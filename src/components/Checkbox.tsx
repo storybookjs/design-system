@@ -1,5 +1,5 @@
 import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { rgba } from 'polished';
 import { color, typography } from './shared/styles';
 
@@ -42,7 +42,7 @@ const Error = styled.span`
 
 const LabelText = styled.span``;
 
-const Input = styled.input.attrs({ type: 'checkbox' })<{ checkboxColor: string }>`
+const Input = styled.input<{ checkboxColor: string }>`
   margin: 0 0.4em 0 0;
   font-size: initial;
   opacity: 0;

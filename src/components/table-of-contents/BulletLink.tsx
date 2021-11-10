@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { color, typography } from '../shared/styles';
 import { Link } from '../Link';
 
@@ -7,9 +7,9 @@ type StyledBulletLinkProps = React.ComponentProps<typeof Link> & {
   isActive?: boolean;
 };
 
-const StyledBulletLink = styled(({ isActive, ...rest }) => <Link {...rest} />)<
-  StyledBulletLinkProps
->`
+const StyledBulletLink = styled(({ isActive, ...rest }) => (
+  <Link {...rest} />
+))<StyledBulletLinkProps>`
   outline: none;
   display: inline-block;
   padding: 6px 0;

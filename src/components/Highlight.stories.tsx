@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Highlight } from './Highlight';
 
 const bashCode = `# Highlight bash:

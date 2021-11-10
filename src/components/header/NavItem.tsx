@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { HeaderContext } from './HeaderContext';
 
 type StyledNavItemProps = {
@@ -13,7 +13,7 @@ export const StyledNavItem = styled.div<StyledNavItemProps & { navBreakpoint: nu
   line-height: 3rem;
   align-items: center;
 
-  svg {
+  && svg {
     margin-right: 0;
   }
 

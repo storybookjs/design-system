@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import WithTooltip from './WithTooltip';
 import { TooltipMessage } from './TooltipMessage';
 

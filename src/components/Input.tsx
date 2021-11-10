@@ -9,7 +9,7 @@ import React, {
   ComponentProps,
   MutableRefObject,
 } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
@@ -28,7 +28,7 @@ const Label = styled.label<Pick<Props, 'appearance'>>`
 // prettier-ignore
 const LabelWrapper = styled.div<Pick<Props, 'hideLabel'>>`
   margin-bottom: 8px;
-  
+
   ${props => props.hideLabel && css`
     border: 0px !important;
     clip: rect(0 0 0 0) !important;
@@ -45,7 +45,7 @@ const LabelWrapper = styled.div<Pick<Props, 'hideLabel'>>`
 
 // prettier-ignore
 const InputEl = styled.input`
-  ::placeholder {
+  &::placeholder {
     color: ${color.mediumdark};
   }
   appearance: none;
@@ -184,7 +184,7 @@ const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance
     ${InputEl} {
       padding-left: 40px;
 
-      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};      
+      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};
     }
   `}
 
@@ -255,7 +255,8 @@ const getErrorMessage = ({
   return errorMessage;
 };
 
-export const PureInput: FC<Props & ComponentProps<typeof InputEl>> = forwardRef(
+// FC<Props & ComponentProps<typeof InputEl>>
+export const PureInput = forwardRef<HTMLInputElement, Props & ComponentProps<typeof InputEl>>(
   (
     {
       id,
@@ -368,10 +369,11 @@ interface Props {
   lastErrorValue?: string;
   startingType?: string;
   type?: string;
-  onActionClick?: Function;
+  onActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+  startFocused?: boolean;
 }
 
-export const Input = forwardRef<unknown, ComponentProps<typeof PureInput>>(
+export const Input = forwardRef<HTMLInputElement, ComponentProps<typeof PureInput>>(
   ({ type: startingType, startFocused, ...rest }, ref) => {
     const [type, setType] = useState(startingType);
     const togglePasswordType = useCallback(
@@ -394,11 +396,11 @@ export const Input = forwardRef<unknown, ComponentProps<typeof PureInput>>(
     const didFocusOnStart = useRef(false);
 
     useEffect(() => {
-      if (inputRef && inputRef.current && startFocused && !didFocusOnStart.current) {
+      if (inputRef.current && startFocused && !didFocusOnStart.current) {
         inputRef.current.focus();
         didFocusOnStart.current = true;
       }
-    }, [inputRef, inputRef.current, didFocusOnStart, didFocusOnStart.current]);
+    }, [inputRef, didFocusOnStart]);
 
     return (
       <PureInput

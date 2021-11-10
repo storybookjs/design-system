@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 
 import { Icon } from './Icon';
 import { icons } from './shared/icons';
@@ -78,16 +78,4 @@ export const NoLabels = () => (
       </Item>
     ))}
   </List>
-);
-
-export const Inline = () => (
-  <>
-    this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
-  </>
-);
-
-export const Block = () => (
-  <>
-    this is a block <Icon icon="facehappy" aria-label="Happy face" block /> icon
-  </>
 );

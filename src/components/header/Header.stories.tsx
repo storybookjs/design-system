@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import GitHubButton from 'react-github-button';
 import 'react-github-button/assets/style.css';
 import { Header } from './Header';
 import { Link } from '../Link';
 import { Button } from '../Button';
-import StorybookLogo from '../../images/logo-storybook.svg';
-import StorybookLogoInverted from '../../images/logo-storybook-inverted.svg';
+import StorybookLogo from '../../images/logos/storybook.svg';
+import StorybookLogoInverted from '../../images/logos/storybook-inverted.svg';
 import { breakpoint, typography, color } from '../shared/styles';
 import { NavLink } from './NavLink';
 import { NavItem } from './NavItem';

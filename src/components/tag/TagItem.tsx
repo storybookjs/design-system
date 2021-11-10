@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components';
-import { color, typography, background, spacing } from '../shared/styles';
-// @ts-ignore
+import React from 'react';
+import { styled, css } from '@storybook/theming';
+import { color, typography, spacing } from '../shared/styles';
 import { inlineGlow } from '../shared/animation';
 
 export type TagItemProps = {
+  children?: React.ReactNode;
   isLoading?: boolean;
 };
 
@@ -13,11 +14,16 @@ function randomString(min: number, max: number) {
     .toString(36)
     .slice(1);
 }
-
-export const TagItem = styled.div.attrs<TagItemProps>(({ isLoading, children }) => ({
-  children: isLoading ? randomString(5, 12) : children,
-  ...(isLoading && { 'aria-label': 'Loading tag' }),
-}))<TagItemProps>`
+export const TagItem = styled(
+  ({ isLoading, children, ...rest }) => (
+    <div {...rest} {...(isLoading && { 'aria-label': 'Loading tag' })}>
+      {isLoading ? randomString(5, 12) : children}
+    </div>
+  ),
+  {
+    shouldForwardProp: (prop) => prop !== 'theme' && prop !== 'as',
+  }
+)<TagItemProps>`
   background: ${color.blueLight};
   border-color: transparent;
   border-radius: ${spacing.borderRadius.small}px;

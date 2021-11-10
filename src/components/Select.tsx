@@ -1,5 +1,5 @@
-import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ComponentProps, FC, FunctionComponent, ReactNode } from 'react';
+import { styled, css } from '@storybook/theming';
 import { color, typography, spacing } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
@@ -64,7 +64,9 @@ const Selector = styled.select<SelectProps>`
 
 const OptionWrapper = styled.option``;
 
-const Arrow = styled(Icon).attrs({ icon: 'arrowdown' })``;
+const Arrow = styled((props: Omit<ComponentProps<typeof Icon>, 'icon'>) => (
+  <Icon {...props} icon="arrowdown" />
+))``;
 
 const SelectIcon = styled(Icon)``;
 
@@ -91,7 +93,7 @@ const SelectError = styled.div`
 interface WrapperProps {
   disabled: boolean;
   appearance: 'default' | 'tertiary';
-  icon: string;
+  hasIcon: boolean;
   error: any;
 }
 
@@ -165,7 +167,7 @@ const SelectWrapper = styled.span<WrapperProps>`
 
   ${(props) =>
     props.appearance === 'tertiary' &&
-    css`
+    `
       width: auto;
       height: auto;
 
@@ -185,8 +187,8 @@ const SelectWrapper = styled.span<WrapperProps>`
     `}
 
   ${(props) =>
-    props.icon &&
-    css`
+    props.hasIcon &&
+    `
       ${Selector} {
         padding-left: 2.5em;
       }
@@ -212,7 +214,7 @@ const SelectWrapper = styled.span<WrapperProps>`
 
   ${(props) =>
     props.error &&
-    css`
+    `
       ${Selector} {
         box-shadow: ${color.red} 0 0 0 1px inset;
         &:focus {
@@ -284,7 +286,7 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
       </LabelWrapper>
       <SelectWrapper
         appearance={appearance}
-        icon={icon}
+        hasIcon={!!icon}
         data-error={error}
         error={error}
         disabled={disabled}

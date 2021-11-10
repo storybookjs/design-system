@@ -1,10 +1,8 @@
 import React, { ComponentProps, FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { Avatar, sizes } from './Avatar';
-// @ts-ignore
 import WithTooltip from './tooltip/WithTooltip';
-// @ts-ignore
 import { TooltipNote } from './tooltip/TooltipNote';
 import { color, typography } from './shared/styles';
 
@@ -12,8 +10,6 @@ const UserAvatar = styled(Avatar)`
   box-shadow: ${color.lightest} 0 0 0 2px;
   display: block;
 `;
-
-const UserTooltipWrapper = styled(WithTooltip)``;
 
 const UserEllipses = styled.li`
   display: inline-flex;
@@ -85,14 +81,14 @@ export const AvatarList: FunctionComponent<Props & ComponentProps<typeof Users>>
     <Users aria-label="users" {...props}>
       {users.slice(0, 3).map(({ id, name, avatarUrl }) => (
         <User key={id}>
-          <UserTooltipWrapper
+          <WithTooltip
             hasChrome={false}
             placement="bottom"
             trigger="hover"
             tooltip={<TooltipNote note={name} />}
           >
             <UserAvatar size={size} username={name} src={avatarUrl} isLoading={isLoading} />
-          </UserTooltipWrapper>
+          </WithTooltip>
         </User>
       ))}
       {count > 3 && (

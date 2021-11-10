@@ -1,5 +1,5 @@
 import React, { ComponentProps, FC } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 
 import { Link } from './Link';
 import { breakpoint, color, typography } from './shared/styles';
@@ -18,7 +18,7 @@ const Wrapper = styled.ul`
   }
 `;
 
-const Tab = styled(Link)`
+const Tab = styled(Link)<{ isLoading?: boolean; isActive?: boolean }>`
   padding: 10px 15px;
   line-height: 20px;
   font-size: ${typography.size.s2}px;
@@ -45,7 +45,7 @@ const Tab = styled(Link)`
 
   ${(props) =>
     props.isActive &&
-    !props.loading &&
+    !props.isLoading &&
     css`
       color: ${color.secondary};
       box-shadow: ${color.secondary} 0 -3px 0 0 inset;

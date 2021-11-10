@@ -5,7 +5,7 @@ import React, {
   ReactElement,
   ReactNode,
 } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { darken, opacify } from 'polished';
 import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
@@ -78,7 +78,7 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
   ${Text} {
-    transform: scale3d(1,1,1) translate3d(0,0,0);
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
     transition: transform 700ms ${easing.rubber};
     opacity: 1;
   }
@@ -273,9 +273,9 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
       }
     `};
 
-    ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_PRIMARY &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_PRIMARY &&
+    `
         background: ${color.lightest};
         color: ${color.primary};
 
@@ -292,9 +292,9 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
         }
     `}
 
-    ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_SECONDARY &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_SECONDARY &&
+    `
         background: ${color.lightest};
         color: ${color.secondary};
 
@@ -312,8 +312,8 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
     ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_OUTLINE &&
-      `
+    props.appearance === APPEARANCES.INVERSE_OUTLINE &&
+    `
         box-shadow: ${color.lightest} 0 0 0 1px inset;
         color: ${color.lightest};
 
@@ -336,6 +336,7 @@ interface StylingProps {
   isLoading?: boolean;
   isUnclickable?: boolean;
   containsIcon?: boolean;
+  disabled?: boolean;
   size?: typeof SIZES[keyof typeof SIZES];
   appearance?: typeof APPEARANCES[keyof typeof APPEARANCES];
 }
@@ -375,6 +376,7 @@ export const Button = forwardRef<
           isLoading={isLoading}
           appearance={appearance}
           {...rest}
+          // @ts-ignore
           ref={ref}
         >
           <>
@@ -391,6 +393,7 @@ export const Button = forwardRef<
           isLoading={isLoading}
           appearance={appearance}
           {...rest}
+          // @ts-ignore
           ref={ref}
         >
           <>

@@ -1,5 +1,5 @@
 import React, { ComponentProps, ComponentType, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { Clipboard } from './clipboard/Clipboard';
 import { Highlight } from './Highlight';

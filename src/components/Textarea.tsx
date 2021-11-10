@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { color, typography } from './shared/styles';
 
 const Label = styled.label<{ hideLabel: boolean }>`
@@ -209,7 +209,7 @@ export const Textarea: FC<Props & ComponentProps<typeof TextareaText>> = forward
           <TextareaText
             id={id}
             value={value}
-            rows="7"
+            rows={7}
             aria-invalid={!!error}
             aria-describedby={ariaDescribedBy}
             ref={textareaRef}

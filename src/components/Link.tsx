@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from '@storybook/theming';
 import { darken } from 'polished';
 
 import { Icon } from './Icon';
@@ -145,7 +145,7 @@ export type LinkProps = React.ComponentProps<typeof StyledLink> & {
 // The main purpose of this component is to strip certain props that get passed
 // down to the styled component, so that we don't end up passing them to a
 // tag which would throw warnings for non-standard props.
-const LinkComponentPicker = forwardRef(
+const LinkComponentPicker = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
   (
     {
       containsIcon,
@@ -164,12 +164,12 @@ const LinkComponentPicker = forwardRef(
     // and then re-rendering it through the 'as' prop.
     /* eslint no-else-return: ["error", { allowElseIf: true }] */
     if (isButton) {
-      return <LinkButton {...rest} ref={ref} />;
+      return <LinkButton {...(rest as any)} ref={ref as React.ForwardedRef<HTMLButtonElement>} />;
     } else if (LinkWrapper) {
       return <LinkWrapper {...rest} ref={ref} />;
     }
 
-    return <UnstyledLink {...rest} ref={ref} />;
+    return <UnstyledLink {...rest} ref={ref as React.ForwardedRef<HTMLAnchorElement>} />;
   }
 );
 
@@ -185,7 +185,12 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>
     );
 
     return (
-      <StyledLink as={LinkComponentPicker} ref={ref} {...rest}>
+      <StyledLink
+        // @ts-expect-error Emotion 10 doesn't include `as` in its types
+        as={LinkComponentPicker}
+        ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+        {...rest}
+      >
         {content}
       </StyledLink>
     );

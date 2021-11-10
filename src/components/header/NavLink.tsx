@@ -1,5 +1,5 @@
 import React, { ComponentProps, forwardRef, useContext } from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { Link } from '../Link';
 import { typography } from '../shared/styles';
 import { HeaderContext } from './HeaderContext';

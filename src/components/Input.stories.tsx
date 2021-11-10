@@ -1,6 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 
 import { Input as UnstyledInput, PureInput as UnstyledPureInput } from './Input';
 import { Link } from './Link';

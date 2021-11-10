@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@storybook/theming';
 import { color } from '../shared/styles';
 // @ts-ignore
 import WithTooltip from '../tooltip/WithTooltip';
@@ -101,7 +101,7 @@ export function Header({
                 trigger="click"
                 tooltip={mobileMenu}
               >
-                <Menu secondary inverse={inverse} icon={1} isButton>
+                <Menu secondary inverse={inverse} isButton>
                   <Icon icon="menu" aria-label="Menu" />
                 </Menu>
               </MobileMenuTooltip>
