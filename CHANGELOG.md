@@ -1,3 +1,15 @@
+# v7.0.1 (Wed Nov 10 2021)
+
+#### 🐛 Bug Fix
+
+- Pulled in `AddonsGrid-Title` component from `frontpage` [#317](https://github.com/storybookjs/design-system/pull/317) ([@smithambera](https://github.com/smithambera))
+
+#### Authors: 1
+
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+
+---
+
 # v7.0.0 (Wed Nov 10 2021)
 
 #### 💥 Breaking Change
