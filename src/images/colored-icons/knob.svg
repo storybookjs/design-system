@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <path id="knob-a" d="M13,11 L35,11 C42.1797017,11 48,16.8202983 48,24 C48,31.1797017 42.1797017,37 35,37 L13,37 C5.82029825,37 5.08038056e-13,31.1797017 5.08038056e-13,24 C5.08038056e-13,16.8202983 5.82029825,11 13,11 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#AAD895" xlink:href="#knob-a"/>
+    <circle cx="35" cy="24" r="11" fill="#FFF"/>
+  </g>
+</svg>
