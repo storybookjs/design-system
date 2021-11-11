@@ -1,3 +1,15 @@
+# v7.0.2 (Thu Nov 11 2021)
+
+#### 🐛 Bug Fix
+
+- Pulled in colored icons from `frontpage` and `chromatic` [#316](https://github.com/storybookjs/design-system/pull/316) ([@smithambera](https://github.com/smithambera))
+
+#### Authors: 1
+
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+
+---
+
 # v7.0.1 (Wed Nov 10 2021)
 
 #### 🐛 Bug Fix
