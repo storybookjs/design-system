@@ -88,6 +88,7 @@
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
     "eslint": "^7.1.0",
+    "eslint-plugin-storybook": "^0.3.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "node-fetch": "^2.6.0",
