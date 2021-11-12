@@ -57,7 +57,7 @@
     "copy-to-clipboard": "^3.3.1",
     "pluralize": "^8.0.0",
     "polished": "^3.6.4",
-    "prismjs": "1.23.0",
+    "prismjs": "1.25.0",
     "react-github-button": "^0.1.11",
     "react-modal": "^3.11.2",
     "react-popper-tooltip": "^2.11.1",
