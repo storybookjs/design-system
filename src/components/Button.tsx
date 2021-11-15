@@ -1,3 +1,4 @@
+import { darken, opacify } from 'polished';
 import React, {
   ComponentProps,
   forwardRef,
@@ -6,9 +7,8 @@ import React, {
   ReactNode,
 } from 'react';
 import styled from 'styled-components';
-import { darken, opacify } from 'polished';
-import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
+import { color, typography } from './shared/styles';
 
 const Text = styled.span`
   display: inline-block;
@@ -409,7 +409,7 @@ export const Button = forwardRef<
         ref={ref as ComponentProps<typeof StyledButton>['ref']}
       >
         <>
-          <Text>{children}</Text>
+          <Text>hi {children}</Text>
           {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
         </>
       </StyledButton>
