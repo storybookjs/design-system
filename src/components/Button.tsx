@@ -409,7 +409,7 @@ export const Button = forwardRef<
         ref={ref as ComponentProps<typeof StyledButton>['ref']}
       >
         <>
-          <Text>hi {children}</Text>
+          <Text>hi foo{children}</Text>
           {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
         </>
       </StyledButton>
