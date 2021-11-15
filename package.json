@@ -26,7 +26,7 @@
     "storybook": "start-storybook -p 6006 -s .storybook/static",
     "typescript:check": "tsc --project ./tsconfig.json --noEmit",
     "typescript:generate": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap",
-    "chromatic": "npx chromatic --project-token=82f218bc1c5b"
+    "chromatic": "npx chromatic --project-token=986172967ea1"
   },
   "husky": {
     "hooks": {
@@ -85,7 +85,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "chromatic": "^5.0.0",
+    "chromatic": "^6.0.6",
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
     "eslint": "^7.1.0",
