@@ -25,7 +25,8 @@
     "release": "dotenv yarn build & yarn typescript:generate && auto shipit",
     "storybook": "start-storybook -p 6006 -s .storybook/static",
     "typescript:check": "tsc --project ./tsconfig.json --noEmit",
-    "typescript:generate": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap"
+    "typescript:generate": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap",
+    "chromatic": "CHROMATIC_INDEX_URL=https://www.dev-chromatic.com npx chromatic --project-token=986172967ea1"
   },
   "husky": {
     "hooks": {
