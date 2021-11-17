@@ -32,6 +32,8 @@ import Comments from './colored-icons/comments.svg';
 // @ts-ignore
 import Components from './colored-icons/components.svg';
 // @ts-ignore
+import CustomAddon from './colored-icons/custom-addon.svg';
+// @ts-ignore
 import Delete from './colored-icons/delete.svg';
 // @ts-ignore
 import Detect from './colored-icons/detect.svg';
@@ -143,6 +145,7 @@ export const ColoredIcons = () => (
     <Item><img src={Colors} alt="Colors" /> Colors</Item>
     <Item><img src={Comments} alt="Comments" /> Comments</Item>
     <Item><img src={Components} alt="Components" /> Components</Item>
+    <Item><img src={CustomAddon} alt="CustomAddon" /> Custom Addon</Item>
     <Item><img src={Delete} alt="Delete" /> Delete</Item>
     <Item><img src={Detect} alt="Detect" /> Detect</Item>
     <Item><img src={Direction} alt="Direction" /> Direction</Item>

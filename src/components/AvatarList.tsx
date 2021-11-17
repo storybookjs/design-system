@@ -60,7 +60,7 @@ interface Props {
     avatarUrl?: string;
   }[];
   userCount?: number;
-  size: keyof typeof sizes;
+  size?: keyof typeof sizes;
 }
 
 // Either pass the full list of users, or a userCount if known
