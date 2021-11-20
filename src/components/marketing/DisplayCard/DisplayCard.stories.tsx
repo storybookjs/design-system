@@ -3,11 +3,11 @@ import { styled } from '@storybook/theming';
 import { DisplayCard, DisplayCardProps } from './DisplayCard';
 
 // @ts-ignore
-import StorybookLogo from '../../../images/logos/storybook.svg';
+import ControlsSVG from '../../../images/marketing/addons/controls.svg';
 // @ts-ignore
-import NetlifyLogo from '../../../images/logos/netlify.svg';
+import ViewportsSVG from '../../../images/marketing/addons/viewports.svg';
 // @ts-ignore
-import ProjectsSVG from '../../../images/colored-icons/projects.svg';
+import ContrastPNG from '../../../images/marketing/addons/contrast.png';
 
 export default {
   title: 'Marketing/DisplayCard',
@@ -65,7 +65,7 @@ const Template = (args: DisplayCardProps) => (
 export const OfficialStorybook = Template.bind({});
 OfficialStorybook.args = {
   appearance: 'official',
-  image: StorybookLogo,
+  image: ControlsSVG,
   displayName: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
   weeklyDownloads: 17143,
@@ -74,7 +74,7 @@ OfficialStorybook.args = {
 export const OfficialIntegrator = Template.bind({});
 OfficialIntegrator.args = {
   appearance: 'integrators',
-  image: NetlifyLogo,
+  image: ContrastPNG,
   displayName: 'Contrast',
   description: 'Embed Contrast handoff tool in a storybook panel',
   weeklyDownloads: 17143,
@@ -83,7 +83,7 @@ OfficialIntegrator.args = {
 
 export const Community = Template.bind({});
 Community.args = {
-  image: ProjectsSVG,
+  image: ViewportsSVG,
   appearance: 'community',
   displayName: 'Mobile UX Hints',
   description:
@@ -130,7 +130,7 @@ export const StatVariations = (args: DisplayCardProps) => (
 StatVariations.args = {
   orientation: 'horizontal',
   appearance: 'official',
-  image: ProjectsSVG,
+  image: ControlsSVG,
   name: '@storybook/addon-controls',
   displayName: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',

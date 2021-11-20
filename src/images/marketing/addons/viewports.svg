@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>addons/viewports</title>
+    <g id="addons/viewports" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5">
+            <rect id="Rectangle-9" stroke="#1EA7FD" fill-opacity="0.3" fill="#1EA7FD" x="0" y="0" width="140" height="140" rx="4"></rect>
+            <path d="M4,35 L101,35 C103.209139,35 105,36.790861 105,39 L105,136 C105,138.209139 103.209139,140 101,140 L4,140 C1.790861,140 2.705415e-16,138.209139 0,136 L0,39 C-2.705415e-16,36.790861 1.790861,35 4,35 Z" id="Rectangle-9" stroke="#1EA7FD" fill-opacity="0.3" fill="#1EA7FD" stroke-dasharray="4,2"></path>
+            <path d="M4,70 L41.3703704,70 C43.5795094,70 45.3703704,71.790861 45.3703704,74 L45.3703704,136 C45.3703704,138.209139 43.5795094,140 41.3703704,140 L4,140 C1.790861,140 2.705415e-16,138.209139 0,136 L0,74 C-7.1463071e-16,71.790861 1.790861,70 4,70 Z" id="Rectangle-9" stroke="#1EA7FD" fill-opacity="0.3" fill="#1EA7FD" stroke-dasharray="4,2"></path>
+            <rect id="Rectangle-7" fill="#FC521F" x="9.07407407" y="7.77777778" width="10.3703704" height="10.3703704" rx="5.18518519"></rect>
+            <rect id="Rectangle-7-Copy-4" fill="#FFAE00" x="23.3333333" y="7.77777778" width="10.3703704" height="10.3703704" rx="5.18518519"></rect>
+            <rect id="Rectangle-7-Copy-5" fill="#66BF3C" x="37.5925926" y="7.77777778" width="10.3703704" height="10.3703704" rx="5.18518519"></rect>
+        </g>
+    </g>
+</svg>

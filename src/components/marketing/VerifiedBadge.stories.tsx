@@ -24,4 +24,5 @@ export const ClickTrigger = Template.bind({});
 ClickTrigger.args = {
   appearance: 'official',
   trigger: 'click',
+  startOpen: true,
 };

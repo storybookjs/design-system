@@ -28,8 +28,10 @@ export const VerifiedBadge = ({
   trigger = 'hover',
   creator = '',
   appearance,
+  ...props
 }: VerifiedBadgeProps) => (
   <BadgeWrapper
+    {...props}
     placement="top"
     trigger={trigger}
     tooltip={
