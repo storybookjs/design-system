@@ -1,3 +1,23 @@
+# v7.0.3 (Mon Nov 29 2021)
+
+#### 🐛 Bug Fix
+
+- Pulled in `AddonItem` component from `frontpage` [#320](https://github.com/storybookjs/design-system/pull/320) ([@smithambera](https://github.com/smithambera))
+- add eslint config to lint stories [#318](https://github.com/storybookjs/design-system/pull/318) ([@ndelangen](https://github.com/ndelangen))
+
+#### 🔩 Dependency Updates
+
+- Bump nth-check from 2.0.0 to 2.0.1 [#300](https://github.com/storybookjs/design-system/pull/300) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump prismjs from 1.23.0 to 1.25.0 [#299](https://github.com/storybookjs/design-system/pull/299) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Amber Smith ([@smithambera](https://github.com/smithambera))
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
+---
+
 # v7.0.2 (Thu Nov 11 2021)
 
 #### 🐛 Bug Fix
