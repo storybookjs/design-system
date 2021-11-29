@@ -52,7 +52,7 @@ const Users = styled.ul`
   }
 `;
 
-interface Props {
+export interface AvatarListProps {
   isLoading: boolean;
   users: {
     id: string;
@@ -60,11 +60,11 @@ interface Props {
     avatarUrl?: string;
   }[];
   userCount?: number;
-  size: keyof typeof sizes;
+  size?: keyof typeof sizes;
 }
 
 // Either pass the full list of users, or a userCount if known
-export const AvatarList: FunctionComponent<Props & ComponentProps<typeof Users>> = ({
+export const AvatarList: FunctionComponent<AvatarListProps & ComponentProps<typeof Users>> = ({
   isLoading = false,
   users = [
     { id: 'loading', avatarUrl: null, name: 'loading' },

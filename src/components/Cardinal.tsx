@@ -133,7 +133,7 @@ const CardinalInner = styled.div<CardinalInnerProps>`
   }
 `;
 
-interface CardinalProps {
+export interface CardinalProps {
   isLoading: boolean;
   selectable: boolean;
   active: boolean;
