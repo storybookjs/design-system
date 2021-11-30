@@ -24,9 +24,7 @@ export const OutlineButtonsSmall = () => {
   );
 };
 
-OutlineButtonsSmall.story = {
-  name: 'outline buttons small',
-};
+OutlineButtonsSmall.storyName = 'outline buttons small';
 
 export const OutlineThreeButtonsSmall = () => {
   const [index, setIndex] = useState(1);
@@ -44,9 +42,7 @@ export const OutlineThreeButtonsSmall = () => {
   );
 };
 
-OutlineThreeButtonsSmall.story = {
-  name: 'outline three buttons small',
-};
+OutlineThreeButtonsSmall.storyName = 'outline three buttons small';
 
 export const PillWText = () => (
   <ButtonToggle
@@ -61,9 +57,7 @@ export const PillWText = () => (
   />
 );
 
-PillWText.story = {
-  name: 'pill w/text',
-};
+PillWText.storyName = 'pill w/text';
 
 export const PillWImage = () => (
   <ButtonToggle
@@ -91,9 +85,7 @@ export const PillWImage = () => (
   />
 );
 
-PillWImage.story = {
-  name: 'pill w/image',
-};
+PillWImage.storyName = 'pill w/image';
 
 export const Tab = () => (
   <ButtonToggle
@@ -108,6 +100,4 @@ export const Tab = () => (
   />
 );
 
-Tab.story = {
-  name: 'tab',
-};
+Tab.storyName = 'tab';

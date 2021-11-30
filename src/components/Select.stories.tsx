@@ -19,7 +19,7 @@ Template.args = {
     { label: 'Mouse', value: 'value3' },
   ],
 };
-Template.story = { name: 'Playground' };
+Template.storyName = 'Playground';
 
 export const All = () => (
   <form>

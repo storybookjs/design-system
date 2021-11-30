@@ -21,7 +21,7 @@ Template.args = {
   orientation: 'horizontal',
   hideLabel: false,
 };
-Template.story = { name: 'Playground' };
+Template.storyName = 'Playground';
 
 const Form = styled.form`
   padding: 3em 12em;
