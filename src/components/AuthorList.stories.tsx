@@ -33,6 +33,11 @@ export const authors = [
     name: 'Kyle Suss',
     avatarUrl: 'https://avatars2.githubusercontent.com/u/3035355?s=96&v=4',
   },
+  {
+    id: '7',
+    name: 'Kyler Suspect',
+    avatarUrl: 'https://avatars2.githubusercontent.com/u/3035355?s=96&v=4',
+  },
 ];
 
 export default {
@@ -47,5 +52,8 @@ Basic.args = { authors: authors.slice(0, 5) };
 export const Short = Basic.bind({});
 Short.args = { authors: authors.slice(0, 2) };
 
-export const ShowMore = Basic.bind({});
-ShowMore.args = { authors };
+export const ShowOneMoreAuthor = Basic.bind({});
+ShowOneMoreAuthor.args = { authors: authors.slice(0, 6) };
+
+export const ShowMultipleMoreAuthors = Basic.bind({});
+ShowMultipleMoreAuthors.args = { authors };
