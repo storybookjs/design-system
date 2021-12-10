@@ -1,3 +1,4 @@
+import { darken, opacify } from 'polished';
 import React, {
   ComponentProps,
   forwardRef,
@@ -6,9 +7,8 @@ import React, {
   ReactNode,
 } from 'react';
 import styled from 'styled-components';
-import { darken, opacify } from 'polished';
-import { color, typography } from './shared/styles';
 import { easing } from './shared/animation';
+import { color, typography } from './shared/styles';
 
 const Text = styled.span`
   display: inline-block;
@@ -78,7 +78,7 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
   ${Text} {
-    transform: scale3d(1,1,1) translate3d(0,0,0);
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
     transition: transform 700ms ${easing.rubber};
     opacity: 1;
   }
@@ -273,9 +273,9 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
       }
     `};
 
-    ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_PRIMARY &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_PRIMARY &&
+    `
         background: ${color.lightest};
         color: ${color.primary};
 
@@ -292,9 +292,9 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
         }
     `}
 
-    ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_SECONDARY &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_SECONDARY &&
+    `
         background: ${color.lightest};
         color: ${color.secondary};
 
@@ -312,8 +312,8 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
     ${(props) =>
-      props.appearance === APPEARANCES.INVERSE_OUTLINE &&
-      `
+    props.appearance === APPEARANCES.INVERSE_OUTLINE &&
+    `
         box-shadow: ${color.lightest} 0 0 0 1px inset;
         color: ${color.lightest};
 
@@ -409,6 +409,7 @@ export const Button = forwardRef<
         ref={ref as ComponentProps<typeof StyledButton>['ref']}
       >
         <>
+          <Text>{children}</Text>
           <Text>{children}</Text>
           {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
         </>
