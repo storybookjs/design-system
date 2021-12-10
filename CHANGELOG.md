@@ -1,3 +1,15 @@
+# v7.1.1 (Fri Dec 10 2021)
+
+#### 🐛 Bug Fix
+
+- Remove netlify config [#325](https://github.com/storybookjs/design-system/pull/325) ([@kylegach](https://github.com/kylegach))
+
+#### Authors: 1
+
+- Kyle Gach ([@kylegach](https://github.com/kylegach))
+
+---
+
 # v7.1.0 (Fri Dec 10 2021)
 
 #### 🚀 Enhancement
