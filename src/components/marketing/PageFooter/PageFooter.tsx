@@ -23,16 +23,7 @@ import {
   FooterWrapper,
 } from './PageFooter.styles';
 
-// @ts-ignore
-import DirectionSVG from '../../../images/colored-icons/direction.svg';
-// @ts-ignore
-import RepoSVG from '../../../images/colored-icons/repo.svg';
-// @ts-ignore
-import NetlifyLogoSVG from '../../../images/logos/netlify.svg';
-// @ts-ignore
-import ChromaticLogoSVG from '../../../images/logos/chromatic.svg';
-// @ts-ignore
-import CircleCILogoSVG from '../../../images/logos/circleci.svg';
+import { Direction, Repo } from '../../../images/colored-icons';
 
 const coreFrameworks = ['react', 'vue', 'angular', 'web-components'];
 
@@ -41,7 +32,7 @@ export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...prop
     <Upper>
       <UpperColumn>
         <Resource
-          image={<img src={RepoSVG} alt="Docs" />}
+          image={<Repo title="Docs" />}
           title="Documentation"
           description="Add Storybook to your project in less than a minute to build components faster and
           easier."
@@ -58,7 +49,7 @@ export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...prop
       </UpperColumn>
       <UpperColumn>
         <Resource
-          image={<img src={DirectionSVG} alt="Tutorial" />}
+          image={<Direction title="Tutorial" />}
           title="Tutorials"
           description="Learn Storybook with in-depth tutorials that teaches Storybook best practices.
           Follow along with code samples."
@@ -118,18 +109,14 @@ export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...prop
       <Service
         text="Maintained by"
         href="https://www.chromatic.com/"
-        logo={<Chromatic src={ChromaticLogoSVG} alt="Chromatic" />}
+        logo={<Chromatic title="Chromatic" />}
       />
       <Service
         text="Continuous integration by"
         href="https://circleci.com/"
-        logo={<CircleCI src={CircleCILogoSVG} alt="CircleCI" />}
+        logo={<CircleCI title="CircleCI" />}
       />
-      <Service
-        text="Hosting by"
-        href="https://netlify.com"
-        logo={<Netlify src={NetlifyLogoSVG} alt="Netlify" />}
-      />
+      <Service text="Hosting by" href="https://netlify.com" logo={<Netlify title="Netlify" />} />
     </Services>
   </FooterWrapper>
 );

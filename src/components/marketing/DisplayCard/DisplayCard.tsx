@@ -1,8 +1,7 @@
 import React from 'react';
 // @ts-ignore
 import humanFormat from 'human-format';
-// @ts-ignore
-import CustomAddonSVG from '../../../images/colored-icons/custom-addon.svg';
+import { CustomAddon } from '../../../images/colored-icons';
 import { VerifiedBadge } from '../VerifiedBadge';
 
 import {
@@ -20,7 +19,12 @@ import {
 export interface DisplayCardProps {
   orientation: 'vertical' | 'horizontal';
   appearance: 'official' | 'integrators' | 'community';
-  image: string;
+  /*
+   * Note: I don't love accepting a component (rather than an element) here, but
+   * we need to style whatever is passed, so it needs to accept the `className`
+   * prop.
+   */
+  image?: string | React.ComponentType;
   name: string;
   displayName: string;
   description: string;
@@ -40,7 +44,7 @@ export interface DisplayCardProps {
 }
 
 export const DisplayCard = ({
-  image,
+  image: ImageProp = CustomAddon,
   name = '',
   displayName,
   description = '',
@@ -61,7 +65,12 @@ export const DisplayCard = ({
         orientation={orientation}
         isLoading={isLoading}
         // TODO: Might need a different default icon for component catalog as opposed to the addon catalog
-        src={image && image !== '' ? image : CustomAddonSVG}
+        // eslint-disable-next-line no-nested-ternary
+        {...(ImageProp && !isLoading
+          ? typeof ImageProp === 'string' && ImageProp !== ''
+            ? { src: ImageProp }
+            : { as: ImageProp }
+          : undefined)}
       />
       <div>
         <Title isLoading={isLoading}>

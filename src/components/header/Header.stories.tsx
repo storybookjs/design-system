@@ -5,8 +5,8 @@ import 'react-github-button/assets/style.css';
 import { Header } from './Header';
 import { Link } from '../Link';
 import { Button } from '../Button';
-import StorybookLogo from '../../images/logos/storybook.svg';
-import StorybookLogoInverted from '../../images/logos/storybook-inverted.svg';
+import StorybookLogo from '../../images/logos/Storybook';
+import StorybookLogoInverted from '../../images/logos/StorybookInverted';
 import { breakpoint, typography, color } from '../shared/styles';
 import { NavLink } from './NavLink';
 import { NavItem } from './NavItem';
@@ -30,7 +30,7 @@ const LogoWrapper = styled.div`
 const LogotypeWrapper = styled(Link)`
   display: inline-block;
 
-  img {
+  svg {
     height: 22px;
     width: auto;
     margin-top: 14px;
@@ -39,6 +39,7 @@ const LogotypeWrapper = styled(Link)`
       margin-top: 10px;
     }
     display: block;
+    position: static;
     transition: all 150ms ease-out;
     transform: translate3d(0, 0, 0);
     &:hover {
@@ -63,7 +64,7 @@ const Version = styled(Link)`
 const Logo = () => (
   <LogoWrapper>
     <LogotypeWrapper href="/">
-      <img src={StorybookLogo} alt="Storybook" />
+      <StorybookLogo title="Storybook" />
     </LogotypeWrapper>
     <Version href="https://github.com/storybookjs/storybook/releases">v6.0</Version>
   </LogoWrapper>
@@ -216,7 +217,7 @@ export const WithCustomLink = () => (
 const InvertedLogotypeWrapper = styled(Link)`
   display: inline-block;
 
-  img {
+  svg {
     height: 22px;
     width: auto;
 
@@ -224,6 +225,7 @@ const InvertedLogotypeWrapper = styled(Link)`
       height: 26px;
     }
     display: block;
+    position: static;
     transition: all 150ms ease-out;
     transform: translate3d(0, 0, 0);
     &:hover {
@@ -241,7 +243,7 @@ export const Inverted = () => (
       inverse
       logo={
         <InvertedLogotypeWrapper href="/" inverse>
-          <img src={StorybookLogoInverted} alt="Learn Storybook" />
+          <StorybookLogoInverted title="Learn Storybook" />
         </InvertedLogotypeWrapper>
       }
       links={

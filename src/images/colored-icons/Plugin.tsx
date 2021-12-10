@@ -1,0 +1,31 @@
+import * as React from 'react';
+import { SVGProps } from 'react';
+
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
+
+const SvgPlugin = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
+  <svg
+    viewBox="0 0 48 48"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <g fill="none" fillRule="evenodd">
+      <path
+        d="M26 15.4v6l-.4.1h-.2l-.1-.2-.2-.1a5 5 0 0 0-8.1 3.6c0 2.7 2.2 4.8 4.9 4.8 1.3 0 2.4-.3 3.2-1.2l.5-.5h.4V33a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V15a4 4 0 0 1 4-4h18a4 4 0 0 1 4 4v.4z"
+        fill="#79C9FC"
+      />
+      <path
+        d="M28 32.6c0 .8.7 1.4 1.5 1.4h17c.8 0 1.5-.6 1.5-1.4V15.4c0-.8-.7-1.4-1.5-1.4h-17c-.8 0-1.5.6-1.5 1.4v6.4c0 .5-.1.8-.3 1-.3.5-1.5.7-2.1.7-.7 0-1.4-.3-1.8-.8A3 3 0 0 0 22 22a2.9 2.9 0 0 0-2.9 2.8c0 1.5 1.3 2.8 2.9 2.8.6 0 1.3-.1 1.7-.6.5-.6 1.1-1 2-1 .6 0 2 .2 2.2.6l.2.6v5.4z"
+        fill="#87E6E5"
+      />
+    </g>
+  </svg>
+);
+
+export default SvgPlugin;

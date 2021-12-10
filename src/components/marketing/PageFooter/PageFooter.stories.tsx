@@ -3,17 +3,17 @@ import { styled } from '@storybook/theming';
 
 import { PageFooter } from './PageFooter';
 import { Link } from '../../Link';
-// @ts-ignore
-import StorybookLogoSVG from '../../../images/logos/storybook.svg';
+import StorybookLogo from '../../../images/logos/Storybook';
 
 const LogotypeWrapper = styled(Link)`
   margin-bottom: 1rem;
   display: block;
 
-  img {
+  svg {
     height: 28px;
     width: auto;
     display: block;
+    position: static;
 
     transition: all 150ms ease-out;
     transform: translate3d(0, 0, 0);
@@ -48,7 +48,7 @@ export const Default = () => (
     tutorialsLink="/"
     storybookLogoLink={
       <LogotypeWrapper to="/">
-        <img src={StorybookLogoSVG} alt="Storybook" />
+        <StorybookLogo title="Storybook" />
       </LogotypeWrapper>
     }
     navLinks={navLinks}

@@ -18,9 +18,7 @@
     "types": [],
     "lib": ["es2017", "dom"]
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src", "./svgr.d.ts"],
   "exclude": [
     "**/dist",
     "**/test.*",

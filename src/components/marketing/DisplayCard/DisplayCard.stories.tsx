@@ -2,10 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming';
 import { DisplayCard, DisplayCardProps } from './DisplayCard';
 
-// @ts-ignore
-import ControlsSVG from '../../../images/marketing/addons/controls.svg';
-// @ts-ignore
-import ViewportsSVG from '../../../images/marketing/addons/viewports.svg';
+import { Controls, Viewports } from '../../../images/marketing/addons';
 // @ts-ignore
 import ContrastPNG from '../../../images/marketing/addons/contrast.png';
 
@@ -13,6 +10,14 @@ export default {
   title: 'Marketing/DisplayCard',
   component: DisplayCard,
   chromatic: { viewports: [320, 900] },
+  argTypes: {
+    image: {
+      control: { type: 'text' },
+    },
+    orientation: {
+      control: false,
+    },
+  },
 };
 
 const Wrapper = styled.div`
@@ -56,16 +61,16 @@ const authors = [
 const Template = (args: DisplayCardProps) => (
   <Wrapper>
     <h2>Horizontal</h2>
-    <DisplayCard authors={authors} {...args} />
+    <DisplayCard {...args} authors={authors} orientation="horizontal" />
     <h2>Vertical</h2>
-    <DisplayCard orientation="vertical" authors={authors} style={{ width: 300 }} {...args} />
+    <DisplayCard authors={authors} style={{ width: 300 }} {...args} orientation="vertical" />
   </Wrapper>
 );
 
 export const OfficialStorybook = Template.bind({});
 OfficialStorybook.args = {
   appearance: 'official',
-  image: ControlsSVG,
+  image: Controls,
   displayName: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',
   weeklyDownloads: 17143,
@@ -83,7 +88,7 @@ OfficialIntegrator.args = {
 
 export const Community = Template.bind({});
 Community.args = {
-  image: ViewportsSVG,
+  image: Viewports,
   appearance: 'community',
   displayName: 'Mobile UX Hints',
   description:
@@ -130,7 +135,7 @@ export const StatVariations = (args: DisplayCardProps) => (
 StatVariations.args = {
   orientation: 'horizontal',
   appearance: 'official',
-  image: ControlsSVG,
+  image: Controls,
   name: '@storybook/addon-controls',
   displayName: 'Controls',
   description: 'Interact with component inputs dynamically in the Storybook UI',

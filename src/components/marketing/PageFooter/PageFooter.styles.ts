@@ -13,6 +13,12 @@ import {
   breakpoint,
 } from '../../shared/styles';
 
+import {
+  Netlify as NetlifyLogo,
+  Chromatic as ChromaticLogo,
+  Circleci as CircleCILogo,
+} from '../../../images/logos';
+
 export const Title = styled(Subheading)`
   display: block;
   font-size: ${typography.size.s1}px;
@@ -46,7 +52,8 @@ export const Resource = styled.div`
     margin-bottom: 2rem;
   }
 
-  img {
+  > svg {
+    flex: 0 0 auto;
     margin-right: 20px;
     display: block;
     width: 40px;
@@ -54,7 +61,7 @@ export const Resource = styled.div`
   }
 
   @media (min-width: ${breakpoint * 1}px) {
-    img {
+    > svg {
       width: 48px;
     }
   }
@@ -155,9 +162,9 @@ export const HrWrapper = styled.div`
   }
 `;
 
-export const Netlify = styled.img``;
-export const Chromatic = styled.img``;
-export const CircleCI = styled.img``;
+export const Netlify = styled(NetlifyLogo)``;
+export const Chromatic = styled(ChromaticLogo)``;
+export const CircleCI = styled(CircleCILogo)``;
 
 export const Service = styled.div`
   &:not(:last-child) {
