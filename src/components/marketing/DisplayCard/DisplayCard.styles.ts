@@ -32,18 +32,24 @@ export const CardWrapper = styled.div<CardWrapperProps>`
 type ImageProps = {
   orientation: 'vertical' | 'horizontal';
   isLoading: boolean;
-  src: string;
+  src?: string;
 };
 
 export const Image = styled.div<ImageProps>`
+  display: block;
   flex: none;
   width: 48px;
   height: 48px;
   margin-right: ${spacing.padding.medium}px;
-  background-image: url(${(props) => props.src});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+
+  ${(props) =>
+    props.src &&
+    css`
+      background-image: url(${props.src});
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    `}
 
   ${(props) =>
     props.isLoading &&

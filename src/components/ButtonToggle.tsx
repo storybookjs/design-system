@@ -92,11 +92,13 @@ const PillButton = styled(Link)<ComponentProps<typeof Link> & { active?: boolean
   &:hover {
     background: ${background.calmBlue};
     color: ${color.secondary};
-    img {
+    img,
+    svg {
       opacity: 1;
     }
   }
-  img {
+  img,
+  svg {
     height: 1rem;
     width: 1rem;
     opacity: 0.3;
@@ -108,7 +110,8 @@ const PillButton = styled(Link)<ComponentProps<typeof Link> & { active?: boolean
     css`
       background: ${background.calmBlue};
       color: ${color.secondary};
-      img {
+      img,
+      svg {
         opacity: 1;
       }
     `};

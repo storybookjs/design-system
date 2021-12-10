@@ -1,14 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
 import { ButtonToggle } from './ButtonToggle';
-// @ts-ignore
-import chromeImg from '../images/chrome.svg';
-// @ts-ignore
-import firefoxImg from '../images/firefox.svg';
-// @ts-ignore
-import ieImg from '../images/ie.svg';
-// @ts-ignore
-import safariImg from '../images/safari.svg';
+import { Chrome, Firefox, Ie as IE, Safari } from '../images';
 
 const onSelectIndex = action('onSelectIndex');
 
@@ -76,19 +69,19 @@ export const PillWImage = () => (
   <ButtonToggle
     titles={[
       {
-        title: <img src={chromeImg} alt="Chrome" />,
+        title: <Chrome title="Chrome" />,
         tooltip: 'View Chrome',
       },
       {
-        title: <img src={firefoxImg} alt="Firefox" />,
+        title: <Firefox title="Firefox" />,
         tooltip: 'View Firefox',
       },
       {
-        title: <img src={ieImg} alt="Safari" />,
+        title: <Safari title="Safari" />,
         tooltip: 'View Safari',
       },
       {
-        title: <img src={safariImg} alt="IE" />,
+        title: <IE title="IE" />,
         tooltip: 'View IE',
       },
     ]}
