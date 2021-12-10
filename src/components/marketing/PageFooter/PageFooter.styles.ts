@@ -1,4 +1,4 @@
-import { styled } from '@storybook/theming';
+import { styled, css } from '@storybook/theming';
 
 import { Link } from '../../Link';
 import { Subheading } from '../../Subheading';
@@ -12,12 +12,6 @@ import {
   spacing,
   breakpoint,
 } from '../../shared/styles';
-
-import {
-  Netlify as NetlifyLogo,
-  Chromatic as ChromaticLogo,
-  Circleci as CircleCILogo,
-} from '../../../images/logos';
 
 export const Title = styled(Subheading)`
   display: block;
@@ -162,14 +156,26 @@ export const HrWrapper = styled.div`
   }
 `;
 
-export const Netlify = styled(NetlifyLogo)``;
-export const Chromatic = styled(ChromaticLogo)``;
-export const CircleCI = styled(CircleCILogo)``;
-
-export const Service = styled.div`
+export const Service = styled.div<{ muteLogo?: boolean }>`
   &:not(:last-child) {
     margin-bottom: 1rem;
   }
+
+  svg {
+    height: 22px;
+    width: auto;
+    display: inline-block;
+    transition: all 150ms ease-out;
+  }
+
+  ${(props) =>
+    props.muteLogo &&
+    css`
+      svg {
+        /* Turn down the pure black of these logos */
+        opacity: 0.75;
+      }
+    `}
 
   ${Text} {
     margin-bottom: 0.5rem;
@@ -209,18 +215,6 @@ export const Services = styled.div`
     &:active {
       transform: translate3d(0, 0, 0);
     }
-  }
-
-  ${Netlify}, ${Chromatic}, ${CircleCI} {
-    height: 22px;
-    width: auto;
-    display: inline-block;
-    transition: all 150ms ease-out;
-  }
-
-  ${CircleCI} {
-    /* Turn down the pure black of these logos */
-    opacity: 0.75;
   }
 `;
 

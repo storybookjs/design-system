@@ -15,15 +15,13 @@ import {
   Column,
   Subscribe,
   HrWrapper,
-  Netlify,
-  Chromatic,
-  CircleCI,
   Services,
   Lower,
   FooterWrapper,
 } from './PageFooter.styles';
 
 import { Direction, Repo } from '../../../images/colored-icons';
+import { Netlify, Chromatic, Circleci as CircleCI } from '../../../images/logos';
 
 const coreFrameworks = ['react', 'vue', 'angular', 'web-components'];
 
@@ -115,6 +113,7 @@ export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...prop
         text="Continuous integration by"
         href="https://circleci.com/"
         logo={<CircleCI title="CircleCI" />}
+        muteLogo
       />
       <Service text="Hosting by" href="https://netlify.com" logo={<Netlify title="Netlify" />} />
     </Services>
