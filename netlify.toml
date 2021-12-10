@@ -1,6 +1,0 @@
-[build]
-  publish = "storybook-static"
-  command = "yarn build-docs"
-[build.environment]
-  NODE_VERSION = "8"
-  YARN_VERSION = "1.12.3"
