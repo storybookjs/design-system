@@ -1,3 +1,15 @@
+# v7.1.0 (Fri Dec 10 2021)
+
+#### 🚀 Enhancement
+
+- Export marketing components [#322](https://github.com/storybookjs/design-system/pull/322) ([@kylegach](https://github.com/kylegach))
+
+#### Authors: 1
+
+- Kyle Gach ([@kylegach](https://github.com/kylegach))
+
+---
+
 # v7.0.3 (Mon Nov 29 2021)
 
 #### 🐛 Bug Fix
