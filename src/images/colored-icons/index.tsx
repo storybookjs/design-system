@@ -16,6 +16,8 @@ export { default as CustomAddon } from './CustomAddon';
 export { default as Delete } from './Delete';
 export { default as Detect } from './Detect';
 export { default as Direction } from './Direction';
+export { default as Document } from './Document';
+export { default as DocumentAlt } from './DocumentAlt';
 export { default as Email } from './Email';
 export { default as Error } from './Error';
 export { default as Eye } from './Eye';
