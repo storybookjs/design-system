@@ -1,3 +1,15 @@
+# v7.2.0 (Wed Dec 15 2021)
+
+#### 🚀 Enhancement
+
+- Add Document illustrations to Colored Icons [#326](https://github.com/storybookjs/design-system/pull/326) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.1.1 (Fri Dec 10 2021)
 
 #### 🐛 Bug Fix
