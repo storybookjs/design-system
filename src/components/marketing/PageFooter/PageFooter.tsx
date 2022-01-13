@@ -25,7 +25,13 @@ import { Netlify, Chromatic, Circleci as CircleCI } from '../../../images/logos'
 
 const coreFrameworks = ['react', 'vue', 'angular', 'web-components'];
 
-export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...props }: Props) => (
+export const PageFooter = ({
+  navLinks,
+  storybookLogoLink,
+  subscribeForm,
+  tutorialsLink,
+  ...props
+}: Props) => (
   <FooterWrapper {...props}>
     <Upper>
       <UpperColumn>
@@ -94,11 +100,13 @@ export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...prop
           name="Component Driven UIs"
         />
       </Column>
-      <Subscribe>
-        <Title>Subscribe</Title>
-        <Text>Get news, free tutorials, and Storybook tips emailed to you.</Text>
-        {/* TODO - pull in and add <ConfirmedMailingList /> */}
-      </Subscribe>
+      {subscribeForm && (
+        <Subscribe>
+          <Title>Subscribe</Title>
+          <Text>Get news, free tutorials, and Storybook tips emailed to you.</Text>
+          {subscribeForm}
+        </Subscribe>
+      )}
     </Lower>
     <HrWrapper>
       <hr />
@@ -121,10 +129,12 @@ export const PageFooter = ({ tutorialsLink, storybookLogoLink, navLinks, ...prop
 );
 
 interface Props {
+  /** Pass a component that generates the links for the Storybook column */
+  navLinks: React.ReactNode;
+  /** Pass the storybook logo with the appropriate link */
+  storybookLogoLink: React.ReactNode;
+  /** Newsletter subscribe form */
+  subscribeForm?: React.ReactNode;
   /** Link to tutorials */
   tutorialsLink: string;
-  /** Pass the storybook logo with the appropriate link */
-  storybookLogoLink: React.ReactElement;
-  /** Pass a component that generates the links for the Storybook column */
-  navLinks: React.ReactNode | (() => React.ReactNode);
 }
