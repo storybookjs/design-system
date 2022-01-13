@@ -1,3 +1,15 @@
+# v7.2.1 (Thu Jan 13 2022)
+
+#### 🐛 Bug Fix
+
+- Add `subscribeForm` prop to PageFooter [#329](https://github.com/storybookjs/design-system/pull/329) ([@kylegach](https://github.com/kylegach))
+
+#### Authors: 1
+
+- Kyle Gach ([@kylegach](https://github.com/kylegach))
+
+---
+
 # v7.2.0 (Wed Dec 15 2021)
 
 #### 🚀 Enhancement
