@@ -26,6 +26,11 @@ const LogotypeWrapper = styled(Link)`
   }
 `;
 
+const DemoSubscribeForm = styled.div`
+  outline: 1px dotted;
+  padding: 1rem;
+`;
+
 const navLinksData = [
   { title: 'Docs', href: '/' },
   { title: 'Tutorials', href: '/' },
@@ -45,12 +50,13 @@ export default {
 
 export const Default = () => (
   <PageFooter
-    tutorialsLink="/"
+    navLinks={navLinks}
     storybookLogoLink={
       <LogotypeWrapper to="/">
         <StorybookLogo title="Storybook" />
       </LogotypeWrapper>
     }
-    navLinks={navLinks}
+    subscribeForm={<DemoSubscribeForm>SubscribeForm</DemoSubscribeForm>}
+    tutorialsLink="/"
   />
 );
