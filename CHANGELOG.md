@@ -1,3 +1,15 @@
+# v7.2.2 (Thu Jan 20 2022)
+
+#### 🐛 Bug Fix
+
+- Update Icons: markup, unordered list. Add icons: bold, ordered list CH-1332 [#330](https://github.com/storybookjs/design-system/pull/330) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.2.1 (Thu Jan 13 2022)
 
 #### 🐛 Bug Fix
