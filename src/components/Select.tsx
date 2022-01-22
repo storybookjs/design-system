@@ -236,7 +236,9 @@ const SelectWrapper = styled.span<WrapperProps>`
       }
 
       ${Selector} + ${SelectIcon} {
-        animation: ${jiggle} 700ms ease-out;
+        ${css`
+          animation: ${jiggle} 700ms ease-out;
+        `}
         path {
           fill: ${color.red};
         }
