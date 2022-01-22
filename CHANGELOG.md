@@ -1,3 +1,15 @@
+# v7.2.6 (Sat Jan 22 2022)
+
+#### 🐛 Bug Fix
+
+- Ensure tertiary Selects are displayed as inline-block instead of blocks [#335](https://github.com/storybookjs/design-system/pull/335) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.2.5 (Sat Jan 22 2022)
 
 #### 🐛 Bug Fix
