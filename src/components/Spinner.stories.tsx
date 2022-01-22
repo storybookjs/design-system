@@ -29,3 +29,27 @@ export const Inline = () => (
     <Spinner inline />
   </div>
 );
+
+export const InlinePositive = () => (
+  <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
+    <Spinner inline positive />
+  </div>
+);
+
+export const InlineNegative = () => (
+  <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
+    <Spinner inline negative />
+  </div>
+);
+
+export const InlineNeutral = () => (
+  <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
+    <Spinner inline neutral />
+  </div>
+);
+
+export const InlineInverse = () => (
+  <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
+    <Spinner inline inverse />
+  </div>
+);
