@@ -256,7 +256,7 @@ const SelectWrapper = styled.span<WrapperProps>`
         height: 1em;
         width: 1em;
         margin-top: -0.5em;
-        z-index: 1;
+        z-index: 2;
 
         path {
           fill: ${color.mediumdark};

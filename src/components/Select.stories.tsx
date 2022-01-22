@@ -166,6 +166,7 @@ export const Stacked = () => (
         { label: 'Dog', value: 'value2' },
       ]}
       onChange={onChange}
+      icon="chromatic"
       stackLevel="middle"
     />
     <Select
