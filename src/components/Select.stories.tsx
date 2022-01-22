@@ -1,14 +1,16 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import { styled } from '@storybook/theming';
 
-import { Select } from './Select';
+import { Select as UnstyledSelect } from './Select';
 
 const onChange = action('change');
 
 export default {
   title: 'forms/Select',
-  component: Select,
+  component: UnstyledSelect,
 };
+
 
 export const Template = (args) => <Select {...args} />;
 Template.args = {
@@ -21,40 +23,23 @@ Template.args = {
 };
 Template.story = { name: 'Playground' };
 
-export const All = () => (
-  <form>
-    <Select
-      id="Primary"
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-        { label: 'Mouse', value: 'value3' },
-      ]}
-      onChange={onChange}
-      label="Animal"
-      hideLabel
-    />
-    <Select
-      id="Tertiary"
-      value="value1"
-      options={[
-        { label: 'Tertiary', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-        { label: 'Mouse', value: 'value3' },
-      ]}
-      appearance="tertiary"
-      onChange={onChange}
-      label="Animal"
-      hideLabel
-    />
-  </form>
-);
 
-export const Default = () => (
-  <form>
+const Form = styled.form`
+  padding: 3em 12em;
+`;
+
+const DarkForm = styled(Form)`
+  background: #eeeeee;
+`;
+
+const Select = styled(UnstyledSelect)`
+  padding-top: 1em;
+`;
+
+const All = ({ appearance }) => (
+  <>
     <Select
-      id="Primary"
+      id="Default"
       label="Animal"
       hideLabel
       value="value1"
@@ -63,109 +48,99 @@ export const Default = () => (
         { label: 'Dog', value: 'value2' },
       ]}
       onChange={onChange}
+      appearance={appearance}
+      
     />
     <Select
-      id="Primary-disabled"
+      id="disabled"
       label="Animal"
       hideLabel
       value="value1"
       options={[
-        { label: 'Default', value: 'value1' },
+        { label: 'Disabled', value: 'value1' },
         { label: 'Dog', value: 'value2' },
       ]}
       disabled
       onChange={onChange}
+      appearance={appearance}
     />
     <Select
-      id="Primary-with-iconn"
+      id="with-icon"
       label="Animal"
       hideLabel
       value="value1"
       options={[
-        { label: 'Default', value: 'value1' },
+        { label: 'With icon', value: 'value1' },
         { label: 'Dog', value: 'value2' },
       ]}
       icon="chromatic"
       onChange={onChange}
+      appearance={appearance}
     />
     <Select
-      id="Primary-in-progress"
+      id="in-progress-with-icon"
       label="Animal"
       hideLabel
       value="value1"
       options={[
-        { label: 'Default', value: 'value1' },
+        { label: 'In progress with icon', value: 'value1' },
         { label: 'Dog', value: 'value2' },
       ]}
       icon="chromatic"
       onChange={onChange}
+      appearance={appearance}
       inProgress
     />
     <Select
-      id="Primary-with-error"
+      id="with-error"
       label="Animal"
       hideLabel
       value="value1"
       options={[
-        { label: 'Default', value: 'value1' },
+        { label: 'With error', value: 'value1' },
         { label: 'Dog', value: 'value2' },
       ]}
       error="There's a snake in my boots"
       onChange={onChange}
+      appearance={appearance}
     />
     <Select
-      id="Primary-with-icon-and-error"
+      id="with-icon-and-error"
       label="Animal"
       hideLabel
       value="value1"
       options={[
-        { label: 'Default', value: 'value1' },
+        { label: 'With icon and error', value: 'value1' },
         { label: 'Dog', value: 'value2' },
       ]}
       icon="chromatic"
       error="There's a snake in my boots"
       onChange={onChange}
+      appearance={appearance}
     />
     <Select
-      id="Primary-with-label"
+      id="with-label"
       value="value1"
       options={[
-        { label: 'Default', value: 'value1' },
+        { label: 'With label', value: 'value1' },
         { label: 'Dog', value: 'value2' },
       ]}
       icon="chromatic"
       label="Label"
       onChange={onChange}
+      appearance={appearance}
     />
-  </form>
+  </>
+);
+
+export const Default = () => (
+  <DarkForm>
+    <All appearance="default" />
+  </DarkForm>
 );
 
 export const Tertiary = () => (
-  <form>
-    <Select
-      id="Tertiary"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Select
-      id="Tertiary-disabled"
-      label="Animal"
-      hideLabel
-      value="value1"
-      options={[
-        { label: 'Default', value: 'value1' },
-        { label: 'Dog', value: 'value2' },
-      ]}
-      disabled
-      appearance="tertiary"
-      onChange={onChange}
-    />
-  </form>
+  <Form>
+    <All appearance="tertiary" />
+  </Form>
 );

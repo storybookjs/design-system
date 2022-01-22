@@ -48,6 +48,7 @@ const Selector = styled.select<SelectProps>`
   position: relative;
   outline: none;
   width: 100%;
+  margin: 0;
 
   ${(props) =>
     props.disabled &&
@@ -86,7 +87,7 @@ const SelectError = styled.div`
   font-family: ${typography.type.primary};
 
   color: ${color.negative};
-  line-height: 38px;
+  line-height: 40px;
   padding-right: 2.75em;
 `;
 
@@ -95,6 +96,7 @@ interface WrapperProps {
   appearance: 'default' | 'tertiary';
   hasIcon: boolean;
   error: any;
+  inProgress: boolean;
 }
 
 const SelectWrapper = styled.span<WrapperProps>`
@@ -146,9 +148,10 @@ const SelectWrapper = styled.span<WrapperProps>`
 
   ${Selector} {
     box-shadow: ${color.border} 0 0 0 1px inset;
+    border-radius: 4px;
   }
   ${Selector}:focus {
-    box-shadow: ${color.primary} 0 0 0 1px inset;
+    box-shadow: ${color.secondary} 0 0 0 1px inset;
   }
 
   ${(props) =>
@@ -157,9 +160,6 @@ const SelectWrapper = styled.span<WrapperProps>`
       opacity: 0.5;
     `}
 
-  &:before {
-    background-color: rgba(255, 255, 255, 0.9);
-  }
   ${Selector} {
     background-color: ${color.lightest};
     color: ${color.darkest};
@@ -183,6 +183,19 @@ const SelectWrapper = styled.span<WrapperProps>`
       }
       ${Arrow} {
         right: 0;
+        top: 12px;
+      }
+      ${SelectSpinner} {
+        right: 0;
+      }
+      ${SelectIcon} {
+        left: 0;
+        top: 12px;
+      }
+      ${SelectError} {
+        position: relative;
+        line-height: 20px;
+        margin-top: 8px;
       }
     `}
 
@@ -190,14 +203,14 @@ const SelectWrapper = styled.span<WrapperProps>`
     props.hasIcon &&
     `
       ${Selector} {
-        padding-left: 2.5em;
+        padding-left: ${props.appearance === 'tertiary' ? '20px' : '40px'};
       }
 
       ${Selector} + ${SelectIcon} {
         transition: all 150ms ease-out;
         position: absolute;
-        top: 50%;
-        left: 0.8em;
+        top: ${props.appearance === 'tertiary' ? '12px' : '50%'};
+        left: ${props.appearance === 'tertiary' ? 0 : '0.8em'};
         height: 1em;
         width: 1em;
         margin-top: -0.5em;
@@ -290,6 +303,7 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
         data-error={error}
         error={error}
         disabled={disabled}
+        inProgress={inProgress}
       >
         {!inProgress && <Arrow />}
         <Selector
