@@ -1,3 +1,15 @@
+# v7.2.5 (Sat Jan 22 2022)
+
+#### 🐛 Bug Fix
+
+- Update Spinner colors to default to blue instead of pink [#334](https://github.com/storybookjs/design-system/pull/334) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.2.4 (Sat Jan 22 2022)
 
 #### 🐛 Bug Fix
