@@ -34,8 +34,8 @@ const LabelWrapper = styled.div<LabelProps>`
 `;
 
 interface SelectProps {
-  disabled: boolean;
-  inProgress: boolean;
+  disabled?: boolean;
+  inProgress?: boolean;
 }
 
 const Selector = styled.select<SelectProps>`
@@ -44,7 +44,7 @@ const Selector = styled.select<SelectProps>`
   border-radius: 0;
   font-size: ${typography.size.s2}px;
   line-height: 20px;
-  padding: 10px 3em 10px 1em;
+  padding: 10px 3em 10px 15px;
   position: relative;
   outline: none;
   width: 100%;
@@ -75,7 +75,7 @@ const SelectIcon = styled(Icon)``;
 const SelectSpinner = styled(Spinner)`
   right: 16px;
   left: auto;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const SelectError = styled.div`
@@ -90,35 +90,65 @@ const SelectError = styled.div`
   color: ${color.negative};
   line-height: 40px;
   padding-right: 2.75em;
+  pointer-events: none;
 `;
 
 interface WrapperProps {
-  disabled: boolean;
   appearance: 'default' | 'tertiary';
   hasIcon: boolean;
   error: any;
-  inProgress: boolean;
+  disabled?: boolean;
+  inProgress?: boolean;
+  stackLevel?: 'top' | 'middle' | 'bottom';
 }
+
+const getStackLevelStyling = (props: Pick<Props, 'stackLevel'>) => {
+  const radius = 4;
+
+  const stackLevelDefinedStyling = css`
+    position: relative;
+
+    &:focus {
+      z-index: 2;
+    }
+  `;
+
+  switch (props.stackLevel) {
+    case 'top':
+      return css`
+        border-top-left-radius: ${radius}px;
+        border-top-right-radius: ${radius}px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        ${stackLevelDefinedStyling}
+      `;
+    case 'middle':
+      return css`
+        border-radius: 0px;
+        margin-top: -1px;
+        ${stackLevelDefinedStyling}
+      `;
+    case 'bottom':
+      return css`
+        border-bottom-left-radius: ${radius}px;
+        border-bottom-right-radius: ${radius}px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: -1px;
+        ${stackLevelDefinedStyling}
+      `;
+    default:
+      return css`
+        border-radius: ${radius}px;
+      `;
+  }
+};
 
 const SelectWrapper = styled.span<WrapperProps>`
   display: inline-block;
-  height: 40px;
-  line-height: normal;
-  overflow: hidden;
   position: relative;
   vertical-align: top;
   width: 100%;
-
-  transition: all 150ms ease-out;
-  transform: translate3d(0, 0, 0);
-
-  &:hover {
-    transform: translate3d(0, -1px, 0);
-  }
-
-  &:active {
-    transform: translate3d(0, 0, 0);
-  }
 
   &:before {
     content: '';
@@ -128,14 +158,13 @@ const SelectWrapper = styled.span<WrapperProps>`
     width: 2em;
     margin-left: 1px;
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
-    border-radius: ${spacing.borderRadius.small}px;
   }
 
   ${Arrow} {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
     height: 12px;
     margin-top: -6px;
@@ -149,7 +178,7 @@ const SelectWrapper = styled.span<WrapperProps>`
 
   ${Selector} {
     box-shadow: ${color.border} 0 0 0 1px inset;
-    border-radius: 4px;
+    ${(props) => getStackLevelStyling(props)}
   }
   ${Selector}:focus {
     box-shadow: ${color.secondary} 0 0 0 1px inset;
@@ -267,6 +296,7 @@ interface Props {
   className?: string;
   inProgress?: boolean;
   disabled?: boolean;
+  stackLevel?: 'top' | 'middle' | 'bottom';
 }
 
 export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> = ({
@@ -281,6 +311,7 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
   className,
   inProgress = false,
   disabled = false,
+  stackLevel = undefined,
   ...other
 }) => {
   let spinnerId;
@@ -307,6 +338,7 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
         error={error}
         disabled={disabled}
         inProgress={inProgress}
+        stackLevel={stackLevel}
       >
         {!inProgress && <Arrow />}
         <Selector
