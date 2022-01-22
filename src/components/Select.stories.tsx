@@ -11,7 +11,6 @@ export default {
   component: UnstyledSelect,
 };
 
-
 export const Template = (args) => <Select {...args} />;
 Template.args = {
   value: 'value1',
@@ -22,7 +21,6 @@ Template.args = {
   ],
 };
 Template.story = { name: 'Playground' };
-
 
 const Form = styled.form`
   padding: 3em 12em;
@@ -49,7 +47,6 @@ const All = ({ appearance }) => (
       ]}
       onChange={onChange}
       appearance={appearance}
-      
     />
     <Select
       id="disabled"
@@ -137,6 +134,47 @@ export const Default = () => (
   <DarkForm>
     <All appearance="default" />
   </DarkForm>
+);
+
+export const Stacked = () => (
+  <Form>
+    <UnstyledSelect
+      id="default"
+      value="value1"
+      label="Animal"
+      hideLabel
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
+      onChange={onChange}
+      stackLevel="top"
+    />
+    <UnstyledSelect
+      id="default1"
+      value="value1"
+      label="Animal"
+      hideLabel
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
+      onChange={onChange}
+      stackLevel="middle"
+    />
+    <UnstyledSelect
+      id="default2"
+      value="value1"
+      label="Animal"
+      hideLabel
+      options={[
+        { label: 'Default', value: 'value1' },
+        { label: 'Dog', value: 'value2' },
+      ]}
+      onChange={onChange}
+      stackLevel="bottom"
+    />
+  </Form>
 );
 
 export const Tertiary = () => (
