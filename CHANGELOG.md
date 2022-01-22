@@ -1,3 +1,15 @@
+# v7.2.4 (Sat Jan 22 2022)
+
+#### 🐛 Bug Fix
+
+- Select integration fixes [#333](https://github.com/storybookjs/design-system/pull/333) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.2.3 (Sat Jan 22 2022)
 
 #### 🐛 Bug Fix
