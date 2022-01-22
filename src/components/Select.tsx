@@ -5,6 +5,18 @@ import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 import { Spinner } from './Spinner';
 
+interface SelectContainerProps {
+  appearance?: 'default' | 'tertiary';
+}
+
+const SelectContainer = styled.div<SelectContainerProps>`
+  ${(props) =>
+    props.appearance === 'tertiary' &&
+    css`
+      display: inline-block;
+    `}
+`;
+
 const Label = styled.label`
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s2}px;
@@ -94,9 +106,9 @@ const SelectError = styled.div`
 `;
 
 interface WrapperProps {
-  appearance: 'default' | 'tertiary';
   hasIcon: boolean;
   error: any;
+  appearance?: 'default' | 'tertiary';
   disabled?: boolean;
   inProgress?: boolean;
   stackLevel?: 'top' | 'middle' | 'bottom';
@@ -327,7 +339,7 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
   }
 
   return (
-    <div className={className}>
+    <SelectContainer className={className} appearance={appearance}>
       <LabelWrapper hideLabel={hideLabel}>
         <Label htmlFor={id}>{label}</Label>
       </LabelWrapper>
@@ -359,6 +371,6 @@ export const Select: FunctionComponent<Props & ComponentProps<typeof Selector>> 
         {error && <SelectError id={errorId}>{error}</SelectError>}
         {inProgress && <SelectSpinner id={spinnerId} aria-label="Loading" inForm />}
       </SelectWrapper>
-    </div>
+    </SelectContainer>
   );
 };
