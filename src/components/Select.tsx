@@ -13,7 +13,7 @@ const SelectContainer = styled.div<SelectContainerProps>`
   ${(props) =>
     props.appearance === 'tertiary' &&
     css`
-      display: inline-block;
+      display: inline-flex;
     `}
 `;
 
