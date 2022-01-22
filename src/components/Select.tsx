@@ -49,6 +49,7 @@ const Selector = styled.select<SelectProps>`
   outline: none;
   width: 100%;
   margin: 0;
+  display: block;
 
   ${(props) =>
     props.disabled &&
@@ -183,14 +184,14 @@ const SelectWrapper = styled.span<WrapperProps>`
       }
       ${Arrow} {
         right: 0;
-        top: 12px;
+        top: 10px;
       }
       ${SelectSpinner} {
         right: 0;
       }
       ${SelectIcon} {
         left: 0;
-        top: 12px;
+        top: 10px;
       }
       ${SelectError} {
         position: relative;
@@ -209,7 +210,7 @@ const SelectWrapper = styled.span<WrapperProps>`
       ${Selector} + ${SelectIcon} {
         transition: all 150ms ease-out;
         position: absolute;
-        top: ${props.appearance === 'tertiary' ? '12px' : '50%'};
+        top: ${props.appearance === 'tertiary' ? '10px' : '50%'};
         left: ${props.appearance === 'tertiary' ? 0 : '0.8em'};
         height: 1em;
         width: 1em;
