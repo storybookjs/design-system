@@ -2,13 +2,13 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { styled } from '@storybook/theming';
 
-import { Select as UnstyledSelect } from './Select';
+import { Select } from './Select';
 
 const onChange = action('change');
 
 export default {
   title: 'forms/Select',
-  component: UnstyledSelect,
+  component: Select,
 };
 
 export const Template = (args) => <Select {...args} />;
@@ -30,11 +30,11 @@ const DarkForm = styled(Form)`
   background: #eeeeee;
 `;
 
-const Select = styled(UnstyledSelect)`
-  padding-top: 1em;
+const Br = styled.div`
+  margin-bottom: 1em;
 `;
 
-const All = ({ appearance }) => (
+const All = ({ appearance, lineBreak }) => (
   <>
     <Select
       id="Default"
@@ -48,6 +48,7 @@ const All = ({ appearance }) => (
       onChange={onChange}
       appearance={appearance}
     />
+    {lineBreak && <Br />}
     <Select
       id="disabled"
       label="Animal"
@@ -61,6 +62,7 @@ const All = ({ appearance }) => (
       onChange={onChange}
       appearance={appearance}
     />
+    {lineBreak && <Br />}
     <Select
       id="with-icon"
       label="Animal"
@@ -74,6 +76,7 @@ const All = ({ appearance }) => (
       onChange={onChange}
       appearance={appearance}
     />
+    {lineBreak && <Br />}
     <Select
       id="in-progress-with-icon"
       label="Animal"
@@ -88,6 +91,7 @@ const All = ({ appearance }) => (
       appearance={appearance}
       inProgress
     />
+    {lineBreak && <Br />}
     <Select
       id="with-error"
       label="Animal"
@@ -101,6 +105,7 @@ const All = ({ appearance }) => (
       onChange={onChange}
       appearance={appearance}
     />
+    {lineBreak && <Br />}
     <Select
       id="with-icon-and-error"
       label="Animal"
@@ -115,6 +120,7 @@ const All = ({ appearance }) => (
       onChange={onChange}
       appearance={appearance}
     />
+    {lineBreak && <Br />}
     <Select
       id="with-label"
       value="value1"
@@ -132,13 +138,13 @@ const All = ({ appearance }) => (
 
 export const Default = () => (
   <DarkForm>
-    <All appearance="default" />
+    <All appearance="default" lineBreak />
   </DarkForm>
 );
 
 export const Stacked = () => (
   <Form>
-    <UnstyledSelect
+    <Select
       id="default"
       value="value1"
       label="Animal"
@@ -150,7 +156,7 @@ export const Stacked = () => (
       onChange={onChange}
       stackLevel="top"
     />
-    <UnstyledSelect
+    <Select
       id="default1"
       value="value1"
       label="Animal"
@@ -160,9 +166,10 @@ export const Stacked = () => (
         { label: 'Dog', value: 'value2' },
       ]}
       onChange={onChange}
+      icon="chromatic"
       stackLevel="middle"
     />
-    <UnstyledSelect
+    <Select
       id="default2"
       value="value1"
       label="Animal"
@@ -179,6 +186,6 @@ export const Stacked = () => (
 
 export const Tertiary = () => (
   <Form>
-    <All appearance="tertiary" />
+    <All appearance="tertiary" lineBreak />
   </Form>
 );
