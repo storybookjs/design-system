@@ -49,7 +49,7 @@ export const InlineNeutral = () => (
 );
 
 export const InlineInverse = () => (
-  <div style={{ background: '#eee', padding: '1.5em', position: 'relative' }}>
+  <div style={{ background: 'black', padding: '1.5em', position: 'relative' }}>
     <Spinner inline inverse />
   </div>
 );
