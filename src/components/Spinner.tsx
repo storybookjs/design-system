@@ -49,7 +49,7 @@ const SpinnerWrapper = styled.div<Props>`
       margin-left: -6px;
       height: 12px;
       width: 12px;
-      border: 1px solid ${color.primary};
+      border: 1px solid ${color.secondary};
       border-bottom-color: transparent;
     `};
   ${(props) =>
@@ -64,9 +64,9 @@ const SpinnerWrapper = styled.div<Props>`
       height: 8px;
       width: 8px;
       border: 1px solid;
-      border-top-color: ${color.primary};
-      border-left-color: ${color.primary};
-      border-right-color: ${color.primary};
+      border-top-color: ${color.secondary};
+      border-left-color: ${color.secondary};
+      border-right-color: ${color.secondary};
       border-bottom-color: transparent;
 
       ${props.positive &&
