@@ -1,3 +1,15 @@
+# v7.2.3 (Sat Jan 22 2022)
+
+#### 🐛 Bug Fix
+
+- Improve Select styling and fix Safari bug [#331](https://github.com/storybookjs/design-system/pull/331) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.2.2 (Thu Jan 20 2022)
 
 #### 🐛 Bug Fix
