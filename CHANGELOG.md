@@ -1,3 +1,15 @@
+# v7.2.7 (Sat Feb 05 2022)
+
+#### 🐛 Bug Fix
+
+- Add unlink icon [#336](https://github.com/storybookjs/design-system/pull/336) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.2.6 (Sat Jan 22 2022)
 
 #### 🐛 Bug Fix
