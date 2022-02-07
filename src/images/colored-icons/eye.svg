@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>749FD8A6-2E09-4546-933C-33E300FB365B</title>
-    <defs>
-        <rect id="path-1" x="0" y="35" width="1060" height="123" rx="4"></rect>
-        <filter x="-2.1%" y="-18.3%" width="104.2%" height="136.6%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="7.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-    </defs>
     <g id="Chromatic-app" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="ManageScreen/AccessTab" transform="translate(-130.000000, -2183.000000)">
-            <rect fill="#F6F9FC" x="0" y="0" width="1200" height="2523"></rect>
             <g id="section-browser-copy-8" transform="translate(100.000000, 2118.000000)">
-                <g id="Rectangle-10">
-                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                </g>
                 <g id="illustrations/delete" transform="translate(30.000000, 64.000000)">
                     <path d="M34.8961869,15.7964705 L20.4072684,31.1004522 L13.103862,23.0383415 C12.5945903,22.4761648 11.7690122,22.4763088 11.2599362,23.0383415 C10.7506645,23.6003742 10.7506645,24.5117163 11.2599362,25.073749 L19.4601092,34.1257856 C19.738996,34.4364508 20.0731648,34.5768511 20.4072684,34.5764912 C20.741372,34.5768511 21.0755407,34.4364508 21.3304373,34.1550747 C21.338521,34.1461512 36.7401127,17.8318061 36.7401127,17.8318061 C37.2493192,17.2697734 37.2493192,16.3586472 36.7401127,15.7964705 C36.2309063,15.2345098 35.4053282,15.2345098 34.8961869,15.7964705 Z" id="Mask" fill="#FFFFFF"></path>
                     <circle id="Oval" fill="#79C9FC" fill-rule="nonzero" cx="24" cy="24.975746" r="24"></circle>
