@@ -1,3 +1,15 @@
+# v7.3.0 (Mon Feb 07 2022)
+
+#### 🚀 Enhancement
+
+- Storybook logo icon [#338](https://github.com/storybookjs/design-system/pull/338) ([@kylegach](https://github.com/kylegach))
+
+#### Authors: 1
+
+- Kyle Gach ([@kylegach](https://github.com/kylegach))
+
+---
+
 # v7.2.7 (Sat Feb 05 2022)
 
 #### 🐛 Bug Fix
