@@ -41,6 +41,8 @@ const SIZES = {
 } as const;
 
 export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
+  background: red !important;
+  color: white !important;
   border: 0;
   border-radius: 3em;
   cursor: pointer;
