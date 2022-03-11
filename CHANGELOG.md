@@ -1,3 +1,15 @@
+# v7.3.1 (Fri Mar 11 2022)
+
+#### 🐛 Bug Fix
+
+- Refine styling to be more compact in mobile view [#343](https://github.com/storybookjs/design-system/pull/343) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.3.0 (Mon Feb 07 2022)
 
 #### 🚀 Enhancement
