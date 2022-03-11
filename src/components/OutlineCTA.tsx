@@ -18,6 +18,11 @@ const OutlineCTAWrapper = styled.div`
   }
 `;
 
+const MessageText = styled.span`
+  margin-left: 2px;
+  margin-right: 2px;
+`;
+
 const ActionWrapper = styled.span`
   font-weight: ${typography.weight.bold};
   white-space: nowrap;
@@ -33,7 +38,7 @@ interface Props {
 
 export const OutlineCTA = ({ action, badge, children, ...rest }: Props) => (
   <OutlineCTAWrapper {...rest}>
-    {badge} {children} <ActionWrapper>{action}</ActionWrapper>
+    {badge} <MessageText>{children}</MessageText> <ActionWrapper>{action}</ActionWrapper>
   </OutlineCTAWrapper>
 );
 
