@@ -38,6 +38,9 @@ Default.args = {
   badge: <Badge status="positive">New</Badge>,
   children: 'These docs are for version 6.0. Newer docs are available for version 6.4.',
 };
+Default.parameters = {
+  chromatic: { viewports: [320, 1200] },
+};
 
 export const NoBadge = Story.bind({});
 NoBadge.args = {
