@@ -6,28 +6,24 @@ import { breakpoint, color, spacing, typography } from './shared/styles';
 const OutlineCTAWrapper = styled.div`
   border-radius: ${spacing.borderRadius.small}px;
   box-shadow: ${color.border} 0 0 0 1px inset;
-  padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: center;
-  text-align: center;
+  padding: ${spacing.padding.small}px ${spacing.padding.small}px;
+
+  font-size: ${typography.size.s2}px;
+  line-height: 20px;
 
   @media (min-width: ${breakpoint}px) {
     flex-wrap: nowrap;
     justify-content: flex-start;
-    text-align: left;
+    padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
   }
 `;
 
-const MessageText = styled.p`
-  font-size: ${typography.size.s2}px;
-  margin: 0;
+const MessageText = styled.span`
+  margin-left: 2px;
+  margin-right: 2px;
 `;
 
 const ActionWrapper = styled.span`
-  font-size: ${typography.size.s2}px;
   font-weight: ${typography.weight.bold};
   white-space: nowrap;
 `;
@@ -42,9 +38,7 @@ interface Props {
 
 export const OutlineCTA = ({ action, badge, children, ...rest }: Props) => (
   <OutlineCTAWrapper {...rest}>
-    {badge}
-    <MessageText>{children}</MessageText>
-    <ActionWrapper>{action}</ActionWrapper>
+    {badge} <MessageText>{children}</MessageText> <ActionWrapper>{action}</ActionWrapper>
   </OutlineCTAWrapper>
 );
 
