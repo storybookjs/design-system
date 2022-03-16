@@ -50,6 +50,8 @@
   },
   "dependencies": {
     "@emotion/weak-memoize": "^0.2.5",
+    "@interplay/cli": "^2.0.11",
+    "@interplay/cli-plugin-react": "^2.0.11",
     "@storybook/theming": "^6.2.0",
     "@types/pluralize": "^0.0.29",
     "@types/prismjs": "^1.16.6",

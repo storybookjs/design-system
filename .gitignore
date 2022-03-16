@@ -25,3 +25,6 @@ yarn-error.log*
 
 # we use yarn
 package-lock.json
+
+# exclude subfolders of .interplay folder unless you have saved required files in those subfolders
+.interplay/*/
