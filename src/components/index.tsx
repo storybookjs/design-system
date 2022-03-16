@@ -24,6 +24,7 @@ export * from './Textarea';
 export * from './Checkbox';
 export * from './Radio';
 export * from './Select';
+export * from './ThemeWrapper';
 
 export * from './tooltip/ListItem';
 export * from './tooltip/TooltipMessage';
