@@ -14,6 +14,15 @@ export default {
   component: ShadowBoxCTA,
   decorators: [(story) => <Wrapper>{story()}</Wrapper>],
   title: 'ShadowBoxCTA',
+  argTypes: {
+    action: {
+      control: false,
+      options: ['action'],
+      mapping: {
+        action: ctaAction,
+      },
+    },
+  },
 };
 
 const Story = (args) => <ShadowBoxCTA {...args} />;
