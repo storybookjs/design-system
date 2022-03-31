@@ -48,6 +48,9 @@
       "yarn lint:package"
     ]
   },
+  "resolutions": {
+    "webpack": "5.70.0"
+  },
   "dependencies": {
     "@emotion/weak-memoize": "^0.2.5",
     "@storybook/builder-webpack5": "^6.4.19",

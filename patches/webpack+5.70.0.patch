@@ -1,0 +1,83 @@
+diff --git a/node_modules/webpack/lib/hmr/HotModuleReplacement.runtime.js b/node_modules/webpack/lib/hmr/HotModuleReplacement.runtime.js
+index 2b79e41..3601fcb 100644
+--- a/node_modules/webpack/lib/hmr/HotModuleReplacement.runtime.js
++++ b/node_modules/webpack/lib/hmr/HotModuleReplacement.runtime.js
+@@ -218,17 +218,20 @@ module.exports = function () {
+ 		return Promise.all(results);
+ 	}
+ 
++	function unblock() {
++		if (--blockingPromises === 0) {
++			setStatus("ready");
++		}
++	}
++
+ 	function trackBlockingPromise(promise) {
+ 		switch (currentStatus) {
+ 			case "ready":
+ 				setStatus("prepare");
+-				blockingPromises.push(promise);
+-				waitForBlockingPromises(function () {
+-					return setStatus("ready");
+-				});
+-				return promise;
++			/* fallthrough */
+ 			case "prepare":
+-				blockingPromises.push(promise);
++				blockingPromises++;
++				promise.then(unblock, unblock);
+ 				return promise;
+ 			default:
+ 				return promise;
+@@ -298,7 +301,11 @@ module.exports = function () {
+ 	function hotApply(options) {
+ 		if (currentStatus !== "ready") {
+ 			return Promise.resolve().then(function () {
+-				throw new Error("apply() is only allowed in ready status");
++				throw new Error(
++					"apply() is only allowed in ready status (state: " +
++						currentStatus +
++						")"
++				);
+ 			});
+ 		}
+ 		return internalApply(options);
+diff --git a/node_modules/webpack/lib/hmr/JavascriptHotModuleReplacement.runtime.js b/node_modules/webpack/lib/hmr/JavascriptHotModuleReplacement.runtime.js
+index d03e939..cea8f92 100644
+--- a/node_modules/webpack/lib/hmr/JavascriptHotModuleReplacement.runtime.js
++++ b/node_modules/webpack/lib/hmr/JavascriptHotModuleReplacement.runtime.js
+@@ -443,15 +443,16 @@ module.exports = function () {
+ 			) {
+ 				promises.push($loadUpdateChunk$(chunkId, updatedModulesList));
+ 				currentUpdateChunks[chunkId] = true;
++			} else {
++				currentUpdateChunks[chunkId] = false;
+ 			}
+ 		});
+ 		if ($ensureChunkHandlers$) {
+ 			$ensureChunkHandlers$.$key$Hmr = function (chunkId, promises) {
+ 				if (
+ 					currentUpdateChunks &&
+-					!$hasOwnProperty$(currentUpdateChunks, chunkId) &&
+-					$hasOwnProperty$($installedChunks$, chunkId) &&
+-					$installedChunks$[chunkId] !== undefined
++					$hasOwnProperty$(currentUpdateChunks, chunkId) &&
++					!currentUpdateChunks[chunkId]
+ 				) {
+ 					promises.push($loadUpdateChunk$(chunkId));
+ 					currentUpdateChunks[chunkId] = true;
+diff --git a/node_modules/webpack/lib/web/JsonpChunkLoadingRuntimeModule.js b/node_modules/webpack/lib/web/JsonpChunkLoadingRuntimeModule.js
+index 972d1e2..918efaf 100644
+--- a/node_modules/webpack/lib/web/JsonpChunkLoadingRuntimeModule.js
++++ b/node_modules/webpack/lib/web/JsonpChunkLoadingRuntimeModule.js
+@@ -286,8 +286,9 @@ class JsonpChunkLoadingRuntimeModule extends RuntimeModule {
+ 				? Template.asString([
+ 						"var currentUpdatedModulesList;",
+ 						"var waitingUpdateResolves = {};",
+-						"function loadUpdateChunk(chunkId) {",
++						"function loadUpdateChunk(chunkId, updatedModulesList) {",
+ 						Template.indent([
++							"currentUpdatedModulesList = updatedModulesList;",
+ 							`return new Promise(${runtimeTemplate.basicFunction(
+ 								"resolve, reject",
+ 								[
