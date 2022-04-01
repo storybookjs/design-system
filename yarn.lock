@@ -2143,6 +2143,14 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
+"@storybook/client-logger@6.5.0-alpha.52":
+  version "6.5.0-alpha.52"
+  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.5.0-alpha.52.tgz#873f6892c3ffb09c95ffa2dc60da5f32b42b5996"
+  integrity sha512-EoiRQ06YID8OFSQzm4D2jE+5rdbEbMuVI9DV1Td67QVrN8v5gdXn6/AnEH5PE5cmRuMPV2RUr1bdqRO8nzmq+Q==
+  dependencies:
+    core-js "^3.8.2"
+    global "^4.4.0"
+
 "@storybook/components@6.4.13":
   version "6.4.13"
   resolved "https://registry.npmjs.org/@storybook/components/-/components-6.4.13.tgz#2e7f109ecef63ae0c6f096939d69e26abbb39c6b"
@@ -2568,6 +2576,14 @@
     synchronous-promise "^2.0.15"
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
+
+"@storybook/theming@./storybook-theming-6.5.0-alpha.52.tgz":
+  version "6.5.0-alpha.52"
+  resolved "./storybook-theming-6.5.0-alpha.52.tgz#2e719ca19c16bff318af9955bc19c8ea03a320fa"
+  dependencies:
+    "@storybook/client-logger" "6.5.0-alpha.52"
+    core-js "^3.8.2"
+    regenerator-runtime "^0.13.7"
 
 "@storybook/theming@6.4.13":
   version "6.4.13"
