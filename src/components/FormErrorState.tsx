@@ -27,6 +27,7 @@ export interface FormErrorStateChildrenArgs {
 export interface FormErrorStateProps {
   onSubmit: Function;
   children: (args: FormErrorStateChildrenArgs) => JSX.Element;
+  suppressErrorMessages: boolean;
 }
 
 export interface PureFormErrorStateProps extends FormErrorStateProps {
@@ -40,6 +41,7 @@ export interface PureFormErrorStateProps extends FormErrorStateProps {
 
 export const PureFormErrorState = ({
   children,
+  suppressErrorMessages,
   onSubmit,
   onMouseEnter,
   onMouseLeave,
@@ -54,7 +56,7 @@ export const PureFormErrorState = ({
     onFocus: () => onFocus(id),
     onBlur: () => onBlur(id),
     error: (value: string) => getError({ id, value, validate }),
-    suppressErrorMessage: !primaryFieldId || primaryFieldId !== id,
+    suppressErrorMessage: suppressErrorMessages || !primaryFieldId || primaryFieldId !== id,
   });
 
   return children({ getFormErrorFieldProps, onSubmit });
