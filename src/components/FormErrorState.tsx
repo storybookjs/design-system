@@ -27,7 +27,7 @@ export interface FormErrorStateChildrenArgs {
 export interface FormErrorStateProps {
   onSubmit: Function;
   children: (args: FormErrorStateChildrenArgs) => JSX.Element;
-  suppressErrorMessages: boolean;
+  suppressErrorMessages?: boolean;
 }
 
 export interface PureFormErrorStateProps extends FormErrorStateProps {
@@ -41,7 +41,7 @@ export interface PureFormErrorStateProps extends FormErrorStateProps {
 
 export const PureFormErrorState = ({
   children,
-  suppressErrorMessages,
+  suppressErrorMessages = false,
   onSubmit,
   onMouseEnter,
   onMouseLeave,
