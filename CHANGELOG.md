@@ -1,3 +1,15 @@
+# v7.3.3 (Fri Apr 08 2022)
+
+#### 🐛 Bug Fix
+
+- FormErrorState: make suppressErrorMessages optional with default [#351](https://github.com/storybookjs/design-system/pull/351) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v7.3.2 (Wed Apr 06 2022)
 
 #### 🐛 Bug Fix
