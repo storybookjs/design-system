@@ -2127,14 +2127,6 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/client-logger@6.3.8":
-  version "6.3.8"
-  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.3.8.tgz#042b81c45f73066e4f6c32942c72f4aca0ae6646"
-  integrity sha512-d/65629nvnlDpeubcElTypHuSvOqxNTNKnuN0oKDM8BsE0EO5rhTfzrx2vhiSW8At8MuD1eFC19BWdCZV18Edg==
-  dependencies:
-    core-js "^3.8.2"
-    global "^4.4.0"
-
 "@storybook/client-logger@6.4.13":
   version "6.4.13"
   resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.4.13.tgz#2467ee13c7f85e9f6c0d9cd64c11ee7a109b060a"
@@ -2143,10 +2135,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/client-logger@6.5.0-alpha.52":
-  version "6.5.0-alpha.52"
-  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.5.0-alpha.52.tgz#873f6892c3ffb09c95ffa2dc60da5f32b42b5996"
-  integrity sha512-EoiRQ06YID8OFSQzm4D2jE+5rdbEbMuVI9DV1Td67QVrN8v5gdXn6/AnEH5PE5cmRuMPV2RUr1bdqRO8nzmq+Q==
+"@storybook/client-logger@6.5.0-alpha.60":
+  version "6.5.0-alpha.60"
+  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.5.0-alpha.60.tgz#8295329669146fe8d9a1eeed44dc9179ccde0e12"
+  integrity sha512-F/dtlyvp6mtyO9oCS9Jj46IXC924R8nPJDu+5e3JAo7WxgiIhtBvsMQdYBpfFnZwK0ZE6eqqLsinvKgvs3wBPQ==
   dependencies:
     core-js "^3.8.2"
     global "^4.4.0"
@@ -2577,14 +2569,6 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/theming@./storybook-theming-6.5.0-alpha.52.tgz":
-  version "6.5.0-alpha.52"
-  resolved "./storybook-theming-6.5.0-alpha.52.tgz#2e719ca19c16bff318af9955bc19c8ea03a320fa"
-  dependencies:
-    "@storybook/client-logger" "6.5.0-alpha.52"
-    core-js "^3.8.2"
-    regenerator-runtime "^0.13.7"
-
 "@storybook/theming@6.4.13":
   version "6.4.13"
   resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.4.13.tgz#1a8aadeddb6c3a115f739aa1a4bbd7e65d4a3830"
@@ -2603,23 +2587,14 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/theming@^6.2.0":
-  version "6.3.8"
-  resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.3.8.tgz#3af76408aa8a4f13e217cf407e63a03db217eedc"
-  integrity sha512-Np51rvecnuHNevZ7Em0uElT5UkgASP5K2u8NpHcCxP/Hd73wxS/h//6XnjA9Aich7h/JanG71jAC3qqhZabatA==
+"@storybook/theming@6.5.0-alpha.60":
+  version "6.5.0-alpha.60"
+  resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.5.0-alpha.60.tgz#c364fa5662fa12314aafb7c588451da366c4e3ac"
+  integrity sha512-n4TjLkq2LqqDVWG5xMoBAk4nfUfUiOeflOtIpcDgNO54Op1alomuqIo0+OoVh586OvMI4X3JjdACgme26jHEyg==
   dependencies:
-    "@emotion/core" "^10.1.1"
-    "@emotion/is-prop-valid" "^0.8.6"
-    "@emotion/styled" "^10.0.27"
-    "@storybook/client-logger" "6.3.8"
+    "@storybook/client-logger" "6.5.0-alpha.60"
     core-js "^3.8.2"
-    deep-object-diff "^1.1.0"
-    emotion-theming "^10.0.27"
-    global "^4.4.0"
-    memoizerific "^1.11.3"
-    polished "^4.0.5"
-    resolve-from "^5.0.0"
-    ts-dedent "^2.0.0"
+    regenerator-runtime "^0.13.7"
 
 "@storybook/ui@6.4.13":
   version "6.4.13"
