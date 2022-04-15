@@ -2193,10 +2193,10 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/client-logger@6.5.0-alpha.61":
-  version "6.5.0-alpha.61"
-  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.5.0-alpha.61.tgz#f472534fb37ae78e1a276b92bee8e888da99b3e8"
-  integrity sha512-aBUDpNvnkmzOvPOyuWM+DR35SCEhe2jnvjF1hNpNA/OcQJtJwsBdIfC4BiebDgeRZhSTKXPwlZF8RYYhSfHyqg==
+"@storybook/client-logger@6.5.0-alpha.63":
+  version "6.5.0-alpha.63"
+  resolved "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-6.5.0-alpha.63.tgz#3f432e77fff5baebd51420bade94b957d691db6d"
+  integrity sha512-YqDSL7EbtlgMXWMkjC4VHSyAFGiZZ2tjTYK7VLuNYPXG50aJyFlJRDI7m9hEexmViRH/De62UPyq9nSjNsmlZQ==
   dependencies:
     core-js "^3.8.2"
     global "^4.4.0"
@@ -2645,12 +2645,12 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/theming@6.5.0-alpha.61":
-  version "6.5.0-alpha.61"
-  resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.5.0-alpha.61.tgz#5264efbc8b3a252adb7ea97334712cdd0aea1580"
-  integrity sha512-zTvivZmOI3i9b6LJCmZVlShwtRRi/GvdBn9Xedh0Jlzm6s7i4CbBc6BeJB8JaNajjKWysPIBKQOVLlGtjBcVPA==
+"@storybook/theming@6.5.0-alpha.63":
+  version "6.5.0-alpha.63"
+  resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.5.0-alpha.63.tgz#4e807548813ef64b3c3c2fea44266b4b2b428fe7"
+  integrity sha512-5xsQ84SqHX9rPMMmL7dw7YLad0adzNbhly4x4A/BMiuzSU3LvzK26yQWu9jzuM6Kxsm+4ssZmBDVGEUGsi9moA==
   dependencies:
-    "@storybook/client-logger" "6.5.0-alpha.61"
+    "@storybook/client-logger" "6.5.0-alpha.63"
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
