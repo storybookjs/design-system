@@ -104,3 +104,12 @@ PureMultipleErrors.args = {
   blurredFieldIds: new Set(['input-1', 'input-2']),
   children: Children,
 };
+
+export const PureMultipleErrorsSuppressed = (args: PureFormErrorStateProps) => (
+  <PureFormErrorState {...args} />
+);
+PureMultipleErrorsSuppressed.decorators = decorators;
+PureMultipleErrorsSuppressed.args = {
+  ...PureMultipleErrors.args,
+  suppressErrorMessages: true,
+};
