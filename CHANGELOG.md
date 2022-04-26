@@ -1,3 +1,15 @@
+# v7.3.4 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- Migration to Emotion 11 [#347](https://github.com/storybookjs/design-system/pull/347) ([@Andarist](https://github.com/Andarist))
+
+#### Authors: 1
+
+- Mateusz Burzyński ([@Andarist](https://github.com/Andarist))
+
+---
+
 # v7.3.3 (Fri Apr 08 2022)
 
 #### 🐛 Bug Fix
