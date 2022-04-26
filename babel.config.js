@@ -6,7 +6,18 @@ module.exports = (api) => {
     plugins: [
       '@babel/plugin-proposal-object-rest-spread',
       '@babel/transform-runtime',
-      'babel-plugin-emotion',
+      [
+        '@emotion',
+        {
+          importMap: {
+            '@storybook/theming': {
+              styled: { canonicalImport: ['@emotion/styled', 'default'] },
+              css: { canonicalImport: ['@emotion/react', 'css'] },
+              Global: { canonicalImport: ['@emotion/react', 'Global'] },
+            },
+          },
+        },
+      ],
     ],
   };
 };
