@@ -13,7 +13,7 @@ const UserAvatar = styled(Avatar)`
 
 const UserEllipses = styled.li`
   display: inline-flex;
-  font-size: ${typography.size.s1}px;
+  font-size: ${typography.size.s2}px;
   color: ${color.mediumdark};
   margin-left: 6px;
   white-space: nowrap;
