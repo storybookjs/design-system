@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@emotion/weak-memoize": "^0.2.5",
-    "@storybook/theming": "6.5.0-alpha.63",
+    "@storybook/theming": "^6.5.0",
     "@types/pluralize": "^0.0.29",
     "@types/prismjs": "^1.16.6",
     "@types/react-modal": "^3.12.1",
