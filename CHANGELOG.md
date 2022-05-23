@@ -1,3 +1,15 @@
+# v7.3.5 (Mon May 23 2022)
+
+#### 🐛 Bug Fix
+
+- Update to a looser version of `@storybook/theming` [#356](https://github.com/storybookjs/design-system/pull/356) ([@tmeasday](https://github.com/tmeasday))
+
+#### Authors: 1
+
+- Tom Coleman ([@tmeasday](https://github.com/tmeasday))
+
+---
+
 # v7.3.4 (Tue Apr 26 2022)
 
 #### 🐛 Bug Fix
