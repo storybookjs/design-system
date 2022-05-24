@@ -1,3 +1,15 @@
+# v7.3.6 (Tue May 24 2022)
+
+#### 🐛 Bug Fix
+
+- Add Soc2 image to illustrations [#357](https://github.com/storybookjs/design-system/pull/357) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.3.5 (Mon May 23 2022)
 
 #### 🐛 Bug Fix
