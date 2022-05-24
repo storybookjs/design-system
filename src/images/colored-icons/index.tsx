@@ -42,6 +42,7 @@ export { default as Runtest } from './Runtest';
 export { default as Scale } from './Scale';
 export { default as Search } from './Search';
 export { default as Shield } from './Shield';
+export { default as Soc2 } from './Soc2';
 export { default as Stack } from './Stack';
 export { default as Stoplight } from './Stoplight';
 export { default as Testflake } from './Testflake';
