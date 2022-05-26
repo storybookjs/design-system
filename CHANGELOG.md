@@ -1,3 +1,15 @@
+# v7.3.7 (Thu May 26 2022)
+
+#### 🐛 Bug Fix
+
+- Don't compile story files and remove emotion sourcemaps [#358](https://github.com/storybookjs/design-system/pull/358) ([@tmeasday](https://github.com/tmeasday))
+
+#### Authors: 1
+
+- Tom Coleman ([@tmeasday](https://github.com/tmeasday))
+
+---
+
 # v7.3.6 (Tue May 24 2022)
 
 #### 🐛 Bug Fix
