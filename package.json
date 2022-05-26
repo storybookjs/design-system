@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "patch-package": "patch-package",
-    "build": "yarn build-images && yarn patch-package && babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js\" --ignore \"**/*.stories.js\"",
+    "build": "yarn build-images && yarn patch-package && babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.stories.tsx\" --ignore \"**/*.stories.js\"",
     "build-images": "yarn svgr --out-dir src/images src/images",
     "build-storybook": "yarn build-images && yarn patch-package && build-storybook -s .storybook/static",
     "clean": "rm -rf dist",
