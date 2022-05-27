@@ -74,7 +74,6 @@ const StyledLink = styled.a<StyledLinkProps>`
       color: ${color.mediumdark};
 
       &:hover,
-      &:focus-visible {
         color: ${color.dark};
       }
 
@@ -89,7 +88,6 @@ const StyledLink = styled.a<StyledLinkProps>`
       color: ${color.dark};
 
       &:hover,
-      &:focus-visible {
         color: ${color.darkest};
       }
 
@@ -104,7 +102,6 @@ const StyledLink = styled.a<StyledLinkProps>`
       color: inherit;
 
       &:hover,
-      &:focus-visible,
       &:active {
         color: inherit;
         text-decoration: underline;
@@ -117,7 +114,6 @@ const StyledLink = styled.a<StyledLinkProps>`
       color: ${color.lightest};
 
       &:hover,
-      &:focus-visible {
         color: ${color.lighter};
       }
 
