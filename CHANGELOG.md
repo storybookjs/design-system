@@ -1,3 +1,15 @@
+# v7.3.8 (Fri May 27 2022)
+
+#### 🐛 Bug Fix
+
+- Only change the look of a link when it is hovered over or tabbed to [#359](https://github.com/storybookjs/design-system/pull/359) ([@andrewortwein](https://github.com/andrewortwein))
+
+#### Authors: 1
+
+- Andrew Ortwein ([@andrewortwein](https://github.com/andrewortwein))
+
+---
+
 # v7.3.7 (Thu May 26 2022)
 
 #### 🐛 Bug Fix
