@@ -73,7 +73,7 @@ const StyledLink = styled.a<StyledLinkProps>`
     css`
       color: ${color.mediumdark};
 
-      &:hover,
+      &:hover {
         color: ${color.dark};
       }
 
@@ -87,7 +87,7 @@ const StyledLink = styled.a<StyledLinkProps>`
     css`
       color: ${color.dark};
 
-      &:hover,
+      &:hover {
         color: ${color.darkest};
       }
 
@@ -113,7 +113,7 @@ const StyledLink = styled.a<StyledLinkProps>`
     css`
       color: ${color.lightest};
 
-      &:hover,
+      &:hover {
         color: ${color.lighter};
       }
 
