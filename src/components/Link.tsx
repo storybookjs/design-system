@@ -35,7 +35,7 @@ const StyledLink = styled.a<StyledLinkProps>`
   color: ${color.secondary};
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
     transform: translateY(-1px);
     color: ${darken(0.07, color.secondary)};
