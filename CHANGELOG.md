@@ -1,3 +1,15 @@
+# v7.4.0 (Fri Jun 17 2022)
+
+#### 🚀 Enhancement
+
+- Add typography styles and a couple of missing colors to shared styles [#362](https://github.com/storybookjs/design-system/pull/362) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.3.9 (Thu Jun 16 2022)
 
 #### 🐛 Bug Fix
