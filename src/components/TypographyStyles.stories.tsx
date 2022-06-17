@@ -70,7 +70,10 @@ export const Marketing = () => (
   <>
     <MarketingBase variant="hero1">Marketing / Headers / Hero1</MarketingBase>
     <MarketingBase variant="hero2">Marketing / Headers / Hero2</MarketingBase>
+    <MarketingBase variant="heading">Marketing / Headers / Heading</MarketingBase>
+    <MarketingBase variant="subheading">Marketing / Headers / Subheading</MarketingBase>
     <MarketingBase variant="textLarge">Marketing / Text / Large</MarketingBase>
     <MarketingBase variant="textLargeBold">Marketing / Text / LargeBold</MarketingBase>
+    <MarketingBase variant="textSmall">Marketing / Text / Small</MarketingBase>
   </>
 );
