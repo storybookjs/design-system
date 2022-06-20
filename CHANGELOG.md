@@ -1,3 +1,15 @@
+# v7.4.1 (Mon Jun 20 2022)
+
+#### 🐛 Bug Fix
+
+- export images and icons [#363](https://github.com/storybookjs/design-system/pull/363) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.4.0 (Fri Jun 17 2022)
 
 #### 🚀 Enhancement
