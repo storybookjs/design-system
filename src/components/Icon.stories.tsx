@@ -16,7 +16,6 @@ const Item = styled.li<{ minimal?: boolean }>`
   flex: 0 1 16%;
   min-width: 120px;
   margin: 16px;
-  // padding: 0px 8px 20px;
 
   svg {
     margin-right: 6px;
