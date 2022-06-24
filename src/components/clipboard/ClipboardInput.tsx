@@ -11,14 +11,14 @@ const StyledInput = styled(Input as any)`
   width: 100%;
   display: block;
   && input {
-    padding-right: 26px !important;
+    padding-right: 32px !important;
   }
 `;
 
 const StyledClipboardIcon = styled(ClipboardIcon)`
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 0px;
+  right: 0px;
 `;
 
 type SubProps = React.ComponentPropsWithoutRef<typeof Input>;

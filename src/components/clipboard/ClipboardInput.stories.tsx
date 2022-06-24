@@ -7,7 +7,7 @@ export default {
 };
 
 export const Default = () => (
-  <div style={{ padding: '3em', width: 300 }}>
+  <div style={{ padding: '3em', width: 320 }}>
     <ClipboardInput label="Label" value="https://www.chromatic.com" />
   </div>
 );
