@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { styled } from '@storybook/theming';
 import { icons } from './shared/icons';
 
@@ -23,11 +23,11 @@ const Svg = styled.svg`
 export const Icon: FunctionComponent<Props> = ({ icon, ...props }: Props) => {
   return (
     <Svg viewBox="0 0 14 14" width="14px" height="14px" {...props}>
-      {Array.isArray(icons[icon]) ? <Fragment>{icons[icon]}</Fragment> : <path d={icons[icon]} />}
+      <>{icons[icon]}</>
     </Svg>
   );
 };
 
 interface Props {
-  icon?: keyof typeof icons;
+  icon: keyof typeof icons;
 }
