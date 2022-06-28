@@ -28,6 +28,6 @@ export const Icon: FunctionComponent<Props> = ({ icon, ...props }: Props) => {
   );
 };
 
-interface Props {
+export interface Props {
   icon: keyof typeof icons;
 }
