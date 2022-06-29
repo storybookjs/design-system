@@ -161,7 +161,7 @@ const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance
       `}
       height: 12px;
       width: 12px;
-      transform: translateY(-50%);
+      margin-top: -6px;
       z-index: 3;
       ${props.appearance === 'pill' || props.appearance === 'code' ? css`
         left: 10px;
