@@ -1,3 +1,15 @@
+# v7.6.1 (Thu Jun 30 2022)
+
+#### 🐛 Bug Fix
+
+- Checkbox: checkboxColor is not actually required [#365](https://github.com/storybookjs/design-system/pull/365) ([@kylesuss](https://github.com/kylesuss))
+
+#### Authors: 1
+
+- Kyle Suss ([@kylesuss](https://github.com/kylesuss))
+
+---
+
 # v7.6.0 (Thu Jun 30 2022)
 
 #### 🚀 Enhancement
