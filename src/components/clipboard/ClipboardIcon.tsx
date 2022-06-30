@@ -5,8 +5,8 @@ import { Icon } from '../Icon';
 import { Clipboard } from './Clipboard';
 
 const StyledClipboard = styled(Clipboard)`
-  line-height: 14px;
-  padding: 5px;
+  line-height: 10px;
+  padding: 10px;
   color: ${color.mediumdark};
   &:hover {
     color: ${color.darker};
@@ -18,8 +18,8 @@ interface StyledIconProps {
 }
 
 const StyledIcon = styled(Icon)<StyledIconProps>`
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   vertical-align: top;
   color: ${(props) => (props.copied ? color.positive : 'inherit')};
 `;

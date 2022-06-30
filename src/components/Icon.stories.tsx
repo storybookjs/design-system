@@ -13,15 +13,14 @@ const Item = styled.li<{ minimal?: boolean }>`
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  flex: 0 1 20%;
+  flex: 0 1 16%;
   min-width: 120px;
-
-  padding: 0px 7.5px 20px;
+  margin: 16px;
 
   svg {
-    margin-right: 10px;
-    width: 24px;
-    height: 24px;
+    margin-right: 6px;
+    width: 14px;
+    height: 14px;
   }
 
   ${(props) =>
@@ -31,13 +30,13 @@ const Item = styled.li<{ minimal?: boolean }>`
       min-width: auto;
       padding: 0;
       background: #fff;
-      border: 1px solid #666;
+      margin: 16px;
 
       svg {
         display: block;
         margin-right: 0;
-        width: 48px;
-        height: 48px;
+        width: 14px;
+        height: 14px;
       }
     `};
 `;
@@ -46,6 +45,13 @@ const List = styled.ul`
   display: flex;
   flex-flow: row wrap;
   list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const Header = styled.h2`
+  font-size: 16px;
+  margin: 16px;
 `;
 
 export default {
@@ -58,7 +64,7 @@ Basic.args = { icon: 'watch' };
 
 export const Labels = () => (
   <>
-    There are {Object.keys(icons).length} icons
+    <Header>{Object.keys(icons).length} icons</Header>
     <List>
       {Object.keys(icons).map((key) => (
         <Item key={key}>
@@ -71,11 +77,14 @@ export const Labels = () => (
 );
 
 export const NoLabels = () => (
-  <List>
-    {Object.keys(icons).map((key) => (
-      <Item minimal key={key}>
-        <Icon icon={key as keyof typeof icons} aria-label={key} />
-      </Item>
-    ))}
-  </List>
+  <>
+    <Header>{Object.keys(icons).length} icons</Header>
+    <List>
+      {Object.keys(icons).map((key) => (
+        <Item minimal key={key}>
+          <Icon icon={key as keyof typeof icons} aria-label={key} />
+        </Item>
+      ))}
+    </List>
+  </>
 );

@@ -10,8 +10,8 @@ const LinkInner = styled.span<{ withArrow: boolean }>`
     props.withArrow &&
     css`
       > svg:last-of-type {
-        height: 0.7em;
-        width: 0.7em;
+        height: 0.65em;
+        width: 0.65em;
         margin-right: 0;
         margin-left: 0.25em;
         bottom: auto;

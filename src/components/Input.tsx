@@ -159,9 +159,9 @@ const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance
       ` : css `
         font-size: ${typography.size.s2}px;
       `}
-      height: 1em;
-      width: 1em;
-      margin-top: -.525em;
+      height: 12px;
+      width: 12px;
+      margin-top: -6px;
       z-index: 3;
       ${props.appearance === 'pill' || props.appearance === 'code' ? css`
         left: 10px;

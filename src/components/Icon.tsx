@@ -22,12 +22,12 @@ const Svg = styled.svg`
  */
 export const Icon: FunctionComponent<Props> = ({ icon, ...props }: Props) => {
   return (
-    <Svg viewBox="0 0 1024 1024" width="20px" height="20px" {...props}>
-      <path d={icons[icon]} />
+    <Svg viewBox="0 0 14 14" width="14px" height="14px" {...props}>
+      <>{icons[icon]}</>
     </Svg>
   );
 };
 
-interface Props {
+export interface Props {
   icon: keyof typeof icons;
 }
