@@ -1,3 +1,15 @@
+# v7.6.0 (Thu Jun 30 2022)
+
+#### 🚀 Enhancement
+
+- Add unpin icon [#366](https://github.com/storybookjs/design-system/pull/366) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.5.0 (Thu Jun 30 2022)
 
 #### 🚀 Enhancement
