@@ -119,14 +119,9 @@ interface Props {
   error?: ReactNode;
 }
 
-export const Checkbox: FunctionComponent<Props & ComponentProps<typeof Input>> = ({
-  appearance = 'primary',
-  id,
-  label,
-  error,
-  hideLabel,
-  ...props
-}) => {
+export const Checkbox: FunctionComponent<
+  Props & Omit<ComponentProps<typeof Input>, 'checkboxColor'>
+> = ({ appearance = 'primary', id, label, error, hideLabel, ...props }) => {
   const errorId = `${id}-error`;
   const checkboxColor = color[appearance];
   return (
