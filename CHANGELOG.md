@@ -1,3 +1,16 @@
+# v7.5.0 (Thu Jun 30 2022)
+
+#### 🚀 Enhancement
+
+- Update every icon (and add a few new ones) [#364](https://github.com/storybookjs/design-system/pull/364) ([@MichaelArestad](https://github.com/MichaelArestad) [@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 2
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.4.1 (Mon Jun 20 2022)
 
 #### 🐛 Bug Fix
