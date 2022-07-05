@@ -1,3 +1,15 @@
+# v7.7.0 (Tue Jul 05 2022)
+
+#### 🚀 Enhancement
+
+- Resized check, camera, and folder [#367](https://github.com/storybookjs/design-system/pull/367) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.6.1 (Thu Jun 30 2022)
 
 #### 🐛 Bug Fix
