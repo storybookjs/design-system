@@ -88,12 +88,12 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
   }
 
   svg {
-    height: ${(props) => (props.size === SIZES.SMALL ? '14' : '16')}px;
-    width: ${(props) => (props.size === SIZES.SMALL ? '14' : '16')}px;
+    height: ${(props) => (props.size === SIZES.SMALL ? '12' : '14')}px;
+    width: ${(props) => (props.size === SIZES.SMALL ? '12' : '14')}px;
     vertical-align: top;
     margin-right: ${(props) => (props.size === SIZES.SMALL ? '4' : '6')}px;
-    margin-top: ${(props) => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
-    margin-bottom: ${(props) => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
+    margin-top: ${(props) => (props.size === SIZES.SMALL ? '0' : '-1')}px;
+    margin-bottom: ${(props) => (props.size === SIZES.SMALL ? '0' : '-1')}px;
 
     /* Necessary for js mouse events to not glitch out when hovering on svgs */
     pointer-events: none;
@@ -147,6 +147,8 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
       svg {
         display: block;
         margin: 0;
+        height: ${props.size === SIZES.SMALL ? '14' : '16'}px;
+        width: ${props.size === SIZES.SMALL ? '14' : '16'}px;
       }
       padding: ${props.size === SIZES.SMALL ? '7' : '12'}px;
     `}

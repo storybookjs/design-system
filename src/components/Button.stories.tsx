@@ -43,6 +43,35 @@ export const Sizes = () => (
   </>
 );
 
+export const ContainsSVG = () => (
+  <>
+    <Button appearance="secondary">
+      <Icon icon="lock" />
+      Default
+    </Button>
+    <Button appearance="secondary" size="small">
+      <Icon icon="lock" />
+      Small
+    </Button>
+    <Button appearance="secondary">
+      <Icon icon="check" />
+      Default
+    </Button>
+    <Button appearance="secondary" size="small">
+      <Icon icon="check" />
+      Small
+    </Button>
+    <Button appearance="secondary">
+      <Icon icon="grid" />
+      Default
+    </Button>
+    <Button appearance="secondary" size="small">
+      <Icon icon="grid" />
+      Small
+    </Button>
+  </>
+);
+
 export const Loading = () => (
   <>
     <Button appearance="primary" isLoading>
