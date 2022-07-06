@@ -1,3 +1,15 @@
+# v7.7.1 (Wed Jul 06 2022)
+
+#### 🐛 Bug Fix
+
+- Make Icon size in Buttons smaller [#368](https://github.com/storybookjs/design-system/pull/368) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.7.0 (Tue Jul 05 2022)
 
 #### 🚀 Enhancement
