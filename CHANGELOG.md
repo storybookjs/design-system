@@ -1,3 +1,15 @@
+# v7.7.2 (Thu Jul 07 2022)
+
+#### 🐛 Bug Fix
+
+- Update trash icon [#370](https://github.com/storybookjs/design-system/pull/370) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.7.1 (Wed Jul 06 2022)
 
 #### 🐛 Bug Fix
