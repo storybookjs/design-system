@@ -1,6 +1,10 @@
 module.exports = {
   root: true,
   extends: ['@storybook/eslint-config-storybook', 'plugin:storybook/recommended'],
+  parserOptions: {
+    project: ['./tsconfig.json'],
+    createDefaultProgram: true,
+  },
   overrides: [
     {
       files: ['**/*.tsx'],
@@ -11,4 +15,9 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    jest: {
+      version: 'latest',
+    },
+  },
 };
