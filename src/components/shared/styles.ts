@@ -176,7 +176,7 @@ export const subheading = {
   small: css({
     fontSize: 11,
     fontWeight: typography.weight.extrabold,
-    lineHeight: '15px',
+    lineHeight: '16px',
     letterSpacing: '0.38em',
   }),
 };
