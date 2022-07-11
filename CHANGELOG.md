@@ -1,3 +1,15 @@
+# v7.7.4 (Mon Jul 11 2022)
+
+#### 🐛 Bug Fix
+
+- update storybook logo and fix SVGR export [#373](https://github.com/storybookjs/design-system/pull/373) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.7.3 (Mon Jul 11 2022)
 
 #### 🐛 Bug Fix
