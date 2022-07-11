@@ -106,7 +106,9 @@ const getStackLevelStyling = (props: Pick<Props, 'error' | 'stackLevel'>) => {
 };
 
 // prettier-ignore
-const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance' | 'startingType' | 'icon'>>`
+const InputWrapper = styled.div<
+  Pick<Props, 'error' | 'stackLevel' | 'appearance' | 'startingType' | 'icon'>
+>`
   display: inline-block;
   position: relative;
   vertical-align: top;
@@ -114,7 +116,7 @@ const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance
 
   ${InputEl} {
     position: relative;
-    ${props => getStackLevelStyling(props)}
+    ${(props) => getStackLevelStyling(props)}
 
     background: ${color.lightest};
     color: ${color.darkest};
@@ -122,83 +124,108 @@ const InputWrapper = styled.div<Pick<Props, 'error' | 'stackLevel' | 'appearance
     line-height: 20px;
     padding: 10px 15px; //40px tall
     box-shadow: ${color.border} 0 0 0 1px inset;
-    &:focus { box-shadow: ${color.secondary} 0 0 0 1px inset; }
+    &:focus {
+      box-shadow: ${color.secondary} 0 0 0 1px inset;
+    }
 
+    ${(props) =>
+      props.appearance === 'pill' &&
+      css`
+        font-size: ${typography.size.s1}px;
+        line-height: 16px;
+        padding: 6px 12px; //28px tall
+        border-radius: 3em;
+        background: transparent;
+      `}
 
-    ${props => props.appearance === 'pill' && css`
-      font-size: ${typography.size.s1}px;
-      line-height: 16px;
-      padding: 6px 12px; //28px tall
-      border-radius: 3em;
-      background: transparent;
-    `}
-
-    ${props => props.appearance === 'code' && css`
-      font-size: ${typography.size.s1 - 1}px;
-      line-height: 16px;
-      font-family: ${typography.type.code};
-      border-radius: ${spacing.borderRadius.small}px;
-      background: ${color.lightest};
-      padding: 8px 10px;
-    `}
+    ${(props) =>
+      props.appearance === 'code' &&
+      css`
+        font-size: ${typography.size.s1 - 1}px;
+        line-height: 16px;
+        font-family: ${typography.type.code};
+        border-radius: ${spacing.borderRadius.small}px;
+        background: ${color.lightest};
+        padding: 8px 10px;
+      `}
   }
 
-  ${props => props.startingType === 'password' && css`
-    ${InputEl} {
-      padding-right: 52px;
-    }
-  `}
-
-  ${props => props.icon && css`
-    > svg {
-      transition: all 150ms ease-out;
-      position: absolute;
-      top: 50%;
-      ${props.appearance === 'pill' || props.appearance === 'code' ? css`
-        font-size: ${typography.size.s1}px;
-      ` : css `
-        font-size: ${typography.size.s2}px;
-      `}
-      height: 12px;
-      width: 12px;
-      margin-top: -6px;
-      z-index: 3;
-      ${props.appearance === 'pill' || props.appearance === 'code' ? css`
-        left: 10px;
-      ` : css `
-        left: ${props.appearance === 'tertiary' ? 0 : `15px` };
-      `}
-
-      background: transparent;
-
-      path {
-        transition: all 150ms ease-out;
-        fill: ${color.mediumdark};
+  ${(props) =>
+    props.startingType === 'password' &&
+    css`
+      ${InputEl} {
+        padding-right: 52px;
       }
-    }
+    `}
 
-    ${InputEl}:focus + svg path {
-      fill: ${color.darker};
-    }
+  ${(props) =>
+    props.icon &&
+    css`
+      > svg {
+        transition: all 150ms ease-out;
+        position: absolute;
+        top: 50%;
+        ${props.appearance === 'pill' || props.appearance === 'code'
+          ? css`
+              font-size: ${typography.size.s1}px;
+              height: 12px;
+              margin-top: -6px;
+              width: 12px;
+            `
+          : css`
+              font-size: ${typography.size.s2}px;
+              height: 14px;
+              margin-top: -7px;
+              width: 14px;
+            `}
+        z-index: 3;
+        ${props.appearance === 'pill' || props.appearance === 'code'
+          ? css`
+              left: 10px;
+            `
+          : css`
+              left: ${props.appearance === 'tertiary' ? 0 : `15px`};
+            `}
 
-    ${InputEl} {
-      padding-left: 40px;
+        background: transparent;
 
-      ${(props.appearance === 'pill' || props.appearance === 'code') && css` padding-left: 30px; `};
-    }
-  `}
+        path {
+          transition: all 150ms ease-out;
+          fill: ${color.mediumdark};
+        }
+      }
 
-  ${props => props.error && css`
-    ${InputEl} {
+      ${InputEl}:focus + svg path {
+        fill: ${color.darker};
+      }
+
+      ${InputEl} {
+        padding-left: 40px;
+
+        ${(props.appearance === 'pill' || props.appearance === 'code') &&
+        css`
+          padding-left: 30px;
+        `};
+      }
+    `}
+
+  ${(props) =>
+    props.error &&
+    css`
+      ${InputEl} {
         box-shadow: ${color.red} 0 0 0 1px inset;
-        &:focus { box-shadow: ${color.red} 0 0 0 1px inset !important;  }
-    }
+        &:focus {
+          box-shadow: ${color.red} 0 0 0 1px inset !important;
+        }
+      }
 
-    svg {
-      animation: ${jiggle} 700ms ease-out;
-      path { fill: ${color.red}; }
-    }
-  `}
+      svg {
+        animation: ${jiggle} 700ms ease-out;
+        path {
+          fill: ${color.red};
+        }
+      }
+    `}
 `;
 // prettier-ignore
 const InputContainer = styled.div<Pick<Props, 'orientation'>>`
