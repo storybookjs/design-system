@@ -1,3 +1,15 @@
+# v7.7.3 (Mon Jul 11 2022)
+
+#### 🐛 Bug Fix
+
+- Update logos [#372](https://github.com/storybookjs/design-system/pull/372) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.7.2 (Thu Jul 07 2022)
 
 #### 🐛 Bug Fix
