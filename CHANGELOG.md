@@ -1,3 +1,15 @@
+# v7.7.5 (Mon Jul 11 2022)
+
+#### 🐛 Bug Fix
+
+- Increase size of icons in standard form elements [#371](https://github.com/storybookjs/design-system/pull/371) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.7.4 (Mon Jul 11 2022)
 
 #### 🐛 Bug Fix
