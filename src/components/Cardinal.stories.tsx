@@ -185,7 +185,6 @@ export const WithIcon = () => (
   <Cardinal
     size="small"
     count={14}
-    text="Changes"
     TextWrapper={() => (
       <span>
         Changes&nbsp;
