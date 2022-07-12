@@ -78,8 +78,9 @@ const CardinalInner = styled.div<CardinalInnerProps>`
   text-align: ${(props) => props.alignment};
 
   svg {
+    width: 12px;
     height: 12px;
-    margin: 1px 0;
+    margin: 1px 0 0 4px;
     vertical-align: top;
     color: inherit;
   }

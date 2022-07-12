@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 
 import { Cardinal } from './Cardinal';
+import { Icon } from './Icon';
 
 const onHover = action('hover');
 const onClick = action('click');
@@ -178,4 +179,21 @@ export const LargePlural = () => <Cardinal size="large" count={2} text="Story" /
 
 LargePlural.story = {
   name: 'large plural',
+};
+
+export const WithIcon = () => (
+  <Cardinal
+    size="small"
+    count={14}
+    TextWrapper={() => (
+      <span>
+        Changes
+        <Icon icon="question" aria-label="More info" />
+      </span>
+    )}
+  />
+);
+
+WithIcon.story = {
+  name: 'with icon',
 };
