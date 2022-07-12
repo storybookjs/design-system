@@ -1,3 +1,15 @@
+# v7.7.6 (Tue Jul 12 2022)
+
+#### 🐛 Bug Fix
+
+- Update cardinal icon [#374](https://github.com/storybookjs/design-system/pull/374) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.7.5 (Mon Jul 11 2022)
 
 #### 🐛 Bug Fix
