@@ -187,7 +187,7 @@ export const WithIcon = () => (
     count={14}
     TextWrapper={() => (
       <span>
-        Changes&nbsp;
+        Changes
         <Icon icon="question" aria-label="More info" />
       </span>
     )}
