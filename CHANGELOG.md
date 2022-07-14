@@ -1,3 +1,15 @@
+# v7.7.7 (Thu Jul 14 2022)
+
+#### 🐛 Bug Fix
+
+- Format icon elements so react treats them as a the children of an svg [#375](https://github.com/storybookjs/design-system/pull/375) ([@JonathanKolnik](https://github.com/JonathanKolnik))
+
+#### Authors: 1
+
+- Jono Kolnik ([@JonathanKolnik](https://github.com/JonathanKolnik))
+
+---
+
 # v7.7.6 (Tue Jul 12 2022)
 
 #### 🐛 Bug Fix
