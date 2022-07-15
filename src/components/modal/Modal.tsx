@@ -88,7 +88,7 @@ export const Modal: FC<Props> = ({ isBlank = false, isOpen, onClose, children })
 
       {!isBlank && (
         <Action>
-          <Button containsIcon appearance="outline" onClick={onClose}>
+          <Button containsIconOnly appearance="outline" onClick={onClose}>
             <Icon icon="cross" />
           </Button>
         </Action>

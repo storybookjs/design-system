@@ -21,7 +21,7 @@ const LinkInner = styled.span<{ withArrow: boolean }>`
 `;
 
 interface StyledLinkProps {
-  containsIcon?: boolean;
+  containsIconOnly?: boolean;
   secondary?: boolean;
   tertiary?: boolean;
   nochrome?: boolean;
@@ -56,7 +56,7 @@ const StyledLink = styled.a<StyledLinkProps>`
   }
 
   ${(props) =>
-    props.containsIcon &&
+    props.containsIconOnly &&
     css`
       svg {
         height: 1em;
@@ -148,7 +148,7 @@ export type LinkProps = React.ComponentProps<typeof StyledLink> & {
 const LinkComponentPicker = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
   (
     {
-      containsIcon,
+      containsIconOnly,
       inverse,
       isButton,
       LinkWrapper,
@@ -200,7 +200,7 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>
 Link.defaultProps = {
   withArrow: false,
   isButton: false,
-  containsIcon: false,
+  containsIconOnly: false,
   secondary: false,
   tertiary: false,
   nochrome: false,

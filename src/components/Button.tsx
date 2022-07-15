@@ -142,7 +142,7 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
     `}
 
   ${(props) =>
-    props.containsIcon &&
+    props.containsIconOnly &&
     `
       svg {
         display: block;
@@ -337,7 +337,7 @@ const ButtonLink = styled.a``;
 interface StylingProps {
   isLoading?: boolean;
   isUnclickable?: boolean;
-  containsIcon?: boolean;
+  containsIconOnly?: boolean;
   disabled?: boolean;
   size?: typeof SIZES[keyof typeof SIZES];
   appearance?: typeof APPEARANCES[keyof typeof APPEARANCES];

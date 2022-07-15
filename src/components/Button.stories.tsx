@@ -109,12 +109,12 @@ export const Disabled = () => (
   </>
 );
 
-export const ContainsIcon = () => (
+export const ContainsIconOnly = () => (
   <>
-    <Button appearance="outline" containsIcon>
+    <Button appearance="outline" containsIconOnly>
       <Icon icon="link" aria-label="Link" />
     </Button>
-    <Button appearance="outline" size="small" containsIcon>
+    <Button appearance="outline" size="small" containsIconOnly>
       <Icon icon="link" aria-label="Link" />
     </Button>
   </>

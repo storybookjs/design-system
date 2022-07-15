@@ -47,13 +47,13 @@ export const All = () => (
 );
 
 export const WithArrow = () => (
-  <Link containsIcon withArrow href="https://learnstorybook.com">
+  <Link containsIconOnly withArrow href="https://learnstorybook.com">
     withArrow shows an arrow behind the link
   </Link>
 );
 
-export const ContainsIcon = () => (
-  <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
+export const ContainsIconOnly = () => (
+  <Link containsIconOnly href="https://learnstorybook.com" aria-label="Toggle side bar">
     <Icon icon="sidebar" aria-hidden />
   </Link>
 );
