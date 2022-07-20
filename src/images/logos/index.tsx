@@ -1,3 +1,4 @@
+export { default as ChromaticInverted } from './ChromaticInverted';
 export { default as Chromatic } from './Chromatic';
 export { default as Circleci } from './Circleci';
 export { default as Netlify } from './Netlify';

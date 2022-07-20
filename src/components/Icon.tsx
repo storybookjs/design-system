@@ -20,7 +20,7 @@ const Svg = styled.svg`
  * - *decorative only*: for example, it illustrates a label next to it. We must ensure that it is ignored by screen readers, by setting `aria-hidden` attribute (ex: `<Icon icon="check" aria-hidden />`)
  * - *non-decorative*: it means that it delivers information. For example, an icon as only child in a button. The meaning can be obvious visually, but it must have a proper text alternative via `aria-label` for screen readers. (ex: `<Icon icon="print" aria-label="Print this document" />`)
  */
-export const Icon: FunctionComponent<Props> = ({ icon, ...props }: Props) => {
+export const Icon: FunctionComponent<IconProps> = ({ icon, ...props }: IconProps) => {
   return (
     <Svg viewBox="0 0 14 14" width="14px" height="14px" {...props}>
       <>{icons[icon]}</>
@@ -28,6 +28,8 @@ export const Icon: FunctionComponent<Props> = ({ icon, ...props }: Props) => {
   );
 };
 
-export interface Props {
-  icon: keyof typeof icons;
+export type IconType = keyof typeof icons;
+
+export interface IconProps {
+  icon: IconType;
 }

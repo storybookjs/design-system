@@ -172,6 +172,7 @@ const LinkComponentPicker = forwardRef<HTMLAnchorElement | HTMLButtonElement, Li
     return <UnstyledLink {...rest} ref={ref as React.ForwardedRef<HTMLAnchorElement>} />;
   }
 );
+LinkComponentPicker.displayName = 'LinkComponentPicker';
 
 export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
   ({ children, withArrow, ...rest }, ref) => {
@@ -196,6 +197,7 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>
     );
   }
 );
+Link.displayName = 'Link';
 
 Link.defaultProps = {
   withArrow: false,
