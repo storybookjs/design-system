@@ -1,3 +1,15 @@
+# v7.7.8 (Wed Jul 20 2022)
+
+#### 🐛 Bug Fix
+
+- Add ChromaticInverted logo and export icontype type [#377](https://github.com/storybookjs/design-system/pull/377) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.7.7 (Thu Jul 14 2022)
 
 #### 🐛 Bug Fix
