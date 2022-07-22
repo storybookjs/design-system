@@ -26,10 +26,6 @@ const Tab = styled(Link)<{ isLoading?: boolean; isActive?: boolean }>`
   color: ${color.mediumdark};
   white-space: nowrap;
 
-  @media (min-width: ${breakpoint}px) {
-    padding: 10px 20px;
-  }
-
   &:hover {
     color: ${color.secondary};
   }
