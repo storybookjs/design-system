@@ -40,7 +40,7 @@ const SIZES = {
   MEDIUM: 'medium',
 } as const;
 
-export const StyledButton = styled.button<StylingProps & { children: ReactElement }>`
+export const StyledButton = styled.button<ButtonStylingProps & { children: ReactElement }>`
   border: 0;
   border-radius: 3em;
   cursor: pointer;
@@ -334,7 +334,7 @@ export const StyledButton = styled.button<StylingProps & { children: ReactElemen
 
 const ButtonLink = styled.a``;
 
-interface StylingProps {
+export interface ButtonStylingProps {
   isLoading?: boolean;
   isUnclickable?: boolean;
   containsIcon?: boolean;
@@ -343,7 +343,7 @@ interface StylingProps {
   appearance?: typeof APPEARANCES[keyof typeof APPEARANCES];
 }
 
-interface ConfigProps {
+export interface ButtonConfigProps {
   isLink?: boolean;
   ButtonWrapper?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   isDisabled?: boolean;
@@ -354,7 +354,9 @@ interface ConfigProps {
 export const Button = forwardRef<
   unknown,
   PropsWithChildren<
-    ConfigProps & StylingProps & (JSX.IntrinsicElements['button'] & JSX.IntrinsicElements['a'])
+    ButtonConfigProps &
+      ButtonStylingProps &
+      (JSX.IntrinsicElements['button'] & JSX.IntrinsicElements['a'])
   >
 >(
   (
@@ -421,3 +423,4 @@ export const Button = forwardRef<
     );
   }
 );
+Button.displayName = 'button';
