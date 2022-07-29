@@ -33,6 +33,8 @@ const APPEARANCES = {
   INVERSE_PRIMARY: 'inversePrimary',
   INVERSE_SECONDARY: 'inverseSecondary',
   INVERSE_OUTLINE: 'inverseOutline',
+  INVERSE: 'inverse',
+  INVERSE_NO_CHROME: 'inverseNoChrome',
 } as const;
 
 const SIZES = {
@@ -330,6 +332,46 @@ export const StyledButton = styled.button<ButtonStylingProps & { children: React
           color: ${color.darkest};
         }
     `};
+
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE &&
+    `
+        background: ${color.tr10};
+        color: ${color.lightest};
+
+        ${
+          !props.isLoading &&
+          `
+            &:hover {
+              background: ${color.tr10};
+              box-shadow: none;
+            }
+            &:active {
+              box-shadow: none;
+            }
+        `
+        }
+    `}
+
+  ${(props) =>
+    props.appearance === APPEARANCES.INVERSE_NO_CHROME &&
+    `
+        background: transparent;
+        color: ${color.lightest};
+
+        ${
+          !props.isLoading &&
+          `
+            &:hover {
+              background: transparent;
+              box-shadow: none;
+            }
+            &:active {
+              box-shadow: none;
+            }
+        `
+        }
+    `}
 `;
 
 const ButtonLink = styled.a``;
