@@ -1,3 +1,18 @@
+# v7.7.8 (Fri Jul 29 2022)
+
+#### 🐛 Bug Fix
+
+- Add inverse and noChrome inverse button types [#381](https://github.com/storybookjs/design-system/pull/381) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- export button types for reuse [#380](https://github.com/storybookjs/design-system/pull/380) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- adjust link tabs padding [#379](https://github.com/storybookjs/design-system/pull/379) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+- Add ChromaticInverted logo and export icontype type [#377](https://github.com/storybookjs/design-system/pull/377) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.7.7 (Thu Jul 14 2022)
 
 #### 🐛 Bug Fix
