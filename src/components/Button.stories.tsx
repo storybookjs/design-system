@@ -16,20 +16,20 @@ Basic.args = { children: 'Label' };
 
 export const All = () => (
   <>
-    <Button appearance="primary">Primary</Button>
-    <Button appearance="secondary">Secondary</Button>
-    <Button appearance="tertiary">Tertiary</Button>
-    <Button appearance="outline">Outline</Button>
-    <Button appearance="primaryOutline">Outline primary</Button>
-    <Button appearance="secondaryOutline">Outline secondary</Button>
-    <div style={{ background: 'grey', display: 'inline-block' }}>
+    <div style={{ display: 'flex', gap: 16, padding: 32 }}>
+      <Button appearance="primary">Primary</Button>
+      <Button appearance="secondary">Secondary</Button>
+      <Button appearance="tertiary">Tertiary</Button>
+      <Button appearance="outline">Outline</Button>
+      <Button appearance="primaryOutline">Outline primary</Button>
+      <Button appearance="secondaryOutline">Outline secondary</Button>
+    </div>
+    <div style={{ background: '#333333', display: 'flex', gap: 16, padding: 32 }}>
       <Button appearance="inversePrimary">Primary inverse</Button>
-    </div>
-    <div style={{ background: 'grey', display: 'inline-block' }}>
       <Button appearance="inverseSecondary">Secondary inverse</Button>
-    </div>
-    <div style={{ background: 'grey', display: 'inline-block' }}>
       <Button appearance="inverseOutline">Outline inverse</Button>
+      <Button appearance="inverse">Inverse</Button>
+      <Button appearance="inverseNoChrome">No Chrome Inverse</Button>
     </div>
   </>
 );
