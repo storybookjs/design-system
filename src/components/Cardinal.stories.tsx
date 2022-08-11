@@ -19,6 +19,9 @@ export const AllCardinals = () => (
     <Cardinal size="small" count={4} text="Denied" noPlural status="negative" />
     <Cardinal size="small" count={3} text="Unreviewed" noPlural status="warning" />
     <Cardinal size="small" count={0} text="Unreviewed" noPlural status="neutral" />
+    <div style={{ background: '#171C23', display: 'inline-block' }}>
+      <Cardinal size="small" count={0} text="Unreviewed" noPlural status="inverse" />
+    </div>
     <br />
     <Cardinal
       selectable

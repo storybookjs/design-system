@@ -6,7 +6,7 @@ import { Link } from './Link';
 import { background, color, typography, spacing } from './shared/styles';
 import { inlineGlow } from './shared/animation';
 
-type Status = 'default' | 'positive' | 'negative' | 'warning' | 'neutral' | 'link';
+type Status = 'default' | 'positive' | 'negative' | 'warning' | 'neutral' | 'link' | 'inverse';
 type Size = 'small' | 'large';
 type Alignment = 'left' | 'center' | 'right';
 
@@ -50,6 +50,11 @@ const Count = styled.div<CountProps>`
         color: ${darken(0.1, color.secondary)};
       }
     `};
+  ${(props) =>
+    props.status === 'inverse' &&
+    css`
+      color: rgba(255, 255, 255, 0.7);
+    `};
 
   span {
     display: inline-block;
@@ -68,6 +73,7 @@ interface CardinalInnerProps {
   active: boolean;
   size: Size;
   alignment: Alignment;
+  inverse?: boolean;
 }
 
 const CardinalInner = styled.div<CardinalInnerProps>`
@@ -127,7 +133,7 @@ const CardinalInner = styled.div<CardinalInnerProps>`
   }
 
   ${Text} {
-    color: ${color.dark};
+    color: ${(props) => (props.inverse ? 'rgba(255, 255, 255, 0.5)' : color.dark)};
     font-size: ${(props) => (props.size === 'small' ? typography.size.s1 : typography.size.s2)}px;
     line-height: ${(props) => (props.size === 'small' ? typography.size.s2 : typography.size.m1)}px;
     clear: both;
@@ -188,6 +194,7 @@ export function Cardinal({
       active={active}
       size={size}
       alignment={alignment}
+      inverse={status === 'inverse'}
       {...events}
       {...props}
     >
