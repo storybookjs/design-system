@@ -1,3 +1,15 @@
+# v7.8.0 (Thu Aug 11 2022)
+
+#### 🚀 Enhancement
+
+- Add inverse status to cardinal [#383](https://github.com/storybookjs/design-system/pull/383) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.7.8 (Tue Aug 09 2022)
 
 #### 🐛 Bug Fix
