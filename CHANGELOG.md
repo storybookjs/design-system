@@ -1,3 +1,15 @@
+# v7.8.2 (Fri Aug 12 2022)
+
+#### 🐛 Bug Fix
+
+- Fix: remove console deprecated warnings [#385](https://github.com/storybookjs/design-system/pull/385) ([@zhyd1997](https://github.com/zhyd1997))
+
+#### Authors: 1
+
+- Yadong Zhang ([@zhyd1997](https://github.com/zhyd1997))
+
+---
+
 # v7.8.1 (Fri Aug 12 2022)
 
 #### 🐛 Bug Fix
