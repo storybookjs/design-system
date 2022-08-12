@@ -20,7 +20,7 @@ Template.args = {
     { label: 'Mouse', value: 'value3' },
   ],
 };
-Template.story = { name: 'Playground' };
+Template.storyName = 'Playground';
 
 const Form = styled.form`
   padding: 3em 12em;

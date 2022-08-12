@@ -12,7 +12,7 @@ export default {
 
 export const Template = (args) => <Checkbox {...args} />;
 Template.args = { label: 'Basic', hideLabel: false };
-Template.story = { name: 'Playground' };
+Template.storyName = 'Playground';
 
 export const All = () => (
   <form>

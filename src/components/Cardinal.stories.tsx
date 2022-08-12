@@ -75,9 +75,7 @@ export const AllCardinals = () => (
   </div>
 );
 
-AllCardinals.story = {
-  name: 'all cardinals',
-};
+AllCardinals.storyName = 'all cardinals';
 
 export const Alignment = () => (
   <div style={{ background: 'white' }}>
@@ -91,53 +89,39 @@ export const Alignment = () => (
   </div>
 );
 
-Alignment.story = {
-  name: 'control alignment',
-};
+Alignment.storyName = 'control alignment';
 
 export const SmallLoading = () => <Cardinal isLoading size="small" />;
 
-SmallLoading.story = {
-  name: 'small loading',
-};
+SmallLoading.storyName = 'small loading';
 
 export const SmallDefault = () => <Cardinal size="small" count={14} text="Changes" />;
 
-SmallDefault.story = {
-  name: 'small default',
-};
+SmallDefault.storyName = 'small default';
 
 export const SmallPositive = () => (
   <Cardinal size="small" count={7} text="Accepted" noPlural status="positive" />
 );
 
-SmallPositive.story = {
-  name: 'small positive',
-};
+SmallPositive.storyName = 'small positive';
 
 export const SmallNegative = () => (
   <Cardinal size="small" count={4} text="Denied" noPlural status="negative" />
 );
 
-SmallNegative.story = {
-  name: 'small negative',
-};
+SmallNegative.storyName = 'small negative';
 
 export const SmallWarning = () => (
   <Cardinal size="small" count={3} text="Unreviewed" noPlural status="warning" />
 );
 
-SmallWarning.story = {
-  name: 'small warning',
-};
+SmallWarning.storyName = 'small warning';
 
 export const SmallNeutral = () => (
   <Cardinal size="small" count={0} text="Unreviewed" noPlural status="neutral" />
 );
 
-SmallNeutral.story = {
-  name: 'small neutral',
-};
+SmallNeutral.storyName = 'small neutral';
 
 export const SmallSelectable = () => (
   <div>
@@ -163,41 +147,29 @@ export const SmallSelectable = () => (
   </div>
 );
 
-SmallSelectable.story = {
-  name: 'small selectable',
-};
+SmallSelectable.storyName = 'small selectable';
 
 export const LargeLoading = () => <Cardinal isLoading size="large" />;
 
-LargeLoading.story = {
-  name: 'large loading',
-};
+LargeLoading.storyName = 'large loading';
 
 export const LargeDefault = () => <Cardinal size="large" count={37} text="Stories" />;
 
-LargeDefault.story = {
-  name: 'large default',
-};
+LargeDefault.storyName = 'large default';
 
 export const LargeLink = () => (
   <Cardinal size="large" count={12} countLink="http://github.com" text="Commits" />
 );
 
-LargeLink.story = {
-  name: 'large link',
-};
+LargeLink.storyName = 'large link';
 
 export const LargeSingular = () => <Cardinal size="large" count={1} text="Story" />;
 
-LargeSingular.story = {
-  name: 'large singular',
-};
+LargeSingular.storyName = 'large singular';
 
 export const LargePlural = () => <Cardinal size="large" count={2} text="Story" />;
 
-LargePlural.story = {
-  name: 'large plural',
-};
+LargePlural.storyName = 'large plural';
 
 export const WithIcon = () => (
   <Cardinal
@@ -212,6 +184,4 @@ export const WithIcon = () => (
   />
 );
 
-WithIcon.story = {
-  name: 'with icon',
-};
+WithIcon.storyName = 'with icon';
