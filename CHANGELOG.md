@@ -1,3 +1,15 @@
+# v7.8.1 (Fri Aug 12 2022)
+
+#### 🐛 Bug Fix
+
+- add inverse styling for link and selectable variants of the cardinal [#384](https://github.com/storybookjs/design-system/pull/384) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.8.0 (Thu Aug 11 2022)
 
 #### 🚀 Enhancement
