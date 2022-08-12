@@ -119,10 +119,20 @@ const CardinalInner = styled.div<CardinalInnerProps>`
     `};
 
   ${(props) =>
-    props.active &&
-    css`
-      background: ${background.app};
-    `};
+    props.selectable &&
+    (props.inverse
+      ? css`
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+        `
+      : css`
+          cursor: pointer;
+
+          &:hover {
+            background: ${background.app};
+          }
+        `)};
 
   ${Count} {
     font-weight: ${(props) =>
@@ -138,6 +148,14 @@ const CardinalInner = styled.div<CardinalInnerProps>`
     line-height: ${(props) => (props.size === 'small' ? typography.size.s2 : typography.size.m1)}px;
     clear: both;
   }
+
+  ${(props) =>
+    props.inverse &&
+    css`
+      a {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    `}
 `;
 
 export interface CardinalProps {
@@ -176,7 +194,11 @@ export function Cardinal({
 }: CardinalProps) {
   let countValue = count;
   if (countLink) {
-    countValue = <Link href={countLink}>{count}</Link>;
+    countValue = (
+      <Link href={countLink} inverse={status === 'inverse'}>
+        {count}
+      </Link>
+    );
   }
   let events = {};
   if (selectable) {
