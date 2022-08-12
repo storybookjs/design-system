@@ -51,10 +51,25 @@ export const AllCardinals = () => (
       text="Selectable"
       noPlural
     />
+    <div style={{ background: '#171C23', display: 'inline-block' }}>
+      <Cardinal
+        selectable
+        onHover={onHover}
+        onClick={onClick}
+        size="small"
+        count={14}
+        text="Selectable"
+        status="inverse"
+        noPlural
+      />
+    </div>
     <br />
     <Cardinal isLoading />
     <Cardinal count={37} text="Stories" />
     <Cardinal count={12} countLink="http://github.com" text="Commits" />
+    <div style={{ background: '#171C23', display: 'inline-block' }}>
+      <Cardinal count={12} countLink="http://github.com" text="Commits" status="inverse" />
+    </div>
     <Cardinal size="large" count={1} text="Story" />
     <Cardinal size="large" count={2} text="Story" />
   </div>
