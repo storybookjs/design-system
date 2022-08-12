@@ -12,7 +12,7 @@ export default {
 
 export const Template = (args) => <Radio {...args} />;
 Template.args = { label: 'label', hideLabel: false };
-Template.story = { name: 'Playground' };
+Template.storyName = 'Playground';
 
 export const All = () => (
   <form>

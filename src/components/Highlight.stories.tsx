@@ -78,7 +78,7 @@ jobs:
 
 const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-yaml">${yamlCode}</code></pre>`;
 
-const markdownCode = `import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+const markdownCode = `import { Meta, Story, Preview } from '@storybook/addon-docs/';
 
 &#x3C;Meta title="MDX/Checkbox" component={Checkbox} />
 
@@ -214,7 +214,7 @@ const StyledHighlight = styled(Highlight)`
 
 export const CustomStyling = () => <StyledHighlight language="json">{jsonCode}</StyledHighlight>;
 
-/* eslint-disable */
+/* eslint-disable react/no-danger */
 function WrapperComponent({ children }) {
   return <div dangerouslySetInnerHTML={{ __html: children }} />;
 }
