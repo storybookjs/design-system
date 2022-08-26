@@ -1,3 +1,15 @@
+# v7.8.3 (Fri Aug 26 2022)
+
+#### 🐛 Bug Fix
+
+- Add Redo and FastForward images - also updated Browsers image [#386](https://github.com/storybookjs/design-system/pull/386) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.8.2 (Fri Aug 12 2022)
 
 #### 🐛 Bug Fix
