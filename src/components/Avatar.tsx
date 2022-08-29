@@ -74,9 +74,9 @@ const LoadingIcon = styled(Icon)<LoadingIconProps & ComponentProps<typeof Icon>>
   position: relative;
   margin: 0 auto;
   display: block;
-  bottom: ${(props) => (props.type === AvatarType.USER ? -2 : -3)}px;
-  height: ${(props) => (props.type === AvatarType.USER ? 100 : 80)}%;
-  width: ${(props) => (props.type === AvatarType.USER ? 100 : 80)}%;
+  bottom: ${(props) => (props.type === AvatarType.USER ? -2 : -4)}px;
+  height: ${(props) => (props.type === AvatarType.USER ? 100 : 70)}%;
+  width: ${(props) => (props.type === AvatarType.USER ? 100 : 70)}%;
   vertical-align: top;
 
   path {
