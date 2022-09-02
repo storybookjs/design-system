@@ -1,3 +1,15 @@
+# v7.8.5 (Fri Sep 02 2022)
+
+#### 🐛 Bug Fix
+
+- Update remaining icons [#388](https://github.com/storybookjs/design-system/pull/388) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.8.4 (Mon Aug 29 2022)
 
 #### 🐛 Bug Fix
