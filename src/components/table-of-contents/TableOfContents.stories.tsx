@@ -14,6 +14,11 @@ export default {
 
 const items: Item[] = [
   {
+    title: '📕 Why Storybook?',
+    path: '/why',
+    type: ItemType.LINK,
+  },
+  {
     title: 'Get Started',
     type: ItemType.MENU,
     children: [
@@ -153,7 +158,7 @@ BasicFlat.args = {
 };
 
 export const BasicNested = (args: TableOfContentsProps) => <TableOfContents {...args} />;
-BasicNested.args = { currentPath: paths[0], items };
+BasicNested.args = { currentPath: paths[1], items };
 
 export const NestedActivePath = BasicNested.bind({});
 NestedActivePath.args = { currentPath: '/features-and-behavior', items };
@@ -167,10 +172,10 @@ const addLinkWrappers = (itemsToCompose: Item[]): Item[] =>
   });
 const itemsWithLinkWrappers = addLinkWrappers(items);
 export const LinkWrappers = BasicNested.bind({});
-LinkWrappers.args = { currentPath: paths[0], items: itemsWithLinkWrappers };
+LinkWrappers.args = { currentPath: paths[1], items: itemsWithLinkWrappers };
 
 export const WithOpenControls = () => (
-  <TableOfContents currentPath={paths[0]} items={items}>
+  <TableOfContents currentPath={paths[1]} items={items}>
     {({ menu, toggleAllOpen, toggleAllClosed }) => (
       <>
         <div style={{ marginBottom: '10px' }}>
@@ -187,10 +192,10 @@ export const WithOpenControls = () => (
 );
 
 export const WithPathSwitcher = () => {
-  const [currentPath, setCurrentPath] = useState(paths[0]);
+  const [currentPath, setCurrentPath] = useState(paths[1]);
   const cyclePath = () => {
     const currentIndex = paths.indexOf(currentPath);
-    setCurrentPath(paths[currentIndex + 1] || paths[0]);
+    setCurrentPath(paths[currentIndex + 1] || paths[1]);
   };
 
   return (
