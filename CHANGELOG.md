@@ -1,3 +1,15 @@
+# v7.8.6 (Thu Oct 06 2022)
+
+#### 🐛 Bug Fix
+
+- :first-child to first-of-type for ToC [#389](https://github.com/storybookjs/design-system/pull/389) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.8.5 (Fri Sep 02 2022)
 
 #### 🐛 Bug Fix
