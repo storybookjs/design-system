@@ -157,8 +157,8 @@ export function TableOfContents({ children, currentPath, items, ...rest }: Table
   );
 
   // Top level menu state is used to control expand/collapse buttons in consumers
-  const allTopLevelMenusAreOpen = itemsWithUIState.every(
-    (item) => item.type === ItemType.MENU && item.isOpen
+  const allTopLevelMenusAreOpen = itemsWithUIState.every((item) =>
+    item.type === ItemType.MENU ? item.isOpen : true
   );
 
   return typeof children === 'function'
