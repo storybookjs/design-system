@@ -148,7 +148,7 @@ const List = styled.ul<{ isTopLevel?: boolean; isFlatList?: boolean }>`
   li {
     padding-top: 12px;
 
-    &:first-child {
+    &:first-of-type {
       padding-top: 0;
     }
   }
