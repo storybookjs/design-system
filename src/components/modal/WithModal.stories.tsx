@@ -60,3 +60,20 @@ export const StartsOpen = () => (
     )}
   </WithModal>
 );
+
+export const WithCustomStyles = () => (
+  <WithModal
+    startOpen
+    modal={ModalContents}
+    overlayStyles={{ background: 'tomato' }}
+    contentStyles={{ fontWeight: 'bold' }}
+  >
+    {({ onOpen }) => (
+      <div>
+        <Button appearance="primary" onClick={onOpen} role="button" tab-index="0">
+          Open Modal
+        </Button>
+      </div>
+    )}
+  </WithModal>
+);
