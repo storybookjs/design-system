@@ -1,3 +1,15 @@
+# v7.9.0 (Fri Oct 14 2022)
+
+#### 🚀 Enhancement
+
+- allow modal styles to be customized [#390](https://github.com/storybookjs/design-system/pull/390) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.8.6 (Thu Oct 06 2022)
 
 #### 🐛 Bug Fix
