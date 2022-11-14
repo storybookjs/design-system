@@ -17,7 +17,7 @@ Note: this design system is not used in Storybook's UI. The stack is different a
 Building components
 
 - 📚 [Storybook](https://storybook.js.org) for UI component development and [auto-generated docs](https://medium.com/storybookjs/storybook-docs-sneak-peak-5be78445094a)
-- 👩‍🎤 [Storybook theming |](https://emotion.sh/) for component-scoped styling
+- 👩‍🎤 [Emotion](https://emotion.sh/) for component-scoped styling
 - ⚛️ [React](https://reactjs.org/) declarative component-centric UI
 
 Maintaining the system
