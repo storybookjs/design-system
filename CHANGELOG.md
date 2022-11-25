@@ -1,3 +1,15 @@
+# v7.9.2 (Fri Nov 25 2022)
+
+#### 🐛 Bug Fix
+
+- type the size prop for Cardinal.defaultProps [#395](https://github.com/storybookjs/design-system/pull/395) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.9.1 (Fri Nov 25 2022)
 
 #### 🐛 Bug Fix
