@@ -1,3 +1,15 @@
+# v7.9.1 (Fri Nov 25 2022)
+
+#### 🐛 Bug Fix
+
+- feat(WithTooltip): support Storybook 7 root element [#394](https://github.com/storybookjs/design-system/pull/394) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v7.9.0 (Fri Oct 14 2022)
 
 #### 🚀 Enhancement
