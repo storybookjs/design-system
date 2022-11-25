@@ -74,6 +74,7 @@ const AsComponent = React.forwardRef<unknown, Pick<Props, 'tagName'> & Record<st
     return <Component {...asProps} />;
   }
 );
+AsComponent.displayName = 'AsComponent';
 
 const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
   children,
@@ -110,7 +111,11 @@ const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
 
   /* eslint-env browser */
   const defaultPortalContainer =
-    typeof window !== 'undefined' ? document.getElementById('root') || document.body : undefined;
+    typeof window !== 'undefined'
+      ? document.getElementById('storybook-root') ||
+        document.getElementById('root') ||
+        document.body
+      : undefined;
 
   return (
     <TooltipTrigger
@@ -170,10 +175,12 @@ interface Props {
   placement?: ComponentProps<typeof TooltipTrigger>['placement'];
   modifiers?: any;
   hasChrome?: boolean;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   tooltip?: ReactNode | Function;
   children: ReactNode;
   startOpen?: boolean;
   delayHide?: number;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onVisibilityChange?: Function;
   portalContainer?: ComponentProps<typeof TooltipTrigger>['portalContainer'];
   tooltipZIndex?: number;
