@@ -1,3 +1,15 @@
+# v7.10.0 (Fri Dec 09 2022)
+
+#### 🚀 Enhancement
+
+- add linkedIn icon [#398](https://github.com/storybookjs/design-system/pull/398) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.9.2 (Fri Nov 25 2022)
 
 #### 🐛 Bug Fix
