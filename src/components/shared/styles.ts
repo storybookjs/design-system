@@ -15,7 +15,7 @@ export const color = {
   // Palette
   primary: '#FF4785', // Coral
   secondary: '#029CFD', // Ocean
-  tertiary: '#FAFBFC', // Light grey
+  tertiary: '#E3E6E8', // Light grey
 
   orange: '#FC521F',
   gold: '#FFAE00',
@@ -27,7 +27,7 @@ export const color = {
 
   // Calm
   blueLighter: '#E3F3FF', // rgba($color.blue, 12%)
-  blueLight: '#F3FAFF', // rgba($color.blue, 6%)
+  blueLight: '#F5FBFF', // rgba($color.blue, 6%)
 
   // Monochrome
   lightest: '#FFFFFF',
