@@ -26,8 +26,8 @@ export const color = {
   red: '#ff4400',
 
   // Calm
-  blueLight: '#E3F3FF', // rgba($color.blue, 12%)
-  blueLighter: '#F5FBFF',
+  bluelight: '#E3F3FF', // rgba($color.blue, 12%)
+  bluelighter: '#F5FBFF',
 
   // Monochrome
   lightest: '#FFFFFF',
