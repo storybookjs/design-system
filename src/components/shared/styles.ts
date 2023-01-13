@@ -42,7 +42,7 @@ export const color = {
   tr10: 'rgba(0, 0, 0, 0.1)',
   tr5: 'rgba(0, 0, 0, 0.05)',
 
-  border: 'hsla(203, 50%, 30%, 0.2)',
+  border: 'hsla(203, 50%, 30%, 0.15)',
 
   // Status
   positive: '#448028', // Evergreen
