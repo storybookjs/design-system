@@ -1106,7 +1106,7 @@ export const icons = {
       <path d="M1 1.5c0-.27.22-.5.5-.5h11c.28 0 .5.23.5.5v11a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11Z" />
     </>
   ),
-  sideBySide: (
+  sidebyside: (
     <>
       <path
         fillRule="evenodd"
