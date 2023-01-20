@@ -1,3 +1,15 @@
+# v7.11.0 (Fri Jan 20 2023)
+
+#### 🚀 Enhancement
+
+- Add sun, moon, sideBySide, and stacked icons [#399](https://github.com/storybookjs/design-system/pull/399) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.10.0 (Fri Dec 09 2022)
 
 #### 🚀 Enhancement
