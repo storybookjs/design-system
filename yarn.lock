@@ -5289,6 +5289,13 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+display-element-css@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/display-element-css/-/display-element-css-0.0.7.tgz#904228055ac332e8afa865594ffb8d5a88196583"
+  integrity sha512-D4lH1T/r8SazN53lrlMOKBbI6Nv6Ff7ApqQAweZXzJEb3FjuifQlrIQ4weA5TLsDwDzst/15rhARw2i11jbQDw==
+  dependencies:
+    react-highlight "^0.15.0"
+
 doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/doctrine/-/doctrine-2.1.0.tgz"
@@ -7061,7 +7068,7 @@ he@^1.2.0:
   resolved "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-highlight.js@^10.4.1, highlight.js@~10.7.0:
+highlight.js@^10.4.1, highlight.js@^10.5.0, highlight.js@~10.7.0:
   version "10.7.3"
   resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-10.7.3.tgz"
   integrity sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
@@ -10261,6 +10268,13 @@ react-github-button@^0.1.11:
   integrity sha1-/GHh8eE3EWnTYYwbo3MGugQIHlY=
   dependencies:
     prop-types "^15.5.10"
+
+react-highlight@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.npmjs.org/react-highlight/-/react-highlight-0.15.0.tgz#66749d01969853327d499959558f9468330cd9d8"
+  integrity sha512-5uV/b/N4Z421GSVVe05fz+OfTsJtFzx/fJBdafZyw4LS70XjIZwgEx3Lrkfc01W/RzZ2Dtfb0DApoaJFAIKBtA==
+  dependencies:
+    highlight.js "^10.5.0"
 
 react-inspector@^5.1.0:
   version "5.1.1"
