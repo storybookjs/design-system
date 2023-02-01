@@ -1,3 +1,15 @@
+# v7.11.1 (Wed Feb 01 2023)
+
+#### 🐛 Bug Fix
+
+- Update colors in the design system to match SB 7.0 [#401](https://github.com/storybookjs/design-system/pull/401) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.11.0 (Fri Jan 20 2023)
 
 #### 🚀 Enhancement
