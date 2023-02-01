@@ -54,7 +54,7 @@ export const shake = keyframes`
 
 export const inlineGlow = css`
   animation: ${glow} 1.5s ease-in-out infinite;
-  background: ${color.mediumlight};
+  background: ${color.tr5};
   color: transparent;
   cursor: progress;
 `;
