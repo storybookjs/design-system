@@ -13,7 +13,7 @@ const Background = styled.div`
   background-color: #f7f9fc;
   border: 1px solid ${color.border};
   border-radius: ${spacing.borderRadius.small}px;
-  box-shadow: 0 2px 5px 0 ${color.border};
+  box-shadow: 0 2px 5px 0 ${color.tr10};
 `;
 
 const StyledHighlight = styled(Highlight)`

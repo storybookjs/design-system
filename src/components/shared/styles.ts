@@ -14,8 +14,8 @@ export const background = {
 export const color = {
   // Palette
   primary: '#FF4785', // Coral
-  secondary: '#1EA7FD', // Ocean
-  tertiary: '#DDDDDD', // Light grey
+  secondary: '#029CFD', // Ocean
+  tertiary: '#E3E6E8', // Light grey
 
   orange: '#FC521F',
   gold: '#FFAE00',
@@ -26,23 +26,23 @@ export const color = {
   red: '#ff4400',
 
   // Calm
-  blueLighter: '#E3F3FF', // rgba($color.blue, 12%)
-  blueLight: '#F3FAFF', // rgba($color.blue, 6%)
+  bluelight: '#E3F3FF', // rgba($color.blue, 12%)
+  bluelighter: '#F5FBFF',
 
   // Monochrome
   lightest: '#FFFFFF',
-  lighter: '#F8F8F8',
-  light: '#F3F3F3',
-  mediumlight: '#EEEEEE',
-  medium: '#DDDDDD',
-  mediumdark: '#999999',
-  dark: '#666666',
-  darker: '#444444',
-  darkest: '#333333',
+  lighter: '#F7FAFC',
+  light: '#EEF3F6',
+  mediumlight: '#ECF4F9',
+  medium: '#D9E8F2',
+  mediumdark: '#73828C',
+  dark: '#5C6870',
+  darker: '#454E54',
+  darkest: '#2E3438',
   tr10: 'rgba(0, 0, 0, 0.1)',
   tr5: 'rgba(0, 0, 0, 0.05)',
 
-  border: 'rgba(0,0,0,.1)',
+  border: 'hsla(203, 50%, 30%, 0.15)',
 
   // Status
   positive: '#448028', // Evergreen
