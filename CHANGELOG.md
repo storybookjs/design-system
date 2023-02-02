@@ -1,3 +1,15 @@
+# v7.12.0 (Thu Feb 02 2023)
+
+#### 🚀 Enhancement
+
+- Remove heaviest font-weight (black) [#402](https://github.com/storybookjs/design-system/pull/402) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.11.1 (Wed Feb 01 2023)
 
 #### 🐛 Bug Fix
