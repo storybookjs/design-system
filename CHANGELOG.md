@@ -1,3 +1,15 @@
+# v7.12.2 (Thu Feb 02 2023)
+
+#### 🐛 Bug Fix
+
+- Remove unused components [#404](https://github.com/storybookjs/design-system/pull/404) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.12.1 (Thu Feb 02 2023)
 
 #### 🐛 Bug Fix
