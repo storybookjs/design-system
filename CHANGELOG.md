@@ -1,3 +1,15 @@
+# v7.12.3 (Thu Feb 02 2023)
+
+#### 🐛 Bug Fix
+
+- update cardinal types [#405](https://github.com/storybookjs/design-system/pull/405) ([@thafryer](https://github.com/thafryer))
+
+#### Authors: 1
+
+- Jarel Fryer ([@thafryer](https://github.com/thafryer))
+
+---
+
 # v7.12.2 (Thu Feb 02 2023)
 
 #### 🐛 Bug Fix
