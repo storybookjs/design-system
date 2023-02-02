@@ -21,7 +21,7 @@ export const Title = styled(Subheading)`
 `;
 
 export const ResourceTitle = styled.div`
-  font-weight: ${typography.weight.extrabold};
+  font-weight: ${typography.weight.bold};
   margin-bottom: 0.25rem;
 `;
 

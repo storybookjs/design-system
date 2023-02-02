@@ -5,7 +5,7 @@ import { typography, color, breakpoint } from '../shared/styles';
 export const StyledHeading = styled.h2`
   color: ${color.darkest};
   font-size: ${typography.size.m3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
   letter-spacing: -0.29px;
   line-height: ${typography.size.l2}px;
   margin-bottom: 4px;

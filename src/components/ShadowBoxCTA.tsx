@@ -32,7 +32,7 @@ const TextWrapper = styled.div`
 
 const HeadingText = styled.div`
   font-size: ${typography.size.s3}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
 `;
 
 const MessageText = styled.div`

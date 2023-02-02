@@ -6,7 +6,7 @@ const StyledSubheading = styled('span', { shouldForwardProp: (prop) => !['muted'
   Partial<SubheadingProps>
 >`
   font-size: ${typography.size.s2 - 1}px;
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.extrabold};
   letter-spacing: 0.35em;
   text-transform: uppercase;
 

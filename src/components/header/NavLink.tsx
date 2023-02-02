@@ -6,7 +6,7 @@ import { HeaderContext } from './HeaderContext';
 
 const StyledNavLink = styled(Link)`
   font-size: ${typography.size.s2}px;
-  font-weight: ${typography.weight.extrabold};
+  font-weight: ${typography.weight.bold};
 `;
 
 type NavLinkProps = ComponentProps<typeof Link>;
@@ -17,3 +17,5 @@ export const NavLink = forwardRef<HTMLAnchorElement | HTMLButtonElement, NavLink
     return <StyledNavLink ref={ref} inverse={inverse} tertiary={!inverse} {...props} />;
   }
 );
+
+NavLink.displayName = 'NavLink';

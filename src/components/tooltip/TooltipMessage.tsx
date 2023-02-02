@@ -5,7 +5,7 @@ import { color, typography } from '../shared/styles';
 import { Link } from '../Link';
 
 const Title = styled.div`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
 `;
 
 const Desc = styled.span``;
@@ -16,7 +16,7 @@ const Links = styled.div`
 
   > * {
     margin: 0 8px;
-    font-weight: ${typography.weight.black};
+    font-weight: ${typography.weight.bold};
   }
 `;
 
