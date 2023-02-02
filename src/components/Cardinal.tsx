@@ -159,19 +159,19 @@ const CardinalInner = styled.div<CardinalInnerProps>`
 `;
 
 export interface CardinalProps {
-  isLoading: boolean;
-  selectable: boolean;
-  active: boolean;
-  size: Size;
-  onHover: (e: boolean) => void;
-  onClick: React.FormEventHandler<HTMLInputElement>;
+  isLoading?: boolean;
+  selectable?: boolean;
+  active?: boolean;
+  size?: Size;
+  onHover?: (e: boolean) => void;
+  onClick?: React.FormEventHandler<HTMLInputElement>;
   count: React.ReactNode;
-  countLink: string;
+  countLink?: string;
   text: string;
-  status: Status;
-  noPlural: boolean;
-  CountWrapper: React.ElementType;
-  TextWrapper: React.ElementType;
+  status?: Status;
+  noPlural?: boolean;
+  CountWrapper?: React.ElementType;
+  TextWrapper?: React.ElementType;
   alignment?: Alignment;
 }
 
