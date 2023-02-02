@@ -1,3 +1,15 @@
+# v7.12.1 (Thu Feb 02 2023)
+
+#### 🐛 Bug Fix
+
+- Ensure loading state is monochrome to fit into Chromatic & SB loading [#403](https://github.com/storybookjs/design-system/pull/403) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.12.0 (Thu Feb 02 2023)
 
 #### 🚀 Enhancement
