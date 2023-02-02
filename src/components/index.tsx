@@ -54,10 +54,3 @@ export { NavItem } from './header/NavItem';
 export * from './tag/TagItem';
 export * from './tag/TagLink';
 export * from './tag/TagList';
-
-export * from './marketing/Breadcrumb';
-export * from './marketing/DisplayCard/DisplayCard';
-export * from './marketing/Heading';
-export * from './marketing/PageFooter/PageFooter';
-export * from './marketing/Title';
-export * from './marketing/VerifiedBadge';
