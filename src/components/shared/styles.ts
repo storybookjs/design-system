@@ -72,7 +72,6 @@ export const typography = {
     regular: '400',
     bold: '700',
     extrabold: '800',
-    black: '900',
   },
   size: {
     s1: 12,

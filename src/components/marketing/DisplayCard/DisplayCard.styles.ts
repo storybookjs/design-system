@@ -74,7 +74,7 @@ type TitleProps = {
 };
 
 export const Title = styled.div<TitleProps>`
-  font-weight: ${typography.weight.black};
+  font-weight: ${typography.weight.bold};
   font-size: ${typography.size.s3}px;
   line-height: ${typography.size.m2}px;
   color: ${color.darker};
