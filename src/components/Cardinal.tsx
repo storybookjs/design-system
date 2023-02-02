@@ -1,6 +1,6 @@
 import pluralize from 'pluralize';
 import { darken } from 'polished';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { styled, css } from '@storybook/theming';
 import { Link } from './Link';
 import { background, color, typography, spacing } from './shared/styles';
@@ -159,23 +159,23 @@ const CardinalInner = styled.div<CardinalInnerProps>`
 `;
 
 export interface CardinalProps {
-  isLoading: boolean;
-  selectable: boolean;
-  active: boolean;
-  size: Size;
-  onHover: (e: boolean) => void;
-  onClick: React.FormEventHandler<HTMLInputElement>;
+  isLoading?: boolean;
+  selectable?: boolean;
+  active?: boolean;
+  size?: Size;
+  onHover?: (e: boolean) => void;
+  onClick?: React.FormEventHandler<HTMLInputElement>;
   count: React.ReactNode;
-  countLink: string;
+  countLink?: string;
   text: string;
-  status: Status;
-  noPlural: boolean;
-  CountWrapper: React.ElementType;
-  TextWrapper: React.ElementType;
+  status?: Status;
+  noPlural?: boolean;
+  CountWrapper?: React.ElementType;
+  TextWrapper?: React.ElementType;
   alignment?: Alignment;
 }
 
-export function Cardinal({
+export const Cardinal: FunctionComponent<CardinalProps> = ({
   isLoading,
   selectable,
   onHover,
@@ -191,7 +191,7 @@ export function Cardinal({
   TextWrapper,
   alignment,
   ...props
-}: CardinalProps) {
+}) => {
   let countValue = count;
   if (countLink) {
     countValue = (
@@ -230,9 +230,9 @@ export function Cardinal({
       </Text>
     </CardinalInner>
   );
-}
+};
 
-const DefaultWrapper: React.FunctionComponent = ({ children }) => <span>{children}</span>;
+const DefaultWrapper: FunctionComponent = ({ children }) => <span>{children}</span>;
 
 Cardinal.defaultProps = {
   isLoading: false,
