@@ -17,7 +17,7 @@ export enum AvatarType {
 }
 
 const Image = styled.div<Partial<Props>>`
-  background: ${(props) => (!props.isLoading ? 'transparent' : color.light)};
+  background: transparent;
   border-radius: ${(props) => (props.type === AvatarType.USER ? '50%' : '5px')};
   display: inline-block;
   vertical-align: top;
@@ -27,6 +27,13 @@ const Image = styled.div<Partial<Props>>`
   height: ${sizes.medium}px;
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
+
+  ${(props) =>
+    props.isLoading &&
+    css`
+      background: ${color.light};
+      filter: grayscale(1);
+    `}
 
   ${(props) =>
     props.size === 'tiny' &&
