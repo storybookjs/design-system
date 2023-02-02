@@ -1,6 +1,6 @@
 import pluralize from 'pluralize';
 import { darken } from 'polished';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { styled, css } from '@storybook/theming';
 import { Link } from './Link';
 import { background, color, typography, spacing } from './shared/styles';
@@ -175,7 +175,7 @@ export interface CardinalProps {
   alignment?: Alignment;
 }
 
-export function Cardinal({
+export const Cardinal: FunctionComponent<CardinalProps> = ({
   isLoading,
   selectable,
   onHover,
@@ -191,7 +191,7 @@ export function Cardinal({
   TextWrapper,
   alignment,
   ...props
-}: CardinalProps) {
+}) => {
   let countValue = count;
   if (countLink) {
     countValue = (
@@ -230,9 +230,9 @@ export function Cardinal({
       </Text>
     </CardinalInner>
   );
-}
+};
 
-const DefaultWrapper: React.FunctionComponent = ({ children }) => <span>{children}</span>;
+const DefaultWrapper: FunctionComponent = ({ children }) => <span>{children}</span>;
 
 Cardinal.defaultProps = {
   isLoading: false,
