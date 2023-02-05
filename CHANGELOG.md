@@ -1,3 +1,15 @@
+# v7.13.0 (Sun Feb 05 2023)
+
+#### 🚀 Enhancement
+
+- Update browser image with Edge instead of IE [#406](https://github.com/storybookjs/design-system/pull/406) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.12.3 (Thu Feb 02 2023)
 
 #### 🐛 Bug Fix
