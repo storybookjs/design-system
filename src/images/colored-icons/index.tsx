@@ -50,6 +50,7 @@ export { default as Stoplight } from './Stoplight';
 export { default as Testflake } from './Testflake';
 export { default as Testpyramid } from './Testpyramid';
 export { default as Text } from './Text';
+export { default as Turbo } from './Turbo';
 export { default as Undo } from './Undo';
 export { default as Unignore } from './Unignore';
 export { default as Update } from './Update';
