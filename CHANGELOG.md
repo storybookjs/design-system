@@ -1,3 +1,15 @@
+# v7.13.1 (Mon Feb 06 2023)
+
+#### 🐛 Bug Fix
+
+- Add "turbo" icon for speed [#407](https://github.com/storybookjs/design-system/pull/407) ([@domyen](https://github.com/domyen))
+
+#### Authors: 1
+
+- Dominic Nguyen ([@domyen](https://github.com/domyen))
+
+---
+
 # v7.13.0 (Sun Feb 05 2023)
 
 #### 🚀 Enhancement
