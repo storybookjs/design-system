@@ -9,8 +9,7 @@ interface SVGRProps {
 const SvgFlow = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="48"
-    height="48"
+    role="img"
     viewBox="0 0 48 48"
     aria-labelledby={titleId}
     {...props}
