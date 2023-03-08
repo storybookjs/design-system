@@ -1,0 +1,201 @@
+🔎 checking possible migrations..
+
+🔎 found a 'storybook-binary' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   We've detected you are using Storybook 7.0.0 without Storybook's storybook binary. Starting in Storybook 7.0, it has    │
+│   to be installed.                                                                                                        │
+│                                                                                                                           │
+│                                                                                                                           │
+│   More info:                                                                                                              │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#start-storybook--build-storybook-binaries-removed       │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'storybook-binary' migration on your project? › (Y/n)✔ Do you want to run the 'storybook-binary' migration on your project? … yes
+
+✅ Adding 'storybook' as dev dependency
+
+✅ ran storybook-binary migration
+
+🔎 found a 'sb-scripts' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   We've detected you are using Storybook 7.0.0 with scripts from previous versions of Storybook.                          │
+│   Starting in Storybook 7, the start-storybook and build-storybook binaries have changed to storybook dev and storybook   │
+│   build respectively.                                                                                                     │
+│   In order to work with Storybook 7.0.0, your storybook scripts have to be adjusted to use the binary. We can adjust      │
+│   them for you:                                                                                                           │
+│                                                                                                                           │
+│   build-storybook                                                                                                         │
+│   from:                                                                                                                   │
+│   yarn build-images && yarn patch-package && build-storybook -s .storybook/static                                         │
+│   to:                                                                                                                     │
+│   yarn build-images && yarn patch-package && storybook build -s .storybook/static                                         │
+│                                                                                                                           │
+│   storybook                                                                                                               │
+│   from:                                                                                                                   │
+│   yarn patch-package && start-storybook -p 6006 -s .storybook/static                                                      │
+│   to:                                                                                                                     │
+│   yarn patch-package && storybook dev -p 6006 -s .storybook/static                                                        │
+│                                                                                                                           │
+│   In case this migration did not cover all of your scripts, or you'd like more info:                                      │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#start-storybook--build-storybook-binaries-removed       │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'sb-scripts' migration on your project? › (Y/n)✔ Do you want to run the 'sb-scripts' migration on your project? … yes
+✅ Updating scripts in package.json
+
+
+✅ ran sb-scripts migration
+
+🔎 found a 'new-frameworks' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   We've detected your project is not fully setup with Storybook's 7 new framework format.                                 │
+│                                                                                                                           │
+│   Storybook 7 introduced the concept of frameworks, which abstracts configuration for renderers (e.g. React, Vue),        │
+│   builders (e.g. Webpack, Vite) and defaults to make integrations easier.                                                 │
+│                                                                                                                           │
+│   Your project should be updated to use Storybook's framework: @storybook/react-webpack5. We can attempt to do this for   │
+│   you automatically.                                                                                                      │
+│                                                                                                                           │
+│   Here are the steps this migration will do to migrate your project:                                                      │
+│   - Add the following dependencies:                                                                                       │
+│   - * @storybook/react-webpack5                                                                                           │
+│   - Update or specify the framework field in .storybook/main.js with the value of "@storybook/react-webpack5".            │
+│                                                                                                                           │
+│                                                                                                                           │
+│   To learn more about the new framework format, see:                                                                      │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md##new-framework-api                                      │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'new-frameworks' migration on your project? › (Y/n)✔ Do you want to run the 'new-frameworks' migration on your project? … yes
+✅ Installing new dependencies: @storybook/react-webpack5
+✅ Updating main.js
+✅ Updating "framework" field
+✅ ran new-frameworks migration
+
+🔎 found a 'mdx1to2' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                  │
+│   We've found 3 '.stories.mdx' files in your project.                                                            │
+│                                                                                                                  │
+│   Storybook has upgraded to MDX2 (https://mdxjs.com/blog/v2/), which contains breaking changes from MDX1.        │
+│   We can try to automatically upgrade your MDX files to MDX2 format using some common patterns.                  │
+│                                                                                                                  │
+│   After this install completes, and before you start Storybook, we strongly recommend reading the MDX2 section   │
+│   of the 7.0 migration guide. It contains useful tools for detecting and fixing any remaining issues.            │
+│                                                                                                                  │
+│   https://storybook.js.org/migration-guides/7.0                                                                  │
+│                                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'mdx1to2' migration on your project? › (Y/n)✔ Do you want to run the 'mdx1to2' migration on your project? … yes
+🆗 Unmodified Typography.stories.mdx
+🆗 Unmodified Color.stories.mdx
+🆗 Unmodified Intro.stories.mdx
+✅ ran mdx1to2 migration
+
+🔎 found a 'github-flavored-markdown-mdx' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   In MDX1 you had the option of using GitHub flavored markdown.                                                           │
+│                                                                                                                           │
+│   Storybook 7.0 uses MDX2 for compiling MDX, and thus no longer supports GFM out of the box.                              │
+│   Because of this you need to explicitly add the GFM plugin in the addon-docs options:                                    │
+│   https://storybook.js.org/docs/7.0/react/writing-docs/mdx#lack-of-github-flavored-markdown-gfm                           │
+│                                                                                                                           │
+│   We recommend you follow the guide on the link above, however we can add a temporary storybook addon that helps make     │
+│   this migration easier.                                                                                                  │
+│   We'll install the addon and add it to your storybook config.                                                            │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'github-flavored-markdown-mdx' migration on your project? › (Y/n)✔ Do you want to run the 'github-flavored-markdown-mdx' migration on your project? … yes
+✅ Adding "@storybook/addon-mdx-gfm" addon
+✅ ran github-flavored-markdown-mdx migration
+
+🔎 found a 'bare-mdx-stories-glob' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   We've detected your project has one or more globs in your 'stories' config that matches .stories.mdx files:             │
+│   "../src/**/*.stories.mdx"                                                                                               │
+│   "../src/**/*.stories.js"                                                                                                │
+│   "../src/**/*.stories.tsx"                                                                                               │
+│                                                                                                                           │
+│   In Storybook 7, we have deprecated defining stories in MDX files, and consequently have changed the suffix to simply    │
+│   .mdx.                                                                                                                   │
+│                                                                                                                           │
+│   We can automatically migrate your 'stories' config to include any .mdx file instead of just .stories.mdx.               │
+│   That would result in the following 'stories' config:                                                                    │
+│   "../src/**/*.mdx"                                                                                                       │
+│   "../src/**/*.stories.js"                                                                                                │
+│   "../src/**/*.stories.tsx"                                                                                               │
+│                                                                                                                           │
+│   To learn more about this change, see: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#mdx-docs-files    │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'bare-mdx-stories-glob' migration on your project? › (Y/n)✔ Do you want to run the 'bare-mdx-stories-glob' migration on your project? … yes
+✅ Setting 'stories' config:
+[
+  "../src/**/*.mdx",
+  "../src/**/*.stories.js",
+  "../src/**/*.stories.tsx"
+]
+✅ ran bare-mdx-stories-glob migration
+
+🔎 found a 'autodocsTrue' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                    │
+│   We've changed the configuration of autodocs (previous docsPage), so now the value:               │
+│     - docs.autodocs: true -- means automatically create docs for every CSF file                    │
+│     - docs.autodocs: 'tag' -- means only create autodocs for CSF files with the 'autodocs' tag     │
+│     - docs.autodocs: false -- means never create autodocs                                          │
+│                                                                                                    │
+│   Based on your prior configuration,  we can set the `docs.autodocs` to keep your old behaviour:   │
+│                                                                                                    │
+│   docs: { autodocs: true }                                                                         │
+│                                                                                                    │
+│   More info: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#autodocs-changes      │
+│                                                                                                    │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'autodocsTrue' migration on your project? › (Y/n)✔ Do you want to run the 'autodocsTrue' migration on your project? … yes
+✅ Setting 'docs.autodocs' to true in main.js
+✅ ran autodocsTrue migration
+
+⚠️  failed to check fix missing-babelrc
+
+TypeError: Cannot read properties of undefined (reading 'name')
+    at Object.check (/Users/dominicnguyen/.npm/_npx/eebb2d3a7d26a7f1/node_modules/@storybook/cli/dist/generate.js:269:720)
+    at async automigrate (/Users/dominicnguyen/.npm/_npx/eebb2d3a7d26a7f1/node_modules/@storybook/cli/dist/generate.js:325:1221)
+    at async doUpgrade (/Users/dominicnguyen/.npm/_npx/eebb2d3a7d26a7f1/node_modules/@storybook/cli/dist/generate.js:402:2893)
+    at async withTelemetry (/Users/dominicnguyen/.npm/_npx/eebb2d3a7d26a7f1/node_modules/@storybook/core-server/dist/index.js:27:3469)
+    at async upgrade (/Users/dominicnguyen/.npm/_npx/eebb2d3a7d26a7f1/node_modules/@storybook/cli/dist/generate.js:402:3336)
+
+╭ Migration check ran with failures ────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│                                                                                                                           │
+│   Successful migrations:                                                                                                  │
+│                                                                                                                           │
+│   storybook-binary, sb-scripts, new-frameworks, mdx1to2, github-flavored-markdown-mdx, bare-mdx-stories-glob,             │
+│   autodocsTrue                                                                                                            │
+│                                                                                                                           │
+│   Failed migrations:                                                                                                      │
+│                                                                                                                           │
+│   missing-babelrc:                                                                                                        │
+│   Cannot read properties of undefined (reading 'name')                                                                    │
+│                                                                                                                           │
+│                                                                                                                           │
+│   You can find the full logs in /Users/dominicnguyen/Sites/storybook-design-system/migration-storybook.log                │
+│                                                                                                                           │
+│   ─────────────────────────────────────────────────                                                                       │
+│                                                                                                                           │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook@next automigrate'                    │
+│                                                                                                                           │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate   │
+│   to the latest version of Storybook.                                                                                     │
+│                                                                                                                           │
+│   Please check the changelog and migration guide for manual migrations and more information:                              │
+│   https://storybook.js.org/migration-guides/7.0                                                                           │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                 │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
