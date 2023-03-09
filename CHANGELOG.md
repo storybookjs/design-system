@@ -1,3 +1,15 @@
+# v7.13.2 (Thu Mar 09 2023)
+
+#### 🐛 Bug Fix
+
+- Update the flow image [#408](https://github.com/storybookjs/design-system/pull/408) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.13.1 (Mon Feb 06 2023)
 
 #### 🐛 Bug Fix
