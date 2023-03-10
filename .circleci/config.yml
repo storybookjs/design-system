@@ -3,7 +3,7 @@ version: 2
 jobs:
   lint:
     docker:
-      - image: circleci/node:12
+      - image: cimg/node:16.17.1
     working_directory: ~/repo
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
       - run: yarn lint
   build:
     docker:
-      - image: circleci/node:12
+      - image: cimg/node:16.17.1
     working_directory: ~/repo
     steps:
       - checkout
