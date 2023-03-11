@@ -15,7 +15,7 @@ function randomString(min: number, max: number) {
     .slice(1);
 }
 export const TagItem = styled(
-  ({ isLoading, children, ...rest }) => (
+  ({ isLoading, children, ...rest }: TagItemProps) => (
     <div {...rest} {...(isLoading && { 'aria-label': 'Loading tag' })}>
       {isLoading ? randomString(5, 12) : children}
     </div>

@@ -7,7 +7,7 @@ type StyledBulletLinkProps = React.ComponentProps<typeof Link> & {
   isActive?: boolean;
 };
 
-const StyledBulletLink = styled(({ isActive, ...rest }) => (
+const StyledBulletLink = styled(({ isActive, ...rest }: StyledBulletLinkProps) => (
   <Link {...rest} />
 ))<StyledBulletLinkProps>`
   outline: none;
@@ -91,7 +91,7 @@ export function BulletLink({ currentPath, item, ...rest }: BulletLinkProps) {
       <StyledBulletLink
         isActive={isActive}
         href={item.path}
-        LinkWrapper={item.LinkWrapper}
+        LinkWrapper={item.LinkWrapper as React.ComponentType<any>}
         tertiary={!isActive}
         {...rest}
       >

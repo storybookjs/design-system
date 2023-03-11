@@ -1,10 +1,7 @@
 import React from 'react';
 import { styled, css } from '@storybook/theming';
-// @ts-ignore
 import { BulletLink, BulletLinkItem } from './BulletLink';
-// @ts-ignore
 import { ItemLink, LinkItem } from './ItemLink';
-// @ts-ignore
 import { MenuLink } from './MenuLink';
 import { color, typography } from '../shared/styles';
 import { Icon } from '../Icon';
@@ -34,14 +31,19 @@ export interface ItemWithStateAndId extends ItemWithId {
   children: ItemWithStateAndId[];
 }
 
-interface ItemComponent {
+interface ItemComponentProps {
   currentPath: string;
   item: ItemWithStateAndId;
   isTopLevel: boolean;
   setMenuOpenStateById?: SetMenuOpenStateById;
 }
 
-const ItemComponent = ({ currentPath, item, isTopLevel, setMenuOpenStateById }: ItemComponent) => {
+const ItemComponent = ({
+  currentPath,
+  item,
+  isTopLevel,
+  setMenuOpenStateById,
+}: ItemComponentProps) => {
   if (item.type === ItemType.MENU) {
     return (
       <Menu
@@ -205,7 +207,6 @@ export function TableOfContentsItems({
       className={className}
       isTopLevel={isTopLevel}
       isFlatList={isFlatList}
-      // @ts-expect-error Emotion 10 doesn't include `as` in its types
       as={isOrderedList ? 'ol' : 'ul'}
     >
       {items.map((item) => {

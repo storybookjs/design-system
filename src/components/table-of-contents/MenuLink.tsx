@@ -7,7 +7,7 @@ type MenuLinkProps = React.ComponentProps<typeof Link> & {
   isActive?: boolean;
 };
 
-export const MenuLink = styled(({ isActive, ...rest }) => (
+export const MenuLink = styled(({ isActive, ...rest }: MenuLinkProps) => (
   <Link {...rest} tertiary={!isActive} />
 ))<MenuLinkProps>`
   outline: none;
