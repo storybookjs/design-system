@@ -1,3 +1,16 @@
+# v7.14.0 (Mon Mar 13 2023)
+
+#### 🚀 Enhancement
+
+- Upgrade to Storybook 7 [#410](https://github.com/storybookjs/design-system/pull/410) ([@yannbf](https://github.com/yannbf) [@shilman](https://github.com/shilman))
+
+#### Authors: 2
+
+- Michael Shilman ([@shilman](https://github.com/shilman))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v7.13.2 (Thu Mar 09 2023)
 
 #### 🐛 Bug Fix
