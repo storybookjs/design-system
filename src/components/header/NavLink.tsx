@@ -10,8 +10,9 @@ const StyledNavLink = styled(Link)`
 `;
 
 type NavLinkProps = ComponentProps<typeof Link>;
+type NavLinkRef = ((props: NavLinkProps) => JSX.Element) & { displayName?: string };
 
-export const NavLink = forwardRef<HTMLAnchorElement | HTMLButtonElement, NavLinkProps>(
+export const NavLink: NavLinkRef = forwardRef<HTMLAnchorElement | HTMLButtonElement, NavLinkProps>(
   (props, ref) => {
     const { inverse } = useContext(HeaderContext);
     return <StyledNavLink ref={ref} inverse={inverse} tertiary={!inverse} {...props} />;

@@ -11,6 +11,7 @@ export interface TagLinkProps extends React.ComponentProps<typeof Link> {
 
 export const TagLink = styled((props: TagLinkProps) => {
   return (
+    // @ts-expect-error FIXME what's wrong here?
     <TagItem {...props} as={Link}>
       {props.isLoading ? 'Loading tag' : props.children}
     </TagItem>

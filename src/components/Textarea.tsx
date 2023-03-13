@@ -221,3 +221,4 @@ export const Textarea: FC<Props & ComponentProps<typeof TextareaText>> = forward
     );
   }
 );
+Textarea.displayName = 'Textarea';

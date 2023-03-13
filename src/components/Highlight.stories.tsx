@@ -78,7 +78,7 @@ jobs:
 
 const yamlCodeWithWrappers = `<pre class="language-yaml"><code class="language-yaml">${yamlCode}</code></pre>`;
 
-const markdownCode = `import { Meta, Story, Preview } from '@storybook/addon-docs/';
+const markdownCode = `import { Meta, Story, Preview } from '@storybook/blocks';
 
 &#x3C;Meta title="MDX/Checkbox" component={Checkbox} />
 

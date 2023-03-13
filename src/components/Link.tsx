@@ -187,7 +187,6 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>
 
     return (
       <StyledLink
-        // @ts-expect-error Emotion 10 doesn't include `as` in its types
         as={LinkComponentPicker}
         ref={ref as React.ForwardedRef<HTMLAnchorElement>}
         {...rest}

@@ -1,8 +1,9 @@
 import React, { ComponentProps, FC } from 'react';
 import { styled, css } from '@storybook/theming';
+import type { StyledComponent } from '@storybook/theming';
 
 import { Link } from './Link';
-import { breakpoint, color, typography } from './shared/styles';
+import { color, typography } from './shared/styles';
 import { inlineGlow } from './shared/animation';
 
 const Wrapper = styled.ul`
@@ -18,7 +19,12 @@ const Wrapper = styled.ul`
   }
 `;
 
-const Tab = styled(Link)<{ isLoading?: boolean; isActive?: boolean }>`
+interface TabProps {
+  isLoading?: boolean;
+  isActive?: boolean;
+}
+
+const Tab: StyledComponent<TabProps> = styled(Link)<TabProps>`
   padding: 10px 15px;
   line-height: 20px;
   font-size: ${typography.size.s2}px;
