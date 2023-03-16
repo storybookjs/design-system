@@ -1,3 +1,15 @@
+# v7.15.0 (Thu Mar 16 2023)
+
+#### 🚀 Enhancement
+
+- Create new ButtonAction component [#412](https://github.com/storybookjs/design-system/pull/412) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
 # v7.14.0 (Mon Mar 13 2023)
 
 #### 🚀 Enhancement
