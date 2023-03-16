@@ -4,6 +4,8 @@ import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
 import { Icon, IconType } from './Icon';
 import { Spinner } from './Spinner';
+import { TooltipNote } from './tooltip/TooltipNote';
+import WithTooltip from './tooltip/WithTooltip';
 
 interface ButtonActionProps {
   icon: IconType;
@@ -11,6 +13,7 @@ interface ButtonActionProps {
   isActive?: boolean;
   isLoading?: boolean;
   loadingText?: string | null;
+  tooltip?: string;
 }
 
 interface ButtonStylingProps {
@@ -63,20 +66,55 @@ export const ButtonAction: FC<ButtonActionProps> = ({
   isActive = false,
   isLoading = false,
   loadingText = null,
+  tooltip,
   ...rest
 }) => {
+  if (tooltip)
+    return (
+      <WithTooltip tooltip={<TooltipNote note="Coco" />} hasChrome={false}>
+        <InsideButtonAction
+          icon={icon}
+          isActive={isActive}
+          isLoading={isLoading}
+          loadingText={loadingText}
+          {...rest}
+        >
+          {children}
+        </InsideButtonAction>
+      </WithTooltip>
+    );
   return (
-    <StyledButton isActive={isActive} isLoading={isLoading} {...rest}>
-      {icon && !isLoading && <Icon icon={icon} />}
-      {isLoading && (
-        <div style={{ position: 'relative', width: 14, height: 14 }}>
-          <Spinner inForm />
-        </div>
-      )}
-      {children && !isLoading && children}
-      {isLoading && loadingText}
-    </StyledButton>
+    <InsideButtonAction
+      icon={icon}
+      isActive={isActive}
+      isLoading={isLoading}
+      loadingText={loadingText}
+      {...rest}
+    >
+      {children}
+    </InsideButtonAction>
   );
 };
+
+const InsideButtonAction: FC<ButtonActionProps> = ({
+  children,
+  icon,
+  isActive = false,
+  isLoading = false,
+  loadingText = null,
+  tooltip,
+  ...rest
+}) => (
+  <StyledButton isActive={isActive} isLoading={isLoading} {...rest}>
+    {icon && !isLoading && <Icon icon={icon} />}
+    {isLoading && (
+      <div style={{ position: 'relative', width: 14, height: 14 }}>
+        <Spinner inForm />
+      </div>
+    )}
+    {children && !isLoading && children}
+    {isLoading && loadingText}
+  </StyledButton>
+);
 
 ButtonAction.displayName = 'ButtonAction';
