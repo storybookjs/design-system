@@ -3,17 +3,19 @@ import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
 import { Icon, IconType } from './Icon';
+import { Spinner } from './Spinner';
 
 interface ButtonActionProps {
   icon: IconType;
   children?: string;
   isActive?: boolean;
   isLoading?: boolean;
-  loadingText?: string;
+  loadingText?: string | null;
 }
 
 interface ButtonStylingProps {
   isActive?: boolean;
+  isLoading?: boolean;
 }
 
 const StyledButton = styled.button<ButtonStylingProps>`
@@ -38,11 +40,12 @@ const StyledButton = styled.button<ButtonStylingProps>`
   margin: 0;
   background-color: transparent;
   font-size: ${typography.size.s2}px;
+  line-height: 14px;
   font-weight: ${typography.weight.regular};
   color: ${color.mediumdark};
 
   ${(props) =>
-    props.isActive &&
+    (props.isActive || props.isLoading) &&
     `
       background-color: ${transparentize(0.7, color.secondary)};
       color: ${color.secondary};
@@ -59,12 +62,17 @@ export const ButtonAction: FC<ButtonActionProps> = ({
   icon,
   isActive = false,
   isLoading = false,
-  loadingText = 'Loading',
+  loadingText = null,
   ...rest
 }) => {
   return (
-    <StyledButton isActive={isActive} {...rest}>
-      {icon && <Icon icon={icon} />}
+    <StyledButton isActive={isActive} isLoading={isLoading} {...rest}>
+      {icon && !isLoading && <Icon icon={icon} />}
+      {isLoading && (
+        <div style={{ position: 'relative', width: 14, height: 14 }}>
+          <Spinner inForm />
+        </div>
+      )}
       {children && !isLoading && children}
       {isLoading && loadingText}
     </StyledButton>
