@@ -34,8 +34,6 @@ const StyledButton = styled.button<ButtonStylingProps>`
   text-align: center;
   text-decoration: none;
   transition: all 150ms ease-out;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
   vertical-align: top;
   white-space: nowrap;
   user-select: none;
@@ -71,7 +69,7 @@ export const ButtonAction: FC<ButtonActionProps> = ({
 }) => {
   if (tooltip)
     return (
-      <WithTooltip tooltip={<TooltipNote note="Coco" />} hasChrome={false}>
+      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false}>
         <InsideButtonAction
           icon={icon}
           isActive={isActive}
@@ -116,5 +114,3 @@ const InsideButtonAction: FC<ButtonActionProps> = ({
     {isLoading && loadingText}
   </StyledButton>
 );
-
-ButtonAction.displayName = 'ButtonAction';
