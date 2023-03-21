@@ -2,6 +2,21 @@
 
 #### ⚠️ Pushed to `master`
 
+- Include spreaded rest props in type definition (info@ghengeveld.nl)
+- Change tooltip wrapper element to span to prevent nesting buttons (info@ghengeveld.nl)
+- Use human readable numbers in Cardinal (info@ghengeveld.nl)
+- Export ButtonAction component (info@ghengeveld.nl)
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
+# v7.15.1 (Tue Mar 21 2023)
+
+#### ⚠️ Pushed to `master`
+
 - Change tooltip wrapper element to span to prevent nesting buttons (info@ghengeveld.nl)
 - Use human readable numbers in Cardinal (info@ghengeveld.nl)
 - Export ButtonAction component (info@ghengeveld.nl)
