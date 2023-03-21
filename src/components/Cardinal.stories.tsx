@@ -185,3 +185,11 @@ export const WithIcon = () => (
 );
 
 WithIcon.storyName = 'with icon';
+
+export const Thousands = () => <Cardinal count={12345} text="Story" />;
+
+Thousands.storyName = 'thousands';
+
+export const Decimals = () => <Cardinal count={123.45} text="Story" />;
+
+Decimals.storyName = 'decimals';

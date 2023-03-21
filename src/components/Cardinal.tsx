@@ -192,11 +192,11 @@ export const Cardinal: FunctionComponent<CardinalProps> = ({
   alignment,
   ...props
 }) => {
-  let countValue = count;
+  let countValue = typeof count === 'number' ? count.toLocaleString('en-US') : count;
   if (countLink) {
     countValue = (
       <Link href={countLink} inverse={status === 'inverse'}>
-        {count}
+        {countValue}
       </Link>
     );
   }
