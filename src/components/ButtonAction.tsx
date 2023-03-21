@@ -69,7 +69,7 @@ export const ButtonAction: FC<ButtonActionProps> = ({
 }) => {
   if (tooltip)
     return (
-      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false}>
+      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} tagName="span">
         <InsideButtonAction
           icon={icon}
           isActive={isActive}
