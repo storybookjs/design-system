@@ -1,3 +1,16 @@
+# v7.15.1 (Tue Mar 21 2023)
+
+#### ⚠️ Pushed to `master`
+
+- Use human readable numbers in Cardinal (info@ghengeveld.nl)
+- Export ButtonAction component (info@ghengeveld.nl)
+
+#### Authors: 1
+
+- Gert Hengeveld (info@ghengeveld.nl)
+
+---
+
 # v7.15.0 (Thu Mar 16 2023)
 
 #### 🚀 Enhancement
