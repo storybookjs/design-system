@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ComponentProps, FC } from 'react';
 import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
@@ -58,7 +58,7 @@ const StyledButton = styled.button<ButtonStylingProps>`
   }
 `;
 
-export const ButtonAction: FC<ButtonActionProps> = ({
+export const ButtonAction: FC<ButtonActionProps & ComponentProps<typeof InsideButtonAction>> = ({
   children,
   icon,
   isActive = false,
@@ -94,7 +94,7 @@ export const ButtonAction: FC<ButtonActionProps> = ({
   );
 };
 
-const InsideButtonAction: FC<ButtonActionProps> = ({
+const InsideButtonAction: FC<ButtonActionProps & ComponentProps<typeof StyledButton>> = ({
   children,
   icon,
   isActive = false,
