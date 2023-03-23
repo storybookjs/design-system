@@ -44,13 +44,13 @@ const StyledButton = styled.button<ButtonStylingProps>`
   ${(props) =>
     props.isActive &&
     `
-      background-color: ${transparentize(0.7, color.secondary)};
+      background-color: ${transparentize(0.93, color.secondary)};
       color: ${color.secondary};
     `}
 
   &:hover {
     color: ${color.secondary};
-    background-color: ${transparentize(0.54, color.secondary)};
+    background-color: ${transparentize(0.86, color.secondary)};
   }
 `;
 
