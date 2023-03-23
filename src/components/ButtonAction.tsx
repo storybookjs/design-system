@@ -3,7 +3,6 @@ import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
 import { Icon, IconType } from './Icon';
-import { Spinner } from './Spinner';
 import { TooltipNote } from './tooltip/TooltipNote';
 import WithTooltip from './tooltip/WithTooltip';
 
@@ -11,14 +10,11 @@ interface ButtonActionProps {
   icon: IconType;
   children?: string;
   isActive?: boolean;
-  isLoading?: boolean;
-  loadingText?: string | null;
   tooltip?: string;
 }
 
 interface ButtonStylingProps {
   isActive?: boolean;
-  isLoading?: boolean;
 }
 
 const StyledButton = styled.button<ButtonStylingProps>`
@@ -46,7 +42,7 @@ const StyledButton = styled.button<ButtonStylingProps>`
   color: ${color.mediumdark};
 
   ${(props) =>
-    (props.isActive || props.isLoading) &&
+    props.isActive &&
     `
       background-color: ${transparentize(0.7, color.secondary)};
       color: ${color.secondary};
@@ -62,33 +58,19 @@ export const ButtonAction: FC<ButtonActionProps & ComponentProps<typeof InsideBu
   children,
   icon,
   isActive = false,
-  isLoading = false,
-  loadingText = null,
   tooltip,
   ...rest
 }) => {
   if (tooltip)
     return (
       <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} tagName="span">
-        <InsideButtonAction
-          icon={icon}
-          isActive={isActive}
-          isLoading={isLoading}
-          loadingText={loadingText}
-          {...rest}
-        >
+        <InsideButtonAction icon={icon} isActive={isActive} {...rest}>
           {children}
         </InsideButtonAction>
       </WithTooltip>
     );
   return (
-    <InsideButtonAction
-      icon={icon}
-      isActive={isActive}
-      isLoading={isLoading}
-      loadingText={loadingText}
-      {...rest}
-    >
+    <InsideButtonAction icon={icon} isActive={isActive} {...rest}>
       {children}
     </InsideButtonAction>
   );
@@ -98,19 +80,11 @@ const InsideButtonAction: FC<ButtonActionProps & ComponentProps<typeof StyledBut
   children,
   icon,
   isActive = false,
-  isLoading = false,
-  loadingText = null,
   tooltip,
   ...rest
 }) => (
-  <StyledButton isActive={isActive} isLoading={isLoading} {...rest}>
-    {icon && !isLoading && <Icon icon={icon} />}
-    {isLoading && (
-      <div style={{ position: 'relative', width: 14, height: 14 }}>
-        <Spinner inForm />
-      </div>
-    )}
-    {children && !isLoading && children}
-    {isLoading && loadingText}
+  <StyledButton isActive={isActive} {...rest}>
+    {icon && <Icon icon={icon} />}
+    {children}
   </StyledButton>
 );
