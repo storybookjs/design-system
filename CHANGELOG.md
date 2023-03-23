@@ -1,3 +1,19 @@
+# v7.15.1 (Thu Mar 23 2023)
+
+#### ⚠️ Pushed to `master`
+
+- Fix types for optional fields on ProgressDots (info@ghengeveld.nl)
+- Include spreaded rest props in type definition (info@ghengeveld.nl)
+- Change tooltip wrapper element to span to prevent nesting buttons (info@ghengeveld.nl)
+- Use human readable numbers in Cardinal (info@ghengeveld.nl)
+- Export ButtonAction component (info@ghengeveld.nl)
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v7.15.1 (Tue Mar 21 2023)
 
 #### ⚠️ Pushed to `master`
