@@ -80,6 +80,7 @@ const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
   children,
   closeOnClick = false,
   delayHide = 100,
+  delayShow = 0,
   hasChrome = true,
   modifiers = {},
   onVisibilityChange = () => {},
@@ -120,6 +121,7 @@ const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
   return (
     <TooltipTrigger
       delayHide={delayHide}
+      delayShow={delayShow}
       placement={placement}
       trigger={trigger}
       tooltipShown={isTooltipShown}
@@ -180,6 +182,7 @@ interface Props {
   children: ReactNode;
   startOpen?: boolean;
   delayHide?: number;
+  delayShow?: number;
   // eslint-disable-next-line @typescript-eslint/ban-types
   onVisibilityChange?: Function;
   portalContainer?: ComponentProps<typeof TooltipTrigger>['portalContainer'];

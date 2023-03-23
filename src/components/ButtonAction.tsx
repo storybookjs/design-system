@@ -63,7 +63,7 @@ export const ButtonAction: FC<ButtonActionProps & ComponentProps<typeof InsideBu
 }) => {
   if (tooltip)
     return (
-      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} tagName="span">
+      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} delayShow={600}>
         <InsideButtonAction icon={icon} isActive={isActive} {...rest}>
           {children}
         </InsideButtonAction>
