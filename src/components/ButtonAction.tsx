@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
@@ -8,16 +8,13 @@ import WithTooltip from './tooltip/WithTooltip';
 
 interface ButtonActionProps {
   icon: IconType;
-  children?: ReactNode;
+  children?: string;
   isActive?: boolean;
-  isLoading?: boolean;
-  loadingText?: string | null;
   tooltip?: string;
 }
 
 interface ButtonStylingProps {
   isActive?: boolean;
-  isLoading?: boolean;
 }
 
 const StyledButton = styled.button<ButtonStylingProps>`
@@ -63,7 +60,7 @@ export const ButtonAction = ({
   isActive = false,
   tooltip,
   ...rest
-}: ButtonActionProps & ComponentProps<typeof InsideButtonAction>) => {
+}: ButtonActionProps) => {
   if (tooltip)
     return (
       <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} delayShow={600}>

@@ -16,7 +16,6 @@ export const IconOnly: Story = {
     children: '',
     icon: 'starhollow',
     isActive: false,
-    isLoading: false,
   },
 };
 
@@ -24,7 +23,7 @@ export const IconOnlyActive: Story = {
   args: {
     children: '',
     icon: 'starhollow',
-    isActive: false,
+    isActive: true,
   },
 };
 
@@ -36,30 +35,27 @@ export const WithLabel: Story = {
   },
 };
 
-export const IconOnlyWithTooltip: Story = {
+export const WithLabelActive: Story = {
   args: {
-    children: '',
+    children: 'Hello World',
     icon: 'starhollow',
     isActive: true,
-    isLoading: false,
   },
 };
 
-export const Loading: Story = {
+export const IconOnlyWithTooltip: Story = {
+  args: {
+    icon: 'starhollow',
+    isActive: false,
+    tooltip: "I'm a tooltip",
+  },
+};
+
+export const WithLabelWithTooltip: Story = {
   args: {
     children: 'Hello World',
     icon: 'starhollow',
     isActive: false,
-    isLoading: true,
-  },
-};
-
-export const LoadingWithText: Story = {
-  args: {
-    children: 'Hello World',
-    icon: 'starhollow',
-    isActive: false,
-    isLoading: true,
-    loadingText: 'Loading',
+    tooltip: "I'm a tooltip",
   },
 };
