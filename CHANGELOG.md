@@ -1,3 +1,15 @@
+# v7.15.6 (Fri Mar 24 2023)
+
+#### ⚠️ Pushed to `master`
+
+- Prevent duplicate export of 'Link' ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v7.15.1 (Fri Mar 24 2023)
 
 #### ⚠️ Pushed to `master`
