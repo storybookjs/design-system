@@ -30,7 +30,7 @@ export { default as Interface } from './Interface';
 export { default as Key } from './Key';
 export { default as Knob } from './Knob';
 export { default as Lightning } from './Lightning';
-export { default as Link } from './Link';
+export { default as LinkIcon } from './Link';
 export { default as Overlap } from './Overlap';
 export { default as Pixel } from './Pixel';
 export { default as Plugin } from './Plugin';
