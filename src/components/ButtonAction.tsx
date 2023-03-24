@@ -63,8 +63,13 @@ export const ButtonAction = ({
 }: ButtonActionProps) => {
   if (tooltip)
     return (
-      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} delayShow={600}>
-        <StyledButton isActive={isActive} {...rest} as="div">
+      <WithTooltip
+        tooltip={<TooltipNote note={tooltip} />}
+        hasChrome={false}
+        delayShow={600}
+        {...rest}
+      >
+        <StyledButton isActive={isActive} as="div">
           {icon && <Icon icon={icon} />}
           {children}
         </StyledButton>
