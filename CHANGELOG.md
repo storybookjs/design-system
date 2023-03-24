@@ -1,3 +1,21 @@
+# v7.15.1 (Fri Mar 24 2023)
+
+#### ⚠️ Pushed to `master`
+
+- Avoid React.FC, improve types and fix lint errors ([@ghengeveld](https://github.com/ghengeveld))
+- Use latest Storybook 7 RC ([@ghengeveld](https://github.com/ghengeveld))
+- Fix types for optional fields on ProgressDots ([@ghengeveld](https://github.com/ghengeveld))
+- Include spreaded rest props in type definition ([@ghengeveld](https://github.com/ghengeveld))
+- Change tooltip wrapper element to span to prevent nesting buttons ([@ghengeveld](https://github.com/ghengeveld))
+- Use human readable numbers in Cardinal ([@ghengeveld](https://github.com/ghengeveld))
+- Export ButtonAction component ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v7.15.1 (Thu Mar 23 2023)
 
 #### ⚠️ Pushed to `master`
