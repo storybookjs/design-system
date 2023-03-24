@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
@@ -9,7 +9,7 @@ import WithTooltip from './tooltip/WithTooltip';
 
 interface ButtonActionProps {
   icon: IconType;
-  children?: string;
+  children?: ReactNode;
   isActive?: boolean;
   isLoading?: boolean;
   loadingText?: string | null;
@@ -58,7 +58,7 @@ const StyledButton = styled.button<ButtonStylingProps>`
   }
 `;
 
-export const ButtonAction: FC<ButtonActionProps & ComponentProps<typeof InsideButtonAction>> = ({
+export const ButtonAction = ({
   children,
   icon,
   isActive = false,
@@ -66,7 +66,7 @@ export const ButtonAction: FC<ButtonActionProps & ComponentProps<typeof InsideBu
   loadingText = null,
   tooltip,
   ...rest
-}) => {
+}: ButtonActionProps & ComponentProps<typeof InsideButtonAction>) => {
   if (tooltip)
     return (
       <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} tagName="span">
@@ -94,7 +94,7 @@ export const ButtonAction: FC<ButtonActionProps & ComponentProps<typeof InsideBu
   );
 };
 
-const InsideButtonAction: FC<ButtonActionProps & ComponentProps<typeof StyledButton>> = ({
+const InsideButtonAction = ({
   children,
   icon,
   isActive = false,
@@ -102,7 +102,7 @@ const InsideButtonAction: FC<ButtonActionProps & ComponentProps<typeof StyledBut
   loadingText = null,
   tooltip,
   ...rest
-}) => (
+}: ButtonActionProps & ComponentProps<typeof StyledButton>) => (
   <StyledButton isActive={isActive} isLoading={isLoading} {...rest}>
     {icon && !isLoading && <Icon icon={icon} />}
     {isLoading && (

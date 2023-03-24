@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, ReactNode } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import { styled } from '@storybook/theming';
 
 import { breakpoint, spacing, typography } from './shared/styles';
@@ -55,18 +55,18 @@ const Action = styled.div`
   }
 `;
 
-interface Props {
+interface ShadowBoxCTAProps {
   headingText: ReactNode;
   messageText?: ReactNode;
   action: ReactNode;
 }
 
-export const ShadowBoxCTA: FC<Props & ComponentProps<typeof ShadowBoxCTAWrapper>> = ({
+export const ShadowBoxCTA = ({
   action,
   headingText,
   messageText,
   ...rest
-}) => (
+}: ShadowBoxCTAProps & ComponentProps<typeof ShadowBoxCTAWrapper>) => (
   <ShadowBoxCTAWrapper {...rest}>
     <TextWrapper>
       <HeadingText>{headingText}</HeadingText>

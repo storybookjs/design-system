@@ -1,4 +1,4 @@
-import React, { ComponentProps, FunctionComponent } from 'react';
+import React, { ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 
 import { Avatar, sizes } from './Avatar';
@@ -52,7 +52,7 @@ const Users = styled.ul`
   }
 `;
 
-export interface AvatarListProps {
+interface AvatarListProps {
   isLoading: boolean;
   users: {
     id: string;
@@ -64,7 +64,7 @@ export interface AvatarListProps {
 }
 
 // Either pass the full list of users, or a userCount if known
-export const AvatarList: FunctionComponent<AvatarListProps & ComponentProps<typeof Users>> = ({
+export const AvatarList = ({
   isLoading = false,
   users = [
     { id: 'loading', avatarUrl: null, name: 'loading' },
@@ -74,7 +74,7 @@ export const AvatarList: FunctionComponent<AvatarListProps & ComponentProps<type
   userCount = null,
   size = 'medium',
   ...props
-}) => {
+}: AvatarListProps & ComponentProps<typeof Users>) => {
   const count = userCount || users.length;
 
   return (

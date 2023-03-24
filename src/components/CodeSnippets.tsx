@@ -115,10 +115,7 @@ function SnippetList({ snippets }: { snippets: SnippetType[] }) {
   );
 }
 
-export function CodeSnippets({
-  snippets,
-  ...rest
-}: Props & ComponentProps<typeof Wrapper> & { children?: never }) {
+export function CodeSnippets({ snippets, ...rest }: Props & ComponentProps<typeof Wrapper>) {
   return (
     <Wrapper {...rest}>
       <Background>

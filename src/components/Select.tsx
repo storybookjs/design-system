@@ -1,6 +1,6 @@
-import React, { ComponentProps, FC, FunctionComponent, ReactNode } from 'react';
+import React, { ComponentProps, FunctionComponent, ReactNode } from 'react';
 import { styled, css } from '@storybook/theming';
-import { color, typography, spacing } from './shared/styles';
+import { color, typography } from './shared/styles';
 import { jiggle } from './shared/animation';
 import { Icon } from './Icon';
 import { Spinner } from './Spinner';

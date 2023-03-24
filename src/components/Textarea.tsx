@@ -1,7 +1,6 @@
 import React, {
   ComponentProps,
   ComponentType,
-  FC,
   forwardRef,
   MutableRefObject,
   ReactNode,
@@ -114,7 +113,7 @@ const TextareaWrapper = styled.div<{ error: ReactNode }>`
     `};
 `;
 
-const TextareaContainer = styled.div<{ orientation: Props['orientation'] }>`
+const TextareaContainer = styled.div<{ orientation: TextareaProps['orientation'] }>`
   ${(props) =>
     props.orientation === 'horizontal' &&
     css`
@@ -138,7 +137,7 @@ const TextareaContainer = styled.div<{ orientation: Props['orientation'] }>`
 const getErrorMessage = ({ error, value }: any): ReactNode =>
   typeof error === 'function' ? error(value) : error;
 
-interface Props {
+interface TextareaProps {
   id: string;
   value: string;
   label: string;
@@ -152,7 +151,10 @@ interface Props {
   subtextSentiment?: 'default' | 'negative' | 'warning';
 }
 
-export const Textarea: FC<Props & ComponentProps<typeof TextareaText>> = forwardRef(
+export const Textarea = forwardRef<
+  HTMLTextAreaElement,
+  TextareaProps & ComponentProps<typeof TextareaText>
+>(
   (
     {
       id,
@@ -181,7 +183,7 @@ export const Textarea: FC<Props & ComponentProps<typeof TextareaText>> = forward
         textareaRef.current.focus();
         didFocusOnStart.current = true;
       }
-    }, [textareaRef, textareaRef.current, didFocusOnStart, didFocusOnStart.current]);
+    }, [textareaRef, startFocused]);
 
     const [errorMessage, setErrorMessage] = useState(getErrorMessage({ error, value }));
 

@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentProps } from 'react';
 import { styled, css } from '@storybook/theming';
 import type { StyledComponent } from '@storybook/theming';
 
@@ -59,16 +59,16 @@ type ItemProps = {
   label: string;
 } & ComponentProps<typeof Tab>;
 
-interface Props {
+interface LinkTabsProps {
   isLoading?: boolean;
   items: ItemProps[];
 }
 
-export const LinkTabs: FC<Props & ComponentProps<typeof Wrapper>> = ({
+export const LinkTabs = ({
   isLoading = false,
   items = [],
   ...props
-}) => (
+}: LinkTabsProps & ComponentProps<typeof Wrapper>) => (
   <Wrapper {...props}>
     {items.map(({ key, label, ...item }) => (
       <li key={key}>

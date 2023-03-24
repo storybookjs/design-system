@@ -1,4 +1,4 @@
-import React, { Children, ComponentProps, FC, ReactNode, CSSProperties } from 'react';
+import React, { Children, ComponentProps, ReactNode, CSSProperties } from 'react';
 import { styled } from '@storybook/theming';
 import ReactModal from 'react-modal';
 
@@ -44,14 +44,23 @@ const CenteredWrapper = styled.div`
   left: 0;
 `;
 
-export const Modal: FC<Props> = ({
+interface ModalProps {
+  isOpen: boolean;
+  isBlank?: boolean;
+  onClose: ComponentProps<typeof ReactModal>['onRequestClose'];
+  children: (obj: { onClose: ModalProps['onClose'] }) => ReactNode;
+  overlayStyles?: CSSProperties;
+  contentStyles?: CSSProperties;
+}
+
+export const Modal = ({
   isBlank = false,
   isOpen,
   onClose,
   children,
   overlayStyles = {},
   contentStyles = {},
-}) => {
+}: ModalProps) => {
   const actions = {
     onClose,
   };
@@ -105,12 +114,3 @@ export const Modal: FC<Props> = ({
     </ReactModal>
   );
 };
-
-interface Props {
-  isOpen: boolean;
-  isBlank?: boolean;
-  onClose: ComponentProps<typeof ReactModal>['onRequestClose'];
-  children: (obj: { onClose: Props['onClose'] }) => ReactNode;
-  overlayStyles?: CSSProperties;
-  contentStyles?: CSSProperties;
-}

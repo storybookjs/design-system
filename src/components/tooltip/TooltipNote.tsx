@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 
 import { color, typography, spacing } from '../shared/styles';
@@ -18,13 +18,10 @@ const Note = styled.div`
   margin: 6px;
 `;
 
-export const TooltipNote = ({
-  note,
-  ...rest
-}: Props & Omit<ComponentProps<typeof Note>, 'children'> & { children?: never }) => {
-  return <Note {...rest}>{note}</Note>;
-};
-
-interface Props {
+interface TooltipNoteProps {
   note: string;
 }
+
+export const TooltipNote = ({ note, ...rest }: TooltipNoteProps & ComponentProps<typeof Note>) => {
+  return <Note {...rest}>{note}</Note>;
+};

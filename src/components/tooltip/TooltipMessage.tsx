@@ -36,7 +36,7 @@ export function TooltipMessage({
   desc,
   links,
   ...rest
-}: Props & ComponentProps<typeof MessageWrapper> & { children?: never }) {
+}: Props & ComponentProps<typeof MessageWrapper>) {
   return (
     <MessageWrapper {...rest}>
       <Message>

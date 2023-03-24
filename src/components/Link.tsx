@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 import { styled, css } from '@storybook/theming';
 import { darken } from 'polished';
 
@@ -174,28 +174,29 @@ const LinkComponentPicker = forwardRef<HTMLAnchorElement | HTMLButtonElement, Li
 );
 LinkComponentPicker.displayName = 'LinkComponentPicker';
 
-export const Link = forwardRef<HTMLAnchorElement | HTMLButtonElement, LinkProps>(
-  ({ children, withArrow, ...rest }, ref) => {
-    const content = (
-      <>
-        <LinkInner withArrow={withArrow}>
-          {children}
-          {withArrow && <Icon icon="arrowright" />}
-        </LinkInner>
-      </>
-    );
+export const Link = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  LinkProps & ComponentProps<typeof StyledLink>
+>(({ children, withArrow, ...rest }, ref) => {
+  const content = (
+    <>
+      <LinkInner withArrow={withArrow}>
+        {children}
+        {withArrow && <Icon icon="arrowright" />}
+      </LinkInner>
+    </>
+  );
 
-    return (
-      <StyledLink
-        as={LinkComponentPicker}
-        ref={ref as React.ForwardedRef<HTMLAnchorElement>}
-        {...rest}
-      >
-        {content}
-      </StyledLink>
-    );
-  }
-);
+  return (
+    <StyledLink
+      as={LinkComponentPicker}
+      ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+      {...rest}
+    >
+      {content}
+    </StyledLink>
+  );
+});
 Link.displayName = 'Link';
 
 Link.defaultProps = {

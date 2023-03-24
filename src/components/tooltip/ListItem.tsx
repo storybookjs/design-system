@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, ReactNode } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import { styled, css } from '@storybook/theming';
 import weakMemoize from '@emotion/weak-memoize';
 import { background, color, typography } from '../shared/styles';
@@ -169,7 +169,20 @@ const buildStyledLinkWrapper = weakMemoize(
 
 type StyledLinkWrapperProps = ComponentProps<ReturnType<typeof buildStyledLinkWrapper>>;
 
-export const ListItem: FC<Props & Omit<StyledLinkWrapperProps, 'activeColor'>> = ({
+interface ListItemProps {
+  appearance?: 'primary' | 'secondary';
+  isLoading?: boolean;
+  left?: ReactNode;
+  title?: ReactNode;
+  center?: ReactNode;
+  right?: ReactNode;
+  active?: boolean;
+  disabled?: boolean;
+  LinkWrapper?: LinkWrapperType | null;
+  onClick?: ComponentProps<typeof ItemInner>['onClick'];
+}
+
+export const ListItem = ({
   appearance = 'primary',
   left,
   title = <span>Loading</span>,
@@ -178,10 +191,10 @@ export const ListItem: FC<Props & Omit<StyledLinkWrapperProps, 'activeColor'>> =
   onClick,
   LinkWrapper,
   ...rest
-}) => {
+}: ListItemProps & Omit<StyledLinkWrapperProps, 'activeColor'>) => {
   const listItemActiveColor = color[appearance];
   const linkInner = (
-    <ItemInner onClick={onClick as any} role="presentation">
+    <ItemInner onClick={onClick} role="presentation">
       {left && <Left>{left}</Left>}
       {title && <Title>{title}</Title>}
       {center && <Center>{center}</Center>}
@@ -212,16 +225,3 @@ export const ListItem: FC<Props & Omit<StyledLinkWrapperProps, 'activeColor'>> =
 
 type AnyProps = Record<string, any>;
 type LinkWrapperType = (props: AnyProps) => React.ReactElement<any, any>;
-
-interface Props {
-  appearance?: 'primary' | 'secondary';
-  isLoading?: boolean;
-  left?: ReactNode;
-  title?: ReactNode;
-  center?: ReactNode;
-  right?: ReactNode;
-  active?: boolean;
-  disabled?: boolean;
-  LinkWrapper?: LinkWrapperType | null;
-  onClick?: Function;
-}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, FC, ReactNode, ComponentProps } from 'react';
+import React, { useState, useMemo, ReactNode, ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 import TooltipTrigger from 'react-popper-tooltip';
 import uuid from 'uuid';
@@ -6,7 +6,7 @@ import uuid from 'uuid';
 import { Tooltip } from './Tooltip';
 
 // A target that doesn't speak popper
-const ButtonContainer = styled.button<Pick<Props, 'trigger'>>`
+const ButtonContainer = styled.button<Pick<WithTooltipProps, 'trigger'>>`
   background: transparent;
   border: 0;
   cursor: ${(props) => (props.trigger === 'hover' ? 'default' : 'pointer')};
@@ -39,44 +39,63 @@ const isDescendantOfAction = (element: HTMLElement): boolean => {
   return isDescendantOfAction(parentElement);
 };
 
-const AsComponent = React.forwardRef<unknown, Pick<Props, 'tagName'> & Record<string, any>>(
-  ({ tabIndex, tagName, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
-    const Component = tagName || ButtonContainer;
-    const asProps = {
-      ref,
-      onClick,
-      onMouseEnter,
-      onMouseLeave,
-      onFocus: onMouseEnter,
-      onBlur: onMouseLeave,
-      role: 'button',
-      ...props,
-    } as any;
+const AsComponent = React.forwardRef<
+  unknown,
+  Pick<WithTooltipProps, 'tagName'> & Record<string, any>
+>(({ tabIndex, tagName, onClick, onMouseEnter, onMouseLeave, ...props }, ref) => {
+  const Component = tagName || ButtonContainer;
+  const asProps = {
+    ref,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    onFocus: onMouseEnter,
+    onBlur: onMouseLeave,
+    role: 'button',
+    ...props,
+  } as any;
 
-    const onKeyDown = useMemo(
-      () => (event: any) => {
-        if (!onClick) {
-          return;
-        }
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          onClick(event);
-        }
-      },
-      [onClick]
-    );
+  const onKeyDown = useMemo(
+    () => (event: any) => {
+      if (!onClick) {
+        return;
+      }
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        onClick(event);
+      }
+    },
+    [onClick]
+  );
 
-    // for non button component, we need to simulate the same behavior as a button
-    if (tagName) {
-      asProps.tabIndex = tabIndex || 0;
-      asProps.onKeyDown = onKeyDown;
-    }
-    return <Component {...asProps} />;
+  // for non button component, we need to simulate the same behavior as a button
+  if (tagName) {
+    asProps.tabIndex = tabIndex || 0;
+    asProps.onKeyDown = onKeyDown;
   }
-);
+  return <Component {...asProps} />;
+});
 AsComponent.displayName = 'AsComponent';
 
-const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
+interface WithTooltipProps {
+  tagName?: keyof JSX.IntrinsicElements;
+  trigger?: ComponentProps<typeof TooltipTrigger>['trigger'];
+  closeOnClick?: boolean;
+  placement?: ComponentProps<typeof TooltipTrigger>['placement'];
+  modifiers?: any;
+  hasChrome?: boolean;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  tooltip?: ReactNode | Function;
+  children: ReactNode;
+  startOpen?: boolean;
+  delayHide?: number;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onVisibilityChange?: Function;
+  portalContainer?: ComponentProps<typeof TooltipTrigger>['portalContainer'];
+  tooltipZIndex?: number;
+}
+
+const WithTooltip = ({
   children,
   closeOnClick = false,
   delayHide = 100,
@@ -91,7 +110,7 @@ const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
   tooltipZIndex = undefined,
   trigger = 'hover',
   ...props
-}) => {
+}: WithTooltipProps & ComponentProps<typeof AsComponent>) => {
   const id = React.useMemo(() => uuid.v4(), []);
   const [isTooltipShown, setTooltipShown] = useState(startOpen);
   const closeTooltip = useMemo(() => () => setTooltipShown(false), [setTooltipShown]);
@@ -167,23 +186,5 @@ const WithTooltip: FC<Props & ComponentProps<typeof AsComponent>> = ({
     </TooltipTrigger>
   );
 };
-
-interface Props {
-  tagName?: keyof JSX.IntrinsicElements;
-  trigger?: ComponentProps<typeof TooltipTrigger>['trigger'];
-  closeOnClick?: boolean;
-  placement?: ComponentProps<typeof TooltipTrigger>['placement'];
-  modifiers?: any;
-  hasChrome?: boolean;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  tooltip?: ReactNode | Function;
-  children: ReactNode;
-  startOpen?: boolean;
-  delayHide?: number;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  onVisibilityChange?: Function;
-  portalContainer?: ComponentProps<typeof TooltipTrigger>['portalContainer'];
-  tooltipZIndex?: number;
-}
 
 export default WithTooltip;

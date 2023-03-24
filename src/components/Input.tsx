@@ -5,7 +5,6 @@ import React, {
   useState,
   forwardRef,
   ReactNode,
-  FC,
   ComponentProps,
   MutableRefObject,
 } from 'react';
@@ -18,7 +17,7 @@ import WithTooltip from './tooltip/WithTooltip';
 import { TooltipMessage } from './tooltip/TooltipMessage';
 
 // prettier-ignore
-const Label = styled.label<Pick<Props, 'appearance'>>`
+const Label = styled.label<Pick<PureInputProps, 'appearance'>>`
   font-weight: ${props => props.appearance !== 'code' && typography.weight.bold};
   font-family: ${props => props.appearance === 'code' && typography.type.code };
   font-size: ${props => props.appearance === 'code' ? typography.size.s1 - 1 : typography.size.s2 }px;
@@ -26,7 +25,7 @@ const Label = styled.label<Pick<Props, 'appearance'>>`
 `;
 
 // prettier-ignore
-const LabelWrapper = styled.div<Pick<Props, 'hideLabel'>>`
+const LabelWrapper = styled.div<Pick<PureInputProps, 'hideLabel'>>`
   margin-bottom: 8px;
 
   ${props => props.hideLabel && css`
@@ -64,7 +63,7 @@ const InputEl = styled.input`
   &:-webkit-autofill { -webkit-box-shadow: 0 0 0 3em ${color.lightest} inset; }
 `;
 
-const getStackLevelStyling = (props: Pick<Props, 'error' | 'stackLevel'>) => {
+const getStackLevelStyling = (props: Pick<PureInputProps, 'error' | 'stackLevel'>) => {
   const radius = 4;
   const stackLevelDefinedStyling = css`
     position: relative;
@@ -107,7 +106,7 @@ const getStackLevelStyling = (props: Pick<Props, 'error' | 'stackLevel'>) => {
 
 // prettier-ignore
 const InputWrapper = styled.div<
-  Pick<Props, 'error' | 'stackLevel' | 'appearance' | 'startingType' | 'icon'>
+  Pick<PureInputProps, 'error' | 'stackLevel' | 'appearance' | 'startingType' | 'icon'>
 >`
   display: inline-block;
   position: relative;
@@ -228,7 +227,7 @@ const InputWrapper = styled.div<
     `}
 `;
 // prettier-ignore
-const InputContainer = styled.div<Pick<Props, 'orientation'>>`
+const InputContainer = styled.div<Pick<PureInputProps, 'orientation'>>`
   ${props => props.orientation === 'horizontal' && css`
     display: table-row;
 
@@ -272,7 +271,7 @@ const getErrorMessage = ({
   error,
   value,
   lastErrorValue,
-}: Pick<Props, 'error' | 'value' | 'lastErrorValue'>) => {
+}: Pick<PureInputProps, 'error' | 'value' | 'lastErrorValue'>) => {
   let errorMessage = typeof error === 'function' ? error(value) : error;
   if (lastErrorValue) {
     if (value !== lastErrorValue) {
@@ -282,8 +281,30 @@ const getErrorMessage = ({
   return errorMessage;
 };
 
-// FC<Props & ComponentProps<typeof InputEl>>
-export const PureInput = forwardRef<HTMLInputElement, Props & ComponentProps<typeof InputEl>>(
+interface PureInputProps {
+  id: string;
+  value?: string;
+  appearance?: 'default' | 'pill' | 'code' | 'tertiary';
+  errorTooltipPlacement?: ComponentProps<typeof WithTooltip>['placement'];
+  stackLevel?: 'top' | 'middle' | 'bottom';
+  label: string;
+  hideLabel?: boolean;
+  orientation?: 'vertical' | 'horizontal';
+  icon?: ComponentProps<typeof Icon>['icon'];
+  error?: ReactNode | ((value: PureInputProps['value']) => ReactNode);
+  suppressErrorMessage?: boolean;
+  className?: string;
+  lastErrorValue?: string;
+  startingType?: string;
+  type?: string;
+  onActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+  startFocused?: boolean;
+}
+
+export const PureInput = forwardRef<
+  HTMLInputElement,
+  PureInputProps & ComponentProps<typeof InputEl>
+>(
   (
     {
       id,
@@ -379,26 +400,7 @@ export const PureInput = forwardRef<HTMLInputElement, Props & ComponentProps<typ
     );
   }
 );
-
-interface Props {
-  id: string;
-  value?: string;
-  appearance?: 'default' | 'pill' | 'code' | 'tertiary';
-  errorTooltipPlacement?: ComponentProps<typeof WithTooltip>['placement'];
-  stackLevel?: 'top' | 'middle' | 'bottom';
-  label: string;
-  hideLabel?: boolean;
-  orientation?: 'vertical' | 'horizontal';
-  icon?: ComponentProps<typeof Icon>['icon'];
-  error?: ReactNode | Function;
-  suppressErrorMessage?: boolean;
-  className?: string;
-  lastErrorValue?: string;
-  startingType?: string;
-  type?: string;
-  onActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-  startFocused?: boolean;
-}
+PureInput.displayName = 'PureInput';
 
 export const Input = forwardRef<HTMLInputElement, ComponentProps<typeof PureInput>>(
   ({ type: startingType, startFocused, ...rest }, ref) => {
@@ -427,7 +429,7 @@ export const Input = forwardRef<HTMLInputElement, ComponentProps<typeof PureInpu
         inputRef.current.focus();
         didFocusOnStart.current = true;
       }
-    }, [inputRef, didFocusOnStart]);
+    }, [inputRef, startFocused, didFocusOnStart]);
 
     return (
       <PureInput
@@ -440,3 +442,4 @@ export const Input = forwardRef<HTMLInputElement, ComponentProps<typeof PureInpu
     );
   }
 );
+Input.displayName = 'Input';

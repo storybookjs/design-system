@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 import { ListItem } from './ListItem';
 import { spacing } from '../shared/styles';
@@ -12,12 +12,20 @@ const List = styled.ul`
   list-style: none;
 `;
 
-export const TooltipLinkList: FC<Props> = ({ links, LinkWrapper, ...rest }) => {
+type AnyProps = Record<string, any>;
+type LinkWrapperType = (props: AnyProps) => React.ReactElement<any, any>;
+
+interface TooltipLinkListProps {
+  links: Omit<ComponentProps<typeof ListItem>, 'LinkWrapper'>[];
+  LinkWrapper?: LinkWrapperType;
+}
+
+export const TooltipLinkList = ({ links, LinkWrapper, ...rest }: TooltipLinkListProps) => {
   return (
     <List {...rest}>
       {links.map((data, index) => (
         <ListItem
-          /* eslint-disable react/no-array-index-key */
+          // eslint-disable-next-line react/no-array-index-key
           key={index}
           LinkWrapper={LinkWrapper}
           {...data}
@@ -26,11 +34,3 @@ export const TooltipLinkList: FC<Props> = ({ links, LinkWrapper, ...rest }) => {
     </List>
   );
 };
-
-type AnyProps = Record<string, any>;
-type LinkWrapperType = (props: AnyProps) => React.ReactElement<any, any>;
-
-interface Props {
-  links: Omit<ComponentProps<typeof ListItem>, 'LinkWrapper'>[];
-  LinkWrapper?: LinkWrapperType;
-}

@@ -1,6 +1,6 @@
 // Our wrapper around react-popper that does common stuff.
 
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentProps } from 'react';
 import { styled, css } from '@storybook/theming';
 import { TooltipArg } from 'react-popper-tooltip';
 import { typography, spacing, zIndex as sharedZIndex } from '../shared/styles';
@@ -93,10 +93,16 @@ const TooltipWrapper = styled.div<WrapperProps>`
     `};
 `;
 
-export const Tooltip: FC<
-  Props &
-    Omit<ComponentProps<typeof TooltipWrapper>, keyof Props | 'data-placement' | 'ref' | 'zIndex'>
-> = ({
+interface TooltipProps {
+  hasChrome?: boolean;
+  arrowProps?: ComponentProps<typeof Arrow>;
+  placement?: Placement;
+  arrowRef?: any;
+  tooltipRef?: any;
+  zIndex?: number;
+}
+
+export const Tooltip = ({
   placement = 'top',
   hasChrome = true,
   children,
@@ -105,7 +111,11 @@ export const Tooltip: FC<
   arrowRef,
   zIndex = sharedZIndex.tooltip,
   ...props
-}) => {
+}: TooltipProps &
+  Omit<
+    ComponentProps<typeof TooltipWrapper>,
+    keyof TooltipProps | 'data-placement' | 'ref' | 'zIndex'
+  >) => {
   return (
     <TooltipWrapper
       hasChrome={hasChrome}
@@ -119,12 +129,3 @@ export const Tooltip: FC<
     </TooltipWrapper>
   );
 };
-
-interface Props {
-  hasChrome?: boolean;
-  arrowProps?: ComponentProps<typeof Arrow>;
-  placement?: Placement;
-  arrowRef?: any;
-  tooltipRef?: any;
-  zIndex?: number;
-}
