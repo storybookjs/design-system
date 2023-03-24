@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
@@ -64,27 +64,16 @@ export const ButtonAction = ({
   if (tooltip)
     return (
       <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} delayShow={600}>
-        <InsideButtonAction icon={icon} isActive={isActive} {...rest}>
+        <StyledButton isActive={isActive} {...rest} as="div">
+          {icon && <Icon icon={icon} />}
           {children}
-        </InsideButtonAction>
+        </StyledButton>
       </WithTooltip>
     );
   return (
-    <InsideButtonAction icon={icon} isActive={isActive} {...rest}>
+    <StyledButton isActive={isActive} {...rest}>
+      {icon && <Icon icon={icon} />}
       {children}
-    </InsideButtonAction>
+    </StyledButton>
   );
 };
-
-const InsideButtonAction = ({
-  children,
-  icon,
-  isActive = false,
-  tooltip,
-  ...rest
-}: ButtonActionProps & ComponentProps<typeof StyledButton>) => (
-  <StyledButton isActive={isActive} {...rest}>
-    {icon && <Icon icon={icon} />}
-    {children}
-  </StyledButton>
-);
