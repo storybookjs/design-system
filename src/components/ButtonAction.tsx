@@ -1,24 +1,20 @@
-import React, { ComponentProps, ReactNode } from 'react';
+import React from 'react';
 import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { typography, color } from './shared/styles';
 import { Icon, IconType } from './Icon';
-import { Spinner } from './Spinner';
 import { TooltipNote } from './tooltip/TooltipNote';
 import WithTooltip from './tooltip/WithTooltip';
 
 interface ButtonActionProps {
   icon: IconType;
-  children?: ReactNode;
+  children?: string;
   isActive?: boolean;
-  isLoading?: boolean;
-  loadingText?: string | null;
   tooltip?: string;
 }
 
 interface ButtonStylingProps {
   isActive?: boolean;
-  isLoading?: boolean;
 }
 
 const StyledButton = styled.button<ButtonStylingProps>`
@@ -46,15 +42,15 @@ const StyledButton = styled.button<ButtonStylingProps>`
   color: ${color.mediumdark};
 
   ${(props) =>
-    (props.isActive || props.isLoading) &&
+    props.isActive &&
     `
-      background-color: ${transparentize(0.7, color.secondary)};
+      background-color: ${transparentize(0.93, color.secondary)};
       color: ${color.secondary};
     `}
 
   &:hover {
     color: ${color.secondary};
-    background-color: ${transparentize(0.54, color.secondary)};
+    background-color: ${transparentize(0.86, color.secondary)};
   }
 `;
 
@@ -62,55 +58,27 @@ export const ButtonAction = ({
   children,
   icon,
   isActive = false,
-  isLoading = false,
-  loadingText = null,
   tooltip,
   ...rest
-}: ButtonActionProps & ComponentProps<typeof InsideButtonAction>) => {
+}: ButtonActionProps) => {
   if (tooltip)
     return (
-      <WithTooltip tooltip={<TooltipNote note={tooltip} />} hasChrome={false} tagName="span">
-        <InsideButtonAction
-          icon={icon}
-          isActive={isActive}
-          isLoading={isLoading}
-          loadingText={loadingText}
-          {...rest}
-        >
+      <WithTooltip
+        tooltip={<TooltipNote note={tooltip} />}
+        hasChrome={false}
+        delayShow={600}
+        {...rest}
+      >
+        <StyledButton isActive={isActive} as="div">
+          {icon && <Icon icon={icon} />}
           {children}
-        </InsideButtonAction>
+        </StyledButton>
       </WithTooltip>
     );
   return (
-    <InsideButtonAction
-      icon={icon}
-      isActive={isActive}
-      isLoading={isLoading}
-      loadingText={loadingText}
-      {...rest}
-    >
+    <StyledButton isActive={isActive} {...rest}>
+      {icon && <Icon icon={icon} />}
       {children}
-    </InsideButtonAction>
+    </StyledButton>
   );
 };
-
-const InsideButtonAction = ({
-  children,
-  icon,
-  isActive = false,
-  isLoading = false,
-  loadingText = null,
-  tooltip,
-  ...rest
-}: ButtonActionProps & ComponentProps<typeof StyledButton>) => (
-  <StyledButton isActive={isActive} isLoading={isLoading} {...rest}>
-    {icon && !isLoading && <Icon icon={icon} />}
-    {isLoading && (
-      <div style={{ position: 'relative', width: 14, height: 14 }}>
-        <Spinner inForm />
-      </div>
-    )}
-    {children && !isLoading && children}
-    {isLoading && loadingText}
-  </StyledButton>
-);

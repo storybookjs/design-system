@@ -11,12 +11,19 @@ const meta: Meta<typeof ButtonAction> = {
 export default meta;
 type Story = StoryObj<typeof ButtonAction>;
 
-export const Default: Story = {
+export const IconOnly: Story = {
   args: {
     children: '',
     icon: 'starhollow',
     isActive: false,
-    isLoading: false,
+  },
+};
+
+export const IconOnlyActive: Story = {
+  args: {
+    children: '',
+    icon: 'starhollow',
+    isActive: true,
   },
 };
 
@@ -25,44 +32,30 @@ export const WithLabel: Story = {
     children: 'Hello World',
     icon: 'starhollow',
     isActive: false,
-    isLoading: false,
   },
 };
 
-export const WithTooltip: Story = {
-  args: {
-    children: 'Hello World',
-    icon: 'starhollow',
-    isActive: false,
-    isLoading: false,
-    tooltip: "I'm a tooltip",
-  },
-};
-
-export const Active: Story = {
+export const WithLabelActive: Story = {
   args: {
     children: 'Hello World',
     icon: 'starhollow',
     isActive: true,
-    isLoading: false,
   },
 };
 
-export const Loading: Story = {
+export const IconOnlyWithTooltip: Story = {
+  args: {
+    icon: 'starhollow',
+    isActive: false,
+    tooltip: "I'm a tooltip",
+  },
+};
+
+export const WithLabelWithTooltip: Story = {
   args: {
     children: 'Hello World',
     icon: 'starhollow',
     isActive: false,
-    isLoading: true,
-  },
-};
-
-export const LoadingWithText: Story = {
-  args: {
-    children: 'Hello World',
-    icon: 'starhollow',
-    isActive: false,
-    isLoading: true,
-    loadingText: 'Loading',
+    tooltip: "I'm a tooltip",
   },
 };
