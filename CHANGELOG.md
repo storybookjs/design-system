@@ -1,3 +1,15 @@
+# v7.15.7 (Fri Mar 24 2023)
+
+#### 🐛 Bug Fix
+
+- ButtonAction updates [#414](https://github.com/storybookjs/design-system/pull/414) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
 # v7.15.6 (Fri Mar 24 2023)
 
 #### ⚠️ Pushed to `master`
