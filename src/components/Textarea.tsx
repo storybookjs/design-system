@@ -11,26 +11,27 @@ import React, {
 import { styled, css } from '@storybook/theming';
 import { color, typography } from './shared/styles';
 
-const Label = styled.label<{ hideLabel: boolean }>`
-  ${(props) =>
-    props.hideLabel &&
-    css`
-      border: 0px !important;
-      clip: rect(0 0 0 0) !important;
-      -webkit-clip-path: inset(100%) !important;
-      clip-path: inset(100%) !important;
-      height: 1px !important;
-      overflow: hidden !important;
-      padding: 0px !important;
-      position: absolute !important;
-      white-space: nowrap !important;
-      width: 1px !important;
-    `}
+const hidden = () => css`
+  border: 0px !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(100%) !important;
+  clip-path: inset(100%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0px !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
 `;
 
-const ErrorMessage = styled.span`
+const Label = styled.label<{ hideLabel: boolean }>`
+  ${(props) => props.hideLabel && hidden()}
+`;
+
+const ErrorMessage = styled.span<{ hideError: boolean }>`
   color: ${color.negative};
   font-weight: ${typography.weight.regular};
+  ${(props) => props.hideError && hidden()}
 `;
 
 const LabelWrapper = styled.div<{ hideLabel: boolean; error: ReactNode }>`
@@ -143,6 +144,7 @@ interface TextareaProps {
   label: string;
   appearance?: 'default';
   hideLabel?: boolean;
+  hideError?: boolean;
   orientation?: 'vertical' | 'horizontal';
   error?: ReactNode | ComponentType;
   startFocused?: boolean;
@@ -162,6 +164,7 @@ export const Textarea = forwardRef<
       label,
       hideLabel = false,
       error = null,
+      hideError = false,
       subtext,
       subtextSentiment,
       appearance = 'default',
@@ -202,7 +205,7 @@ export const Textarea = forwardRef<
             {label}
           </Label>
           {errorMessage && (
-            <ErrorMessage id={errorId} aria-hidden>
+            <ErrorMessage hideError={hideError} id={errorId} aria-hidden>
               {errorMessage}
             </ErrorMessage>
           )}
