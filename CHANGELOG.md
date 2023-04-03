@@ -1,3 +1,15 @@
+# v7.15.8 (Mon Apr 03 2023)
+
+#### ⚠️ Pushed to `master`
+
+- Allow hiding error message on Textarea ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v7.15.7 (Fri Mar 24 2023)
 
 #### 🐛 Bug Fix
