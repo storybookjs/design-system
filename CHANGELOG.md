@@ -1,3 +1,15 @@
+# v7.15.9 (Fri Apr 07 2023)
+
+#### 🐛 Bug Fix
+
+- Upgrade Storybook and Emotion dependencies [#417](https://github.com/storybookjs/design-system/pull/417) ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 1
+
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v7.15.8 (Mon Apr 03 2023)
 
 #### ⚠️ Pushed to `master`
