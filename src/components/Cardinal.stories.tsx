@@ -72,6 +72,7 @@ export const AllCardinals = () => (
     </div>
     <Cardinal size="large" count={1} text="Story" />
     <Cardinal size="large" count={2} text="Story" />
+    <Cardinal count="1,234" text="Story" countColor="gold" />
   </div>
 );
 
@@ -193,3 +194,7 @@ Thousands.storyName = 'thousands';
 export const Decimals = () => <Cardinal count={123.45} text="Story" />;
 
 Decimals.storyName = 'decimals';
+
+export const WithCountColor = () => <Cardinal count="1,234" text="Story" countColor="gold" />;
+
+WithCountColor.storyName = 'with CountColor';

@@ -9,9 +9,11 @@ import { inlineGlow } from './shared/animation';
 type Status = 'default' | 'positive' | 'negative' | 'warning' | 'neutral' | 'link' | 'inverse';
 type Size = 'small' | 'large';
 type Alignment = 'left' | 'center' | 'right';
+type Color = keyof typeof color;
 
 interface CountProps {
   status: Status;
+  countColor: Color;
 }
 
 const Count = styled.div<CountProps>`
@@ -54,6 +56,12 @@ const Count = styled.div<CountProps>`
     props.status === 'inverse' &&
     css`
       color: rgba(255, 255, 255, 0.7);
+    `};
+  ${(props) =>
+    props.status === 'default' &&
+    props.countColor &&
+    css`
+      color: ${color[props.countColor]};
     `};
 
   span {
@@ -169,6 +177,7 @@ export interface CardinalProps {
   countLink?: string;
   text: string;
   status?: Status;
+  countColor?: Color;
   noPlural?: boolean;
   CountWrapper?: React.ElementType;
   TextWrapper?: React.ElementType;
@@ -187,6 +196,7 @@ export const Cardinal: FunctionComponent<CardinalProps> = ({
   text,
   noPlural,
   status,
+  countColor,
   CountWrapper,
   TextWrapper,
   alignment,
@@ -220,7 +230,7 @@ export const Cardinal: FunctionComponent<CardinalProps> = ({
       {...events}
       {...props}
     >
-      <Count status={status}>
+      <Count status={status} countColor={countColor}>
         <CountWrapper>{countValue}</CountWrapper>
       </Count>
       <Text>
@@ -242,6 +252,7 @@ Cardinal.defaultProps = {
   active: false,
   size: 'large' as Size,
   status: 'default' as Status,
+  countColor: null,
   count: '000',
   countLink: null,
   noPlural: false,
