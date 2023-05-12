@@ -1,3 +1,15 @@
+# v7.15.10 (Fri May 12 2023)
+
+#### 🐛 Bug Fix
+
+- Adds `countColor` prop to Cardinal [#418](https://github.com/storybookjs/design-system/pull/418) ([@elseloop](https://github.com/elseloop))
+
+#### Authors: 1
+
+- Dan Manchester ([@elseloop](https://github.com/elseloop))
+
+---
+
 # v7.15.9 (Fri Apr 07 2023)
 
 #### 🐛 Bug Fix
