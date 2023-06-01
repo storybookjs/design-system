@@ -1,3 +1,15 @@
+# v7.15.11 (Thu Jun 01 2023)
+
+#### 🐛 Bug Fix
+
+- export StyledLinkProps to allow Link to be extended [#419](https://github.com/storybookjs/design-system/pull/419) ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+#### Authors: 1
+
+- Varun Vachhar ([@winkerVSbecks](https://github.com/winkerVSbecks))
+
+---
+
 # v7.15.10 (Fri May 12 2023)
 
 #### 🐛 Bug Fix
