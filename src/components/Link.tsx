@@ -20,7 +20,7 @@ const LinkInner = styled.span<{ withArrow: boolean }>`
     `};
 `;
 
-interface StyledLinkProps {
+export interface StyledLinkProps {
   containsIcon?: boolean;
   secondary?: boolean;
   tertiary?: boolean;
