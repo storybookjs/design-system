@@ -29,6 +29,7 @@ const MessageWrapper = styled.div`
   padding: 15px;
   width: 280px;
   box-sizing: border-box;
+  word-break: break-word;
 `;
 
 export function TooltipMessage({
