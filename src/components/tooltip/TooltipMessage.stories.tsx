@@ -67,3 +67,9 @@ export const withCustomClass = () => {
 };
 
 withCustomClass.storyName = 'with custom className';
+
+export const BreakWord = {
+  render: () => (
+    <TooltipMessage desc="App for repository github:sfdjglbnfslgbnbdsoiufbgdfjbdfsljbdflibsdfsfdhdfhfgdhfdgfbjdslf= already exists" />
+  ),
+};
