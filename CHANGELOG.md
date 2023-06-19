@@ -1,3 +1,15 @@
+# v7.15.12 (Mon Jun 19 2023)
+
+#### 🐛 Bug Fix
+
+- Update Tooltips to use Word Break on long words [#420](https://github.com/storybookjs/design-system/pull/420) ([@thafryer](https://github.com/thafryer))
+
+#### Authors: 1
+
+- Jarel Fryer ([@thafryer](https://github.com/thafryer))
+
+---
+
 # v7.15.11 (Thu Jun 01 2023)
 
 #### 🐛 Bug Fix
