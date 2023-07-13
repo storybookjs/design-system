@@ -1,3 +1,15 @@
+# v7.15.13 (Thu Jul 13 2023)
+
+#### 🐛 Bug Fix
+
+- Override WithTooltips default role of 'button' [#422](https://github.com/storybookjs/design-system/pull/422) ([@andrewortwein](https://github.com/andrewortwein))
+
+#### Authors: 1
+
+- Andrew Ortwein ([@andrewortwein](https://github.com/andrewortwein))
+
+---
+
 # v7.15.12 (Mon Jun 19 2023)
 
 #### 🐛 Bug Fix
