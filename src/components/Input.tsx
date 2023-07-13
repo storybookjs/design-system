@@ -383,6 +383,7 @@ export const PureInput = forwardRef<
             tooltip={
               errorMessage && !suppressErrorMessage && <ErrorTooltipMessage desc={errorMessage} />
             }
+            role="none"
           >
             {inputEl}
           </ErrorTooltip>
