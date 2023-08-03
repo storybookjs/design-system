@@ -397,6 +397,16 @@ export const icons = {
       />
     </>
   ),
+  diamond: (
+    <>
+      <path
+        fill="#2E3438"
+        fillRule="evenodd"
+        d="M8.41 1.59a2 2 0 0 0-2.82 0l-4 4a2 2 0 0 0 0 2.82l4 4a2 2 0 0 0 2.82 0l4-4a2 2 0 0 0 0-2.82l-4-4Zm.71-.71a3 3 0 0 0-4.24 0l-4 4a3 3 0 0 0 0 4.24l4 4a3 3 0 0 0 4.24 0l4-4a3 3 0 0 0 0-4.24l-4-4Z"
+        clipRule="evenodd"
+      />
+    </>
+  ),
   hearthollow: (
     <>
       <path
