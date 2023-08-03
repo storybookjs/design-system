@@ -43,6 +43,24 @@ export const WithLabelActive: Story = {
   },
 };
 
+export const IconOnlyIsSelect: Story = {
+  args: {
+    children: '',
+    icon: 'starhollow',
+    isActive: false,
+    isSelect: true,
+  },
+};
+
+export const WithLabelIsSelect: Story = {
+  args: {
+    children: 'Hello World',
+    icon: 'starhollow',
+    isActive: false,
+    isSelect: true,
+  },
+};
+
 export const IconOnlyWithTooltip: Story = {
   args: {
     icon: 'starhollow',
