@@ -1,3 +1,15 @@
+# v7.15.15 (Thu Aug 03 2023)
+
+#### 🐛 Bug Fix
+
+- Add chevron to ButtonAction [#425](https://github.com/storybookjs/design-system/pull/425) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.15.14 (Thu Aug 03 2023)
 
 #### 🐛 Bug Fix
