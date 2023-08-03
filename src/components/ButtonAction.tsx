@@ -10,11 +10,13 @@ interface ButtonActionProps {
   icon: IconType;
   children?: string;
   isActive?: boolean;
+  isSelect?: boolean;
   tooltip?: string;
 }
 
 interface ButtonStylingProps {
   isActive?: boolean;
+  isSelect?: boolean;
 }
 
 const StyledButton = styled.button<ButtonStylingProps>`
@@ -54,10 +56,20 @@ const StyledButton = styled.button<ButtonStylingProps>`
   }
 `;
 
+const Chevron = (
+  <svg viewBox="0 0 8 8" width="8px" height="8px">
+    <path
+      fill="#73828C"
+      d="M.85 1.9a.5.5 0 1 0-.7.7l3.5 3.5c.2.2.5.2.7 0l3.5-3.5a.5.5 0 1 0-.7-.7L4 5.04.85 1.9Z"
+    />
+  </svg>
+);
+
 export const ButtonAction = ({
   children,
   icon,
   isActive = false,
+  isSelect = false,
   tooltip,
   ...rest
 }: ButtonActionProps) => {
@@ -69,16 +81,17 @@ export const ButtonAction = ({
         delayShow={600}
         {...rest}
       >
-        <StyledButton isActive={isActive} as="div">
+        <StyledButton isActive={isActive} isSelect={isSelect} as="div">
           {icon && <Icon icon={icon} />}
           {children}
         </StyledButton>
       </WithTooltip>
     );
   return (
-    <StyledButton isActive={isActive} {...rest}>
+    <StyledButton isActive={isActive} isSelect={isSelect} {...rest}>
       {icon && <Icon icon={icon} />}
       {children}
+      {isSelect ? Chevron : null}
     </StyledButton>
   );
 };
