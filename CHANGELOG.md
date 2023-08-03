@@ -1,3 +1,15 @@
+# v7.15.14 (Thu Aug 03 2023)
+
+#### 🐛 Bug Fix
+
+- Added diamond icon [#424](https://github.com/storybookjs/design-system/pull/424) ([@MichaelArestad](https://github.com/MichaelArestad))
+
+#### Authors: 1
+
+- Michael Arestad ([@MichaelArestad](https://github.com/MichaelArestad))
+
+---
+
 # v7.15.13 (Thu Jul 13 2023)
 
 #### 🐛 Bug Fix
