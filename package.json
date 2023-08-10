@@ -2,9 +2,13 @@
   "name": "@storybook/design-system",
   "version": "7.15.15",
   "description": "Storybook design system",
+  "homepage": "https://github.com/storybookjs/design-system#readme",
+  "bugs": {
+    "url": "https://github.com/storybookjs/design-system/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/design-system.git"
+    "url": "git+https://github.com/storybookjs/design-system.git"
   },
   "license": "MIT",
   "author": {
@@ -27,7 +31,8 @@
     "release": "dotenv yarn build & yarn typescript:generate && auto shipit",
     "storybook": "yarn patch-package && storybook dev -p 6006",
     "typescript:check": "tsc --project ./tsconfig.json --noEmit",
-    "typescript:generate": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap"
+    "typescript:generate": "tsc --declaration --emitDeclarationOnly --outDir dist --declarationMap",
+    "chromatic": "npx chromatic --project-token=chpt_1e72a273ed259c1"
   },
   "husky": {
     "hooks": {
@@ -89,7 +94,7 @@
     "auto": "^9.50.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
-    "chromatic": "^5.0.0",
+    "chromatic": "^6.21.0",
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
     "eslint": "^7.1.0",
@@ -125,8 +130,10 @@
     "type": "opencollective",
     "url": "https://opencollective.com/storybook"
   },
+  "readme": "ERROR: No README data found!",
   "storybook": {
     "title": "Storybook Design System",
     "url": "https://master--5ccbc373887ca40020446347.chromatic.com"
-  }
+  },
+  "_id": "@storybook/design-system@7.15.15"
 }

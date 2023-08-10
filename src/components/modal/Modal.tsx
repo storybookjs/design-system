@@ -10,7 +10,7 @@ const Action = styled.div`
   position: absolute;
   z-index: 2;
 
-  bottom: 10vh;
+  bottom: 11vh;
   left: 50%;
   transform: translateX(-50%);
 
