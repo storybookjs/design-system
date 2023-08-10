@@ -22,7 +22,7 @@ const GitHubWrapper = styled.div`
     height: auto;
     .gh-btn,
     .gh-count {
-      padding: 4px 8px;
+      padding: 5px 8px;
     }
   }
 `;
