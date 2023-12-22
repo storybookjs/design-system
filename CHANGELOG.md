@@ -1,3 +1,15 @@
+# v7.15.16 (Fri Dec 22 2023)
+
+#### 🐛 Bug Fix
+
+- Bump storybook version [#432](https://github.com/storybookjs/design-system/pull/432) ([@JonathanKolnik](https://github.com/JonathanKolnik))
+
+#### Authors: 1
+
+- Jono Kolnik ([@JonathanKolnik](https://github.com/JonathanKolnik))
+
+---
+
 # v7.15.15 (Thu Aug 03 2023)
 
 #### 🐛 Bug Fix
