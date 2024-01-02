@@ -1,3 +1,15 @@
+# v7.15.17 (Tue Jan 02 2024)
+
+#### 🐛 Bug Fix
+
+- add font family css variable support [#433](https://github.com/storybookjs/design-system/pull/433) ([@JonathanKolnik](https://github.com/JonathanKolnik))
+
+#### Authors: 1
+
+- Jono Kolnik ([@JonathanKolnik](https://github.com/JonathanKolnik))
+
+---
+
 # v7.15.16 (Fri Dec 22 2023)
 
 #### 🐛 Bug Fix
