@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@emotion/weak-memoize": "^0.3.0",
+    "@storybook/design-system": "^7.15.17",
     "@storybook/source-loader": "^7.6.6",
     "@storybook/theming": "^7.6.6",
     "@types/pluralize": "^0.0.29",
