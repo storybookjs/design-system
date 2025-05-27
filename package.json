@@ -90,7 +90,7 @@
     "@storybook/react-webpack5": "^7.6.6",
     "@svgr/cli": "^6.1.1",
     "@types/fs-extra": "^9.0.1",
-    "auto": "^9.50.1",
+    "auto": "^11.3.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "chromatic": "^5.0.0",
