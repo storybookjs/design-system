@@ -1,3 +1,17 @@
+# v7.15.18 (Wed May 28 2025)
+
+#### 🐛 Bug Fix
+
+- Feat: Adds BlueSky icon [#442](https://github.com/storybookjs/design-system/pull/442) ([@jonniebigodes](https://github.com/jonniebigodes))
+- Reintroduce duplicate export [#416](https://github.com/storybookjs/design-system/pull/416) ([@ghengeveld](https://github.com/ghengeveld))
+
+#### Authors: 2
+
+- [@jonniebigodes](https://github.com/jonniebigodes)
+- Gert Hengeveld ([@ghengeveld](https://github.com/ghengeveld))
+
+---
+
 # v7.15.17 (Tue Jan 02 2024)
 
 #### 🐛 Bug Fix
