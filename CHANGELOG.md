@@ -1,3 +1,15 @@
+# v7.15.19 (Fri May 30 2025)
+
+#### 🐛 Bug Fix
+
+- Feat: Adds icon for X [#443](https://github.com/storybookjs/design-system/pull/443) ([@jonniebigodes](https://github.com/jonniebigodes))
+
+#### Authors: 1
+
+- [@jonniebigodes](https://github.com/jonniebigodes)
+
+---
+
 # v7.15.18 (Wed May 28 2025)
 
 #### 🐛 Bug Fix
