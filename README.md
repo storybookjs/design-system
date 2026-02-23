@@ -91,6 +91,30 @@ const CustomGlobalStyle = () => <Global styles={customGlobalStyle} />;
 <CustomGlobalStyle />
 ```
 
+## Using GlobalStyling with Storybook
+
+When rendering components inside Storybook, global styles must be applied at the preview level so that all stories inherit them consistently.
+
+You can achieve this by adding a decorator in your `.storybook/preview.js` (or `preview.tsx`) file.
+
+Example:
+
+```js
+import React from 'react';
+import { global } from '@storybook/design-system';
+
+const { GlobalStyle, loadFontsForStorybook } = global;
+
+loadFontsForStorybook();
+
+export const decorators = [
+  (Story) => (
+    <>
+      <GlobalStyle />
+      <Story />
+    </>
+  ),
+];
 ## Font Loading
 
 Rather than `@import` fonts in the `GlobalStyle` component, the design system's font URL is exported with the intention of using it in a `<link>` tag as the href. Different frameworks and environments handle component re-renders in their own way (a re-render would cause the font to be re-fetched), so this approach allows the design system consumers to choose the font loading method that is most appropriate for their environment.
